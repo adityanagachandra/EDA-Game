@@ -640,11 +640,67 @@ footer .link-underline:hover {
   );
   --footer-scrim-bottom: linear-gradient(
     to top,
-    color-mix(in srgb, var(--footer-scrim) 70%, transparent) 0%,
-    color-mix(in srgb, var(--footer-scrim) 30%, transparent) 18%,
-    transparent 34%
+    color-mix(in srgb, var(--footer-scrim) 82%, transparent) 0%,
+    color-mix(in srgb, var(--footer-scrim) 52%, transparent) 22%,
+    transparent 40%
   );
   background: var(--footer-scrim-top), var(--footer-scrim-bottom);
+}
+
+/* The top band fades out at 44% of the footer's height, which is above the
+   bottom of the link columns: the Resources column has seven links, so its last
+   four sat over the villa, the trees and the rocks with no scrim at all. That is
+   the unreadable footer in the report. The credits strip had the same problem
+   from the other end, because the bottom band fell to 30% by 18% of its height
+   while the strip sits at about 14%.
+
+   A single taller top band would have washed the middle of the print, which is
+   the part with no text over it and the part the two-band design exists to keep
+   clean. Instead, from md up the scrim gains one wash per text column: the brand
+   on the left and the nav on the right. Each fades in horizontally, so the
+   artwork between and below the columns keeps its own colour. The left wash
+   covers the tagline, which sits at about 42% of the footer's height, and stops
+   at 54% so it never reaches the harbour. The right wash starts below the top
+   band and runs to 92%, covering the last link. The mask positions straddle the
+   columns at every width: the brand ends at about 23% at 1440 and 36% at 768, and
+   the nav begins at about 80% at 1440 and 60% at 768, so 38% to 50% and 50% to
+   64% leave the middle clear at both ends of the range. */
+@media (min-width: 768px) {
+  /* The brand column has the same gap below the top band: at 1440 the wordmark
+     and the avatars are inside it, but the tagline sits at about 42% of the
+     footer's height, over the trees in the villa print. The wash stops at 52%
+     so it never reaches the harbour and the town, which carry no text. */
+  .footer-scrim::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--footer-scrim) 82%, transparent) 0%,
+      color-mix(in srgb, var(--footer-scrim) 70%, transparent) 28%,
+      color-mix(in srgb, var(--footer-scrim) 60%, transparent) 42%,
+      transparent 54%
+    );
+    -webkit-mask-image: linear-gradient(to right, #000 38%, transparent 50%);
+    mask-image: linear-gradient(to right, #000 38%, transparent 50%);
+  }
+
+  /* The nav column is wider than the brand's text at 768, so its wash starts
+     later and runs further down. */
+  .footer-scrim::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 16%,
+      color-mix(in srgb, var(--footer-scrim) 68%, transparent) 28%,
+      color-mix(in srgb, var(--footer-scrim) 68%, transparent) 80%,
+      transparent 92%
+    );
+    -webkit-mask-image: linear-gradient(to right, transparent 50%, #000 64%);
+    mask-image: linear-gradient(to right, transparent 50%, #000 64%);
+  }
 }
 
 /* The corner wash was removed with the picture that needed it.
