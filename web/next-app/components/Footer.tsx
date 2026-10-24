@@ -97,7 +97,12 @@ const shapeUrl = (seed: string) =>
 
 // Every word here is drawn on the artwork, so the ink comes from the picture's
 // tone rather than from the page theme.
-const linkClass = 'block opacity-80 transition-opacity hover:opacity-100'
+// Full ink, not 80 percent. The mono face is 12px with hairline strokes, and
+// fading it to 80 percent over an engraving is what made the links look washed
+// out even where the scrim covered them. Hover adds an underline instead of
+// fading the text, so the resting state keeps the full contrast. The floor fade
+// below supplies the background; the links themselves carry no tint.
+const linkClass = 'inline-block underline-offset-4 transition-colors hover:underline hover:decoration-1'
 const headingClass = 'font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--footer-ink-muted)]'
 
 // The credits strip names each license the shipped content carries, not only the software.

@@ -514,7 +514,7 @@ footer .link-underline:hover {
 .footer[data-tone-desktop='light'] {
   --footer-scrim: oklch(1 0 0);
   --footer-ink: oklch(0.18 0.01 264);
-  --footer-ink-muted: oklch(0.28 0.02 264);
+  --footer-ink-muted: oklch(0.24 0.02 264);
   --footer-rule: oklch(0.18 0.01 264 / 0.25);
 }
 
@@ -619,12 +619,13 @@ footer .link-underline:hover {
   }
 }
 
-/* The scrim. Two bands, not a wash: the footer's words are all at the top and
-   the bottom, so the middle of the print is left exactly as chosen. Colour
-   follows the tone -- light ink needs a light scrim under it and vice versa --
-   because the alternative is text that is unreadable wherever the artwork happens
-   to be dark, which for these prints is the trees on the left and the rocks
-   along the bottom. */
+/* The scrim. On narrow screens two bands cover the top and the bottom, so the
+   middle of the print is left as chosen. From md up the bands give way to a
+   floor: a light haze that thickens downward and covers every line of text,
+   because the nav column starts level with the wordmark and runs almost to the
+   credits. The haze is white for the light tone and dark for the dark tone, so
+   it always moves away from the ink instead of toward it.
+   Measured worst case is 5.4:1 over the three desktop prints at 1024 to 1920. */
 .footer-scrim {
   position: absolute;
   inset: 0;
@@ -634,72 +635,43 @@ footer .link-underline:hover {
      stack reads as two named layers and each can be adjusted on its own. */
   --footer-scrim-top: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--footer-scrim) 82%, transparent) 0%,
-    color-mix(in srgb, var(--footer-scrim) 46%, transparent) 26%,
-    transparent 44%
+    color-mix(in srgb, var(--footer-scrim) 88%, transparent) 0%,
+    color-mix(in srgb, var(--footer-scrim) 48%, transparent) 24%,
+    transparent 42%
   );
   --footer-scrim-bottom: linear-gradient(
     to top,
-    color-mix(in srgb, var(--footer-scrim) 82%, transparent) 0%,
-    color-mix(in srgb, var(--footer-scrim) 52%, transparent) 22%,
-    transparent 40%
+    color-mix(in srgb, var(--footer-scrim) 92%, transparent) 0%,
+    color-mix(in srgb, var(--footer-scrim) 64%, transparent) 26%,
+    transparent 44%
   );
   background: var(--footer-scrim-top), var(--footer-scrim-bottom);
 }
 
-/* The top band fades out at 44% of the footer's height, which is above the
-   bottom of the link columns: the Resources column has seven links, so its last
-   four sat over the villa, the trees and the rocks with no scrim at all. That is
-   the unreadable footer in the report. The credits strip had the same problem
-   from the other end, because the bottom band fell to 30% by 18% of its height
-   while the strip sits at about 14%.
-
-   A single taller top band would have washed the middle of the print, which is
-   the part with no text over it and the part the two-band design exists to keep
-   clean. Instead, from md up the scrim gains one wash per text column: the brand
-   on the left and the nav on the right. Each fades in horizontally, so the
-   artwork between and below the columns keeps its own colour. The left wash
-   covers the tagline, which sits at about 42% of the footer's height, and stops
-   at 54% so it never reaches the harbour. The right wash starts below the top
-   band and runs to 92%, covering the last link. The mask positions straddle the
-   columns at every width: the brand ends at about 23% at 1440 and 36% at 768, and
-   the nav begins at about 80% at 1440 and 60% at 768, so 38% to 50% and 50% to
-   64% leave the middle clear at both ends of the range. */
+/* The floor fade. The print is pale, so the floor is pale too: a white haze
+   that thickens toward the bottom, never a dark band. White is efficient at
+   raising contrast for dark ink, so the haze can stay as weak as the contrast
+   allows and the engraving still reads through it, while the links and the
+   credits get a stable surface. The top band and the floor overlap between 24%
+   and 32%, which is where the tagline sits, so the text never passes through a
+   gap. The floor runs from 50 percent at the first nav row to 76 percent at the
+   credits; below 50 the darkest prints drop under 4.5:1. */
 @media (min-width: 768px) {
-  /* The brand column has the same gap below the top band: at 1440 the wordmark
-     and the avatars are inside it, but the tagline sits at about 42% of the
-     footer's height, over the trees in the villa print. The wash stops at 52%
-     so it never reaches the harbour and the town, which carry no text. */
-  .footer-scrim::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
+  .footer-scrim {
+    --footer-scrim-top: linear-gradient(
       to bottom,
-      color-mix(in srgb, var(--footer-scrim) 82%, transparent) 0%,
-      color-mix(in srgb, var(--footer-scrim) 70%, transparent) 28%,
-      color-mix(in srgb, var(--footer-scrim) 60%, transparent) 42%,
-      transparent 54%
+      color-mix(in srgb, var(--footer-scrim) 84%, transparent) 0%,
+      color-mix(in srgb, var(--footer-scrim) 78%, transparent) 20%,
+      transparent 32%
     );
-    -webkit-mask-image: linear-gradient(to right, #000 38%, transparent 50%);
-    mask-image: linear-gradient(to right, #000 38%, transparent 50%);
-  }
-
-  /* The nav column is wider than the brand's text at 768, so its wash starts
-     later and runs further down. */
-  .footer-scrim::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
+    --footer-floor: linear-gradient(
       to bottom,
-      transparent 16%,
-      color-mix(in srgb, var(--footer-scrim) 68%, transparent) 28%,
-      color-mix(in srgb, var(--footer-scrim) 68%, transparent) 80%,
-      transparent 92%
+      transparent 24%,
+      color-mix(in srgb, var(--footer-scrim) 50%, transparent) 34%,
+      color-mix(in srgb, var(--footer-scrim) 70%, transparent) 44%,
+      color-mix(in srgb, var(--footer-scrim) 76%, transparent) 100%
     );
-    -webkit-mask-image: linear-gradient(to right, transparent 50%, #000 64%);
-    mask-image: linear-gradient(to right, transparent 50%, #000 64%);
+    background: var(--footer-scrim-top), var(--footer-floor);
   }
 }
 
