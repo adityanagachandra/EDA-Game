@@ -132,10 +132,49 @@ type Progress struct {
 type Engine struct {
 	dag      *concepts.DAG
 	registry *generator.Registry
+	depths   map[string]int
+	maxDepth int
 }
 
 func NewEngine(dag *concepts.DAG, reg *generator.Registry) *Engine {
-	return &Engine{dag: dag, registry: reg}
+	e := &Engine{dag: dag, registry: reg}
+	if dag != nil {
+		e.initDepths()
+	}
+	return e
+}
+
+func (e *Engine) initDepths() {
+	if e.dag == nil {
+		return
+	}
+	e.depths = concepts.ConceptDepths(e.dag)
+	e.maxDepth = 0
+	for _, d := range e.depths {
+		if d > e.maxDepth {
+			e.maxDepth = d
+		}
+	}
+}
+
+func (e *Engine) conceptDepth(id string) int {
+	if e.depths == nil && e.dag != nil {
+		e.initDepths()
+	}
+	if e.depths != nil {
+		return e.depths[id]
+	}
+	return 0
+}
+
+func (e *Engine) conceptMaxDepth() int {
+	if e.depths == nil && e.dag != nil {
+		e.initDepths()
+	}
+	if e.maxDepth > 0 {
+		return e.maxDepth
+	}
+	return 1
 }
 
 // Snapshot is the durable form of a Session.
@@ -356,34 +395,159 @@ func (e *Engine) StartWithPathFocus(path []*concepts.Concept, focusIDs []string)
 	return s
 }
 
-// compressedCover returns the smallest covering set: roots + evenly spaced
-// concepts across the topo order at coverSize granularity.
+// compressedCover returns a topological path-covering set: roots, terminal targets
+// and intermediate nodes stratified by depth and subdomain so parallel curriculum tracks
+// are all represented.
 func (e *Engine) compressedCover(s *Session) []*concepts.Concept {
-	if len(s.order) <= coverSize {
-		return s.order
+	return graphCover(s.order, coverSize)
+}
+
+func graphCover(order []*concepts.Concept, targetSize int) []*concepts.Concept {
+	if len(order) <= targetSize {
+		return order
 	}
-	step := int(math.Ceil(float64(len(s.order)) / float64(coverSize)))
-	// Root concepts (no prerequisites within the path) are always covered.
-	isRoot := func(c *concepts.Concept) bool {
-		return len(c.Prerequisites) == 0
+
+	inOrder := make(map[string]*concepts.Concept, len(order))
+	for _, c := range order {
+		inOrder[c.ID] = c
 	}
+
+	inDegree := make(map[string]int, len(order))
+	children := make(map[string][]string, len(order))
+	for _, c := range order {
+		for _, p := range c.Prerequisites {
+			if _, ok := inOrder[p]; ok {
+				inDegree[c.ID]++
+				children[p] = append(children[p], c.ID)
+			}
+		}
+	}
+
+	// Compute longest path depth from roots
+	depth := make(map[string]int, len(order))
+	maxDepth := 0
+	for _, c := range order {
+		d := depth[c.ID]
+		if d > maxDepth {
+			maxDepth = d
+		}
+		for _, ch := range children[c.ID] {
+			if depth[ch] < d+1 {
+				depth[ch] = d + 1
+			}
+		}
+	}
+
+	var roots []*concepts.Concept
+	var leaves []*concepts.Concept
+	for _, c := range order {
+		if inDegree[c.ID] == 0 {
+			roots = append(roots, c)
+		}
+		if len(children[c.ID]) == 0 {
+			leaves = append(leaves, c)
+		}
+	}
+
+	selected := make(map[string]bool, targetSize)
 	var out []*concepts.Concept
-	seen := make(map[string]bool)
 	add := func(c *concepts.Concept) {
-		if !seen[c.ID] {
-			seen[c.ID] = true
+		if c != nil && !selected[c.ID] {
+			selected[c.ID] = true
 			out = append(out, c)
 		}
 	}
-	for i := 0; i < len(s.order); i += step {
-		add(s.order[i])
+
+	// 1. Add all roots (foundational prerequisites)
+	for _, r := range roots {
+		add(r)
 	}
-	for _, c := range s.order {
-		if isRoot(c) {
-			add(c)
+
+	// 2. Add all leaves (terminal assessment targets)
+	for _, l := range leaves {
+		add(l)
+	}
+
+	// 3. For parallel tracks and chains, sample intermediate nodes by depth tier and subdomain
+	if maxDepth > 1 && len(out) < targetSize {
+		tiers := 4
+		for tier := 1; tier < tiers; tier++ {
+			targetD := (maxDepth * tier) / tiers
+			bySub := make(map[string]*concepts.Concept)
+			minDist := make(map[string]int)
+			for _, c := range order {
+				if selected[c.ID] {
+					continue
+				}
+				dist := depth[c.ID] - targetD
+				if dist < 0 {
+					dist = -dist
+				}
+				sub := c.Subdomain
+				if sub == "" {
+					sub = c.Domain
+				}
+				if cur, ok := minDist[sub]; !ok || dist < cur {
+					minDist[sub] = dist
+					bySub[sub] = c
+				}
+			}
+			for _, c := range bySub {
+				if len(out) >= targetSize {
+					break
+				}
+				add(c)
+			}
 		}
 	}
-	sort.Slice(out, func(i, j int) bool { return s.index(out[i].ID) < s.index(out[j].ID) })
+
+	// 4. Fill to targetSize if short
+	if len(out) < targetSize {
+		step := int(math.Ceil(float64(len(order)) / float64(targetSize)))
+		if step < 1 {
+			step = 1
+		}
+		for i := 0; i < len(order); i += step {
+			add(order[i])
+			if len(out) >= targetSize {
+				break
+			}
+		}
+	}
+
+	// 5. If roots + leaves exceed targetSize, retain roots and uniform samples
+	if len(out) > targetSize {
+		var trimmed []*concepts.Concept
+		for _, r := range roots {
+			trimmed = append(trimmed, r)
+		}
+		nonRoots := make([]*concepts.Concept, 0, len(out)-len(trimmed))
+		for _, c := range out {
+			if inDegree[c.ID] > 0 {
+				nonRoots = append(nonRoots, c)
+			}
+		}
+		rem := targetSize - len(trimmed)
+		if rem > 0 && len(nonRoots) > 0 {
+			stride := float64(len(nonRoots)) / float64(rem)
+			for i := 0; i < rem; i++ {
+				idx := int(float64(i) * stride)
+				if idx >= len(nonRoots) {
+					idx = len(nonRoots) - 1
+				}
+				trimmed = append(trimmed, nonRoots[idx])
+			}
+		}
+		out = trimmed
+	}
+
+	indexMap := make(map[string]int, len(order))
+	for i, c := range order {
+		indexMap[c.ID] = i
+	}
+	sort.Slice(out, func(i, j int) bool {
+		return indexMap[out[i].ID] < indexMap[out[j].ID]
+	})
 	return out
 }
 
@@ -417,7 +581,9 @@ func FisherInformation(theta, a, b float64) float64 {
 }
 
 // ItemParameters calculates the discrimination (a) and difficulty (b) parameters for concept c.
-// Difficulty b is calibrated relative to the student's current knowledge frontier.
+// Difficulty b is calibrated to standard psychometric ability space [-3.0, +3.0] using the
+// concept's topological depth in the curriculum DAG, cognitive duration from mastery thresholds
+// and session probe counts.
 // Discrimination a scales with graph connectivity, key prerequisites and encompasses metadata.
 func (e *Engine) ItemParameters(s *Session, c *concepts.Concept) (float64, float64) {
 	if c == nil {
@@ -446,20 +612,51 @@ func (e *Engine) ItemParameters(s *Session, c *concepts.Concept) (float64, float
 		a = 2.5
 	}
 
-	// Calibrate difficulty b relative to the knowledge frontier in s.order.
-	frontierIdx := 0
-	for i, concept := range s.order {
-		if s.beliefs[concept.ID] >= beliefThreshold {
-			frontierIdx = i
+	// 1. Calibrate difficulty relative to the student's knowledge frontier using DAG topological depth.
+	frontierDepth := 0
+	if s != nil {
+		for _, concept := range s.order {
+			if s.beliefs[concept.ID] >= beliefThreshold {
+				cd := e.conceptDepth(concept.ID)
+				if cd > frontierDepth {
+					frontierDepth = cd
+				}
+			}
 		}
 	}
-	idx := s.index(c.ID)
-	bBase := float64(idx-frontierIdx) / 5.0
-	probes := s.probeCounts[c.ID]
-	if probes > 1 {
-		bBase += 0.3 * float64(probes-1)
+	d := e.conceptDepth(c.ID)
+	if d == 0 && prereqCount > 0 && e.dag == nil {
+		d = prereqCount
 	}
-	return a, bBase
+	b := float64(d-frontierDepth) / 3.0
+
+	// 2. Adjust for cognitive duration if defined.
+	if c.MasteryThreshold.AvgTimeSeconds > 0 {
+		bTime := (c.MasteryThreshold.AvgTimeSeconds - 25.0) / 50.0
+		if bTime > 0.4 {
+			bTime = 0.4
+		} else if bTime < -0.4 {
+			bTime = -0.4
+		}
+		b += bTime
+	}
+
+	// 3. Multi-probe progression for repeated attempts within session.
+	if s != nil {
+		probes := s.probeCounts[c.ID]
+		if probes > 1 {
+			b += 0.25 * float64(probes-1)
+		}
+	}
+
+	if b < -3.0 {
+		b = -3.0
+	}
+	if b > 3.0 {
+		b = 3.0
+	}
+
+	return a, b
 }
 
 // entropy is the binary entropy of a belief p (uncertainty).
@@ -543,7 +740,21 @@ func (e *Engine) NextQuestion(s *Session) (*generator.Problem, string, error) {
 		s.LastProblem = nil
 		return nil, "", nil
 	}
-	concept := s.order[s.index(cid)]
+	var concept *concepts.Concept
+	if e.dag != nil {
+		concept = e.dag.Concept(cid)
+	}
+	if concept == nil {
+		idx := s.index(cid)
+		if idx < len(s.order) {
+			concept = s.order[idx]
+		}
+	}
+	if concept == nil {
+		s.State = StateDone
+		s.LastProblem = nil
+		return nil, "", nil
+	}
 	s.probeCounts[cid]++
 	// Vary difficulty: start low, increase on later probes.
 	difficulty := 0.3
@@ -594,7 +805,7 @@ func (e *Engine) retryEligibleForLocked(s *Session, missedCID, nextCID string) b
 	if prior, ok := last.BeliefSnapshot[last.ConceptID]; ok && prior >= confidenceThreshold {
 		return true
 	}
-	if nextCID != "" && s.index(nextCID) < s.index(missedCID) {
+	if nextCID != "" && (e.conceptDepth(nextCID) < e.conceptDepth(missedCID) || (e.conceptDepth(nextCID) == e.conceptDepth(missedCID) && s.index(nextCID) < s.index(missedCID))) {
 		return true
 	}
 	return s.probeCounts[missedCID] <= 1
@@ -938,27 +1149,7 @@ func (s *Session) shouldStop() bool {
 // compressedCoverSafe mirrors compressedCover without an Engine receiver
 // (session-only helper for stop conditions).
 func (s *Session) compressedCoverSafe() []*concepts.Concept {
-	if len(s.order) <= coverSize {
-		return s.order
-	}
-	step := int(math.Ceil(float64(len(s.order)) / float64(coverSize)))
-	var out []*concepts.Concept
-	seen := make(map[string]bool)
-	add := func(c *concepts.Concept) {
-		if !seen[c.ID] {
-			seen[c.ID] = true
-			out = append(out, c)
-		}
-	}
-	for i := 0; i < len(s.order); i += step {
-		add(s.order[i])
-	}
-	for _, c := range s.order {
-		if len(c.Prerequisites) == 0 {
-			add(c)
-		}
-	}
-	return out
+	return graphCover(s.order, coverSize)
 }
 
 func (e *Engine) IsComplete(s *Session) bool {
