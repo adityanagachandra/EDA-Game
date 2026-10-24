@@ -320,7 +320,7 @@ func (g *predicatesGen) Generate(ctx generator.GeneratorContext) generator.Probl
 	}
 
 	e := entries[rand.Intn(len(entries))]
-	q := fmt.Sprintf("Which statement is the negation of %s over the specified domain?", e.original)
+	q := fmt.Sprintf("Which statement is the negation of %s?", e.original)
 	p := generator.MultipleChoice(q, e.negation, e.swapped, e.unchanged, e.wrongQuantifier)
 	p.Facts = map[string]string{"original": e.original, "negation": e.negation, "why": e.note, "answer": e.negation}
 	p.Explanation = e.note
@@ -356,7 +356,9 @@ func (g *contrapositiveGen) Generate(ctx generator.GeneratorContext) generator.P
 	type pair struct{ p, q, notP, notQ string }
 
 	k := rand.Intn(8) + 2
-	c := rand.Intn(5) + 2
+	// c must be prime: "if c divides mn then c divides m or n" fails for a
+	// composite c, because 4 divides 2*2 while 4 divides neither factor.
+	c := []int{2, 3, 5, 7}[rand.Intn(4)]
 
 	var pairs []pair
 	switch rand.Intn(5) {

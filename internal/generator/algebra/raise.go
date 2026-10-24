@@ -889,17 +889,22 @@ func (g *matricesGen) Generate(ctx generator.GeneratorContext) generator.Problem
 		p.Explanation = fmt.Sprintf("The row translates to 0x + 0y + 0z = %d, which is 0 = %d, an impossibility.", c, c)
 		return p
 	case 2:
-		// Dependent / infinite solutions
+		// Dependent / infinite solutions. A zero row alone does not imply a
+		// free variable: [1 0 0 | 1; 0 1 0 | 2; 0 0 1 | 3; 0 0 0 | 0] is a
+		// consistent four-by-three system with a zero row and a unique
+		// solution. What produces the free variable is the rank falling below
+		// the number of variables, so the question states the rank.
 		vars := rand.Intn(2) + 3 // 3 or 4
-		q := fmt.Sprintf("In a consistent linear system of %d variables, if row reduction yields a bottom row of all zeros [0 ... 0 | 0], the system has...", vars)
+		rank := vars - 1
+		q := fmt.Sprintf("In a consistent linear system of %d variables, row reduction yields %d nonzero rows. The system has...", vars, rank)
 		correct := "infinitely many solutions (at least one free variable)"
 		dist := []string{
 			"no solution",
 			"a unique solution",
-			"only the trivial zero solution",
+			"exactly two solutions",
 		}
 		p := generator.MultipleChoice(q, correct, dist...)
-		p.Explanation = "A row of zeros in a consistent system means fewer non-zero rows than variables, producing at least one free variable and infinitely many solutions."
+		p.Explanation = fmt.Sprintf("The system has %d variables and rank %d, so it has %d - %d = 1 free variable and infinitely many solutions. A zero row on its own would only mark a redundant equation.", vars, rank, vars, rank)
 		return p
 	case 3:
 		// Read-off unique solution
