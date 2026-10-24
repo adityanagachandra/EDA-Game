@@ -369,4 +369,3 @@ func TestEngine_FIRe_SubmitAnswerImmediatelySatisfiesEncompassedReview(t *testin
 		t.Fatalf("expected SM2 interval to advance beyond 5 immediately, got %d", p.SM2Interval)
 	}
 }
-
