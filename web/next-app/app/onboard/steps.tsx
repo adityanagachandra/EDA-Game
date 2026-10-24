@@ -71,8 +71,9 @@ export function WelcomeStep({
             The test adapts as it goes and usually takes about 30–45 minutes.
           </p>
           <p className="text-mathua-muted text-xs mt-1 px-2">
-            It opens on the areas you chose. The foundations those areas build on
-            are checked too, so a few questions may come from earlier topics.
+            It opens on the areas you chose, and a few questions may come from the
+            topics underneath them. A foundation the test does not reach is still
+            left open, so you can study it whenever you need it.
           </p>
         </div>
         <BriefingCard eyebrow="What to expect" items={DIAGNOSTIC_BRIEFING} />
