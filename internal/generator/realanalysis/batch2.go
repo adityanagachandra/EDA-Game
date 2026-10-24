@@ -42,7 +42,7 @@ func raIntPow(base, exp int) int {
 type connectedGen struct{}
 
 func (g *connectedGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A subset of the real line is connected exactly when...",
 			correct:     "it is an interval",
@@ -50,8 +50,8 @@ func (g *connectedGen) Generate(ctx generator.GeneratorContext) generator.Proble
 			reason:      "The connected subsets of the line are exactly the intervals, bounded or not and open, closed or half-open.",
 		},
 		{
-			q:           "The continuous image of a connected set is...",
-			correct:     "connected",
+			q:           "Continuity preserves which property of connected sets when the image is taken?",
+			correct:     "connectedness",
 			distractors: []string{"open", "compact", "closed"},
 			reason:      "A continuous function cannot split a connected set into two separated pieces.",
 		},
@@ -61,7 +61,8 @@ func (g *connectedGen) Generate(ctx generator.GeneratorContext) generator.Proble
 			distractors: []string{"connected", "compact but not closed", "a single interval"},
 			reason:      "The gap between 1 and 2 splits the union into two nonempty pieces separated in the subspace.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedLimitClaims("ra.limit.connected")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -71,7 +72,7 @@ func (g *connectedGen) Generate(ctx generator.GeneratorContext) generator.Proble
 type discontinuityGen struct{}
 
 func (g *discontinuityGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A removable discontinuity at a point is one where...",
 			correct:     "the two-sided limit exists but differs from the value, or the value is undefined",
@@ -90,7 +91,8 @@ func (g *discontinuityGen) Generate(ctx generator.GeneratorContext) generator.Pr
 			distractors: []string{"a jump discontinuity at 0", "an essential discontinuity at 0", "no discontinuity at 0"},
 			reason:      "The limit at 0 is 0 while the value is 1, so redefining the single value removes the discontinuity.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedLimitClaims("ra.limit.discontinuity")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -100,7 +102,7 @@ func (g *discontinuityGen) Generate(ctx generator.GeneratorContext) generator.Pr
 type monotoneFnGen struct{}
 
 func (g *monotoneFnGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A monotone function on an interval can have...",
 			correct:     "at most countably many discontinuities, and all of them are jumps",
@@ -119,7 +121,8 @@ func (g *monotoneFnGen) Generate(ctx generator.GeneratorContext) generator.Probl
 			distractors: []string{"always equals f(b)", "need not exist", "equals the infimum of the values"},
 			reason:      "The values are bounded above by f(b) and increase, so their supremum is approached from the left.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedLimitClaims("ra.limit.monotone_fn")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -129,7 +132,7 @@ func (g *monotoneFnGen) Generate(ctx generator.GeneratorContext) generator.Probl
 type darbouxGen struct{}
 
 func (g *darbouxGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "Darboux's theorem says that a derivative...",
 			correct:     "has the intermediate value property even though it need not be continuous",
@@ -148,7 +151,8 @@ func (g *darbouxGen) Generate(ctx generator.GeneratorContext) generator.Problem 
 			distractors: []string{"is continuous at 0", "does not exist at points near 0", "is monotone near 0"},
 			reason:      "The derivative oscillates without a limit at 0, which Darboux's theorem permits because it is not a jump.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedDerivClaims("ra.deriv.darboux")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -158,7 +162,7 @@ func (g *darbouxGen) Generate(ctx generator.GeneratorContext) generator.Problem 
 type uniformConvGen struct{}
 
 func (g *uniformConvGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A sequence of functions converges uniformly on a set when...",
 			correct:     "one index N works for every point of the set at once",
@@ -172,12 +176,13 @@ func (g *uniformConvGen) Generate(ctx generator.GeneratorContext) generator.Prob
 			reason:      "The index that works can drift without bound as the point moves, as x^n on the unit interval shows.",
 		},
 		{
-			q:           "The uniform limit of a sequence of continuous functions is...",
-			correct:     "continuous",
+			q:           "Which property survives a uniform limit of continuous functions?",
+			correct:     "continuity",
 			distractors: []string{"differentiable", "monotone", "bounded but not necessarily continuous"},
 			reason:      "Uniform control lets the limit be exchanged with the pointwise limit, which preserves continuity.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedDerivClaims("ra.deriv.uniform_conv")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -187,7 +192,7 @@ func (g *uniformConvGen) Generate(ctx generator.GeneratorContext) generator.Prob
 type interchangeGen struct{}
 
 func (g *interchangeGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "If a sequence of continuous functions converges uniformly on a closed bounded interval, then the limit of the integrals is...",
 			correct:     "the integral of the limit function",
@@ -206,7 +211,8 @@ func (g *interchangeGen) Generate(ctx generator.GeneratorContext) generator.Prob
 			distractors: []string{"valid only when the series converges at the endpoints", "valid only for power series", "never valid without differentiability"},
 			reason:      "Integrals are bounded by the interval length, so uniform convergence controls the tail of the integrated series.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedDerivClaims("ra.deriv.interchange")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -216,7 +222,7 @@ func (g *interchangeGen) Generate(ctx generator.GeneratorContext) generator.Prob
 type openClosedGen struct{}
 
 func (g *openClosedGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A subset of a metric space is open when...",
 			correct:     "every point of it has an open ball contained in the set",
@@ -235,7 +241,8 @@ func (g *openClosedGen) Generate(ctx generator.GeneratorContext) generator.Probl
 			distractors: []string{"always open", "always closed", "always empty"},
 			reason:      "Intersecting the balls of radius 1/n about a point shrinks to a point, which is not open.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedMetricClaims("ra.metric.open_closed")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -245,7 +252,7 @@ func (g *openClosedGen) Generate(ctx generator.GeneratorContext) generator.Probl
 type closureGen struct{}
 
 func (g *closureGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "The closure of a set is...",
 			correct:     "the set together with all of its limit points",
@@ -264,7 +271,8 @@ func (g *closureGen) Generate(ctx generator.GeneratorContext) generator.Problem 
 			distractors: []string{"the points that belong to the set and to its complement", "the isolated points of the set", "the complement of the set"},
 			reason:      "A boundary point is one every ball around which meets the set and its complement.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedMetricClaims("ra.metric.closure")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -274,7 +282,7 @@ func (g *closureGen) Generate(ctx generator.GeneratorContext) generator.Problem 
 type metricConvGen struct{}
 
 func (g *metricConvGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A sequence in a metric space converges to a point when...",
 			correct:     "for every positive epsilon there is an index beyond which the distance to the point is below epsilon",
@@ -293,7 +301,8 @@ func (g *metricConvGen) Generate(ctx generator.GeneratorContext) generator.Probl
 			distractors: []string{"always converges", "always has a convergent subsequence", "converges exactly when it is bounded"},
 			reason:      "Convergence of every Cauchy sequence is completeness, which is an extra assumption.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedMetricClaims("ra.metric.convergence")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -303,7 +312,7 @@ func (g *metricConvGen) Generate(ctx generator.GeneratorContext) generator.Probl
 type completeGen struct{}
 
 func (g *completeGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A metric space is complete when...",
 			correct:     "every Cauchy sequence in it converges to a point of the space",
@@ -322,7 +331,8 @@ func (g *completeGen) Generate(ctx generator.GeneratorContext) generator.Problem
 			distractors: []string{"complete", "compact", "equivalent to the reals"},
 			reason:      "Truncations of the square root of two are Cauchy in the rationals and have no rational limit.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedMetricClaims("ra.metric.complete")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -332,7 +342,7 @@ func (g *completeGen) Generate(ctx generator.GeneratorContext) generator.Problem
 type metricCompactGen struct{}
 
 func (g *metricCompactGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A metric space is compact when...",
 			correct:     "every open cover has a finite subcover",
@@ -351,7 +361,8 @@ func (g *metricCompactGen) Generate(ctx generator.GeneratorContext) generator.Pr
 			distractors: []string{"is uniformly continuous only if the space is an interval", "is injective", "has a continuous inverse"},
 			reason:      "The image of a compact set is compact, and a compact subset of the reals is closed and bounded.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedMetricClaims("ra.metric.compact")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -361,7 +372,7 @@ func (g *metricCompactGen) Generate(ctx generator.GeneratorContext) generator.Pr
 type metricContinuityGen struct{}
 
 func (g *metricContinuityGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "A function between metric spaces is continuous at a point when...",
 			correct:     "for every positive epsilon there is a positive delta that keeps images within epsilon whenever inputs are within delta",
@@ -380,7 +391,8 @@ func (g *metricContinuityGen) Generate(ctx generator.GeneratorContext) generator
 			distractors: []string{"a bijection", "an isometry", "Lipschitz"},
 			reason:      "Compactness upgrades pointwise continuity to a single delta for the whole domain.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedMetricClaims("ra.metric.continuity")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -390,7 +402,7 @@ func (g *metricContinuityGen) Generate(ctx generator.GeneratorContext) generator
 type baireGen struct{}
 
 func (g *baireGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "The Baire category theorem says a complete metric space...",
 			correct:     "cannot be written as a countable union of nowhere dense sets",
@@ -409,7 +421,8 @@ func (g *baireGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 			distractors: []string{"a set that is not open", "a countable set", "a set containing no interval"},
 			reason:      "Meagre or first category is exactly a countable union of sets with empty interior closure.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedMetricClaims("ra.metric.baire")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -419,7 +432,7 @@ func (g *baireGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 type equivalentGen struct{}
 
 func (g *equivalentGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return pickMC([]mcClaim{
+	claims := []mcClaim{
 		{
 			q:           "Two metrics on a set are topologically equivalent when...",
 			correct:     "they have the same open sets, hence the same convergent sequences",
@@ -438,7 +451,8 @@ func (g *equivalentGen) Generate(ctx generator.GeneratorContext) generator.Probl
 			distractors: []string{"they have the same open sets, which is the same condition", "they are equal on a dense subset", "they both make the space complete"},
 			reason:      "A two-sided constant bound forces the same topology and also controls Cauchy sequences and completeness.",
 		},
-	})
+	}
+	return pickMC(append(claims, computedMetricClaims("ra.metric.equivalent")...))
 }
 
 // ---------------------------------------------------------------------------

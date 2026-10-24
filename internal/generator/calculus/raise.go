@@ -165,7 +165,7 @@ func (g *ivtValueGen) Generate(ctx generator.GeneratorContext) generator.Problem
 type limsupGen struct{}
 
 func (g *limsupGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "The limit superior of a bounded sequence is...",
 			correct:     "the infimum over n of the supremum of the terms from n onward",
@@ -184,7 +184,8 @@ func (g *limsupGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 			distractors: []string{"its limit superior is finite", "it has a convergent subsequence", "it is monotone"},
 			reason:      "Equality of the two shrinking bounds is the same as the tail of the sequence closing in on one value.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedThinClaims("calc.limit.limsup")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -194,7 +195,7 @@ func (g *limsupGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 type oscillationGen struct{}
 
 func (g *oscillationGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "The oscillation of a function on a set is...",
 			correct:     "the supremum of the function on the set minus its infimum on the set",
@@ -213,7 +214,8 @@ func (g *oscillationGen) Generate(ctx generator.GeneratorContext) generator.Prob
 			distractors: []string{"oscillation 0 on every such interval", "oscillation 1 on every such interval", "finite oscillation only on small intervals"},
 			reason:      "The sine takes values arbitrarily close to both 1 and -1 in any neighbourhood of 0, so the spread is 2.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedThinClaims("calc.limit.oscillation")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -223,7 +225,7 @@ func (g *oscillationGen) Generate(ctx generator.GeneratorContext) generator.Prob
 type inverseHyperbolicGen struct{}
 
 func (g *inverseHyperbolicGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "The derivative of \\(\\operatorname{arsinh}(x)\\) is...",
 			correct:     "1/√(1+x²)",
@@ -242,7 +244,8 @@ func (g *inverseHyperbolicGen) Generate(ctx generator.GeneratorContext) generato
 			distractors: []string{"1/√(1+x²)", "1/√(1−x²)", "1/(1−x²)"},
 			reason:      "From \\(x=\\cosh y\\), \\(dx/dy=\\sinh y\\) with \\(\\sinh y=\\sqrt{x^{2}-1}\\) for positive y.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedThinClaims("calc.deriv.inverse_hyperbolic")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -294,7 +297,7 @@ func (g *newtonConvergenceGen) Generate(ctx generator.GeneratorContext) generato
 type convexJensenGen struct{}
 
 func (g *convexJensenGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "A twice-differentiable function on an interval is convex exactly when...",
 			correct:     "its second derivative is nonnegative throughout the interval",
@@ -313,7 +316,8 @@ func (g *convexJensenGen) Generate(ctx generator.GeneratorContext) generator.Pro
 			distractors: []string{"must be differentiable everywhere", "must be bounded", "must be increasing"},
 			reason:      "Convexity forces continuity on the open interval, but not differentiability or monotonicity; the chord condition is the definition's geometric face.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedThinClaims("calc.deriv.convex_jensen")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -345,7 +349,7 @@ func (g *marginalAnalysisGen) Generate(ctx generator.GeneratorContext) generator
 type epsilonDeltaDerivGen struct{}
 
 func (g *epsilonDeltaDerivGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "The statement that \\(f'(a) = L\\) means...",
 			correct:     "for every ε > 0 there is δ > 0 such that 0 < |x−a| < δ makes the difference quotient within ε of L",
@@ -364,7 +368,8 @@ func (g *epsilonDeltaDerivGen) Generate(ctx generator.GeneratorContext) generato
 			distractors: []string{"the derivative exists wherever both one-sided derivatives exist", "the derivative is always linear", "the function must be convex"},
 			reason:      "The absolute value has one-sided slopes -1 and 1 at 0; the two-sided limit sees the disagreement and does not exist.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedThinClaims("calc.deriv.epsilon_delta_deriv")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -374,7 +379,7 @@ func (g *epsilonDeltaDerivGen) Generate(ctx generator.GeneratorContext) generato
 type seriesOperationsGen struct{}
 
 func (g *seriesOperationsGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "The sum of two convergent series is...",
 			correct:     "a convergent series whose sum is the sum of the two sums",
@@ -393,7 +398,8 @@ func (g *seriesOperationsGen) Generate(ctx generator.GeneratorContext) generator
 			distractors: []string{"always changes the sum", "may make it diverge", "requires absolute convergence to preserve the sum"},
 			reason:      "Grouping picks out a subsequence of the partial sums, and a subsequence of a convergent sequence has the same limit.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedThinClaims("calc.series.operations")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -441,7 +447,7 @@ func (g *cauchyProductGen) Generate(ctx generator.GeneratorContext) generator.Pr
 type pSeriesGen struct{}
 
 func (g *pSeriesGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "The p-series with terms \\(1/n^{p}\\) converges exactly when...",
 			correct:     "p > 1",
@@ -460,7 +466,8 @@ func (g *pSeriesGen) Generate(ctx generator.GeneratorContext) generator.Problem 
 			distractors: []string{"converges, because its terms tend to zero", "converges, because its terms decrease", "converges to 2"},
 			reason:      "Tending to zero is necessary but not sufficient; with p = 1/2 the p-series is below the threshold and diverges.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedThinClaims("calc.series.p_series")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -470,7 +477,7 @@ func (g *pSeriesGen) Generate(ctx generator.GeneratorContext) generator.Problem 
 type dirichletTestGen struct{}
 
 func (g *dirichletTestGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "Dirichlet's test says that \\(\\sum a_n b_n\\) converges when...",
 			correct:     "the partial sums of a(n) are bounded and b(n) decreases to zero",
@@ -489,7 +496,8 @@ func (g *dirichletTestGen) Generate(ctx generator.GeneratorContext) generator.Pr
 			distractors: []string{"the cancelling factor is absolutely summable", "the two factors are interchanged", "the series has positive terms"},
 			reason:      "Abel's test handles a factor converging to a nonzero limit by subtracting that limit and applying Dirichlet to the remainder.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedThinClaims("calc.series.dirichlet_test")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -554,14 +562,40 @@ func (g *numericalErrorGen) Generate(ctx generator.GeneratorContext) generator.P
 type doublePolarGen struct{}
 
 func (g *doublePolarGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	r := 1 + rand.Intn(6)
-	answer := strconv.Itoa(r * r)
+	// The radius alone gave six situations, so the region now varies: a disk, an
+	// annulus and a semicircle all have areas that are integer multiples of pi,
+	// which keeps the answer typeable as a number.
+	r := 2 + rand.Intn(5)
+	shape := "disk"
+	var multiple int
+	switch rand.Intn(3) {
+	case 1:
+		shape = "annulus"
+		multiple = r*r - 1
+	case 2:
+		shape = "semicircle"
+		multiple = 2 * r * r
+	default:
+		multiple = r * r
+	}
+	answer := strconv.Itoa(multiple)
+	var question, explanation string
+	switch shape {
+	case "annulus":
+		question = fmt.Sprintf("Let \\(D\\) be the annulus \\(1 \\le r \\le %d\\) centred at the origin. The area of \\(D\\) is a multiple of \\(\\pi\\). What is that multiple, that is, \\(\\iint_D dA\\) divided by \\(\\pi\\)? (enter a number)", r)
+		explanation = fmt.Sprintf("In polar coordinates the area element is \\(r\\,dr\\,d\\theta\\), so the area is \\(\\int_0^{2\\pi}\\int_1^{%d} r\\,dr\\,d\\theta = \\pi \\cdot (%d - 1)\\), and the multiple is %d.", r, r*r, multiple)
+	case "semicircle":
+		question = fmt.Sprintf("Let \\(D\\) be the upper half of the disk of radius %d centred at the origin, so \\(0 \\le \\theta \\le \\pi\\). The area of \\(D\\) is a multiple of \\(\\pi\\). What is that multiple? (enter a number)", r)
+		explanation = fmt.Sprintf("The area element is \\(r\\,dr\\,d\\theta\\), and the angle now runs over half a turn, so the area is \\(\\pi \\cdot %d^2 / 2 = \\pi \\cdot %d\\), giving %d.", r, multiple, multiple)
+	default:
+		question = fmt.Sprintf("Let \\(D\\) be the disk of radius %d centred at the origin. The area of \\(D\\) is a multiple of \\(\\pi\\). What is that multiple, that is, \\(\\iint_D dA\\) divided by \\(\\pi\\)? (enter a number)", r)
+		explanation = fmt.Sprintf("In polar coordinates the area element is \\(r\\,dr\\,d\\theta\\), so the area is \\(\\int_0^{2\\pi}\\int_0^{%d} r\\,dr\\,d\\theta = \\pi \\cdot %d\\), and the multiple is %d.", r, r*r, multiple)
+	}
 	return generator.Problem{
-		Question: fmt.Sprintf("Let \\(D\\) be the disk of radius %d centred at the origin. The area of \\(D\\) is a multiple of \\(\\pi\\). What is that multiple, that is, \\(\\iint_D dA\\) divided by \\(\\pi\\)? (enter a number)", r),
-		Answer:   answer,
-		Explanation: fmt.Sprintf("In polar coordinates the area element is \\(r\\,dr\\,d\\theta\\), so the area is \\(\\int_0^{2\\pi}\\int_0^{%d} r\\,dr\\,d\\theta = \\pi \\cdot %d\\), and the multiple is %d.",
-			r, r*r, r*r),
-		Facts: map[string]string{"r": strconv.Itoa(r), "answer": answer},
+		Question:    question,
+		Answer:      answer,
+		Explanation: explanation,
+		Facts:       map[string]string{"r": strconv.Itoa(r), "shape": shape, "answer": answer},
 	}
 }
 
@@ -573,13 +607,37 @@ type surfaceScalarGen struct{}
 
 func (g *surfaceScalarGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	r := 1 + rand.Intn(5)
-	answer := strconv.Itoa(r * r * r)
-	return generator.Problem{
-		Question: fmt.Sprintf("Let \\(S\\) be the upper hemisphere of radius %d centred at the origin, with \\(z \\ge 0\\). Evaluate \\(\\iint_S z\\,dS\\) and divide by \\(\\pi\\). What is that number? (enter a number)", r),
-		Answer:   answer,
-		Explanation: fmt.Sprintf("On the hemisphere \\(z = %d\\cos\\varphi\\) and \\(dS = %d^{2}\\sin\\varphi\\,d\\varphi\\,d\\theta\\), so the integral is \\(2\\pi \\cdot %d^{3} \\cdot \\tfrac{1}{2} = \\pi \\cdot %d\\) and the multiple is %d.",
-			r, r, r, r*r*r, r*r*r),
-		Facts: map[string]string{"r": strconv.Itoa(r), "answer": answer},
+	// Four shapes rather than one, because the radius alone gave five
+	// situations: the question never changed, only the number in it.
+	switch rand.Intn(4) {
+	case 0:
+		return generator.Problem{
+			Question:    fmt.Sprintf("Let \\(S\\) be the upper hemisphere of radius %d centred at the origin, with \\(z \\ge 0\\). Evaluate \\(\\iint_S z\\,dS\\) and divide by \\(\\pi\\). What is that number? (enter a number)", r),
+			Answer:      strconv.Itoa(r * r * r),
+			Explanation: fmt.Sprintf("On the hemisphere \\(z = %d\\cos\\varphi\\) and \\(dS = %d^{2}\\sin\\varphi\\,d\\varphi\\,d\\theta\\), so the integral is \\(2\\pi \\cdot %d^{3} \\cdot \\tfrac{1}{2} = \\pi \\cdot %d\\) and the multiple is %d.", r, r, r, r*r*r, r*r*r),
+			Facts:       map[string]string{"shape": "hemisphere", "r": strconv.Itoa(r), "answer": strconv.Itoa(r * r * r)},
+		}
+	case 1:
+		return generator.Problem{
+			Question:    fmt.Sprintf("A sphere has radius %d. What is its surface area divided by \\(\\pi\\)? (enter a number)", r),
+			Answer:      strconv.Itoa(4 * r * r),
+			Explanation: fmt.Sprintf("The surface area of a sphere is \\(4\\pi r^{2}\\), so with \\(r = %d\\) the area divided by \\(\\pi\\) is \\(4 \\cdot %d = %d\\).", r, r*r, 4*r*r),
+			Facts:       map[string]string{"shape": "sphere", "r": strconv.Itoa(r), "answer": strconv.Itoa(4 * r * r)},
+		}
+	case 2:
+		return generator.Problem{
+			Question:    fmt.Sprintf("A disk has radius %d. What is its area divided by \\(\\pi\\)? (enter a number)", r),
+			Answer:      strconv.Itoa(r * r),
+			Explanation: fmt.Sprintf("The area of a disk is \\(\\pi r^{2}\\), so with \\(r = %d\\) the area divided by \\(\\pi\\) is %d.", r, r*r),
+			Facts:       map[string]string{"shape": "disk", "r": strconv.Itoa(r), "answer": strconv.Itoa(r * r)},
+		}
+	default:
+		return generator.Problem{
+			Question:    fmt.Sprintf("A right circular cylinder has radius %d and height %d. What is its lateral surface area divided by \\(\\pi\\)? (enter a number)", r, r),
+			Answer:      strconv.Itoa(2 * r * r),
+			Explanation: fmt.Sprintf("The lateral surface area is \\(2\\pi r h\\), and with \\(r = h = %d\\) that is \\(2\\pi \\cdot %d\\), so the multiple of \\(\\pi\\) is %d.", r, r*r, 2*r*r),
+			Facts:       map[string]string{"shape": "cylinder", "r": strconv.Itoa(r), "answer": strconv.Itoa(2 * r * r)},
+		}
 	}
 }
 
@@ -734,7 +792,7 @@ func (g *inverseFunctionGen) Generate(ctx generator.GeneratorContext) generator.
 type iteratedLimitsGen struct{}
 
 func (g *iteratedLimitsGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "For a function of two variables, the two iterated limits...",
 			correct:     "can be different, so the order in which they are taken matters",
@@ -753,7 +811,8 @@ func (g *iteratedLimitsGen) Generate(ctx generator.GeneratorContext) generator.P
 			distractors: []string{"the double limit exists whenever the iterated limits agree", "the function is continuous at the origin", "the iterated limits are unequal"},
 			reason:      "Along either axis the quotient is 0, so both iterated limits are 0, but along \\(y = x\\) it is \\(1/2\\), so the double limit does not exist.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedMultiClaims("calc.multi.iterated_limits")...))
 }
 
 // ---------------------------------------------------------------------------
@@ -853,7 +912,7 @@ func (g *fluxGeneralGen) Generate(ctx generator.GeneratorContext) generator.Prob
 type vectorIdentitiesGen struct{}
 
 func (g *vectorIdentitiesGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	return calcPickMC([]calcMCClaim{
+	claims := []calcMCClaim{
 		{
 			q:           "For any smooth vector field, the divergence of the curl is...",
 			correct:     "zero",
@@ -872,5 +931,6 @@ func (g *vectorIdentitiesGen) Generate(ctx generator.GeneratorContext) generator
 			distractors: []string{"every vector field is a gradient", "every vector field is a curl", "divergence and curl are inverses"},
 			reason:      "Both identities come from the equality of mixed partial derivatives, so they hold for every smooth field of the right kind.",
 		},
-	})
+	}
+	return calcPickMC(append(claims, computedMultiClaims("calc.vec.identities")...))
 }

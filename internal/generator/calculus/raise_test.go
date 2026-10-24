@@ -286,16 +286,44 @@ func TestRaiseNumericRecompute(t *testing.T) {
 	for i := 0; i < 200; i++ {
 		p := calcBatchSample(t, reg, "calc.integral.double_polar", i)
 		r := calcFactInt(t, p, "r")
-		if want := strconv.Itoa(r * r); p.Answer != want {
-			t.Fatalf("double polar: r=%d answers %s, want %s", r, p.Answer, want)
+		// The generator now poses a disk, an annulus and a semicircle, so the
+		// expectation is recomputed per shape rather than assuming the disk.
+		var want int
+		switch p.Facts["shape"] {
+		case "disk":
+			want = r * r
+		case "annulus":
+			want = r*r - 1
+		case "semicircle":
+			want = 2 * r * r
+		default:
+			t.Fatalf("double polar: unknown shape %q", p.Facts["shape"])
+		}
+		if got := strconv.Itoa(want); p.Answer != got {
+			t.Fatalf("double polar: shape=%s r=%d answers %s, want %s", p.Facts["shape"], r, p.Answer, got)
 		}
 	}
 
 	for i := 0; i < 200; i++ {
 		p := calcBatchSample(t, reg, "calc.integral.surface_scalar", i)
 		r := calcFactInt(t, p, "r")
-		if want := strconv.Itoa(r * r * r); p.Answer != want {
-			t.Fatalf("surface scalar: r=%d answers %s, want %s", r, p.Answer, want)
+		// The generator now poses four surfaces, so the expectation is
+		// recomputed per shape rather than assuming the hemisphere.
+		var want int
+		switch p.Facts["shape"] {
+		case "hemisphere":
+			want = r * r * r
+		case "sphere":
+			want = 4 * r * r
+		case "disk":
+			want = r * r
+		case "cylinder":
+			want = 2 * r * r
+		default:
+			t.Fatalf("surface scalar: unknown shape %q", p.Facts["shape"])
+		}
+		if got := strconv.Itoa(want); p.Answer != got {
+			t.Fatalf("surface scalar: shape=%s r=%d answers %s, want %s", p.Facts["shape"], r, p.Answer, got)
 		}
 	}
 
