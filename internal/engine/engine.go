@@ -3342,6 +3342,8 @@ func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedA
 				}
 				if _, _, err := cs.AllocateCredit(o.studentID, attemptKey, 0, cands); err != nil {
 					log.Printf("warning: allocate implicit credit %s/%s: %v", o.studentID, o.conceptID, err)
+				} else {
+					_ = e.SatisfyImplicitReviews(o.studentID)
 				}
 			}
 		}

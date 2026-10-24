@@ -305,3 +305,68 @@ func TestEngine_FIRe_NonEncompassedConceptIsNotSuppressed(t *testing.T) {
 		t.Fatalf("expected standalone review question served, got %+v", rq)
 	}
 }
+
+func TestEngine_FIRe_SubmitAnswerImmediatelySatisfiesEncompassedReview(t *testing.T) {
+	e, repo := fireEngine(t)
+	st, err := e.CreateStudent("diana")
+	if err != nil {
+		t.Fatalf("create student: %v", err)
+	}
+
+	now := time.Now().UTC()
+	past := now.AddDate(0, 0, -10)
+
+	// Prereq is mastered and currently due for review
+	err = repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID:      st.ID,
+		ConceptID:      "prereq",
+		Status:         string(mastery.StatusMastered),
+		Streak:         3,
+		LastReviewed:   &past,
+		NextReviewDue:  &past,
+		SM2Interval:    5,
+		SM2EFactor:     2.5,
+		SM2Repetitions: 1,
+	})
+	if err != nil {
+		t.Fatalf("upsert prereq: %v", err)
+	}
+
+	// Standalone is mastered and not due
+	err = repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID:      st.ID,
+		ConceptID:      "standalone",
+		Status:         string(mastery.StatusMastered),
+		Streak:         3,
+		LastReviewed:   &now,
+		SM2Interval:    10,
+		SM2EFactor:     2.5,
+		SM2Repetitions: 2,
+	})
+	if err != nil {
+		t.Fatalf("upsert standalone: %v", err)
+	}
+
+	// Submit a correct attempt on adv (which encompasses prereq)
+	diff := 0.5
+	res, err := e.SubmitQuizAnswer(st.ID, "adv", "20", "20", 5.0, "what is 20?", &diff)
+	if err != nil {
+		t.Fatalf("submit quiz answer: %v", err)
+	}
+	if !res.Correct {
+		t.Fatalf("expected correct answer")
+	}
+
+	// Immediately inspect prereq progress in storage without calling GetNextTask or ReviewsDue
+	p, err := repo.GetProgress(st.ID, "prereq")
+	if err != nil {
+		t.Fatalf("get progress: %v", err)
+	}
+	if p.NextReviewDue == nil || !p.NextReviewDue.After(now) {
+		t.Fatalf("expected next review due immediately advanced into future, got %v", p.NextReviewDue)
+	}
+	if p.SM2Interval <= 5 {
+		t.Fatalf("expected SM2 interval to advance beyond 5 immediately, got %d", p.SM2Interval)
+	}
+}
+
