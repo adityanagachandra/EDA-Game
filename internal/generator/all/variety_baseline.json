@@ -1208,7 +1208,7 @@
   "trig.basics.tan_def": 31,
   "trig.basics.unit_circle": 59,
   "trig.eq.basic": 8,
-  "trig.eq.general_solution": 8,
+  "trig.eq.general_solution": 9,
   "trig.eq.homogeneous": 6,
   "trig.eq.linear": 19,
   "trig.eq.quadratic": 10,
@@ -1245,7 +1245,7 @@
   "trig.ident.pythagorean": 20,
   "trig.ident.pythagorean_variants": 20,
   "trig.ident.sum_diff": 40,
-  "trig.ident.sum_to_product": 22,
+  "trig.ident.sum_to_product": 24,
   "trig.ident.triple_angle": 35,
   "trig.ineq.advanced": 8,
   "trig.ineq.basic": 8
