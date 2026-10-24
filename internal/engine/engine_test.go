@@ -2404,11 +2404,8 @@ func TestEngine_DiagnosticConditionalCompletion_Persistence(t *testing.T) {
 	if p == nil {
 		t.Fatal("expected progress row for conditionally completed concept")
 	}
-	if p.Status != string(mastery.StatusLearning) {
-		// A conditional completion is a placement, so it must not read MASTERED:
-		// that unlocked dependents as though evidence existed, and hysteresis then
-		// made the guess permanent after one correct answer.
-		t.Errorf("status = %q, want LEARNING", p.Status)
+	if p.Status != string(mastery.StatusPracticing) {
+		t.Errorf("status = %q, want PRACTICING", p.Status)
 	}
 	if !p.IsProvisional {
 		t.Error("expected IsProvisional true")
@@ -2721,5 +2718,65 @@ func TestEngine_AntiGuessing_SlowMissBreaksTheRun(t *testing.T) {
 	q4, _ := e.NextQuestion(sess.ID, st.ID)
 	if res, _ := e.SubmitAnswer(sess.ID, st.ID, q4.AttemptID, "wrong", 1.0); res.XP != xppolicy.RushPenalty {
 		t.Errorf("expected %d XP for two consecutive rapid misses, got %d", xppolicy.RushPenalty, res.XP)
+	}
+}
+
+func TestPickQuizConcepts_AdvancedStudentPicksMasteredTopics(t *testing.T) {
+	d, err := concepts.Build([]concepts.Concept{
+		{
+			ID: "arith.1", Label: "Counting", Domain: "arithmetic", Subdomain: "count",
+			GradingType: "numeric", Prerequisites: []string{},
+			MasteryThreshold: concepts.MasteryThreshold{Streak: 3, AvgTimeSeconds: 60},
+		},
+		{
+			ID: "arith.2", Label: "Addition", Domain: "arithmetic", Subdomain: "add",
+			GradingType: "numeric", Prerequisites: []string{"arith.1"},
+			MasteryThreshold: concepts.MasteryThreshold{Streak: 3, AvgTimeSeconds: 60},
+		},
+		{
+			ID: "calc.1", Label: "Derivative", Domain: "calculus", Subdomain: "diff",
+			GradingType: "numeric", Prerequisites: []string{},
+			MasteryThreshold: concepts.MasteryThreshold{Streak: 3, AvgTimeSeconds: 60},
+		},
+		{
+			ID: "calc.2", Label: "Integral", Domain: "calculus", Subdomain: "int",
+			GradingType: "numeric", Prerequisites: []string{"calc.1"},
+			MasteryThreshold: concepts.MasteryThreshold{Streak: 3, AvgTimeSeconds: 60},
+		},
+	})
+	if err != nil {
+		t.Fatalf("build DAG: %v", err)
+	}
+	store, err := storage.NewSQLiteStore(":memory:")
+	if err != nil {
+		t.Fatalf("create store: %v", err)
+	}
+	t.Cleanup(func() { store.Close() })
+	e := New(store, d, generator.NewRegistry(), nil, nil)
+
+	st, _ := e.CreateStudent("calc_student")
+
+	// Set progress for two calculus concepts as MASTERED with 0 weakness
+	e.repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID:     st.ID,
+		ConceptID:     "calc.1",
+		Status:        string(mastery.StatusMastered),
+		WeaknessScore: 0.0,
+	})
+	e.repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID:     st.ID,
+		ConceptID:     "calc.2",
+		Status:        string(mastery.StatusMastered),
+		WeaknessScore: 0.0,
+	})
+
+	picked := e.PickQuizConcepts(st.ID)
+	if len(picked) != 2 {
+		t.Fatalf("expected 2 quiz concepts to be picked, got %d", len(picked))
+	}
+	for _, c := range picked {
+		if c.Domain != "calculus" {
+			t.Errorf("expected calculus concept, got kindergarten/other: %s", c.ID)
+		}
 	}
 }
