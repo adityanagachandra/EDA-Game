@@ -991,3 +991,64 @@ body {
     opacity: 1;
   }
 }
+
+/* Printing a report should produce the report, not the site around it. The
+   page keeps all four panels mounted, so print reveals every section even when
+   the screen shows one tab. Panels and rows avoid splitting across pages, and
+   the print palette is fixed: the dark theme's surface colours would waste ink
+   and lower contrast on paper. */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  header,
+  footer,
+  aside,
+  nav,
+  [data-report-tabs],
+  .report-no-print {
+    display: none !important;
+  }
+
+  [data-report-panel] {
+    display: block !important;
+  }
+
+  [data-report-panel] * {
+    color: #111 !important;
+    background: transparent !important;
+  }
+
+  [data-report-panel] h2,
+  [data-report-panel] h3 {
+    break-after: avoid;
+  }
+
+  [data-report-panel] table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  [data-report-panel] th,
+  [data-report-panel] td {
+    border: 1px solid #bbb !important;
+    padding: 4px 6px !important;
+    vertical-align: top;
+  }
+
+  [data-report-panel] tr,
+  [data-report-panel] .report-card {
+    break-inside: avoid;
+  }
+
+  a[href]::after {
+    content: '';
+  }
+}

@@ -2252,3 +2252,135 @@ export async function gradeLabAnswer(
 	const data = (await res.json()) as AdminGradeRes
 	return data
 }
+
+// Learner reports read only what the server can substantiate. The response
+// deliberately carries its limitations, so the page can state what it does not
+// know instead of inferring a history from current totals.
+export interface LearnerReportPeriod {
+  days: number
+  since?: string
+  until: string
+  label: string
+}
+
+export interface LearnerReportOverview {
+  total: number
+  mastered: number
+  in_progress: number
+  unlocked: number
+  locked: number
+  xp_lifetime: number
+  xp_period: number
+  activity_days: number
+  questions: number
+  correct: number
+}
+
+export interface LearnerDomainSummary {
+  id: string
+  conceptCount: number
+  masteredCount: number
+  unlockedCount: number
+  inProgressCount: number
+}
+
+export interface LearnerReportGap {
+  concept_id: string
+  label: string
+  state?: string
+}
+
+export interface LearnerMasteryRow {
+  concept_id: string
+  label: string
+  domain: string
+  state: string
+  status: string
+  decaying: boolean
+  mastery_pct: number
+  mastered_at?: string
+  attempts: number
+  streak: number
+  last_attempted?: string
+  next_review?: string
+  placement_seeded: boolean
+  provisional: boolean
+  prerequisite_gaps: LearnerReportGap[] | null
+  href: string
+}
+
+export interface LearnerAssessment {
+  id: string
+  type: string
+  title: string
+  status: string
+  started_at?: string
+  completed_at?: string
+  questions: number
+  correct: number
+  accuracy?: number
+  concepts: string[] | null
+  findings: LearnerReportGap[] | null
+  href?: string
+  note?: string
+}
+
+export interface LearnerHistoryEvent {
+  id: string
+  kind: string
+  at: string
+  title: string
+  concept_id?: string
+  source?: string
+  detail?: string
+  href?: string
+  correct?: boolean
+  xp?: number
+}
+
+export interface LearnerReport {
+  generated_at: string
+  learner: Record<string, string>
+  period: LearnerReportPeriod
+  overview: LearnerReportOverview
+  domains: LearnerDomainSummary[] | null
+  mastery: LearnerMasteryRow[] | null
+  assessments: LearnerAssessment[] | null
+  activity: { date: string; questions: number; correct: number; concepts: string[] | null }[] | null
+  history: LearnerHistoryEvent[] | null
+  history_total: number
+  limitations: string[] | null
+}
+
+export interface LearnerReportHistory {
+  events: LearnerHistoryEvent[]
+  total: number
+  limit: number
+  offset: number
+}
+
+export async function getLearnerReport(params: { days?: number; domain?: string } = {}): Promise<LearnerReport> {
+  const qs = new URLSearchParams()
+  if (params.days !== undefined) qs.set('days', String(params.days))
+  if (params.domain) qs.set('domain', params.domain)
+  const query = qs.toString()
+  const res = await authedFetch(`${API_BASE}/api/learner/reports${query ? `?${query}` : ''}`, {
+    headers: { ...getAuthHeaders() },
+    cache: 'no-store',
+  })
+  if (!res.ok) throw new Error(`Reports fetch failed: ${res.status}`)
+  return res.json()
+}
+
+export async function getLearnerReportHistory(params: { limit?: number; offset?: number } = {}): Promise<LearnerReportHistory> {
+  const qs = new URLSearchParams()
+  if (params.limit !== undefined) qs.set('limit', String(params.limit))
+  if (params.offset !== undefined) qs.set('offset', String(params.offset))
+  const query = qs.toString()
+  const res = await authedFetch(`${API_BASE}/api/learner/reports/history${query ? `?${query}` : ''}`, {
+    headers: { ...getAuthHeaders() },
+    cache: 'no-store',
+  })
+  if (!res.ok) throw new Error(`Report history fetch failed: ${res.status}`)
+  return res.json()
+}
