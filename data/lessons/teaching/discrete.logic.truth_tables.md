@@ -2,578 +2,257 @@
 
 # Truth Tables
 
-## Section 3.1 Propositional Logic
+##  Section 3.1 Propositional Logic
 
-###### Investigate!
+######  Investigate!
+
+You stumble upon two trolls playing Stratego®. They tell you:
 
 > Troll 1: If we are cousins, then we are both knaves.
+>
+> Troll 2: We are cousins or we are both knaves.
 
-Troll 2: We are cousins or we are both knaves.
+Could both trolls be knights? Recall that all trolls are either always-truth-telling knights or always-lying knaves.
 
+A proposition is simply a statement. Propositional logic studies the ways statements can interact with each other. It is important to remember that propositional logic does not really care about the content of the statements. For example, in terms of propositional logic, the claims, “if the moon is made of cheese then basketballs are round,” and “if spiders have eight legs then Sam walks with a limp” are exactly the same. They are both implications: statements of the form, \(P \imp Q\text{.}\)
 
-### Subsection  Truth Tables
+###  Subsection Truth Tables
+
+Here’s a question about playing Monopoly:
 
 > If you get more doubles than any other player then you will lose, or if you lose then you must have bought the most properties.
 
+True or false? We will answer this question, and won’t need to know anything about Monopoly. Instead we will look at the logical _form_ of the statement.
 
-| \(P\) | \(Q\) | \(P\wedge Q\) |
-| T | T | T |
-| T | F | F |
-| F | T | F |
-| F | F | F |
+We need to decide when the statement \((P \imp Q) \vee (Q \imp R)\) is true. Using the definitions of the connectives in Section 0.2, we see that for this to be true, either \(P \imp Q\) must be true or \(Q \imp R\) must be true (or both). Those are true if either \(P\) is false or \(Q\) is true (in the first case) and \(Q\) is false or \(R\) is true (in the second case). So—yeah, it gets kind of messy. Luckily, we can make a chart to keep track of all the possibilities. Enter truth tables. The idea is this: on each row, we list a possible combination of T’s and F’s (for true and false) for each of the sentential variables, and then mark down whether the statement in question is true or false in that case. We do this for every possible combination of T’s and F’s. Then we can clearly see in which cases the statement is true or false. For complicated statements, we will first fill in values for each part of the statement, as a way of breaking up our task into smaller, more manageable pieces.
 
-| \(P\) | \(Q\) | \(P\vee Q\) |
-| T | T | T |
-| T | F | T |
-| F | T | T |
-| F | F | F |
+Since the truth value of a statement is completely determined by the truth values of its parts and how they are connected, all you really need to know is the truth tables for each of the logical connectives. Here they are:
 
-| \(P\) | \(Q\) | \(P\imp Q\) |
-| T | T | T |
-| T | F | F |
-| F | T | T |
-| F | F | T |
+\(P\) | \(Q\) | \(P\wedge Q\)
+---|---|---
+T | T | T
+T | F | F
+F | T | F
+F | F | F
 
-| \(P\) | \(Q\) | \(P\iff Q\) |
-| T | T | T |
-| T | F | F |
-| F | T | F |
-| F | F | T |
+\(P\) | \(Q\) | \(P\vee Q\)
+---|---|---
+T | T | T
+T | F | T
+F | T | T
+F | F | F
 
-| \(P\) | \(\neg P\) |
-| T | F |
-| F | T |
-|  |
+\(P\) | \(Q\) | \(P\imp Q\)
+---|---|---
+T | T | T
+T | F | F
+F | T | T
+F | F | T
 
-#### Example 3.1.1.
+\(P\) | \(Q\) | \(P\iff Q\)
+---|---|---
+T | T | T
+T | F | F
+F | T | F
+F | F | T
 
-| \(P\) | \(Q\) | \(\neg P\) | \(\neg P \vee Q\) |
-| T | T | F | T |
-| T | F | F | F |
-| F | T | T | T |
-| F | F | T | T |
+The truth table for negation looks like this:
 
-#### Example 3.1.2.
+\(P\) | \(\neg P\)
+---|---
+T | F
+F | T
 
-| \(P\) | \(Q\) | \(R\) | \(P \imp Q\) | \(Q \imp R\) | \((P \imp Q) \vee (Q \imp R)\) |
-| T | T | T | T | T | T |
-| T | T | F | T | F | T |
-| T | F | T | F | T | T |
-| T | F | F | F | T | T |
-| F | T | T | T | T | T |
-| F | T | F | T | F | T |
-| F | F | T | T | T | T |
-| F | F | F | T | T | T |
+None of these truth tables should come as a surprise; they are all just restating the definitions of the connectives. Let’s try another one.
 
-### Subsection  Logical Equivalence
+####  Example 3.1.1.
 
-| \(P\) | \(Q\) | \(P \imp Q\) | \(\neg P \vee Q\) |
-| T | T | T | T |
-| T | F | F | F |
-| F | T | T | T |
-| F | F | T | T |
+Make a truth table for the statement \(\neg P \vee Q\text{.}\)
+
+Now let’s answer our question about monopoly:
+
+####  Example 3.1.2.
+
+Analyze the statement, “if you get more doubles than any other player you will lose, or that if you lose you must have bought the most properties,” using truth tables.
+
+The statement about monopoly is an example of a tautology, a statement which is true on the basis of its logical form alone. Tautologies are always true but they don’t tell us much about the world. No knowledge about monopoly was required to determine that the statement was true. In fact, it is equally true that “If the moon is made of cheese, then Elvis is still alive, or if Elvis is still alive, then unicorns have 5 legs.”
+
+###  Subsection Logical Equivalence
+
+You might have noticed in Example 3.1.1 that the final column in the truth table for \(\neg P \vee Q\) is identical to the final column in the truth table for \(P \imp Q\text{:}\)
+
+\(P\) | \(Q\) | \(P \imp Q\) | \(\neg P \vee Q\)
+---|---|---|---
+T | T | T | T
+T | F | F | F
+F | T | T | T
+F | F | T | T
+
+This says that no matter what \(P\) and \(Q\) are, the statements \(\neg P \vee Q\) and \(P \imp Q\) either both true or both false. We therefore say these statements are logically equivalent.
 
 #### Logical Equivalence.
 
-#### Example 3.1.3.
+Two (molecular) statements \(P\) and \(Q\) are logically equivalent provided \(P\) is true precisely when \(Q\) is true. That is, \(P\) and \(Q\) have the same truth value under any assignment of truth values to their atomic parts.
 
-| \(P\) | \(Q\) | \(\neg(P \vee Q)\) | \(\neg P \wedge \neg Q\) |
-| T | T | F | F |
-| T | F | F | F |
-| F | T | F | F |
-| F | F | T | T |
+To verify that two statements are logically equivalent, you can make a truth table for each and check whether the columns for the two statements are identical.
+
+Recognizing two statements as logically equivalent can be very helpful. Rephrasing a mathematical statement can often lend insight into what it is saying, or how to prove or refute it. By using truth tables we can systematically verify that two statements are indeed logically equivalent.
+
+####  Example 3.1.3.
+
+Are the statements, “it will not rain or snow” and “it will not rain and it will not snow” logically equivalent?
+
+Notice that this example gives us a way to “distribute” a negation over a disjunction (an “or”). We have a similar rule for distributing over conjunctions (“and”s):
 
 #### De Morgan’s Laws.
 
+$$
+\neg(P \wedge Q) \text{ is logically equivalent to } \neg P \vee \neg Q\text{.}
+$$ $$
+\neg(P \vee Q) \text{ is logically equivalent to } \neg P \wedge \neg Q\text{.}
+$$
+
+This suggests there might be a sort of “algebra” you could apply to statements (okay, there is: it is called _Boolean algebra_) to transform one statement into another. We can start collecting useful examples of logical equivalence, and apply them in succession to a statement, instead of writing out a complicated truth table.
+
+De Morgan’s laws do not do not directly help us with implications, but as we saw above, every implication can be written as a disjunction:
+
 #### Implications are Disjunctions.
+
+$$
+P \imp Q \text{ is logically equivalent to } \neg P \vee Q\text{.}
+$$
+
+Example: “If a number is a multiple of 4, then it is even” is equivalent to, “a number is not a multiple of 4 or (else) it is even.”
+
+With this and De Morgan’s laws, you can take any statement and _simplify_ it to the point where negations are only being applied to atomic propositions. Well, actually not, because you could get multiple negations stacked up. But this can be easily dealt with:
 
 #### Double Negation.
 
-#### Example 3.1.4.
+$$
+\neg \neg P \text{ is logically equivalent to } P\text{.}
+$$
+
+Example: “It is not the case that \(c\) is not odd” means “\(c\) is odd.”
+
+Let’s see how we can apply the equivalences we have encountered so far.
+
+####  Example 3.1.4.
+
+Prove that the statements \(\neg(P \imp Q)\) and \(P\wedge \neg Q\) are logically equivalent without using truth tables.
+
+Notice that the above example illustrates that the negation of an implication is NOT an implication: it is a conjunction! We saw this before, in Section 0.2, but it is so important and useful, it warants a second blue box here:
 
 #### Negation of an Implication.
 
-#### Example 3.1.5.
+The negation of an implication is a conjunction:
 
-| \(P\) | \(Q\) | \(R\) | \((P\vee Q) \imp R\) | \((P\imp R) \vee (Q \imp R)\) |
-| T | T | T | T | T |
-| T | T | F | F | F |
-| T | F | T | T | T |
-| T | F | F | F | T |
-| F | T | T | T | T |
-| F | T | F | F | T |
-| F | F | T | T | T |
-| F | F | F | T | T |
-|  |
+$$
+\neg(P \imp Q) \text{ is logically equivalent to } P \wedge \neg Q\text{.}
+$$
 
-### Subsection  Deductions
+That is, the only way for an implication to be false is for the hypothesis to be true _AND_ the conclusion to be false.
 
-###### Investigate!
+To verify that two statements are logically equivalent, you can use truth tables or a sequence of logically equivalent replacements. The truth table method, although cumbersome, has the advantage that it can verify that two statements are NOT logically equivalent.
+
+####  Example 3.1.5.
+
+Are the statements \((P \vee Q) \imp R\) and \((P \imp R) \vee (Q \imp R)\) logically equivalent?
+
+###  Subsection Deductions
+
+######  Investigate!
+
+Holmes owns two suits: one black and one tweed. He always wears either a tweed suit or sandals. Whenever he wears his tweed suit and a purple shirt, he chooses to not wear a tie. He never wears the tweed suit unless he is also wearing either a purple shirt or sandals. Whenever he wears sandals, he also wears a purple shirt. Yesterday, Holmes wore a bow tie. What else did he wear?
+
+Earlier we claimed that the following was a valid argument:
 
 > If Edith eats her vegetables, then she can have a cookie. Edith ate her vegetables. Therefore Edith gets a cookie.
 
+How do we know this is valid? Let’s look at the form of the statements. Let \(P\) denote “Edith eats her vegetables” and \(Q\) denote “Edith can have a cookie.” The logical form of the argument is then:
 
-|  | \(P \imp Q\) |
-|  | \(P\) |
-| \(\therefore\) | \(Q\) |
+| \(P \imp Q\)
+---|---
+| \(P\)
+\(\therefore\) | \(Q\)
 
-| \(P\) | \(Q\) | \(P\imp Q\) |
-| T | T | T |
-| T | F | F |
-| F | T | T |
-| F | F | T |
+This is an example of a deduction rule, an argument form which is always valid. This one is a particularly famous rule called _modus ponens_. Are you convinced that it is a valid deduction rule? If not, consider the following truth table:
 
-#### Example 3.1.6.
+\(P\) | \(Q\) | \(P\imp Q\)
+---|---|---
+T | T | T
+T | F | F
+F | T | T
+F | F | T
 
-|  | \(P \imp Q\) |
-|  | \(\neg P \imp Q\) |
-| \(\therefore\) | \(Q\) |
+This is just the truth table for \(P \imp Q\text{,}\) but what matters here is that all the lines in the deduction rule have their own column in the truth table. Remember that an argument is valid provided the conclusion must be true given that the premises are true. The premises in this case are \(P \imp Q\) and \(P\text{.}\) Which _rows_ of the truth table correspond to both of these being true? \(P\) is true in the first two rows, and of those, only the first row has \(P \imp Q\) true as well. And lo-and-behold, in this one case, \(Q\) is also true. So if \(P\imp Q\) and \(P\) are both true, we see that \(Q\) must be true as well.
 
-| \(P\) | \(Q\) | \(P\imp Q\) | \(\neg P\) | \(\neg P \imp Q\) |
-| T | T | T | F | T |
-| T | F | F | F | T |
-| F | T | T | T | T |
-| F | F | T | T | F |
+Here are a few more examples.
 
-#### Example 3.1.7.
+####  Example 3.1.6.
 
-|  | \(P \imp R\) |
-|  | \(Q \imp R\) |
-|  | \(R\) |
-| \(\therefore\) | \(P \vee Q\) |
+Show that
 
-| \(P\) | \(Q\) | \(R\) | \(P \imp R\) | \(Q \imp R\) | \(P \vee Q\) |
-| T | T | T | T | T | T |
-| T | T | F | F | F | T |
-| T | F | T | T | T | T |
-| T | F | F | F | T | T |
-| F | T | T | T | T | T |
-| F | T | F | T | F | T |
-| F | F | T | T | T | F |
-| F | F | F | T | T | F |
+| \(P \imp Q\)
+---|---
+| \(\neg P \imp Q\)
+\(\therefore\) | \(Q\)
 
-|  | \(P \imp R\) |
-|  | \(Q \imp R\) |
-|  | \(P \vee Q\) |
-| \(\therefore\) | \(R\) |
+is a valid deduction rule.
 
-### Subsection  Beyond Propositions
+####  Example 3.1.7.
+
+Decide whether
+
+| \(P \imp R\)
+---|---
+| \(Q \imp R\)
+| \(R\)
+\(\therefore\) | \(P \vee Q\)
+
+is a valid deduction rule.
+
+###  Subsection Beyond Propositions
+
+As we saw in Section 0.2, not every statement can be analyzed using logical connectives alone. For example, we might want to work with the statement:
 
 > All primes greater than 2 are odd.
 
+To write this statement symbolically, we must use quantifiers. We can translate as follows:
 
-#### Example 3.1.8.
+$$
+\forall x ((P(x) \wedge x \gt 2) \imp O(x))\text{.}
+$$
 
-#### Example 3.1.9.
+In this case, we are using \(P(x)\) to denote “\(x\) is prime” and \(O(x)\) to denote “\(x\) is odd.” These are not propositions, since their truth value depends on the input \(x\text{.}\) Better to think of \(P\) and \(O\) as denoting _properties_ of their input. The technical term for these is predicates and when we study them in logic, we need to use predicate logic.
 
-|  | \(\exists y \forall x P(x,y)\) |
-| \(\therefore\) | \(\forall x \exists y P(x,y)\) |
+It is important to stress that predicate logic _extends_ propositional logic (much in the way quantum mechanics extends classical mechanics). You will notice that our statement above still used the (propositional) logical connectives. Everything that we learned about logical equivalence and deductions still applies. However, predicate logic allows us to analyze statements at a higher resolution, digging down into the individual propositions \(P\text{,}\) \(Q\text{,}\) etc.
 
-### Exercises  Exercises
+A full treatment of predicate logic is beyond the scope of this text. One reason is that there is no systematic procedure for deciding whether two statements in predicate logic are logically equivalent (i.e., there is no analogue to truth tables here). Rather, we end with a two examples of logical equivalence and deduction, to pique your interest.
 
-#### 1.
+####  Example 3.1.8.
 
-1. Translate the above statement into symbols. Clearly state which statement is \(P\) and which is \(Q\text{.}\)
+Suppose we claim that there is no smallest number. We can translate this into symbols as
 
-1. Make a truth table for the statement.
+$$
+\neg \exists x \forall y (x \le y)
+$$
 
-1. Assuming the statement is true, what (if anything) can you conclude if there will be cake?
+(literally, “it is not true that there is a number \(x\) such that for all numbers \(y\text{,}\) \(x\) is less than or equal to \(y\)”).
 
-1. Assuming the statement is true, what (if anything) can you conclude if there will not be cake?
+However, we know how negation interacts with quantifiers: we can pass a negation over a quantifier by switching the quantifier type (between universal and existential). So the statement above should be _logically equivalent_ to
 
-1. Suppose you found out that the statement was a lie. What can you conclude?
+$$
+\forall x \exists y (y \lt x)\text{.}
+$$
 
-1. \(P\text{:}\) it’s your birthday; \(Q\text{:}\) there will be cake. \((P \vee Q) \imp Q\)
+Notice that \(y \lt x\) is the negation of \(x \le y\text{.}\) This literally says, “for every number \(x\) there is a number \(y\) which is smaller than \(x\text{.}\)” We see that this is another way to make our original claim.
 
-1. Hint: you should get three T’s and one F.
+####  Example 3.1.9.
 
-1. Only that there will be cake.
+Can you switch the order of quantifiers? For example, consider the two statements:
 
-1. It’s NOT your birthday!
+$$
+\forall x \exists y P(x,y) \qquad \mathrm{ and } \qquad \exists y \forall x P(x,y)\text{.}
+$$
 
-1. It’s your birthday, but the cake is a lie.
-
-#### 2.
-
-| \(P\) | \(Q\) | \(P \wedge Q\) | \(P \vee Q\) | \((P \wedge Q) \rightarrow (P \vee Q))\) |
-| T | T |  |  |  |
-| T | F |  |  |  |
-| F | T |  |  |  |
-| F | F |  |  |  |
-
-| \(P\) | \(Q\) | \(P \wedge Q\) | \(P \vee Q\) | \((P \wedge Q) \rightarrow (P \vee Q))\) |
-| T | T | T | T | T |
-| T | F | F | T | T |
-| F | T | F | T | T |
-| F | F | F | F | T |
-
-#### 3.
-
-| \(P\) | \(Q\) | \(\neg Q\) | \(Q \rightarrow P\) | \(\neg Q \vee (Q \rightarrow P))\) |
-| T | T |  |  |  |
-| T | F |  |  |  |
-| F | T |  |  |  |
-| F | F |  |  |  |
-
-- That \(P\) and \(Q\) are both true.
-
-- That \(P\) is true and \(Q\) is false.
-
-- That \(P\) is false and \(Q\) is true.
-
-- That \(P\) and \(Q\) are both false.
-
-- None of the above.
-
-| \(P\) | \(Q\) | \(\neg Q\) | \(Q \rightarrow P\) | \(\neg Q \vee (Q \rightarrow P))\) |
-| T | T | F | T | T |
-| T | F | T | T | T |
-| F | T | F | F | F |
-| F | F | T | T | T |
-
-#### 4.
-
-| \(P\) | \(Q\) | \(R\) | \(\neg Q\) | \(R \rightarrow \neg Q\) | \(P \vee (R \rightarrow \neg Q)\) |
-| T | T | T |  |  |  |
-| T | T | F |  |  |  |
-| T | F | T |  |  |  |
-| T | F | F |  |  |  |
-| F | T | T |  |  |  |
-| F | T | F |  |  |  |
-| F | F | T |  |  |  |
-| F | F | F |  |  |  |
-
-| \(P\) | \(Q\) | \(R\) | \(\neg Q\) | \(R \rightarrow \neg Q\) | \(P \vee (R \rightarrow \neg Q)\) |
-| T | T | T | F | F | T |
-| T | T | F | F | T | T |
-| T | F | T | T | T | T |
-| T | F | F | T | T | T |
-| F | T | T | F | F | F |
-| F | T | F | F | T | T |
-| F | F | T | T | T | T |
-| F | F | F | T | T | T |
-
-#### 5.
-
-1. Translate Geoff’s order into logical symbols.
-
-1. The waiter knows that Geoff is either a liar or a truth-teller (so either everything he says is false, or everything is true). Which is it?
-
-1. What, if anything, can the waiter conclude about the ingredients in Geoff’s desired calzone?
-
-#### 6.
-
-#### 7.
-
-| \(P\) | \(Q\) | \(R\) | \(P \rightarrow (Q \vee R)\) | \((P \rightarrow Q) \vee (P\rightarrow R)\) |
-| T | T | T |  |  |
-| T | T | F |  |  |
-| T | F | T |  |  |
-| T | F | F |  |  |
-| F | T | T |  |  |
-| F | T | F |  |  |
-| F | F | T |  |  |
-| F | F | F |  |  |
-
-- Yes, because the columns for the two statements are identical.
-
-- Yes, because even though the columns are not identical, there are some rows in which they are identical.
-
-- No, because the statements are not always true.
-
-- No, because the columns for the two statements are not identical.
-
-- Impossible to determine without more information.
-
-| \(P\) | \(Q\) | \(R\) | \(P \rightarrow (Q \vee R)\) | \((P \rightarrow Q) \vee (P\rightarrow R)\) |
-| T | T | T | T | T |
-| T | T | F | T | T |
-| T | F | T | T | T |
-| T | F | F | F | F |
-| F | T | T | T | T |
-| F | T | F | T | T |
-| F | F | T | T | T |
-| F | F | F | T | T |
-
-#### 8.
-
-1. \(\neg(P
-\imp \neg Q)\text{.}\)
-1. \((\neg P \vee
-\neg Q) \imp \neg (\neg Q \wedge R)\text{.}\)
-1. \(\neg((P \imp \neg Q) \vee \neg (R \wedge
-\neg
-R))\text{.}\)
-1. It is false that if Sam is not a man then Chris is a woman, and that Chris is not a woman.
-
-1. \(P
-\wedge Q\text{.}\)
-1. \((\neg P \vee \neg R) \imp (Q \vee \neg R)\) or, replacing the implication with a disjunction first: \((P \wedge Q) \vee (Q \vee \neg R)\text{.}\)
-
-1. \((P
-\wedge Q) \wedge (R \wedge \neg R)\text{.}\) This is necessarily false, so it is also equivalent to \(P \wedge \neg P\text{.}\)
-
-1. Either Sam is a woman and Chris is a man, or Chris is a woman.
-
-#### 9.
-
-1. \(\neg((\neg P \wedge Q) \vee \neg(R \vee \neg S))\text{.}\)
-1. \(\neg((\neg P \imp \neg
-Q) \wedge (\neg Q \imp R))\) (careful with the implications).
-1. For both parts above, verify your answers are correct using truth tables. That is, use a truth table to check that the given statement and your proposed simplification are actually logically equivalent.
-
-#### 10.
-
-1. Make a truth table for the statement \((T \vee S) \imp \neg P\text{.}\)
-
-1. If you believed the statement was false, what properties would a counterexample need to possess? Explain by referencing your truth table.
-
-1. If the statement were true, what could you conclude about the number 5657, which is definitely prime? Again, explain using the truth table.
-
-1. There will be three rows in which the statement is false.
-
-1. Consider the three rows that evaluate to false and say what the truth values of \(T\text{,}\) \(S\text{,}\) and \(P\) are there.
-
-1. You are looking for a row in which \(P\) is true, and the whole statement is true.
-
-#### 11.
-
-#### 12.
-
-|  | \(P \rightarrow Q\) |
-|  | \(\neg Q\) |
-| \(\therefore\) | \(\neg P\) |
-
-| \(P\) | \(Q\) | \(P \rightarrow Q\) | \(\neg Q\) | \(\neg P\) |
-| T | T |  |  |  |
-| T | F |  |  |  |
-| F | T |  |  |  |
-| F | F |  |  |  |
-
-- No, because the conclusion is not always true.
-
-- Yes, because there is a row in which both premises are true.
-
-- No, because the columns for the two premises are not identical.
-
-- Yes, in every row where both premises are true, the conclusion is also true.
-
-- Impossible to determine without more information.
-
-| \(P\) | \(Q\) | \(P \rightarrow Q\) | \(\neg Q\) | \(\neg P\) |
-| T | T | T | F | F |
-| T | F | F | T | F |
-| F | T | T | F | T |
-| F | F | T | T | T |
-
-#### 13.
-
-|  | \(P \rightarrow (Q \vee R)\) |
-|  | \(\neg(P \rightarrow Q)\) |
-| \(\therefore\) | \(R\) |
-
-| \(P\) | \(Q\) | \(R\) | \(P \rightarrow (Q \vee R)\) | \(\neg(P \rightarrow Q)\) |
-| T | T | T |  |  |
-| T | T | F |  |  |
-| T | F | T |  |  |
-| T | F | F |  |  |
-| F | T | T |  |  |
-| F | T | F |  |  |
-| F | F | T |  |  |
-| F | F | F |  |  |
-
-- Yes, because there is a row in which both premises are true.
-
-- No, because the statements are not always true.
-
-- Yes, in every row where both premises are true, the conclusion is also true.
-
-- No, because the columns for the two premises are not identical.
-
-- Impossible to determine without more information.
-
-| \(P\) | \(Q\) | \(R\) | \(P \rightarrow (Q \vee R)\) | \(\neg(P \rightarrow Q)\) |
-| T | T | T | T | F |
-| T | T | F | T | F |
-| T | F | T | T | T |
-| T | F | F | F | T |
-| F | T | T | T | F |
-| F | T | F | T | F |
-| F | F | T | T | F |
-| F | F | F | T | F |
-
-#### 14.
-
-|  | \((P \wedge Q) \rightarrow R\) |
-|  | \(\neg P \vee \neg Q\) |
-| \(\therefore\) | \(\neg R\) |
-
-| \(P\) | \(Q\) | \(R\) | \((P \wedge Q) \rightarrow R\) | \(\neg P \vee \neg Q\) | \(\neg R\) |
-| T | T | T |  |  |  |
-| T | T | F |  |  |  |
-| T | F | T |  |  |  |
-| T | F | F |  |  |  |
-| F | T | T |  |  |  |
-| F | T | F |  |  |  |
-| F | F | T |  |  |  |
-| F | F | F |  |  |  |
-
-- Yes, because there is a row in which the conclusion and both premises are true.
-
-- Yes, because in every row that the conclusion is true, one of the premises is true.
-
-- No, because the columns for the two premises are not identical.
-
-- No, because there is a row in which both premises are true but the conclusion is false.
-
-- Impossible to determine without more information.
-
-| \(P\) | \(Q\) | \(R\) | \((P \wedge Q) \rightarrow R\) | \(\neg P \vee \neg Q\) | \(\neg R\) |
-| T | T | T | T | F | F |
-| T | T | F | F | F | T |
-| T | F | T | T | T | F |
-| T | F | F | T | T | T |
-| F | T | T | T | T | F |
-| F | T | F | T | T | T |
-| F | F | T | T | T | F |
-| F | F | F | T | T | T |
-
-#### 15.
-
-1. Prove that the following is a valid deduction rule:
-
-
-
-
-\(P
-\imp Q\)
-
-
-
-\(Q \imp R\)
-
-
-\(\therefore\)
-\(P \imp R\)
-
-
-|  | \(P
-\imp Q\) |
-|  | \(Q \imp R\) |
-| \(\therefore\) | \(P \imp R\) |
-
-1. Prove that the following is a valid deduction rule for any \(n \ge 2\text{:}\)
-
-
-
-
-\(P_1 \imp P_2\)
-
-
-
-\(P_2
-\imp P_3\)
-
-
-
-\(\vdots\)
-
-
-
-\(P_{n-1}
-\imp P_n\)
-
-
-\(\therefore\)
-\(P_1
-\imp P_n\text{.}\)
-
-
-I suggest you don’t go through the trouble of writing out a \(2^n\) row truth table. Instead, you should use part (a) and mathematical induction.
-
-|  | \(P_1 \imp P_2\) |
-|  | \(P_2
-\imp P_3\) |
-|  | \(\vdots\) |
-|  | \(P_{n-1}
-\imp P_n\) |
-| \(\therefore\) | \(P_1
-\imp P_n\text{.}\) |
-
-#### 16.
-
-1. \(\neg \exists x \forall y (\neg O(x) \vee E(y))\text{.}\)
-1. \(\neg \forall x \neg
-\forall y \neg(x \lt y \wedge \exists z (x \lt z \vee y \lt z))\text{.}\)
-1. There is a number \(n\) for which no other number is either less \(n\) than or equal to \(n\text{.}\)
-
-1. It is false that for every number \(n\) there are two other numbers which \(n\) is between.
-
-1. \(\forall
-x \exists y (O(x) \wedge \neg E(y))\text{.}\)
-1. \(\exists x \forall y (x \ge y \vee \forall
-z (x \ge z \wedge y \ge z))\text{.}\)
-1. There is a number \(n\) for which every other number is strictly greater than \(n\text{.}\)
-
-1. There is a number \(n\) which is not between any other two numbers.
-
-#### 17.
-
-1. \(\neg \forall x \forall y (x \lt y \vee y \lt x)\text{.}\)
-
-1. \(\neg(\exists
-x P(x) \imp \forall y P(y))\text{.}\)
-
-#### 18.
-
-1. Every number is either even or odd.
-
-1. There is a sequence that is both arithmetic and geometric.
-
-1. For all numbers \(n\text{,}\) if \(n\) is prime, then \(n+3\) is not prime.
-
-#### 19.
-
-#### 20.
-
-|  | \(P_1\) |
-|  | \(P_2\) |
-|  | \(\vdots\) |
-|  | \(P_n\) |
-| \(\therefore\) | \(Q\) |
-
-#### 21.
-
-|  | \(P \rightarrow Q\) |
-|  | \(P \wedge \neg Q\) |
-| \(\therefore\) | \(R\) |
-
-| \(P\) | \(Q\) | \(R\) | \(P \rightarrow Q\) | \(P \wedge \neg Q\) |
-| T | T | T |  |  |
-| T | T | F |  |  |
-| T | F | T |  |  |
-| T | F | F |  |  |
-| F | T | T |  |  |
-| F | T | F |  |  |
-| F | F | T |  |  |
-| F | F | F |  |  |
-
-- Yes, in every row where both premises are true, the conclusion is also true.
-
-- No, because the premises are never both true in the same row.
-
-- Yes, because there is a row in which both premises are true.
-
-- No, because the columns for the two premises are not identical.
-
-- Impossible to determine without more information.
-
-| \(P\) | \(Q\) | \(R\) | \(P \rightarrow Q\) | \(P \wedge \neg Q\) |
-| T | T | T | T | F |
-| T | T | F | T | F |
-| T | F | T | F | T |
-| T | F | F | F | T |
-| F | T | T | T | F |
-| F | T | F | T | F |
-| F | F | T | T | F |
-| F | F | F | T | F |
+Are these logically equivalent?
