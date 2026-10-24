@@ -79,7 +79,7 @@ function stateTone(row: LearnerMasteryRow): string {
 
 function Metric({ label, value, note }: { label: string; value: string; note: string }) {
   return (
-    <div className="border border-[var(--border)] rounded-lg p-4 min-w-0">
+    <div className="border border-[var(--border)] rounded-none p-4 min-w-0">
       <div className="font-mono text-[10px] uppercase tracking-wider text-mathua-muted">{label}</div>
       <div className="text-2xl font-semibold mt-1 tabular-nums">{value}</div>
       <p className="text-xs text-mathua-secondary mt-1 leading-snug">{note}</p>
@@ -161,7 +161,7 @@ export default function ReportsPage() {
                 type="button"
                 onClick={() => window.print()}
                 disabled={!report || loading}
-                className="h-9 px-4 font-mono text-[11px] uppercase tracking-wider border border-[var(--border)] rounded hover:bg-[var(--surface)] disabled:opacity-50"
+                className="h-9 px-4 font-mono text-[11px] uppercase tracking-wider border border-[var(--border)] rounded-none hover:bg-[var(--surface)] disabled:opacity-50"
               >
                 Print report
               </button>
@@ -180,7 +180,7 @@ export default function ReportsPage() {
                   type="button"
                   onClick={() => setDays(p.days)}
                   aria-pressed={days === p.days}
-                  className={`px-3 h-8 font-mono text-[11px] uppercase tracking-wider border rounded transition-colors ${
+                  className={`px-3 h-8 font-mono text-[11px] uppercase tracking-wider border rounded-none transition-colors ${
                     days === p.days
                       ? 'bg-[var(--text-primary)] text-[var(--bg)] border-[var(--text-primary)]'
                       : 'border-[var(--border)] hover:bg-[var(--surface)]'
@@ -196,7 +196,7 @@ export default function ReportsPage() {
                 id="report-domain"
                 value={domain}
                 onChange={(event) => setDomain(event.target.value)}
-                className="h-8 px-2 border border-[var(--border)] rounded bg-[var(--bg)] font-mono text-[11px] uppercase tracking-wider"
+                className="h-8 px-2 border border-[var(--border)] rounded-none bg-[var(--bg)] font-mono text-[11px] uppercase tracking-wider"
               >
                 <option value="">All domains</option>
                 {domainOptions.map((d) => (
@@ -208,7 +208,7 @@ export default function ReportsPage() {
             </div>
 
             {error && (
-              <div className="mt-5 border border-[var(--accent-red)]/40 rounded-lg p-4" role="alert">
+              <div className="mt-5 border border-[var(--accent-red)]/40 rounded-none p-4" role="alert">
                 <p className="text-sm">{error}</p>
                 <button
                   type="button"
@@ -223,7 +223,7 @@ export default function ReportsPage() {
             {loading && !report && (
               <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-busy="true" aria-label="Loading report">
                 {[0, 1, 2, 3].map((i) => (
-                  <div key={i} className="h-28 rounded-lg border border-[var(--border)] bg-[var(--surface)] animate-pulse" />
+                  <div key={i} className="h-28 rounded-none border border-[var(--border)] bg-[var(--surface)] animate-pulse" />
                 ))}
               </div>
             )}
@@ -306,7 +306,7 @@ export default function ReportsPage() {
                   {(report.domains ?? []).length === 0 ? (
                     <p className="text-sm text-mathua-secondary">No domains are available for this filter.</p>
                   ) : (
-                    <div className="overflow-x-auto border border-[var(--border)] rounded-lg">
+                    <div className="overflow-x-auto border border-[var(--border)] rounded-none">
                       <table className="w-full text-sm">
                         <thead>
                           <tr className="text-left font-mono text-[10px] uppercase tracking-wider text-mathua-muted border-b border-[var(--border)]">
@@ -339,7 +339,7 @@ export default function ReportsPage() {
                       happened.
                     </p>
                   ) : (
-                    <figure className="border border-[var(--border)] rounded-lg p-4">
+                    <figure className="border border-[var(--border)] rounded-none p-4">
                       <figcaption className="text-xs text-mathua-secondary mb-3">
                         Recorded answers per active day. Showing the most recent {activity.length} active days in the
                         period, not a continuous calendar.
@@ -348,7 +348,7 @@ export default function ReportsPage() {
                         {activity.map((day) => (
                           <div
                             key={day.date}
-                            className="flex-1 min-w-[3px] bg-[var(--accent-blue)]/60 rounded-t"
+                            className="flex-1 min-w-[3px] bg-[var(--accent-blue)]/60 rounded-none"
                             style={{ height: `${Math.max(4, (day.questions / maxQuestions) * 100)}%` }}
                             title={`${day.date}: ${day.questions} answers, ${day.correct} correct`}
                           />
@@ -368,7 +368,7 @@ export default function ReportsPage() {
                     </figure>
                   )}
 
-                  <div className="mt-8 border border-[var(--border)] rounded-lg p-4">
+                  <div className="mt-8 border border-[var(--border)] rounded-none p-4">
                     <h3 className="font-mono text-[11px] uppercase tracking-wider text-mathua-muted">What this report can and cannot say</h3>
                     <ul className="mt-2 text-xs text-mathua-secondary space-y-1 list-disc pl-5">
                       {(report.limitations ?? []).map((item) => <li key={item}>{item}</li>)}
@@ -393,7 +393,7 @@ export default function ReportsPage() {
                     <p className="text-sm text-mathua-secondary">No concepts match this domain.</p>
                   ) : (
                     <>
-                      <div className="hidden md:block overflow-x-auto border border-[var(--border)] rounded-lg">
+                      <div className="hidden md:block overflow-x-auto border border-[var(--border)] rounded-none">
                         <table className="w-full text-sm">
                           <thead>
                             <tr className="text-left font-mono text-[10px] uppercase tracking-wider text-mathua-muted border-b border-[var(--border)]">
@@ -413,7 +413,7 @@ export default function ReportsPage() {
                                 </td>
                                 <td className="px-3 py-2 text-mathua-secondary">{row.domain}</td>
                                 <td className="px-3 py-2">
-                                  <span className={`inline-block px-2 py-0.5 rounded border text-[11px] ${stateTone(row)}`}>
+                                  <span className={`inline-block px-2 py-0.5 rounded-none border text-[11px] ${stateTone(row)}`}>
                                     {stateLabel(row)}
                                   </span>
                                   {row.placement_seeded && (
@@ -438,10 +438,10 @@ export default function ReportsPage() {
                       </div>
                       <div className="md:hidden space-y-3">
                         {mastery.slice(0, visibleMastery).map((row) => (
-                          <div key={row.concept_id} className="border border-[var(--border)] rounded-lg p-3">
+                          <div key={row.concept_id} className="border border-[var(--border)] rounded-none p-3">
                             <div className="flex items-start justify-between gap-3">
                               <Link href={row.href} className="font-medium hover:underline underline-offset-4">{row.label}</Link>
-                              <span className={`shrink-0 px-2 py-0.5 rounded border text-[11px] ${stateTone(row)}`}>{stateLabel(row)}</span>
+                              <span className={`shrink-0 px-2 py-0.5 rounded-none border text-[11px] ${stateTone(row)}`}>{stateLabel(row)}</span>
                             </div>
                             <div className="text-[11px] text-mathua-muted font-mono mt-0.5">{row.domain} · {row.concept_id}</div>
                             <div className="text-xs text-mathua-secondary mt-2">
@@ -459,7 +459,7 @@ export default function ReportsPage() {
                         <button
                           type="button"
                           onClick={() => setVisibleMastery((n) => n + 100)}
-                          className="mt-4 h-8 px-3 font-mono text-[11px] uppercase tracking-wider border border-[var(--border)] rounded report-no-print"
+                          className="mt-4 h-8 px-3 font-mono text-[11px] uppercase tracking-wider border border-[var(--border)] rounded-none report-no-print"
                         >
                           Show 100 more ({mastery.length - visibleMastery} left)
                         </button>
@@ -485,13 +485,13 @@ export default function ReportsPage() {
                   ) : (
                     <div className="space-y-3">
                       {assessments.map((a: LearnerAssessment) => (
-                        <div key={`${a.type}:${a.id}`} className="border border-[var(--border)] rounded-lg p-4">
+                        <div key={`${a.type}:${a.id}`} className="border border-[var(--border)] rounded-none p-4">
                           <div className="flex flex-wrap items-start justify-between gap-3">
                             <div className="min-w-0">
                               <div className="text-[11px] font-mono uppercase tracking-wider text-mathua-muted">{a.type === 'quiz' ? 'Mastery check' : 'Diagnostic'}</div>
                               <h3 className="font-medium">{a.title}</h3>
                             </div>
-                            <span className="shrink-0 px-2 py-0.5 rounded border border-[var(--border)] text-[11px]">{a.status}</span>
+                            <span className="shrink-0 px-2 py-0.5 rounded-none border border-[var(--border)] text-[11px]">{a.status}</span>
                           </div>
                           <div className="text-xs text-mathua-secondary mt-2 space-y-1">
                             <div>
@@ -530,7 +530,7 @@ export default function ReportsPage() {
                   {history.length === 0 ? (
                     <p className="text-sm text-mathua-secondary">Nothing has been recorded yet.</p>
                   ) : (
-                    <ol className="border border-[var(--border)] rounded-lg divide-y divide-[var(--border)]">
+                    <ol className="border border-[var(--border)] rounded-none divide-y divide-[var(--border)]">
                       {history.map((event) => (
                         <li key={`${event.kind}:${event.id}`} className="p-3 flex flex-wrap items-start justify-between gap-2">
                           <div className="min-w-0">
@@ -553,7 +553,7 @@ export default function ReportsPage() {
                       type="button"
                       onClick={() => void loadMoreHistory()}
                       disabled={historyLoading}
-                      className="mt-4 h-8 px-3 font-mono text-[11px] uppercase tracking-wider border border-[var(--border)] rounded disabled:opacity-50 report-no-print"
+                      className="mt-4 h-8 px-3 font-mono text-[11px] uppercase tracking-wider border border-[var(--border)] rounded-none disabled:opacity-50 report-no-print"
                     >
                       {historyLoading ? 'Loading' : `Load more (${historyTotal - history.length} left)`}
                     </button>
