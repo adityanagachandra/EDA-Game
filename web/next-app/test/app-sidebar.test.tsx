@@ -53,7 +53,7 @@ describe('AppSidebar', () => {
   it('renders Navigate group without a Diagnostic entry (no CTA duplication)', () => {
     renderSidebar()
     expect(screen.getByText('Navigate')).toBeInTheDocument()
-    for (const label of ['Learn', 'Graph', 'Domains', 'Leaderboard', 'History', 'Settings']) {
+    for (const label of ['Learn', 'Graph', 'Domains', 'Leaderboard', 'History', 'Reports', 'Settings']) {
       expect(screen.getByText(label)).toBeInTheDocument()
     }
     expect(screen.queryByText('Diagnostic')).toBeNull()

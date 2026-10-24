@@ -36,6 +36,13 @@ type DomainCurriculum struct {
 
 // CurriculumDomains lists every domain with per-state counts. Order is the DAG's
 // (alphabetical); the client applies its own pedagogical ordering for display.
+// LearnerSnapshots exposes the scheduler's per-concept snapshot so read-only
+// views such as learner reports can ask the eligibility rule instead of
+// re-deriving lock, progress or mastery from the graph themselves.
+func (e *Engine) LearnerSnapshots(studentID string) (map[string]*scheduler.ConceptSnapshot, error) {
+	return e.learnerSnapshots(studentID)
+}
+
 func (e *Engine) CurriculumDomains(studentID string) ([]DomainSummary, error) {
 	snapshots, err := e.learnerSnapshots(studentID)
 	if err != nil {

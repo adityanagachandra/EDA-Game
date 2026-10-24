@@ -168,6 +168,28 @@ func parseAttemptTimestamp(ts string) time.Time {
 	return time.Time{}
 }
 
+// parseQuizCompletedAt parses the completion string each store writes.
+// SQLite defaults to datetime('now') ("2006-01-02 15:04:05", no zone, UTC),
+// Postgres writes now()::text, and older rows may carry RFC3339.
+func parseQuizCompletedAt(ts string) (time.Time, bool) {
+	if ts == "" {
+		return time.Time{}, false
+	}
+	if t := parseAttemptTimestamp(ts); !t.IsZero() {
+		return t, true
+	}
+	for _, layout := range []string{
+		"2006-01-02 15:04:05",
+		"2006-01-02T15:04:05",
+		"2006-01-02",
+	} {
+		if t, err := time.Parse(layout, ts); err == nil {
+			return t, true
+		}
+	}
+	return time.Time{}, false
+}
+
 type Question struct {
 	ID          int
 	ConceptID   string
@@ -227,6 +249,21 @@ type DailyActivity struct {
 	Questions int      `json:"questions"`
 	Correct   int      `json:"correct"`
 	Concepts  []string `json:"concepts"`
+}
+
+// LearningEvent is one substantiated item in a learner's history. It is built
+// from rows that exist, never from a current aggregate: an answer, a concept
+// that reached mastery, a quiz completion or a diagnostic completion. The Ref
+// field is stable within its Kind, so a page can key on Kind+Ref without
+// inventing an id.
+type LearningEvent struct {
+	Kind      string    `json:"kind"`
+	Ref       string    `json:"ref"`
+	At        time.Time `json:"at"`
+	ConceptID string    `json:"concept_id,omitempty"`
+	Source    string    `json:"source,omitempty"`
+	Correct   bool      `json:"correct,omitempty"`
+	XP        int       `json:"xp,omitempty"`
 }
 
 type TopicSpeed struct {
@@ -641,6 +678,23 @@ type Repository interface {
 	SetShareToken(studentID, token string) error
 	GetStudentByShareToken(token string) (*Student, error)
 	GetDailyActivity(studentID string, days int) ([]DailyActivity, error)
+	// AssessmentAttempts returns the learner's recorded answers whose source is
+	// quiz or diagnostic, newest first, bounded by the window and by limit.
+	// Practice and review answers are learning activity, not assessments.
+	AssessmentAttempts(studentID string, since, until time.Time, limit int) ([]AttemptEntry, error)
+	// XPInRange sums the ledger between since (inclusive) and until (exclusive).
+	// The ledger is the only authoritative XP source; students.xp_total is a
+	// running counter that has already been moved by the same transactions.
+	XPInRange(studentID string, since, until time.Time) (int, error)
+	// LearningEventsPage returns one page of substantiated history, newest
+	// first. It unions answers, mastery transitions, quiz completions and the
+	// diagnostic completion, so pagination is over the real event stream rather
+	// than over one table that happens to be the largest.
+	LearningEventsPage(studentID string, limit, offset int) ([]LearningEvent, int, error)
+	// QuizCompletions returns mastery-check completions at or after since,
+	// newest first. The table stores the lifetime XP snapshot at completion, not
+	// a score, which is why the Reports page must not show a quiz percentage.
+	QuizCompletions(studentID string, since time.Time, limit int) ([]QuizCompletion, error)
 
 	// AwardXP appends to the XP ledger and moves the counters in one
 	// transaction. event_key identifies the learning event that justifies the

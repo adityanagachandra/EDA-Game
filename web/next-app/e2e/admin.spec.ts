@@ -254,10 +254,13 @@ test.describe('administrator management', () => {
     stubApi(page, [ROOT], 'owner')
     await signIn(page, 'owner')
     await page.goto('/admin')
-    // exact: the overview also links to /admin/reports as "Reports needing attention", so a
-    // substring match resolves to two links and strict mode refuses it.
+    // The global header now links to the learner's /reports as well, and the
+    // overview links to /admin/reports, so the page as a whole holds more than
+    // one link called Reports. The assertion belongs to the admin nav, so it is
+    // scoped there rather than matched against every link on the page.
+    const adminNav = page.getByRole('navigation', { name: 'Admin sections' })
     for (const label of ['Overview', 'Reports', 'Users', 'Contributors', 'Content', 'Audit Log']) {
-      await expect(page.getByRole('link', { name: label, exact: true })).toBeVisible()
+      await expect(adminNav.getByRole('link', { name: label, exact: true })).toBeVisible()
     }
   })
 
