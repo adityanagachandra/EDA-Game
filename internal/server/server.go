@@ -2971,11 +2971,12 @@ func (s *Server) handleStudyAnswer(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var req struct {
-		ConceptID string  `json:"concept_id"`
-		Answer    string  `json:"answer"`
-		Elapsed   float64 `json:"elapsed"`
-		StudentID string  `json:"student_id"`
-		Question  string  `json:"question"`
+		ConceptID    string  `json:"concept_id"`
+		Answer       string  `json:"answer"`
+		Elapsed      float64 `json:"elapsed"`
+		StudentID    string  `json:"student_id"`
+		Question     string  `json:"question"`
+		SubmissionID string  `json:"submission_id"`
 	}
 	if err := decodeJSON(w, r, &req); err != nil {
 		writeError(w, "invalid request", 400)
@@ -2991,6 +2992,14 @@ func (s *Server) handleStudyAnswer(w http.ResponseWriter, r *http.Request) {
 	}
 	if len(req.Question) > 4096 {
 		writeError(w, "question too long", 400)
+		return
+	}
+	if strings.TrimSpace(req.SubmissionID) == "" {
+		writeError(w, "submission_id required", 400)
+		return
+	}
+	if len(req.SubmissionID) > 128 {
+		writeError(w, "submission_id too long", 400)
 		return
 	}
 	authStudentID, _ := r.Context().Value(authStudentKey{}).(string)
@@ -3031,7 +3040,9 @@ func (s *Server) handleStudyAnswer(w http.ResponseWriter, r *http.Request) {
 		writeTopicLocked(w, el)
 		return
 	}
-	res, err := s.eng.SubmitStudyAnswer(studentID, req.ConceptID, req.Answer, req.Elapsed, req.Question)
+	var res *engine.AnswerResult
+	var err error
+	res, err = s.eng.SubmitStudyAnswerWithSubmission(studentID, req.ConceptID, req.Answer, req.Elapsed, req.Question, req.SubmissionID)
 	if err != nil {
 		if errors.Is(err, engine.ErrUnknownConcept) {
 			writeError(w, "unknown concept", 404)
@@ -3050,7 +3061,20 @@ func (s *Server) handleStudyAnswer(w http.ResponseWriter, r *http.Request) {
 			writeError(w, "no active question; re-serve it", 409)
 			return
 		}
+		if errors.Is(err, storage.ErrStudySubmissionPayloadMismatch) {
+			writeError(w, "submission_id already used with a different answer", 409)
+			return
+		}
+		if errors.Is(err, storage.ErrStudySubmissionInProgress) {
+			writeError(w, "submission is still being recorded; retry", 409)
+			return
+		}
 		writeError(w, "failed to submit study answer", 500)
+		return
+	}
+	if res.ResponseJSON != "" {
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(res.ResponseJSON))
 		return
 	}
 	writeJSON(w, map[string]interface{}{

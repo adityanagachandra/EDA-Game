@@ -1387,6 +1387,13 @@ interface StudyAnswerBody {
 	elapsed: number
 	student_id?: string
 	question?: string
+	submission_id: string
+}
+
+function newSubmissionId(): string {
+	const c = globalThis.crypto
+	if (c && typeof c.randomUUID === 'function') return c.randomUUID()
+	return `study-${Date.now()}-${Math.random().toString(36).slice(2)}`
 }
 
 // No `expected` is sent: the server anchors every served question against its
@@ -1397,15 +1404,21 @@ interface StudyAnswerBody {
 export async function submitStudyAnswer(conceptId: string, answer: string, elapsed: number, question?: string): Promise<StudyAnswerRes> {
 	const { getGuestId } = await import('./auth')
 	const headers = { 'Content-Type': 'application/json', ...getAuthHeaders() } satisfies Record<string, string>
-	const body: StudyAnswerBody = { concept_id: conceptId, answer, elapsed, question }
+	const body: StudyAnswerBody = {
+		concept_id: conceptId,
+		answer,
+		elapsed,
+		question,
+		submission_id: newSubmissionId(),
+	}
 	const guestId = getGuestId()
 	if (guestId && !('Authorization' in headers)) {
 		body.student_id = guestId
 	}
 	const res = await authedFetch(`${API_BASE}/api/study/answer`, {
-    // The engine replays an attempt id it has already graded, so repeating
-    // this exact body cannot grade or award twice.
-    retryAttempts: 1,
+		// The same submission_id goes out on every retry, so the server
+		// replays the stored verdict instead of writing a second attempt.
+		retryAttempts: 1,
 		timeoutMs: 25000,
 		method: 'POST',
 		headers,

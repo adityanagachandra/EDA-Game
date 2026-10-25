@@ -70,6 +70,22 @@ CREATE TABLE IF NOT EXISTS diagnostic_answers (
     created_at INTEGER NOT NULL
 );
 
+-- One row per accepted study answer, keyed by the client's submission id.
+-- The row is inserted in the same transaction as the attempt, progress, topic
+-- speed and XP award, so a retry either replays the stored response or sees no
+-- row at all. request_hash rejects the same key carrying a different answer.
+CREATE TABLE IF NOT EXISTS answer_submissions (
+    student_id    TEXT    NOT NULL,
+    operation     TEXT    NOT NULL,
+    submission_id TEXT    NOT NULL,
+    request_hash  TEXT    NOT NULL,
+    response_json TEXT    NOT NULL DEFAULT '',
+    attempt_id    INTEGER NOT NULL DEFAULT 0,
+    created_at    INTEGER NOT NULL,
+    PRIMARY KEY (student_id, operation, submission_id),
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
 CREATE TABLE IF NOT EXISTS league_weeks (
     week      TEXT PRIMARY KEY,
     closed_at INTEGER NOT NULL

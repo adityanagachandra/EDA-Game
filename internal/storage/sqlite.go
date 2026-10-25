@@ -1313,6 +1313,7 @@ func (s *SQLiteStore) ResetProgress(studentID string) error {
 		args []interface{}
 	}{
 		{"DELETE FROM attempts WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM answer_submissions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = ?", []interface{}{studentID}},
@@ -1359,6 +1360,7 @@ func (s *SQLiteStore) DeleteAccount(studentID string) error {
 		{"DELETE FROM identities WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM avatar_images WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM attempts WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM answer_submissions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = ?", []interface{}{studentID}},
@@ -1384,7 +1386,13 @@ func (s *SQLiteStore) DeleteAccount(studentID string) error {
 // Attempts
 
 func (s *SQLiteStore) RecordAttempt(entry AttemptEntry) (int64, error) {
-	res, err := s.db.Exec(`
+	return insertAttemptSQLite(s.db, entry)
+}
+
+func insertAttemptSQLite(exec interface {
+	Exec(query string, args ...any) (sql.Result, error)
+}, entry AttemptEntry) (int64, error) {
+	res, err := exec.Exec(`
 		INSERT INTO attempts
 			(session_id, student_id, concept_id, answer, expected,
 			 correct, elapsed_seconds, timestamp, question, source, explanation, difficulty)
@@ -1404,6 +1412,18 @@ func (s *SQLiteStore) RecordAttempt(entry AttemptEntry) (int64, error) {
 		return 0, fmt.Errorf("record attempt: id: %w", err)
 	}
 	return id, nil
+}
+
+func insertAttemptSQLiteTx(tx *sql.Tx, entry AttemptEntry) (int64, error) {
+	return insertAttemptSQLite(tx, entry)
+}
+
+func (s *SQLiteStore) CommitStudySubmission(c StudySubmissionCommit) (StudySubmissionOutcome, error) {
+	return commitStudySubmissionTx(s.db, rebindQuestion, insertAttemptSQLiteTx, c)
+}
+
+func (s *SQLiteStore) GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error) {
+	return getStudySubmission(s.db, rebindQuestion, studentID, operation, submissionID)
 }
 
 // GetRecentAttemptsForConcept implements the bounded per-concept window the evidence

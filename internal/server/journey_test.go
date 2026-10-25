@@ -238,7 +238,7 @@ func TestJourney_RefusalFlipsToEligibleAfterMastery(t *testing.T) {
 			q, _ := qi.(map[string]interface{})
 			text, _ := q["question"].(string)
 			code, ans := journeyPost(t, mux, token, "/api/study/answer",
-				fmt.Sprintf(`{"concept_id":"a","answer":"4","elapsed":3.0,"question":%q}`, text))
+				fmt.Sprintf(`{"concept_id":"a","answer":"4","elapsed":3.0,"question":%q,"submission_id":%q}`, text, fmt.Sprintf("sub-%d", answered)))
 			if code != 200 {
 				t.Fatalf("study answer: %d %v", code, ans)
 			}
@@ -292,7 +292,7 @@ func TestJourney_AnswersAdvanceProgressOverHTTP(t *testing.T) {
 		}
 		text, _ := qs[0].(map[string]interface{})["question"].(string)
 		code, ans := journeyPost(t, mux, token, "/api/study/answer",
-			fmt.Sprintf(`{"concept_id":"a","answer":"4","elapsed":3.0,"question":%q}`, text))
+			fmt.Sprintf(`{"concept_id":"a","answer":"4","elapsed":3.0,"question":%q,"submission_id":%q}`, text, fmt.Sprintf("sub-%d", i)))
 		if code != 200 {
 			t.Fatalf("study answer %d: %d %v", i, code, ans)
 		}
@@ -327,10 +327,12 @@ func TestJourney_LeaveAndReturnWithoutDuplication(t *testing.T) {
 	mux, store := gatedServer(t)
 	token, sid := guestTokenAndID(t, mux)
 
+	answerN := 0
 	answer := func(question string) map[string]interface{} {
 		t.Helper()
+		answerN++
 		code, ans := journeyPost(t, mux, token, "/api/study/answer",
-			fmt.Sprintf(`{"concept_id":"a","answer":"4","elapsed":3.0,"question":%q}`, question))
+			fmt.Sprintf(`{"concept_id":"a","answer":"4","elapsed":3.0,"question":%q,"submission_id":%q}`, question, fmt.Sprintf("sub-%d", answerN)))
 		if code != 200 {
 			t.Fatalf("study answer: %d %v", code, ans)
 		}

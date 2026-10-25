@@ -962,12 +962,13 @@ func TestPractice_WritesTheStudyAnchor(t *testing.T) {
 	// middleware it came back 409 (no anchor); now it grades, and the answer it
 	// graded against is the served one rather than whatever the client claimed.
 	body, _ := json.Marshal(map[string]interface{}{
-		"concept_id": "a",
-		"answer":     "definitely wrong",
-		"expected":   "also wrong",
-		"elapsed":    5.0,
-		"question":   question,
-		"student_id": studentID,
+		"concept_id":    "a",
+		"submission_id": "sub-anchored",
+		"answer":        "definitely wrong",
+		"expected":      "also wrong",
+		"elapsed":       5.0,
+		"question":      question,
+		"student_id":    studentID,
 	})
 	rec = httptest.NewRecorder()
 	post := httptest.NewRequest("POST", "/api/study/answer", bytes.NewReader(body))
@@ -1025,12 +1026,13 @@ func TestStudyAnswer_AnchoredNotClientSupplied(t *testing.T) {
 	// expected. A server that honoured the client would call this correct.
 	const forged = "987654321"
 	body, _ := json.Marshal(map[string]interface{}{
-		"concept_id": "a",
-		"answer":     forged,
-		"expected":   forged,
-		"elapsed":    5.0,
-		"question":   question,
-		"student_id": studentID,
+		"concept_id":    "a",
+		"submission_id": "sub-forged",
+		"answer":        forged,
+		"expected":      forged,
+		"elapsed":       5.0,
+		"question":      question,
+		"student_id":    studentID,
 	})
 	rec = httptest.NewRecorder()
 	post := httptest.NewRequest("POST", "/api/study/answer", bytes.NewReader(body))
@@ -1066,12 +1068,13 @@ func TestStudyAnswer_UnknownQuestionIs409(t *testing.T) {
 	token, studentID := quizGuest(t, mux)
 
 	body, _ := json.Marshal(map[string]interface{}{
-		"concept_id": "a",
-		"answer":     "4",
-		"expected":   "4", // ignored; the anchor is what matters
-		"elapsed":    5.0,
-		"question":   "a question the server never served",
-		"student_id": studentID,
+		"concept_id":    "a",
+		"submission_id": "sub-unserved",
+		"answer":        "4",
+		"expected":      "4", // ignored; the anchor is what matters
+		"elapsed":       5.0,
+		"question":      "a question the server never served",
+		"student_id":    studentID,
 	})
 	rec := httptest.NewRecorder()
 	req := httptest.NewRequest("POST", "/api/study/answer", bytes.NewReader(body))
@@ -1134,11 +1137,12 @@ func TestStudyAnswer_GradesFirstBatchAfterASecondPracticeFetch(t *testing.T) {
 	}
 
 	body, _ := json.Marshal(map[string]interface{}{
-		"concept_id": "a",
-		"answer":     first[0].Answer,
-		"elapsed":    5.0,
-		"question":   first[0].Question,
-		"student_id": studentID,
+		"concept_id":    "a",
+		"submission_id": "sub-first-batch",
+		"answer":        first[0].Answer,
+		"elapsed":       5.0,
+		"question":      first[0].Question,
+		"student_id":    studentID,
 	})
 	rec := httptest.NewRecorder()
 	req := httptest.NewRequest("POST", "/api/study/answer", bytes.NewReader(body))
@@ -1164,11 +1168,12 @@ func TestStudyAnswer_GradesFirstBatchAfterASecondPracticeFetch(t *testing.T) {
 	// A genuinely unserved question is still refused: merging must not weaken
 	// the refusal that 409 exists for.
 	body, _ = json.Marshal(map[string]interface{}{
-		"concept_id": "a",
-		"answer":     "4",
-		"elapsed":    5.0,
-		"question":   "a question no batch ever served",
-		"student_id": studentID,
+		"concept_id":    "a",
+		"submission_id": "sub-no-batch",
+		"answer":        "4",
+		"elapsed":       5.0,
+		"question":      "a question no batch ever served",
+		"student_id":    studentID,
 	})
 	rec = httptest.NewRecorder()
 	req = httptest.NewRequest("POST", "/api/study/answer", bytes.NewReader(body))
@@ -1185,11 +1190,12 @@ func TestStudyAnswer_UnknownConcept(t *testing.T) {
 	s.Register(mux)
 
 	body, _ := json.Marshal(map[string]interface{}{
-		"concept_id": "nope.not.real",
-		"answer":     "1",
-		"expected":   "1",
-		"elapsed":    5.0,
-		"student_id": "ghost",
+		"concept_id":    "nope.not.real",
+		"submission_id": "sub-unknown",
+		"answer":        "1",
+		"expected":      "1",
+		"elapsed":       5.0,
+		"student_id":    "ghost",
 	})
 	rec := httptest.NewRecorder()
 	mux.ServeHTTP(rec, httptest.NewRequest("POST", "/api/study/answer", bytes.NewReader(body)))
@@ -1851,11 +1857,12 @@ func TestLessons_ResolvesIdentityFromToken(t *testing.T) {
 		t.Fatal("expected a served question")
 	}
 	body, _ := json.Marshal(map[string]interface{}{
-		"concept_id": "a",
-		"answer":     set.Questions[0].Answer,
-		"elapsed":    5.0,
-		"question":   set.Questions[0].Question,
-		"student_id": studentID,
+		"concept_id":    "a",
+		"submission_id": "sub-set",
+		"answer":        set.Questions[0].Answer,
+		"elapsed":       5.0,
+		"question":      set.Questions[0].Question,
+		"student_id":    studentID,
 	})
 	rec = httptest.NewRecorder()
 	answer := httptest.NewRequest("POST", "/api/study/answer", bytes.NewReader(body))
