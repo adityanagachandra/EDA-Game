@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useMemo, Suspense } from 'react'
-import { useRouter } from 'next/navigation'
+import { useEffect, Suspense } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useTheme } from '../../hooks/useTheme'
 import Header from '../../components/Header'
 import BottomTabs from '../../components/BottomTabs'
@@ -24,11 +24,13 @@ import QuizHost from './QuizHost'
 function GoalsContent() {
   const { mounted } = useTheme()
   const { replace } = useRouter()
+  const searchParams = useSearchParams()
 
-  const isQuizMode = useMemo(
-    () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('quiz') === '1',
-    [],
-  )
+  // Read the route through the router, not window.location. A Link can render
+  // this component from a prefetched payload before the address bar changes,
+  // and a one-shot window read then caches false and redirects a quiz click to
+  // the diagnostic. useSearchParams re-renders when navigation settles.
+  const isQuizMode = searchParams.get('quiz') === '1'
 
   useEffect(() => {
     if (!mounted || isQuizMode) return
