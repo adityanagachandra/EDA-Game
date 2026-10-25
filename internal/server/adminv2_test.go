@@ -19,6 +19,7 @@ var staffOnlyRoutes = []struct{ method, path string }{
 	{"GET", "/api/admin/overview"},
 	{"GET", "/api/admin/reports"},
 	{"PATCH", "/api/admin/reports/1"},
+	{"GET", "/api/admin/reports/1/image"},
 	{"GET", "/api/admin/users"},
 	{"GET", "/api/admin/admins"},
 	{"GET", "/api/admin/invitations"},

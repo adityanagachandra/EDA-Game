@@ -79,6 +79,10 @@ password cannot say which person used it. One moderation path replaces the two.
 A report is never deleted. A decision sets the status, the reason, the actor and the time. The
 row keeps the complaint, so the next moderator can read what was decided before.
 
+A contact message can carry one screenshot. The image is stored with the report and served only
+through the same moderation permission, so it is not a public file and it disappears with the
+account that filed it.
+
 ### Staff access by invitation
 
 An owner or admin adds a contributor from `/admin/contributors`. The server creates an

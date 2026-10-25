@@ -1,6 +1,9 @@
 package server
 
 import (
+	"errors"
+	"io"
+	"log"
 	"net/http"
 	"strings"
 	"sync"
@@ -86,6 +89,100 @@ func truncate(s string, n int) string {
 	return s[:n]
 }
 
+const maxReportImageBytes = 4 << 20
+
+// reportCreateReq is both the JSON body and the multipart form fields. A
+// screenshot uses the same request so a report and its image cannot arrive as
+// two independently retryable operations.
+type reportCreateReq struct {
+	ConceptID   string `json:"concept_id"`
+	Kind        string `json:"kind"`
+	Question    string `json:"question"`
+	Expected    string `json:"expected"`
+	Explanation string `json:"explanation"`
+	LessonID    string `json:"lesson_id"`
+	Source      string `json:"source"`
+	SessionID   string `json:"session_id"`
+	AttemptID   string `json:"attempt_id"`
+	// What the learner typed and the format the field offered. The client
+	// already holds all four on the served question; sending them makes the
+	// report reproducible instead of a screenshot the moderator cannot see.
+	AnswerGiven     string `json:"answer_given"`
+	GradingType     string `json:"grading_type"`
+	AnswerHint      string `json:"answer_hint"`
+	AnswerInputMode string `json:"answer_input_mode"`
+	Reason          string `json:"reason"`
+	Detail          string `json:"detail"`
+	ReporterID      string `json:"reporter_id"`
+}
+
+// decodeReportRequest accepts either the original JSON body or a multipart form
+// carrying an optional "image". The image is validated before the report row is
+// created, so a bad file never leaves a report that claims a screenshot it does
+// not have.
+func decodeReportRequest(w http.ResponseWriter, r *http.Request, req *reportCreateReq) (*storage.ReportImage, bool) {
+	contentType := strings.ToLower(strings.TrimSpace(r.Header.Get("Content-Type")))
+	if !strings.HasPrefix(contentType, "multipart/form-data") {
+		if err := decodeJSON(w, r, req); err != nil {
+			writeError(w, "invalid request", 400)
+			return nil, false
+		}
+		return nil, true
+	}
+
+	r.Body = http.MaxBytesReader(w, r.Body, maxReportImageBytes+(1<<20))
+	if err := r.ParseMultipartForm(maxReportImageBytes + (1 << 20)); err != nil {
+		writeError(w, "screenshot is too large (4MB max)", 400)
+		return nil, false
+	}
+	req.ConceptID = r.FormValue("concept_id")
+	req.Kind = r.FormValue("kind")
+	req.Question = r.FormValue("question")
+	req.Expected = r.FormValue("expected")
+	req.Explanation = r.FormValue("explanation")
+	req.LessonID = r.FormValue("lesson_id")
+	req.Source = r.FormValue("source")
+	req.SessionID = r.FormValue("session_id")
+	req.AttemptID = r.FormValue("attempt_id")
+	req.AnswerGiven = r.FormValue("answer_given")
+	req.GradingType = r.FormValue("grading_type")
+	req.AnswerHint = r.FormValue("answer_hint")
+	req.AnswerInputMode = r.FormValue("answer_input_mode")
+	req.Reason = r.FormValue("reason")
+	req.Detail = r.FormValue("detail")
+	req.ReporterID = r.FormValue("reporter_id")
+
+	f, _, err := r.FormFile("image")
+	if errors.Is(err, http.ErrMissingFile) {
+		return nil, true
+	}
+	if err != nil {
+		writeError(w, "could not read screenshot", 400)
+		return nil, false
+	}
+	defer f.Close()
+	data, err := io.ReadAll(io.LimitReader(f, maxReportImageBytes+1))
+	if err != nil {
+		writeError(w, "could not read screenshot", 400)
+		return nil, false
+	}
+	if len(data) == 0 {
+		return nil, true
+	}
+	if len(data) > maxReportImageBytes {
+		writeError(w, "screenshot is too large (4MB max)", 400)
+		return nil, false
+	}
+	ct := http.DetectContentType(data)
+	switch ct {
+	case "image/png", "image/jpeg", "image/webp", "image/gif":
+	default:
+		writeError(w, "screenshot must be PNG, JPEG, GIF, or WebP", 400)
+		return nil, false
+	}
+	return &storage.ReportImage{ContentType: ct, Bytes: data}, true
+}
+
 // POST /api/reports, open to guests. Body mirrors submitStudyAnswer:
 // authed student_id wins, else body reporter_id (guest id) is stored as-is.
 func (s *Server) handleCreateReport(w http.ResponseWriter, r *http.Request) {
@@ -93,29 +190,9 @@ func (s *Server) handleCreateReport(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, `{"error":"method not allowed"}`, 405)
 		return
 	}
-	var req struct {
-		ConceptID   string `json:"concept_id"`
-		Kind        string `json:"kind"`
-		Question    string `json:"question"`
-		Expected    string `json:"expected"`
-		Explanation string `json:"explanation"`
-		LessonID    string `json:"lesson_id"`
-		Source      string `json:"source"`
-		SessionID   string `json:"session_id"`
-		AttemptID   string `json:"attempt_id"`
-		// What the learner typed and the format the field offered. The client
-		// already holds all four on the served question; sending them makes the
-		// report reproducible instead of a screenshot the moderator cannot see.
-		AnswerGiven     string `json:"answer_given"`
-		GradingType     string `json:"grading_type"`
-		AnswerHint      string `json:"answer_hint"`
-		AnswerInputMode string `json:"answer_input_mode"`
-		Reason          string `json:"reason"`
-		Detail          string `json:"detail"`
-		ReporterID      string `json:"reporter_id"`
-	}
-	if err := decodeJSON(w, r, &req); err != nil {
-		writeError(w, "invalid request", 400)
+	var req reportCreateReq
+	image, ok := decodeReportRequest(w, r, &req)
+	if !ok {
 		return
 	}
 	kind := strings.TrimSpace(req.Kind)
@@ -200,5 +277,18 @@ func (s *Server) handleCreateReport(w http.ResponseWriter, r *http.Request) {
 		writeError(w, "failed to save report", 500)
 		return
 	}
-	writeJSON(w, map[string]interface{}{"id": id, "status": "open"})
+	if image != nil {
+		store, ok := s.repo.(storage.ReportImageStore)
+		if !ok {
+			log.Printf("reports: store does not implement ReportImageStore")
+			writeError(w, "failed to save screenshot", 500)
+			return
+		}
+		if err := store.SetReportImage(id, image.ContentType, image.Bytes); err != nil {
+			log.Printf("reports: save image for %d: %v", id, err)
+			writeError(w, "failed to save screenshot", 500)
+			return
+		}
+	}
+	writeJSON(w, map[string]interface{}{"id": id, "status": "open", "has_image": image != nil})
 }

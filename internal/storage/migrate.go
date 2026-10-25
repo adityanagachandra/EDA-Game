@@ -296,6 +296,16 @@ CREATE TABLE IF NOT EXISTS question_reports (
 CREATE INDEX IF NOT EXISTS idx_reports_status  ON question_reports(status, created_at);
 CREATE INDEX IF NOT EXISTS idx_reports_concept ON question_reports(concept_id);
 
+-- One optional screenshot per report. The bytes live beside the moderation
+-- record so deleting an account removes the image with the report that named
+-- it, and no upload can outlive the queue entry that explains it.
+CREATE TABLE IF NOT EXISTS report_images (
+    report_id    INTEGER PRIMARY KEY REFERENCES question_reports(id) ON DELETE CASCADE,
+    content_type TEXT NOT NULL,
+    bytes        BLOB NOT NULL,
+    created_at   TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 -- Live diagnostic runs. The adaptive model is a graph of beliefs over the whole
 -- path, so it cannot be rebuilt from the attempts table; it is stored as the
 -- diagnostic package's own encoded snapshot. Before this table the run lived
