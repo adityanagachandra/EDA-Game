@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
@@ -78,46 +79,214 @@ func setupTestServerWithPlanner(t *testing.T) (*Server, *http.ServeMux, storage.
 }
 
 func TestGzipMiddleware(t *testing.T) {
-	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(`{"hello":"world"}`))
+	small := []byte(`{"hello":"world"}`)
+	large := []byte(`{"data":"` + strings.Repeat("a", 2048) + `"}`)
+	bodyOf := func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case "/empty":
+			return
+		case "/204":
+			w.WriteHeader(http.StatusNoContent)
+			return
+		case "/error":
+			http.Error(w, strings.Repeat("x", 2000), http.StatusInternalServerError)
+			return
+		case "/png":
+			w.Header().Set("Content-Type", "image/png")
+			w.Write(bytes.Repeat([]byte{0x89, 0x50, 0x4e, 0x47}, 600))
+			return
+		case "/already":
+			w.Header().Set("Content-Encoding", "br")
+			w.Write(large)
+			return
+		case "/large":
+			w.Write(large)
+		default:
+			w.Write(small)
+		}
+	}
+	wrapped := GzipMiddleware(http.HandlerFunc(bodyOf))
+
+	decode := func(t *testing.T, rec *httptest.ResponseRecorder) string {
+		t.Helper()
+		if rec.Header().Get("Content-Encoding") != "gzip" {
+			t.Fatalf("expected gzip, got %q", rec.Header().Get("Content-Encoding"))
+		}
+		zr, err := gzip.NewReader(rec.Body)
+		if err != nil {
+			t.Fatalf("gzip reader: %v", err)
+		}
+		defer zr.Close()
+		b, err := io.ReadAll(zr)
+		if err != nil {
+			t.Fatalf("decompress: %v", err)
+		}
+		return string(b)
+	}
+
+	t.Run("small body stays plain", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/small", nil)
+		req.Header.Set("Accept-Encoding", "gzip, deflate")
+		wrapped.ServeHTTP(rec, req)
+		if got := rec.Header().Get("Content-Encoding"); got != "" {
+			t.Fatalf("Content-Encoding = %q, want empty", got)
+		}
+		if got := rec.Header().Get("Vary"); !strings.Contains(got, "Accept-Encoding") {
+			t.Fatalf("Vary = %q, want Accept-Encoding", got)
+		}
+		if got := rec.Header().Get("Content-Type"); got != "application/json" {
+			t.Fatalf("Content-Type = %q, want application/json", got)
+		}
+		if got := rec.Body.String(); got != string(small) {
+			t.Fatalf("body = %q, want %q", got, small)
+		}
 	})
-	wrapped := GzipMiddleware(handler)
 
-	// Case 1: Client does not accept gzip.
-	reqPlain := httptest.NewRequest("GET", "/test", nil)
-	recPlain := httptest.NewRecorder()
-	wrapped.ServeHTTP(recPlain, reqPlain)
-	if recPlain.Header().Get("Content-Encoding") != "" {
-		t.Errorf("expected no Content-Encoding without Accept-Encoding, got %q", recPlain.Header().Get("Content-Encoding"))
-	}
-	if recPlain.Body.String() != `{"hello":"world"}` {
-		t.Errorf("expected plain body, got %q", recPlain.Body.String())
-	}
+	t.Run("large body is gzipped", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/large", nil)
+		req.Header.Set("Accept-Encoding", "gzip")
+		wrapped.ServeHTTP(rec, req)
+		if got := decode(t, rec); got != string(large) {
+			t.Fatalf("body = %q", got)
+		}
+		if got := rec.Header().Get("Vary"); !strings.Contains(got, "Accept-Encoding") {
+			t.Fatalf("Vary = %q, want Accept-Encoding", got)
+		}
+		if got := rec.Header().Get("Content-Length"); got != "" {
+			t.Fatalf("Content-Length = %q, want empty for gzip", got)
+		}
+	})
 
-	// Case 2: Client accepts gzip.
-	reqGzip := httptest.NewRequest("GET", "/test", nil)
-	reqGzip.Header.Set("Accept-Encoding", "gzip, deflate")
-	recGzip := httptest.NewRecorder()
-	wrapped.ServeHTTP(recGzip, reqGzip)
-	if recGzip.Header().Get("Content-Encoding") != "gzip" {
-		t.Errorf("expected Content-Encoding gzip, got %q", recGzip.Header().Get("Content-Encoding"))
-	}
-	if recGzip.Header().Get("Content-Type") != "application/json" {
-		t.Errorf("expected default Content-Type application/json, got %q", recGzip.Header().Get("Content-Type"))
-	}
+	t.Run("plain client gets plain", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/large", nil)
+		wrapped.ServeHTTP(rec, req)
+		if got := rec.Header().Get("Content-Encoding"); got != "" {
+			t.Fatalf("Content-Encoding = %q, want empty", got)
+		}
+		if rec.Body.String() != string(large) {
+			t.Fatalf("body differs")
+		}
+	})
 
-	gzReader, err := gzip.NewReader(recGzip.Body)
-	if err != nil {
-		t.Fatalf("gzip reader: %v", err)
-	}
-	defer gzReader.Close()
-	decompressed, err := io.ReadAll(gzReader)
-	if err != nil {
-		t.Fatalf("decompress: %v", err)
-	}
-	if string(decompressed) != `{"hello":"world"}` {
-		t.Errorf("expected decompressed body %q, got %q", `{"hello":"world"}`, string(decompressed))
-	}
+	t.Run("gzip q zero is refused", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/large", nil)
+		req.Header.Set("Accept-Encoding", "gzip;q=0")
+		wrapped.ServeHTTP(rec, req)
+		if got := rec.Header().Get("Content-Encoding"); got != "" {
+			t.Fatalf("Content-Encoding = %q, want empty", got)
+		}
+	})
+
+	t.Run("empty body", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/empty", nil)
+		req.Header.Set("Accept-Encoding", "gzip")
+		wrapped.ServeHTTP(rec, req)
+		if got := rec.Header().Get("Content-Encoding"); got != "" {
+			t.Fatalf("Content-Encoding = %q, want empty", got)
+		}
+		if rec.Body.Len() != 0 {
+			t.Fatalf("body length = %d, want 0", rec.Body.Len())
+		}
+	})
+
+	t.Run("no content stays empty", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/204", nil)
+		req.Header.Set("Accept-Encoding", "gzip")
+		wrapped.ServeHTTP(rec, req)
+		if rec.Code != http.StatusNoContent {
+			t.Fatalf("status = %d", rec.Code)
+		}
+		if got := rec.Header().Get("Content-Encoding"); got != "" {
+			t.Fatalf("Content-Encoding = %q, want empty", got)
+		}
+	})
+
+	t.Run("large error is gzipped", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/error", nil)
+		req.Header.Set("Accept-Encoding", "gzip")
+		wrapped.ServeHTTP(rec, req)
+		if rec.Code != http.StatusInternalServerError {
+			t.Fatalf("status = %d", rec.Code)
+		}
+		if got := decode(t, rec); len(got) != 2001 {
+			t.Fatalf("body length = %d", len(got))
+		}
+	})
+
+	t.Run("already compressed type is not gzipped", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/png", nil)
+		req.Header.Set("Accept-Encoding", "gzip")
+		wrapped.ServeHTTP(rec, req)
+		if got := rec.Header().Get("Content-Encoding"); got != "" {
+			t.Fatalf("Content-Encoding = %q, want empty", got)
+		}
+		if rec.Body.Len() != 2400 {
+			t.Fatalf("body length = %d", rec.Body.Len())
+		}
+	})
+
+	t.Run("handler content encoding is preserved", func(t *testing.T) {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest("GET", "/already", nil)
+		req.Header.Set("Accept-Encoding", "gzip")
+		wrapped.ServeHTTP(rec, req)
+		if got := rec.Header().Get("Content-Encoding"); got != "br" {
+			t.Fatalf("Content-Encoding = %q, want br", got)
+		}
+		if rec.Body.String() != string(large) {
+			t.Fatalf("body differs")
+		}
+	})
+
+	t.Run("concurrent small and large", func(t *testing.T) {
+		var wg sync.WaitGroup
+		errs := make(chan string, 40)
+		for i := 0; i < 20; i++ {
+			for _, path := range []string{"/small", "/large"} {
+				wg.Add(1)
+				go func(path string) {
+					defer wg.Done()
+					rec := httptest.NewRecorder()
+					req := httptest.NewRequest("GET", path, nil)
+					req.Header.Set("Accept-Encoding", "gzip")
+					wrapped.ServeHTTP(rec, req)
+					if path == "/small" {
+						if rec.Body.String() != string(small) {
+							errs <- "small body differs"
+						}
+						return
+					}
+					if rec.Header().Get("Content-Encoding") != "gzip" {
+						errs <- "large response not gzipped"
+						return
+					}
+					zr, err := gzip.NewReader(rec.Body)
+					if err != nil {
+						errs <- err.Error()
+						return
+					}
+					got, _ := io.ReadAll(zr)
+					zr.Close()
+					if string(got) != string(large) {
+						errs <- "large body differs"
+					}
+				}(path)
+			}
+		}
+		wg.Wait()
+		close(errs)
+		for e := range errs {
+			t.Error(e)
+		}
+	})
 }
 
 func TestCurriculumRoutes(t *testing.T) {

@@ -307,11 +307,11 @@ func TestEngine_Diagnostic(t *testing.T) {
 
 func TestEngine_GetLeaderboard(t *testing.T) {
 	e := testEngine(t)
-	alice, err := e.CreateStudent("alice")
+	alice, err := e.repo.CreateUser("alice", "alice", "hash")
 	if err != nil {
 		t.Fatalf("create alice: %v", err)
 	}
-	if _, err := e.CreateStudent("bob"); err != nil {
+	if _, err := e.repo.CreateUser("bob", "bob", "hash"); err != nil {
 		t.Fatalf("create bob: %v", err)
 	}
 	// The board ranks earned XP, so a learner with no ledger entries is not on

@@ -22,14 +22,9 @@ func testRepo(t *testing.T) *storage.SQLiteStore {
 
 func seed(t *testing.T, store *storage.SQLiteStore, name, username string, xp int) string {
 	t.Helper()
-	st, err := store.CreateStudent(name)
+	st, err := store.CreateUser(name, username, "hash")
 	if err != nil {
 		t.Fatalf("create %q: %v", name, err)
-	}
-	if username != "" {
-		if err := store.SetUsername(st.ID, username); err != nil {
-			t.Fatalf("username %q: %v", name, err)
-		}
 	}
 	if xp != 0 {
 		if err := store.AwardXP(st.ID, xp, "study", "seed:"+name); err != nil {
