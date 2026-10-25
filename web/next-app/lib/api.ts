@@ -1645,25 +1645,42 @@ export interface SubmitReportInput {
 	grading_type?: string
 	answer_hint?: string
 	answer_input_mode?: string
+	/** Optional screenshot. When present the request becomes multipart, so the
+	 * text and the image are one report rather than two retryable operations. */
+	image?: File
 }
 
 export interface SubmitReportRes {
 	id: number
 	status: ReportStatus
+	has_image?: boolean
 }
 
-interface ReportBody extends SubmitReportInput {
-	reporter_id?: string
-}
-
-export async function submitReport(input: SubmitReportInput): Promise<SubmitReportRes> {
+export async function submitReport(rawInput: SubmitReportInput): Promise<SubmitReportRes> {
 	const { getGuestId } = await import('./auth')
-	const headers = { 'Content-Type': 'application/json', ...getAuthHeaders() } satisfies Record<string, string>
-	const body: ReportBody = { ...input }
+	const { image, ...input } = rawInput
 	const guestId = getGuestId()
-	if (guestId && !('Authorization' in headers)) {
-		body.reporter_id = guestId
+	const authHeaders = getAuthHeaders()
+	const reporterID = guestId && !('Authorization' in authHeaders) ? guestId : ''
+
+	if (image) {
+		const form = new FormData()
+		for (const [key, value] of Object.entries(input)) {
+			if (value !== undefined && value !== null && value !== '') form.append(key, String(value))
+		}
+		if (reporterID) form.append('reporter_id', reporterID)
+		form.append('image', image)
+		const res = await authedFetch(`${API_BASE}/api/reports`, {
+			method: 'POST',
+			headers: authHeaders,
+			body: form,
+		})
+		if (!res.ok) throw new Error(`Report submit failed: ${res.status}`)
+		return res.json() as Promise<SubmitReportRes>
 	}
+
+	const headers = { 'Content-Type': 'application/json', ...authHeaders } satisfies Record<string, string>
+	const body = { ...input, ...(reporterID ? { reporter_id: reporterID } : {}) }
 	const res = await authedFetch(`${API_BASE}/api/reports`, {
 		method: 'POST',
 		headers,
@@ -1960,6 +1977,9 @@ const QuestionReportSchema = z.object({
 	resolved_by: z.string(),
 	resolved_at: z.string(),
 	created_at: z.string(),
+	// Older rows and non-image reports carry false/absent. The moderation page
+	// fetches the bytes separately because an <img> tag cannot send the token.
+	has_image: z.boolean().optional(),
 })
 export type QuestionReport = z.infer<typeof QuestionReportSchema>
 
@@ -1971,6 +1991,12 @@ export async function listAdminReports(status?: string): Promise<{ reports: Ques
 	if (!res.ok) await throwWithResponse(res, 'Could not load reports')
 	const data = (await res.json()) as { reports?: unknown }
 	return { reports: validateResponse(z.array(QuestionReportSchema), data.reports ?? [], 'adminReports') }
+}
+
+export async function getAdminReportImage(id: number): Promise<Blob> {
+	const res = await authedFetch(`${API_BASE}/api/admin/reports/${id}/image`, { cache: 'no-store' })
+	if (!res.ok) await throwWithResponse(res, 'Could not load the screenshot')
+	return res.blob()
 }
 
 export async function getAdminReport(id: number): Promise<{ report: QuestionReport; history: AdminAuditEvent[] }> {

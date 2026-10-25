@@ -93,6 +93,40 @@ func (s *Server) handleAdminReports(w http.ResponseWriter, r *http.Request) {
 // nobody explained is not one the next moderator can learn from.
 func (s *Server) handleAdminReport(w http.ResponseWriter, r *http.Request) {
 	idStr := strings.Trim(strings.TrimPrefix(r.URL.Path, "/api/admin/reports/"), "/")
+	// /api/admin/reports/{id}/image is the optional screenshot. It is fetched
+	// as a blob by the moderation UI because an <img> tag cannot carry the
+	// bearer token, and it stays behind the same read permission as the report.
+	if strings.HasSuffix(idStr, "/image") {
+		id, err := strconv.ParseInt(strings.TrimSuffix(idStr, "/image"), 10, 64)
+		if err != nil || id <= 0 {
+			writeError(w, "invalid report id", 400)
+			return
+		}
+		if r.Method != http.MethodGet {
+			writeError(w, "method not allowed", 405)
+			return
+		}
+		store, ok := s.repo.(storage.ReportImageStore)
+		if !ok {
+			writeError(w, "screenshots are not supported by this store", 500)
+			return
+		}
+		img, found, err := store.GetReportImage(id)
+		if err != nil {
+			writeError(w, "failed to load screenshot", 500)
+			return
+		}
+		if !found {
+			writeError(w, "this report has no screenshot", 404)
+			return
+		}
+		w.Header().Set("Content-Type", img.ContentType)
+		w.Header().Set("Cache-Control", "private, no-store")
+		w.Header().Set("Content-Disposition", "inline")
+		w.Write(img.Bytes)
+		return
+	}
+
 	// /api/admin/reports/{id}/grade is the one sub-resource, and it is handled
 	// here rather than as a second pattern so the permission boundary and the
 	// id parsing cannot drift apart.

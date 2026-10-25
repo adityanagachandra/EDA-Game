@@ -269,6 +269,15 @@ CREATE TABLE IF NOT EXISTS question_reports (
 CREATE INDEX IF NOT EXISTS idx_reports_status  ON question_reports(status, created_at);
 CREATE INDEX IF NOT EXISTS idx_reports_concept ON question_reports(concept_id);
 
+-- One optional screenshot per report, beside the moderation row. ON DELETE
+-- CASCADE is what makes account deletion remove the image too.
+CREATE TABLE IF NOT EXISTS report_images (
+    report_id    BIGINT PRIMARY KEY REFERENCES question_reports(id) ON DELETE CASCADE,
+    content_type TEXT NOT NULL,
+    bytes        BYTEA NOT NULL,
+    created_at   TEXT NOT NULL DEFAULT (now()::text)
+);
+
 -- Live diagnostic runs. See the SQLite schema for why the adaptive model is
 -- stored as an opaque snapshot rather than derived from attempts.
 CREATE TABLE IF NOT EXISTS diagnostic_sessions (
@@ -2242,7 +2251,8 @@ func (s *PostgresStore) ListReports(status string, limit, offset int) ([]Questio
 			       lesson_id, source, session_id, attempt_id,
 			       answer_given, grading_type, answer_hint, answer_input_mode,
 			       reason, detail, status,
-			       resolution, resolved_by, resolved_at, created_at, origin_report_id
+			       resolution, resolved_by, resolved_at, created_at, origin_report_id,
+			       EXISTS(SELECT 1 FROM report_images WHERE report_images.report_id = question_reports.id)
 			FROM question_reports
 			ORDER BY created_at DESC
 			LIMIT $1 OFFSET $2
@@ -2253,7 +2263,8 @@ func (s *PostgresStore) ListReports(status string, limit, offset int) ([]Questio
 			       lesson_id, source, session_id, attempt_id,
 			       answer_given, grading_type, answer_hint, answer_input_mode,
 			       reason, detail, status,
-			       resolution, resolved_by, resolved_at, created_at, origin_report_id
+			       resolution, resolved_by, resolved_at, created_at, origin_report_id,
+			       EXISTS(SELECT 1 FROM report_images WHERE report_images.report_id = question_reports.id)
 			FROM question_reports
 			WHERE status = $1
 			ORDER BY created_at DESC
@@ -2273,7 +2284,7 @@ func (s *PostgresStore) ListReports(status string, limit, offset int) ([]Questio
 			&r.Explanation, &r.LessonID, &r.Source, &r.SessionID, &r.AttemptID,
 			&r.AnswerGiven, &r.GradingType, &r.AnswerHint, &r.AnswerInputMode,
 			&r.Reason, &r.Detail, &r.Status, &r.Resolution, &r.ResolvedBy, &r.ResolvedAt, &created,
-			&r.OriginReportID,
+			&r.OriginReportID, &r.HasImage,
 		); err != nil {
 			return nil, fmt.Errorf("scan report: %w", err)
 		}

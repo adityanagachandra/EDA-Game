@@ -419,6 +419,25 @@ type QuestionReport struct {
 	// local "#94" can name a different report from the production #94 a colleague is looking
 	// at. Anything quoted outside the local database uses this field.
 	OriginReportID string `json:"origin_report_id,omitempty"`
+	// HasImage says whether a report_images row exists. The bytes are served
+	// separately behind the moderation permission, so the queue payload stays
+	// small and an image cannot be fetched from a plain report list.
+	HasImage bool `json:"has_image"`
+}
+
+// ReportImage is one optional screenshot attached to a report. Bytes live in
+// the same database as the report so an upload cannot be separated from the
+// moderation record it belongs to.
+type ReportImage struct {
+	ContentType string
+	Bytes       []byte
+}
+
+// ReportImageStore is separate from Repository because only the report
+// endpoints need it; the moderation row and its image still share one store.
+type ReportImageStore interface {
+	SetReportImage(reportID int64, contentType string, data []byte) error
+	GetReportImage(reportID int64) (ReportImage, bool, error)
 }
 
 // AdminInvitation is a pending offer of a staff role to an account.

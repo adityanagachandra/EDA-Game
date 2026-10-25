@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState, type FormEvent } from 'react'
+import { useId, useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { submitReport } from '../lib/api'
 
 const MAX = 2000
@@ -22,12 +22,37 @@ const MIN = 10
 export default function ContactBox() {
   const fieldId = useId()
   const [text, setText] = useState('')
+  const [image, setImage] = useState<File | null>(null)
+  const [imageError, setImageError] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [sent, setSent] = useState(false)
+  const fileRef = useRef<HTMLInputElement>(null)
 
   const trimmed = text.trim()
-  const canSend = trimmed.length >= MIN && !busy
+  const canSend = trimmed.length >= MIN && !busy && !imageError
+
+  function pickImage(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0] ?? null
+    setImageError('')
+    if (!file) {
+      setImage(null)
+      return
+    }
+    if (file.size > 4 * 1024 * 1024) {
+      setImage(null)
+      setImageError('Screenshot must be 4MB or smaller.')
+      event.target.value = ''
+      return
+    }
+    if (!['image/png', 'image/jpeg', 'image/webp', 'image/gif'].includes(file.type)) {
+      setImage(null)
+      setImageError('Screenshot must be PNG, JPEG, GIF, or WebP.')
+      event.target.value = ''
+      return
+    }
+    setImage(file)
+  }
 
   async function send(event: FormEvent) {
     event.preventDefault()
@@ -40,9 +65,13 @@ export default function ContactBox() {
         source: 'contact',
         reason: 'other',
         detail: trimmed,
+        image: image ?? undefined,
       })
       setSent(true)
       setText('')
+      setImage(null)
+      setImageError('')
+      if (fileRef.current) fileRef.current.value = ''
     } catch (err) {
       const message = err instanceof Error ? err.message : ''
       setError(
@@ -98,9 +127,30 @@ export default function ContactBox() {
         </span>
         <span>{trimmed.length > 0 && trimmed.length < MIN ? `at least ${MIN} characters` : ''}</span>
       </div>
-      {error && (
+      <div className="mt-3">
+        <label htmlFor={`${fieldId}-shot`} className="font-mono text-[10px] uppercase tracking-wider text-mathua-secondary">
+          Screenshot (optional)
+        </label>
+        <input
+          ref={fileRef}
+          id={`${fieldId}-shot`}
+          type="file"
+          accept="image/png,image/jpeg,image/webp,image/gif"
+          onChange={pickImage}
+          className="mt-1 block w-full font-mono text-[10px] text-mathua-muted file:mr-3 file:border file:border-mathua-border file:bg-mathua-bg file:px-2 file:py-1 file:font-mono file:text-[10px] file:text-mathua-secondary"
+        />
+        <p className="mt-1 font-mono text-[10px] text-mathua-muted">
+          PNG, JPEG, GIF or WebP, up to 4MB. It is visible only to the moderator.
+        </p>
+        {image && (
+          <p className="mt-1 font-mono text-[10px] text-mathua-secondary">
+            Attached: {image.name}
+          </p>
+        )}
+      </div>
+      {(error || imageError) && (
         <p role="alert" className="mt-2 font-mono text-[11px] text-mathua-red">
-          {error}
+          {error || imageError}
         </p>
       )}
       <button

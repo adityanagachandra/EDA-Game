@@ -11,7 +11,7 @@ import Loading from '../../../components/Loading'
 import KatexContent from '../../../components/KatexContent'
 import ReportReplay from '../../../components/ReportReplay'
 import {
-  listAdminReports, moderateReport, bulkModerateReports, getErrorMessage,
+  listAdminReports, moderateReport, bulkModerateReports, getErrorMessage, getAdminReportImage,
   type QuestionReport, type ModerationStatus,
 } from '../../../lib/api'
 import { useAdminMe } from '../../../hooks/useAdminMe'
@@ -139,6 +139,52 @@ function StatusPill({ status }: { status: string }) {
   return <span className={`border ${tone} px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider`}>{status}</span>
 }
 
+// The image route is behind the admin token, and an <img> tag cannot send an
+// Authorization header. Fetch the bytes with the normal API helper and hand the
+// browser a short-lived object URL instead of weakening the route to public.
+function ReportImage({ reportID }: { reportID: number }) {
+  const [url, setURL] = useState('')
+  const [failed, setFailed] = useState(false)
+
+  useEffect(() => {
+    let live = true
+    let objectURL = ''
+    setURL('')
+    setFailed(false)
+    getAdminReportImage(reportID)
+      .then((blob) => {
+        objectURL = URL.createObjectURL(blob)
+        if (live) setURL(objectURL)
+        else URL.revokeObjectURL(objectURL)
+      })
+      .catch(() => {
+        if (live) setFailed(true)
+      })
+    return () => {
+      live = false
+      if (objectURL) URL.revokeObjectURL(objectURL)
+    }
+  }, [reportID])
+
+  if (failed) {
+    return <p className="mt-2 font-mono text-[11px] text-mathua-red">The screenshot could not be loaded.</p>
+  }
+  if (!url) {
+    return <p className="mt-2 font-mono text-[11px] text-mathua-muted">Loading screenshot…</p>
+  }
+  return (
+    <a href={url} target="_blank" rel="noreferrer" className="mt-2 inline-block">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={url}
+        alt={`Screenshot attached to report ${reportID}`}
+        className="max-h-[32rem] max-w-full border border-mathua-border"
+      />
+      <span className="mt-1 block font-mono text-[10px] text-mathua-blue">Open full size →</span>
+    </a>
+  )
+}
+
 function ReportCard({ report, canModerate, onChanged }: { report: QuestionReport; canModerate: boolean; onChanged: () => void }) {
   const [open, setOpen] = useState(false)
   const [resolution, setResolution] = useState('')
@@ -217,6 +263,12 @@ function ReportCard({ report, canModerate, onChanged }: { report: QuestionReport
           )}
           {report.detail && (
             <p className="mt-3 border-l-2 border-mathua-border pl-3 font-mono text-[11px] text-mathua-secondary">{report.detail}</p>
+          )}
+          {report.has_image && (
+            <div className="mt-3">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Screenshot</p>
+              <ReportImage reportID={report.id} />
+            </div>
           )}
 
           <ReportReplay report={report} />
