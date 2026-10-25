@@ -243,32 +243,12 @@ func (e *Engine) ReviewsDue(studentID string) (int, error) {
 	if err != nil {
 		return 0, fmt.Errorf("load progress: %w", err)
 	}
-	now := time.Now()
-	count := 0
-	for _, p := range progress {
-		isDue := false
-		if p.NextReviewDue != nil && !p.NextReviewDue.After(now) {
-			isDue = true
-		}
-		if p.FSRSStability != nil && *p.FSRSStability > 0 {
-			var elapsed float64
-			if p.FSRSLastReview != nil && !p.FSRSLastReview.IsZero() {
-				elapsed = now.Sub(*p.FSRSLastReview).Hours() / 24.0
-			} else if p.LastReviewed != nil && !p.LastReviewed.IsZero() {
-				elapsed = now.Sub(*p.LastReviewed).Hours() / 24.0
-			}
-			if elapsed < 0 {
-				elapsed = 0
-			}
-			if fsrs.DefaultParameters().Retrievability(elapsed, *p.FSRSStability) < fsrs.DefaultRetention {
-				isDue = true
-			}
-		}
-		if isDue {
-			count++
-		}
-	}
-	return count, nil
+	// Count only what NextReview can actually serve. Counting every stored row
+	// with a stale NextReviewDue made a learning concept look like a retention
+	// review, so the profile advertised work and /review answered "All caught
+	// up". The scheduler owns the definition, and DueReviewCount reuses it.
+	snapshots := e.conceptSnapshotsFrom(studentID, progress)
+	return scheduler.New(e.dag).DueReviewCount(snapshots, time.Now().UTC()), nil
 }
 
 // RecommendNext is the learner's head plus their alternatives. It is the answer to "what
