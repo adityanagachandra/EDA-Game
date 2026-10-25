@@ -32,8 +32,9 @@ const ScoresSchema = z.object({
   avg_learning_speed: z.number().optional(),
   xp_since_quiz: z.number().optional(),
   quiz_due: z.boolean().optional(),
-  // Server policy, not a client constant. The profile bar divided by a literal 50 that did
-  // not reference xp.QuizGateXP, so ADR-020 could move the gate and leave the bar lying.
+  quiz_active: z.boolean().optional(),
+  // Server policy, not a client constant. This is the scheduling gate, not a
+  // learner-facing number: the interface says when a check is ready.
   quiz_gate_xp: z.number().optional(),
 })
 
@@ -224,9 +225,10 @@ export interface Scores {
   spaced_reps?: Record<string, number>
   avg_learning_speed?: number
   paused_until?: string
-  // Quiz 50 XP gate signal (backend); absent on old mocks.
+  // Quiz gate signal (backend); absent on old mocks.
   xp_since_quiz?: number
   quiz_due?: boolean
+  quiz_active?: boolean
   quiz_gate_xp?: number
 }
 
@@ -1472,7 +1474,8 @@ export async function submitReviewAnswer(
 	return res.json()
 }
 
-// Quiz (actionable every 50 XP, 80% difficulty, guest unlimited retake, own grading path)
+// Quiz (actionable on the mastery-check schedule, 80% difficulty target, own
+// grading path, anonymous demo ungated)
 export interface QuizStartRes {
 	session_id: string
 	student_id?: string
@@ -1483,7 +1486,7 @@ export interface QuizStartRes {
   grading_type?: string
   answer_hint?: string
   answer_input_mode?: 'numeric' | 'text'
-  // Timed closed-book contract (Batch 1 backend).
+  // Closed-book response metadata; the time limit classifies slow answers, not a hard deadline.
   closed_book?: boolean
   time_limit_seconds?: number
   questions_total?: number
@@ -1512,7 +1515,7 @@ export interface QuizAnswerRes {
   grading_type?: string
   answer_hint?: string
   answer_input_mode?: 'numeric' | 'text'
-	// Batch 1: immediate remedial concepts + retake flag.
+	// Immediate remedial concepts and whether the server will allow a retake.
 	remedial?: string[]
 	retake_available?: boolean
 	closed_book?: boolean

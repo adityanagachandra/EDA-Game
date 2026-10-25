@@ -7,16 +7,16 @@ import (
 	"testing"
 )
 
-// The landing page advertised a 150 XP mastery check for as long as the gate was 50. Nothing
-// broke: the page is static, the number is a string literal, and ADR-020's rescale touched Go
-// and the daily-goal backfill but not the marketing copy. It is the one number on that page
-// that build-graph.mjs cannot derive from the corpus, so it is the one that can drift, and it
-// did.
+// The landing page used to advertise a 150 XP mastery check while the gate was 50. Nothing
+// broke: the page was static, the number was a string literal, and ADR-020's rescale touched
+// Go and the daily-goal backfill but not the marketing copy. It is the one number in the
+// generated graph artifact that build-graph.mjs cannot derive from the corpus, so it is the
+// one that can drift, and it did.
 //
-// The check is on the generated artifact rather than on the page, because the page reads it:
-// app/home/data.ts exports graphMeta.quizGateXP and app/home/sections.tsx renders that. Editing
-// the JSON by hand fails here; changing the engine constant without rebuilding the artifact
-// fails here too.
+// No learner surface prints the gate now; the interface says when a check is ready. The
+// artifact keeps carrying it as a policy mirror so the browser build and the Go constant
+// cannot disagree silently. Editing the JSON by hand fails here; changing the engine constant
+// without rebuilding the artifact fails here too.
 func TestLandingQuizGateMatchesEngine(t *testing.T) {
 	path := filepath.Join("..", "..", "web", "next-app", "data", "graph.meta.json")
 	raw, err := os.ReadFile(path)
@@ -30,10 +30,10 @@ func TestLandingQuizGateMatchesEngine(t *testing.T) {
 		t.Fatalf("parse %s: %v", path, err)
 	}
 	if meta.QuizGateXP == nil {
-		t.Fatalf("%s has no quizGateXP; the landing page falls back to a hand-written number", path)
+		t.Fatalf("%s has no quizGateXP; the generated artifact lost its policy mirror", path)
 	}
 	if *meta.QuizGateXP != QuizGateXP {
-		t.Errorf("landing page advertises a %d XP mastery check, the engine gates it at %d XP\n"+
+		t.Errorf("graph artifact carries a %d XP mastery-check gate, the engine gates it at %d XP\n"+
 			"fix: set QUIZ_GATE_XP in web/next-app/lib/graphPayload.ts to %d and run `npm run graph:build`",
 			*meta.QuizGateXP, QuizGateXP, QuizGateXP)
 	}

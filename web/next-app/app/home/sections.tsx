@@ -6,7 +6,6 @@ import { LOGIN_HERO } from '../../lib/loginHero'
 import {
   PIPELINE_STATES,
   conceptCount,
-  quizGateXP,
   domainCounts,
   domainLabels,
   domainOrder,
@@ -164,8 +163,8 @@ export function TrustSection() {
             <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">generated problems</div>
           </div>
           <div className="p-5">
-            <div className="font-serif text-3xl tracking-tight text-mathua-primary">{quizGateXP}</div>
-            <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">XP mastery check</div>
+            <div className="font-serif text-3xl tracking-tight text-mathua-primary">5</div>
+            <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">questions per check</div>
           </div>
         </div>
       </div>
@@ -341,8 +340,8 @@ const FAQS = [
     a: 'Fluency requires retrieval under time pressure. Knowing the answer is not enough; you must know it fast, or the foundation will not hold the next concept.',
   },
   {
-    q: 'What happens every 50 XP?',
-    a: 'A mastery-check quiz verifies retention across your recent concepts before new material continues.',
+    q: 'When does a mastery check appear?',
+    a: 'After enough learning XP. The short check verifies what you have learned; concepts you have already mastered return through spaced review instead.',
   },
   {
     q: 'Is Mathua free and open-source?',

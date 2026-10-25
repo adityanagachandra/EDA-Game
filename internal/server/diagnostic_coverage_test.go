@@ -185,7 +185,7 @@ func TestGoalDiagnosticSkip(t *testing.T) {
 }
 
 // Quiz skip advances with no grade/XP; an all-skipped quiz still completes
-// (retake offered) but must not reset the 150 XP gate baseline.
+// (retake offered) but must not reset the XP gate baseline.
 func TestQuizSkip(t *testing.T) {
 	_, mux := twoConceptServer(t)
 

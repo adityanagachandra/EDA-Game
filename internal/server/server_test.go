@@ -24,6 +24,7 @@ import (
 	"github.com/chuma-beep/mathua/internal/engine"
 	"github.com/chuma-beep/mathua/internal/generator"
 	"github.com/chuma-beep/mathua/internal/lessons"
+	"github.com/chuma-beep/mathua/internal/mastery"
 	"github.com/chuma-beep/mathua/internal/planning"
 	"github.com/chuma-beep/mathua/internal/storage"
 )
@@ -1417,8 +1418,44 @@ func quizGuest(t *testing.T, mux *http.ServeMux) (token, studentID string) {
 	return res["token"].(string), res["student_id"].(string)
 }
 
-// Batch 1: quiz session carries timed closed-book contract; completing it
-// records the gate baseline and offers retake.
+// seedQuizLearned gives a concept the learning record quiz selection requires:
+// a non-UNSEEN status and at least one graded attempt. MASTERED rows also carry
+// a review time so a dependent concept sees a fresh prerequisite.
+func seedQuizLearned(t *testing.T, store storage.Repository, studentID, conceptID, status string, weakness float64) {
+	t.Helper()
+	now := time.Now().UTC()
+	p := &storage.ConceptProgress{
+		StudentID:     studentID,
+		ConceptID:     conceptID,
+		Status:        status,
+		Attempts:      1,
+		LastAttempted: &now,
+		WeaknessScore: weakness,
+	}
+	if status == string(mastery.StatusMastered) {
+		p.LastReviewed = &now
+	}
+	if err := store.UpsertProgress(p); err != nil {
+		t.Fatalf("seed quiz progress for %s: %v", conceptID, err)
+	}
+}
+
+// quizDueGuest is a guest with exactly the XP gate earned and one learned
+// concept, so the routine mastery check is both admissible and selectable.
+// Tests that are about the quiz itself rather than the gate start here; the
+// scheduling tests drive the threshold directly.
+func quizDueGuest(t *testing.T, store storage.Repository, mux *http.ServeMux) (token, studentID string) {
+	t.Helper()
+	token, studentID = quizGuest(t, mux)
+	if err := store.AwardXP(studentID, engine.QuizGateXP, "test", "seed-quiz-gate"); err != nil {
+		t.Fatalf("seed quiz gate: %v", err)
+	}
+	seedQuizLearned(t, store, studentID, "a", string(mastery.StatusPracticing), 0.5)
+	return token, studentID
+}
+
+// Batch 1: quiz session carries the timed closed-book contract; completing it
+// records the gate baseline, and a retake then needs the gate earned again.
 
 // A quiz measures knowledge. It does not teach, so no verdict carries the
 // served solution, the boundary is semantic and does not depend on `done:true`.
@@ -1433,8 +1470,8 @@ func quizGuest(t *testing.T, mux *http.ServeMux) (token, studentID string) {
 // TestQuizBoundary_FinalVerdictCarriesNoSolution now covers both verdicts of
 // both the mid-flight and final responses.
 func TestQuizAnswer_ExplanationOnBothVerdicts(t *testing.T) {
-	_, mux, _ := guestServer(t)
-	token, _ := quizGuest(t, mux)
+	_, mux, store := guestServer(t)
+	token, sid := quizDueGuest(t, store, mux)
 
 	// Wrong answer. guestServer has one concept, so this also ends the quiz.
 	sess := quizPost(t, mux, "/api/quiz/session", `{}`, token)
@@ -1449,6 +1486,11 @@ func TestQuizAnswer_ExplanationOnBothVerdicts(t *testing.T) {
 		t.Errorf("a wrong quiz answer must not carry a diagnosis, got diagnosis=%v", diag)
 	}
 
+	// Completing the first run baselined the XP snapshot, so earn the gate
+	// again before starting the second.
+	if err := store.AwardXP(sid, engine.QuizGateXP, "test", "seed-second-quiz"); err != nil {
+		t.Fatalf("seed second quiz: %v", err)
+	}
 	// Correct answer, fresh session.
 	sess2 := quizPost(t, mux, "/api/quiz/session", `{}`, token)
 	hit := quizPost(t, mux, "/api/quiz/answer", `{"session_id":"`+sess2["session_id"].(string)+`","concept_id":"a","answer":"4","elapsed":5}`, token)
@@ -1461,8 +1503,8 @@ func TestQuizAnswer_ExplanationOnBothVerdicts(t *testing.T) {
 }
 
 func TestQuizSession_ClosedBookContractAndCompletion(t *testing.T) {
-	_, mux, _ := guestServer(t)
-	token, _ := quizGuest(t, mux)
+	_, mux, store := guestServer(t)
+	token, _ := quizDueGuest(t, store, mux)
 
 	sess := quizPost(t, mux, "/api/quiz/session", `{}`, token)
 	if sess["done"] == true {
@@ -1482,8 +1524,11 @@ func TestQuizSession_ClosedBookContractAndCompletion(t *testing.T) {
 	if ans["done"] != true || ans["correct"] != true {
 		t.Fatalf("expected done+correct, got %v", ans)
 	}
-	if ans["retake_available"] != true {
-		t.Errorf("expected retake_available, got %v", ans)
+	// Completion moved the XP snapshot, so the same gate that would admit a
+	// new run is closed. The result screen must not offer a retake the next
+	// POST /api/quiz/session would refuse with 409.
+	if ans["retake_available"] != false {
+		t.Errorf("expected retake_available false after completion, got %v", ans)
 	}
 	if ans["xp"] == float64(0) {
 		t.Errorf("expected TaskQuiz XP, got %v", ans["xp"])
@@ -1506,10 +1551,26 @@ func TestQuizSession_ClosedBookContractAndCompletion(t *testing.T) {
 		t.Errorf("expected quiz_due false after completion, got %v", scores)
 	}
 
-	// Retake: a fresh session starts immediately after completion.
-	sess2 := quizPost(t, mux, "/api/quiz/session", `{}`, token)
-	if sess2["done"] == true || sess2["session_id"] == sess["session_id"] {
-		t.Errorf("expected fresh retake session, got %v", sess2)
+	// The gate is due exactly when XP since the last completed quiz is
+	// reached. Completion consumed the 50 XP that admitted this run, so an
+	// immediate retake is refused until more learning XP is earned.
+	rec = httptest.NewRecorder()
+	req = httptest.NewRequest("POST", "/api/quiz/session", bytes.NewReader([]byte(`{}`)))
+	req.Header.Set("Authorization", "Bearer "+token)
+	mux.ServeHTTP(rec, req)
+	if rec.Code != http.StatusConflict {
+		t.Fatalf("expected 409 for an immediate retake, got %d: %s", rec.Code, rec.Body.String())
+	}
+	if !strings.Contains(rec.Body.String(), quizNotDueMessage) {
+		t.Errorf("expected %q, got %s", quizNotDueMessage, rec.Body.String())
+	}
+	rec = httptest.NewRecorder()
+	req = httptest.NewRequest("GET", "/api/scores/x", nil)
+	req.Header.Set("Authorization", "Bearer "+token)
+	mux.ServeHTTP(rec, req)
+	_ = json.Unmarshal(rec.Body.Bytes(), &scores)
+	if scores["xp_since_quiz"] != float64(0) {
+		t.Errorf("rejected retake changed the XP snapshot: %v", scores)
 	}
 }
 
@@ -1517,7 +1578,7 @@ func TestQuizSession_ClosedBookContractAndCompletion(t *testing.T) {
 
 func TestQuizMiss_RemedialAndGateDue(t *testing.T) {
 	s, mux, store := guestServer(t)
-	token, sid := quizGuest(t, mux)
+	token, sid := quizDueGuest(t, store, mux)
 
 	sess := quizPost(t, mux, "/api/quiz/session", `{}`, token)
 	ans := quizPost(t, mux, "/api/quiz/answer", `{"session_id":"`+sess["session_id"].(string)+`","concept_id":"a","answer":"999","elapsed":5}`, token)

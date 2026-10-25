@@ -229,7 +229,7 @@ type Engine struct {
 	// H1b: server-side anchors for the study seam, the answer each served
 	// question must be graded against plus the explanation owed for it.
 	studyAnchor map[string]string
-	// Batch 1: immediate remedial queue from quiz misses (studentID → conceptIDs).
+	// Immediate remedial queue from quiz misses (studentID → conceptIDs).
 	// In-memory by design, same as diag/quiz sessions: a restart just means
 	// a retake; weakness propagation (+0.2/miss) is the durable signal.
 	quizRemedial map[string][]string
@@ -564,10 +564,24 @@ func (e *Engine) ActivePath(studentID string) map[string]bool {
 	return cp
 }
 
-// computeDifficulty returns a difficulty score (0.3–1.0) based on the student's
-// performance for the given concept. Weak/struggling students get easier questions.
+// computeDifficulty returns the quiz difficulty for the given concept. The
+// running weakness estimate moves on every graded answer, so it is used only
+// after the same evidence window the mastery model reads. Before that window is
+// full, the neutral difficulty is the honest default: one answer, or a partial
+// window, is not enough evidence to make the next question easier or harder.
+// Once evidence exists, weakness still moves the difficulty between the
+// generator's supported levels, with a weaker learner receiving an easier
+// question.
 func (e *Engine) computeDifficulty(studentID, conceptID string) float64 {
-	return difficultyFromWeakness(e.WeaknessMap(studentID), conceptID)
+	progress, err := e.repo.GetAllProgress(studentID)
+	if err != nil {
+		return mastery.NeutralDifficulty
+	}
+	p := progress[conceptID]
+	if p == nil || p.Attempts < mastery.EvidenceWindow {
+		return mastery.NeutralDifficulty
+	}
+	return difficultyFromWeakness(e.weaknessMapFromProgress(progress), conceptID)
 }
 
 // difficultyFromWeakness is the scan-free core of computeDifficulty: callers
@@ -1947,13 +1961,15 @@ func (e *Engine) QuizXP(correct bool, elapsed, timeThreshold float64, streak int
 	return computeXPForTask(correct, elapsed, timeThreshold, streak, TaskQuiz)
 }
 
-// DifficultyFor exposes weakness→difficulty (0.3-1.0) for quiz 80% targeting.
+// DifficultyFor exposes the evidence-gated weakness→difficulty mapping for
+// quiz 80% targeting. A concept without a full evidence window gets
+// mastery.NeutralDifficulty rather than a value inferred from one answer.
 func (e *Engine) DifficultyFor(studentID, conceptID string) float64 {
 	return e.computeDifficulty(studentID, conceptID)
 }
 
-// TimeLimitFor exposes the accommodated per-question time limit for quiz
-// timed closed-book metadata.
+// TimeLimitFor exposes the accommodated per-question threshold used to classify
+// a slow answer. It is not a hard deadline.
 func (e *Engine) TimeLimitFor(studentID, conceptID string) float64 {
 	base := 10.0
 	if c := e.dag.Concept(conceptID); c != nil {
@@ -2003,7 +2019,7 @@ func (e *Engine) RecordQuizCompletion(studentID string) error {
 }
 
 // enqueueQuizRemedialLocked queues a missed quiz concept plus its key
-// prerequisites for immediate Study review. Caller holds e.mu.
+// prerequisites for immediate Learn remediation. Caller holds e.mu.
 func (e *Engine) enqueueQuizRemedialLocked(studentID, conceptID string) {
 	queue := e.quizRemedial[studentID]
 	seen := make(map[string]bool, len(queue)+4)
@@ -2684,20 +2700,118 @@ func (e *Engine) weaknessMapFromProgress(progress map[string]*storage.ConceptPro
 	return result
 }
 
-// PickQuizConcepts selects up to 5 concepts for an adaptive quiz.
-// It prioritizes concepts the student has struggled with (WeaknessScore > 0.3),
-// decaying or unreviewed mastered concepts, and in-progress concepts across diverse subdomains.
-// It falls back to initial DAG concepts only for brand new students with zero history.
-func (e *Engine) PickQuizConcepts(studentID string) []*concepts.Concept {
+// PickQuizConcepts selects the learner's concepts for a routine mastery check.
+//
+// The candidate pool is deliberately narrower than the curriculum: a concept
+// has to have been learned (a LEARNING or PRACTICING progress row with at least
+// one graded attempt) and its prerequisites have to be satisfied by the same
+// scheduler rule every other entry point uses. A placement-seeded row with no
+// work behind it is reachability, not learning, so it is not a candidate.
+// MASTERED concepts are excluded even when decayed: mastery is the acquisition
+// verdict, while retrieval of mastered material belongs to the review surface
+// (ADR-038, ADR-039). A temporary weakness on a concept still being acquired is
+// something to measure, not a reason to hide it.
+//
+// Selection orders candidates by weakness, covers distinct subdomains first
+// and avoids the latest quiz-sized window of quiz attempts when there are
+// enough other candidates. A nil result means no candidate qualified. The
+// anonymous path keeps the curriculum fallback because it has no learner
+// state and writes no mastery or XP.
+func (e *Engine) PickQuizConcepts(studentID string) ([]*concepts.Concept, error) {
 	if studentID == "" {
-		return quiz.PickQuizConcepts(e.dag, nil)
+		return quiz.PickQuizConcepts(e.dag, nil), nil
 	}
 	progress, err := e.repo.GetAllProgress(studentID)
-	if err != nil || len(progress) == 0 {
-		return quiz.PickQuizConcepts(e.dag, nil)
+	if err != nil {
+		return nil, fmt.Errorf("load quiz candidates: %w", err)
 	}
-	weak := e.weaknessMapFromProgress(progress)
-	return quiz.PickQuizConcepts(e.dag, weak)
+	weak := e.quizCandidateWeakness(studentID, progress)
+	if len(weak) == 0 {
+		return nil, nil
+	}
+	// Recency can only change the answer when there are more candidates than
+	// places, so a short pool does not pay for the attempt-history read.
+	var recent map[string]bool
+	if len(weak) > quiz.QuizSize {
+		recent = e.recentQuizConcepts(studentID)
+	}
+	return quiz.PickQuizConceptsFromCandidates(e.dag, weak, recent), nil
+}
+
+// quizCandidateWeakness is the candidate rule for an identified learner. The
+// returned map's keys are the eligible concepts and its values are the
+// existing weakness score.
+//
+// MASTERED and DECAYING are excluded because a routine mastery check verifies
+// acquisition, not retention. Their prerequisites still count through the
+// scheduler snapshot, so a mastered concept can unlock a dependent candidate
+// without itself being assessed again. A non-mastered row with no graded
+// attempt is not evidence of learning, and placement-only reachability is not
+// evidence either.
+func (e *Engine) quizCandidateWeakness(studentID string, progress map[string]*storage.ConceptProgress) map[string]float64 {
+	if len(progress) == 0 {
+		return nil
+	}
+	snapshots := e.conceptSnapshotsFrom(studentID, progress)
+	now := time.Now()
+	out := make(map[string]float64, len(progress))
+	for _, c := range e.dag.Order() {
+		p := progress[c.ID]
+		if p == nil || p.Status == string(mastery.StatusUnseen) {
+			continue
+		}
+		if p.Status == string(mastery.StatusMastered) || p.Status == "DECAYING" {
+			continue
+		}
+		// Placement grants reachability, not evidence. A row with work behind
+		// it has stopped being placement-only.
+		if p.PlacementSeeded && p.Attempts == 0 {
+			continue
+		}
+		if p.Attempts == 0 {
+			continue
+		}
+		if !scheduler.EligibilityOf(snapshots, now, c).Eligible {
+			continue
+		}
+		out[c.ID] = p.WeaknessScore
+	}
+	return out
+}
+
+// recentQuizConcepts returns the concepts from the latest quiz-sized window of
+// routine quiz attempts. It is a preference signal, so a history read failure
+// leaves selection to weakness and diversity rather than failing the request.
+//
+// The durable record is per attempt with Source == "quiz"; the in-memory quiz
+// session is gone after completion, and deliberately so. A skipped concept has
+// no attempt, which is honest: it was not assessed, so it has no exposure to
+// avoid.
+func (e *Engine) recentQuizConcepts(studentID string) map[string]bool {
+	attempts, err := e.repo.GetAttemptsForStudent(studentID)
+	if err != nil {
+		return nil
+	}
+	quizAttempts := make([]storage.AttemptEntry, 0, quiz.QuizSize*2)
+	for _, a := range attempts {
+		if a.Source == TaskQuiz && e.dag.Concept(a.ConceptID) != nil {
+			quizAttempts = append(quizAttempts, a)
+		}
+	}
+	sort.Slice(quizAttempts, func(i, j int) bool {
+		if !quizAttempts[i].Timestamp.Equal(quizAttempts[j].Timestamp) {
+			return quizAttempts[i].Timestamp.After(quizAttempts[j].Timestamp)
+		}
+		return quizAttempts[i].ID > quizAttempts[j].ID
+	})
+	recent := make(map[string]bool, quiz.QuizSize)
+	for _, a := range quizAttempts {
+		if len(recent) >= quiz.QuizSize {
+			break
+		}
+		recent[a.ConceptID] = true
+	}
+	return recent
 }
 
 // CorpusSize reports how many concepts and domains this engine was loaded with.

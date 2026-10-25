@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { upcomingLocked, hrefConceptId, recentlyUnlocked, RECENT_UNLOCK_DAYS, isNewUser, type CatalogEntry } from '../lib/nextUp'
+import { upcomingLocked, hrefConceptId, frontierConceptTitle, recentlyUnlocked, RECENT_UNLOCK_DAYS, isNewUser, type CatalogEntry, type Shelf } from '../lib/nextUp'
 import type { ConceptProgress, DailyActivity } from '../lib/api'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -88,6 +88,52 @@ describe('hrefConceptId', () => {
     expect(hrefConceptId('/learn?concept=a.b')).toBe('a.b')
     expect(hrefConceptId('/review')).toBeNull()
     expect(hrefConceptId('/study')).toBeNull()
+  })
+})
+
+describe('frontierConceptTitle', () => {
+  const item = (over: Partial<Shelf['next']>): Shelf['next'] => ({
+    kind: 'new',
+    badge: 'New',
+    title: 'Linear equations',
+    detail: 'Ready to learn',
+    href: '/learn?concept=alg.linear',
+    cta: 'Start →',
+    xp: 2,
+    ...over,
+  })
+
+  it('names the concept at the head of the shelf', () => {
+    const shelf: Shelf = { next: item({}), alternatives: [] }
+    expect(frontierConceptTitle(shelf)).toBe('Linear equations')
+  })
+
+  it('skips a due action and names the first concept alternative', () => {
+    // A mastery check heads the shelf when it is due, but "where am I" is still a
+    // concept: the action is what to do next, not the frontier itself.
+    const shelf: Shelf = {
+      next: item({
+        kind: 'diagnostic',
+        badge: 'Mastery check',
+        title: 'Mastery check',
+        href: '/goals?quiz=1',
+        cta: 'Take the check →',
+      }),
+      alternatives: [
+        item({ kind: 'review', badge: 'Review', title: 'Review check', href: '/review' }),
+        item({ title: 'Quadratic equations', href: '/learn?concept=alg.quadratic' }),
+      ],
+    }
+    expect(frontierConceptTitle(shelf)).toBe('Quadratic equations')
+  })
+
+  it('returns null when every task is an action rather than a concept', () => {
+    const shelf: Shelf = {
+      next: item({ kind: 'diagnostic', title: 'Mastery check', href: '/goals?quiz=1' }),
+      alternatives: [item({ kind: 'review', title: 'Review check', href: '/review' })],
+    }
+    expect(frontierConceptTitle(shelf)).toBeNull()
+    expect(frontierConceptTitle(null)).toBeNull()
   })
 })
 

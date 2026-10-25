@@ -12,6 +12,7 @@ import (
 	"github.com/chuma-beep/mathua/internal/concepts"
 	"github.com/chuma-beep/mathua/internal/engine"
 	"github.com/chuma-beep/mathua/internal/generator"
+	"github.com/chuma-beep/mathua/internal/mastery"
 	"github.com/chuma-beep/mathua/internal/planning"
 	"github.com/chuma-beep/mathua/internal/storage"
 )
@@ -53,7 +54,7 @@ func assessmentServer(t *testing.T) (*http.ServeMux, string) {
 	d, _ := concepts.Build([]concepts.Concept{
 		{ID: "a", Label: "A", Domain: "d", GradingType: "numeric", Prerequisites: []string{},
 			MasteryThreshold: concepts.MasteryThreshold{Streak: 3, AvgTimeSeconds: 60}},
-		{ID: "b", Label: "B", Domain: "d", GradingType: "numeric", Prerequisites: []string{"a"},
+		{ID: "b", Label: "B", Domain: "d", GradingType: "numeric", Prerequisites: []string{},
 			MasteryThreshold: concepts.MasteryThreshold{Streak: 3, AvgTimeSeconds: 60}},
 	})
 	store, _ := storage.NewSQLiteStore(":memory:")
@@ -72,9 +73,22 @@ func assessmentServer(t *testing.T) (*http.ServeMux, string) {
 	var res map[string]interface{}
 	_ = json.Unmarshal(rec.Body.Bytes(), &res)
 	token, _ := res["token"].(string)
-	if token == "" {
+	sid, _ := res["student_id"].(string)
+	if token == "" || sid == "" {
 		t.Fatal("expected a guest token")
 	}
+	// These tests are about the assessment boundary, not scheduling, so the
+	// learner is given the XP gate up front. Diagnostic paths ignore XP and are
+	// deliberately left unseeded by their own tests.
+	if err := store.AwardXP(sid, engine.QuizGateXP, "test", "assessment-quiz-gate"); err != nil {
+		t.Fatalf("seed quiz gate: %v", err)
+	}
+	// The quiz covers a then b. They are independent learned concepts so the
+	// two-question run stays selectable without assessing a MASTERED concept;
+	// mastery is retention-review material, not a routine mastery-check
+	// candidate.
+	seedQuizLearned(t, store, sid, "a", string(mastery.StatusPracticing), 0)
+	seedQuizLearned(t, store, sid, "b", string(mastery.StatusPracticing), 0)
 	return mux, token
 }
 

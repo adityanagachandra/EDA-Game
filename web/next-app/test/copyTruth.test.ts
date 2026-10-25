@@ -32,7 +32,9 @@ describe('learner-facing copy tells the truth', () => {
   // copy means the economy was rescaled and the copy was not.
   const stale = [
     { re: /\b20 XP\b/, what: 'a flat per-answer XP award the economy does not use' },
+    { re: /\b50 XP\b/, what: 'the raw quiz gate; the interface says when a check is ready, not how it is scheduled' },
     { re: /\b150 XP\b/, what: 'the pre-rescale quiz gate; QuizGateXP is 50' },
+    { re: /retake anytime/i, what: 'an unlimited retake the XP gate does not offer' },
     { re: /\b641\b/, what: 'a superseded concept count; the graph holds 1250' },
     { re: /2 in a row to advance before you practice/, what: 'an advance gate the Learn loop does not have' },
     { re: /worked example first, then answer/, what: 'an answer step the Learn loop does not have' },
@@ -52,8 +54,8 @@ describe('learner-facing copy tells the truth', () => {
   }
 
   it('does not promise an instant review on a quiz miss', () => {
-    // A miss shows the worked solution inline; anything worth revisiting is a
-    // link list at the end. Nothing opens on the spot.
+    // The assessment boundary keeps the verdict short: a miss points at the
+    // concept, and the worked explanation opens in Learn after the check.
     const files2 = [join(APP, 'components', 'BriefingCard.tsx')]
     const text = files2.map(f => readFileSync(f, 'utf-8')).join('\n')
     expect(text).not.toMatch(/review it on the spot/)

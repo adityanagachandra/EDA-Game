@@ -44,12 +44,14 @@ function GoalsContent() {
   return (
     <>
       <Header />
-      <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0">
-        <section className="pt-8 min-w-0 overflow-hidden">
-          <QuizHost />
-        </section>
+      <div className="flex min-h-[calc(100svh-69px)] flex-col">
+        <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0 flex-1 min-h-[calc(100svh-69px)] lg:min-h-0">
+          <section className="pt-8 min-w-0 overflow-hidden">
+            <QuizHost />
+          </section>
+        </div>
+        <Footer />
       </div>
-      <Footer />
       <BottomTabs />
     </>
   )
