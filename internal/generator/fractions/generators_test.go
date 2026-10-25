@@ -47,6 +47,29 @@ func TestFracBenchmarkHasMoreThanThreePairs(t *testing.T) {
 	}
 }
 
+func TestOfUnitNamesTheMeasuringUnit(t *testing.T) {
+	g := &ofUnitGen{}
+	for i := 0; i < 200; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if strings.Contains(p.Question, "of its parts") {
+			t.Fatalf("question still uses the vague 'parts' wording: %q", p.Question)
+		}
+		named := false
+		for _, unit := range []string{"minute", "cent", "hour", "centimetre"} {
+			if strings.Contains(p.Question, unit) {
+				named = true
+				break
+			}
+		}
+		if !named {
+			t.Fatalf("question does not name a measurable unit: %q", p.Question)
+		}
+		if !strings.Contains(p.Answer, "/") {
+			t.Fatalf("answer is not a fraction: %q", p.Answer)
+		}
+	}
+}
+
 func TestFracMixedOpNamesTheNotation(t *testing.T) {
 	g := &fracMixedOpGen{}
 	for i := 0; i < 100; i++ {

@@ -3815,7 +3815,7 @@
   },
   {
     "domain": "calculus",
-    "grading_type": "symbolic",
+    "grading_type": "multiple_choice",
     "id": "calc.limit.little_o",
     "label": "Little-o notation",
     "mastery_threshold": {

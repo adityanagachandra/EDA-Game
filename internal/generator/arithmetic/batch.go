@@ -124,7 +124,7 @@ func (g *expandedFormGen) Generate(ctx generator.GeneratorContext) generator.Pro
 	answer := strings.Join(texts, ",")
 	return generator.Problem{
 		Question: fmt.Sprintf("Write %d as a sum of its nonzero place values, largest first. "+
-			"Enter the values separated by commas, without thousands separators.", n),
+			"Skip zero digits. Enter the values separated by commas, without thousands separators.", n),
 		Answer:      answer,
 		Explanation: fmt.Sprintf("The nonzero place values are %s, and their sum is %d.", strings.Join(texts, " + "), n),
 		Facts:       map[string]string{"n": strconv.Itoa(n), "parts": answer, "expanded": strings.Join(texts, " + ")},

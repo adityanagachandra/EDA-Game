@@ -2051,7 +2051,7 @@ type littleOGen struct{}
 
 func (g *littleOGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	claims := []conceptClaim{
-		{question: "What does f(x)=o(g(x)) as x→∞ mean? (yes/no: f(x)/g(x) tends to 0)", correct: "yes", reason: "f=o(g) means that f(x)/g(x) → 0 as x → ∞ (f grows strictly slower than g).", distractors: []string{"no"}},
+		{question: "Is it true that f(x)=o(g(x)) as x→∞ means f(x)/g(x) tends to 0?", correct: "yes", reason: "f=o(g) means that f(x)/g(x) → 0 as x → ∞ (f grows strictly slower than g).", distractors: []string{"no"}},
 		{question: "Is x²=o(x³) as x→∞?", correct: "yes", reason: "x²/x³ = 1/x → 0, so x²=o(x³).", distractors: []string{"no"}},
 		{question: "Is x³=o(x³) as x→∞?", correct: "no", reason: "x³/x³ = 1 → 1, not 0, so x³≠o(x³). However, x³=O(x³).", distractors: []string{"yes"}},
 		{question: "What is the difference between O and o? (yes/no: o needs ratio → 0, O allows any bounded ratio)", correct: "yes", reason: "f=O(g) means |f|≤M·|g| for large x. f=o(g) means f/g → 0, which is a stricter requirement: o requires ratio → 0; O allows any bounded ratio.", distractors: []string{"no"}},
