@@ -342,6 +342,13 @@ func (g *quantifiersGen) Generate(ctx generator.GeneratorContext) generator.Prob
 
 type setOpsGen struct{}
 
+func (g *setOpsGen) AnswerFormat() generator.AnswerFormat {
+	return generator.AnswerFormat{
+		Hint:      "Answer as a set, e.g. {1,2}; write ∅ or {} for the empty set",
+		InputMode: "text",
+	}
+}
+
 func (g *setOpsGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	allElements := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
