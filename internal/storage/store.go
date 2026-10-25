@@ -221,6 +221,7 @@ type StudyEffectStore interface {
 	ClaimStudyEffects(studentID string, now time.Time, limit int) ([]StudyAnswerEffect, error)
 	CompleteStudyEffect(id int64) error
 	FailStudyEffect(id int64, reason string, retryAt time.Time) error
+	PruneStudyEffects(olderThan time.Time, limit int) (int64, error)
 }
 
 // parseAttemptTimestamp parses attempt timestamps from either store.

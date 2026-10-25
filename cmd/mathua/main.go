@@ -364,6 +364,22 @@ func main() {
 			}
 		}
 	}()
+	go func() {
+		prune := func() {
+			n, err := eng.PruneStudyEffects(time.Now().Add(-7*24*time.Hour), 1000)
+			if err != nil {
+				log.Printf("outbox: prune: %v", err)
+			} else if n > 0 {
+				log.Printf("outbox: pruned %d completed effects", n)
+			}
+		}
+		prune()
+		ticker := time.NewTicker(time.Hour)
+		defer ticker.Stop()
+		for range ticker.C {
+			prune()
+		}
+	}()
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit

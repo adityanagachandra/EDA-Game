@@ -97,6 +97,16 @@ func (e *Engine) ProcessStudyEffects(studentID string, limit int) error {
 	return nil
 }
 
+// PruneStudyEffects removes completed outbox rows older than the cutoff.
+// Pending and failed rows stay, so retry state remains inspectable.
+func (e *Engine) PruneStudyEffects(olderThan time.Time, limit int) (int64, error) {
+	store, ok := e.repo.(storage.StudyEffectStore)
+	if !ok {
+		return 0, nil
+	}
+	return store.PruneStudyEffects(olderThan, limit)
+}
+
 func studyEffectBackoff(attempts int) time.Duration {
 	if attempts < 1 {
 		attempts = 1

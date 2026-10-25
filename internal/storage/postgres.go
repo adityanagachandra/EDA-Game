@@ -1749,6 +1749,10 @@ func (s *PostgresStore) FailStudyEffect(id int64, reason string, retryAt time.Ti
 	return failStudyEffect(s.db, rebindDollars, id, reason, retryAt)
 }
 
+func (s *PostgresStore) PruneStudyEffects(olderThan time.Time, limit int) (int64, error) {
+	return pruneStudyEffects(s.db, rebindDollars, olderThan, limit)
+}
+
 // GetRecentAttemptsForConcept implements the bounded per-concept window the evidence
 // model reads on each graded answer. Newest last, matching BuildEvidence's expectation.
 //

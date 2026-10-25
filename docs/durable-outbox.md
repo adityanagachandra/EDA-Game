@@ -1,9 +1,8 @@
 # Durable outbox for study-answer post-commit effects
 
-Status: implemented in the working tree, not committed. Correctness checks pass
-and the c80 performance gate is within 5.4% of the pre-outbox baseline. Commit is
-recommended. This work is separate from the committed atomic answer repair in
-`d0d411d4`.
+Status: implemented and merged. Correctness checks pass and the c80
+performance gate is within 5.4% of the pre-outbox baseline. This work is
+separate from the atomic answer repair in `d0d411d4`.
 
 ## Why this exists
 
@@ -24,10 +23,14 @@ missing remedial target. The current code logs these failures and continues.
 ## Implementation
 
 `study_answer_effects` is written in the same transaction as the answer. Each
-row carries the submission id, effect kind and JSON payload. `ProcessStudyEffects`
-claims a bounded batch, applies each effect and marks it complete. A failed
-effect stays pending with exponential backoff. The server starts a worker at
-startup and drains every five seconds.
+row carries the submission id, effect kind and JSON payload. The rows are
+inserted in one batched statement, so the answer does not pay one round trip per
+effect. `ProcessStudyEffects` claims a bounded batch, applies each effect and
+marks it complete. A failed effect stays pending with exponential backoff and
+its `last_error` and attempt count remain inspectable. The server starts a
+worker at startup and drains every five seconds. Completed rows older than
+seven days are pruned hourly in bounded batches; pending and failed rows are
+never pruned.
 
 Effects are idempotent: weakness is recomputed, credit uses the attempt key,
 remedial insertion dedupes, provisional demotion is repeatable and removal is
@@ -48,7 +51,10 @@ c80 study-only on btrfs disk, three trials each:
 | Durable queue, no sync drain | 504.6 | 249 ms | 10,030 | 231.5% | 492 | 169,748 KB |
 
 The remaining 5.4% is the cost of the two to five effect inserts in the answer
-transaction. Batching those inserts is a separate optimization.
+transaction. Batching those inserts removed per-effect round trips but did not
+move the disk-backed c80 result: both the batched and unbatched builds measured
+about 448 requests/s on the same btrfs scratch disk, so the residual cost is the
+extra rows and their transaction work, not the statement count.
 
 The background worker drains immediately at startup and every five seconds. It
 does not rely on an in-memory signal for durability, so a missed wakeup delays
@@ -74,6 +80,7 @@ post-commit effect that must eventually happen.
 - provisional demotion and remedial insertion survive a restart
 - weak propagation is recomputed without overwriting newer progress
 - the replay body is unchanged by outbox processing
+- completed rows are pruned while pending and failed rows remain
 - SQLite and PostgreSQL both pass
 
 ## Non-goals
