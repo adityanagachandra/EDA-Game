@@ -45,6 +45,23 @@ func TestUnitCircleDifficulty(t *testing.T) {
 	t.Logf("high difficulty produced %d distinct questions", len(highAngles))
 }
 
+func TestTrigDefinitionQuestionsNameTheAngle(t *testing.T) {
+	for _, gen := range []generator.Generator{&sinCosDefGen{}, &tanDefGen{}} {
+		for i := 0; i < 100; i++ {
+			p := gen.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+			if !strings.Contains(p.Question, "acute angle") {
+				t.Fatalf("question does not identify the acute angle: %q", p.Question)
+			}
+			if strings.Contains(p.Question, "with opposite =") || strings.Contains(p.Question, "with adjacent =") {
+				t.Fatalf("question still uses an unqualified side label: %q", p.Question)
+			}
+			if strings.Contains(p.Question, "leg") && !strings.Contains(p.Question, "units long") {
+				t.Fatalf("question does not state the side units: %q", p.Question)
+			}
+		}
+	}
+}
+
 func TestSinCosDefDifficulty(t *testing.T) {
 	gen := &sinCosDefGen{}
 	for i := 0; i < 20; i++ {

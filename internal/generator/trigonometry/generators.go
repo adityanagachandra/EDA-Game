@@ -247,7 +247,7 @@ func (g *sinCosDefGen) Generate(ctx generator.GeneratorContext) generator.Proble
 		num := opp / gcdVal
 		den := hyp / gcdVal
 		return generator.Problem{
-			Question:    fmt.Sprintf("In a right triangle with opposite = %d and hypotenuse = %d, what is \\(\\sin(\\theta)\\)?", opp, hyp),
+			Question:    fmt.Sprintf("In a right triangle, the leg opposite the acute angle \\(\\theta\\) is %d units long and the hypotenuse is %d units long. What is \\(\\sin(\\theta)\\)?", opp, hyp),
 			Answer:      fmt.Sprintf("%d/%d", num, den),
 			Explanation: fmt.Sprintf("The sine of an angle is defined as the ratio of opposite leg to hypotenuse: \\(\\sin(\\theta) = \\frac{\\text{opposite}}{\\text{hypotenuse}}\\). Substitute the given side lengths %d and %d: \\(\\sin(\\theta) = \\frac{%d}{%d}\\). Simplifying the fraction by dividing numerator and denominator by their greatest common divisor yields %d/%d.", opp, hyp, opp, hyp, num, den),
 			Facts:       map[string]string{"opp": strconv.Itoa(opp), "hyp": strconv.Itoa(hyp), "num": strconv.Itoa(num), "den": strconv.Itoa(den)},
@@ -259,7 +259,7 @@ func (g *sinCosDefGen) Generate(ctx generator.GeneratorContext) generator.Proble
 	num := adj / gcdVal
 	den := hyp / gcdVal
 	return generator.Problem{
-		Question:    fmt.Sprintf("In a right triangle with adjacent = %d and hypotenuse = %d, what is \\(\\cos(\\theta)\\)?", adj, hyp),
+		Question:    fmt.Sprintf("In a right triangle, the leg adjacent to the acute angle \\(\\theta\\) is %d units long and the hypotenuse is %d units long. What is \\(\\cos(\\theta)\\)?", adj, hyp),
 		Answer:      fmt.Sprintf("%d/%d", num, den),
 		Explanation: fmt.Sprintf("The cosine of an angle is defined as the ratio of adjacent leg to hypotenuse: \\(\\cos(\\theta) = \\frac{\\text{adjacent}}{\\text{hypotenuse}}\\). Substitute the given side lengths %d and %d: \\(\\cos(\\theta) = \\frac{%d}{%d}\\). Simplifying the fraction by dividing numerator and denominator by their greatest common divisor yields %d/%d.", adj, hyp, adj, hyp, num, den),
 		Facts:       map[string]string{"adj": strconv.Itoa(adj), "hyp": strconv.Itoa(hyp), "num": strconv.Itoa(num), "den": strconv.Itoa(den)},
@@ -283,7 +283,7 @@ func (g *tanDefGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 		num := opp / gcdVal
 		den := adj / gcdVal
 		return generator.Problem{
-			Question:    fmt.Sprintf("In a right triangle with opposite = %d and adjacent = %d, what is \\(\\tan(\\theta)\\)?", opp, adj),
+			Question:    fmt.Sprintf("In a right triangle, the leg opposite the acute angle \\(\\theta\\) is %d units long and the leg adjacent to \\(\\theta\\) is %d units long. What is \\(\\tan(\\theta)\\)?", opp, adj),
 			Answer:      fmt.Sprintf("%d/%d", num, den),
 			Explanation: fmt.Sprintf("The tangent of an angle is defined as the ratio of opposite leg to adjacent leg: \\(\\tan(\\theta) = \\frac{\\text{opposite}}{\\text{adjacent}}\\). Substitute the given side lengths %d and %d: \\(\\tan(\\theta) = \\frac{%d}{%d}\\). Simplifying the fraction by dividing numerator and denominator by their greatest common divisor yields %d/%d.", opp, adj, opp, adj, num, den),
 			Facts:       map[string]string{"opp": strconv.Itoa(opp), "adj": strconv.Itoa(adj), "num": strconv.Itoa(num), "den": strconv.Itoa(den)},
@@ -299,7 +299,7 @@ func (g *tanDefGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	tanNum := sinNum * cosDen / tanGCD
 	tanDen := sinDen * cosNum / tanGCD
 	return generator.Problem{
-		Question:    fmt.Sprintf("If \\(\\sin(\\theta) = %d/%d\\) and \\(\\cos(\\theta) = %d/%d\\), what is \\(\\tan(\\theta)\\)?", sinNum, sinDen, cosNum, cosDen),
+		Question:    fmt.Sprintf("For an acute angle \\(\\theta\\), if \\(\\sin(\\theta) = %d/%d\\) and \\(\\cos(\\theta) = %d/%d\\), what is \\(\\tan(\\theta)\\)?", sinNum, sinDen, cosNum, cosDen),
 		Answer:      fmt.Sprintf("%d/%d", tanNum, tanDen),
 		Explanation: fmt.Sprintf("The tangent of an angle is defined as the quotient of sine and cosine: \\(\\tan(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)}\\). Substitute the given ratios: \\(\\tan(\\theta) = \\frac{%d/%d}{%d/%d} = \\frac{%d}{%d} \\times \\frac{%d}{%d}\\). Multiplying and reducing to lowest terms yields %d/%d.", sinNum, sinDen, cosNum, cosDen, sinNum, sinDen, cosDen, cosNum, tanNum, tanDen),
 		Facts:       map[string]string{"sin_num": strconv.Itoa(sinNum), "sin_den": strconv.Itoa(sinDen), "cos_num": strconv.Itoa(cosNum), "cos_den": strconv.Itoa(cosDen), "num": strconv.Itoa(tanNum), "den": strconv.Itoa(tanDen)},
