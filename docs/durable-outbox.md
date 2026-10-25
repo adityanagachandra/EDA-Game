@@ -1,7 +1,9 @@
 # Durable outbox for study-answer post-commit effects
 
-Status: open. This is a separate reliability task from the committed atomic
-answer repair in `d0d411d4`.
+Status: implemented in the working tree, not committed. Correctness checks pass
+and the c80 performance gate is within 5.4% of the pre-outbox baseline. Commit is
+recommended. This work is separate from the committed atomic answer repair in
+`d0d411d4`.
 
 ## Why this exists
 
@@ -18,6 +20,39 @@ durable:
 A process failure between the answer commit and those effects can leave the
 learner with an accepted answer but stale recommendations, missing credit or a
 missing remedial target. The current code logs these failures and continues.
+
+## Implementation
+
+`study_answer_effects` is written in the same transaction as the answer. Each
+row carries the submission id, effect kind and JSON payload. `ProcessStudyEffects`
+claims a bounded batch, applies each effect and marks it complete. A failed
+effect stays pending with exponential backoff. The server starts a worker at
+startup and drains every five seconds.
+
+Effects are idempotent: weakness is recomputed, credit uses the attempt key,
+remedial insertion dedupes, provisional demotion is repeatable and removal is
+repeatable.
+
+## Performance gate
+
+The first version drained effects synchronously inside the answer request. That
+cost 33.5% of study-only throughput. Moving the drain to the background worker
+recovered almost all of it.
+
+c80 study-only on btrfs disk, three trials each:
+
+| Variant | Requests/s | p95 | Answer 200s | CPU | GC | Max RSS |
+|---|---:|---:|---:|---:|---:|---:|
+| Pre-outbox base | 533.3 | 249 ms | 10,603 | 239.8% | 512 | 174,708 KB |
+| Synchronous drain | 354.7 | 405 ms | 7,025 | 199.9% | 411 | 154,356 KB |
+| Durable queue, no sync drain | 504.6 | 249 ms | 10,030 | 231.5% | 492 | 169,748 KB |
+
+The remaining 5.4% is the cost of the two to five effect inserts in the answer
+transaction. Batching those inserts is a separate optimization.
+
+The background worker drains immediately at startup and every five seconds. It
+does not rely on an in-memory signal for durability, so a missed wakeup delays
+an effect but cannot lose it.
 
 ## Required behavior
 

@@ -2053,6 +2053,7 @@ func (e *Engine) commitStudyAnswer(studentID, conceptID, submissionID, answer st
 		TopicSpeed:   topicSpeed,
 		XPAmount:     xp,
 		XPReason:     "answer",
+		Effects:      studyEffectsFor(conceptID, ga.attemptID, gr.Correct, halted, remedial),
 	})
 	if err != nil {
 		return nil, err
@@ -2077,16 +2078,9 @@ func (e *Engine) commitStudyAnswer(studentID, conceptID, submissionID, answer st
 	}
 	e.mu.Unlock()
 
-	if !gr.Correct {
-		if halted && len(remedial) > 0 {
-			_ = e.repo.EnqueueRemedial(studentID, remedial...)
-		}
-		_, _ = e.CheckProvisionalFallback(studentID, conceptID)
-	} else {
-		_ = e.repo.RemoveRemedial(studentID, conceptID)
-	}
-	e.PropagateWeakness(studentID)
-	e.allocateImplicitCredit(ga)
+	// Effects are durable in the same transaction. The background worker
+	// drains them, so the answer request does not pay for weakness propagation,
+	// credit allocation or remedial bookkeeping before it returns.
 
 	res.ResponseJSON = outcome.ResponseJSON
 	return res, nil
@@ -3087,9 +3081,15 @@ func (e *Engine) CorpusSize() (concepts int, domains int) {
 }
 
 func (e *Engine) PropagateWeakness(studentID string) {
+	if err := e.propagateWeakness(studentID); err != nil {
+		log.Printf("warning: failed to propagate weakness for %s: %v", studentID, err)
+	}
+}
+
+func (e *Engine) propagateWeakness(studentID string) error {
 	progress, err := e.repo.GetAllProgress(studentID)
 	if err != nil {
-		return
+		return err
 	}
 	weakness := e.weaknessMapFromProgress(progress)
 	// Propagate forward to dependents (upstream struggles carry risk downstream)
@@ -3114,7 +3114,7 @@ func (e *Engine) PropagateWeakness(studentID string) {
 		}
 	}
 	if len(targetWeakness) == 0 {
-		return
+		return nil
 	}
 	// One batched write from the single fetched snapshot, no per-node round trips.
 	batch := make([]*storage.ConceptProgress, 0, len(targetWeakness))
@@ -3134,8 +3134,9 @@ func (e *Engine) PropagateWeakness(studentID string) {
 		batch = append(batch, prog)
 	}
 	if err := e.repo.UpsertProgressBatch(batch); err != nil {
-		log.Printf("warning: failed to propagate weakness batch for %s: %v", studentID, err)
+		return err
 	}
+	return nil
 }
 
 func (e *Engine) AdjustPlan(studentID string) {
@@ -3748,16 +3749,22 @@ func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedA
 // transaction. It is not part of the answer verdict, so a failure here is
 // logged rather than turning an accepted answer into an error.
 func (e *Engine) allocateImplicitCredit(o gradedAttempt) {
+	if err := e.allocateImplicitCreditErr(o); err != nil {
+		log.Printf("warning: allocate implicit credit %s/%s: %v", o.studentID, o.conceptID, err)
+	}
+}
+
+func (e *Engine) allocateImplicitCreditErr(o gradedAttempt) error {
 	if !o.correct || e.dag == nil {
-		return
+		return nil
 	}
 	c := e.dag.Concept(o.conceptID)
 	if c == nil || len(c.Encompasses) == 0 {
-		return
+		return nil
 	}
 	cs, ok := e.repo.(storage.CreditStore)
 	if !ok {
-		return
+		return nil
 	}
 	cands := make([]storage.CreditCandidate, 0, len(c.Encompasses))
 	for _, eid := range c.Encompasses {
@@ -3771,10 +3778,9 @@ func (e *Engine) allocateImplicitCredit(o gradedAttempt) {
 		attemptKey = fmt.Sprintf("attempt:%s:%s:%d", o.studentID, o.conceptID, nowUTC().UnixNano())
 	}
 	if _, _, err := cs.AllocateCredit(o.studentID, attemptKey, 0, cands); err != nil {
-		log.Printf("warning: allocate implicit credit %s/%s: %v", o.studentID, o.conceptID, err)
-		return
+		return err
 	}
-	_ = e.SatisfyImplicitReviews(o.studentID)
+	return e.SatisfyImplicitReviews(o.studentID)
 }
 
 // BackfillWeeklyXP replays this week's attempts into the XP ledger.

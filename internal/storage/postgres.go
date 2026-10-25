@@ -108,6 +108,25 @@ CREATE TABLE IF NOT EXISTS answer_submissions (
     FOREIGN KEY (student_id) REFERENCES students(id)
 );
 
+CREATE TABLE IF NOT EXISTS study_answer_effects (
+    id            BIGSERIAL PRIMARY KEY,
+    student_id    TEXT    NOT NULL,
+    submission_id TEXT    NOT NULL,
+    effect        TEXT    NOT NULL,
+    payload_json  TEXT    NOT NULL DEFAULT '',
+    created_at    BIGINT  NOT NULL,
+    attempts      INTEGER NOT NULL DEFAULT 0,
+    next_attempt_at BIGINT NOT NULL,
+    claimed_until BIGINT  NOT NULL DEFAULT 0,
+    processed_at  BIGINT  NOT NULL DEFAULT 0,
+    last_error    TEXT    NOT NULL DEFAULT '',
+    UNIQUE (student_id, submission_id, effect),
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_study_answer_effects_pending
+    ON study_answer_effects (processed_at, next_attempt_at, claimed_until);
+
 CREATE TABLE IF NOT EXISTS league_weeks (
     week      TEXT PRIMARY KEY,
     closed_at BIGINT NOT NULL
@@ -1608,6 +1627,7 @@ func (s *PostgresStore) ResetProgress(studentID string) error {
 	}{
 		{"DELETE FROM attempts WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM answer_submissions WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM study_answer_effects WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = $1", []interface{}{studentID}},
@@ -1653,6 +1673,7 @@ func (s *PostgresStore) DeleteAccount(studentID string) error {
 		{"DELETE FROM avatar_images WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM attempts WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM answer_submissions WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM study_answer_effects WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = $1", []interface{}{studentID}},
@@ -1714,6 +1735,18 @@ func (s *PostgresStore) CommitStudySubmission(c StudySubmissionCommit) (StudySub
 
 func (s *PostgresStore) GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error) {
 	return getStudySubmission(s.db, rebindDollars, studentID, operation, submissionID)
+}
+
+func (s *PostgresStore) ClaimStudyEffects(studentID string, now time.Time, limit int) ([]StudyAnswerEffect, error) {
+	return claimStudyEffects(s.db, rebindDollars, true, studentID, now, limit)
+}
+
+func (s *PostgresStore) CompleteStudyEffect(id int64) error {
+	return completeStudyEffect(s.db, rebindDollars, id, time.Now().UTC())
+}
+
+func (s *PostgresStore) FailStudyEffect(id int64, reason string, retryAt time.Time) error {
+	return failStudyEffect(s.db, rebindDollars, id, reason, retryAt)
 }
 
 // GetRecentAttemptsForConcept implements the bounded per-concept window the evidence

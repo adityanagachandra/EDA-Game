@@ -2,6 +2,9 @@ package storage
 
 import (
 	"database/sql"
+	"fmt"
+	"os"
+	"path/filepath"
 	"strconv"
 	"testing"
 	"time"
@@ -199,6 +202,7 @@ func TestStudySubmission_RollbackOnInjectedFailures(t *testing.T) {
 			defer func() { _, _ = db.Exec(drop) }()
 			commit := studySubmissionTestCommit(st.ID, "rollback-"+tc.name, "4")
 			commit.Attempt.SessionID = session.ID
+			commit.Effects = []StudyEffectInput{{Effect: "propagate_weakness"}}
 			if _, err := sub.CommitStudySubmission(commit); err == nil {
 				t.Fatal("expected injected failure")
 			}
@@ -218,10 +222,173 @@ func TestStudySubmission_RollbackOnInjectedFailures(t *testing.T) {
 			if saved != nil {
 				t.Fatalf("rollback left submission: %+v", saved)
 			}
+			pending, _ := studyEffectStore(t, store).ClaimStudyEffects(st.ID, time.Now().UTC().Add(time.Second), 10)
+			if len(pending) != 0 {
+				t.Fatalf("rollback left %d outbox rows", len(pending))
+			}
 		})
 	}
 }
 
 func tableForTrigger(target string) string {
 	return target
+}
+
+func studyEffectStore(t testing.TB, store Repository) StudyEffectStore {
+	t.Helper()
+	out, ok := store.(StudyEffectStore)
+	if !ok {
+		t.Fatalf("%T does not implement StudyEffectStore", store)
+	}
+	return out
+}
+
+// TestStudyEffects_ClaimCompleteAndFail covers the durable outbox lease:
+// a claimed row cannot be claimed again, completion retires it, and a failure
+// returns it with a later retry time.
+func TestStudyEffects_ClaimCompleteAndFail(t *testing.T) {
+	store := newTestStore(t)
+	sub := studySubmissionStore(t, store)
+	effects := studyEffectStore(t, store)
+	st, _ := store.CreateStudent("outbox")
+	session, _ := store.CreateSession(st.ID)
+	now := time.Now().UTC().Add(time.Second)
+
+	commit := studySubmissionTestCommit(st.ID, "outbox-1", "4")
+	commit.Attempt.SessionID = session.ID
+	commit.Effects = []StudyEffectInput{{Effect: "propagate_weakness"}}
+	if _, err := sub.CommitStudySubmission(commit); err != nil {
+		t.Fatalf("commit: %v", err)
+	}
+	first, err := effects.ClaimStudyEffects(st.ID, now, 10)
+	if err != nil || len(first) != 1 {
+		t.Fatalf("first claim = %+v, %v", first, err)
+	}
+	if first[0].Attempts != 1 || first[0].Effect != "propagate_weakness" {
+		t.Fatalf("first claim row = %+v", first[0])
+	}
+	again, err := effects.ClaimStudyEffects(st.ID, now, 10)
+	if err != nil || len(again) != 0 {
+		t.Fatalf("claimed row was claimable again: %+v, %v", again, err)
+	}
+	if err := effects.CompleteStudyEffect(first[0].ID); err != nil {
+		t.Fatalf("complete: %v", err)
+	}
+	done, err := effects.ClaimStudyEffects(st.ID, now, 10)
+	if err != nil || len(done) != 0 {
+		t.Fatalf("completed row was claimable: %+v, %v", done, err)
+	}
+
+	second := studySubmissionTestCommit(st.ID, "outbox-2", "4")
+	second.Attempt.SessionID = session.ID
+	second.Effects = []StudyEffectInput{{Effect: "implicit_credit", PayloadJSON: `{"concept_id":"a","attempt_id":"x","correct":true}`}}
+	if _, err := sub.CommitStudySubmission(second); err != nil {
+		t.Fatalf("second commit: %v", err)
+	}
+	claimed, err := effects.ClaimStudyEffects(st.ID, now, 10)
+	if err != nil || len(claimed) != 1 {
+		t.Fatalf("second claim = %+v, %v", claimed, err)
+	}
+	if err := effects.FailStudyEffect(claimed[0].ID, "transient", now.Add(-time.Second)); err != nil {
+		t.Fatalf("fail: %v", err)
+	}
+	retried, err := effects.ClaimStudyEffects(st.ID, now, 10)
+	if err != nil || len(retried) != 1 {
+		t.Fatalf("failed row was not retryable: %+v, %v", retried, err)
+	}
+	if retried[0].Attempts != 2 {
+		t.Fatalf("retry attempts = %d, want 2", retried[0].Attempts)
+	}
+}
+
+// TestStudyEffects_ExpiredLeaseIsRecoverable proves a crashed worker does not
+// strand an effect: the lease blocks another claim, then expires and the row is
+// claimable again with its attempt count preserved.
+func TestStudyEffects_ExpiredLeaseIsRecoverable(t *testing.T) {
+	store := newTestStore(t)
+	sub := studySubmissionStore(t, store)
+	effects := studyEffectStore(t, store)
+	st, _ := store.CreateStudent("lease")
+	session, _ := store.CreateSession(st.ID)
+	commit := studySubmissionTestCommit(st.ID, "lease-1", "4")
+	commit.Attempt.SessionID = session.ID
+	commit.Effects = []StudyEffectInput{{Effect: "propagate_weakness"}}
+	if _, err := sub.CommitStudySubmission(commit); err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC().Add(time.Second)
+	first, err := effects.ClaimStudyEffects(st.ID, now, 1)
+	if err != nil || len(first) != 1 {
+		t.Fatalf("first claim = %+v, %v", first, err)
+	}
+	blocked, err := effects.ClaimStudyEffects(st.ID, now.Add(30*time.Second), 1)
+	if err != nil || len(blocked) != 0 {
+		t.Fatalf("live lease was claimable: %+v, %v", blocked, err)
+	}
+	recovered, err := effects.ClaimStudyEffects(st.ID, now.Add(61*time.Second), 1)
+	if err != nil || len(recovered) != 1 {
+		t.Fatalf("expired lease was not claimable: %+v, %v", recovered, err)
+	}
+	if recovered[0].Attempts != 2 {
+		t.Fatalf("attempts = %d, want 2", recovered[0].Attempts)
+	}
+}
+
+// TestStudyEffects_ConcurrentClaimsAreDisjoint runs two workers against the
+// same pending set. A row may be claimed once, never by both.
+func newConcurrentStore(t *testing.T) Repository {
+	t.Helper()
+	if os.Getenv("TEST_POSTGRES_DSN") != "" {
+		return newTestStore(t)
+	}
+	store, err := NewSQLiteStore(filepath.Join(t.TempDir(), "concurrent.db"))
+	if err != nil {
+		t.Fatalf("create file sqlite store: %v", err)
+	}
+	t.Cleanup(func() { store.Close() })
+	return store
+}
+
+func TestStudyEffects_ConcurrentClaimsAreDisjoint(t *testing.T) {
+	store := newConcurrentStore(t)
+	sub := studySubmissionStore(t, store)
+	effects := studyEffectStore(t, store)
+	st, _ := store.CreateStudent("claims")
+	session, _ := store.CreateSession(st.ID)
+	commit := studySubmissionTestCommit(st.ID, "claims-1", "4")
+	commit.Attempt.SessionID = session.ID
+	for i := 0; i < 20; i++ {
+		commit.Effects = append(commit.Effects, StudyEffectInput{Effect: fmt.Sprintf("effect-%02d", i)})
+	}
+	if _, err := sub.CommitStudySubmission(commit); err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC().Add(time.Second)
+	type result struct {
+		rows []StudyAnswerEffect
+		err  error
+	}
+	ch := make(chan result, 2)
+	for i := 0; i < 2; i++ {
+		go func() {
+			rows, err := effects.ClaimStudyEffects(st.ID, now, 20)
+			ch <- result{rows, err}
+		}()
+	}
+	seen := map[int64]bool{}
+	for i := 0; i < 2; i++ {
+		r := <-ch
+		if r.err != nil {
+			t.Fatal(r.err)
+		}
+		for _, row := range r.rows {
+			if seen[row.ID] {
+				t.Fatalf("effect %d claimed twice", row.ID)
+			}
+			seen[row.ID] = true
+		}
+	}
+	if len(seen) != 20 {
+		t.Fatalf("claimed %d of 20 effects", len(seen))
+	}
 }

@@ -1314,6 +1314,7 @@ func (s *SQLiteStore) ResetProgress(studentID string) error {
 	}{
 		{"DELETE FROM attempts WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM answer_submissions WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM study_answer_effects WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = ?", []interface{}{studentID}},
@@ -1361,6 +1362,7 @@ func (s *SQLiteStore) DeleteAccount(studentID string) error {
 		{"DELETE FROM avatar_images WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM attempts WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM answer_submissions WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM study_answer_effects WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = ?", []interface{}{studentID}},
@@ -1424,6 +1426,18 @@ func (s *SQLiteStore) CommitStudySubmission(c StudySubmissionCommit) (StudySubmi
 
 func (s *SQLiteStore) GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error) {
 	return getStudySubmission(s.db, rebindQuestion, studentID, operation, submissionID)
+}
+
+func (s *SQLiteStore) ClaimStudyEffects(studentID string, now time.Time, limit int) ([]StudyAnswerEffect, error) {
+	return claimStudyEffects(s.db, rebindQuestion, false, studentID, now, limit)
+}
+
+func (s *SQLiteStore) CompleteStudyEffect(id int64) error {
+	return completeStudyEffect(s.db, rebindQuestion, id, time.Now().UTC())
+}
+
+func (s *SQLiteStore) FailStudyEffect(id int64, reason string, retryAt time.Time) error {
+	return failStudyEffect(s.db, rebindQuestion, id, reason, retryAt)
 }
 
 // GetRecentAttemptsForConcept implements the bounded per-concept window the evidence

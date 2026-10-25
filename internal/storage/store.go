@@ -161,6 +161,22 @@ type StudySubmission struct {
 // StudySubmissionCommit is one atomic study-answer write. The caller grades
 // first, then hands the finished progress row and response here; the store
 // never grades.
+type StudyEffectInput struct {
+	Effect      string
+	PayloadJSON string
+}
+
+type StudyAnswerEffect struct {
+	ID            int64
+	StudentID     string
+	SubmissionID  string
+	Effect        string
+	PayloadJSON   string
+	Attempts      int
+	CreatedAt     time.Time
+	NextAttemptAt time.Time
+}
+
 type StudySubmissionCommit struct {
 	StudentID    string
 	SubmissionID string
@@ -172,6 +188,7 @@ type StudySubmissionCommit struct {
 	TopicSpeed   *TopicSpeed
 	XPAmount     int
 	XPReason     string
+	Effects      []StudyEffectInput
 }
 
 // StudySubmissionOutcome reports whether the commit wrote a new answer or
@@ -196,6 +213,14 @@ var (
 type StudySubmissionStore interface {
 	CommitStudySubmission(c StudySubmissionCommit) (StudySubmissionOutcome, error)
 	GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error)
+}
+
+// StudyEffectStore is the durable outbox for effects that must run after the
+// answer transaction. Claim is atomic, so two workers cannot process one row.
+type StudyEffectStore interface {
+	ClaimStudyEffects(studentID string, now time.Time, limit int) ([]StudyAnswerEffect, error)
+	CompleteStudyEffect(id int64) error
+	FailStudyEffect(id int64, reason string, retryAt time.Time) error
 }
 
 // parseAttemptTimestamp parses attempt timestamps from either store.

@@ -146,7 +146,7 @@ Eighteen tables. The five that carry the learning loop are `students`, `concept_
 - `sessions(student_id)`  --  Session history
 - `attempts(session_id)`  --  Attempts per session
 - `attempts(student_id, timestamp)`  --  Time-series queries
-- `attempts(student_id, concept_id, timestamp)`  --  Aggregate efficacy `GetAllAttempts` (`sqlite.go:1487`)
+- `attempts(student_id, concept_id, timestamp)`  --  Aggregate efficacy `GetAllAttempts` (`sqlite.go:1501`)
 - `questions(concept_id)`  --  Question lookup
 - `students(share_token)`  --  Share link lookup (`migrate.go:69`)
 - `active_sessions(student_id)`, `active_sessions(attempt_id)`  --  Session recovery
@@ -577,7 +577,7 @@ Trade-off: generation latency. Complex polynomial questions require a SymPy subp
 
 ### Why No ORM?
 
-The schema has 30 tables with straightforward relationships. Raw SQL with `database/sql` gives:
+The schema has 31 tables with straightforward relationships. Raw SQL with `database/sql` gives:
 - Full control over query optimization (especially the SM-2 upsert and leaderboard queries)
 - No query generation overhead
 - Transparent SQL for debugging

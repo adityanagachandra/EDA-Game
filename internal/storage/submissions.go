@@ -106,6 +106,19 @@ func commitStudySubmissionTx(db *sql.DB, rebind func(string) string, insertAttem
 	`), attemptID, c.StudentID, c.Operation, c.SubmissionID); err != nil {
 		return StudySubmissionOutcome{}, fmt.Errorf("study submission: link attempt: %w", err)
 	}
+	for _, effect := range c.Effects {
+		if effect.Effect == "" {
+			continue
+		}
+		if _, err := tx.Exec(rebind(`
+			INSERT INTO study_answer_effects
+				(student_id, submission_id, effect, payload_json, created_at, next_attempt_at)
+			VALUES (?, ?, ?, ?, ?, ?)
+			ON CONFLICT(student_id, submission_id, effect) DO NOTHING
+		`), c.StudentID, c.SubmissionID, effect.Effect, effect.PayloadJSON, now, now); err != nil {
+			return StudySubmissionOutcome{}, fmt.Errorf("study submission: effect %s: %w", effect.Effect, err)
+		}
+	}
 	if c.Progress != nil {
 		if _, err := tx.Exec(rebind(upsertProgressSQL),
 			c.Progress.StudentID, c.Progress.ConceptID, c.Progress.Status, c.Progress.Streak, c.Progress.BestStreak,
@@ -204,4 +217,69 @@ func getStudySubmission(db *sql.DB, rebind func(string) string, studentID, opera
 	}
 	out.CreatedAt = time.Unix(0, created).UTC()
 	return &out, nil
+}
+
+// claimStudyEffects atomically leases pending effects. Postgres uses SKIP
+// LOCKED so parallel workers take different rows; SQLite serializes writers.
+func claimStudyEffects(db *sql.DB, rebind func(string) string, postgres bool, studentID string, now time.Time, limit int) ([]StudyAnswerEffect, error) {
+	if limit <= 0 {
+		limit = 50
+	}
+	nowN := now.UTC().UnixNano()
+	claimUntil := now.UTC().Add(time.Minute).UnixNano()
+	where := "processed_at = 0 AND next_attempt_at <= ? AND claimed_until <= ?"
+	args := []interface{}{claimUntil, nowN, nowN}
+	if studentID != "" {
+		where += " AND student_id = ?"
+		args = append(args, studentID)
+	}
+	args = append(args, limit)
+	skip := ""
+	if postgres {
+		skip = " FOR UPDATE SKIP LOCKED"
+	}
+	q := `UPDATE study_answer_effects SET claimed_until = ?, attempts = attempts + 1
+		WHERE id IN (
+			SELECT id FROM study_answer_effects
+			WHERE ` + where + `
+			ORDER BY id LIMIT ?` + skip + `
+		)
+		RETURNING id, student_id, submission_id, effect, payload_json, attempts, created_at, next_attempt_at`
+	rows, err := db.Query(rebind(q), args...)
+	if err != nil {
+		return nil, fmt.Errorf("claim study effects: %w", err)
+	}
+	defer rows.Close()
+	var out []StudyAnswerEffect
+	for rows.Next() {
+		var e StudyAnswerEffect
+		var created, next int64
+		if err := rows.Scan(&e.ID, &e.StudentID, &e.SubmissionID, &e.Effect, &e.PayloadJSON, &e.Attempts, &created, &next); err != nil {
+			return nil, fmt.Errorf("scan study effect: %w", err)
+		}
+		e.CreatedAt = time.Unix(0, created).UTC()
+		e.NextAttemptAt = time.Unix(0, next).UTC()
+		out = append(out, e)
+	}
+	return out, rows.Err()
+}
+
+func completeStudyEffect(db *sql.DB, rebind func(string) string, id int64, now time.Time) error {
+	_, err := db.Exec(rebind(`UPDATE study_answer_effects
+		SET processed_at = ?, claimed_until = 0, last_error = ''
+		WHERE id = ?`), now.UTC().UnixNano(), id)
+	if err != nil {
+		return fmt.Errorf("complete study effect %d: %w", id, err)
+	}
+	return nil
+}
+
+func failStudyEffect(db *sql.DB, rebind func(string) string, id int64, reason string, retryAt time.Time) error {
+	_, err := db.Exec(rebind(`UPDATE study_answer_effects
+		SET claimed_until = 0, next_attempt_at = ?, last_error = ?
+		WHERE id = ?`), retryAt.UTC().UnixNano(), reason, id)
+	if err != nil {
+		return fmt.Errorf("fail study effect %d: %w", id, err)
+	}
+	return nil
 }
