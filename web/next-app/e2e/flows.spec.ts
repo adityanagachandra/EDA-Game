@@ -208,7 +208,7 @@ test('a locked prerequisite is openable for study, and Back returns to the targe
   await expect(page).toHaveURL(/\/learn\?concept=b/, { timeout: 30_000 })
 })
 
-test('quiz gate banner appears at 50 XP on profile and links to quiz host', async ({ page }) => {
+test('mastery-check banner appears when due on profile and links to quiz host', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('mathua_token', 'fake-token')
     localStorage.setItem('mathua_user', JSON.stringify({ student_id: 's1', name: 'Tester', username: 'tester', concepts_mastered: 15, current_streak: 5, level: 'Student', diagnostic_completed: true }))
@@ -229,11 +229,21 @@ test('quiz gate banner appears at 50 XP on profile and links to quiz host', asyn
 
   await page.goto('/profile')
   await expect(page.getByText('Quiz due').first()).toBeVisible({ timeout: 30_000 })
-  await expect(page.getByText('50 XP reached: mastery check recommended').first()).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Start the quiz' }).first()).toBeVisible()
+  await expect(page.getByText('Mastery check recommended').first()).toBeVisible()
+  const start = page.getByRole('link', { name: 'Start mastery check' }).first()
+  await expect(start).toBeVisible()
+
+  // A client-side Link can render the destination from its prefetched payload
+  // before the address bar changes. Reading window.location once in the
+  // destination then cached "not quiz mode" and sent this click to /onboard,
+  // which is exactly what two reports described. Follow the click through.
+  await start.click()
+  await expect(page).toHaveURL(/\/goals\?quiz=1/, { timeout: 30_000 })
+  await expect(page.getByText('Mastery check', { exact: true }).first()).toBeVisible()
+  await expect(page.getByRole('button', { name: /start quiz/i })).toBeVisible()
 })
 
-test('quiz reuse host at /goals?quiz=1 starts actionable quiz (guest unlimited retake)', async ({ page }) => {
+test('quiz reuse host at /goals?quiz=1 starts the anonymous demo check', async ({ page }) => {
   await page.route('**/api/scores/**', route =>
     route.fulfill({ json: { lifetime_points: 100, weekly_score: 10, speed_bonus: 0, concepts_mastered: 1, current_streak: 1, level: 'Novice', xp_total: 150, xp_today: 10, daily_xp_goal: 30 } }),
   )

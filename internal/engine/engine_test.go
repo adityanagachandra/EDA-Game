@@ -1653,6 +1653,15 @@ func TestEngine_QuizGate_DueAndReset(t *testing.T) {
 	if due, _ := e.QuizDue(st.ID); !due {
 		t.Error("expected due at 50 XP since quiz")
 	}
+	if err := e.repo.AwardXP(st.ID, 1, "test", "seed-51"); err != nil {
+		t.Fatalf("add xp: %v", err)
+	}
+	if since, _ := e.QuizXPSince(st.ID); since != 51 {
+		t.Errorf("expected 51 since, got %d", since)
+	}
+	if due, _ := e.QuizDue(st.ID); !due {
+		t.Error("expected due above 50 XP since quiz")
+	}
 	if err := e.RecordQuizCompletion(st.ID); err != nil {
 		t.Fatalf("record completion: %v", err)
 	}
@@ -2018,6 +2027,140 @@ func TestNeutralDifficultyMatchesEngineDefault(t *testing.T) {
 	if got := difficultyFromWeakness(map[string]float64{}, "anything"); got != mastery.NeutralDifficulty {
 		t.Errorf("engine default difficulty with an empty weakness map = %v, want %v",
 			got, mastery.NeutralDifficulty)
+	}
+}
+
+func TestDifficultyFor_RequiresFullEvidenceWindow(t *testing.T) {
+	e := testEngine(t)
+	st, err := e.CreateStudent("difficulty_evidence")
+	if err != nil {
+		t.Fatalf("CreateStudent: %v", err)
+	}
+
+	if got := e.DifficultyFor(st.ID, "a"); got != mastery.NeutralDifficulty {
+		t.Errorf("no progress difficulty = %v, want neutral %v", got, mastery.NeutralDifficulty)
+	}
+
+	for _, attempts := range []int{1, mastery.EvidenceWindow - 1} {
+		p := &storage.ConceptProgress{
+			StudentID:     st.ID,
+			ConceptID:     "a",
+			Status:        string(mastery.StatusPracticing),
+			Attempts:      attempts,
+			WeaknessScore: 0.9,
+		}
+		if err := e.repo.UpsertProgress(p); err != nil {
+			t.Fatalf("seed %d attempts: %v", attempts, err)
+		}
+		if got := e.DifficultyFor(st.ID, "a"); got != mastery.NeutralDifficulty {
+			t.Errorf("difficulty after %d attempts = %v, want neutral %v", attempts, got, mastery.NeutralDifficulty)
+		}
+	}
+
+	p := &storage.ConceptProgress{
+		StudentID:     st.ID,
+		ConceptID:     "a",
+		Status:        string(mastery.StatusPracticing),
+		Attempts:      mastery.EvidenceWindow,
+		WeaknessScore: 0.9,
+	}
+	if err := e.repo.UpsertProgress(p); err != nil {
+		t.Fatalf("seed full evidence window: %v", err)
+	}
+	if got, want := e.DifficultyFor(st.ID, "a"), 0.35; math.Abs(got-want) > 1e-9 {
+		t.Errorf("difficulty after full evidence window = %v, want %v", got, want)
+	}
+	if first, second := e.DifficultyFor(st.ID, "a"), e.DifficultyFor(st.ID, "a"); first != second {
+		t.Errorf("identical evidence produced %v then %v", first, second)
+	}
+}
+
+func TestDifficultyFor_WeaknessMovesDifficultyWithinBounds(t *testing.T) {
+	e := testEngine(t)
+	st, err := e.CreateStudent("difficulty_bounds")
+	if err != nil {
+		t.Fatalf("CreateStudent: %v", err)
+	}
+
+	tests := []struct {
+		name     string
+		weakness float64
+		want     float64
+	}{
+		{name: "struggling learner gets easier questions", weakness: 0.9, want: 0.35},
+		{name: "strong learner gets harder questions", weakness: 0.1, want: 0.75},
+		{name: "negative weakness is clamped", weakness: -1, want: 1.0},
+		{name: "oversized weakness is clamped", weakness: 2, want: 0.3},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			p := &storage.ConceptProgress{
+				StudentID:     st.ID,
+				ConceptID:     "a",
+				Status:        string(mastery.StatusPracticing),
+				Attempts:      mastery.EvidenceWindow,
+				WeaknessScore: tc.weakness,
+			}
+			if err := e.repo.UpsertProgress(p); err != nil {
+				t.Fatalf("seed progress: %v", err)
+			}
+			if got := e.DifficultyFor(st.ID, "a"); math.Abs(got-tc.want) > 1e-9 {
+				t.Errorf("difficulty = %v, want %v", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestDifficultyFor_GradedEvidenceChangesDifficulty(t *testing.T) {
+	e := testEngine(t)
+
+	seed := func(t *testing.T, name string) (*storage.ConceptProgress, string) {
+		t.Helper()
+		st, err := e.CreateStudent(name)
+		if err != nil {
+			t.Fatalf("CreateStudent: %v", err)
+		}
+		p := &storage.ConceptProgress{
+			StudentID:     st.ID,
+			ConceptID:     "a",
+			Status:        string(mastery.StatusLearning),
+			Attempts:      mastery.EvidenceWindow - 1,
+			WeaknessScore: 0.5,
+		}
+		if err := e.repo.UpsertProgress(p); err != nil {
+			t.Fatalf("seed progress: %v", err)
+		}
+		return p, st.ID
+	}
+
+	tests := []struct {
+		name    string
+		correct bool
+		elapsed float64
+		want    float64
+	}{
+		{name: "fast correct", correct: true, elapsed: 1, want: 0.7625},
+		{name: "slow correct", correct: true, elapsed: 90, want: 0.675},
+		{name: "incorrect", correct: false, elapsed: 5, want: 0.45},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			p, sid := seed(t, "difficulty_"+tc.name)
+			if _, _, err := e.applyGradedAttempt(p, gradedAttempt{
+				studentID:      sid,
+				conceptID:      "a",
+				requiredStreak: 3,
+				timeThreshold:  60,
+				elapsed:        tc.elapsed,
+				correct:        tc.correct,
+				questionText:   "q",
+			}); err != nil {
+				t.Fatalf("apply attempt: %v", err)
+			}
+			if got := e.DifficultyFor(sid, "a"); math.Abs(got-tc.want) > 1e-9 {
+				t.Errorf("difficulty = %v, want %v", got, tc.want)
+			}
+		})
 	}
 }
 
@@ -2721,7 +2864,7 @@ func TestEngine_AntiGuessing_SlowMissBreaksTheRun(t *testing.T) {
 	}
 }
 
-func TestPickQuizConcepts_AdvancedStudentPicksMasteredTopics(t *testing.T) {
+func TestPickQuizConcepts_AdvancedStudentUsesAcquiringTopics(t *testing.T) {
 	d, err := concepts.Build([]concepts.Concept{
 		{
 			ID: "arith.1", Label: "Counting", Domain: "arithmetic", Subdomain: "count",
@@ -2756,27 +2899,35 @@ func TestPickQuizConcepts_AdvancedStudentPicksMasteredTopics(t *testing.T) {
 
 	st, _ := e.CreateStudent("calc_student")
 
-	// Set progress for two calculus concepts as MASTERED with 0 weakness
+	// calc.1 is mastered and satisfies calc.2's prerequisite, but mastery is
+	// retention-review material. calc.2 is still being acquired, so it is the
+	// only routine mastery-check candidate.
+	now := time.Now().UTC()
 	e.repo.UpsertProgress(&storage.ConceptProgress{
 		StudentID:     st.ID,
 		ConceptID:     "calc.1",
 		Status:        string(mastery.StatusMastered),
+		Attempts:      3,
 		WeaknessScore: 0.0,
+		LastReviewed:  &now,
 	})
 	e.repo.UpsertProgress(&storage.ConceptProgress{
 		StudentID:     st.ID,
 		ConceptID:     "calc.2",
-		Status:        string(mastery.StatusMastered),
-		WeaknessScore: 0.0,
+		Status:        string(mastery.StatusPracticing),
+		Attempts:      1,
+		WeaknessScore: 0.2,
+		LastAttempted: &now,
 	})
 
-	picked := e.PickQuizConcepts(st.ID)
-	if len(picked) != 2 {
-		t.Fatalf("expected 2 quiz concepts to be picked, got %d", len(picked))
+	picked, err := e.PickQuizConcepts(st.ID)
+	if err != nil {
+		t.Fatalf("pick quiz concepts: %v", err)
 	}
-	for _, c := range picked {
-		if c.Domain != "calculus" {
-			t.Errorf("expected calculus concept, got kindergarten/other: %s", c.ID)
-		}
+	if len(picked) != 1 {
+		t.Fatalf("expected 1 acquiring concept, got %d", len(picked))
+	}
+	if picked[0].ID != "calc.2" || picked[0].Domain != "calculus" {
+		t.Errorf("expected calc.2, got %s (%s)", picked[0].ID, picked[0].Domain)
 	}
 }

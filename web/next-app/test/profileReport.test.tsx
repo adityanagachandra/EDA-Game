@@ -150,4 +150,43 @@ describe('/profile shows the report', () => {
     expect(screen.queryByRole('region', { name: 'By domain' })).toBeNull()
     expect(screen.queryByRole('region', { name: 'How you are doing' })).toBeNull()
   })
+
+  it('offers the due mastery check as the primary action', async () => {
+    vi.mocked(api.getScores).mockResolvedValue({
+      ...(scores as Record<string, unknown>),
+      quiz_due: true,
+      quiz_active: false,
+    } as never)
+    render(<ProfilePage />)
+    const link = await screen.findByRole('link', { name: /Start mastery check/ })
+    expect(link.getAttribute('href')).toBe('/goals?quiz=1')
+    expect(screen.getByText('Mastery check recommended')).toBeTruthy()
+  })
+
+  it('resumes an active mastery check instead of starting another', async () => {
+    vi.mocked(api.getScores).mockResolvedValue({
+      ...(scores as Record<string, unknown>),
+      quiz_due: true,
+      quiz_active: true,
+    } as never)
+    render(<ProfilePage />)
+    const link = await screen.findByRole('link', { name: /Resume mastery check/ })
+    expect(link.getAttribute('href')).toBe('/goals?quiz=1')
+    expect(screen.getByText('Mastery check in progress')).toBeTruthy()
+    expect(screen.queryByRole('link', { name: /Start mastery check/ })).toBeNull()
+  })
+
+  it('does not advertise a mastery check the server says is not due', async () => {
+    vi.mocked(api.getScores).mockResolvedValue({
+      ...(scores as Record<string, unknown>),
+      quiz_due: false,
+      quiz_active: false,
+    } as never)
+    render(<ProfilePage />)
+    await screen.findByRole('region', { name: 'Activity' })
+    expect(screen.queryByText('Mastery check recommended')).toBeNull()
+    expect(screen.queryByText('Mastery check in progress')).toBeNull()
+    expect(screen.queryByRole('link', { name: /Start mastery check/ })).toBeNull()
+    expect(screen.queryByRole('link', { name: /Resume mastery check/ })).toBeNull()
+  })
 })

@@ -19,9 +19,8 @@ export const PIPELINE_STATES = [
 
 export const conceptCount = graphMeta.conceptCount
 
-// The landing page used to hardcode 150 while the engine gates the quiz at 50 (xp.QuizGateXP,
-// rescaled by ADR-020). One number now, guarded from Go by TestLandingQuizGateMatchesEngine.
-export const quizGateXP = graphMeta.quizGateXP
+// The graph artifact still carries the mastery-check gate so the generated payload and
+// TestLandingQuizGateMatchesEngine can detect policy drift. No learner surface prints it.
 export const connectionCount = graphMeta.connectionCount
 export const domainCount = graphMeta.domainCount
 export const domainCounts = graphMeta.domainCounts

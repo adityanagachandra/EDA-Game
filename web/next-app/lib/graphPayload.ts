@@ -22,10 +22,10 @@ export type GraphPayloadNode = z.infer<typeof GraphPayloadNodeSchema>
 export type GraphPayloadEdge = z.infer<typeof GraphPayloadEdgeSchema>
 export type GraphPayload = z.infer<typeof GraphPayloadSchema>
 
-// The value the landing page shows for the mastery-check gate, mirroring Go's xp.QuizGateXP.
-// It is the one number build-graph.mjs cannot derive from the corpus, so it is the one that can
-// drift and it did, for as long as the page said 150. internal/xp's
-// TestLandingQuizGateMatchesEngine reads the generated artifact and fails when the two disagree.
+// The mastery-check gate carried by the generated graph artifact, mirroring Go's
+// xp.QuizGateXP. No learner surface prints it. It is the one number build-graph.mjs cannot
+// derive from the corpus, so it is the one that can drift. internal/xp's
+// TestLandingQuizGateMatchesEngine reads the artifact and fails when the two disagree.
 export const QUIZ_GATE_XP = 50
 
 export interface GraphMeta {

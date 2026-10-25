@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import RecommendedTaskList from '../components/RecommendedTaskList'
+import RecommendedTaskList, { taskItems } from '../components/RecommendedTaskList'
 import type { Shelf } from '../lib/nextUp'
 import * as api from '../lib/api'
 
@@ -101,5 +101,34 @@ describe('RecommendedTaskList', () => {
     fireEvent.click(screen.getByText('Review check').closest('button')!)
     expect(push).toHaveBeenCalledWith('/review')
     expect(api.getLessonEligibility).not.toHaveBeenCalled()
+  })
+
+  it('leaves the primary mastery-check action out of the task rows', () => {
+    const quiz = item({
+      kind: 'diagnostic', badge: 'Mastery check', title: 'Mastery check',
+      href: '/goals?quiz=1', cta: 'Take the check →',
+    })
+    const tasks: Shelf = { next: quiz, alternatives: [item({})] }
+    expect(taskItems(tasks, 5, '/goals?quiz=1').map(t => t.href))
+      .toEqual(['/learn?concept=arith.add'])
+
+    render(<RecommendedTaskList shelf={tasks} excludeHref="/goals?quiz=1" />)
+    expect(screen.queryByText('Mastery check')).toBeNull()
+    expect(screen.getByText('Single-digit addition')).toBeTruthy()
+  })
+
+  it('keeps the empty state honest when the only task is the excluded action', () => {
+    const quiz = item({
+      kind: 'diagnostic', badge: 'Mastery check', title: 'Mastery check',
+      href: '/goals?quiz=1', cta: 'Take the check →',
+    })
+    render(
+      <RecommendedTaskList
+        shelf={{ next: quiz, alternatives: [] }}
+        excludeHref="/goals?quiz=1"
+      />,
+    )
+    expect(screen.getByText(/No learning tasks are available/)).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Choose what to learn' })).toBeTruthy()
   })
 })

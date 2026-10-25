@@ -17,7 +17,7 @@ import BottomTabs from '../../components/BottomTabs'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '../../components/ui/sidebar'
 import RecommendedTaskList from '../../components/RecommendedTaskList'
 import DailyGoalControl, { getGuestGoal } from '../../components/DailyGoalControl'
-import { isNewUser, type Shelf } from '../../lib/nextUp'
+import { frontierConceptTitle, isNewUser, type Shelf } from '../../lib/nextUp'
 import { fetchShelf } from '../../lib/recommendations'
 import { concepts as conceptCatalog } from '../../lib/conceptData'
 import { HourglassIcon, PauseIcon } from '@animateicons/react/lucide'
@@ -101,13 +101,6 @@ export default function ProfilePage() {
     }
   }, [mounted])
 
-  // Null when an older server omits it. The bar hides rather than substituting a literal, a
-  // bar computed against a gate the engine does not use is a claim about this learner, and is
-  // worse than no bar. The banner and its CTA still render, because `quiz_due` is the flag that
-  // actually says whether the quiz is open, and dropping the way into it would cost a learner
-  // the assessment on a stale deployment.
-  const quizGate = scores?.quiz_gate_xp && scores.quiz_gate_xp > 0 ? scores.quiz_gate_xp : null
-
   const effScores = useMemo(
     () => (scores && goalOverride ? { ...scores, daily_xp_goal: goalOverride } : scores),
     [scores, goalOverride],
@@ -127,11 +120,11 @@ export default function ProfilePage() {
   // recommended" while the request is in flight would misreport the learner.
   const head = shelf
 
-  // What the head names, for "where am I". Read off the same head as the recommendation, so
-  // the two cannot disagree, which is the property that matters, and the reason this block
-  // keeps the label even though it no longer offers a button: the engine owns both the name
-  // and the destination, so a learner is never shown one concept's name and sent to another.
-  const frontierLabel = head?.next.title ?? null
+  // What the head names, for "where am I". A due mastery check or review is an action, not
+  // a frontier, so skip those and name the first concept the engine actually offers. The
+  // engine still owns the name and the destination: a learner is never shown one concept's
+  // name and sent to another.
+  const frontierLabel = frontierConceptTitle(head)
 
 
   useEffect(() => {
@@ -455,26 +448,24 @@ export default function ProfilePage() {
           </Link>
         )}
 
-        {/* Quiz gate. Every number here is the server's: whether the gate is open
-            (quiz_due), how much it is (quiz_gate_xp) and how far along the learner is
-            (xp_since_quiz). The block had a literal 50 in the copy, in the bar and in an
-            `xp_total >= 50` fallback for a field the server does send, so ADR-020's rescale
-            could move the gate and leave all three describing the old one. */}
+        {/* Whether the check is open is the server's fact, carried by quiz_due.
+            quiz_active says the server already holds a live run, so the same
+            destination resumes it instead of starting another. The raw gate value
+            stays on the server. */}
         {scores && scores.quiz_due && (
           <div className="mt-6 w-full min-w-0 overflow-hidden border border-mathua-blue bg-mathua-surface p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
             <div className="w-full sm:flex-1 min-w-0">
               <div className="flex flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:gap-2 flex-wrap">
-                <span className="shrink-0 bg-mathua-blue text-white px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider">Quiz due</span>
-                <span className="break-words font-mono text-[11px] sm:text-xs text-mathua-primary">{quizGate ? `${quizGate} XP reached: mastery check recommended` : 'mastery check recommended'}</span>
+                <span className="shrink-0 bg-mathua-blue text-white px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider">
+                  {scores.quiz_active ? 'Quiz in progress' : 'Quiz due'}
+                </span>
+                <span className="break-words font-mono text-[11px] sm:text-xs text-mathua-primary">
+                  {scores.quiz_active ? 'Mastery check in progress' : 'Mastery check recommended'}
+                </span>
               </div>
-              {quizGate && (
-                <div className="mt-2 h-1 bg-mathua-code overflow-hidden">
-                  <div className="h-full bg-mathua-blue" style={{ width: `${Math.min(((scores.xp_since_quiz ?? scores.xp_total) / quizGate) * 100, 100)}%` }} />
-                </div>
-              )}
             </div>
             <Link href="/goals?quiz=1" className="w-full sm:w-auto sm:shrink-0 border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint px-6 py-2 font-mono text-xs min-h-[36px] inline-flex items-center justify-center text-center whitespace-nowrap">
-              Start the quiz →
+              {scores.quiz_active ? 'Resume mastery check →' : 'Start mastery check →'}
             </Link>
           </div>
         )}
@@ -483,6 +474,7 @@ export default function ProfilePage() {
           shelf={head}
           loading={shelf === null && !shelfFailed}
           failed={shelfFailed}
+          excludeHref={scores?.quiz_due ? '/goals?quiz=1' : undefined}
         />
 
         {efficacy && efficacy.concepts_touched > 0 && (

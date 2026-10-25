@@ -90,6 +90,17 @@ export function hrefConceptId(href: string): string | null {
   }
 }
 
+// The frontier is a concept, not the current action. A due mastery check or
+// review can head the shelf, but naming it in "where you are" would replace
+// the concept the learner is working towards with a task they can start now.
+export function frontierConceptTitle(shelf: Shelf | null): string | null {
+  if (!shelf) return null
+  for (const item of [shelf.next, ...shelf.alternatives]) {
+    if (hrefConceptId(item.href)) return item.title
+  }
+  return null
+}
+
 export interface RecentUnlock {
   id: string
   label: string

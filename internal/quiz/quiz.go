@@ -3,13 +3,21 @@ package quiz
 import (
 	"sort"
 	"sync"
+	"time"
 
 	"github.com/chuma-beep/mathua/internal/concepts"
 	"github.com/chuma-beep/mathua/internal/generator"
 )
 
-// Session is an actionable quiz every ~150 XP, own grading path (attemptID).
-// Guest unlimited retake: each POST /api/quiz/session creates a new session.
+// QuizSize is the number of concepts in one routine mastery check. Selection
+// and Start share it so a caller cannot choose six and silently have the sixth
+// dropped.
+const QuizSize = 5
+
+// Session is one run of the routine mastery check, behind the XP gate and on
+// its own grading path (attemptID). The server owns admission and reuse: an
+// anonymous run is created per request, while an identified learner gets the
+// run already in progress instead of a second one.
 type Session struct {
 	sync.Mutex
 	ID            string
@@ -19,6 +27,10 @@ type Session struct {
 	Attempts      []Attempt
 	LastProblem   *generator.Problem
 	LastConceptID string
+	// QuestionStarted is when the pending question was served. The server owns
+	// this clock: a refresh resumes the same start time, and an answer is
+	// measured from it rather than from the client's report alone.
+	QuestionStarted time.Time
 	// Difficulties holds weakness→difficulty per concept (80% target, 0.3-1.0).
 	Difficulties map[string]float64
 }
@@ -37,17 +49,16 @@ func NewEngine(dag *concepts.DAG, reg *generator.Registry) *Engine {
 	return &Engine{dag: dag, registry: reg}
 }
 
-// Start picks diverse recent weak concepts via weakness hint, fallback to DAG order.
-// Caller provides weakness-filtered concepts; we cap to 5 for stub.
+// Start accepts the concepts chosen for one quiz, capped at QuizSize.
+// An empty selection falls back to the first concepts in DAG order, which is
+// the anonymous demo path; identified learners are refused before they get
+// here when there are no eligible concepts.
 func (e *Engine) Start(concepts []*concepts.Concept) *Session {
 	if len(concepts) == 0 {
 		concepts = e.dag.Order()
-		if len(concepts) > 5 {
-			concepts = concepts[:5]
-		}
 	}
-	if len(concepts) > 5 {
-		concepts = concepts[:5]
+	if len(concepts) > QuizSize {
+		concepts = concepts[:QuizSize]
 	}
 	return &Session{
 		Order:        concepts,
@@ -60,6 +71,7 @@ func (e *Engine) NextQuestion(s *Session) (*generator.Problem, string, error) {
 	defer s.Unlock()
 	if s.Index >= len(s.Order) {
 		s.LastProblem = nil
+		s.QuestionStarted = time.Time{}
 		return nil, "", nil
 	}
 	c := s.Order[s.Index]
@@ -74,7 +86,26 @@ func (e *Engine) NextQuestion(s *Session) (*generator.Problem, string, error) {
 	}
 	s.LastProblem = &p
 	s.LastConceptID = c.ID
+	s.QuestionStarted = time.Now().UTC()
 	return s.LastProblem, c.ID, nil
+}
+
+// QuestionElapsed returns seconds since the pending question was served. It
+// is the server's own measurement, so a refresh or a client clock change
+// cannot shorten it. A zero start time means the question predates this field;
+// the caller should fall back to the client's report rather than inventing a
+// duration.
+func (s *Session) QuestionElapsed(now time.Time) float64 {
+	s.Lock()
+	defer s.Unlock()
+	if s.QuestionStarted.IsZero() || s.LastProblem == nil {
+		return 0
+	}
+	elapsed := now.Sub(s.QuestionStarted).Seconds()
+	if elapsed < 0 {
+		return 0
+	}
+	return elapsed
 }
 
 func (e *Engine) RecordAnswer(s *Session, conceptID string, correct bool) {
@@ -94,7 +125,7 @@ func (e *Engine) IsComplete(s *Session) bool {
 }
 
 // HasAttempts reports whether any answer was recorded this session,
-// used to avoid resetting the 150 XP gate baseline on an all-skipped quiz.
+// used to avoid resetting the XP gate baseline on an all-skipped quiz.
 func (e *Engine) HasAttempts(s *Session) bool {
 	s.Lock()
 	defer s.Unlock()
@@ -112,67 +143,107 @@ func (e *Engine) SkipQuestion(s *Session) {
 	}
 }
 
-// PickQuizConcepts selects diverse recent weak concepts for quiz.
-// It prioritizes concepts where the student showed weakness (weakness > 0.3).
-// If no concept exceeds the weakness threshold, it draws from concepts present
-// in the weakness map (i.e. concepts the student has encountered), rather than
-// blindly falling back to the start of the curriculum. Only when the weakness map
-// is empty does it fall back to the initial frontier.
+// PickQuizConcepts is the anonymous and no-state fallback. Its weakness map
+// holds every concept the learner has encountered; the keys are the candidate
+// pool. It falls back to the start of the DAG only when the map is empty, which
+// is the demo path with no learner identity.
 func PickQuizConcepts(dag *concepts.DAG, weakness map[string]float64) []*concepts.Concept {
-	type scored struct {
-		c *concepts.Concept
-		w float64
-	}
-	var list []scored
+	return pickQuizConcepts(dag, weakness, nil, true)
+}
+
+// PickQuizConceptsFromCandidates selects from an identified learner's eligible
+// concepts. The weakness map is the candidate pool: its keys are the concepts
+// the caller has already checked for learning evidence and prerequisite
+// eligibility, and its values order them. A nil result means there was no
+// eligible candidate, never that the caller should fall back to the DAG.
+//
+// recent holds concepts from the latest quiz-sized window of quiz attempts.
+// They are used only after every non-recent candidate, so a learner does not
+// see the same topics on consecutive checks while alternatives exist. A short
+// pool still returns every candidate; recency is a preference, not a filter
+// that can empty an otherwise valid quiz.
+func PickQuizConceptsFromCandidates(dag *concepts.DAG, weakness map[string]float64, recent map[string]bool) []*concepts.Concept {
+	return pickQuizConcepts(dag, weakness, recent, false)
+}
+
+type quizCandidate struct {
+	c *concepts.Concept
+	w float64
+}
+
+func pickQuizConcepts(dag *concepts.DAG, weakness map[string]float64, recent map[string]bool, fallback bool) []*concepts.Concept {
+	var list []quizCandidate
 	for _, c := range dag.Order() {
-		w := weakness[c.ID]
-		if w > 0.3 {
-			list = append(list, scored{c, w})
-		}
-	}
-	if len(list) == 0 && len(weakness) > 0 {
-		for _, c := range dag.Order() {
-			if w, ok := weakness[c.ID]; ok {
-				list = append(list, scored{c, w})
-			}
+		if w, ok := weakness[c.ID]; ok {
+			list = append(list, quizCandidate{c, w})
 		}
 	}
 	if len(list) == 0 {
-		// fallback to 5 available concepts
+		if !fallback {
+			return nil
+		}
 		order := dag.Order()
-		if len(order) > 5 {
-			order = order[:5]
+		if len(order) > QuizSize {
+			order = order[:QuizSize]
 		}
 		return order
 	}
-	sort.Slice(list, func(i, j int) bool { return list[i].w > list[j].w })
-	// distinct subdomain pick
-	seen := map[string]bool{}
-	var out []*concepts.Concept
+	// Weakest first, then DAG order by id. The id tie-break matters because
+	// equal weakness is common (every healthy concept is 0.0), and an unstable
+	// sort would make the same learner's quiz depend on map or runtime order.
+	sort.Slice(list, func(i, j int) bool {
+		if list[i].w != list[j].w {
+			return list[i].w > list[j].w
+		}
+		return list[i].c.ID < list[j].c.ID
+	})
+
+	var fresh, seenRecently []quizCandidate
 	for _, s := range list {
-		if !seen[s.c.Subdomain] {
-			out = append(out, s.c)
-			seen[s.c.Subdomain] = true
+		if recent[s.c.ID] {
+			seenRecently = append(seenRecently, s)
+			continue
 		}
-		if len(out) >= 5 {
-			break
-		}
+		fresh = append(fresh, s)
 	}
-	// fill up to 5 if still short
-	for _, s := range list {
-		if len(out) >= 5 {
-			break
+
+	out := appendDiverse(nil, fresh, QuizSize)
+	if len(out) < QuizSize {
+		out = appendDiverse(out, seenRecently, QuizSize)
+	}
+	return out
+}
+
+// appendDiverse adds pool to out, one concept per subdomain first, then fills
+// the remaining places from the same pool. It never adds a duplicate concept
+// and never exceeds limit.
+func appendDiverse(out []*concepts.Concept, pool []quizCandidate, limit int) []*concepts.Concept {
+	seenID := make(map[string]bool, len(out))
+	seenSubdomain := make(map[string]bool, len(out))
+	for _, c := range out {
+		seenID[c.ID] = true
+		seenSubdomain[c.Subdomain] = true
+	}
+	for _, s := range pool {
+		if len(out) >= limit {
+			return out
 		}
-		found := false
-		for _, c := range out {
-			if c.ID == s.c.ID {
-				found = true
-				break
-			}
+		if seenID[s.c.ID] || seenSubdomain[s.c.Subdomain] {
+			continue
 		}
-		if !found {
-			out = append(out, s.c)
+		out = append(out, s.c)
+		seenID[s.c.ID] = true
+		seenSubdomain[s.c.Subdomain] = true
+	}
+	for _, s := range pool {
+		if len(out) >= limit {
+			return out
 		}
+		if seenID[s.c.ID] {
+			continue
+		}
+		out = append(out, s.c)
+		seenID[s.c.ID] = true
 	}
 	return out
 }

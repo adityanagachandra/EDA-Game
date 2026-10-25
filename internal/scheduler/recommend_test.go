@@ -304,6 +304,11 @@ func TestRecommend_MasteryCheckIsATaskNotABanner(t *testing.T) {
 	if noReview.Primary.Action.Href != "/goals?quiz=1" {
 		t.Errorf("href = %q", noReview.Primary.Action.Href)
 	}
+	// The gate is a schedule, not learner-facing economy: the interface says
+	// when a check is ready, never how many XP it takes.
+	if strings.Contains(noReview.Primary.Detail, "XP") {
+		t.Errorf("mastery-check detail prints the gate: %q", noReview.Primary.Detail)
+	}
 }
 
 func hasKind(rs []Recommendation, k Kind) bool {

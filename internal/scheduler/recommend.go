@@ -1,7 +1,6 @@
 package scheduler
 
 import (
-	"fmt"
 	"sort"
 	"time"
 
@@ -305,7 +304,7 @@ func (s *Scheduler) Recommend(in RecommendInput) RecommendationResponse {
 			Reason:   ReasonMasteryReady,
 			Action:   Action{Type: KindMasteryCheck, Href: "/goals?quiz=1"},
 			Badge:    "Mastery check",
-			Detail:   fmt.Sprintf("You have earned %d XP since your last one, take it to lock in what you have learned", xp.QuizGateXP),
+			Detail:   "A mastery check is ready. Take it to lock in what you have learned.",
 			CTA:      "Take the check →",
 			Priority: 100,
 		}

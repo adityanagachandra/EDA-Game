@@ -28,10 +28,10 @@ type Scores struct {
 	// Quiz gate signal: XP earned since last completed quiz.
 	XPSinceQuiz int  `json:"xp_since_quiz"`
 	QuizDue     bool `json:"quiz_due"`
-	// QuizGateXP is xp.QuizGateXP, carried so the profile's progress bar can render the gate
-	// instead of a copy of it. The bar divided by a literal 50 while ADR-020 moved the gate,
-	// the same drift the landing page had, one level worse, because a wrong bar is a claim
-	// about how close this learner is rather than a headline.
+	// QuizActive reports a live in-memory session for this learner. It is not
+	// XP or history: a due check can be started, and a live check can be resumed.
+	QuizActive bool `json:"quiz_active"`
+	// QuizGateXP is xp.QuizGateXP, server policy. No learner surface prints it.
 	QuizGateXP int `json:"quiz_gate_xp"`
 }
 

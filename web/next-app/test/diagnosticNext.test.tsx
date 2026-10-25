@@ -558,7 +558,7 @@ describe('QuizHost manual advance', () => {
     render(<QuizHost />)
     // Intro briefing gates the start, timing begins at Start, not mount.
     expect(screen.getByText('Before you start')).toBeInTheDocument()
-    expect(screen.getByText('Up to 5 questions · timed · closed book')).toBeInTheDocument()
+    expect(screen.getByText('Up to 5 questions · closed book')).toBeInTheDocument()
     expect(screen.queryByText('Quiz Q1 text')).toBeNull()
     fireEvent.click(screen.getByRole('button', { name: 'Start quiz →' }))
     await screen.findByText('Quiz Q1 text')

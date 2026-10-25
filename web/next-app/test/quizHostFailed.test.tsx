@@ -46,6 +46,39 @@ describe('QuizHost failure state', () => {
     expect(screen.queryByText(/no questions available/i)).toBeNull()
   })
 
+  it('says the mastery check is not due instead of blaming the request', async () => {
+    vi.mocked(startQuizSession).mockRejectedValue(
+      Object.assign(new Error('conflict'), { status: 409, serverMessage: 'mastery check is not due yet' }),
+    )
+    render(<QuizHost />)
+
+    fireEvent.click(screen.getByRole('button', { name: /start quiz/i }))
+
+    const alert = await screen.findByRole('alert')
+    expect(alert.textContent).toMatch(/not due yet/i)
+    expect(alert.textContent).not.toMatch(/request failed/i)
+    expect(screen.getByText(/mastery check not due yet/i)).toBeTruthy()
+    expect(screen.queryByText(/no questions available/i)).toBeNull()
+  })
+
+  it('explains that no concepts are ready instead of blaming the request', async () => {
+    vi.mocked(startQuizSession).mockRejectedValue(
+      Object.assign(new Error('unprocessable'), {
+        status: 422,
+        serverMessage: 'no concepts are ready for a mastery check',
+      }),
+    )
+    render(<QuizHost />)
+
+    fireEvent.click(screen.getByRole('button', { name: /start quiz/i }))
+
+    const alert = await screen.findByRole('alert')
+    expect(alert.textContent).toMatch(/no concepts ready yet/i)
+    expect(alert.textContent).not.toMatch(/request failed/i)
+    expect(screen.getByText(/no mastery check ready yet/i)).toBeTruthy()
+    expect(screen.queryByText(/no questions available/i)).toBeNull()
+  })
+
   it('offers a retry that can succeed', async () => {
     vi.mocked(startQuizSession).mockRejectedValueOnce(new Error('network down'))
     render(<QuizHost />)

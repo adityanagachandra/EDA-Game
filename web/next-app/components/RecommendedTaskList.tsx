@@ -23,11 +23,12 @@ function xpLabel(xp: number): string {
   return xp > 0 ? `+${xp} XP` : ''
 }
 
-export function taskItems(shelf: Shelf | null, cap = 5): ShelfItem[] {
+export function taskItems(shelf: Shelf | null, cap = 5, excludeHref?: string): ShelfItem[] {
   if (!shelf) return []
   const seen = new Set<string>()
   const out: ShelfItem[] = []
   for (const item of [shelf.next, ...shelf.alternatives]) {
+    if (excludeHref && item.href === excludeHref) continue
     if (seen.has(item.href)) continue
     seen.add(item.href)
     out.push(item)
@@ -46,6 +47,7 @@ export default function RecommendedTaskList({
   shelf,
   loading = false,
   failed = false,
+  excludeHref,
 }: {
   shelf: Shelf | null
   loading?: boolean
@@ -53,6 +55,9 @@ export default function RecommendedTaskList({
   // passed `loading={shelf === null}` and its catch also set null. That is an
   // indefinite spinner, which is never an honest answer.
   failed?: boolean
+  // A page that already renders a primary action for the same task can keep
+  // that action and leave it out of this list instead of showing it twice.
+  excludeHref?: string
 }) {
   const router = useRouter()
   const [busy, setBusy] = useState<string | null>(null)
@@ -88,7 +93,7 @@ export default function RecommendedTaskList({
     }
   }
 
-  const items = taskItems(shelf)
+  const items = taskItems(shelf, 5, excludeHref)
 
   return (
     <section aria-label="Your learning" className="mt-6 min-w-0">

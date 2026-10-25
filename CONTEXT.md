@@ -25,12 +25,12 @@ _Avoid_: progress, progress card, transcript (fine in prose, not in a route)
 **Diagnostic (frontier)**, Adaptive CAT finding knowledge frontier (`internal/diagnostic/cat.go:1`, `improve.md:27` 30–45 min, covering set + info-gain). Entry: `/onboard` welcome (`onboard/page.tsx:56`), CTA on `Profile` (`profile:209`) labeled `Recommended` vs `Retake` (`profile:209`).  
 _Avoid_: test, assessment, quiz (reserved)
 
-**Seam**, Public boundary to test at (the `tdd` skill's term: the narrowest interface that makes the behavior observable). Pre-agreed seams for next bite: `Learn → SubmitStudyAnswer` (`POST /api/study/answer` `server.go:484` → `submitAnswerWithTask` `engine.go:1255`).
+**Seam**, Public boundary to test at (the `tdd` skill's term: the narrowest interface that makes the behavior observable). Pre-agreed seams for next bite: `Learn → SubmitStudyAnswer` (`POST /api/study/answer` `server.go:484` → `submitAnswerWithTask` `engine.go:1703`).
 
 **TaskLesson / TaskReview / TaskMultistep / TaskQuiz**, XP task types (`internal/xp/policy.go` effort-derived bases). Q2 locked: `*.word` and plain share the effort calibration (thresholds already differ). Reviews and quizzes earn the same effort base as lessons; the task type does not change the number.
 _Avoid_: flat per-question XP, word as separate prereq depth (temporary node, future `Variants` fold via `enrichment.json` `improve.md:114`)
 
-**Quiz (50 XP gate)**, Q3 was MA-verbatim `150 XP` (`improve.md:27`); rescaled to `50 XP` with the small-awards economy (same ~5-lesson cadence, smaller numbers, user-tuned economy supersedes MA fidelity, see ADR-020). Timed closed-book, `80%` difficulty via `computeDifficulty`, diverse recents, immediate remedial + retake (`internal/quiz/quiz.go:1`). Daily goal `10` (drift fix shipped: versioned backfill in `sqlite.go`). Banner: `Study → Take Test` + `Profile` due-reviews.
+**Quiz (50 XP gate)**, Q3 was MA-verbatim `150 XP` (`improve.md:27`); rescaled to `50 XP` with the small-awards economy (same ~5-lesson cadence, smaller numbers, user-tuned economy supersedes MA fidelity, see ADR-020). Timed closed-book, `80%` difficulty via `computeDifficulty`, diverse recents, immediate remedial and a retake only when the gate is due again (`internal/quiz/quiz.go:1`). Daily goal `10` (drift fix shipped: versioned backfill in `sqlite.go`). Banner: `Study → Take Test` + `Profile` due-reviews.
 _Avoid_: 1–2 lesson gate, 30 XP shortcut
 
 **XP**, `Award` in `internal/xp/policy.go` (`EffortBase` clamped to 1-5, × `PerformanceMultiplier` 1.1 inside the time threshold and 1.0 outside; no time or streak multiplier): an effort-derived approximation, never exact time accounting. Miss 0, rush −5, diagnostic 0 XP. Daily goal `30` (`xp.DefaultDailyGoal`). Verified via `go vet` + `learn → answer → profile` `playwright`.

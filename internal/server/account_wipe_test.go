@@ -288,6 +288,10 @@ func TestAccountReset_InFlightQuizCannotResurrectProgress(t *testing.T) {
 		return rec
 	}
 
+	if err := store.AwardXP(sid, engine.QuizGateXP, "test", "wipe-quiz-gate"); err != nil {
+		t.Fatalf("seed quiz gate: %v", err)
+	}
+	seedQuizLearned(t, store, sid, "a", "PRACTICING", 0.5)
 	sr := post("/api/quiz/session", `{}`)
 	if sr.Code != 200 {
 		t.Fatalf("quiz start: %d %s", sr.Code, sr.Body.String())

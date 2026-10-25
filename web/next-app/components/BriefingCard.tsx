@@ -6,8 +6,8 @@ export interface BriefingItem {
 }
 
 // Pre-test expectations, MA-grounded: diagnostics run 25–45 adaptive
-// questions (~30–45 min per engine bounds), quizzes are timed + closed-book.
-// Stated once up front so the test itself stays distraction-free.
+// questions (~30–45 min per engine bounds), quizzes are closed-book with a
+// slow-answer threshold. Stated once up front so the test stays distraction-free.
 export const DIAGNOSTIC_BRIEFING: BriefingItem[] = [
   {
     title: '25–45 questions · about 30–45 minutes',
@@ -29,20 +29,20 @@ export const DIAGNOSTIC_BRIEFING: BriefingItem[] = [
 
 export const QUIZ_BRIEFING: BriefingItem[] = [
   {
-    title: 'Up to 5 questions · timed · closed book',
-    detail: 'Each question has its own timer. Keep books and notes shut.',
+    title: 'Up to 5 questions · closed book',
+    detail: 'No countdown is shown. A slow answer is still graded. Keep books and notes shut.',
   },
   {
-    title: 'Covers what you just learned',
-    detail: 'Questions come from your recent lessons.',
+    title: 'Covers what you are still learning',
+    detail: 'Questions come from concepts you have learned but not yet mastered.',
   },
   {
-    title: 'A wrong answer shows you why',
-    detail: 'The worked solution appears straight away, and anything worth revisiting is listed when the quiz ends.',
+    title: 'A wrong answer points to the concept',
+    detail: 'The verdict stays short during the check. Concepts worth revisiting are listed at the end and open in Learn for the full explanation.',
   },
   {
-    title: 'XP for each correct answer · retake anytime',
-    detail: 'Faster answers and longer streaks earn more. No penalty for retaking.',
+    title: 'XP for each correct answer · retake when due',
+    detail: 'A retake opens again once you have earned enough XP for the next check.',
   },
 ]
 

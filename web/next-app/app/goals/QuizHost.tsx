@@ -25,20 +25,41 @@ import { focusClearOfTabs } from '../../lib/focusClearOfTabs'
 // set phase to 'done', and the done screen reads "No questions available" while
 // the accuracy counters are still zero, so a network blip, a 500 or an expired
 // token told the learner the corpus had no questions for them. The engine cannot
-// actually produce that state: a session with no picked concepts falls back to
-// the first five concepts in DAG order, so a real empty result needs an empty
-// curriculum. A failure is a failure and says so.
+// actually produce that state for an identified learner: no learned,
+// prerequisite-ready concept is a 422 with its own message, not an empty quiz.
+// The anonymous demo still falls back to the first five concepts in DAG order.
+// A failure is a failure and says so.
 type Phase = 'loading' | 'intro' | 'quiz' | 'done' | 'failed'
 
-// Actionable quiz every 50 XP (engine.QuizGateXP): timed closed-book, own
-// grading path, guest unlimited retake. Self-contained so the goals page only
-// mounts it.
+// A 409 from quiz session creation is the scheduled answer, not a fault: the
+// learner has not yet earned the XP gate since their last completed mastery
+// check. The server never sends the threshold in the body, so neither does the
+// client; it says when the check is available, not what the number is.
+function isQuizNotDue(err: unknown): boolean {
+  return typeof err === 'object' && err !== null && 'status' in err &&
+    (err as { status?: unknown }).status === 409
+}
+
+// A 422 means the gate is earned but no learned concept is prerequisite-ready.
+// That is also not a request fault, and it is not the schedule saying "not
+// yet": there is a different next step, which is to keep learning.
+function isNoQuizCandidates(err: unknown): boolean {
+  return typeof err === 'object' && err !== null && 'status' in err &&
+    (err as { status?: unknown }).status === 422
+}
+
+// Routine mastery check behind the XP gate (engine.QuizGateXP): closed-book,
+// with the server measuring each question, and on its own grading path. The
+// anonymous demo remains ungated because it writes no XP or mastery.
+// Self-contained so the goals page only mounts it.
 export default function QuizHost() {
   const [phase, setPhase] = useState<Phase>('intro')
   const [loading, setLoading] = useState(false)
   // Carried separately from the phase so the failed screen can say what went
   // wrong without pretending the quiz is over.
   const [startError, setStartError] = useState('')
+  const [startBlocked, setStartBlocked] = useState(false)
+  const [startNoCandidates, setStartNoCandidates] = useState(false)
 
   const quizSessionId = useRef('')
   const quizAttemptId = useRef('')
@@ -62,6 +83,10 @@ export default function QuizHost() {
   const [quizClosedBook, setQuizClosedBook] = useState(false)
   const [quizQuestionsTotal, setQuizQuestionsTotal] = useState(0)
   const [quizRemedial, setQuizRemedial] = useState<string[]>([])
+  // The server owns retake eligibility. False is the safe default: a quiz
+  // response without the field must not advertise a retake the next start
+  // request would refuse.
+  const [quizRetakeAvailable, setQuizRetakeAvailable] = useState(false)
   const [submitError, setSubmitError] = useState<SubmitError | null>(null)
   const [finished, setFinished] = useState(false)
   const [skipCount, setSkipCount] = useState(0)
@@ -81,6 +106,8 @@ export default function QuizHost() {
     setPhase('loading')
     setLoading(true)
     setStartError('')
+    setStartBlocked(false)
+    setStartNoCandidates(false)
     try {
       const res = await startQuizSession()
       if (res.done) {
@@ -101,14 +128,25 @@ export default function QuizHost() {
       setQuizClosedBook(!!res.closed_book)
       setQuizQuestionsTotal(res.questions_total ?? 0)
       setQuizRemedial([])
+      setQuizRetakeAvailable(false)
       pendingQuizNext.current = null
       setSubmitError(null)
       setSkipCount(0)
       setFinished(false)
       setPhase('quiz')
-    } catch {
-      toast.error('Quiz failed to start, try again.')
-      setStartError('The quiz could not start. That is a request problem, not a missing topic.')
+    } catch (e) {
+      if (isQuizNotDue(e)) {
+        toast.error('Mastery check not due yet.')
+        setStartBlocked(true)
+        setStartError('The mastery check is not due yet. Keep learning and this page will offer it when enough XP is earned.')
+      } else if (isNoQuizCandidates(e)) {
+        toast.error('No mastery check is ready yet.')
+        setStartNoCandidates(true)
+        setStartError('The mastery check has no concepts ready yet. Keep learning and try again when more topics are ready to assess.')
+      } else {
+        toast.error('Quiz failed to start, try again.')
+        setStartError('The quiz could not start. That is a request problem, not a missing topic. Nothing is wrong with the topics, the request failed.')
+      }
       setPhase('failed')
     } finally {
       setLoading(false)
@@ -118,10 +156,10 @@ export default function QuizHost() {
   // The quiz starts from the intro screen, not on mount, timing and
   // question reveal begin at Start, so the briefing costs nothing.
 
-  // Per-question countdown for the timed closed-book quiz. Informational:
-  // the engine grades over-time answers as slow, it never blocks submission.
-  // Keyboard flow: the answer form unmounts while feedback shows, so the
-  // cursor is restored here, whenever a fresh question is revealed.
+  // The server stamps each question and measures elapsed from its own clock.
+  // There is no visible countdown: a late answer is graded as slow, not
+  // blocked. Keyboard flow: the answer form unmounts while feedback shows, so
+  // the cursor is restored here, whenever a fresh question is revealed.
   useEffect(() => {
     if (phase === 'quiz' && !quizLastResult && quizQuestion) quizInputRef.current?.focus()
   }, [phase, quizLastResult, quizQuestion])
@@ -144,6 +182,7 @@ export default function QuizHost() {
       }
 
       if (data.done) {
+        setQuizRetakeAvailable(!!data.retake_available)
         setFinished(true)
         setTimeout(() => {
           setPhase('done')
@@ -190,6 +229,7 @@ export default function QuizHost() {
       const data = await skipQuizQuestion(quizSessionId.current)
       setSkipCount(c => c + 1)
       if (data.done) {
+        setQuizRetakeAvailable(!!data.retake_available)
         setFinished(true)
         setQuizLastResult({ correct: false, feedback: 'Skipped, no XP awarded.', conceptId: quizConceptId.current, xp: 0 })
         setTimeout(() => {
@@ -268,10 +308,9 @@ export default function QuizHost() {
   if (phase === 'failed') {
     return (
       <div className="max-w-2xl mx-auto text-center">
-        <SectionHeader label="Quiz" title="Quiz could not start" />
+        <SectionHeader label="Quiz" title={startBlocked ? 'Mastery check not due yet' : startNoCandidates ? 'No mastery check ready yet' : 'Quiz could not start'} />
         <p role="alert" className="font-mono text-sm text-mathua-secondary mt-4">
-          {startError || 'The quiz could not start.'} Nothing is wrong with the topics, the
-          request failed.
+          {startError || 'The quiz could not start.'}
         </p>
         <div className="mt-6 flex gap-3 justify-center">
           <button type="button" onClick={() => { void startQuiz() }} className="border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint rounded-none h-12 px-8 text-sm">Try again →</button>
@@ -296,10 +335,14 @@ export default function QuizHost() {
         ) : (
           <>
             <SectionHeader label="Quiz complete" title={`${quizAccuracy.correct}/${quizAccuracy.total} correct`} />
-            <p className="font-mono text-sm text-mathua-secondary mt-4">XP awarded per correct answer, more for faster answers. Retake anytime.</p>
+            <p className="font-mono text-sm text-mathua-secondary mt-4">
+              {quizRetakeAvailable
+                ? 'XP awarded for each correct answer. A retake is available now.'
+                : 'XP awarded for each correct answer. Keep learning to earn your next mastery check.'}
+            </p>
             {quizRemedial.length > 0 && (
               <div className="mt-6 border border-mathua-border bg-mathua-surface p-4 text-left">
-                <p className="font-mono text-xs uppercase tracking-wider text-mathua-muted mb-2">Focus next in Study</p>
+                <p className="font-mono text-xs uppercase tracking-wider text-mathua-muted mb-2">Focus next in Learn</p>
                 <ul className="space-y-1">
                   {quizRemedial.map(id => {
                     const label = conceptsData.find(c => c.id === id)?.label ?? id
@@ -315,7 +358,11 @@ export default function QuizHost() {
               </div>
             )}
             <div className="mt-6 flex gap-3 justify-center">
-              <button type="button" onClick={startQuiz} className="border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint rounded-none h-12 px-8 text-sm">Retake Quiz →</button>
+              {quizRetakeAvailable ? (
+                <button type="button" onClick={startQuiz} className="border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint rounded-none h-12 px-8 text-sm">Retake Quiz →</button>
+              ) : (
+                <Link href="/learn" className="border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint rounded-none h-12 px-8 text-sm inline-flex items-center">Keep learning →</Link>
+              )}
               <Link href="/profile" className="border border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue rounded-none h-12 px-8 text-sm inline-flex items-center">Back to Profile →</Link>
             </div>
             <div className="mt-3 text-center">

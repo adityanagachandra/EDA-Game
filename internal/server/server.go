@@ -626,6 +626,9 @@ func (s *Server) handleScores(w http.ResponseWriter, r *http.Request) {
 		writeError(w, "failed to get scores", 500)
 		return
 	}
+	// quiz_active is a live in-memory fact, not part of the persisted score row.
+	// The same lock the session map uses keeps this read consistent with reuse.
+	scores.QuizActive = s.quizActive(studentID)
 	writeJSON(w, scores)
 }
 
@@ -3232,8 +3235,112 @@ func (s *Server) handleSession(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, startSessionRes{StudentID: sid, SessionID: sess.ID, Question: q})
 }
 
-// POST /api/quiz/session, actionable quiz every 150 XP, own grading path, guest unlimited retake
-// Body: { student_id? } optional for guest
+// quizNotDueMessage is the stable answer when an identified learner asks for a
+// routine mastery check before the XP gate is reached. It deliberately carries
+// no XP numbers: the client owns the presentation of the gate (Task 6), and a
+// threshold in an error string is another copy of a policy constant.
+const quizNotDueMessage = "mastery check is not due yet"
+
+// quizNoCandidatesMessage is the answer when the gate is earned but no learned
+// concept has its prerequisites satisfied. It is a different fact from "not
+// due" and must not be mistaken for it by the client, so it uses 422 rather
+// than the gate's 409.
+const quizNoCandidatesMessage = "no concepts are ready for a mastery check"
+
+// liveQuizSessionLocked returns the learner's in-progress routine mastery
+// check, or nil. Caller holds s.mu.
+//
+// Quiz sessions are in-memory and keyed by an unguessable id, so before this
+// scan the only way to find a learner's live run was to already hold its id.
+// The scan is what makes creation idempotent per learner: a repeated or
+// concurrent POST joins the run that exists instead of replacing it and
+// discarding answers.
+func (s *Server) liveQuizSessionLocked(studentID string) *quiz.Session {
+	if studentID == "" {
+		return nil
+	}
+	for _, sess := range s.quizSessions {
+		if sess != nil && sess.StudentID == studentID {
+			return sess
+		}
+	}
+	return nil
+}
+
+// quizActive is the read-only counterpart of session creation: it reports
+// whether the learner already has a live run the next POST would reuse.
+func (s *Server) quizActive(studentID string) bool {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.liveQuizSessionLocked(studentID) != nil
+}
+
+// writeQuizSessionStart answers with the pending question of session.
+func (s *Server) writeQuizSessionStart(w http.ResponseWriter, sess *quiz.Session, studentID string) {
+	sess.Lock()
+	prob := sess.LastProblem
+	cid := sess.LastConceptID
+	total := len(sess.Order)
+	sess.Unlock()
+	if prob == nil || cid == "" {
+		writeJSON(w, map[string]interface{}{"session_id": sess.ID, "done": true})
+		return
+	}
+	c := s.eng.GetDAG().Concept(cid)
+	name := cid
+	if c != nil {
+		name = c.Label
+	}
+	writeJSON(w, s.withAnswerFormat(map[string]interface{}{
+		"session_id":   sess.ID,
+		"student_id":   studentID,
+		"concept_id":   cid,
+		"concept_name": name,
+		"question":     prob.Question,
+		"grading_type": s.gradingTypeOf(cid),
+		"done":         false,
+		// Closed-book response metadata: accommodated slow-answer threshold,
+		// total count, no-lesson closed book.
+		"closed_book":        true,
+		"time_limit_seconds": s.eng.TimeLimitFor(studentID, cid),
+		"questions_total":    total,
+	}, cid))
+}
+
+// effectiveAnswerElapsed combines the client's report with the server's own
+// measurement and returns the larger. The server measurement is authoritative
+// for the lower bound, so a manipulated or stale client clock cannot make an
+// answer look faster than it was. A longer client report is allowed because it
+// can only classify the answer as slower, never award more than the server
+// observed. The quiz's time limit is a slow-classification threshold, not a
+// hard expiry, so this function never rejects an answer by itself.
+func effectiveAnswerElapsed(client, server float64) float64 {
+	if client < 0 {
+		client = 0
+	}
+	if server < 0 {
+		server = 0
+	}
+	if server > client {
+		return server
+	}
+	return client
+}
+
+// POST /api/quiz/session, the routine mastery check, own grading path.
+// Body: { student_id? } optional for the anonymous guest demo.
+//
+// For an identified learner the XP gate is enforced here, and here only:
+// creation succeeds when Engine.QuizDue says the learner has earned
+// xp.QuizGateXP since their last completed quiz. Reaching the gate does not
+// consume it. The snapshot moves only when Engine.RecordQuizCompletion runs at
+// the end of a completed quiz, so a rejected, abandoned or duplicated request
+// leaves the next due date exactly where it was.
+//
+// The anonymous path (no token and no student_id) is a different mode: it has
+// no XP, no mastery writes and no gate to satisfy, so it stays available. That
+// is the existing "guest unlimited retake" behaviour, not a bypass of an
+// identified learner's schedule.
 func (s *Server) handleQuizSession(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, `{"error":"method not allowed"}`, 405)
@@ -3256,13 +3363,45 @@ func (s *Server) handleQuizSession(w http.ResponseWriter, r *http.Request) {
 		writeError(w, "student_id not permitted", 403)
 		return
 	}
-	// Build quiz picking diverse recent weak concepts; fallback to DAG order
-	var quizConcepts []*concepts.Concept
 	if studentID != "" {
-		quizConcepts = s.eng.PickQuizConcepts(studentID)
+		// An in-progress run is returned before the gate is consulted. It was
+		// admitted when it was due, and its answers must not be lost because XP
+		// moved underneath it.
+		s.mu.Lock()
+		existing := s.liveQuizSessionLocked(studentID)
+		s.mu.Unlock()
+		if existing != nil {
+			s.writeQuizSessionStart(w, existing, studentID)
+			return
+		}
+		due, err := s.eng.QuizDue(studentID)
+		if err != nil {
+			writeError(w, "failed to check quiz eligibility", 500)
+			return
+		}
+		if !due {
+			writeError(w, quizNotDueMessage, http.StatusConflict)
+			return
+		}
 	}
-	if len(quizConcepts) == 0 {
+	// The anonymous demo has no learner state, so it keeps the DAG fallback.
+	// An identified learner gets only learned, prerequisite-eligible concepts;
+	// falling back to the curriculum would quiz material they have not reached
+	// and would make the eligibility check meaningless.
+	var quizConcepts []*concepts.Concept
+	if studentID == "" {
 		quizConcepts = quiz.PickQuizConcepts(s.eng.GetDAG(), nil)
+	} else {
+		var err error
+		quizConcepts, err = s.eng.PickQuizConcepts(studentID)
+		if err != nil {
+			writeError(w, "failed to select quiz concepts", 500)
+			return
+		}
+		if len(quizConcepts) == 0 {
+			writeError(w, quizNoCandidatesMessage, http.StatusUnprocessableEntity)
+			return
+		}
 	}
 	qEng := quiz.NewEngine(s.eng.GetDAG(), s.eng.GetGeneratorRegistry())
 	sess := qEng.Start(quizConcepts)
@@ -3274,38 +3413,54 @@ func (s *Server) handleQuizSession(w http.ResponseWriter, r *http.Request) {
 	}
 	sess.ID = newUUID()
 	sess.StudentID = studentID
-	s.mu.Lock()
-	s.quizSessions[sess.ID] = sess
-	s.quizCreated[sess.ID] = time.Now()
-	s.mu.Unlock()
+	// Generate before publishing so another request can never observe a
+	// half-built session with no pending question.
 	prob, cid, err := qEng.NextQuestion(sess)
 	if err != nil {
 		writeError(w, "failed to get quiz question", 500)
 		return
 	}
 	if prob == nil || cid == "" {
+		// An empty curriculum is not a live run: there is nothing to resume.
 		writeJSON(w, map[string]interface{}{"session_id": sess.ID, "done": true})
 		return
 	}
-	c := s.eng.GetDAG().Concept(cid)
-	name := cid
-	if c != nil {
-		name = c.Label
+	s.mu.Lock()
+	if studentID != "" {
+		// Two concurrent requests can both pass the gate above. The first to
+		// arrive publishes its run; the second joins it and discards the
+		// session it generated, so exactly one live run and one XP snapshot
+		// exist for the learner.
+		if existing := s.liveQuizSessionLocked(studentID); existing != nil {
+			s.mu.Unlock()
+			s.writeQuizSessionStart(w, existing, studentID)
+			return
+		}
 	}
-	writeJSON(w, s.withAnswerFormat(map[string]interface{}{
-		"session_id":   sess.ID,
-		"student_id":   studentID,
-		"concept_id":   cid,
-		"concept_name": name,
-		"question":     prob.Question,
-		"grading_type": s.gradingTypeOf(cid),
-		"done":         false,
-		// Batch 1: timed closed-book contract, per-question limit
-		// (accommodated), total count, no-lesson closed book.
-		"closed_book":        true,
-		"time_limit_seconds": s.eng.TimeLimitFor(studentID, cid),
-		"questions_total":    len(sess.Order),
-	}, cid))
+	s.quizSessions[sess.ID] = sess
+	s.quizCreated[sess.ID] = time.Now()
+	s.mu.Unlock()
+	s.writeQuizSessionStart(w, sess, studentID)
+}
+
+// quizRetakeAvailable reports whether a completed run may be retaken now.
+//
+// The completion screen and the session endpoint must agree, so this asks the
+// same gate session creation asks rather than promising a retake the server
+// will refuse. Anonymous runs write no XP and are deliberately ungated. A
+// storage failure is reported as unavailable: the learner can still keep
+// learning, and a retry that the server would reject is worse than a message
+// that says to wait.
+func (s *Server) quizRetakeAvailable(studentID string) bool {
+	if studentID == "" {
+		return true
+	}
+	due, err := s.eng.QuizDue(studentID)
+	if err != nil {
+		log.Printf("quizRetakeAvailable: QuizDue failed for %s: %v", studentID, err)
+		return false
+	}
+	return due
 }
 
 // POST /api/quiz/answer, own grading path via SubmitStudyAnswer with TaskQuiz 20
@@ -3335,10 +3490,6 @@ func (s *Server) handleQuizAnswer(w http.ResponseWriter, r *http.Request) {
 	}
 	if len(req.Answer) > 4096 {
 		writeError(w, "answer too long", 400)
-		return
-	}
-	if !req.DontKnow && req.Elapsed < MinAnswerSeconds {
-		writeError(w, "answer submitted too quickly", 400)
 		return
 	}
 	s.mu.Lock()
@@ -3374,6 +3525,16 @@ func (s *Server) handleQuizAnswer(w http.ResponseWriter, r *http.Request) {
 	}
 	if authStudentID != "" && sess.StudentID != "" && sess.StudentID != authStudentID {
 		writeError(w, "quiz session does not belong to authenticated user", 403)
+		return
+	}
+	// The server clock is a lower bound on how long the question was shown.
+	// A client can report a slower answer, which only makes its own evidence
+	// weaker, but it cannot claim to have answered faster than the server saw.
+	// The time limit is a slow-answer threshold, not a hard stop: an answer
+	// after the limit is still graded by the normal path.
+	elapsed := effectiveAnswerElapsed(req.Elapsed, sess.QuestionElapsed(time.Now()))
+	if !req.DontKnow && elapsed < MinAnswerSeconds {
+		writeError(w, "answer submitted too quickly", 400)
 		return
 	}
 	// Grade via the canonical engine grader (custom GradedGenerator → router),
@@ -3416,9 +3577,9 @@ func (s *Server) handleQuizAnswer(w http.ResponseWriter, r *http.Request) {
 		// the equivalent study attempt.
 		servedDifficulty := sess.LastProblem.Difficulty
 		if req.DontKnow {
-			res, err = s.eng.SubmitQuizDontKnow(studentID, req.ConceptID, expected, req.Elapsed, sess.LastProblem.Question, servedDifficulty)
+			res, err = s.eng.SubmitQuizDontKnow(studentID, req.ConceptID, expected, elapsed, sess.LastProblem.Question, servedDifficulty)
 		} else {
-			res, err = s.eng.SubmitQuizAnswer(studentID, req.ConceptID, req.Answer, expected, req.Elapsed, sess.LastProblem.Question, servedDifficulty)
+			res, err = s.eng.SubmitQuizAnswer(studentID, req.ConceptID, req.Answer, expected, elapsed, sess.LastProblem.Question, servedDifficulty)
 		}
 		if err != nil {
 			if errors.Is(err, engine.ErrUnknownConcept) {
@@ -3432,13 +3593,14 @@ func (s *Server) handleQuizAnswer(w http.ResponseWriter, r *http.Request) {
 		} else if res != nil {
 			xp = res.XP
 			newStatus = string(res.NewStatus)
-			// Batch 1: immediate remedial on quiz miss.
+			// Immediate remedial on a quiz miss.
 			remedial = res.Remedial
 		}
 	}
 	if qEng.IsComplete(sess) {
 		if studentID != "" {
-			// Batch 1: completing a quiz resets the 150 XP gate baseline.
+			// Completing a quiz snapshots lifetime XP, which is what makes
+			// "earned since the last completed quiz" restart at zero.
 			if err := s.eng.RecordQuizCompletion(studentID); err != nil {
 				log.Printf("handleQuizAnswer: RecordQuizCompletion failed for %s: %v", studentID, err)
 			}
@@ -3447,10 +3609,15 @@ func (s *Server) handleQuizAnswer(w http.ResponseWriter, r *http.Request) {
 		delete(s.quizSessions, req.SessionID)
 		delete(s.quizCreated, req.SessionID)
 		s.mu.Unlock()
+		// The snapshot has just moved, so an identified learner usually cannot
+		// retake until the gate is earned again. Ask the same gate session
+		// creation uses instead of advertising a retake the next request
+		// would refuse.
+		retakeAvailable := s.quizRetakeAvailable(studentID)
 		// The `diagnosis` and `explanation` keys are still passed so the helper is the single
 		// place that decides they do not cross, rather than the call site remembering to omit
 		// them. A verdict built anywhere else leaks by default; through the helper it does not.
-		writeAssessmentVerdict(w, map[string]interface{}{"done": true, "correct": gr.Correct, "feedback": feedback, "diagnosis": gr.Diagnosis, "explanation": explanation, "xp": xp, "new_status": newStatus, "remedial": remedial, "retake_available": true})
+		writeAssessmentVerdict(w, map[string]interface{}{"done": true, "correct": gr.Correct, "feedback": feedback, "diagnosis": gr.Diagnosis, "explanation": explanation, "xp": xp, "new_status": newStatus, "remedial": remedial, "retake_available": retakeAvailable})
 		return
 	}
 	prob, cid, err := qEng.NextQuestion(sess)
@@ -3485,7 +3652,7 @@ func (s *Server) handleQuizAnswer(w http.ResponseWriter, r *http.Request) {
 // POST /api/quiz/skip, escape hatch for unanswerable quiz questions.
 // Body: { session_id, concept_id?, student_id? }
 // Advances past the pending question with no grade, no XP, no remedial.
-// The 150 XP gate baseline resets only if at least one answer was recorded,
+// The XP gate baseline resets only if at least one answer was recorded,
 // so a fully-skipped quiz can't dodge the gate.
 func (s *Server) handleQuizSkip(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
@@ -3548,7 +3715,9 @@ func (s *Server) handleQuizSkip(w http.ResponseWriter, r *http.Request) {
 		delete(s.quizSessions, req.SessionID)
 		delete(s.quizCreated, req.SessionID)
 		s.mu.Unlock()
-		writeJSON(w, map[string]interface{}{"done": true, "correct": false, "feedback": "Skipped, no XP awarded.", "xp": 0, "retake_available": true})
+		// A fully skipped run leaves the snapshot alone, so the gate can still
+		// be due. A run with answers already moved it in the branch above.
+		writeJSON(w, map[string]interface{}{"done": true, "correct": false, "feedback": "Skipped, no XP awarded.", "xp": 0, "retake_available": s.quizRetakeAvailable(studentID)})
 		return
 	}
 	prob, cid, err := qEng.NextQuestion(sess)
