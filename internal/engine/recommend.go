@@ -271,6 +271,12 @@ func (e *Engine) RecommendNext(studentID string, exclude []string) (scheduler.Re
 		return scheduler.RecommendationResponse{Alternatives: []scheduler.Recommendation{}}, err
 	}
 	quizDue, _ := e.QuizDue(studentID)
+	if quizDue && len(e.quizCandidateWeakness(studentID, progress)) == 0 {
+		// The XP gate is earned, but there is nothing a routine check could
+		// assess. Recommending one would only lead to the 422 no-candidate
+		// response (report 291).
+		quizDue = false
+	}
 
 	// How far along the learner is, in the two terms the recommender needs. Mastered is
 	// effective MASTERED, decay applied, so a stale concept has left the count rather than

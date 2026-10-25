@@ -4,6 +4,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/chuma-beep/mathua/internal/scheduler"
 	"github.com/chuma-beep/mathua/internal/storage"
 )
 
@@ -93,6 +94,35 @@ func TestReviewsDue_LearningConceptIsNotAReview(t *testing.T) {
 	}
 	if q != nil {
 		t.Errorf("NextReviewQuestion served %s, want none", q.ConceptID)
+	}
+}
+
+func TestRecommendNext_DoesNotOfferAQuizWithNoCandidates(t *testing.T) {
+	e := testEngine(t)
+	st, _ := e.CreateStudent("nora")
+	now := time.Now()
+	if err := e.repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID: st.ID, ConceptID: "a", Status: "MASTERED",
+		Attempts: 3, LastReviewed: &now, LastAttempted: &now,
+	}); err != nil {
+		t.Fatal(err)
+	}
+	if err := e.repo.AwardXP(st.ID, QuizGateXP, "test", "seed-quiz-ready"); err != nil {
+		t.Fatal(err)
+	}
+
+	resp, err := e.RecommendNext(st.ID, nil)
+	if err != nil {
+		t.Fatalf("recommend: %v", err)
+	}
+	items := append([]scheduler.Recommendation{}, resp.Alternatives...)
+	if resp.Primary != nil {
+		items = append(items, *resp.Primary)
+	}
+	for _, item := range items {
+		if item.Action.Href == "/goals?quiz=1" {
+			t.Fatalf("recommended a quiz with no eligible concept: %+v", item)
+		}
 	}
 }
 

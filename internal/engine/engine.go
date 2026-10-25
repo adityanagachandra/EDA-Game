@@ -2009,6 +2009,21 @@ func (e *Engine) QuizDue(studentID string) (bool, error) {
 	return since >= QuizGateXP, nil
 }
 
+// HasQuizCandidates reports whether the learner has at least one concept that
+// a routine mastery check could assess. The gate and the recommendation must
+// agree: earned XP alone is not enough when every learned concept is already
+// MASTERED, because opening the check would return "no concepts ready".
+func (e *Engine) HasQuizCandidates(studentID string) (bool, error) {
+	if studentID == "" {
+		return true, nil
+	}
+	progress, err := e.repo.GetAllProgress(studentID)
+	if err != nil {
+		return false, fmt.Errorf("load quiz candidates: %w", err)
+	}
+	return len(e.quizCandidateWeakness(studentID, progress)) > 0, nil
+}
+
 // RecordQuizCompletion snapshots current lifetime XP as the gate baseline.
 func (e *Engine) RecordQuizCompletion(studentID string) error {
 	total, _, err := e.repo.GetXP(studentID)

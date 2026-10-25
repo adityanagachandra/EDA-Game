@@ -227,6 +227,33 @@ func TestEngine_PickQuizConcepts_WeakFirstThenHealthyAndDiverse(t *testing.T) {
 	}
 }
 
+func TestEngine_HasQuizCandidatesRequiresAnAcquiringConcept(t *testing.T) {
+	for tag, store := range quizSelectionStores(t) {
+		t.Run(tag, func(t *testing.T) {
+			cs := []concepts.Concept{
+				quizSelectionConcept("a", "s1"),
+				quizSelectionConcept("b", "s2"),
+			}
+			e := quizSelectionEngine(t, store, cs)
+			sid := quizSelectionStudent(t, store, "ready")
+
+			if ready, err := e.HasQuizCandidates(sid); err != nil || ready {
+				t.Fatalf("empty progress: ready=%v err=%v, want false", ready, err)
+			}
+
+			quizSelectionProgress(t, store, sid, "a", string(mastery.StatusMastered), 3, 0, false)
+			if ready, err := e.HasQuizCandidates(sid); err != nil || ready {
+				t.Fatalf("mastered-only progress: ready=%v err=%v, want false", ready, err)
+			}
+
+			quizSelectionProgress(t, store, sid, "b", string(mastery.StatusPracticing), 1, 0.5, false)
+			if ready, err := e.HasQuizCandidates(sid); err != nil || !ready {
+				t.Fatalf("practicing progress: ready=%v err=%v, want true", ready, err)
+			}
+		})
+	}
+}
+
 func TestEngine_PickQuizConcepts_AvoidsRecentQuizConcepts(t *testing.T) {
 	for tag, store := range quizSelectionStores(t) {
 		t.Run(tag, func(t *testing.T) {

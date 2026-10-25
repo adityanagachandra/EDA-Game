@@ -629,6 +629,14 @@ func (s *Server) handleScores(w http.ResponseWriter, r *http.Request) {
 	// quiz_active is a live in-memory fact, not part of the persisted score row.
 	// The same lock the session map uses keeps this read consistent with reuse.
 	scores.QuizActive = s.quizActive(studentID)
+	// The XP gate alone is not enough to advertise a check. When every learned
+	// concept is mastered, the session endpoint has no candidate and answers
+	// 422; do not recommend an action that cannot start (report 291).
+	if scores.QuizDue {
+		if ready, err := s.eng.HasQuizCandidates(studentID); err == nil && !ready {
+			scores.QuizDue = false
+		}
+	}
 	writeJSON(w, scores)
 }
 
