@@ -2453,6 +2453,10 @@ func (e *Engine) ApplyGoalResults(studentID string, session *diagnostic.Session)
 	copy(attempts, session.Attempts)
 	session.Unlock()
 	batch := make([]*storage.ConceptProgress, 0, len(attempts))
+	attempted := make(map[string]bool, len(attempts))
+	for _, att := range attempts {
+		attempted[att.ConceptID] = true
+	}
 	now := time.Now().UTC()
 	for _, att := range attempts {
 		// The diagnostic seeds placement; it must not destroy existing mastery.
@@ -2495,6 +2499,39 @@ func (e *Engine) ApplyGoalResults(studentID string, session *diagnostic.Session)
 		existing.LastAttempted = &now
 		batch = append(batch, existing)
 	}
+	// The diagnostic samples 25 to 45 questions from a prerequisite closure that
+	// can hold hundreds of concepts, so many foundations are never probed. An
+	// unprobed foundation has no row, prereqsMet cannot see it and the concept it
+	// feeds stays locked even though the learner was placed past it. Seeding
+	// placement across the unprobed ancestors of every probed concept keeps those
+	// foundations reachable: the learner can open them and fill the gap instead of
+	// being told a prerequisite they need is unavailable.
+	//
+	// This is still reachability, never evidence. The rows stay UNSEEN, carry no
+	// LastAttempted, and never count as mastery, XP or review.
+	for _, cid := range e.prerequisiteClosure(attempted) {
+		existing, err := e.repo.GetProgress(studentID, cid)
+		if err != nil {
+			return fmt.Errorf("load prerequisite progress %s: %w", cid, err)
+		}
+		if existing != nil {
+			if existing.Status != string(mastery.StatusUnseen) && existing.Status != "" {
+				continue
+			}
+			if existing.PlacementSeeded {
+				continue
+			}
+		} else {
+			existing = &storage.ConceptProgress{
+				StudentID:  studentID,
+				ConceptID:  cid,
+				SM2EFactor: 2.5,
+			}
+		}
+		existing.Status = string(mastery.StatusUnseen)
+		existing.PlacementSeeded = true
+		batch = append(batch, existing)
+	}
 	if err := e.repo.UpsertProgressBatch(batch); err != nil {
 		return fmt.Errorf("save diagnostic progress: %w", err)
 	}
@@ -2517,6 +2554,38 @@ func (e *Engine) ApplyGoalResults(studentID string, session *diagnostic.Session)
 		e.mu.Unlock()
 	}
 	return nil
+}
+
+// prerequisiteClosure returns every transitive prerequisite of the given
+// concepts, excluding the concepts themselves. The walk tolerates unknown ids so
+// a stale attempt cannot panic a completion.
+func (e *Engine) prerequisiteClosure(ids map[string]bool) []string {
+	seen := make(map[string]bool)
+	var stack []string
+	for id := range ids {
+		stack = append(stack, id)
+	}
+	for len(stack) > 0 {
+		id := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		c := e.dag.Concept(id)
+		if c == nil {
+			continue
+		}
+		for _, pid := range c.Prerequisites {
+			if ids[pid] || seen[pid] {
+				continue
+			}
+			seen[pid] = true
+			stack = append(stack, pid)
+		}
+	}
+	out := make([]string, 0, len(seen))
+	for id := range seen {
+		out = append(out, id)
+	}
+	sort.Strings(out)
+	return out
 }
 
 // ApplyDiagnosticReport marks conditionally completed concepts from the diagnostic

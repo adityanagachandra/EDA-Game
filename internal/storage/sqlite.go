@@ -2558,3 +2558,168 @@ func (s *SQLiteStore) ClearRemedialQueue(studentID string) error {
 	}
 	return nil
 }
+
+// AssessmentAttempts returns quiz and diagnostic answers in a window, newest
+// first. The range is compared as parsed datetimes so legacy timestamp layouts
+// do not fall on the wrong side of the boundary.
+func (s *SQLiteStore) AssessmentAttempts(studentID string, since, until time.Time, limit int) ([]AttemptEntry, error) {
+	rows, err := s.db.Query(`
+		SELECT id, session_id, student_id, concept_id, answer, expected, correct,
+		       elapsed_seconds, timestamp, question, source, explanation, difficulty
+		FROM attempts
+		WHERE student_id = ?
+		  AND source IN ('quiz', 'diagnostic')
+		  AND datetime(timestamp) >= datetime(?)
+		  AND datetime(timestamp) < datetime(?)
+		ORDER BY datetime(timestamp) DESC, id DESC
+		LIMIT ?`,
+		studentID, since.UTC().Format(time.RFC3339), until.UTC().Format(time.RFC3339), limit)
+	if err != nil {
+		return nil, fmt.Errorf("assessment attempts: %w", err)
+	}
+	defer rows.Close()
+
+	var out []AttemptEntry
+	for rows.Next() {
+		var e AttemptEntry
+		var correct int
+		var ts string
+		var difficulty sql.NullFloat64
+		if err := rows.Scan(&e.ID, &e.SessionID, &e.StudentID, &e.ConceptID, &e.Answer,
+			&e.Expected, &correct, &e.ElapsedSeconds, &ts, &e.Question, &e.Source,
+			&e.Explanation, &difficulty); err != nil {
+			return nil, fmt.Errorf("scan assessment attempt: %w", err)
+		}
+		e.Correct = correct != 0
+		e.Timestamp = parseAttemptTimestamp(ts)
+		if difficulty.Valid {
+			v := difficulty.Float64
+			e.Difficulty = &v
+		}
+		out = append(out, e)
+	}
+	return out, rows.Err()
+}
+
+// XPInRange sums the learner's ledger in [since, until). The ledger is the
+// authoritative source; the students counters are moved by the same
+// transactions, but a counter cannot be attributed to a period.
+func (s *SQLiteStore) XPInRange(studentID string, since, until time.Time) (int, error) {
+	var total int
+	err := s.db.QueryRow(`
+		SELECT COALESCE(SUM(amount), 0)
+		FROM xp_events
+		WHERE student_id = ? AND created_at >= ? AND created_at < ?`,
+		studentID, since.UTC().UnixNano(), until.UTC().UnixNano()).Scan(&total)
+	if err != nil {
+		return 0, fmt.Errorf("xp in range: %w", err)
+	}
+	return total, nil
+}
+
+const sqliteLearningEvents = `
+	WITH events AS (
+		SELECT 'answer' AS kind, CAST(id AS TEXT) AS ref,
+		       CAST(strftime('%s', timestamp) AS INTEGER) AS at,
+		       concept_id, source, correct AS value, 0 AS xp
+		FROM attempts
+		WHERE student_id = ? AND timestamp IS NOT NULL AND timestamp <> ''
+		UNION ALL
+		SELECT 'mastery', concept_id, CAST(strftime('%s', mastered_at) AS INTEGER),
+		       concept_id, '', 0, 0
+		FROM concept_progress
+		WHERE student_id = ? AND status = 'MASTERED'
+		  AND mastered_at IS NOT NULL AND mastered_at <> ''
+		UNION ALL
+		SELECT 'quiz', CAST(id AS TEXT), CAST(strftime('%s', completed_at) AS INTEGER),
+		       '', 'quiz', 0, COALESCE(xp_total, 0)
+		FROM quiz_completions
+		WHERE student_id = ?
+		UNION ALL
+		SELECT 'diagnostic', 'diagnostic', CAST(strftime('%s', diagnostic_completed_at) AS INTEGER),
+		       '', 'diagnostic', 0, 0
+		FROM students
+		WHERE id = ? AND diagnostic_completed_at IS NOT NULL AND diagnostic_completed_at <> ''
+	)
+	SELECT kind, ref, at, concept_id, source, value, xp
+	FROM events
+	WHERE at IS NOT NULL
+	ORDER BY at DESC, kind ASC, ref DESC
+	LIMIT ? OFFSET ?`
+
+// LearningEventsPage returns substantiated events across the tables that
+// actually record them. Answers are the densest source, so the page is built
+// from the union rather than from attempts alone; a mastery row without
+// mastered_at is not a dated event and is excluded.
+func (s *SQLiteStore) LearningEventsPage(studentID string, limit, offset int) ([]LearningEvent, int, error) {
+	var total int
+	err := s.db.QueryRow(`
+		WITH events AS (
+			SELECT CAST(strftime('%s', timestamp) AS INTEGER) AS at FROM attempts
+			WHERE student_id = ? AND timestamp IS NOT NULL AND timestamp <> ''
+			UNION ALL
+			SELECT CAST(strftime('%s', mastered_at) AS INTEGER) FROM concept_progress
+			WHERE student_id = ? AND status = 'MASTERED'
+			  AND mastered_at IS NOT NULL AND mastered_at <> ''
+			UNION ALL
+			SELECT CAST(strftime('%s', completed_at) AS INTEGER) FROM quiz_completions
+			WHERE student_id = ?
+			UNION ALL
+			SELECT CAST(strftime('%s', diagnostic_completed_at) AS INTEGER) FROM students
+			WHERE id = ? AND diagnostic_completed_at IS NOT NULL AND diagnostic_completed_at <> ''
+		)
+		SELECT COUNT(*) FROM events WHERE at IS NOT NULL`,
+		studentID, studentID, studentID, studentID).Scan(&total)
+	if err != nil {
+		return nil, 0, fmt.Errorf("count learning events: %w", err)
+	}
+
+	rows, err := s.db.Query(sqliteLearningEvents, studentID, studentID, studentID, studentID, limit, offset)
+	if err != nil {
+		return nil, 0, fmt.Errorf("learning events: %w", err)
+	}
+	defer rows.Close()
+
+	events := []LearningEvent{}
+	for rows.Next() {
+		var e LearningEvent
+		var at int64
+		var correct int
+		if err := rows.Scan(&e.Kind, &e.Ref, &at, &e.ConceptID, &e.Source, &correct, &e.XP); err != nil {
+			return nil, 0, fmt.Errorf("scan learning event: %w", err)
+		}
+		e.At = time.Unix(at, 0).UTC()
+		e.Correct = correct != 0
+		events = append(events, e)
+	}
+	return events, total, rows.Err()
+}
+
+// QuizCompletions returns mastery-check completions at or after since. The
+// rows carry the lifetime XP snapshot taken at completion, because that is the
+// quiz gate baseline; they do not carry a score.
+func (s *SQLiteStore) QuizCompletions(studentID string, since time.Time, limit int) ([]QuizCompletion, error) {
+	rows, err := s.db.Query(`
+		SELECT student_id, completed_at, COALESCE(xp_total, 0)
+		FROM quiz_completions
+		WHERE student_id = ?
+		ORDER BY id DESC
+		LIMIT ?`, studentID, limit)
+	if err != nil {
+		return nil, fmt.Errorf("quiz completions: %w", err)
+	}
+	defer rows.Close()
+
+	var out []QuizCompletion
+	for rows.Next() {
+		var q QuizCompletion
+		if err := rows.Scan(&q.StudentID, &q.CompletedAt, &q.XPTotal); err != nil {
+			return nil, fmt.Errorf("scan quiz completion: %w", err)
+		}
+		if at, ok := parseQuizCompletedAt(q.CompletedAt); ok && at.Before(since) {
+			continue
+		}
+		out = append(out, q)
+	}
+	return out, rows.Err()
+}

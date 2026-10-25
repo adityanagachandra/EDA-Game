@@ -148,6 +148,138 @@ func intPowLocal(base, exp int) int {
 
 type eulerIdentityGen struct{}
 
+func (g *eulerIdentityGen) Generate(ctx generator.GeneratorContext) generator.Problem {
+	type eulerSpec struct {
+		angle   string
+		correct string
+		dist    []string
+		exp     string
+	}
+
+	specs := []eulerSpec{
+		{
+			angle:   "\\pi/2",
+			correct: "i",
+			dist:    []string{"-1", "-i", "1"},
+			exp:     "e^(i pi / 2) = cos(pi/2) + i sin(pi/2) = 0 + i(1) = i.",
+		},
+		{
+			angle:   "\\pi",
+			correct: "-1",
+			dist:    []string{"1", "i", "-i"},
+			exp:     "e^(i pi) = cos(pi) + i sin(pi) = -1 + 0 = -1 (Euler's identity: e^(i pi) + 1 = 0).",
+		},
+		{
+			angle:   "3\\pi/2",
+			correct: "-i",
+			dist:    []string{"i", "-1", "1"},
+			exp:     "e^(i 3pi / 2) = cos(3pi/2) + i sin(3pi/2) = 0 - i = -i.",
+		},
+		{
+			angle:   "2\\pi",
+			correct: "1",
+			dist:    []string{"-1", "i", "-i"},
+			exp:     "e^(i 2pi) = cos(2pi) + i sin(2pi) = 1 + 0 = 1.",
+		},
+		{
+			angle:   "-\\pi/2",
+			correct: "-i",
+			dist:    []string{"i", "1", "-1"},
+			exp:     "e^(-i pi / 2) = cos(-pi/2) + i sin(-pi/2) = 0 - i = -i.",
+		},
+		{
+			angle:   "\\pi/4",
+			correct: "\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2} i",
+			dist:    []string{"\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} i", "-\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2} i", "\\frac{1}{2} + \\frac{\\sqrt{3}}{2} i"},
+			exp:     "e^(i pi/4) = cos(pi/4) + i sin(pi/4) = sqrt(2)/2 + i sqrt(2)/2.",
+		},
+		{
+			angle:   "3\\pi/4",
+			correct: "-\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2} i",
+			dist:    []string{"\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2} i", "-\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} i", "-\\frac{1}{2} + \\frac{\\sqrt{3}}{2} i"},
+			exp:     "e^(i 3pi/4) = cos(3pi/4) + i sin(3pi/4) = -sqrt(2)/2 + i sqrt(2)/2.",
+		},
+		{
+			angle:   "5\\pi/4",
+			correct: "-\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} i",
+			dist:    []string{"\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} i", "-\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2} i", "-\\frac{1}{2} - \\frac{\\sqrt{3}}{2} i"},
+			exp:     "e^(i 5pi/4) = cos(5pi/4) + i sin(5pi/4) = -sqrt(2)/2 - i sqrt(2)/2.",
+		},
+		{
+			angle:   "7\\pi/4",
+			correct: "\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} i",
+			dist:    []string{"\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2} i", "-\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} i", "\\frac{1}{2} - \\frac{\\sqrt{3}}{2} i"},
+			exp:     "e^(i 7pi/4) = cos(7pi/4) + i sin(7pi/4) = sqrt(2)/2 - i sqrt(2)/2.",
+		},
+		{
+			angle:   "\\pi/3",
+			correct: "\\frac{1}{2} + \\frac{\\sqrt{3}}{2} i",
+			dist:    []string{"\\frac{\\sqrt{3}}{2} + \\frac{1}{2} i", "\\frac{1}{2} - \\frac{\\sqrt{3}}{2} i", "-\\frac{1}{2} + \\frac{\\sqrt{3}}{2} i"},
+			exp:     "e^(i pi/3) = cos(pi/3) + i sin(pi/3) = 1/2 + i sqrt(3)/2.",
+		},
+		{
+			angle:   "2\\pi/3",
+			correct: "-\\frac{1}{2} + \\frac{\\sqrt{3}}{2} i",
+			dist:    []string{"\\frac{1}{2} + \\frac{\\sqrt{3}}{2} i", "-\\frac{1}{2} - \\frac{\\sqrt{3}}{2} i", "-\\frac{\\sqrt{3}}{2} + \\frac{1}{2} i"},
+			exp:     "e^(i 2pi/3) = cos(2pi/3) + i sin(2pi/3) = -1/2 + i sqrt(3)/2.",
+		},
+		{
+			angle:   "\\pi/6",
+			correct: "\\frac{\\sqrt{3}}{2} + \\frac{1}{2} i",
+			dist:    []string{"\\frac{1}{2} + \\frac{\\sqrt{3}}{2} i", "\\frac{\\sqrt{3}}{2} - \\frac{1}{2} i", "-\\frac{\\sqrt{3}}{2} + \\frac{1}{2} i"},
+			exp:     "e^(i pi/6) = cos(pi/6) + i sin(pi/6) = sqrt(3)/2 + i/2.",
+		},
+		{
+			angle:   "5\\pi/6",
+			correct: "-\\frac{\\sqrt{3}}{2} + \\frac{1}{2} i",
+			dist:    []string{"\\frac{\\sqrt{3}}{2} + \\frac{1}{2} i", "-\\frac{\\sqrt{3}}{2} - \\frac{1}{2} i", "-\\frac{1}{2} + \\frac{\\sqrt{3}}{2} i"},
+			exp:     "e^(i 5pi/6) = cos(5pi/6) + i sin(5pi/6) = -sqrt(3)/2 + i/2.",
+		},
+	}
+
+	if rand.Intn(4) == 0 {
+		// Scaled modulus: r e^{i \pi} = -r, r e^{i \pi/2} = r i, r e^{i 3\pi/2} = -r i
+		r := 2 + rand.Intn(6)
+		switch rand.Intn(3) {
+		case 0:
+			return complexChoice(
+				fmt.Sprintf("Evaluate the polar form \\(%d e^{i\\pi}\\).", r),
+				fmt.Sprintf("-%d", r),
+				fmt.Sprintf("%d e^(i pi) = %d(cos pi + i sin pi) = %d(-1) = -%d.", r, r, r, r),
+				fmt.Sprintf("%d", r),
+				fmt.Sprintf("%di", r),
+				fmt.Sprintf("-%di", r),
+			)
+		case 1:
+			return complexChoice(
+				fmt.Sprintf("Evaluate the polar form \\(%d e^{i\\pi/2}\\).", r),
+				fmt.Sprintf("%di", r),
+				fmt.Sprintf("%d e^(i pi/2) = %d(0 + i) = %di.", r, r, r),
+				fmt.Sprintf("-%di", r),
+				fmt.Sprintf("%d", r),
+				fmt.Sprintf("-%d", r),
+			)
+		default:
+			return complexChoice(
+				fmt.Sprintf("Evaluate the polar form \\(%d e^{i 3\\pi/2}\\).", r),
+				fmt.Sprintf("-%di", r),
+				fmt.Sprintf("%d e^(i 3pi/2) = %d(0 - i) = -%di.", r, r, r),
+				fmt.Sprintf("%di", r),
+				fmt.Sprintf("-%d", r),
+				fmt.Sprintf("%d", r),
+			)
+		}
+	}
+
+	s := specs[rand.Intn(len(specs))]
+	return complexChoice(
+		fmt.Sprintf("Use Euler's formula to evaluate \\(e^{i %s}\\).", s.angle),
+		s.correct,
+		s.exp,
+		s.dist...,
+	)
+}
+
 // unitCoef renders a coefficient for a term x, dropping a leading one.
 func unitCoef(c int) string {
 	if c == 1 {

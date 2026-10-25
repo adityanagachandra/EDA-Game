@@ -466,6 +466,8 @@ func (s *Server) Register(mux *http.ServeMux) {
 	mux.HandleFunc("/api/plans/current", logRequest(cors(s.authMiddleware(s.handlePlanCurrent))))
 	mux.HandleFunc("/api/transcript", logRequest(cors(s.authMiddleware(s.handleTranscript))))
 	mux.HandleFunc("/api/attempts", logRequest(cors(s.authMiddleware(s.handleAttempts))))
+	mux.HandleFunc("/api/learner/reports", logRequest(cors(s.authMiddleware(s.handleLearnerReport))))
+	mux.HandleFunc("/api/learner/reports/history", logRequest(cors(s.authMiddleware(s.handleLearnerReportHistory))))
 	mux.HandleFunc("/api/goal", logRequest(cors(s.authMiddleware(s.handleGoal))))
 	mux.HandleFunc("/api/goal/diagnostic", logRequest(cors(s.optionalAuthMiddleware(s.writeLimiter.middleware(s.handleGoalDiagnosticStart)))))
 	mux.HandleFunc("/api/goal/diagnostic/answer", logRequest(cors(s.optionalAuthMiddleware(s.writeLimiter.middleware(gradingTimeout(gradingDeadline, s.handleGoalDiagnosticAnswer))))))

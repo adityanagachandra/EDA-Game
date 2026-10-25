@@ -49,6 +49,7 @@ export const DISPLAY_LINKS: NavLink[] = [
 ]
 
 export const LOGGED_IN_LINKS: NavLink[] = [
+  { label: 'Reports', href: '/reports' },
   { label: 'Profile', href: '/profile' },
   { label: 'Settings', href: '/settings' },
 ]
