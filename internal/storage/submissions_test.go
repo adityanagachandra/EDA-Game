@@ -301,6 +301,56 @@ func TestStudyEffects_ClaimCompleteAndFail(t *testing.T) {
 	}
 }
 
+// TestStudyEffects_PruneOnlyTouchesCompletedRows proves retention pruning
+// removes retired rows but never a pending or retrying effect.
+func TestStudyEffects_PruneOnlyTouchesCompletedRows(t *testing.T) {
+	store := newTestStore(t)
+	sub := studySubmissionStore(t, store)
+	effects := studyEffectStore(t, store)
+	st, _ := store.CreateStudent("prune")
+	session, _ := store.CreateSession(st.ID)
+	now := time.Now().UTC().Add(time.Second)
+
+	commit := studySubmissionTestCommit(st.ID, "prune-1", "4")
+	commit.Attempt.SessionID = session.ID
+	commit.Effects = []StudyEffectInput{
+		{Effect: "propagate_weakness"},
+		{Effect: "implicit_credit", PayloadJSON: `{"concept_id":"a","attempt_id":"x","correct":true}`},
+		{Effect: "remove_remedial", PayloadJSON: `{"concept_id":"a"}`},
+	}
+	if _, err := sub.CommitStudySubmission(commit); err != nil {
+		t.Fatal(err)
+	}
+	rows, err := effects.ClaimStudyEffects(st.ID, now, 10)
+	if err != nil || len(rows) != 3 {
+		t.Fatalf("claim = %d, %v; want 3", len(rows), err)
+	}
+	for _, row := range rows {
+		if err := effects.CompleteStudyEffect(row.ID); err != nil {
+			t.Fatal(err)
+		}
+	}
+	removed, err := effects.PruneStudyEffects(now.Add(time.Hour), 100)
+	if err != nil || removed != 3 {
+		t.Fatalf("prune completed = %d, %v; want 3", removed, err)
+	}
+
+	pending := studySubmissionTestCommit(st.ID, "prune-2", "4")
+	pending.Attempt.SessionID = session.ID
+	pending.Effects = []StudyEffectInput{{Effect: "propagate_weakness"}}
+	if _, err := sub.CommitStudySubmission(pending); err != nil {
+		t.Fatal(err)
+	}
+	removed, err = effects.PruneStudyEffects(now.Add(time.Hour), 100)
+	if err != nil || removed != 0 {
+		t.Fatalf("prune pending = %d, %v; want 0", removed, err)
+	}
+	left, err := effects.ClaimStudyEffects(st.ID, now, 10)
+	if err != nil || len(left) != 1 {
+		t.Fatalf("pending effect missing after prune: %d, %v", len(left), err)
+	}
+}
+
 // TestStudyEffects_ExpiredLeaseIsRecoverable proves a crashed worker does not
 // strand an effect: the lease blocks another claim, then expires and the row is
 // claimable again with its attempt count preserved.

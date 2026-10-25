@@ -3,6 +3,7 @@ package storage
 import (
 	"database/sql"
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -106,18 +107,8 @@ func commitStudySubmissionTx(db *sql.DB, rebind func(string) string, insertAttem
 	`), attemptID, c.StudentID, c.Operation, c.SubmissionID); err != nil {
 		return StudySubmissionOutcome{}, fmt.Errorf("study submission: link attempt: %w", err)
 	}
-	for _, effect := range c.Effects {
-		if effect.Effect == "" {
-			continue
-		}
-		if _, err := tx.Exec(rebind(`
-			INSERT INTO study_answer_effects
-				(student_id, submission_id, effect, payload_json, created_at, next_attempt_at)
-			VALUES (?, ?, ?, ?, ?, ?)
-			ON CONFLICT(student_id, submission_id, effect) DO NOTHING
-		`), c.StudentID, c.SubmissionID, effect.Effect, effect.PayloadJSON, now, now); err != nil {
-			return StudySubmissionOutcome{}, fmt.Errorf("study submission: effect %s: %w", effect.Effect, err)
-		}
+	if err := insertStudyEffectsTx(tx, rebind, c.StudentID, c.SubmissionID, c.Effects, now); err != nil {
+		return StudySubmissionOutcome{}, err
 	}
 	if c.Progress != nil {
 		if _, err := tx.Exec(rebind(upsertProgressSQL),
@@ -182,6 +173,41 @@ func commitStudySubmissionTx(db *sql.DB, rebind func(string) string, insertAttem
 	return StudySubmissionOutcome{ResponseJSON: c.ResponseJSON, AttemptID: attemptID}, nil
 }
 
+// insertStudyEffectsTx writes every post-commit effect in one statement. The
+// rows still belong to the answer transaction, so they are durable before the
+// response is returned; batching only removes the per-effect round trip.
+func insertStudyEffectsTx(tx *sql.Tx, rebind func(string) string, studentID, submissionID string, effects []StudyEffectInput, now int64) error {
+	if len(effects) == 0 {
+		return nil
+	}
+	var values strings.Builder
+	args := make([]interface{}, 0, len(effects)*6)
+	n := 0
+	for _, effect := range effects {
+		if effect.Effect == "" {
+			continue
+		}
+		if n > 0 {
+			values.WriteByte(',')
+		}
+		values.WriteString("(?, ?, ?, ?, ?, ?)")
+		args = append(args, studentID, submissionID, effect.Effect, effect.PayloadJSON, now, now)
+		n++
+	}
+	if n == 0 {
+		return nil
+	}
+	if _, err := tx.Exec(rebind(`
+		INSERT INTO study_answer_effects
+			(student_id, submission_id, effect, payload_json, created_at, next_attempt_at)
+		VALUES `+values.String()+`
+		ON CONFLICT(student_id, submission_id, effect) DO NOTHING
+	`), args...); err != nil {
+		return fmt.Errorf("study submission: effects: %w", err)
+	}
+	return nil
+}
+
 func getStudySubmissionTx(tx *sql.Tx, rebind func(string) string, studentID, operation, submissionID string) (*StudySubmission, error) {
 	var out StudySubmission
 	var created int64
@@ -197,6 +223,28 @@ func getStudySubmissionTx(tx *sql.Tx, rebind func(string) string, studentID, ope
 	}
 	out.CreatedAt = time.Unix(0, created).UTC()
 	return &out, nil
+}
+
+// pruneStudyEffects deletes completed rows in bounded batches. Pending and
+// failed rows are never touched, so a poison effect stays visible until an
+// operator resolves it.
+func pruneStudyEffects(db *sql.DB, rebind func(string) string, olderThan time.Time, limit int) (int64, error) {
+	if limit <= 0 {
+		limit = 1000
+	}
+	res, err := db.Exec(rebind(`
+		DELETE FROM study_answer_effects
+		WHERE id IN (
+			SELECT id FROM study_answer_effects
+			WHERE processed_at != 0 AND processed_at < ?
+			ORDER BY id LIMIT ?
+		)
+	`), olderThan.UTC().UnixNano(), limit)
+	if err != nil {
+		return 0, fmt.Errorf("prune study effects: %w", err)
+	}
+	n, _ := res.RowsAffected()
+	return n, nil
 }
 
 func getStudySubmission(db *sql.DB, rebind func(string) string, studentID, operation, submissionID string) (*StudySubmission, error) {
