@@ -105,17 +105,29 @@ type ofUnitGen struct{}
 
 func (g *ofUnitGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	units := []struct {
-		name string
-		size int
-	}{{"an hour", 60}, {"a dollar", 100}, {"a day", 24}, {"a metre", 100}}
+		article string
+		name    string
+		one     string
+		many    string
+		size    int
+	}{
+		{"an", "hour", "minute", "minutes", 60},
+		{"a", "dollar", "cent", "cents", 100},
+		{"a", "day", "hour", "hours", 24},
+		{"a", "metre", "centimetre", "centimetres", 100},
+	}
 	u := units[smallInt(0, len(units)-1)]
 	k := smallInt(1, u.size-1)
 	n, dd := reduce(k, u.size)
+	part := u.many
+	if k == 1 {
+		part = u.one
+	}
 	return generator.Problem{
-		Question: fmt.Sprintf("What fraction of %s is %d of its parts? Give your answer in lowest terms.", u.name, k),
+		Question: fmt.Sprintf("What fraction of %s %s is %d %s? Give your answer in lowest terms.", u.article, u.name, k, part),
 		Answer:   fmt.Sprintf("%d/%d", n, dd),
-		Explanation: fmt.Sprintf("%s has %d parts in all, so %d of them is %d/%d, which reduces to %d/%d.",
-			u.name, u.size, k, k, u.size, n, dd),
+		Explanation: fmt.Sprintf("There are %d %s in %s %s, so %d %s is %d/%d, which reduces to %d/%d.",
+			u.size, u.many, u.article, u.name, k, part, k, u.size, n, dd),
 		Facts: map[string]string{"out_num": strconv.Itoa(n), "out_den": strconv.Itoa(dd),
 			"parts": strconv.Itoa(k), "total": strconv.Itoa(u.size)},
 	}

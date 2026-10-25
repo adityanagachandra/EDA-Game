@@ -1197,13 +1197,13 @@ func formatExpr(a, b int) string {
 // A two-word answer such as "rational and irrational" cannot be typed into the
 // math field, so those entries are presented as choices.
 var realConceptOptions = map[string][]string{
-	"yes":                           {"yes", "no"},
-	"no":                            {"yes", "no"},
-	"true":                          {"true", "false"},
-	"false":                         {"true", "false"},
-	"irrational":                    {"rational", "irrational", "integer", "natural"},
-	"rational and irrational":       {"rational and irrational", "positive and negative", "integers and fractions", "prime and composite"},
-	"can be expressed as \\(a/b\\)": {"can be expressed as \\(a/b\\)", "is always a whole number", "has a terminating decimal", "cannot be written as a fraction"},
+	"yes":                     {"yes", "no"},
+	"no":                      {"yes", "no"},
+	"true":                    {"true", "false"},
+	"false":                   {"true", "false"},
+	"irrational":              {"rational", "irrational", "integer", "natural"},
+	"rational and irrational": {"rational and irrational", "positive and negative", "integers and fractions", "prime and composite"},
+	"can be expressed as a ratio of two integers": {"can be expressed as a ratio of two integers", "is always a whole number", "has a terminating decimal", "cannot be written as a fraction"},
 }
 
 type realConceptGen struct{}
@@ -1215,7 +1215,7 @@ func (g *realConceptGen) Generate(ctx generator.GeneratorContext) generator.Prob
 		exp      string
 	}
 	entries := []entry{
-		{"What is the defining property of a rational number?", "can be expressed as \\(a/b\\)", "A rational number can be written as \\(a/b\\) where \\(a\\) and \\(b\\) are integers, \\(b \\neq 0\\)."},
+		{"What is the defining property of a rational number?", "can be expressed as a ratio of two integers", "A rational number can be written as \\(a/b\\) where \\(a\\) and \\(b\\) are integers, \\(b \\neq 0\\)."},
 		{"Is \\(\\pi\\) a rational number? (yes/no)", "no", "\\(\\pi\\) cannot be expressed as a ratio of two integers."},
 		{"Is \\(\\sqrt{2}\\) a rational number? (yes/no)", "no", "\\(\\sqrt{2}\\) cannot be expressed as a ratio of two integers."},
 		{"Is \\(0.333\\ldots\\) a rational number? (yes/no)", "yes", "\\(0.333\\ldots = 1/3\\), so it is rational."},

@@ -15,6 +15,7 @@ package calculus
 // parametric surface area and a flux. The tests never read the published answer.
 
 import (
+	"fmt"
 	"math"
 	"regexp"
 	"strconv"
@@ -288,19 +289,23 @@ func TestRaiseNumericRecompute(t *testing.T) {
 		r := calcFactInt(t, p, "r")
 		// The generator now poses a disk, an annulus and a semicircle, so the
 		// expectation is recomputed per shape rather than assuming the disk.
-		var want int
+		var want string
 		switch p.Facts["shape"] {
 		case "disk":
-			want = r * r
+			want = strconv.Itoa(r * r)
 		case "annulus":
-			want = r*r - 1
+			want = strconv.Itoa(r*r - 1)
 		case "semicircle":
-			want = 2 * r * r
+			if r%2 == 0 {
+				want = strconv.Itoa(r * r / 2)
+			} else {
+				want = fmt.Sprintf("%d/2", r*r)
+			}
 		default:
 			t.Fatalf("double polar: unknown shape %q", p.Facts["shape"])
 		}
-		if got := strconv.Itoa(want); p.Answer != got {
-			t.Fatalf("double polar: shape=%s r=%d answers %s, want %s", p.Facts["shape"], r, p.Answer, got)
+		if p.Answer != want {
+			t.Fatalf("double polar: shape=%s r=%d answers %s, want %s", p.Facts["shape"], r, p.Answer, want)
 		}
 	}
 
