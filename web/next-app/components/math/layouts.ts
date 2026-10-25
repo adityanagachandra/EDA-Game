@@ -133,6 +133,9 @@ const POWER: Keycap = { label: 'xⁿ', latex: '#@^{#?}', aside: 'exponent' }
 // `ordering` answer is a list -- and 209 more are typed alongside their tap targets.
 // Absent until the editor went universal, at which point it stopped being optional.
 const COMMA: Keycap = ','
+// One key for the empty set, because the set-operations lesson spells it `{}`
+// and a learner should not need LaTeX or a macOS Option shortcut to answer.
+const EMPTY_SET: Keycap = { label: '∅', latex: '\\emptyset', aside: 'empty set' }
 // `frac.ops.compare` and `dec.basics.compare` grade a comparison, and typing `<`
 // or `≥` on a phone keyboard means reaching for a symbol row that may not be there.
 const LESS: Keycap = { label: '<', latex: '<' }
@@ -182,7 +185,7 @@ const LETTER_ROW: Keycap[] = [
 
 // Every layout ends here. A comma and the comparisons are on this row because a
 // second layer the learner has to discover is a worse answer than one more key.
-const STRUCTURE_ROW: Keycap[] = [FRACTION, POWER, ROOT, LEFT, RIGHT, BACKSPACE]
+const STRUCTURE_ROW: Keycap[] = [FRACTION, POWER, ROOT, EMPTY_SET, LEFT, RIGHT, BACKSPACE]
 
 // Six keycaps, deliberately. A learner answering "which is larger" needs one of these
 // and nothing else on the screen, and the row stays inside the ten-keycap guidance so

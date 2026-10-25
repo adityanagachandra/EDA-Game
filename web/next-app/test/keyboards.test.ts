@@ -300,4 +300,11 @@ describe('layouts', () => {
       expect(keys, `${mode} has no arrow keys`).toContain('[right]')
     }
   })
+
+  it('offers the empty set where set questions are answered', () => {
+    // Report 271: discrete set theory uses the algebra keyboard, and the
+    // set-operations lesson teaches ∅ or {}, so a learner must be able to enter
+    // the symbol without knowing LaTeX or a macOS shortcut.
+    expect(insertedLatex('algebra')).toContain('\\emptyset')
+  })
 })
