@@ -31,6 +31,13 @@ function escapeHtmlMath(s: string): string {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/\\/g, '&#92;')
+    // Underscores inside \text{...} are markdown emphasis delimiters while
+    // the span is still inline markdown. Leave them literal and remark eats
+    // them, turning \text{\_\_\_} into \text{\\\}, which KaTeX rejects. The
+    // other markdown punctuation gets the same treatment so math is opaque
+    // to emphasis, code spans, links and strikethrough before rehype-raw
+    // decodes the entities again.
+    .replace(/[_*`\[\]~]/g, (c) => `&#${c.charCodeAt(0)};`)
     .replace(/\r\n/g, '&#10;')
     .replace(/[\n\r]/g, '&#10;')
 }
