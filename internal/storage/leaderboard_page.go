@@ -20,6 +20,13 @@ import (
 //  3. Rank and total come from the same predicate as the rows. Computing them
 //     in Go from a page would rank the page, not the board.
 
+// rankedStudentWhere is the one definition of a ranked account. A guest row is
+// created with only id, name, settings and created_at. It may have a generated
+// display username, so username is not a credential and must not make a guest
+// eligible. A real account has a password, an email or an OAuth identity. An
+// adopted guest keeps its id but gains a password, and must stay ranked.
+const rankedStudentWhere = `(COALESCE(s.password_hash, '') <> '' OR COALESCE(s.email, '') <> '' OR EXISTS (SELECT 1 FROM identities i WHERE i.student_id = s.id))`
+
 // LeaderboardPage returns one page of a board and the number of eligible rows.
 // view is "weekly" or "all_time"; since is the competition week start.
 func (s *SQLiteStore) LeaderboardPage(view string, since time.Time, limit, offset int) ([]LeaderboardRow, int, error) {
@@ -43,7 +50,7 @@ func (s *SQLiteStore) LeaderboardPage(view string, since time.Time, limit, offse
 			LIMIT ? OFFSET ?`, since, since.UnixNano(), limit, offset)
 	case "all_time":
 		if err := s.db.QueryRow(
-			`SELECT COUNT(*) FROM students WHERE xp_total > 0 AND id NOT LIKE 'guest_%'`).Scan(&total); err != nil {
+			`SELECT COUNT(*) FROM students s WHERE s.xp_total > 0 AND ` + rankedStudentWhere).Scan(&total); err != nil {
 			return nil, 0, fmt.Errorf("all-time leaderboard total: %w", err)
 		}
 		rows, err = s.db.Query(sqliteAllTimeRows+`
@@ -76,7 +83,7 @@ func (s *SQLiteStore) LeaderboardPosition(studentID, view string, since time.Tim
 			       ROW_NUMBER() OVER (ORDER BY SUM(e.amount) DESC, s.xp_total DESC, s.created_at ASC, s.id ASC) AS pos
 			FROM students s
 			JOIN xp_events e ON e.student_id = s.id AND e.created_at >= ?
-			WHERE s.id NOT LIKE 'guest_%'
+			WHERE ` + rankedStudentWhere + `
 			GROUP BY s.id
 			HAVING SUM(e.amount) > 0
 		) WHERE sid = ?`
@@ -88,7 +95,7 @@ func (s *SQLiteStore) LeaderboardPosition(studentID, view string, since time.Tim
 			SELECT s.id AS sid, s.xp_total AS xp,
 			       ROW_NUMBER() OVER (ORDER BY s.xp_total DESC, s.created_at ASC, s.id ASC) AS pos
 			FROM students s
-			WHERE s.xp_total > 0 AND s.id NOT LIKE 'guest_%'
+			WHERE s.xp_total > 0 AND ` + rankedStudentWhere + `
 		) WHERE sid = ?`
 		err = s.db.QueryRow(q, studentID).Scan(&rank, &xp)
 	default:
@@ -114,7 +121,7 @@ const sqliteWeeklyFiltered = `
 	       s.created_at
 	FROM students s
 	JOIN xp_events e ON e.student_id = s.id AND e.created_at >= ?
-	WHERE s.id NOT LIKE 'guest_%'
+	WHERE ` + rankedStudentWhere + `
 	GROUP BY s.id
 	HAVING SUM(e.amount) > 0`
 
@@ -127,7 +134,7 @@ const sqliteAllTimeRows = `
 	       s.xp_total AS xp,
 	       s.created_at
 	FROM students s
-	WHERE s.xp_total > 0 AND s.id NOT LIKE 'guest_%'`
+	WHERE s.xp_total > 0 AND ` + rankedStudentWhere
 
 func scanLeaderboardRows(rows *sql.Rows) ([]LeaderboardRow, error) {
 	var out []LeaderboardRow
@@ -144,9 +151,9 @@ func scanLeaderboardRows(rows *sql.Rows) ([]LeaderboardRow, error) {
 	return out, rows.Err()
 }
 
-// IsGuestID is the one definition of "anonymous" in the storage layer. Guest
-// ids are minted by the client and double as that client's credential, so they
-// are excluded from every public ranking and never serialized to a browser.
+// IsGuestID reports the legacy guest_ credential prefix. Ranking eligibility
+// does not use this prefix: guests can have UUID ids, so rankedStudentWhere
+// checks for real credentials instead.
 func IsGuestID(id string) bool {
 	return strings.HasPrefix(id, "guest_")
 }

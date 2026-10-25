@@ -325,6 +325,27 @@ func (s *SQLiteStore) CreateUser(name, username, passwordHash string) (*Student,
 	return &Student{ID: id, Name: name, Username: username, PasswordHash: passwordHash, Settings: "{}", CreatedAt: now}, nil
 }
 
+// AdoptGuestAsUser attaches credentials to an existing guest row. The WHERE
+// clause repeats the claimability check so a concurrent guest claim cannot
+// turn an already registered row into a second account.
+func (s *SQLiteStore) AdoptGuestAsUser(id, name, username, passwordHash string) (*Student, error) {
+	res, err := s.db.Exec(
+		"UPDATE students SET name = ?, username = ?, password_hash = ? WHERE id = ? AND COALESCE(password_hash, '') = '' AND COALESCE(email, '') = ''",
+		name, username, passwordHash, id,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("adopt guest as user: %w", err)
+	}
+	n, err := res.RowsAffected()
+	if err != nil {
+		return nil, fmt.Errorf("adopt guest as user: %w", err)
+	}
+	if n != 1 {
+		return nil, fmt.Errorf("adopt guest as user: guest row is not claimable")
+	}
+	return s.GetStudent(id)
+}
+
 func scanStudent(row interface{ Scan(...interface{}) error }) (*Student, error) {
 	var st Student
 	var username, passwordHash, courseID, xpDate, settings sql.NullString
@@ -1292,6 +1313,8 @@ func (s *SQLiteStore) ResetProgress(studentID string) error {
 		args []interface{}
 	}{
 		{"DELETE FROM attempts WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM answer_submissions WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM study_answer_effects WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = ?", []interface{}{studentID}},
@@ -1338,6 +1361,8 @@ func (s *SQLiteStore) DeleteAccount(studentID string) error {
 		{"DELETE FROM identities WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM avatar_images WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM attempts WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM answer_submissions WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM study_answer_effects WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = ?", []interface{}{studentID}},
@@ -1363,7 +1388,13 @@ func (s *SQLiteStore) DeleteAccount(studentID string) error {
 // Attempts
 
 func (s *SQLiteStore) RecordAttempt(entry AttemptEntry) (int64, error) {
-	res, err := s.db.Exec(`
+	return insertAttemptSQLite(s.db, entry)
+}
+
+func insertAttemptSQLite(exec interface {
+	Exec(query string, args ...any) (sql.Result, error)
+}, entry AttemptEntry) (int64, error) {
+	res, err := exec.Exec(`
 		INSERT INTO attempts
 			(session_id, student_id, concept_id, answer, expected,
 			 correct, elapsed_seconds, timestamp, question, source, explanation, difficulty)
@@ -1383,6 +1414,30 @@ func (s *SQLiteStore) RecordAttempt(entry AttemptEntry) (int64, error) {
 		return 0, fmt.Errorf("record attempt: id: %w", err)
 	}
 	return id, nil
+}
+
+func insertAttemptSQLiteTx(tx *sql.Tx, entry AttemptEntry) (int64, error) {
+	return insertAttemptSQLite(tx, entry)
+}
+
+func (s *SQLiteStore) CommitStudySubmission(c StudySubmissionCommit) (StudySubmissionOutcome, error) {
+	return commitStudySubmissionTx(s.db, rebindQuestion, insertAttemptSQLiteTx, c)
+}
+
+func (s *SQLiteStore) GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error) {
+	return getStudySubmission(s.db, rebindQuestion, studentID, operation, submissionID)
+}
+
+func (s *SQLiteStore) ClaimStudyEffects(studentID string, now time.Time, limit int) ([]StudyAnswerEffect, error) {
+	return claimStudyEffects(s.db, rebindQuestion, false, studentID, now, limit)
+}
+
+func (s *SQLiteStore) CompleteStudyEffect(id int64) error {
+	return completeStudyEffect(s.db, rebindQuestion, id, time.Now().UTC())
+}
+
+func (s *SQLiteStore) FailStudyEffect(id int64, reason string, retryAt time.Time) error {
+	return failStudyEffect(s.db, rebindQuestion, id, reason, retryAt)
 }
 
 // GetRecentAttemptsForConcept implements the bounded per-concept window the evidence

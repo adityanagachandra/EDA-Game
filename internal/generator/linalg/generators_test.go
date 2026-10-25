@@ -2,9 +2,11 @@ package linalg
 
 import (
 	"math/rand"
+	"strings"
 	"testing"
 
 	"github.com/chuma-beep/mathua/internal/generator"
+	"github.com/chuma-beep/mathua/internal/grader"
 )
 
 func fuzzGen(t *testing.T, gen generator.Generator) {
@@ -53,5 +55,29 @@ func TestFuzz(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func TestParametricEquationsUseSignedTerms(t *testing.T) {
+	g := &parametricGen{}
+	r := grader.NewRouter()
+	sawNegative := false
+	for i := 0; i < 300; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if strings.Contains(p.Question, "+ -") || strings.Contains(p.Answer, "+ -") || strings.Contains(p.Explanation, "+ -") {
+			t.Fatalf("parametric problem writes a plus followed by a negative term: q=%q a=%q e=%q", p.Question, p.Answer, p.Explanation)
+		}
+		if strings.Contains(p.Answer, "-") {
+			sawNegative = true
+		}
+		if res := r.Grade(grader.GradingTuple, p.Answer, p.Answer); !res.Correct {
+			t.Fatalf("parametric answer %q does not grade as its own tuple: %v", p.Answer, res.Feedback)
+		}
+	}
+	if !sawNegative {
+		t.Fatal("300 draws produced no negative direction or starting value; the sign test did not exercise the defect")
+	}
+	if hint := g.AnswerFormat().Hint; !strings.Contains(hint, "x=") || !strings.Contains(hint, "y=") {
+		t.Fatalf("answer hint does not show both coordinate equations: %q", hint)
 	}
 }

@@ -2,6 +2,7 @@ package engine
 
 import (
 	"crypto/rand"
+	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -181,6 +182,10 @@ type AnswerResult struct {
 	// Diagnosis names the mistake in one sentence, when it can be determined
 	// with certainty. Empty most of the time, and never before grading.
 	Diagnosis string `json:"diagnosis,omitempty"`
+	// ResponseJSON is the exact body stored by the idempotent study path. It
+	// is not part of the normal AnswerResult payload; the server writes it raw
+	// so a replayed retry is byte-identical to the original response.
+	ResponseJSON string `json:"-"`
 	// EvidenceScore is the authoritative mastery evidence score for this concept after
 	// this answer, 0..1, from internal/mastery.BuildEvidence.
 	//
@@ -240,6 +245,10 @@ type Engine struct {
 	resetGen map[string]uint64
 	// kpStates tracks Knowledge Point progress per student and concept.
 	kpStates map[string]*mastery.KPStateMachine
+	// submissionLocks serializes study submissions for the same learner in
+	// this process. The durable submission key is the cross-process guard;
+	// this lock only keeps in-memory miss counters and KP state consistent.
+	submissionLocks [64]sync.Mutex
 }
 
 // QuizGateXP is the mastery-check interval. It delegates so there is one definition: the
@@ -1667,11 +1676,32 @@ func (e *Engine) SubmitAnswer(sessionID, studentID, attemptID, answer string, el
 // is a stronger source than a caller could supply, for the same reason the expected answer
 // does.
 func (e *Engine) SubmitStudyAnswer(studentID, conceptID, answer string, elapsedSeconds float64, questionText string) (*AnswerResult, error) {
+	return e.submitStudyAnswer(studentID, conceptID, answer, elapsedSeconds, questionText, "")
+}
+
+// SubmitStudyAnswerWithSubmission is the idempotent study path. submissionID
+// is chosen by the client once per logical answer and replayed by its retry
+// layer. The same id with the same payload returns the stored response and
+// writes nothing; the same id with a different payload is refused.
+func (e *Engine) SubmitStudyAnswerWithSubmission(studentID, conceptID, answer string, elapsedSeconds float64, questionText, submissionID string) (*AnswerResult, error) {
+	lock := e.studySubmissionLock(studentID)
+	lock.Lock()
+	defer lock.Unlock()
+	return e.submitStudyAnswer(studentID, conceptID, answer, elapsedSeconds, questionText, submissionID)
+}
+
+func (e *Engine) studySubmissionLock(studentID string) *sync.Mutex {
+	h := fnv.New32a()
+	_, _ = h.Write([]byte(studentID))
+	return &e.submissionLocks[h.Sum32()%uint32(len(e.submissionLocks))]
+}
+
+func (e *Engine) submitStudyAnswer(studentID, conceptID, answer string, elapsedSeconds float64, questionText, submissionID string) (*AnswerResult, error) {
 	taskType := TaskLesson
 	if strings.HasSuffix(conceptID, ".word") {
 		taskType = TaskMultistep
 	}
-	return e.submitAnswerWithTask(studentID, conceptID, answer, "", elapsedSeconds, taskType, true, false, questionText, nil)
+	return e.submitAnswerWithTask(studentID, conceptID, answer, "", elapsedSeconds, taskType, true, false, questionText, submissionID, nil)
 }
 
 // SubmitQuizAnswer is the single-path quiz grader: TaskQuiz base XP (20),
@@ -1685,14 +1715,14 @@ func (e *Engine) SubmitStudyAnswer(studentID, conceptID, answer string, elapsedS
 // attempt with a difficulty nobody actually served and because the whole point of this
 // argument is that the quiz path produces the same evidence as the study path.
 func (e *Engine) SubmitQuizAnswer(studentID, conceptID, answer, expected string, elapsedSeconds float64, questionText string, difficulty *float64) (*AnswerResult, error) {
-	return e.submitAnswerWithTask(studentID, conceptID, answer, expected, elapsedSeconds, TaskQuiz, false, false, questionText, difficulty)
+	return e.submitAnswerWithTask(studentID, conceptID, answer, expected, elapsedSeconds, TaskQuiz, false, false, questionText, "", difficulty)
 }
 
 // SubmitQuizDontKnow records an admitted unknown ("I don't know" button) as
 // a quiz miss: weakness up, streak reset, remedial queued, but no XP and no
 // rushing penalty (an instant admit is honesty, not rushing).
 func (e *Engine) SubmitQuizDontKnow(studentID, conceptID, expected string, elapsedSeconds float64, questionText string, difficulty *float64) (*AnswerResult, error) {
-	return e.submitAnswerWithTask(studentID, conceptID, "", expected, elapsedSeconds, TaskQuiz, false, true, questionText, difficulty)
+	return e.submitAnswerWithTask(studentID, conceptID, "", expected, elapsedSeconds, TaskQuiz, false, true, questionText, "", difficulty)
 }
 
 // difficulty is the difficulty the question that produced this attempt was served at, or
@@ -1700,7 +1730,7 @@ func (e *Engine) SubmitQuizDontKnow(studentID, conceptID, expected string, elaps
 // passed by the caller from the served problem. It is never derived from the learner's
 // current weakness, because that is a different number: it is the difficulty a *future*
 // question would get, not the one the learner just answered.
-func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected string, elapsedSeconds float64, taskType string, useAnchor bool, dontKnow bool, questionText string, difficulty *float64) (*AnswerResult, error) {
+func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected string, elapsedSeconds float64, taskType string, useAnchor bool, dontKnow bool, questionText, submissionID string, difficulty *float64) (*AnswerResult, error) {
 	if e.dag.Concept(conceptID) == nil {
 		return nil, fmt.Errorf("%w: %q", ErrUnknownConcept, conceptID)
 	}
@@ -1783,7 +1813,7 @@ func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected str
 			SM2EFactor: 2.5,
 		}
 	}
-	newStatus, evidence, err := e.applyGradedAttempt(progress, gradedAttempt{
+	ga := gradedAttempt{
 		attemptID:      fmt.Sprintf("task:%s:%s:%d", studentID, conceptID, nowUTC().UnixNano()),
 		studentID:      studentID,
 		conceptID:      conceptID,
@@ -1793,7 +1823,16 @@ func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected str
 		correct:        gr.Correct,
 		questionText:   questionText,
 		difficulty:     difficulty,
-	})
+	}
+	var newStatus mastery.Status
+	var evidence mastery.Evidence
+	var topicSpeed *storage.TopicSpeed
+	var kpUpdate *kpStateUpdate
+	if submissionID != "" {
+		newStatus, evidence, topicSpeed, kpUpdate, err = e.computeGradedAttempt(progress, ga)
+	} else {
+		newStatus, evidence, err = e.applyGradedAttempt(progress, ga)
+	}
 	if err != nil {
 		return nil, fmt.Errorf("save progress: %w", err)
 	}
@@ -1811,7 +1850,7 @@ func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected str
 	if explanation == "" {
 		explanation = gr.Feedback
 	}
-	xpAttemptID, err := e.repo.RecordAttempt(storage.AttemptEntry{
+	attemptEntry := storage.AttemptEntry{
 		SessionID:      sessionID,
 		StudentID:      studentID,
 		ConceptID:      conceptID,
@@ -1827,11 +1866,17 @@ func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected str
 		// decision it fed cannot disagree. This column used to be left NULL on this path,
 		// which is what made quiz and study evidence incomparable.
 		Difficulty: difficulty,
-	})
+	}
+	xp := computeXPForTask(gr.Correct, elapsedSeconds, timeThreshold, progress.Streak, taskType)
+
+	if submissionID != "" {
+		return e.commitStudyAnswer(studentID, conceptID, submissionID, answer, elapsedSeconds, questionText, gr, progress, ga, attemptEntry, topicSpeed, kpUpdate, newStatus, evidence, explanation, xp, dontKnow)
+	}
+
+	xpAttemptID, err := e.repo.RecordAttempt(attemptEntry)
 	if err != nil {
 		return nil, fmt.Errorf("record attempt: %w", err)
 	}
-	xp := computeXPForTask(gr.Correct, elapsedSeconds, timeThreshold, progress.Streak, taskType)
 
 	// PR 1.5: negative XP for rushing/guessing + halt flag at 2 consecutive misses.
 	missKey := studentID + "|" + conceptID
@@ -1915,6 +1960,130 @@ func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected str
 		KPOrdinal:      resKPOrdinal,
 		KPAdvanced:     resKPAdvanced,
 	}, nil
+}
+
+func studySubmissionHash(studentID, conceptID, answer string, elapsed float64, question string) string {
+	h := sha256.New()
+	fmt.Fprintf(h, "%s\x00%s\x00%s\x00%.6f\x00%s", studentID, conceptID, answer, elapsed, question)
+	return hex.EncodeToString(h.Sum(nil))
+}
+
+func studyAnswerResponseJSON(res *AnswerResult) string {
+	b, err := json.Marshal(map[string]interface{}{
+		"correct":         res.Correct,
+		"feedback":        res.Feedback,
+		"diagnosis":       res.Diagnosis,
+		"explanation":     res.Explanation,
+		"new_status":      res.NewStatus,
+		"streak":          res.Streak,
+		"required_streak": res.RequiredStreak,
+		"xp":              res.XP,
+		"expected_answer": res.ExpectedAnswer,
+		"halted":          res.Halted,
+		"scaffold_active": res.ScaffoldActive,
+		"scaffold_step":   res.ScaffoldStep,
+		"scaffold_total":  res.ScaffoldTotal,
+	})
+	if err != nil {
+		return ""
+	}
+	return string(b)
+}
+
+// commitStudyAnswer is the idempotent study write. Grading and mastery
+// computation are already finished; this function computes the response,
+// commits the attempt, progress, topic speed and XP in one transaction, then
+// runs the best-effort effects that are not part of the answer record.
+func (e *Engine) commitStudyAnswer(studentID, conceptID, submissionID, answer string, elapsed float64, questionText string, gr grader.Result, progress *storage.ConceptProgress, ga gradedAttempt, attemptEntry storage.AttemptEntry, topicSpeed *storage.TopicSpeed, kpUpdate *kpStateUpdate, newStatus mastery.Status, evidence mastery.Evidence, explanation string, xp int, dontKnow bool) (*AnswerResult, error) {
+	store, ok := e.repo.(storage.StudySubmissionStore)
+	if !ok {
+		return nil, fmt.Errorf("idempotent study storage is not available")
+	}
+	missKey := studentID + "|" + conceptID
+	halted := false
+	var remedial []string
+	var missCount, rushCount int
+	if !gr.Correct {
+		e.mu.Lock()
+		missCount = e.studyMisses[missKey] + 1
+		rushCount = e.studyRush[missKey]
+		e.mu.Unlock()
+		if missCount >= 2 {
+			halted = true
+			xp = 0
+			if c := e.dag.Concept(conceptID); c != nil {
+				targets := e.resolveRemedialPrerequisites(studentID, conceptID)
+				remedial = append(remedial, targets...)
+				remedial = append(remedial, conceptID)
+			}
+		}
+		if !dontKnow && elapsed < xppolicy.RushSeconds {
+			rushCount++
+			if rushCount >= xppolicy.RushAfter {
+				xp = xppolicy.RushPenalty
+			}
+		}
+	}
+
+	res := &AnswerResult{
+		Correct:        gr.Correct,
+		Feedback:       gr.Feedback,
+		Diagnosis:      gr.Diagnosis,
+		NewStatus:      newStatus,
+		EvidenceScore:  evidence.Score,
+		EvidenceBand:   mastery.EvidenceBand(evidence),
+		Explanation:    explanation,
+		Streak:         progress.Streak,
+		RequiredStreak: ga.requiredStreak,
+		XP:             xp,
+		ExpectedAnswer: attemptEntry.Expected,
+		Halted:         halted,
+		Remedial:       remedial,
+	}
+	responseJSON := studyAnswerResponseJSON(res)
+
+	outcome, err := store.CommitStudySubmission(storage.StudySubmissionCommit{
+		StudentID:    studentID,
+		SubmissionID: submissionID,
+		Operation:    "study",
+		RequestHash:  studySubmissionHash(studentID, conceptID, answer, elapsed, questionText),
+		ResponseJSON: responseJSON,
+		Attempt:      attemptEntry,
+		Progress:     progress,
+		TopicSpeed:   topicSpeed,
+		XPAmount:     xp,
+		XPReason:     "answer",
+		Effects:      studyEffectsFor(conceptID, ga.attemptID, gr.Correct, halted, remedial),
+	})
+	if err != nil {
+		return nil, err
+	}
+	if outcome.Replayed {
+		return &AnswerResult{ResponseJSON: outcome.ResponseJSON}, nil
+	}
+	// Publish the new KP state only after the answer row committed. On replay
+	// the stored winner already published it, so a stale retry must not overwrite
+	// newer scaffold progress.
+	e.publishKPState(kpUpdate)
+
+	e.mu.Lock()
+	if !gr.Correct {
+		e.studyMisses[missKey] = missCount
+		if rushCount > 0 {
+			e.studyRush[missKey] = rushCount
+		}
+	} else {
+		delete(e.studyMisses, missKey)
+		delete(e.studyRush, missKey)
+	}
+	e.mu.Unlock()
+
+	// Effects are durable in the same transaction. The background worker
+	// drains them, so the answer request does not pay for weakness propagation,
+	// credit allocation or remedial bookkeeping before it returns.
+
+	res.ResponseJSON = outcome.ResponseJSON
+	return res, nil
 }
 
 const (
@@ -2007,6 +2176,21 @@ func (e *Engine) QuizDue(studentID string) (bool, error) {
 		return false, err
 	}
 	return since >= QuizGateXP, nil
+}
+
+// HasQuizCandidates reports whether the learner has at least one concept that
+// a routine mastery check could assess. The gate and the recommendation must
+// agree: earned XP alone is not enough when every learned concept is already
+// MASTERED, because opening the check would return "no concepts ready".
+func (e *Engine) HasQuizCandidates(studentID string) (bool, error) {
+	if studentID == "" {
+		return true, nil
+	}
+	progress, err := e.repo.GetAllProgress(studentID)
+	if err != nil {
+		return false, fmt.Errorf("load quiz candidates: %w", err)
+	}
+	return len(e.quizCandidateWeakness(studentID, progress)) > 0, nil
 }
 
 // RecordQuizCompletion snapshots current lifetime XP as the gate baseline.
@@ -2897,9 +3081,15 @@ func (e *Engine) CorpusSize() (concepts int, domains int) {
 }
 
 func (e *Engine) PropagateWeakness(studentID string) {
+	if err := e.propagateWeakness(studentID); err != nil {
+		log.Printf("warning: failed to propagate weakness for %s: %v", studentID, err)
+	}
+}
+
+func (e *Engine) propagateWeakness(studentID string) error {
 	progress, err := e.repo.GetAllProgress(studentID)
 	if err != nil {
-		return
+		return err
 	}
 	weakness := e.weaknessMapFromProgress(progress)
 	// Propagate forward to dependents (upstream struggles carry risk downstream)
@@ -2924,7 +3114,7 @@ func (e *Engine) PropagateWeakness(studentID string) {
 		}
 	}
 	if len(targetWeakness) == 0 {
-		return
+		return nil
 	}
 	// One batched write from the single fetched snapshot, no per-node round trips.
 	batch := make([]*storage.ConceptProgress, 0, len(targetWeakness))
@@ -2944,8 +3134,9 @@ func (e *Engine) PropagateWeakness(studentID string) {
 		batch = append(batch, prog)
 	}
 	if err := e.repo.UpsertProgressBatch(batch); err != nil {
-		log.Printf("warning: failed to propagate weakness batch for %s: %v", studentID, err)
+		return err
 	}
+	return nil
 }
 
 func (e *Engine) AdjustPlan(studentID string) {
@@ -3248,7 +3439,32 @@ type gradedAttempt struct {
 // answers a caller legitimately needs: the status is reported to the client as
 // `new_status`, and the evidence is what lets a client render progress from the same
 // number rather than keeping a second copy of the formula.
-func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedAttempt) (mastery.Status, mastery.Evidence, error) {
+//
+// kpStateUpdate is a scaffold state computed from a copy of the live map. The
+// caller publishes it only after the answer write succeeds.
+type kpStateUpdate struct {
+	key   string
+	state *mastery.KPStateMachine
+}
+
+func (e *Engine) publishKPState(u *kpStateUpdate) {
+	if u == nil || u.state == nil {
+		return
+	}
+	e.mu.Lock()
+	if e.kpStates == nil {
+		e.kpStates = make(map[string]*mastery.KPStateMachine)
+	}
+	e.kpStates[u.key] = u.state
+	e.mu.Unlock()
+}
+
+// computeGradedAttempt does the decision and mutates progress in memory. It does not
+// write. applyGradedAttempt wraps it for the quiz path, where the existing separate
+// writes remain; the atomic study path commits the returned progress and topic speed in
+// one transaction instead.
+func (e *Engine) computeGradedAttempt(progress *storage.ConceptProgress, o gradedAttempt) (mastery.Status, mastery.Evidence, *storage.TopicSpeed, *kpStateUpdate, error) {
+	var topicSpeed *storage.TopicSpeed
 	progress.Attempts++
 	progress.LastAttempted = ptrTime(nowUTC())
 	// AvgResponseTime reflects every attempt, not just correct ones; excluding
@@ -3296,6 +3512,7 @@ func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedA
 	})
 
 	var kpSM *mastery.KPStateMachine
+	var kpUpdate *kpStateUpdate
 	if e.dag != nil {
 		if c := e.dag.Concept(o.conceptID); c != nil && len(c.KnowledgePoints) > 0 {
 			key := o.studentID + "|" + o.conceptID
@@ -3303,16 +3520,17 @@ func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedA
 			sm := e.kpStates[key]
 			if sm == nil {
 				sm = mastery.NewKPStateMachine(len(c.KnowledgePoints))
-				if e.kpStates == nil {
-					e.kpStates = make(map[string]*mastery.KPStateMachine)
-				}
-				e.kpStates[key] = sm
 			}
-			if o.kpOrdinal > 0 && sm.CurrentOrdinal != o.kpOrdinal && !sm.Completed {
-				sm.CurrentOrdinal = o.kpOrdinal
+			// Work on a copy. The live map is not advanced until the caller has
+			// persisted the answer, so a rollback cannot leave memory ahead of
+			// the database.
+			nextKP := *sm
+			if o.kpOrdinal > 0 && nextKP.CurrentOrdinal != o.kpOrdinal && !nextKP.Completed {
+				nextKP.CurrentOrdinal = o.kpOrdinal
 			}
-			sm.Transition(o.correct)
-			kpSM = sm
+			nextKP.Transition(o.correct)
+			kpSM = &nextKP
+			kpUpdate = &kpStateUpdate{key: key, state: &nextKP}
 			e.mu.Unlock()
 		}
 	}
@@ -3363,17 +3581,16 @@ func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedA
 	progress.SM2Repetitions = nextSM2.Repetitions
 	progress.SM2EFactor = nextSM2.EFactor
 	progress.SM2Interval = nextSM2.Interval
-	// Persist updated per-topic speed from timeRatio + streak
+	// Compute updated per-topic speed from timeRatio + streak. The caller writes
+	// it, either beside the other quiz writes or inside the study transaction.
 	newSpeed := scheduler.UpdateLearningSpeed(learningSpeed, o.correct, progress.AvgResponseTime/o.timeThreshold, progress.Streak)
-	if err := e.repo.UpsertTopicSpeed(&storage.TopicSpeed{
+	topicSpeed = &storage.TopicSpeed{
 		StudentID:     o.studentID,
 		ConceptID:     o.conceptID,
 		EFactor:       nextSM2.EFactor,
 		Interval:      nextSM2.Interval,
 		Repetitions:   nextSM2.Repetitions,
 		LearningSpeed: newSpeed,
-	}); err != nil {
-		log.Printf("warning: upsert topic speed %s/%s: %v", o.studentID, o.conceptID, err)
 	}
 
 	// FSRS-6 update: compute continuous stability and difficulty
@@ -3503,36 +3720,67 @@ func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedA
 		progress.NextReviewDue = &missedAt
 	}
 
-	if err := e.repo.UpsertProgress(progress); err != nil {
-		return mastery.Status(progress.Status), evidence, err
-	}
-	e.PropagateWeakness(o.studentID)
+	return newStatus, evidence, topicSpeed, kpUpdate, nil
+}
 
-	// Allocate implicit repetition credit for encompassed prerequisites
-	if o.correct {
-		if c := e.dag.Concept(o.conceptID); c != nil && len(c.Encompasses) > 0 {
-			if cs, ok := e.repo.(storage.CreditStore); ok {
-				cands := make([]storage.CreditCandidate, 0, len(c.Encompasses))
-				for _, eid := range c.Encompasses {
-					cands = append(cands, storage.CreditCandidate{
-						ConceptID: eid,
-						RawUnits:  repetition.Micro,
-					})
-				}
-				attemptKey := o.attemptID
-				if attemptKey == "" {
-					attemptKey = fmt.Sprintf("attempt:%s:%s:%d", o.studentID, o.conceptID, nowUTC().UnixNano())
-				}
-				if _, _, err := cs.AllocateCredit(o.studentID, attemptKey, 0, cands); err != nil {
-					log.Printf("warning: allocate implicit credit %s/%s: %v", o.studentID, o.conceptID, err)
-				} else {
-					_ = e.SatisfyImplicitReviews(o.studentID)
-				}
-			}
+// applyGradedAttempt keeps the existing separate-write behaviour for the quiz
+// path and for direct tests. The study path uses computeGradedAttempt plus
+// CommitStudySubmission instead.
+func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedAttempt) (mastery.Status, mastery.Evidence, error) {
+	status, evidence, topicSpeed, kpUpdate, err := e.computeGradedAttempt(progress, o)
+	if err != nil {
+		return status, evidence, err
+	}
+	if topicSpeed != nil {
+		if err := e.repo.UpsertTopicSpeed(topicSpeed); err != nil {
+			log.Printf("warning: upsert topic speed %s/%s: %v", o.studentID, o.conceptID, err)
 		}
 	}
+	if err := e.repo.UpsertProgress(progress); err != nil {
+		return status, evidence, err
+	}
+	e.publishKPState(kpUpdate)
+	e.PropagateWeakness(o.studentID)
+	e.allocateImplicitCredit(o)
+	return status, evidence, nil
+}
 
-	return newStatus, evidence, nil
+// allocateImplicitCredit is best-effort and stays outside the atomic study
+// transaction. It is not part of the answer verdict, so a failure here is
+// logged rather than turning an accepted answer into an error.
+func (e *Engine) allocateImplicitCredit(o gradedAttempt) {
+	if err := e.allocateImplicitCreditErr(o); err != nil {
+		log.Printf("warning: allocate implicit credit %s/%s: %v", o.studentID, o.conceptID, err)
+	}
+}
+
+func (e *Engine) allocateImplicitCreditErr(o gradedAttempt) error {
+	if !o.correct || e.dag == nil {
+		return nil
+	}
+	c := e.dag.Concept(o.conceptID)
+	if c == nil || len(c.Encompasses) == 0 {
+		return nil
+	}
+	cs, ok := e.repo.(storage.CreditStore)
+	if !ok {
+		return nil
+	}
+	cands := make([]storage.CreditCandidate, 0, len(c.Encompasses))
+	for _, eid := range c.Encompasses {
+		cands = append(cands, storage.CreditCandidate{
+			ConceptID: eid,
+			RawUnits:  repetition.Micro,
+		})
+	}
+	attemptKey := o.attemptID
+	if attemptKey == "" {
+		attemptKey = fmt.Sprintf("attempt:%s:%s:%d", o.studentID, o.conceptID, nowUTC().UnixNano())
+	}
+	if _, _, err := cs.AllocateCredit(o.studentID, attemptKey, 0, cands); err != nil {
+		return err
+	}
+	return e.SatisfyImplicitReviews(o.studentID)
 }
 
 // BackfillWeeklyXP replays this week's attempts into the XP ledger.

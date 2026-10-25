@@ -249,3 +249,32 @@ func TestClosedExtrema_ReadOffAvoidance(t *testing.T) {
 		}
 	}
 }
+
+func TestDiscontinuityChoicesCoverEveryKind(t *testing.T) {
+	g := &discontinuityGen{}
+	seen := map[string]bool{}
+	for i := 0; i < 300; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if !strings.Contains(p.Question, "\n\nA)") {
+			t.Fatalf("discontinuity question has no option list: %q", p.Question)
+		}
+		options := strings.Split(p.Question, "\n\n")[1:]
+		if len(options) != 4 {
+			t.Fatalf("discontinuity question has %d options, want 4: %q", len(options), p.Question)
+		}
+		found := false
+		for _, option := range options {
+			if strings.TrimSpace(option[3:]) == p.Answer {
+				found = true
+				break
+			}
+		}
+		if !found {
+			t.Fatalf("correct answer %q is not among the options: %q", p.Answer, p.Question)
+		}
+		seen[p.Answer] = true
+	}
+	if len(seen) != 4 {
+		t.Fatalf("300 draws produced %d discontinuity kinds, want 4: %v", len(seen), seen)
+	}
+}

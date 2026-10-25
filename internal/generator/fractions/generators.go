@@ -195,9 +195,19 @@ func (g *fracCompareGen) Generate(ctx generator.GeneratorContext) generator.Prob
 type fracBenchmarkGen struct{}
 
 func (g *fracBenchmarkGen) Generate(ctx generator.GeneratorContext) generator.Problem {
-	scale := int(1 + ctx.Difficulty*5)
-	den := rand.Intn(max(1, scale*2)) + 2
-	num := rand.Intn(max(1, den-2)) + 1
+	// Report 270 saw the same benchmark comparison repeatedly. The old range
+	// was denominators 2..scale*2+1, which at low difficulty offered only 1/2,
+	// 1/3 and 2/3. Start at 3 and widen with difficulty so a short session has
+	// enough distinct pairs to avoid a visible repeat.
+	denMax := 6
+	if ctx.Difficulty >= 0.45 {
+		denMax = 9
+	}
+	if ctx.Difficulty >= 0.7 {
+		denMax = 12
+	}
+	den := rand.Intn(denMax-2) + 3
+	num := rand.Intn(den-1) + 1
 	val := float64(num) / float64(den)
 	ans := "less"
 	comp := "<"
@@ -449,16 +459,23 @@ func (g *fracMixedOpGen) Generate(ctx generator.GeneratorContext) generator.Prob
 		result = aImproper - bImproper
 	}
 	w, r, d := toMixed(result, den)
+	verb := "Add"
+	if g.op == "-" {
+		verb = "Subtract"
+	}
+	// Report 276 read 2 1/5 as 2 times 1/5. Naming the operands as mixed
+	// numbers states the convention the notation already carries.
+	question := fmt.Sprintf("%s the mixed numbers \\(%d \\frac{%d}{%d} %s %d \\frac{%d}{%d}\\).", verb, w1, n1, den, g.op, w2, n2, den)
 	if r == 0 {
 		return generator.Problem{
-			Question:    fmt.Sprintf("\\(%d \\frac{%d}{%d} %s %d \\frac{%d}{%d} = ?\\)", w1, n1, den, g.op, w2, n2, den),
+			Question:    question,
 			Answer:      strconv.Itoa(w),
 			Explanation: fmt.Sprintf("%d %d/%d %s %d %d/%d = %d", w1, n1, den, g.op, w2, n2, den, w),
 			Facts:       map[string]string{"w1": strconv.Itoa(w1), "n1": strconv.Itoa(n1), "w2": strconv.Itoa(w2), "n2": strconv.Itoa(n2), "den": strconv.Itoa(den), "op": g.op, "op_ing": opIng(g.op), "a_improper": strconv.Itoa(aImproper), "b_improper": strconv.Itoa(bImproper), "result": strconv.Itoa(result), "whole": strconv.Itoa(w), "rem": "0", "rem_den": strconv.Itoa(den)},
 		}
 	}
 	return generator.Problem{
-		Question: fmt.Sprintf("\\(%d \\frac{%d}{%d} %s %d \\frac{%d}{%d} = ?\\)", w1, n1, den, g.op, w2, n2, den),
+		Question: question,
 		Answer:   fmt.Sprintf("%d %d/%d", w, r, d),
 		Explanation: fmt.Sprintf("Convert to improper: %d/%d %s %d/%d = %d/%d = %d %d/%d",
 			aImproper, den, g.op, bImproper, den, result, den, w, r, d),

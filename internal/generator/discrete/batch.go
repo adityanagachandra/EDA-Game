@@ -266,7 +266,11 @@ func (g *predicatesGen) Generate(ctx generator.GeneratorContext) generator.Probl
 				fmt.Sprintf("\u2200x (x\u00b2 \u2265 %d)", k),
 				fmt.Sprintf("\u2203x (x\u00b2 < %d)", k),
 				fmt.Sprintf("\u2200x (x\u00b2 < %d)", k),
-				fmt.Sprintf("\u00ac\u2200x (x\u00b2 \u2265 %d)", k),
+				// The old distractor was ¬∀x (x² ≥ k), which is logically
+				// equivalent to ∃x (x² < k), so a learner could correctly
+				// choose D (report 250). Leave the universal original
+				// unchanged; it is not a negation.
+				fmt.Sprintf("\u2200x (x\u00b2 \u2265 %d)", k),
 				fmt.Sprintf("\u2200x (x\u00b2 > %d)", k),
 				"One counterexample refutes a universal claim, and it must satisfy the strict negation.",
 			},

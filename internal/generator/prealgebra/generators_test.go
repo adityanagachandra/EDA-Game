@@ -213,3 +213,44 @@ func TestOneStepInequalityAsksForTheIntegerItGrades(t *testing.T) {
 		}
 	}
 }
+
+func TestNormalizeSciNotationAcceptsCommonFormats(t *testing.T) {
+	g := &sciNotationOpsGen{}
+	cases := []string{
+		"4.7x10^3",
+		"4.7 * 10^3",
+		"(4.7 * 10^3)",
+		"4.7 × 10^3",
+		`4.7 \times 10^3`,
+		"10^3",
+	}
+	for _, in := range cases {
+		if got := normalizeSciNotation(in); got == "" {
+			t.Fatalf("normalizeSciNotation(%q) rejected a valid scientific notation", in)
+		}
+	}
+	if got := normalizeSciNotation("900"); got != "" {
+		t.Fatalf("normalizeSciNotation accepted a non-scientific value: %q", got)
+	}
+	res := g.Grade("4.7x10^3", "(4.7 * 10^3)")
+	if !res.Correct {
+		t.Fatalf("Grade rejected 4.7 * 10^3: %+v", res)
+	}
+}
+
+func TestPctFromDecAcceptsPercentSign(t *testing.T) {
+	g := &pctFromDecGen{}
+	p := g.Generate(generator.GeneratorContext{Difficulty: 0.5})
+	if res := g.Grade(p.Answer, p.Answer); !res.Correct {
+		t.Fatalf("bare percent answer %q does not grade: %+v", p.Answer, res)
+	}
+	if res := g.Grade(p.Answer, p.Answer+"%"); !res.Correct {
+		t.Fatalf("percent answer %q%% does not grade against %q: %+v", p.Answer, p.Answer, res)
+	}
+	if res := g.Grade(p.Answer, "999%"); res.Correct {
+		t.Fatalf("wrong percent answer 999%% graded correct against %q", p.Answer)
+	}
+	if hint := g.AnswerFormat().Hint; !strings.Contains(hint, "%") {
+		t.Fatalf("percent answer hint does not mention the percent form: %q", hint)
+	}
+}

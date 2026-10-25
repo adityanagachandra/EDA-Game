@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-10-25T12:14:18.407709001+01:00",
+  "duration": "20s",
+  "ramp": "5s",
+  "concurrency": 20,
+  "runners": [
+    {
+      "name": "symbolic-answer",
+      "requests": 2360,
+      "success_percent": 99.15254237288136,
+      "p50_ms": 155,
+      "p95_ms": 271,
+      "p99_ms": 551,
+      "max_ms": 858,
+      "mean_ms": 169,
+      "rate": 118,
+      "throughput": 117
+    }
+  ],
+  "spikes": [],
+  "timeline": {
+    "labels": [
+      "12:13:58",
+      "12:13:59",
+      "12:14:00",
+      "12:14:01",
+      "12:14:02",
+      "12:14:03",
+      "12:14:04",
+      "12:14:05",
+      "12:14:06",
+      "12:14:07",
+      "12:14:08",
+      "12:14:09",
+      "12:14:10",
+      "12:14:11",
+      "12:14:12",
+      "12:14:13",
+      "12:14:14",
+      "12:14:15",
+      "12:14:16",
+      "12:14:17",
+      "12:14:18"
+    ],
+    "series": [
+      {
+        "name": "symbolic-answer",
+        "p99_ms": [
+          833,
+          252,
+          293,
+          280,
+          276,
+          475,
+          279,
+          421,
+          297,
+          332,
+          337,
+          401,
+          312,
+          330,
+          302,
+          441,
+          481,
+          353,
+          485,
+          535,
+          284
+        ]
+      }
+    ]
+  },
+  "story": {
+    "title": "Steady but slow — symbolic-answer is warm",
+    "tone": "ok",
+    "detail": "No threshold spikes, yet symbolic-answer p99 551.879653ms is heavy. Consider lowering the budget or tuning symbolic-answer.",
+    "bottleneck": "symbolic-answer",
+    "capacity": "no strain up to ~20 users",
+    "next_steps": [
+      "Nothing failed, but symbolic-answer runs warm at p99 551.879653ms — set a tighter --fail-on budget and watch it across releases."
+    ]
+  }
+}

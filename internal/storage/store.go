@@ -144,6 +144,85 @@ type AttemptEntry struct {
 	Difficulty *float64 `json:"difficulty,omitempty"`
 }
 
+// StudySubmission is the durable record of one accepted study answer. The
+// submission id is chosen by the client once per logical answer, so a retry
+// carries the same id and can replay the stored response without writing
+// another attempt or another XP event.
+type StudySubmission struct {
+	StudentID    string
+	SubmissionID string
+	Operation    string
+	RequestHash  string
+	ResponseJSON string
+	AttemptID    int64
+	CreatedAt    time.Time
+}
+
+// StudySubmissionCommit is one atomic study-answer write. The caller grades
+// first, then hands the finished progress row and response here; the store
+// never grades.
+type StudyEffectInput struct {
+	Effect      string
+	PayloadJSON string
+}
+
+type StudyAnswerEffect struct {
+	ID            int64
+	StudentID     string
+	SubmissionID  string
+	Effect        string
+	PayloadJSON   string
+	Attempts      int
+	CreatedAt     time.Time
+	NextAttemptAt time.Time
+}
+
+type StudySubmissionCommit struct {
+	StudentID    string
+	SubmissionID string
+	Operation    string
+	RequestHash  string
+	ResponseJSON string
+	Attempt      AttemptEntry
+	Progress     *ConceptProgress
+	TopicSpeed   *TopicSpeed
+	XPAmount     int
+	XPReason     string
+	Effects      []StudyEffectInput
+}
+
+// StudySubmissionOutcome reports whether the commit wrote a new answer or
+// replayed the response stored by an earlier identical submission.
+type StudySubmissionOutcome struct {
+	Replayed     bool
+	ResponseJSON string
+	AttemptID    int64
+}
+
+var (
+	// ErrStudySubmissionPayloadMismatch means the same idempotency key was
+	// reused with a different concept, answer, elapsed time or question.
+	ErrStudySubmissionPayloadMismatch = errors.New("study submission payload does not match the stored submission")
+	// ErrStudySubmissionInProgress means a concurrent transaction owns the key
+	// and has not stored its response yet. The caller should retry.
+	ErrStudySubmissionInProgress = errors.New("study submission is still in progress")
+)
+
+// StudySubmissionStore is implemented by the SQL stores. It is separate from
+// Repository so test doubles and the quiz path do not need to implement it.
+type StudySubmissionStore interface {
+	CommitStudySubmission(c StudySubmissionCommit) (StudySubmissionOutcome, error)
+	GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error)
+}
+
+// StudyEffectStore is the durable outbox for effects that must run after the
+// answer transaction. Claim is atomic, so two workers cannot process one row.
+type StudyEffectStore interface {
+	ClaimStudyEffects(studentID string, now time.Time, limit int) ([]StudyAnswerEffect, error)
+	CompleteStudyEffect(id int64) error
+	FailStudyEffect(id int64, reason string, retryAt time.Time) error
+}
+
 // parseAttemptTimestamp parses attempt timestamps from either store.
 // SQLite writes RFC3339; Postgres writes now()::text ("2006-01-02
 // 15:04:05.999999-07"), which RFC3339 parsing rejects.
@@ -555,6 +634,10 @@ type Repository interface {
 	FindByUsername(username string) (*Student, error)
 	FindByEmail(email string) (*Student, error)
 	CreateUser(name, username, passwordHash string) (*Student, error)
+	// AdoptGuestAsUser turns a credential-less guest row into a named account
+	// without changing its ID, so every progress, attempt and XP row keyed by
+	// that ID stays attached. Callers must verify the row is claimable first.
+	AdoptGuestAsUser(id, name, username, passwordHash string) (*Student, error)
 	SetUsername(studentID, username string) error
 	ListStudentsMissingUsernames() ([]string, error)
 	CreateGoogleUser(name, email, googleID, avatarURL string) (*Student, error)

@@ -385,6 +385,24 @@ func (g *pctToDecGen) Generate(ctx generator.GeneratorContext) generator.Problem
 
 type pctFromDecGen struct{}
 
+func (g *pctFromDecGen) AnswerFormat() generator.AnswerFormat {
+	return generator.AnswerFormat{Hint: "Percent value, e.g. 17 or 17%", InputMode: "text"}
+}
+
+// Grade accepts the trailing percent sign a learner naturally types for a
+// percentage question. The numeric grader alone rejected "17%" because the
+// answer key is 17.
+func (g *pctFromDecGen) Grade(expected, userAnswer string) grader.Result {
+	clean := strings.TrimSpace(userAnswer)
+	clean = strings.TrimSpace(strings.TrimSuffix(clean, "%"))
+	e, errE := strconv.ParseFloat(strings.TrimSpace(expected), 64)
+	a, errA := strconv.ParseFloat(clean, 64)
+	if errE != nil || errA != nil || math.Abs(e-a) >= 1e-9 {
+		return grader.Result{Correct: false, Score: 0, Feedback: "Incorrect, multiply the decimal by 100"}
+	}
+	return grader.Result{Correct: true, Score: 1}
+}
+
 func (g *pctFromDecGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	scale := int(1 + ctx.Difficulty*5)
 	d := float64(rand.Intn(scale*20)) / 100
@@ -842,7 +860,7 @@ type sciNotationOpsGen struct{}
 // Same syntax as sciNotationGen: the answer is a coefficient and an exponent,
 // not a number that a numeric keypad can produce.
 func (g *sciNotationOpsGen) AnswerFormat() generator.AnswerFormat {
-	return generator.AnswerFormat{Hint: "Scientific notation, e.g. 3.7x10^4", InputMode: "text"}
+	return generator.AnswerFormat{Hint: "Scientific notation, e.g. 3.7x10^4 or 3.7 × 10^4", InputMode: "text"}
 }
 
 func (g *sciNotationOpsGen) Grade(expected, userAnswer string) grader.Result {
@@ -868,7 +886,21 @@ func (g *sciNotationOpsGen) Grade(expected, userAnswer string) grader.Result {
 
 func normalizeSciNotation(s string) string {
 	s = strings.TrimSpace(s)
+	s = strings.ReplaceAll(s, "$", "")
+	s = strings.ReplaceAll(s, `\left`, "")
+	s = strings.ReplaceAll(s, `\right`, "")
+	s = strings.ReplaceAll(s, `\times`, "x")
+	s = strings.ReplaceAll(s, `\cdot`, "x")
+	s = strings.ReplaceAll(s, "×", "x")
+	s = strings.ReplaceAll(s, "·", "x")
+	s = strings.ReplaceAll(s, "*", "x")
+	s = strings.ReplaceAll(s, "X", "x")
 	s = strings.ReplaceAll(s, " ", "")
+	s = strings.ReplaceAll(s, "(", "")
+	s = strings.ReplaceAll(s, ")", "")
+	if strings.HasPrefix(s, "10^") {
+		s = "1x" + s
+	}
 	parts := strings.Split(s, "x10^")
 	if len(parts) != 2 {
 		return ""

@@ -92,6 +92,41 @@ CREATE TABLE IF NOT EXISTS diagnostic_answers (
     created_at BIGINT NOT NULL
 );
 
+-- One row per accepted study answer, keyed by the client's submission id.
+-- The row is inserted in the same transaction as the attempt, progress, topic
+-- speed and XP award, so a retry either replays the stored response or sees no
+-- row at all. request_hash rejects the same key carrying a different answer.
+CREATE TABLE IF NOT EXISTS answer_submissions (
+    student_id    TEXT    NOT NULL,
+    operation     TEXT    NOT NULL,
+    submission_id TEXT    NOT NULL,
+    request_hash  TEXT    NOT NULL,
+    response_json TEXT    NOT NULL DEFAULT '',
+    attempt_id    BIGINT  NOT NULL DEFAULT 0,
+    created_at    BIGINT  NOT NULL,
+    PRIMARY KEY (student_id, operation, submission_id),
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+CREATE TABLE IF NOT EXISTS study_answer_effects (
+    id            BIGSERIAL PRIMARY KEY,
+    student_id    TEXT    NOT NULL,
+    submission_id TEXT    NOT NULL,
+    effect        TEXT    NOT NULL,
+    payload_json  TEXT    NOT NULL DEFAULT '',
+    created_at    BIGINT  NOT NULL,
+    attempts      INTEGER NOT NULL DEFAULT 0,
+    next_attempt_at BIGINT NOT NULL,
+    claimed_until BIGINT  NOT NULL DEFAULT 0,
+    processed_at  BIGINT  NOT NULL DEFAULT 0,
+    last_error    TEXT    NOT NULL DEFAULT '',
+    UNIQUE (student_id, submission_id, effect),
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_study_answer_effects_pending
+    ON study_answer_effects (processed_at, next_attempt_at, claimed_until);
+
 CREATE TABLE IF NOT EXISTS league_weeks (
     week      TEXT PRIMARY KEY,
     closed_at BIGINT NOT NULL
@@ -672,6 +707,27 @@ func (s *PostgresStore) CreateUser(name, username, passwordHash string) (*Studen
 		return nil, fmt.Errorf("create user: %w", err)
 	}
 	return &Student{ID: id, Name: name, Username: username, PasswordHash: passwordHash, Settings: "{}", CreatedAt: now}, nil
+}
+
+// AdoptGuestAsUser attaches credentials to an existing guest row. The WHERE
+// clause repeats the claimability check so a concurrent guest claim cannot
+// turn an already registered row into a second account.
+func (s *PostgresStore) AdoptGuestAsUser(id, name, username, passwordHash string) (*Student, error) {
+	res, err := s.db.Exec(
+		"UPDATE students SET name = $1, username = $2, password_hash = $3 WHERE id = $4 AND COALESCE(password_hash, '') = '' AND COALESCE(email, '') = ''",
+		name, username, passwordHash, id,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("adopt guest as user: %w", err)
+	}
+	n, err := res.RowsAffected()
+	if err != nil {
+		return nil, fmt.Errorf("adopt guest as user: %w", err)
+	}
+	if n != 1 {
+		return nil, fmt.Errorf("adopt guest as user: guest row is not claimable")
+	}
+	return s.GetStudent(id)
 }
 
 func (s *PostgresStore) GetStudent(id string) (*Student, error) {
@@ -1570,6 +1626,8 @@ func (s *PostgresStore) ResetProgress(studentID string) error {
 		args []interface{}
 	}{
 		{"DELETE FROM attempts WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM answer_submissions WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM study_answer_effects WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = $1", []interface{}{studentID}},
@@ -1614,6 +1672,8 @@ func (s *PostgresStore) DeleteAccount(studentID string) error {
 		{"DELETE FROM identities WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM avatar_images WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM attempts WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM answer_submissions WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM study_answer_effects WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM active_sessions WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM sessions WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM concept_progress WHERE student_id = $1", []interface{}{studentID}},
@@ -1639,8 +1699,14 @@ func (s *PostgresStore) DeleteAccount(studentID string) error {
 // Attempts
 
 func (s *PostgresStore) RecordAttempt(entry AttemptEntry) (int64, error) {
+	return insertAttemptPostgres(s.db, entry)
+}
+
+func insertAttemptPostgres(exec interface {
+	QueryRow(query string, args ...any) *sql.Row
+}, entry AttemptEntry) (int64, error) {
 	var id int64
-	err := s.db.QueryRow(`
+	err := exec.QueryRow(`
 		INSERT INTO attempts
 			(session_id, student_id, concept_id, answer, expected,
 			 correct, elapsed_seconds, timestamp, question, source, explanation, difficulty)
@@ -1657,6 +1723,30 @@ func (s *PostgresStore) RecordAttempt(entry AttemptEntry) (int64, error) {
 		return 0, fmt.Errorf("record attempt: %w", err)
 	}
 	return id, nil
+}
+
+func insertAttemptPostgresTx(tx *sql.Tx, entry AttemptEntry) (int64, error) {
+	return insertAttemptPostgres(tx, entry)
+}
+
+func (s *PostgresStore) CommitStudySubmission(c StudySubmissionCommit) (StudySubmissionOutcome, error) {
+	return commitStudySubmissionTx(s.db, rebindDollars, insertAttemptPostgresTx, c)
+}
+
+func (s *PostgresStore) GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error) {
+	return getStudySubmission(s.db, rebindDollars, studentID, operation, submissionID)
+}
+
+func (s *PostgresStore) ClaimStudyEffects(studentID string, now time.Time, limit int) ([]StudyAnswerEffect, error) {
+	return claimStudyEffects(s.db, rebindDollars, true, studentID, now, limit)
+}
+
+func (s *PostgresStore) CompleteStudyEffect(id int64) error {
+	return completeStudyEffect(s.db, rebindDollars, id, time.Now().UTC())
+}
+
+func (s *PostgresStore) FailStudyEffect(id int64, reason string, retryAt time.Time) error {
+	return failStudyEffect(s.db, rebindDollars, id, reason, retryAt)
 }
 
 // GetRecentAttemptsForConcept implements the bounded per-concept window the evidence

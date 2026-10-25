@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseChoices, stemWithoutChoices } from '../lib/choices'
+import { optionMathText, parseChoices, stemWithoutChoices } from '../lib/choices'
 
 describe('parseChoices', () => {
   it('parses trailing "A) …" option blocks', () => {
@@ -48,5 +48,17 @@ describe('stemWithoutChoices', () => {
   it('does not cut a stem whose list starts at B', () => {
     const q = 'Which?\n\nB) circle\n\nC) square'
     expect(stemWithoutChoices(q)).toBe(q)
+  })
+})
+
+describe('optionMathText', () => {
+  it('wraps bare LaTeX so it is not shown with backslashes', () => {
+    expect(optionMathText('\\mathbb{Q} \\cap [2,9]')).toBe('\\(\\mathbb{Q} \\cap [2,9]\\)')
+  })
+
+  it('leaves prose and already-delimited math untouched', () => {
+    expect(optionMathText('the set of integers')).toBe('the set of integers')
+    expect(optionMathText('$x^2$')).toBe('$x^2$')
+    expect(optionMathText('\\(x^2\\)')).toBe('\\(x^2\\)')
   })
 })

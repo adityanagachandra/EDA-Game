@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import KatexContent from './KatexContent'
-import { parseChoices } from '../lib/choices'
+import { optionMathText, parseChoices } from '../lib/choices'
 
 interface Props {
   question: string
@@ -47,7 +47,7 @@ export default function ChoiceOptions({ question, value, onPick, disabled }: Pro
           >
             <span className="shrink-0 font-semibold">{o.letter}</span>
             <span className="min-w-0 break-words">
-              <KatexContent>{o.text}</KatexContent>
+              <KatexContent>{optionMathText(o.text)}</KatexContent>
             </span>
           </button>
         )

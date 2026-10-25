@@ -723,7 +723,7 @@ func (g *conicParabolaGen) Generate(ctx generator.GeneratorContext) generator.Pr
 	fourP := 4 * p
 	if rand.Intn(2) == 0 {
 		ans := strconv.Itoa(p)
-		q := fmt.Sprintf("The parabola \\(y^2 = %sx^\\) has its focus on the x-axis at \\((p, 0)\\). Find \\(p\\).", coefStr(fourP))
+		q := fmt.Sprintf("The parabola \\(y^2 = %sx\\) has its focus on the x-axis at \\((p, 0)\\). Find \\(p\\).", coefStr(fourP))
 		ex := fmt.Sprintf("Comparing with \\(y^2 = 4px\\): \\(4p = %+d\\), so \\(p = %d\\).", fourP, p)
 		return generator.Problem{Question: q, Answer: ans, Explanation: ex}
 	}
@@ -755,15 +755,27 @@ func (g *conicEllipseGen) Generate(ctx generator.GeneratorContext) generator.Pro
 	a := t[0]
 	b := t[1]
 	c := t[2]
-	if rand.Intn(2) == 0 {
+	// The report text promises a is the semi-major axis. Swapping the pair
+	// produced questions such as a=6, b=8 with the words "with a>b", which
+	// report 262 quoted back verbatim. Keep the invariant the text states.
+	if a < b {
 		a, b = b, a
 	}
 	if ctx.Difficulty > 0.5 && rand.Intn(2) == 0 {
-		q := fmt.Sprintf("An ellipse is given by \\(\\frac{x^2}{%d} + \\frac{y^2}{%d} = 1\\). Find the distance from the center to each focus \\(c\\).", a*a, b*b)
+		xDen, yDen := a*a, b*b
+		if rand.Intn(2) == 0 {
+			xDen, yDen = yDen, xDen
+		}
+		q := fmt.Sprintf("An ellipse is given by \\(\\frac{x^2}{%d} + \\frac{y^2}{%d} = 1\\). Find the distance from the center to each focus \\(c\\).", xDen, yDen)
 		ex := fmt.Sprintf("\\(c^2 = a^2-b^2 = %d-%d = %d\\), so \\(c = %d\\).", maxInt(a*a, b*b), minInt(a*a, b*b), c*c, c)
 		return generator.Problem{Question: q, Answer: strconv.Itoa(c), Explanation: ex}
 	}
-	q := fmt.Sprintf("An ellipse has semi-axes \\(a=%d\\) and \\(b=%d\\) (with \\(a>b\\)). Find \\(c\\), the distance from center to focus, where \\(c^2=a^2-b^2\\).", a, b)
+	var q string
+	if rand.Intn(2) == 0 {
+		q = fmt.Sprintf("An ellipse has semi-axes \\(a=%d\\) and \\(b=%d\\) (with \\(a>b\\)). Find \\(c\\), the distance from center to focus, where \\(c^2=a^2-b^2\\).", a, b)
+	} else {
+		q = fmt.Sprintf("An ellipse has semi-major axis \\(a=%d\\) and semi-minor axis \\(b=%d\\). Find \\(c\\), the distance from center to focus, where \\(c^2=a^2-b^2\\).", a, b)
+	}
 	ex := fmt.Sprintf("\\(c=\\sqrt{%d-%d}=\\sqrt{%d}=%d\\).", a*a, b*b, c*c, c)
 	return generator.Problem{Question: q, Answer: strconv.Itoa(c), Explanation: ex}
 }

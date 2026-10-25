@@ -575,7 +575,7 @@
   "label": "Types of discontinuities",
   "domain": "calculus",
   "subdomain": "calculus.limits",
-  "grading_type": "symbolic",
+  "grading_type": "multiple_choice",
   "prerequisites": [
    "calc.limit.continuity"
   ],

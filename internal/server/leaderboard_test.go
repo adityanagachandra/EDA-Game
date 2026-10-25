@@ -49,7 +49,7 @@ func TestLeaderboard_PaginatesOnTheServer(t *testing.T) {
 		t.Fatalf("award ada: %v", err)
 	}
 	for i := 2; i <= 30; i++ {
-		st, err := s.repo.CreateStudent(fmt.Sprintf("Ranker %02d", i))
+		st, err := s.repo.CreateUser(fmt.Sprintf("Ranker %02d", i), fmt.Sprintf("ranker%02d", i), "hash")
 		if err != nil {
 			t.Fatalf("create: %v", err)
 		}

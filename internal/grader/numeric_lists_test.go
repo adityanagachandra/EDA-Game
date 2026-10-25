@@ -17,6 +17,8 @@ func TestNumericListsIgnoreOrder(t *testing.T) {
 		{"6;8", "8,6"},
 		{"[4,-3]", "( -3 , 4 )"},
 		{"2,-2", "-2,2"},
+		// Report 249: x^2 - 1 = 0 was answered -1,1 while the key was 1,-1.
+		{"1,-1", "-1,1"},
 		{"2,-2", "x = -2, x = 2"},
 		{"1,2,3", "3,1,2"},
 		{"1/2,-1/2", "-1/2,1/2"},

@@ -70,6 +70,41 @@ CREATE TABLE IF NOT EXISTS diagnostic_answers (
     created_at INTEGER NOT NULL
 );
 
+-- One row per accepted study answer, keyed by the client's submission id.
+-- The row is inserted in the same transaction as the attempt, progress, topic
+-- speed and XP award, so a retry either replays the stored response or sees no
+-- row at all. request_hash rejects the same key carrying a different answer.
+CREATE TABLE IF NOT EXISTS answer_submissions (
+    student_id    TEXT    NOT NULL,
+    operation     TEXT    NOT NULL,
+    submission_id TEXT    NOT NULL,
+    request_hash  TEXT    NOT NULL,
+    response_json TEXT    NOT NULL DEFAULT '',
+    attempt_id    INTEGER NOT NULL DEFAULT 0,
+    created_at    INTEGER NOT NULL,
+    PRIMARY KEY (student_id, operation, submission_id),
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+CREATE TABLE IF NOT EXISTS study_answer_effects (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id    TEXT    NOT NULL,
+    submission_id TEXT    NOT NULL,
+    effect        TEXT    NOT NULL,
+    payload_json  TEXT    NOT NULL DEFAULT '',
+    created_at    INTEGER NOT NULL,
+    attempts      INTEGER NOT NULL DEFAULT 0,
+    next_attempt_at INTEGER NOT NULL,
+    claimed_until INTEGER NOT NULL DEFAULT 0,
+    processed_at  INTEGER NOT NULL DEFAULT 0,
+    last_error    TEXT    NOT NULL DEFAULT '',
+    UNIQUE (student_id, submission_id, effect),
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_study_answer_effects_pending
+    ON study_answer_effects (processed_at, next_attempt_at, claimed_until);
+
 CREATE TABLE IF NOT EXISTS league_weeks (
     week      TEXT PRIMARY KEY,
     closed_at INTEGER NOT NULL

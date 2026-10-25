@@ -8,7 +8,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import SectionHeader from '../../components/SectionHeader'
 import { signup, login, validateToken, requestPasswordReset, completePasswordReset, startOAuthLogin, googleOneTap, OAUTH_LABELS, type OAuthProvider, API_BASE, getConfig } from '../../lib/api'
-import { establishSession, isLoggedIn } from '../../lib/auth'
+import { clearGuest, establishSession, getGuestId, isLoggedIn } from '../../lib/auth'
 import { LOGIN_HERO } from '../../lib/loginHero'
 
 type LoginState = {
@@ -359,9 +359,13 @@ function LoginInner() {
     dispatch({ type: 'SET_LOADING', loading: true })
     try {
       const res = state.tab === 'signup'
-        ? await signup(state.name.trim(), state.username.trim(), state.password, state.email.trim())
+        ? await signup(state.name.trim(), state.username.trim(), state.password, state.email.trim(), getGuestId() ?? undefined)
         : await login(state.username.trim(), state.password)
       await establishSession(res.token, { student_id: res.student_id, name: res.name, username: state.username.trim(), concepts_mastered: 0, current_streak: 0, level: 'Novice', diagnostic_completed: res.diagnostic_completed })
+      // A successful signup consumes the guest identity: the account now owns
+      // the same row, so leaving the guest token behind would only be a second
+      // credential for the same learner.
+      if (state.tab === 'signup') clearGuest()
       push(ret)
     } catch (e: any) {
       dispatch({ type: 'SET_ERROR', error: e.message || 'Authentication failed' })

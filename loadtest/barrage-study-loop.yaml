@@ -1,86 +1,63 @@
-# Barrage load profile: guest study loop vs SQLite on one clock.
+# Current-API study-loop baseline.
 #
-# STALE SCENARIO (not retargeted): the study-loop below drives POST
-# /api/session + POST /api/answer, both removed — the live flow is
-# GET /api/lessons/{id}/practice + POST /api/study/answer (see ADR-042 and
-# the Phase 0 audit). Do not trust numbers from this file until the steps
-# are rewritten against the current seams; the DB runner shapes below the
-# `db:` key are still valid.
+# Phase 0 only: this scenario measures the deployed architecture as it exists.
+# It does not model a multiple-replica or Postgres deployment, because neither
+# exists yet.
 #
-# Scenario runner drives the real HTTP flow (session -> chained answers ->
-# scores) while the db runner issues the app's heaviest read shapes directly
-# against the same SQLite file. Correlated buckets show whether answer-submit
-# latency comes from the app (grading/engine) or the database (write lock).
+# Flow per virtual user:
+#   create guest -> fetch a practice set -> submit one graded answer -> read scores
 #
-# Run (from repo root; port must be free — 8081 is taken by llama-server
-# on this machine, hence 18082):
-#   go build -o /tmp/mathua-loadtest ./cmd/mathua
-#   DATABASE_URL=/tmp/mathua-loadtest.db MATHUA_LOADTEST=1 \
-#     /tmp/mathua-loadtest -serve -no-auth -port 18082 &
-#   barrage run -c loadtest/barrage-study-loop.yaml --json loadtest/baseline-sqlite-pool8.json
+# The guest is created inside the loop because barrage scenarios have no setup
+# phase. That makes each journey a new-learner journey, not a returning learner
+# answering twenty questions. The scenario rate counts all four HTTP steps.
+# Divide it by four for approximate answer submissions per second.
 #
-# NOTE: DATABASE_URL takes a bare file path — the `sqlite:` prefix used in
-# docker-compose.yml is not stripped by NewSQLiteStore and fails to open.
+# Run against a scratch server:
+#   go build -o /tmp/opencode/mathua-loadtest ./cmd/mathua
+#   DATABASE_URL=/tmp/opencode/phase0.db MATHUA_LOADTEST=1 \
+#     /tmp/opencode/mathua-loadtest -serve -port 18082 &
+#   mise exec -- barrage run -c loadtest/barrage-study-loop.yaml \
+#     --duration 60s --concurrency 20 --no-progress \
+#     --json loadtest/phase0-c20.json --no-report
 #
-# MATHUA_LOADTEST=1 is required: without it the write limiter (20/3s per IP)
-# absorbs the burst as 429s and the run measures the limiter, not the app.
-# Scratch DB only — never point this at mathua.db or production.
+# MATHUA_LOADTEST=1 relaxes the rate limiters so this run measures the app.
+# Never set it in production. The scratch database must not be production.
 
 duration: 30s
 bucket_width: 1s
 ramp: 5s
 concurrency: 20
 
-# Capacity search: doubling 20->40->... up to 320, then linear fine-fill
-# between last-ok and first-broken. Each level runs a 10s burst; ramp: and
-# duration: above are ignored while auto-ramp runs. Break = any runner P99
-# over its threshold (scenarios judged vs --http-threshold) or success <95%.
-# Run: barrage run -c loadtest/barrage-study-loop.yaml --auto-ramp \
-#        --http-threshold 500ms --json loadtest/autoramp.json
-# Fixed-load verification at one concurrency needs a config WITHOUT the
-# auto_ramp block (its presence forces auto-ramp mode): strip the block to
-# /tmp and run e.g. barrage run -c /tmp/barrage-fixed38.yaml --http-threshold
-# 500ms --json loadtest/capacity-c38.json. NOTE: sub-100% success in barrage
-# output is burst-cutoff artifact (in-flight journeys at run end), not app
-# errors — verify zero app errors with a status-capturing client instead.
-auto_ramp:
-  max_concurrency: 320
-  step_duration: 10s
-
 scenario:
   - name: study-loop
     weight: 3
     steps:
       - method: POST
-        url: http://localhost:18082/api/session
-        body: '{"name":"loadtest"}'
+        url: http://localhost:18082/api/auth/guest
+        body: '{}'
         headers:
           Content-Type: application/json
         extract:
-          sid: $.session_id
-          aid: $.question.attempt_id
+          token: $.token
           student: $.student_id
-      - method: POST
-        url: http://localhost:18082/api/answer
-        body: '{"session_id":"{{sid}}","attempt_id":"{{aid}}","answer":"0","elapsed":1.5}'
+      - method: GET
+        url: http://localhost:18082/api/lessons/arith.add.single/practice
         headers:
-          Content-Type: application/json
+          Authorization: Bearer {{token}}
         extract:
-          aid: $.next_question.attempt_id
+          question: $.questions.0.question
+          answer: $.questions.0.answer
       - method: POST
-        url: http://localhost:18082/api/answer
-        body: '{"session_id":"{{sid}}","attempt_id":"{{aid}}","answer":"0","elapsed":1.5}'
+        url: http://localhost:18082/api/study/answer
+        body: '{"concept_id":"arith.add.single","answer":"{{answer}}","elapsed":1.5,"question":"{{question}}","submission_id":"{{student}}"}'
         headers:
           Content-Type: application/json
-        extract:
-          aid: $.next_question.attempt_id
-      - method: POST
-        url: http://localhost:18082/api/answer
-        body: '{"session_id":"{{sid}}","attempt_id":"{{aid}}","answer":"0","elapsed":1.5}'
-        headers:
-          Content-Type: application/json
+          Authorization: Bearer {{token}}
       - method: GET
         url: http://localhost:18082/api/scores/{{student}}
+        headers:
+          Authorization: Bearer {{token}}
+
   - name: read-browse
     weight: 1
     steps:
@@ -89,11 +66,14 @@ scenario:
       - method: GET
         url: http://localhost:18082/api/leaderboard
 
+# Read pressure against the same SQLite file the app uses. These are the shapes
+# the profile, history and recommendation paths read, not synthetic table scans.
 db:
   rate: 20
   target:
     driver: sqlite
-    conn: /tmp/mathua-loadtest.db
+    conn: /tmp/opencode/phase0.db
+    max_open_conns: 8
     queries:
       - query: SELECT COUNT(*) FROM attempts
         weight: 20
@@ -108,5 +88,11 @@ db:
         weight: 15
         type: read
       - query: SELECT AVG(elapsed_seconds) FROM attempts
+        weight: 10
+        type: read
+      - query: SELECT COUNT(*) FROM xp_events
+        weight: 10
+        type: read
+      - query: SELECT concept_id FROM concept_progress WHERE student_id = 'loadtest' LIMIT 10
         weight: 10
         type: read

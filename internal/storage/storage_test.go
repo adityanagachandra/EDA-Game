@@ -570,6 +570,39 @@ func TestGetWeeklyLeaderboard_WeeklyBeatsTotal(t *testing.T) {
 	}
 }
 
+func TestAdoptGuestAsUserKeepsProgressAndRejectsRegisteredRows(t *testing.T) {
+	store := newTestStore(t)
+	guest, err := store.CreateStudent("Guest")
+	if err != nil {
+		t.Fatalf("create guest: %v", err)
+	}
+	if err := store.UpsertProgress(&ConceptProgress{
+		StudentID: guest.ID,
+		ConceptID: "arith.add",
+		Status:    "PRACTICING",
+		Attempts:  2,
+	}); err != nil {
+		t.Fatalf("seed progress: %v", err)
+	}
+	adopted, err := store.AdoptGuestAsUser(guest.ID, "Ada", "ada_guest", "hash")
+	if err != nil {
+		t.Fatalf("adopt guest: %v", err)
+	}
+	if adopted.ID != guest.ID || adopted.Name != "Ada" || adopted.Username != "ada_guest" || adopted.PasswordHash != "hash" {
+		t.Fatalf("unexpected adopted row: %+v", adopted)
+	}
+	progress, err := store.GetProgress(guest.ID, "arith.add")
+	if err != nil {
+		t.Fatalf("read progress: %v", err)
+	}
+	if progress == nil || progress.Attempts != 2 {
+		t.Fatalf("expected progress to survive adoption, got %+v", progress)
+	}
+	if _, err := store.AdoptGuestAsUser(guest.ID, "Other", "other_guest", "hash2"); err == nil {
+		t.Fatal("expected a second adoption to fail")
+	}
+}
+
 func TestLeaderboardCarriesUsernameAndAvatar(t *testing.T) {
 	store := newTestStore(t)
 	st, err := store.CreateUser("Ada", "ada", "hash")

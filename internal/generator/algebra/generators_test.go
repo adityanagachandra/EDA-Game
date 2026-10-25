@@ -306,6 +306,20 @@ func TestPolyRootsPrintsReadableCoefficients(t *testing.T) {
 // Report 196: the AC-method generator served x^2 + 9x + 1 with (x+1)(x+1),
 // which multiplies out to x^2 + 2x + 1. The concept is "ax^2 + bx + c", so the
 // leading coefficient must also not be 1: otherwise the "AC" step is a no-op.
+func TestEqTrinomialAsksForTheRoot(t *testing.T) {
+	g := &eqTrinomialGen{}
+	format := g.AnswerFormat()
+	if !strings.Contains(format.Hint, "value of x") {
+		t.Fatalf("expected a root hint, got %q", format.Hint)
+	}
+	for i := 0; i < 100; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if !strings.Contains(p.Question, "Enter the value of") {
+			t.Fatalf("expected an explicit root request, got %q", p.Question)
+		}
+	}
+}
+
 func TestACMethodTrinomialMultipliesOut(t *testing.T) {
 	q := regexp.MustCompile(`^Factor: \\\((\d+)x\^\{2\} \+ (\d+)x \+ (\d+)\\\)$`)
 	ans := regexp.MustCompile(`^\((\d+)x \+ (\d+)\)\(x \+ (\d+)\)$`)
@@ -374,5 +388,18 @@ func TestRootsAcceptReversedAndVariablePrefix(t *testing.T) {
 				t.Fatalf("%s: expected prefix %q to match %q: %v", id, withPrefix, p.Answer, res.Feedback)
 			}
 		}
+	}
+}
+
+func TestAbsoluteValueStemHasNoPlusMinus(t *testing.T) {
+	g := &eqAbsValGen{}
+	for i := 0; i < 300; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if strings.Contains(p.Question, "+ -") || strings.Contains(p.Explanation, "+ -") {
+			t.Fatalf("absolute-value problem writes a plus followed by a negative: q=%q e=%q", p.Question, p.Explanation)
+		}
+	}
+	if hint := g.AnswerFormat().Hint; !strings.Contains(hint, "comma") {
+		t.Fatalf("absolute-value answer hint does not explain the comma-separated form: %q", hint)
 	}
 }

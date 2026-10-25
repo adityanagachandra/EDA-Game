@@ -1,6 +1,7 @@
 package server
 
 import (
+	"bytes"
 	"compress/gzip"
 	"context"
 	"crypto/rand"
@@ -629,6 +630,14 @@ func (s *Server) handleScores(w http.ResponseWriter, r *http.Request) {
 	// quiz_active is a live in-memory fact, not part of the persisted score row.
 	// The same lock the session map uses keeps this read consistent with reuse.
 	scores.QuizActive = s.quizActive(studentID)
+	// The XP gate alone is not enough to advertise a check. When every learned
+	// concept is mastered, the session endpoint has no candidate and answers
+	// 422; do not recommend an action that cannot start (report 291).
+	if scores.QuizDue {
+		if ready, err := s.eng.HasQuizCandidates(studentID); err == nil && !ready {
+			scores.QuizDue = false
+		}
+	}
 	writeJSON(w, scores)
 }
 
@@ -2963,11 +2972,12 @@ func (s *Server) handleStudyAnswer(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var req struct {
-		ConceptID string  `json:"concept_id"`
-		Answer    string  `json:"answer"`
-		Elapsed   float64 `json:"elapsed"`
-		StudentID string  `json:"student_id"`
-		Question  string  `json:"question"`
+		ConceptID    string  `json:"concept_id"`
+		Answer       string  `json:"answer"`
+		Elapsed      float64 `json:"elapsed"`
+		StudentID    string  `json:"student_id"`
+		Question     string  `json:"question"`
+		SubmissionID string  `json:"submission_id"`
 	}
 	if err := decodeJSON(w, r, &req); err != nil {
 		writeError(w, "invalid request", 400)
@@ -2983,6 +2993,14 @@ func (s *Server) handleStudyAnswer(w http.ResponseWriter, r *http.Request) {
 	}
 	if len(req.Question) > 4096 {
 		writeError(w, "question too long", 400)
+		return
+	}
+	if strings.TrimSpace(req.SubmissionID) == "" {
+		writeError(w, "submission_id required", 400)
+		return
+	}
+	if len(req.SubmissionID) > 128 {
+		writeError(w, "submission_id too long", 400)
 		return
 	}
 	authStudentID, _ := r.Context().Value(authStudentKey{}).(string)
@@ -3023,7 +3041,9 @@ func (s *Server) handleStudyAnswer(w http.ResponseWriter, r *http.Request) {
 		writeTopicLocked(w, el)
 		return
 	}
-	res, err := s.eng.SubmitStudyAnswer(studentID, req.ConceptID, req.Answer, req.Elapsed, req.Question)
+	var res *engine.AnswerResult
+	var err error
+	res, err = s.eng.SubmitStudyAnswerWithSubmission(studentID, req.ConceptID, req.Answer, req.Elapsed, req.Question, req.SubmissionID)
 	if err != nil {
 		if errors.Is(err, engine.ErrUnknownConcept) {
 			writeError(w, "unknown concept", 404)
@@ -3042,7 +3062,20 @@ func (s *Server) handleStudyAnswer(w http.ResponseWriter, r *http.Request) {
 			writeError(w, "no active question; re-serve it", 409)
 			return
 		}
+		if errors.Is(err, storage.ErrStudySubmissionPayloadMismatch) {
+			writeError(w, "submission_id already used with a different answer", 409)
+			return
+		}
+		if errors.Is(err, storage.ErrStudySubmissionInProgress) {
+			writeError(w, "submission is still being recorded; retry", 409)
+			return
+		}
 		writeError(w, "failed to submit study answer", 500)
+		return
+	}
+	if res.ResponseJSON != "" {
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(res.ResponseJSON))
 		return
 	}
 	writeJSON(w, map[string]interface{}{
@@ -4024,10 +4057,11 @@ func logRequest(next http.HandlerFunc) http.HandlerFunc {
 }
 
 type signupReq struct {
-	Name     string `json:"name"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
+	Name      string `json:"name"`
+	Username  string `json:"username"`
+	Password  string `json:"password"`
+	Email     string `json:"email"`
+	StudentID string `json:"student_id"`
 }
 
 type authRes struct {
@@ -4150,10 +4184,14 @@ func (s *Server) handleSignup(w http.ResponseWriter, r *http.Request) {
 		writeError(w, "email already in use", 409)
 		return
 	}
-	token, st, err := s.auth.Signup(req.Name, req.Username, req.Password)
+	token, st, err := s.auth.SignupWithGuest(req.Name, req.Username, req.Password, req.StudentID)
 	if err != nil {
 		if errors.Is(err, auth.ErrUsernameTaken) || storage.IsUniqueViolation(err) {
 			writeError(w, "username is taken", 409)
+			return
+		}
+		if errors.Is(err, auth.ErrGuestNotClaimable) {
+			writeError(w, "guest account is already registered, log in instead", 403)
 			return
 		}
 		writeError(w, "signup failed: "+err.Error(), 400)
@@ -4583,36 +4621,175 @@ func newUUID() string {
 	return fmt.Sprintf("%08x-%04x-%04x-%04x-%012x", b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
 }
 
-// gzipResponseWriter transparently gzips responses for clients that send
-// Accept-Encoding: gzip. JSON lesson/graph payloads compress ~8-10x.
+// gzipMinSize is the smallest response body worth compressing. Below it the
+// gzip header and the allocation cost exceed the bytes saved, which is why the
+// middleware buffers up to this size before it chooses plain or gzip.
+const gzipMinSize = 1024
+
+var gzipWriterPool = sync.Pool{
+	New: func() interface{} { return gzip.NewWriter(io.Discard) },
+}
+
+// gzipResponseWriter buffers the first gzipMinSize bytes so it can send a
+// small response uncompressed without ever creating a gzip.Writer.
 type gzipResponseWriter struct {
 	http.ResponseWriter
-	gz *gzip.Writer
+	buf       bytes.Buffer
+	status    int
+	wroteHead bool
+	decided   bool
+	useGzip   bool
+	gz        *gzip.Writer
+}
+
+func (g *gzipResponseWriter) WriteHeader(code int) {
+	if g.wroteHead {
+		return
+	}
+	g.status = code
+	g.wroteHead = true
 }
 
 func (g *gzipResponseWriter) Write(b []byte) (int, error) {
+	if !g.wroteHead {
+		g.WriteHeader(http.StatusOK)
+	}
+	if !g.decided {
+		if g.buf.Len()+len(b) < gzipMinSize {
+			g.buf.Write(b)
+			return len(b), nil
+		}
+		if err := g.commit(true); err != nil {
+			return 0, err
+		}
+	}
+	return g.writeBody(b)
+}
+
+func (g *gzipResponseWriter) writeBody(b []byte) (int, error) {
+	if g.useGzip {
+		return g.gz.Write(b)
+	}
+	return g.ResponseWriter.Write(b)
+}
+
+func (g *gzipResponseWriter) commit(streaming bool) error {
+	if g.decided {
+		return nil
+	}
+	g.decided = true
+	if !g.wroteHead {
+		g.status = http.StatusOK
+		g.wroteHead = true
+	}
 	if g.Header().Get("Content-Type") == "" {
 		g.Header().Set("Content-Type", "application/json")
 	}
-	return g.gz.Write(b)
+	compress := (streaming || g.buf.Len() >= gzipMinSize) &&
+		g.status >= 200 && g.status != http.StatusNoContent && g.status != http.StatusNotModified &&
+		g.Header().Get("Content-Encoding") == "" && compressibleType(g.Header().Get("Content-Type"))
+	if compress {
+		g.useGzip = true
+		g.Header().Set("Content-Encoding", "gzip")
+		g.Header().Del("Content-Length")
+		g.gz = gzipWriterPool.Get().(*gzip.Writer)
+		g.gz.Reset(g.ResponseWriter)
+	} else if !streaming && g.status != http.StatusNoContent && g.status != http.StatusNotModified &&
+		g.Header().Get("Content-Length") == "" {
+		g.Header().Set("Content-Length", strconv.Itoa(g.buf.Len()))
+	}
+	g.ResponseWriter.WriteHeader(g.status)
+	if g.buf.Len() > 0 {
+		if _, err := g.writeBody(g.buf.Bytes()); err != nil {
+			return err
+		}
+		g.buf.Reset()
+	}
+	return nil
 }
 
-// GzipMiddleware compresses responses for gzip-capable clients.
+func (g *gzipResponseWriter) Flush() {
+	if !g.decided {
+		if err := g.commit(true); err != nil {
+			log.Printf("warning: gzip flush: %v", err)
+			return
+		}
+	}
+	if g.useGzip {
+		if err := g.gz.Flush(); err != nil {
+			log.Printf("warning: gzip stream flush: %v", err)
+		}
+	}
+	if f, ok := g.ResponseWriter.(http.Flusher); ok {
+		f.Flush()
+	}
+}
+
+func (g *gzipResponseWriter) finish() {
+	if !g.decided {
+		if err := g.commit(false); err != nil {
+			log.Printf("warning: gzip commit: %v", err)
+		}
+	}
+	if g.useGzip && g.gz != nil {
+		if err := g.gz.Close(); err != nil {
+			log.Printf("warning: gzip close: %v", err)
+		}
+		g.gz.Reset(io.Discard)
+		gzipWriterPool.Put(g.gz)
+	}
+}
+
+func (g *gzipResponseWriter) Unwrap() http.ResponseWriter { return g.ResponseWriter }
+
+func compressibleType(contentType string) bool {
+	ct := strings.ToLower(strings.TrimSpace(strings.Split(contentType, ";")[0]))
+	if ct == "" {
+		return true
+	}
+	if strings.HasPrefix(ct, "text/") {
+		return true
+	}
+	switch ct {
+	case "application/json", "application/javascript", "application/xml", "application/xhtml+xml",
+		"application/wasm", "image/svg+xml":
+		return true
+	}
+	return false
+}
+
+func acceptsGzip(header string) bool {
+	for _, part := range strings.Split(header, ",") {
+		fields := strings.Split(part, ";")
+		if !strings.EqualFold(strings.TrimSpace(fields[0]), "gzip") {
+			continue
+		}
+		for _, param := range fields[1:] {
+			param = strings.TrimSpace(param)
+			if strings.HasPrefix(param, "q=") {
+				q, err := strconv.ParseFloat(strings.TrimPrefix(param, "q="), 64)
+				if err != nil || q <= 0 {
+					return false
+				}
+			}
+		}
+		return true
+	}
+	return false
+}
+
+// GzipMiddleware compresses responses above gzipMinSize for gzip-capable
+// clients. It buffers only the first threshold bytes, then streams.
 func GzipMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
+		w.Header().Add("Vary", "Accept-Encoding")
+		if !acceptsGzip(r.Header.Get("Accept-Encoding")) {
 			next.ServeHTTP(w, r)
 			return
 		}
-		w.Header().Set("Content-Encoding", "gzip")
-		w.Header().Del("Content-Length")
-		gz := gzip.NewWriter(w)
-		defer func() {
-			if err := gz.Close(); err != nil {
-				log.Printf("warning: gzip close: %v", err)
-			}
-		}()
-		next.ServeHTTP(&gzipResponseWriter{ResponseWriter: w, gz: gz}, r)
+		gw := &gzipResponseWriter{ResponseWriter: w}
+		defer gw.finish()
+		next.ServeHTTP(gw, r)
 	})
 }
 

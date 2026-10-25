@@ -107,7 +107,7 @@ func TestStudyAnswer_LockedTopicIsRefused(t *testing.T) {
 
 	rec := httptest.NewRecorder()
 	req := httptest.NewRequest("POST", "/api/study/answer", bytes.NewReader([]byte(
-		`{"concept_id":"b","answer":"4","elapsed":3}`)))
+		`{"concept_id":"b","answer":"4","elapsed":3,"submission_id":"sub-locked"}`)))
 	req.Header.Set("Authorization", "Bearer "+token)
 	req.Header.Set("Content-Type", "application/json")
 	mux.ServeHTTP(rec, req)

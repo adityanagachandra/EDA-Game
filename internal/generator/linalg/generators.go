@@ -1603,6 +1603,20 @@ func (g *cosineSimilarityGen) Generate(ctx generator.GeneratorContext) generator
 // Parametric form of a line
 type parametricGen struct{}
 
+// parametricEquation writes the coordinate equation with the sign of the
+// direction component folded into the term. A bare "%d+%dt" produced
+// "x=3+-2t" while the learner typed the equivalent "x=3-2t".
+func parametricEquation(start, direction int) string {
+	if direction < 0 {
+		return fmt.Sprintf("%d-%dt", start, -direction)
+	}
+	return fmt.Sprintf("%d+%dt", start, direction)
+}
+
+func (g *parametricGen) AnswerFormat() generator.AnswerFormat {
+	return generator.AnswerFormat{Hint: "Both equations, e.g. x=3-2t, y=2+t", InputMode: "text"}
+}
+
 func (g *parametricGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	tier := mathutil.DifficultyTier(ctx.Difficulty)
 	var x0, y0, dx, dy int
@@ -1625,11 +1639,13 @@ func (g *parametricGen) Generate(ctx generator.GeneratorContext) generator.Probl
 			dy = -dy
 		}
 		q = fmt.Sprintf("Find the parametric equations for the line through \\((%d,%d)\\) with direction vector \\((%d,%d)\\).", x0, y0, dx, dy)
-		ans = fmt.Sprintf("x=%d+%dt,y=%d+%dt", x0, dx, y0, dy)
+		xEq := parametricEquation(x0, dx)
+		yEq := parametricEquation(y0, dy)
+		ans = fmt.Sprintf("x=%s,y=%s", xEq, yEq)
 		ex = fmt.Sprintf("Subgoal 1: State the vector form of a line: \\(\\mathbf{r}(t) = \\mathbf{r}_0 + t \\mathbf{v}\\).\n"+
 			"Subgoal 2: Substitute initial point \\((%d,%d)\\) and direction vector \\((%d,%d)\\): \\((x,y) = (%d,%d) + t(%d,%d)\\).\n"+
-			"Subgoal 3: Separate into coordinate equations: \\(x = %d + %dt\\) and \\(y = %d + %dt\\).",
-			x0, y0, dx, dy, x0, y0, dx, dy, x0, dx, y0, dy)
+			"Subgoal 3: Separate into coordinate equations: \\(x = %s\\) and \\(y = %s\\).",
+			x0, y0, dx, dy, x0, y0, dx, dy, xEq, yEq)
 		break
 	}
 	return generator.Problem{

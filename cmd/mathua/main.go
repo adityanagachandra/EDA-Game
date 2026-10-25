@@ -351,6 +351,19 @@ func main() {
 			log.Fatalf("server: %v", err)
 		}
 	}()
+
+	go func() {
+		if err := eng.ProcessStudyEffects("", 50); err != nil {
+			log.Printf("outbox: initial drain: %v", err)
+		}
+		ticker := time.NewTicker(5 * time.Second)
+		defer ticker.Stop()
+		for range ticker.C {
+			if err := eng.ProcessStudyEffects("", 50); err != nil {
+				log.Printf("outbox: drain: %v", err)
+			}
+		}
+	}()
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit

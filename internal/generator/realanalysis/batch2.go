@@ -183,7 +183,7 @@ func (g *partsGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	claims := []int{1, 2, 3, 4, 5, 6}
 	b := claims[rand.Intn(len(claims))]
 	value := float64(b-1)*math.Exp(float64(b)) + 1
-	answer := decimal6(value)
+	answer := decimal4(value)
 	return generator.Problem{
 		Question: "Use integration by parts to evaluate the integral from 0 to b of x·e^x with respect to x; its value is (b − 1)e^b + 1. For b = " +
 			strconv.Itoa(b) + ", what is the value? (enter a decimal)",

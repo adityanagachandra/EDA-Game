@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-10-25T12:13:55.608102743+01:00",
+  "duration": "20s",
+  "ramp": "5s",
+  "concurrency": 10,
+  "runners": [
+    {
+      "name": "symbolic-answer",
+      "requests": 4062,
+      "success_percent": 99.75381585425899,
+      "p50_ms": 41,
+      "p95_ms": 86,
+      "p99_ms": 166,
+      "max_ms": 578,
+      "mean_ms": 49,
+      "rate": 203.1,
+      "throughput": 202.6
+    }
+  ],
+  "spikes": [],
+  "timeline": {
+    "labels": [
+      "12:13:35",
+      "12:13:36",
+      "12:13:37",
+      "12:13:38",
+      "12:13:39",
+      "12:13:40",
+      "12:13:41",
+      "12:13:42",
+      "12:13:43",
+      "12:13:44",
+      "12:13:45",
+      "12:13:46",
+      "12:13:47",
+      "12:13:48",
+      "12:13:49",
+      "12:13:50",
+      "12:13:51",
+      "12:13:52",
+      "12:13:53",
+      "12:13:54",
+      "12:13:55"
+    ],
+    "series": [
+      {
+        "name": "symbolic-answer",
+        "p99_ms": [
+          578,
+          53,
+          46,
+          55,
+          71,
+          79,
+          88,
+          75,
+          95,
+          131,
+          118,
+          148,
+          131,
+          179,
+          224,
+          173,
+          284,
+          195,
+          227,
+          226,
+          224
+        ]
+      }
+    ]
+  },
+  "story": {
+    "title": "Healthy but a bit warm",
+    "tone": "ok",
+    "detail": "No spikes or errors, but symbolic-answer averaged p99 166.204529ms — watch it as load grows.",
+    "bottleneck": "symbolic-answer",
+    "capacity": "no strain up to ~10 users",
+    "next_steps": [
+      "Clean run — export this JSON and use it as your baseline for barrage compare."
+    ]
+  }
+}

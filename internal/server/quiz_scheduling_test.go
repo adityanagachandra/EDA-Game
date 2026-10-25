@@ -503,6 +503,29 @@ func TestQuizSession_NoEligibleConceptsReturnsClearReason(t *testing.T) {
 	}
 }
 
+func TestScoresDoNotRecommendAQuizWithNoCandidates(t *testing.T) {
+	for tag, store := range quizSchedulingStores(t) {
+		t.Run(tag, func(t *testing.T) {
+			_, mux := quizSchedulingServer(t, store)
+			token, sid := quizGuest(t, mux)
+			quizSchedulingSeed(t, store, sid, engine.QuizGateXP, "no-candidate-scores-gate")
+			seedQuizLearned(t, store, sid, "a", string(mastery.StatusMastered), 0)
+			seedQuizLearned(t, store, sid, "b", string(mastery.StatusMastered), 0)
+
+			scores := quizSchedulingScores(t, mux, token)
+			if due, _ := scores["quiz_due"].(bool); due {
+				t.Errorf("mastered-only learner must not be told a check is due: %v", scores)
+			}
+
+			seedQuizLearned(t, store, sid, "b", string(mastery.StatusPracticing), 0.5)
+			scores = quizSchedulingScores(t, mux, token)
+			if due, _ := scores["quiz_due"].(bool); !due {
+				t.Errorf("a practicing concept should make the earned check due: %v", scores)
+			}
+		})
+	}
+}
+
 func TestQuizSession_DifficultyUsesEvidenceWindow(t *testing.T) {
 	for tag, store := range quizSchedulingStores(t) {
 		t.Run(tag, func(t *testing.T) {

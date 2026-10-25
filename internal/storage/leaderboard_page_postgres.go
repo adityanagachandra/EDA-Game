@@ -31,7 +31,7 @@ func (s *PostgresStore) LeaderboardPage(view string, since time.Time, limit, off
 			LIMIT $3 OFFSET $4`, since.UnixNano(), since, limit, offset)
 	case "all_time":
 		if err := s.db.QueryRow(
-			`SELECT COUNT(*) FROM students WHERE xp_total > 0 AND id NOT LIKE 'guest_%'`).Scan(&total); err != nil {
+			`SELECT COUNT(*) FROM students s WHERE s.xp_total > 0 AND ` + rankedStudentWhere).Scan(&total); err != nil {
 			return nil, 0, fmt.Errorf("all-time leaderboard total: %w", err)
 		}
 		rows, err = s.db.Query(pgAllTimeRows+`
@@ -60,7 +60,7 @@ func (s *PostgresStore) LeaderboardPosition(studentID, view string, since time.T
 			       ROW_NUMBER() OVER (ORDER BY SUM(e.amount) DESC, s.xp_total DESC, s.created_at ASC, s.id ASC) AS pos
 			FROM students s
 			JOIN xp_events e ON e.student_id = s.id AND e.created_at >= $1
-			WHERE s.id NOT LIKE 'guest_%'
+			WHERE ` + rankedStudentWhere + `
 			GROUP BY s.id
 			HAVING SUM(e.amount) > 0
 		) AS ranked WHERE sid = $2`
@@ -70,7 +70,7 @@ func (s *PostgresStore) LeaderboardPosition(studentID, view string, since time.T
 			SELECT s.id AS sid, s.xp_total AS xp,
 			       ROW_NUMBER() OVER (ORDER BY s.xp_total DESC, s.created_at ASC, s.id ASC) AS pos
 			FROM students s
-			WHERE s.xp_total > 0 AND s.id NOT LIKE 'guest_%'
+			WHERE s.xp_total > 0 AND ` + rankedStudentWhere + `
 		) AS ranked WHERE sid = $1`
 		err = s.db.QueryRow(q, studentID).Scan(&rank, &xp)
 	default:
@@ -96,7 +96,7 @@ const pgWeeklyFiltered = `
 	       s.created_at
 	FROM students s
 	JOIN xp_events e ON e.student_id = s.id AND e.created_at >= $1
-	WHERE s.id NOT LIKE 'guest_%'
+	WHERE ` + rankedStudentWhere + `
 	GROUP BY s.id
 	HAVING SUM(e.amount) > 0`
 
@@ -109,4 +109,4 @@ const pgAllTimeRows = `
 	       s.xp_total AS xp,
 	       s.created_at
 	FROM students s
-	WHERE s.xp_total > 0 AND s.id NOT LIKE 'guest_%'`
+	WHERE s.xp_total > 0 AND ` + rankedStudentWhere

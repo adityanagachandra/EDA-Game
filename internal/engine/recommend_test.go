@@ -4,20 +4,15 @@ import (
 	"testing"
 	"time"
 
+	"github.com/chuma-beep/mathua/internal/scheduler"
 	"github.com/chuma-beep/mathua/internal/storage"
 )
 
-// ReviewsDue counted a row only when the *stored* status was not MASTERED. That is the one
-// population the scheduler's own effectiveState explicitly puts in the review bucket:
-//
-//	if snap.Status == mastery.StatusMastered && snap.NextReviewDue != nil && !due { isReview = true }
-//
-// So the count and the candidates disagreed, and the consequence was not a wrong number but a
-// missing task: scheduler.selectTasks only takes the review bucket when DueReviews > 0, so a
-// learner whose sole due review was a decayed-mastered concept was recommended nothing to
-// review, while NextReviewQuestion would happily have served one. The comment on the old guard
-// described the behaviour the code did not have.
-func TestReviewsDue_IncludesDecayedMasteredConcepts(t *testing.T) {
+// ReviewsDue must count exactly the concepts NextReview can serve. It used to
+// count any row with a stale NextReviewDue, including LEARNING and PRACTICING
+// rows the scheduler never puts in the review bucket. That made the profile
+// advertise a review while /review answered "All caught up" (report 274).
+func TestReviewsDue_CountsOnlyServableReviews(t *testing.T) {
 	e := testEngine(t)
 	st, _ := e.CreateStudent("dana")
 	past := time.Now().Add(-time.Hour)
@@ -52,9 +47,82 @@ func TestReviewsDue_IncludesDecayedMasteredConcepts(t *testing.T) {
 	if err != nil {
 		t.Fatalf("reviews due: %v", err)
 	}
-	// a and d. `b` is scheduled but not yet due; `c` was never scheduled.
-	if n != 2 {
-		t.Errorf("ReviewsDue = %d, want 2 (decayed-mastered and learning are both due)", n)
+	// Only a. b is scheduled but not due, c was never scheduled, and d is
+	// learning, which NextReview never serves as a retention review.
+	if n != 1 {
+		t.Errorf("ReviewsDue = %d, want 1 (only the decayed mastered concept)", n)
+	}
+
+	sess, err := e.repo.CreateSession(st.ID)
+	if err != nil {
+		t.Fatalf("create session: %v", err)
+	}
+	q, err := e.NextReviewQuestion(sess.ID, st.ID)
+	if err != nil {
+		t.Fatalf("next review question: %v", err)
+	}
+	if q == nil || q.ConceptID != "a" {
+		t.Fatalf("NextReviewQuestion = %+v, want concept a", q)
+	}
+}
+
+func TestReviewsDue_LearningConceptIsNotAReview(t *testing.T) {
+	e := testEngine(t)
+	st, _ := e.CreateStudent("lee")
+	past := time.Now().Add(-time.Hour)
+	if err := e.repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID: st.ID, ConceptID: "a", Status: "LEARNING",
+		NextReviewDue: &past, LastAttempted: &past, LastReviewed: &past,
+	}); err != nil {
+		t.Fatalf("upsert: %v", err)
+	}
+
+	n, err := e.ReviewsDue(st.ID)
+	if err != nil {
+		t.Fatalf("reviews due: %v", err)
+	}
+	if n != 0 {
+		t.Errorf("ReviewsDue = %d, want 0 for a learning concept", n)
+	}
+	sess, err := e.repo.CreateSession(st.ID)
+	if err != nil {
+		t.Fatalf("create session: %v", err)
+	}
+	q, err := e.NextReviewQuestion(sess.ID, st.ID)
+	if err != nil {
+		t.Fatalf("next review question: %v", err)
+	}
+	if q != nil {
+		t.Errorf("NextReviewQuestion served %s, want none", q.ConceptID)
+	}
+}
+
+func TestRecommendNext_DoesNotOfferAQuizWithNoCandidates(t *testing.T) {
+	e := testEngine(t)
+	st, _ := e.CreateStudent("nora")
+	now := time.Now()
+	if err := e.repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID: st.ID, ConceptID: "a", Status: "MASTERED",
+		Attempts: 3, LastReviewed: &now, LastAttempted: &now,
+	}); err != nil {
+		t.Fatal(err)
+	}
+	if err := e.repo.AwardXP(st.ID, QuizGateXP, "test", "seed-quiz-ready"); err != nil {
+		t.Fatal(err)
+	}
+
+	resp, err := e.RecommendNext(st.ID, nil)
+	if err != nil {
+		t.Fatalf("recommend: %v", err)
+	}
+	items := append([]scheduler.Recommendation{}, resp.Alternatives...)
+	if resp.Primary != nil {
+		items = append(items, *resp.Primary)
+	}
+	for _, item := range items {
+		if item.Action.Href == "/goals?quiz=1" {
+			t.Fatalf("recommended a quiz with no eligible concept: %+v", item)
+		}
 	}
 }
 

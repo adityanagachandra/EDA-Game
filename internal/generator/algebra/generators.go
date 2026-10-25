@@ -1235,13 +1235,31 @@ func (g *conicHyperbolaGen) Generate(ctx generator.GeneratorContext) generator.P
 
 type eqAbsValGen struct{}
 
+// absValueTerm writes the inside of the absolute value without the
+// "x + -1" that a bare %+d-style concatenation produces.
+func absValueTerm(b int) string {
+	switch {
+	case b > 0:
+		return fmt.Sprintf("x + %d", b)
+	case b < 0:
+		return fmt.Sprintf("x - %d", -b)
+	default:
+		return "x"
+	}
+}
+
+func (g *eqAbsValGen) AnswerFormat() generator.AnswerFormat {
+	return generator.AnswerFormat{Hint: "Both solutions separated by a comma, e.g. -3, 5", InputMode: "text"}
+}
+
 func (g *eqAbsValGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	a := rand.Intn(8) + 1
 	b := rand.Intn(10) - 5
+	term := absValueTerm(b)
 	return generator.Problem{
-		Question:    fmt.Sprintf("Solve: \\(|x + %d| = %d\\)", b, a),
+		Question:    fmt.Sprintf("Solve: \\(|%s| = %d\\)", term, a),
 		Answer:      fmt.Sprintf("%d,%d", a-b, -a-b),
-		Explanation: fmt.Sprintf("\\(x + %d = %d\\) or \\(x + %d = -%d\\) → \\(x = %d\\) or \\(x = %d\\)", b, a, b, a, a-b, -a-b),
+		Explanation: fmt.Sprintf("\\(%s = %d\\) or \\(%s = -%d\\) → \\(x = %d\\) or \\(x = %d\\)", term, a, term, a, a-b, -a-b),
 		Facts:       map[string]string{"a": strconv.Itoa(a), "b": strconv.Itoa(b), "r1": strconv.Itoa(a - b), "r2": strconv.Itoa(-a - b)},
 	}
 }
@@ -1356,11 +1374,18 @@ func (g *eqRationalGen) Generate(ctx generator.GeneratorContext) generator.Probl
 
 type eqTrinomialGen struct{}
 
+func (g *eqTrinomialGen) AnswerFormat() generator.AnswerFormat {
+	return generator.AnswerFormat{
+		Hint:      "The value of x, e.g. -6",
+		InputMode: "numeric",
+	}
+}
+
 func (g *eqTrinomialGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	r := rand.Intn(6) + 2
 	// x^2 + 2r x + r^2 = 0
 	return generator.Problem{
-		Question:    fmt.Sprintf("Solve: \\(x^{2} + %dx + %d = 0\\)", 2*r, r*r),
+		Question:    fmt.Sprintf("Solve for \\(x\\): \\(x^{2} + %dx + %d = 0\\). Enter the value of \\(x\\).", 2*r, r*r),
 		Answer:      fmt.Sprintf("%d", -r),
 		Explanation: fmt.Sprintf("\\((x + %d)^{2} = 0\\) → \\(x = %d\\)", r, -r),
 		Facts:       map[string]string{"r": strconv.Itoa(r), "coef": strconv.Itoa(2 * r), "const": strconv.Itoa(r * r), "x": strconv.Itoa(-r)},

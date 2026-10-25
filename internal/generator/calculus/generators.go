@@ -1941,6 +1941,23 @@ func (g *weierstrassSubGen) Generate(ctx generator.GeneratorContext) generator.P
 
 type discontinuityGen struct{}
 
+// discontinuityProblem turns the classification into a multiple-choice
+// question. The answer is a single word, and a free-text field accepted
+// typos and near-misses that had nothing to do with the mathematics
+// (report 254: "removablediscounty").
+func discontinuityProblem(question, correct, explanation string) generator.Problem {
+	kinds := []string{"removable", "jump", "infinite", "essential"}
+	distractors := make([]string, 0, len(kinds)-1)
+	for _, kind := range kinds {
+		if kind != correct {
+			distractors = append(distractors, kind)
+		}
+	}
+	p := generator.MultipleChoice(question, correct, distractors...)
+	p.Explanation = explanation
+	return p
+}
+
 func (g *discontinuityGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	// The four kinds are fixed mathematics; the function, the coefficient and the
 	// singular point are drawn, so the answer word is derived from the shape that
@@ -1957,41 +1974,41 @@ func (g *discontinuityGen) Generate(ctx generator.GeneratorContext) generator.Pr
 		if rand.Intn(2) == 0 {
 			f = fmt.Sprintf("\\frac{%d}{(x-%d)^{2}}", k, a)
 		}
-		return generator.Problem{
-			Question:    fmt.Sprintf("What kind of discontinuity does \\(f(x)=%s\\) have at \\(x=%d\\)?", f, a),
-			Answer:      "infinite",
-			Explanation: fmt.Sprintf("As \\(x \\to %d\\) the denominator tends to zero while the numerator stays at %d, so \\(f\\) grows without bound. The line \\(x=%d\\) is a vertical asymptote, which makes the discontinuity infinite.", a, k, a),
-		}
+		return discontinuityProblem(
+			fmt.Sprintf("What kind of discontinuity does \\(f(x)=%s\\) have at \\(x=%d\\)?", f, a),
+			"infinite",
+			fmt.Sprintf("As \\(x \\to %d\\) the denominator tends to zero while the numerator stays at %d, so \\(f\\) grows without bound. The line \\(x=%d\\) is a vertical asymptote, which makes the discontinuity infinite.", a, k, a),
+		)
 	case 1:
 		f := fmt.Sprintf("\\frac{|x-%d|}{x-%d}", a, a)
 		if rand.Intn(2) == 0 {
 			f = fmt.Sprintf("\\frac{x-%d}{|x-%d|}", a, a)
 		}
-		return generator.Problem{
-			Question:    fmt.Sprintf("What kind of discontinuity does \\(f(x)=%s\\) have at \\(x=%d\\)?", f, a),
-			Answer:      "jump",
-			Explanation: fmt.Sprintf("The one-sided limits differ: from the left the ratio tends to -1 and from the right to 1. Both are finite but unequal, so the discontinuity at \\(x=%d\\) is a jump.", a),
-		}
+		return discontinuityProblem(
+			fmt.Sprintf("What kind of discontinuity does \\(f(x)=%s\\) have at \\(x=%d\\)?", f, a),
+			"jump",
+			fmt.Sprintf("The one-sided limits differ: from the left the ratio tends to -1 and from the right to 1. Both are finite but unequal, so the discontinuity at \\(x=%d\\) is a jump.", a),
+		)
 	case 2:
 		f := fmt.Sprintf("\\frac{x^{2}-%d}{x-%d}", a*a, a)
 		if rand.Intn(2) == 0 {
 			f = fmt.Sprintf("\\frac{(x-%d)(x+%d)}{x-%d}", a, b, a)
 		}
-		return generator.Problem{
-			Question:    fmt.Sprintf("What kind of discontinuity does \\(f(x)=%s\\) have at \\(x=%d\\)?", f, a),
-			Answer:      "removable",
-			Explanation: fmt.Sprintf("The numerator shares the factor \\(x-%d\\) with the denominator, so the quotient simplifies to a polynomial for \\(x \\neq %d\\). The limit exists and equals the value that simplification gives, so the single missing point is removable.", a, a),
-		}
+		return discontinuityProblem(
+			fmt.Sprintf("What kind of discontinuity does \\(f(x)=%s\\) have at \\(x=%d\\)?", f, a),
+			"removable",
+			fmt.Sprintf("The numerator shares the factor \\(x-%d\\) with the denominator, so the quotient simplifies to a polynomial for \\(x \\neq %d\\). The limit exists and equals the value that simplification gives, so the single missing point is removable.", a, a),
+		)
 	default:
 		f := fmt.Sprintf("\\sin\\left(\\frac{%d}{x-%d}\\right)", k, a)
 		if rand.Intn(2) == 0 {
 			f = fmt.Sprintf("\\cos\\left(\\frac{%d}{x-%d}\\right)", k, a)
 		}
-		return generator.Problem{
-			Question:    fmt.Sprintf("What kind of discontinuity does \\(f(x)=%s\\) have at \\(x=%d\\)?", f, a),
-			Answer:      "essential",
-			Explanation: fmt.Sprintf("As \\(x \\to %d\\) the argument grows without bound, so the function oscillates through its whole range infinitely often. No limit exists and the value never settles, which makes the discontinuity essential.", a),
-		}
+		return discontinuityProblem(
+			fmt.Sprintf("What kind of discontinuity does \\(f(x)=%s\\) have at \\(x=%d\\)?", f, a),
+			"essential",
+			fmt.Sprintf("As \\(x \\to %d\\) the argument grows without bound, so the function oscillates through its whole range infinitely often. No limit exists and the value never settles, which makes the discontinuity essential.", a),
+		)
 	}
 }
 

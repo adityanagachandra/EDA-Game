@@ -11,14 +11,9 @@ import (
 // without inventing fifty keys by hand.
 func seedBoardStudent(t *testing.T, store Repository, name, username string, xp int) string {
 	t.Helper()
-	st, err := store.CreateStudent(name)
+	st, err := store.CreateUser(name, username, "hash")
 	if err != nil {
 		t.Fatalf("create student %q: %v", name, err)
-	}
-	if username != "" {
-		if err := store.SetUsername(st.ID, username); err != nil {
-			t.Fatalf("set username %q: %v", username, err)
-		}
 	}
 	if xp != 0 {
 		if err := store.AwardXP(st.ID, xp, "study", "test:"+name); err != nil {
@@ -31,6 +26,86 @@ func seedBoardStudent(t *testing.T, store Repository, name, username string, xp 
 // The weekly board is one page of one ranking. The old endpoint returned every
 // row and ranked them in Go; this pins the two numbers a client can no longer
 // compute for itself: the page slice and the total.
+// TestLeaderboardPage_ExcludesUUIDGuestsAndIncludesAdoptedGuest pins the real
+// identity rule. A guest created through CreateStudent has a UUID id and no
+// credentials, so the old guest_ prefix test missed it. An adopted guest keeps
+// the guest_ id but gains credentials, so it must be ranked.
+func TestLeaderboardPage_ExcludesUUIDGuestsAndIncludesAdoptedGuest(t *testing.T) {
+	store := newTestStore(t)
+	uuidGuest, err := store.CreateStudent("UUID Guest")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := store.AwardXP(uuidGuest.ID, 500, "study", "uuid-guest"); err != nil {
+		t.Fatal(err)
+	}
+	namedGuest, err := store.CreateStudent("Guest")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := store.SetUsername(namedGuest.ID, "ivory_heron55"); err != nil {
+		t.Fatal(err)
+	}
+	if err := store.AwardXP(namedGuest.ID, 400, "study", "named-guest"); err != nil {
+		t.Fatal(err)
+	}
+
+	adopted, err := store.ClaimGuestStudent("guest_adopted", "Adopted")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := store.AdoptGuestAsUser(adopted.ID, "Adopted", "adopted", "hash"); err != nil {
+		t.Fatal(err)
+	}
+	if err := store.AwardXP(adopted.ID, 300, "study", "adopted"); err != nil {
+		t.Fatal(err)
+	}
+
+	real, err := store.CreateUser("Real", "real", "hash")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := store.AwardXP(real.ID, 200, "study", "real"); err != nil {
+		t.Fatal(err)
+	}
+
+	week := time.Now().UTC().Add(-24 * time.Hour)
+	for _, view := range []string{"weekly", "all_time"} {
+		rows, total, err := store.LeaderboardPage(view, week, 25, 0)
+		if err != nil {
+			t.Fatalf("%s page: %v", view, err)
+		}
+		if total != 2 {
+			t.Fatalf("%s total = %d, want 2", view, total)
+		}
+		seen := map[string]bool{}
+		for _, row := range rows {
+			seen[row.StudentID] = true
+		}
+		if seen[uuidGuest.ID] || seen[namedGuest.ID] {
+			t.Fatalf("%s ranked a guest: %+v", view, rows)
+		}
+		if !seen[adopted.ID] || !seen[real.ID] {
+			t.Fatalf("%s missing a real account: %+v", view, rows)
+		}
+	}
+
+	rank, _, found, err := store.LeaderboardPosition(uuidGuest.ID, "weekly", week)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if found || rank != 0 {
+		t.Fatalf("UUID guest position = %d, found %v", rank, found)
+	}
+	rank, _, found, err = store.LeaderboardPosition(adopted.ID, "weekly", week)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !found || rank != 1 {
+		t.Fatalf("adopted guest position = %d, found %v, want rank 1", rank, found)
+	}
+}
+
 func TestLeaderboardPage_PaginatesAndCounts(t *testing.T) {
 	store := newTestStore(t)
 	for i := 1; i <= 30; i++ {
@@ -237,7 +312,7 @@ func TestLeaderboardPage_UnknownViewIsRefused(t *testing.T) {
 // second migration cannot subtract from one.
 func TestMigrate_KeepsExistingXP(t *testing.T) {
 	store := newTestStore(t)
-	st, err := store.CreateStudent("veteran")
+	st, err := store.CreateUser("veteran", "veteran", "hash")
 	if err != nil {
 		t.Fatalf("create: %v", err)
 	}

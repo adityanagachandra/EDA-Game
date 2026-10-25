@@ -422,6 +422,24 @@ func computePriority(snap *ConceptSnapshot, now time.Time, isDecaying bool) floa
 	return priority
 }
 
+// DueReviewCount returns how many concepts NextReview can serve now. It uses
+// the same candidate builder as NextReview, so a due count and a review page
+// cannot disagree about what counts as due. In particular, a LEARNING or
+// PRACTICING row with a stale NextReviewDue is not a retention review; only
+// MASTERED material that has decayed or reached its scheduled date is.
+func (s *Scheduler) DueReviewCount(snapshots map[string]*ConceptSnapshot, now time.Time) int {
+	if s == nil || s.dag == nil {
+		return 0
+	}
+	count := 0
+	for _, c := range buildCandidates(s.dag, snapshots, now, "") {
+		if c.IsReview {
+			count++
+		}
+	}
+	return count
+}
+
 // NextReview picks the next due-for-review concept.
 // It only considers candidates whose IsReview flag is true.
 func (s *Scheduler) NextReview(

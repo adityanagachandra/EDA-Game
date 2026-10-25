@@ -316,7 +316,7 @@ func TestStudyAnswer_LearnSeamStillTeaches(t *testing.T) {
 	}
 
 	code, body := postJSONRaw(t, mux, "/api/study/answer",
-		`{"concept_id":"a","answer":"`+answerOneAwayWrong+`","elapsed":5.0,"question":`+
+		`{"concept_id":"a","submission_id":"sub-boundary","answer":"`+answerOneAwayWrong+`","elapsed":5.0,"question":`+
 			quoteJSON(set.Questions[0].Question)+`,"student_id":"`+studentID+`"}`, token)
 	if code != 200 {
 		t.Fatalf("study answer: %d %s", code, body)
