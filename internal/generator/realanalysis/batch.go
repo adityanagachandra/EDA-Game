@@ -24,8 +24,16 @@ import (
 	"github.com/chuma-beep/mathua/internal/generator"
 )
 
-func decimal6(v float64) string {
-	s := strconv.FormatFloat(v, 'f', 6, 64)
+func decimal6(v float64) string { return decimalPlaces(v, 6) }
+
+// decimal4 keeps the answer at the precision a learner is likely to type.
+// Report 290 answered 8.3891 for 8.389056 and was rejected because the key
+// carried six decimals and the numeric tolerance was narrower than a
+// four-decimal rounding.
+func decimal4(v float64) string { return decimalPlaces(v, 4) }
+
+func decimalPlaces(v float64, places int) string {
+	s := strconv.FormatFloat(v, 'f', places, 64)
 	for len(s) > 0 && s[len(s)-1] == '0' {
 		s = s[:len(s)-1]
 	}

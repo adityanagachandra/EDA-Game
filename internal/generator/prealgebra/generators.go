@@ -842,7 +842,7 @@ type sciNotationOpsGen struct{}
 // Same syntax as sciNotationGen: the answer is a coefficient and an exponent,
 // not a number that a numeric keypad can produce.
 func (g *sciNotationOpsGen) AnswerFormat() generator.AnswerFormat {
-	return generator.AnswerFormat{Hint: "Scientific notation, e.g. 3.7x10^4", InputMode: "text"}
+	return generator.AnswerFormat{Hint: "Scientific notation, e.g. 3.7x10^4 or 3.7 × 10^4", InputMode: "text"}
 }
 
 func (g *sciNotationOpsGen) Grade(expected, userAnswer string) grader.Result {
@@ -868,7 +868,21 @@ func (g *sciNotationOpsGen) Grade(expected, userAnswer string) grader.Result {
 
 func normalizeSciNotation(s string) string {
 	s = strings.TrimSpace(s)
+	s = strings.ReplaceAll(s, "$", "")
+	s = strings.ReplaceAll(s, `\left`, "")
+	s = strings.ReplaceAll(s, `\right`, "")
+	s = strings.ReplaceAll(s, `\times`, "x")
+	s = strings.ReplaceAll(s, `\cdot`, "x")
+	s = strings.ReplaceAll(s, "×", "x")
+	s = strings.ReplaceAll(s, "·", "x")
+	s = strings.ReplaceAll(s, "*", "x")
+	s = strings.ReplaceAll(s, "X", "x")
 	s = strings.ReplaceAll(s, " ", "")
+	s = strings.ReplaceAll(s, "(", "")
+	s = strings.ReplaceAll(s, ")", "")
+	if strings.HasPrefix(s, "10^") {
+		s = "1x" + s
+	}
 	parts := strings.Split(s, "x10^")
 	if len(parts) != 2 {
 		return ""

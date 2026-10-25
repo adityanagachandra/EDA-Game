@@ -2,6 +2,9 @@ package precalculus
 
 import (
 	"math/rand"
+	"regexp"
+	"strconv"
+	"strings"
 	"testing"
 
 	"github.com/chuma-beep/mathua/internal/generator"
@@ -129,3 +132,38 @@ func fuzzGen(t *testing.T, gen generator.Generator) {
 
 func TestFloorCeilingGen(t *testing.T) { fuzzGen(t, &floorCeilingGen{}) }
 func TestHeavisideGen(t *testing.T)    { fuzzGen(t, &heavisideGen{}) }
+
+func TestConicParabolaDoesNotEndWithAnEmptyExponent(t *testing.T) {
+	g := &conicParabolaGen{}
+	for i := 0; i < 100; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if strings.Contains(p.Question, `x^\)`) {
+			t.Fatalf("parabola printed an empty exponent: %q", p.Question)
+		}
+	}
+}
+
+func TestConicEllipseKeepsSemiMajorAxisFirst(t *testing.T) {
+	re := regexp.MustCompile(`a=(\d+).*b=(\d+)`)
+	g := &conicEllipseGen{}
+	seen := 0
+	for i := 0; i < 100; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: 0.4})
+		m := re.FindStringSubmatch(p.Question)
+		if m == nil {
+			continue
+		}
+		seen++
+		a, errA := strconv.Atoi(m[1])
+		b, errB := strconv.Atoi(m[2])
+		if errA != nil || errB != nil {
+			t.Fatalf("could not parse semi-axes from %q", p.Question)
+		}
+		if a <= b {
+			t.Fatalf("ellipse text says a>b but printed a=%d b=%d: %q", a, b, p.Question)
+		}
+	}
+	if seen == 0 {
+		t.Fatal("no ellipse with named semi-axes was generated")
+	}
+}

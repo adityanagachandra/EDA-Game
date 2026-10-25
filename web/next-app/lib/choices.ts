@@ -30,6 +30,17 @@ export function parseChoices(question: string): ChoiceOption[] | null {
   return opts
 }
 
+// Generators often write option text as bare LaTeX, for example
+// `\mathbb{Q} \cap [2,9]` without `$` delimiters. KatexContent only renders
+// delimited math, so those options showed their backslashes literally
+// (reports 285, 286, 287 and 288). Wrap an option that contains a backslash
+// and no existing math delimiter. Plain prose options stay untouched.
+export function optionMathText(text: string): string {
+  if (!text.includes('\\')) return text
+  if (text.includes('$') || text.includes('\\(') || text.includes('\\[')) return text
+  return `\\(${text}\\)`
+}
+
 // The stem without the option block, for display above tappable options.
 //
 // The generator writes the options into the question text, and the options are

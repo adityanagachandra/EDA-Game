@@ -176,15 +176,31 @@ func (g *linePlotGen) Generate(ctx generator.GeneratorContext) generator.Problem
 			}
 		}
 	}
-	pick := rand.Intn(n)
+	minY, maxY := ys[0], ys[0]
+	for _, y := range ys {
+		if y < minY {
+			minY = y
+		}
+		if y > maxY {
+			maxY = y
+		}
+	}
+	// Every point is printed in the stem, so asking for a listed coordinate
+	// put the answer in the question (report 280). Ask for a value derived
+	// from the plot instead. Keep the range non-zero so the question always
+	// has something to read off the vertical spread.
+	if maxY == minY {
+		ys[n-1]++
+		maxY++
+	}
 	points := make([]string, n)
 	for i := 0; i < n; i++ {
 		points[i] = fmt.Sprintf("(%d,%d)", xs[i], ys[i])
 	}
 	return generator.Problem{
-		Question:    fmt.Sprintf("In the line plot with points %s, what is the y-value when x = %d?", strings.Join(points, ", "), xs[pick]),
-		Answer:      strconv.Itoa(ys[pick]),
-		Explanation: fmt.Sprintf("When x = %d, the corresponding y-value is %d.", xs[pick], ys[pick]),
+		Question:    fmt.Sprintf("In the line plot with points %s, what is the range of the y-values?", strings.Join(points, ", ")),
+		Answer:      strconv.Itoa(maxY - minY),
+		Explanation: fmt.Sprintf("The largest y-value is %d and the smallest is %d, so the range is %d - %d = %d.", maxY, minY, maxY, minY, maxY-minY),
 	}
 }
 
@@ -258,19 +274,58 @@ func (g *modeGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	scale := int(1 + ctx.Difficulty*5)
 	n := rand.Intn(5) + 5
 	base := rand.Intn(max(1, scale*4)) + 1
-	modeVal := base + rand.Intn(10)
-	vals := make([]int, 0, n)
-	modeCount := rand.Intn(3) + 2
-	for i := 0; i < modeCount; i++ {
-		vals = append(vals, modeVal)
-	}
-	otherCount := n - modeCount
-	for i := 0; i < otherCount; i++ {
-		v := rand.Intn(max(1, scale*6)) + 1
-		for v == modeVal {
-			v = rand.Intn(max(1, scale*6)) + 1
+
+	// Picking a value to repeat does not make it the mode: another random
+	// value can repeat more often, and two values can tie. Report 264 showed
+	// a stem that was bimodal while the key named one value. Draw until the
+	// data has exactly one most-frequent value, then answer that value.
+	var vals []int
+	var modeVal, modeCount int
+	for attempt := 0; attempt < generator.MaxDrawAttempts; attempt++ {
+		candidate := base + rand.Intn(10)
+		vals = make([]int, 0, n)
+		candidateCount := rand.Intn(3) + 2
+		for i := 0; i < candidateCount; i++ {
+			vals = append(vals, candidate)
 		}
-		vals = append(vals, v)
+		otherCount := n - candidateCount
+		for i := 0; i < otherCount; i++ {
+			v := rand.Intn(max(1, scale*6)) + 1
+			for v == candidate {
+				v = rand.Intn(max(1, scale*6)) + 1
+			}
+			vals = append(vals, v)
+		}
+		counts := map[int]int{}
+		for _, v := range vals {
+			counts[v]++
+		}
+		modeVal, modeCount = candidate, counts[candidate]
+		unique := true
+		for v, count := range counts {
+			if v == candidate {
+				continue
+			}
+			if count >= modeCount {
+				unique = false
+				break
+			}
+		}
+		if unique {
+			break
+		}
+		vals = nil
+	}
+	if vals == nil {
+		// The retry ceiling is a safety valve, not a normal path. Fall back to
+		// a deterministic set with one clear mode rather than returning a
+		// question whose key is ambiguous.
+		modeVal = base
+		modeCount = 2
+		vals = []int{modeVal, modeVal}
+		for i := 2; i < n; i++ {
+			vals = append(vals, modeVal+i)
+		}
 	}
 	rand.Shuffle(len(vals), func(i, j int) { vals[i], vals[j] = vals[j], vals[i] })
 	valStrs := make([]string, n)

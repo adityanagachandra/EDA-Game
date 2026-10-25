@@ -586,10 +586,9 @@ func (g *radicalSimplifyGen) Generate(ctx generator.GeneratorContext) generator.
 	c := claims[rand.Intn(len(claims))]
 	n := c.a * c.a * c.b
 	return generator.Problem{
-		Question: "The square root of " + strconv.Itoa(n) + " can be written as a times the square root of b, where b is squarefree. What is the whole number a?",
-		Answer:   strconv.Itoa(c.a),
-		Explanation: "Since " + strconv.Itoa(n) + " = " + strconv.Itoa(c.a*c.a) + " times " + strconv.Itoa(c.b) +
-			", the square root is " + strconv.Itoa(c.a) + " times the square root of " + strconv.Itoa(c.b) + ".",
+		Question:    fmt.Sprintf("The square root of %d can be written as \\(a\\sqrt{b}\\), where \\(b\\) is squarefree. What is the whole number \\(a\\)?", n),
+		Answer:      strconv.Itoa(c.a),
+		Explanation: fmt.Sprintf("Since %d = %d times %d, the square root is \\(%d\\sqrt{%d}\\).", n, c.a*c.a, c.b, c.a, c.b),
 		Facts: map[string]string{
 			"n": strconv.Itoa(n), "a": strconv.Itoa(c.a), "b": strconv.Itoa(c.b), "answer": strconv.Itoa(c.a),
 		},

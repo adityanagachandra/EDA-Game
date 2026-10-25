@@ -11,8 +11,10 @@ package algebra
 import (
 	"fmt"
 	"math"
+	"strings"
 	"testing"
 
+	"github.com/chuma-beep/mathua/internal/generator"
 	"github.com/chuma-beep/mathua/internal/grader"
 )
 
@@ -295,5 +297,15 @@ func TestRaiseNumericRecompute(t *testing.T) {
 		if r*r*r+b*r*r+d*r+e != 0 {
 			t.Fatalf("rational_root: %d is not a root of x^3+%dx^2+%dx+%d", r, b, d, e)
 		}
+	}
+}
+
+func TestRadicalSimplifyUsesMathForVariables(t *testing.T) {
+	p := (&radicalSimplifyGen{}).Generate(generator.GeneratorContext{Difficulty: 0.5})
+	if !strings.Contains(p.Question, `\(a\sqrt{b}\)`) {
+		t.Fatalf("question does not typeset a and b: %q", p.Question)
+	}
+	if strings.Contains(p.Question, "a times the square root of b") {
+		t.Fatalf("question still uses plain-text variables: %q", p.Question)
 	}
 }

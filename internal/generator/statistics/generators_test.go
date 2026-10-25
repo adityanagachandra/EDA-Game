@@ -2,6 +2,8 @@ package statistics
 
 import (
 	"math/rand"
+	"regexp"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -97,6 +99,67 @@ func TestReadTableEmitsAPipeTable(t *testing.T) {
 			if got := strings.Count(row, "|") - 1; got != cells {
 				t.Fatalf("row has %d cells, header %d: %q", got, cells, q)
 			}
+		}
+	}
+}
+
+func TestLinePlotAsksForADerivedValue(t *testing.T) {
+	pointRE := regexp.MustCompile(`\((\d+),(\d+)\)`)
+	g := &linePlotGen{}
+	for i := 0; i < 100; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if !strings.Contains(p.Question, "range of the y-values") {
+			t.Fatalf("line plot does not ask for a derived value: %q", p.Question)
+		}
+		matches := pointRE.FindAllStringSubmatch(p.Question, -1)
+		if len(matches) == 0 {
+			t.Fatalf("line plot has no points: %q", p.Question)
+		}
+		minY, maxY := 1<<30, -1<<30
+		for _, m := range matches {
+			y, err := strconv.Atoi(m[2])
+			if err != nil {
+				t.Fatalf("bad y value in %q", p.Question)
+			}
+			if y < minY {
+				minY = y
+			}
+			if y > maxY {
+				maxY = y
+			}
+		}
+		if got, want := p.Answer, strconv.Itoa(maxY-minY); got != want {
+			t.Fatalf("range answer %s, want %s for %q", got, want, p.Question)
+		}
+	}
+}
+
+func TestModeIsUnique(t *testing.T) {
+	g := &modeGen{}
+	for i := 0; i < 200; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		stem := strings.TrimPrefix(p.Question, "Find the mode of: ")
+		parts := strings.Split(stem, ", ")
+		counts := map[string]int{}
+		for _, part := range parts {
+			counts[part]++
+		}
+		maxCount := 0
+		modes := make([]string, 0, 1)
+		for value, count := range counts {
+			switch {
+			case count > maxCount:
+				maxCount = count
+				modes = []string{value}
+			case count == maxCount:
+				modes = append(modes, value)
+			}
+		}
+		if len(modes) != 1 {
+			t.Fatalf("mode is not unique in %q: %v", p.Question, modes)
+		}
+		if p.Answer != modes[0] {
+			t.Fatalf("answer %s, want unique mode %s for %q", p.Answer, modes[0], p.Question)
 		}
 	}
 }

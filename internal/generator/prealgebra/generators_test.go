@@ -213,3 +213,27 @@ func TestOneStepInequalityAsksForTheIntegerItGrades(t *testing.T) {
 		}
 	}
 }
+
+func TestNormalizeSciNotationAcceptsCommonFormats(t *testing.T) {
+	g := &sciNotationOpsGen{}
+	cases := []string{
+		"4.7x10^3",
+		"4.7 * 10^3",
+		"(4.7 * 10^3)",
+		"4.7 × 10^3",
+		`4.7 \times 10^3`,
+		"10^3",
+	}
+	for _, in := range cases {
+		if got := normalizeSciNotation(in); got == "" {
+			t.Fatalf("normalizeSciNotation(%q) rejected a valid scientific notation", in)
+		}
+	}
+	if got := normalizeSciNotation("900"); got != "" {
+		t.Fatalf("normalizeSciNotation accepted a non-scientific value: %q", got)
+	}
+	res := g.Grade("4.7x10^3", "(4.7 * 10^3)")
+	if !res.Correct {
+		t.Fatalf("Grade rejected 4.7 * 10^3: %+v", res)
+	}
+}

@@ -185,7 +185,7 @@ func TestRABatch2NumericRecompute(t *testing.T) {
 	for i := 0; i < 200; i++ {
 		p := raSample(t, reg, "ra.deriv.parts", 100+i)
 		b := raFactInt(t, p, "b")
-		want := decimal6(float64(b-1)*math.Exp(float64(b)) + 1)
+		want := decimal4(float64(b-1)*math.Exp(float64(b)) + 1)
 		if p.Answer != want {
 			t.Fatalf("parts: b=%d answers %s, want %s", b, p.Answer, want)
 		}
