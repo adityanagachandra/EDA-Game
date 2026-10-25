@@ -1440,6 +1440,10 @@ func (s *SQLiteStore) FailStudyEffect(id int64, reason string, retryAt time.Time
 	return failStudyEffect(s.db, rebindQuestion, id, reason, retryAt)
 }
 
+func (s *SQLiteStore) PruneStudyEffects(olderThan time.Time, limit int) (int64, error) {
+	return pruneStudyEffects(s.db, rebindQuestion, olderThan, limit)
+}
+
 // GetRecentAttemptsForConcept implements the bounded per-concept window the evidence
 // model reads on each graded answer. Newest last, matching BuildEvidence's expectation.
 //
