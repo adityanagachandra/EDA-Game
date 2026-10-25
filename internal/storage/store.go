@@ -555,6 +555,10 @@ type Repository interface {
 	FindByUsername(username string) (*Student, error)
 	FindByEmail(email string) (*Student, error)
 	CreateUser(name, username, passwordHash string) (*Student, error)
+	// AdoptGuestAsUser turns a credential-less guest row into a named account
+	// without changing its ID, so every progress, attempt and XP row keyed by
+	// that ID stays attached. Callers must verify the row is claimable first.
+	AdoptGuestAsUser(id, name, username, passwordHash string) (*Student, error)
 	SetUsername(studentID, username string) error
 	ListStudentsMissingUsernames() ([]string, error)
 	CreateGoogleUser(name, email, googleID, avatarURL string) (*Student, error)

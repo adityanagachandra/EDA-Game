@@ -34,7 +34,32 @@ func TestFracMultGen(t *testing.T)         { fuzzGen(t, &fracMultGen{}) }
 func TestFracDivGen(t *testing.T)          { fuzzGen(t, &fracDivGen{}) }
 func TestFracMixedConvertGen(t *testing.T) { fuzzGen(t, &fracMixedConvertGen{}) }
 func TestFracMixedOpGen(t *testing.T)      { fuzzGen(t, &fracMixedOpGen{}) }
-func TestFracMixedMultGen(t *testing.T)    { fuzzGen(t, &fracMixedMultGen{}) }
+
+func TestFracBenchmarkHasMoreThanThreePairs(t *testing.T) {
+	g := &fracBenchmarkGen{}
+	seen := map[string]bool{}
+	for i := 0; i < 500; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		seen[p.Question] = true
+	}
+	if len(seen) < 8 {
+		t.Fatalf("expected a wider benchmark pool, got %d distinct questions", len(seen))
+	}
+}
+
+func TestFracMixedOpNamesTheNotation(t *testing.T) {
+	g := &fracMixedOpGen{}
+	for i := 0; i < 100; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if !strings.Contains(p.Question, "mixed numbers") {
+			t.Fatalf("expected the question to name mixed numbers, got %q", p.Question)
+		}
+		if !strings.Contains(p.Question, "Add") && !strings.Contains(p.Question, "Subtract") {
+			t.Fatalf("expected an explicit operation, got %q", p.Question)
+		}
+	}
+}
+func TestFracMixedMultGen(t *testing.T) { fuzzGen(t, &fracMixedMultGen{}) }
 
 func TestFuzz(t *testing.T) {
 	reg := generator.NewRegistry()

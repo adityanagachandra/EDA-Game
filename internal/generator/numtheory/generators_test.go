@@ -1,7 +1,9 @@
 package numtheory
 
 import (
+	"fmt"
 	"math/rand"
+	"strings"
 	"testing"
 
 	"github.com/chuma-beep/mathua/internal/generator"
@@ -41,5 +43,41 @@ func TestFuzz(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func TestDiophantineChoicesHaveOneSolution(t *testing.T) {
+	g := &diophantineGen{}
+	for i := 0; i < 100; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if !strings.Contains(p.Question, "\n\nA)") {
+			t.Fatalf("diophantine question has no option list: %q", p.Question)
+		}
+		options := strings.Split(p.Question, "\n\n")[1:]
+		if len(options) != 4 {
+			t.Fatalf("diophantine question has %d options, want 4: %q", len(options), p.Question)
+		}
+		var correctX, correctY int
+		if _, err := fmt.Sscanf(p.Answer, "(%d, %d)", &correctX, &correctY); err != nil {
+			t.Fatalf("cannot parse correct pair %q: %v", p.Answer, err)
+		}
+		c := 3*correctX + 5*correctY
+		solutions := 0
+		for _, option := range options {
+			text := strings.TrimSpace(option[3:])
+			var x, y int
+			if _, err := fmt.Sscanf(text, "(%d, %d)", &x, &y); err != nil {
+				t.Fatalf("cannot parse option %q: %v", option, err)
+			}
+			if 3*x+5*y == c {
+				solutions++
+			}
+		}
+		if solutions != 1 {
+			t.Fatalf("diophantine question has %d correct options, want 1: %q", solutions, p.Question)
+		}
+		if !strings.Contains(p.Question, p.Answer) {
+			t.Fatalf("correct answer %q is not among the options: %q", p.Answer, p.Question)
+		}
 	}
 }

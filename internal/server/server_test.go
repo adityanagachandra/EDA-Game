@@ -1365,6 +1365,54 @@ func TestGuestToken_ClaimAdoptsProgress(t *testing.T) {
 	}
 }
 
+func TestSignupAdoptsGuestProgress(t *testing.T) {
+	_, mux, store := guestServer(t)
+	guest, err := store.CreateStudent("Guest")
+	if err != nil {
+		t.Fatalf("create guest: %v", err)
+	}
+	if err := store.UpsertProgress(&storage.ConceptProgress{
+		StudentID: guest.ID,
+		ConceptID: "a",
+		Status:    "PRACTICING",
+		Attempts:  4,
+	}); err != nil {
+		t.Fatalf("seed guest progress: %v", err)
+	}
+	signup := func(body string) *httptest.ResponseRecorder {
+		rec := httptest.NewRecorder()
+		mux.ServeHTTP(rec, httptest.NewRequest("POST", "/api/auth/signup", bytes.NewReader([]byte(body))))
+		return rec
+	}
+	rec := signup(`{"name":"Ada","username":"ada_guest","password":"Engine!n1","email":"ada-guest@example.com","student_id":"` + guest.ID + `"}`)
+	if rec.Code != 200 {
+		t.Fatalf("signup with guest: expected 200, got %d: %s", rec.Code, rec.Body.String())
+	}
+	var res map[string]interface{}
+	if err := json.Unmarshal(rec.Body.Bytes(), &res); err != nil {
+		t.Fatalf("decode signup: %v", err)
+	}
+	if res["student_id"] != guest.ID {
+		t.Fatalf("expected adopted id %q, got %v", guest.ID, res["student_id"])
+	}
+	progress, err := store.GetProgress(guest.ID, "a")
+	if err != nil {
+		t.Fatalf("read adopted progress: %v", err)
+	}
+	if progress == nil || progress.Attempts != 4 {
+		t.Fatalf("expected guest progress to survive signup, got %+v", progress)
+	}
+	login := httptest.NewRecorder()
+	mux.ServeHTTP(login, httptest.NewRequest("POST", "/api/auth/login", bytes.NewReader([]byte(`{"username":"ada_guest","password":"Engine!n1"}`))))
+	if login.Code != 200 {
+		t.Fatalf("login after adoption: expected 200, got %d: %s", login.Code, login.Body.String())
+	}
+	again := signup(`{"name":"Other","username":"other_guest","password":"Engine!n2","email":"other-guest@example.com","student_id":"` + guest.ID + `"}`)
+	if again.Code != 403 {
+		t.Fatalf("second adoption: expected 403, got %d: %s", again.Code, again.Body.String())
+	}
+}
+
 func TestGuestToken_RefusesRegistered(t *testing.T) {
 	_, mux, _ := guestServer(t)
 

@@ -4024,10 +4024,11 @@ func logRequest(next http.HandlerFunc) http.HandlerFunc {
 }
 
 type signupReq struct {
-	Name     string `json:"name"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
+	Name      string `json:"name"`
+	Username  string `json:"username"`
+	Password  string `json:"password"`
+	Email     string `json:"email"`
+	StudentID string `json:"student_id"`
 }
 
 type authRes struct {
@@ -4150,10 +4151,14 @@ func (s *Server) handleSignup(w http.ResponseWriter, r *http.Request) {
 		writeError(w, "email already in use", 409)
 		return
 	}
-	token, st, err := s.auth.Signup(req.Name, req.Username, req.Password)
+	token, st, err := s.auth.SignupWithGuest(req.Name, req.Username, req.Password, req.StudentID)
 	if err != nil {
 		if errors.Is(err, auth.ErrUsernameTaken) || storage.IsUniqueViolation(err) {
 			writeError(w, "username is taken", 409)
+			return
+		}
+		if errors.Is(err, auth.ErrGuestNotClaimable) {
+			writeError(w, "guest account is already registered, log in instead", 403)
 			return
 		}
 		writeError(w, "signup failed: "+err.Error(), 400)

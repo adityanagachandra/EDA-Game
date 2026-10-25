@@ -53,6 +53,49 @@ func TestSignupLogin_CaseInsensitive(t *testing.T) {
 	}
 }
 
+func TestSignupWithGuestAdoptsTheGuestRow(t *testing.T) {
+	svc := newTestService(t)
+	guest, err := svc.repo.CreateStudent("Guest")
+	if err != nil {
+		t.Fatalf("create guest: %v", err)
+	}
+	if err := svc.repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID: guest.ID,
+		ConceptID: "arith.add",
+		Status:    "PRACTICING",
+		Attempts:  3,
+	}); err != nil {
+		t.Fatalf("seed guest progress: %v", err)
+	}
+
+	token, st, err := svc.SignupWithGuest("Ada", "ada_guest", "Engine!n1", guest.ID)
+	if err != nil {
+		t.Fatalf("signup with guest: %v", err)
+	}
+	if token == "" || st == nil {
+		t.Fatal("expected a token and student")
+	}
+	if st.ID != guest.ID {
+		t.Fatalf("expected account to keep guest id %q, got %q", guest.ID, st.ID)
+	}
+	if st.PasswordHash == "" {
+		t.Fatal("expected the guest row to gain a password hash")
+	}
+	if _, _, err := svc.Login("ada_guest", "Engine!n1"); err != nil {
+		t.Fatalf("login after adopting guest: %v", err)
+	}
+	progress, err := svc.repo.GetProgress(guest.ID, "arith.add")
+	if err != nil {
+		t.Fatalf("read adopted progress: %v", err)
+	}
+	if progress == nil || progress.Attempts != 3 {
+		t.Fatalf("expected guest progress to survive, got %+v", progress)
+	}
+	if _, _, err := svc.SignupWithGuest("Other", "other_guest", "Engine!n2", guest.ID); err != ErrGuestNotClaimable {
+		t.Fatalf("expected ErrGuestNotClaimable for a registered row, got %v", err)
+	}
+}
+
 func TestSignup_DuplicateUsername(t *testing.T) {
 	svc := newTestService(t)
 	if _, _, err := svc.Signup("Ada", "ada", "Engine!n1"); err != nil {

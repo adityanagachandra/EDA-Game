@@ -674,6 +674,27 @@ func (s *PostgresStore) CreateUser(name, username, passwordHash string) (*Studen
 	return &Student{ID: id, Name: name, Username: username, PasswordHash: passwordHash, Settings: "{}", CreatedAt: now}, nil
 }
 
+// AdoptGuestAsUser attaches credentials to an existing guest row. The WHERE
+// clause repeats the claimability check so a concurrent guest claim cannot
+// turn an already registered row into a second account.
+func (s *PostgresStore) AdoptGuestAsUser(id, name, username, passwordHash string) (*Student, error) {
+	res, err := s.db.Exec(
+		"UPDATE students SET name = $1, username = $2, password_hash = $3 WHERE id = $4 AND COALESCE(password_hash, '') = '' AND COALESCE(email, '') = ''",
+		name, username, passwordHash, id,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("adopt guest as user: %w", err)
+	}
+	n, err := res.RowsAffected()
+	if err != nil {
+		return nil, fmt.Errorf("adopt guest as user: %w", err)
+	}
+	if n != 1 {
+		return nil, fmt.Errorf("adopt guest as user: guest row is not claimable")
+	}
+	return s.GetStudent(id)
+}
+
 func (s *PostgresStore) GetStudent(id string) (*Student, error) {
 	row := s.db.QueryRow("SELECT id, name, username, password_hash, course_id, xp_total, xp_today, xp_date, diagnostic_completed, daily_xp_goal, settings, created_at, league, league_week, league_moved, share_token, email, google_id, avatar_url, email_verified FROM students WHERE id = $1", id)
 	return scanStudent(row)

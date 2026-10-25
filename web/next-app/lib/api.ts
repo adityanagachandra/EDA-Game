@@ -575,11 +575,11 @@ export interface AuthRes {
   diagnostic_completed: boolean
 }
 
-export async function signup(name: string, username: string, password: string, email?: string): Promise<AuthRes> {
+export async function signup(name: string, username: string, password: string, email?: string, guestId?: string): Promise<AuthRes> {
 	const res = await authedFetch(`${API_BASE}/api/auth/signup`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ name, username, password, email: email ?? '' }),
+		body: JSON.stringify({ name, username, password, email: email ?? '', student_id: guestId ?? '' }),
 	})
 	if (!res.ok) await throwWithResponse(res, `Signup failed`)
 	return validateResponse(AuthResSchema, await res.json(), 'signup') as AuthRes

@@ -385,6 +385,24 @@ func (g *pctToDecGen) Generate(ctx generator.GeneratorContext) generator.Problem
 
 type pctFromDecGen struct{}
 
+func (g *pctFromDecGen) AnswerFormat() generator.AnswerFormat {
+	return generator.AnswerFormat{Hint: "Percent value, e.g. 17 or 17%", InputMode: "text"}
+}
+
+// Grade accepts the trailing percent sign a learner naturally types for a
+// percentage question. The numeric grader alone rejected "17%" because the
+// answer key is 17.
+func (g *pctFromDecGen) Grade(expected, userAnswer string) grader.Result {
+	clean := strings.TrimSpace(userAnswer)
+	clean = strings.TrimSpace(strings.TrimSuffix(clean, "%"))
+	e, errE := strconv.ParseFloat(strings.TrimSpace(expected), 64)
+	a, errA := strconv.ParseFloat(clean, 64)
+	if errE != nil || errA != nil || math.Abs(e-a) >= 1e-9 {
+		return grader.Result{Correct: false, Score: 0, Feedback: "Incorrect, multiply the decimal by 100"}
+	}
+	return grader.Result{Correct: true, Score: 1}
+}
+
 func (g *pctFromDecGen) Generate(ctx generator.GeneratorContext) generator.Problem {
 	scale := int(1 + ctx.Difficulty*5)
 	d := float64(rand.Intn(scale*20)) / 100

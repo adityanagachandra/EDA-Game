@@ -161,7 +161,21 @@ var ErrEmailInUse = errors.New("email already in use")
 // ErrUsernameTaken marks a taken username (409, not a 400/500).
 var ErrUsernameTaken = errors.New("username is taken")
 
+// ErrGuestNotClaimable marks a guest row that already has a credential or an
+// OAuth identity. Signup must not turn an existing account into a second one.
+var ErrGuestNotClaimable = errors.New("guest account is already registered")
+
 func (a *AuthService) Signup(name, username, password string) (string, *storage.Student, error) {
+	return a.signup(name, username, password, "")
+}
+
+// SignupWithGuest creates an account on the guest row itself, preserving its
+// progress, attempts and XP. An empty guest ID is the ordinary signup path.
+func (a *AuthService) SignupWithGuest(name, username, password, guestID string) (string, *storage.Student, error) {
+	return a.signup(name, username, password, guestID)
+}
+
+func (a *AuthService) signup(name, username, password, guestID string) (string, *storage.Student, error) {
 	// Defense in depth: the handler and form already require a name, but
 	// raw API/service callers bypass them, trim and enforce here so no
 	// blank or oversized name ever reaches the leaderboard.
@@ -193,7 +207,35 @@ func (a *AuthService) Signup(name, username, password string) (string, *storage.
 	if err != nil {
 		return "", nil, err
 	}
-	st, err := a.repo.CreateUser(name, username, string(hash))
+	var st *storage.Student
+	if guestID = strings.TrimSpace(guestID); guestID != "" {
+		existing, err := a.repo.GetStudent(guestID)
+		if err != nil {
+			return "", nil, err
+		}
+		if existing == nil {
+			if !strings.HasPrefix(guestID, "guest_") {
+				return "", nil, ErrGuestNotClaimable
+			}
+			if _, err := a.repo.ClaimGuestStudent(guestID, name); err != nil {
+				return "", nil, err
+			}
+		} else {
+			if existing.PasswordHash != "" || strings.TrimSpace(existing.Email) != "" {
+				return "", nil, ErrGuestNotClaimable
+			}
+			identities, err := a.repo.ListIdentities(guestID)
+			if err != nil {
+				return "", nil, err
+			}
+			if len(identities) > 0 {
+				return "", nil, ErrGuestNotClaimable
+			}
+		}
+		st, err = a.repo.AdoptGuestAsUser(guestID, name, username, string(hash))
+	} else {
+		st, err = a.repo.CreateUser(name, username, string(hash))
+	}
 	if err != nil {
 		return "", nil, err
 	}

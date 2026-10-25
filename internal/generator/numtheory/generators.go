@@ -186,11 +186,16 @@ func (g *diophantineGen) Generate(ctx generator.GeneratorContext) generator.Prob
 	x := rand.Intn(max(1, scale*10)) + 1
 	y := rand.Intn(max(1, scale*10)) + 1
 	c := 3*x + 5*y
-	return generator.Problem{
-		Question:    fmt.Sprintf("Find an integer solution to \\(3x + 5y = %d\\).", c),
-		Answer:      fmt.Sprintf("x=%d,y=%d", x, y),
-		Explanation: fmt.Sprintf("3(%d) + 5(%d) = %d + %d = %d.", x, y, 3*x, 5*y, c),
-	}
+	correct := fmt.Sprintf("(%d, %d)", x, y)
+	p := generator.MultipleChoice(
+		fmt.Sprintf("Which ordered pair is an integer solution to \\(3x + 5y = %d\\)?", c),
+		correct,
+		fmt.Sprintf("(%d, %d)", x+1, y),
+		fmt.Sprintf("(%d, %d)", x, y+1),
+		fmt.Sprintf("(%d, %d)", x+1, y+1),
+	)
+	p.Explanation = fmt.Sprintf("3(%d) + 5(%d) = %d + %d = %d. The other pairs change the left side by 3 or 5.", x, y, 3*x, 5*y, c)
+	return p
 }
 
 type cryptoGen struct{}

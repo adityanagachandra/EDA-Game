@@ -56,6 +56,7 @@ import LoginPage from '../app/login/page'
 
 describe('LoginPage', () => {
   beforeEach(() => {
+    localStorage.clear()
     pushMock.mockClear()
     signupMock.mockClear()
     loginMock.mockClear()
@@ -118,7 +119,24 @@ describe('LoginPage', () => {
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: '  Ada@Example.com  ' } })
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'Engine!n1' } })
     submitForm(screen.getByRole('button', { name: 'Create Account' }))
-    expect(signupMock).toHaveBeenCalledWith('Ada', 'ada', 'Engine!n1', 'Ada@Example.com')
+    expect(signupMock).toHaveBeenCalledWith('Ada', 'ada', 'Engine!n1', 'Ada@Example.com', undefined)
+  })
+
+  it('passes the guest id to signup and clears the guest identity', async () => {
+    localStorage.setItem('mathua_guest_id', 'guest_abc')
+    localStorage.setItem('mathua_guest_token', 'guest-token')
+    signupMock.mockResolvedValue({ token: 't', student_id: 'guest_abc', name: 'Ada', diagnostic_completed: true })
+    validateTokenMock.mockResolvedValue({ valid: true })
+    render(<LoginPage />)
+    fireEvent.click(screen.getByRole('button', { name: 'Sign Up' }))
+    fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'Ada' } })
+    fireEvent.change(screen.getByLabelText('Username'), { target: { value: 'ada' } })
+    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'ada@example.com' } })
+    fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'Engine!n1' } })
+    submitForm(screen.getByRole('button', { name: 'Create Account' }))
+    await waitFor(() => expect(signupMock).toHaveBeenCalledWith('Ada', 'ada', 'Engine!n1', 'ada@example.com', 'guest_abc'))
+    expect(localStorage.getItem('mathua_guest_id')).toBeNull()
+    expect(localStorage.getItem('mathua_guest_token')).toBeNull()
   })
 
   it('requires an email on signup', () => {
