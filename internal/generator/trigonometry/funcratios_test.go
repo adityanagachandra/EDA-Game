@@ -160,6 +160,22 @@ func TestRatioAnswersRecomputeFromFacts(t *testing.T) {
 	}
 }
 
+func TestTangentRatioNamesTheAngleAndBothLegs(t *testing.T) {
+	reg := ratioRegistry(t)
+	for i := 0; i < 200; i++ {
+		p := ratioSample(t, reg, "trig.func.tangent", i)
+		q := p.Question
+		for _, want := range []string{"acute angle", "leg adjacent to", "leg opposite", "units long"} {
+			if !strings.Contains(q, want) {
+				t.Fatalf("tangent question does not say %q: %q", want, q)
+			}
+		}
+		if strings.Contains(q, "with opposite =") || strings.Contains(q, "with adjacent =") {
+			t.Fatalf("tangent question still uses an unqualified side label: %q", q)
+		}
+	}
+}
+
 func TestPeriodGraphRecomputesFromFacts(t *testing.T) {
 	types := ratioShippedTypes(t)
 	if types["trig.graph.period"] != "numeric" {

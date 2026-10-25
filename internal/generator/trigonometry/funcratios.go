@@ -129,7 +129,7 @@ func (g *tangentRatioGen) Generate(ctx generator.GeneratorContext) generator.Pro
 	}
 	ratio := fmt.Sprintf("%d/%d", opposite, adjacent)
 	return ratioProblem(
-		fmt.Sprintf("A right triangle has \\(\\tan\\theta = \\frac{%d}{%d}\\). If the side adjacent to \\(\\theta\\) is %d, what is the length of the opposite side?",
+		fmt.Sprintf("In a right triangle, an acute angle \\(\\theta\\) has \\(\\tan(\\theta) = \\frac{%d}{%d}\\). If the leg adjacent to \\(\\theta\\) is %d units long, what is the length of the leg opposite \\(\\theta\\)?",
 			opposite, adjacent, given),
 		strconv.Itoa(answer),
 		fmt.Sprintf("The tangent of an angle is defined as opposite leg over adjacent leg: \\(\\tan\\theta = \\frac{\\text{opposite}}{\\text{adjacent}}\\). Given \\(\\tan\\theta = \\frac{%d}{%d}\\) with adjacent leg %d, solve for the opposite side: \\(\\text{opposite} = \\frac{%d}{%d} \\times %d\\). Evaluating the expression yields %d.",

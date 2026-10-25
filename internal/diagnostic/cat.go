@@ -700,6 +700,43 @@ func (e *Engine) infoGain(s *Session, c *concepts.Concept, coverSet map[string]b
 	return unc * influence * (1.0 + 0.2*info)
 }
 
+// prerequisiteGapLocked returns the nearest unsettled prerequisite of the
+// concept the learner just missed. A miss on an advanced concept is evidence
+// about the path beneath it, not evidence that the easiest concept in the
+// closure is the next useful question. The descent is one edge at a time: if
+// the prerequisite is missed too, the following call descends again; if it is
+// answered correctly, normal information-gain selection resumes.
+//
+// The miss must already be settled. While a concept still has one of its two
+// probes left, the existing two-probe rule asks it again before changing the
+// subject. Caller must hold s.Lock.
+func (e *Engine) prerequisiteGapLocked(s *Session) string {
+	if len(s.Attempts) == 0 {
+		return ""
+	}
+	last := s.Attempts[len(s.Attempts)-1]
+	if last.Correct || !s.doneSet[last.ConceptID] {
+		return ""
+	}
+	best := ""
+	bestScore := -1.0
+	coverSet := map[string]bool{}
+	for _, c := range e.compressedCover(s) {
+		coverSet[c.ID] = true
+	}
+	for _, pr := range e.dag.PrereqsOf(last.ConceptID) {
+		if s.doneSet[pr.ID] || s.totalCount[pr.ID] >= 2 {
+			continue
+		}
+		score := e.infoGain(s, pr, coverSet)
+		if score > bestScore {
+			bestScore = score
+			best = pr.ID
+		}
+	}
+	return best
+}
+
 // pickByInfoGain selects the highest-gain cover concept not yet settled.
 func (e *Engine) pickByInfoGain(s *Session) string {
 	cover := e.compressedCover(s)
@@ -729,7 +766,10 @@ func (e *Engine) NextQuestion(s *Session) (*generator.Problem, string, error) {
 		s.LastProblem = nil
 		return nil, "", nil
 	}
-	cid := e.pickByInfoGain(s)
+	cid := e.prerequisiteGapLocked(s)
+	if cid == "" {
+		cid = e.pickByInfoGain(s)
+	}
 	if cid == "" {
 		// Cover exhausted: run the supplemental diagnostic for
 		// low-confidence concepts before declaring done.
