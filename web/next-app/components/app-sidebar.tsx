@@ -68,6 +68,7 @@ const NAV_ITEMS: SidebarNavItem[] = [
   { label: 'Domains', href: '/domains', icon: Layers },
   { label: 'Leaderboard', href: '/leaderboard', icon: Trophy },
   { label: 'History', href: '/history', icon: ChartNoAxesColumn },
+  { label: 'My reports', href: '/my-reports', icon: FileText },
   { label: 'Reports', href: '/reports', icon: FileText },
   { label: 'Settings', href: '/settings', icon: Settings },
 ]

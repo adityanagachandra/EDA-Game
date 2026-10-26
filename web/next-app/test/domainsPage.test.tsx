@@ -25,9 +25,10 @@ vi.mock('../lib/api', async (importOriginal) => {
     getLessonEligibility: vi.fn(),
   }
 })
-vi.mock('../components/Header', () => ({ default: () => null }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => null }))
-vi.mock('../components/BottomTabs', () => ({ default: () => null }))
 vi.mock('../components/Loading', () => ({ default: ({ label }: { label?: string }) => <div>{label ?? 'Loading'}</div> }))
 vi.mock('../components/SectionHeader', () => ({
   default: ({ title }: { title: string }) => <h2>{title}</h2>,

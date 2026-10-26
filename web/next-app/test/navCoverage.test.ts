@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 
-// Every page must offer a way off itself. A page that renders neither a Header nor the bottom
-// tabs is a navigation dead end: the learner arrives there and cannot reach anything else.
+// Every page must offer a way off itself. A page that renders neither a Header nor the app shell
+// is a navigation dead end: the learner arrives there and cannot reach anything else.
 //
 // This exists because /profile lost both. Commit fb5bde0a replaced its Header and BottomTabs
 // with a shadcn sidebar shell, and the shell is desktop-only, shadcn renders it as an overlay
@@ -11,6 +11,10 @@ import { join } from 'node:path'
 // phone, tapping Profile in the tab bar of any other page arrived at a page with no way back,
 // which is what was reported. Three of that page's six return branches rendered no chrome at
 // all, so the same hole existed between the tabs appearing and the data arriving.
+//
+// The shell was later fixed to render BottomTabs itself and to show a mobile trigger, so
+// <AppShell> is now a genuine way off. The guard recognises it explicitly rather than assuming
+// the shell is safe.
 //
 // The hole was invisible to every other check. tsc passed: a page missing navigation is still
 // valid JSX. The build passed: the file is a real prerendered route. The unit suite passed: no
@@ -47,8 +51,8 @@ function hasWayOff(src: string): boolean {
   // close, so the shell is held to the same rule in the test below: DocPage must contain the
   // back-link glyph. The exemption is verified, not assumed.
   const body = src.replace(/^import .*$/gm, '')
-  return /<Header\b/.test(body) || /<BottomTabs\b/.test(body) || /\bredirect\(/.test(body)
-    || /←/.test(body) || /<DocPage\b/.test(body)
+  return /<Header\b/.test(body) || /<BottomTabs\b/.test(body) || /<AppShell\b/.test(body)
+    || /\bredirect\(/.test(body) || /←/.test(body) || /<DocPage\b/.test(body)
 }
 
 function pageFiles(dir: string): string[] {
@@ -69,13 +73,13 @@ describe('every page offers navigation', () => {
     expect(routes.some(r => r.endsWith('profile/page.tsx'))).toBe(true)
   })
 
-  it('renders Header or BottomTabs on every page that is not a redirect stub', () => {
+  it('renders Header, the app shell or another way off on every page that is not a redirect stub', () => {
     const bare = routes
       .filter(r => !REDIRECT_STUBS.has(r.split('/').slice(-2)[0]))
       .filter(r => !hasWayOff(readFileSync(r, 'utf8')))
       .map(r => '/' + r.split('/').slice(1, -1).join('/'))
 
-    // The sidebar shell carries no navigation of its own on mobile, so it does not satisfy this.
+    // <AppShell> renders BottomTabs and the mobile trigger, so it satisfies this.
     expect(bare).toEqual([])
   })
 

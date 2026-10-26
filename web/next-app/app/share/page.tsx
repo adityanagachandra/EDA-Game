@@ -3,8 +3,7 @@
 import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import SectionHeader from '../../components/SectionHeader'
 import Footer from '../../components/Footer'
 import Loading from '../../components/Loading'
@@ -34,9 +33,8 @@ function ShareContent() {
 
   if (error) {
     return (
-      <>
-        <Header />
-        <div className="max-w-container mx-auto px-4 sm:px-6 pt-[var(--chrome-top)] pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 text-center overflow-x-hidden min-w-0">
+      <AppShell>
+        <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 text-center overflow-x-hidden min-w-0">
           <p className="text-mathua-muted text-sm">{error}</p>
           {!token && (
             <p className="text-mathua-muted text-xs font-mono mt-2">Ask the student to enable sharing in Settings → Share with parent / teacher.</p>
@@ -46,27 +44,23 @@ function ShareContent() {
           </Link>
         </div>
         <Footer />
-        <BottomTabs />
-      </>
+      </AppShell>
     )
   }
 
   if (!report) {
     return (
-      <>
-        <Header />
-        <div className="max-w-container mx-auto px-4 sm:px-6 pt-[var(--chrome-top)] pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 text-center overflow-x-hidden min-w-0">
+      <AppShell>
+        <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 text-center overflow-x-hidden min-w-0">
           <Loading label="LOADING REPORT" />
         </div>
         <Footer />
-        <BottomTabs />
-      </>
+      </AppShell>
     )
   }
 
   return (
-    <>
-      <Header />
+    <AppShell>
       <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0">
         <section className="pt-8 min-w-0 overflow-hidden">
           <SectionHeader label="Read-only report" title={`${report.name}'s progress`} />
@@ -112,15 +106,14 @@ function ShareContent() {
       </div>
 
       <Footer />
-      <BottomTabs />
-    </>
+    </AppShell>
   )
 }
 
 export default function SharePage() {
   return (
     <Suspense fallback={
-      <><Header /><div className="max-w-container mx-auto px-4 sm:px-6 pt-[var(--chrome-top)] pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 text-center overflow-x-hidden min-w-0"><Loading label="LOADING REPORT" /></div></>
+      <AppShell><div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 text-center overflow-x-hidden min-w-0"><Loading label="LOADING REPORT" /></div></AppShell>
     }>
       <ShareContent />
     </Suspense>

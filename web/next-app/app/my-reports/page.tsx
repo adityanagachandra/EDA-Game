@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
-import Header from '@/components/Header'
-import BottomTabs from '@/components/BottomTabs'
+import AppShell from '@/components/app-shell'
 import Footer from '@/components/Footer'
 import KatexContent from '@/components/KatexContent'
 import { listMyReports, markMyReportsRead, type QuestionReport } from '@/lib/api'
@@ -85,9 +84,9 @@ export default function MyReportsPage() {
   }, [loggedIn, load])
 
   return (
-    <div className="min-h-screen bg-mathua-bg text-mathua-primary">
-      <Header />
-      <main className="max-w-container mx-auto px-4 md:px-6 py-10 pb-28">
+    <AppShell>
+      <div className="min-h-screen bg-mathua-bg text-mathua-primary">
+        <main className="max-w-container mx-auto px-4 md:px-6 py-10 pb-28">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="font-mono text-xl text-mathua-primary">My reports</h1>
@@ -185,8 +184,8 @@ export default function MyReportsPage() {
           </p>
         )}
       </main>
-      <Footer />
-      <BottomTabs />
-    </div>
+        <Footer />
+      </div>
+    </AppShell>
   )
 }

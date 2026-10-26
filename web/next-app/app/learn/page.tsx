@@ -3,9 +3,8 @@
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
 import Footer from '../../components/Footer'
+import AppShell from '../../components/app-shell'
 import LearnStepper from '../../components/LearnStepper'
 import LessonCredits from '../../components/LessonCredits'
 import NextUpCard from '../../components/NextUpCard'
@@ -146,15 +145,11 @@ function LearnContent() {
 
 export default function LearnPage() {
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <Suspense fallback={<div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>}>
-          <LearnContent />
-        </Suspense>
-      </div>
-      <BottomTabs />
+    <AppShell>
+      <Suspense fallback={<div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>}>
+        <LearnContent />
+      </Suspense>
       <Footer />
-    </>
+    </AppShell>
   )
 }
