@@ -122,6 +122,26 @@ describe('/onboard domain selection', () => {
     expect(sent.sort()).toEqual([...idsForDomain('arithmetic')].sort())
   })
 
+  it('returns to the top when the diagnostic question replaces the welcome step', async () => {
+    const scrollTo = vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
+    vi.mocked(api.startGoalDiagnostic).mockResolvedValue({
+      session_id: 's1', concept_id: 'c1', concept_name: 'C', question: '1 + 1 = ?',
+      progress: { answered: 0, estimated_total: 25, min_total: 25, max_total: 45, probe_budget: 45, done: false },
+    } as never)
+    render(<OnboardPage />)
+    await waitFor(() => expect(screen.getByText(domainLabel('arithmetic'))).toBeTruthy())
+    fireEvent.click(screen.getByText(domainLabel('arithmetic')))
+    fireEvent.click(startButton())
+    await screen.findByText('Before you begin')
+
+    scrollTo.mockClear()
+    fireEvent.click(screen.getByRole('button', { name: /Begin diagnostic/ }))
+
+    await waitFor(() => expect(scrollTo).toHaveBeenCalled())
+    expect(scrollTo).toHaveBeenCalledWith({ top: 0, left: 0, behavior: 'auto' })
+    scrollTo.mockRestore()
+  })
+
   it('starts a later visit with nothing selected, whatever a previous visit picked', async () => {
     // The selection belongs to the visit. Restoring it made a learner who came
     // back for algebra find machine learning still ticked, and start a run
