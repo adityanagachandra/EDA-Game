@@ -37,21 +37,26 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
       return
     }
     let live = true
-    getSettings()
-      .then((settings) => {
-        if (!live) return
-        const resolved = resolveAvatar(user, settings)
-        setAvatarPreset(resolved.preset ?? null)
-        setAvatarUrl(resolved.url)
-        setShowLeaderboards(settings.leaderboard_privacy !== 'hidden')
-      })
-      .catch(() => {
-        // The generated seed avatar is still a usable fallback, and a failed
-        // settings read cannot be evidence that leaderboards were turned off.
-        if (live) setShowLeaderboards(true)
-      })
+    const load = () => {
+      getSettings()
+        .then((settings) => {
+          if (!live) return
+          const resolved = resolveAvatar(user, settings)
+          setAvatarPreset(resolved.preset ?? null)
+          setAvatarUrl(resolved.url)
+          setShowLeaderboards(settings.leaderboard_privacy !== 'hidden')
+        })
+        .catch(() => {
+          // The generated seed avatar is still a usable fallback, and a failed
+          // settings read cannot be evidence that leaderboards were turned off.
+          if (live) setShowLeaderboards(true)
+        })
+    }
+    load()
+    window.addEventListener('settings-changed', load)
     return () => {
       live = false
+      window.removeEventListener('settings-changed', load)
     }
   }, [loggedIn, user])
 

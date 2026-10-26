@@ -265,7 +265,7 @@ describe('Settings Profile section', () => {
     const named = await screen.findByRole('button', { name: 'Show my name' })
     expect(named).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByRole('button', { name: 'Show as anonymous' })).toHaveAttribute('aria-pressed', 'false')
-    expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).toHaveAttribute('aria-pressed', 'false')
+    expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).not.toHaveAttribute('aria-pressed')
     // The description names what the middle choice looks like on the board and
     // what the last one costs, rather than leaving three labels to guess at.
     expect(screen.getByText(/Anonymous shows your row as Anonymous/)).toBeInTheDocument()
@@ -287,7 +287,15 @@ describe('Settings Profile section', () => {
     render(<SettingsPage />)
     fireEvent.click(await screen.findByRole('button', { name: 'Turn off leaderboards' }))
     await waitFor(() => expect(updateSettingsMock).toHaveBeenCalledWith({ leaderboard_privacy: 'hidden' }))
-    expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).toHaveAttribute('aria-pressed', 'true')
+    expect(await screen.findByRole('button', { name: 'Turn on leaderboards' })).toBeInTheDocument()
+  })
+
+  it('turns leaderboards back on from the same control', async () => {
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'hidden' })
+    render(<SettingsPage />)
+    fireEvent.click(await screen.findByRole('button', { name: 'Turn on leaderboards' }))
+    await waitFor(() => expect(updateSettingsMock).toHaveBeenCalledWith({ leaderboard_privacy: 'named' }))
+    expect(await screen.findByRole('button', { name: 'Show my name' })).toHaveAttribute('aria-pressed', 'true')
   })
 
   // Optimistic UI is only safe if it can be undone. Unlike the timer switch,
@@ -302,6 +310,6 @@ describe('Settings Profile section', () => {
     await waitFor(() =>
       expect(screen.getByRole('button', { name: 'Show my name' })).toHaveAttribute('aria-pressed', 'true'),
     )
-    expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).toHaveAttribute('aria-pressed', 'false')
+    expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).not.toHaveAttribute('aria-pressed')
   })
 })

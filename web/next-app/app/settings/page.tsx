@@ -144,6 +144,7 @@ export default function SettingsPage() {
     try {
       await updateSettings(next)
       setSaved(true)
+      window.dispatchEvent(new Event('settings-changed'))
       setTimeout(() => setSaved(false), 2000)
     } catch {
       console.error('updateSettings failed')
@@ -433,7 +434,7 @@ export default function SettingsPage() {
               <div className="border-t border-mathua-border pt-6 min-w-0">
                 <span id="leaderboard-privacy-label" className="font-mono text-sm text-mathua-primary">Leaderboard privacy</span>
                 <p id="leaderboard-privacy-help" className="text-mathua-muted text-xs mt-1">
-                  Anonymous shows your row as Anonymous on the public board. Turning leaderboards off also removes the leaderboard from navigation.
+                  Anonymous shows your row as Anonymous on the public board. Turning leaderboards off also removes the leaderboard from navigation. You can turn them back on here at any time.
                 </p>
                 <div
                   role="group"
@@ -443,19 +444,22 @@ export default function SettingsPage() {
                 >
                   {LEADERBOARD_PRIVACY_CHOICES.map(choice => {
                     const selected = leaderboardPrivacy === choice.value
+                    const isOffToggle = choice.value === 'hidden'
+                    const label = isOffToggle && selected ? 'Turn on leaderboards' : choice.label
+                    const nextValue = isOffToggle && selected ? 'named' : choice.value
                     return (
                       <button
                         key={choice.value}
                         type="button"
-                        aria-pressed={selected}
-                        onClick={() => handleLeaderboardPrivacy(choice.value)}
+                        aria-pressed={isOffToggle ? undefined : selected}
+                        onClick={() => handleLeaderboardPrivacy(nextValue)}
                         className={`border rounded-none px-4 h-9 text-xs font-mono transition-colors ${
                           selected
                             ? 'border-mathua-blue text-mathua-blue bg-mathua-blue-faint'
                             : 'border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue'
                         }`}
                       >
-                        {choice.label}
+                        {label}
                       </button>
                     )
                   })}
