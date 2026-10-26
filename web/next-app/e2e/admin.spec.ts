@@ -332,7 +332,7 @@ test.describe('administrator management', () => {
   // The mobile case, on a phone viewport. The desktop rail on /profile has carried Admin since
   // Admin V2, but /profile is one tap from the tab bar and no other surface offered it, so an
   // administrator on a phone could reach administration only by typing the URL. This drives the
-  // real navigation a phone renders, the compass overflow in the header, not a resized desktop.
+  // real navigation a phone renders, the sidebar sheet in the app shell, not a resized desktop.
   test('an administrator can reach /admin from a phone', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     stubApi(page, [ROOT, CONTRIBUTOR], 'owner')
@@ -340,8 +340,8 @@ test.describe('administrator management', () => {
     await signIn(page, 'owner')
     await page.goto('/learn')
 
-    await page.getByRole('button', { name: 'Open navigation menu' }).click()
-    const admin = page.getByRole('menu', { name: 'Site navigation' }).getByRole('menuitem', { name: 'Admin' })
+    await page.locator('button:has(span:text-is("λ"))').first().click()
+    const admin = page.getByRole('dialog').getByRole('link', { name: 'Admin' })
     await expect(admin).toBeVisible()
     await admin.click()
     await expect(page).toHaveURL(/\/admin/)
@@ -355,8 +355,8 @@ test.describe('administrator management', () => {
     await signIn(page, 'student')
     await page.goto('/learn')
 
-    await page.getByRole('button', { name: 'Open navigation menu' }).click()
-    await expect(page.getByRole('menu', { name: 'Site navigation' }).getByRole('menuitem', { name: 'Admin' })).toHaveCount(0)
+    await page.locator('button:has(span:text-is("λ"))').first().click()
+    await expect(page.getByRole('dialog').getByRole('link', { name: 'Admin' })).toHaveCount(0)
   })
 
   // The case that actually happened, and that every test above missed.
@@ -385,8 +385,8 @@ test.describe('administrator management', () => {
     })
 
     await page.goto('/learn')
-    await page.getByRole('button', { name: 'Open navigation menu' }).click()
-    await expect(page.getByRole('menu', { name: 'Site navigation' }).getByRole('menuitem', { name: 'Admin' }))
+    await page.locator('button:has(span:text-is("λ"))').first().click()
+    await expect(page.getByRole('dialog').getByRole('link', { name: 'Admin' }))
       .toBeVisible({ timeout: 10_000 })
 
     // …and the stale session is repaired, so the next page load needs no request.
