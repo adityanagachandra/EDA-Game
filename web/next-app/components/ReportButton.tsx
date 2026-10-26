@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { submitReport, type ReportKind, type ReportReason } from '../lib/api'
+import { ChevronDown } from './icons'
 
 interface ReportButtonProps {
   conceptId?: string
@@ -119,7 +120,7 @@ export default function ReportButton(props: ReportButtonProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Report a problem"
-      className="fixed inset-0 z-[3000] flex items-end sm:items-center justify-center bg-black/60 p-0 sm:p-4"
+      className="fixed inset-0 z-[3000] flex items-end sm:items-center justify-center bg-black/60 px-3 sm:p-4"
     >
     <div className="w-full sm:max-w-md max-h-[85vh] overflow-y-auto border border-mathua-border bg-mathua-bg p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
       <div className="flex items-center justify-between mb-2">
@@ -134,15 +135,21 @@ export default function ReportButton(props: ReportButtonProps) {
           Cancel
         </button>
       </div>
-      <select
-        value={reason}
-        onChange={e => setReason(e.target.value as ReportReason)}
-        className="w-full bg-mathua-surface border border-mathua-border px-2 h-9 text-xs font-mono text-mathua-primary outline-none"
-      >
-        {REASONS.map(r => (
-          <option key={r.value} value={r.value}>{r.label}</option>
-        ))}
-      </select>
+      <div className="relative">
+        <select
+          value={reason}
+          onChange={e => setReason(e.target.value as ReportReason)}
+          className="w-full appearance-none rounded-none bg-mathua-surface border border-mathua-border px-2 pr-8 h-9 text-xs font-mono text-mathua-primary outline-none"
+        >
+          {REASONS.map(r => (
+            <option key={r.value} value={r.value}>{r.label}</option>
+          ))}
+        </select>
+        <ChevronDown
+          size={12}
+          className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-mathua-muted"
+        />
+      </div>
       <textarea
         autoFocus
         value={detail}

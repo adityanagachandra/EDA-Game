@@ -50,6 +50,11 @@ function expectFixedBox(link: Element) {
 }
 
 describe('AppSidebar', () => {
+  it('shows an unread notification alert on the Notifications item', () => {
+    renderSidebar({ notificationUnread: 2 })
+    expect(screen.getByText('2 unread notifications')).toBeInTheDocument()
+  })
+
   it('renders Navigate group without a Diagnostic entry (no CTA duplication)', () => {
     renderSidebar()
     expect(screen.getByText('Navigate')).toBeInTheDocument()
@@ -61,8 +66,17 @@ describe('AppSidebar', () => {
     expect(screen.queryByText('Review Now')).toBeNull()
   })
 
-  it('offers no way into the closed reference library', () => {
-    // The sidebar keeps its own list rather than importing nav.ts, which makes it the one
+  it('places Notifications below the Resources group', () => {
+    renderSidebar()
+    const resources = screen.getByRole('button', { name: 'Resources' })
+    const notifications = screen.getByText('Notifications').closest('a')
+    expect(notifications).not.toBeNull()
+    expect(
+      resources.compareDocumentPosition(notifications as Node) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy()
+  })
+
+  it('offers no way into the closed reference library', () => {    // The sidebar keeps its own list rather than importing nav.ts, which makes it the one
     // navigation surface a change to lib/nav.ts cannot reach. It held a Study entry for as long
     // as the library existed, so this asserts the entry is gone rather than assuming it.
     renderSidebar()
@@ -235,5 +249,26 @@ describe('AppSidebar', () => {
 
     renderSidebar()
     expect(screen.queryByRole('link', { name: /Admin/ })).toBeNull()
+  })
+
+  // A learner who turns leaderboards off asked for the surface to go away, so the
+  // rail must lose the entry and not merely stop naming them on the board. The
+  // default is the pre-existing behaviour and is asserted too, because a prop
+  // defaulting to false would quietly remove a destination for everyone.
+  it('removes the Leaderboard entry when leaderboards are turned off', () => {
+    renderSidebar({ showLeaderboards: false })
+    const sidebar = screen.getByTestId('profile-sidebar')
+    expect(sidebar.querySelector('a[href="/leaderboard"]')).toBeNull()
+    expect(within(sidebar).queryByText('Leaderboard')).toBeNull()
+    // Only that destination is gone: the rest of the daily loop stays.
+    expect(sidebar.querySelector('a[href="/learn"]')).not.toBeNull()
+    expect(within(sidebar).getByText('Settings')).toBeInTheDocument()
+  })
+
+  it('keeps the Leaderboard entry by default', () => {
+    renderSidebar()
+    const sidebar = screen.getByTestId('profile-sidebar')
+    expect(sidebar.querySelector('a[href="/leaderboard"]')).not.toBeNull()
+    expect(within(sidebar).getByText('Leaderboard')).toBeInTheDocument()
   })
 })

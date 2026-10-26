@@ -508,6 +508,14 @@ export default function OnboardPage() {
     if (step === 'diagnostic' && !lastResult && question) onboardInputRef.current?.focus()
   }, [step, lastResult, question])
 
+  // A step replaces a long welcome screen with a short question screen. On a
+  // phone the old scroll offset survives that change and lands on the footer,
+  // so reset the viewport whenever the step changes. The focus effect above
+  // runs first; this then wins the scroll position.
+  useEffect(() => {
+    if (mounted) window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [mounted, step])
+
   function finishOnboarding() {
     const user = getUserInfo()
     if (user) {

@@ -868,6 +868,12 @@ type Repository interface {
 	GetReportSeenAt(studentID string) (string, error)
 	// SetReportSeenAt records that the account has now seen its report history.
 	SetReportSeenAt(studentID, seenAt string) error
+	// GetReportClearedAt returns the RFC3339 time the account last cleared its
+	// report history. Older reports stay in the moderation log but leave this
+	// learner's list.
+	GetReportClearedAt(studentID string) (string, error)
+	// ClearReports hides the account's current report history and marks it seen.
+	ClearReports(studentID, clearedAt string) error
 
 	// ImportReport copies a report that came from another installation into this one.
 	//
