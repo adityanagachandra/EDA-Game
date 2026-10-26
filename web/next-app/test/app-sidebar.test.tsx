@@ -85,9 +85,19 @@ describe('AppSidebar', () => {
     expect(learn).toBeLessThan(graph)
   })
 
-  it('renders Resources group with Docs, Glossary, Contribute, and Creator note links', () => {
+  it('folds reference links behind a Resources disclosure', () => {
     renderSidebar()
     expect(screen.getByText('Resources')).toBeInTheDocument()
+    // The five reference pages are not part of the daily loop and stay closed
+    // until asked for, so the rail shows nine rows rather than thirteen.
+    expect(screen.queryByText('Docs')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Resources' }))
+    expect(screen.getByText('Docs')).toBeInTheDocument()
+  })
+
+  it('renders Resources links with Docs, Glossary, Contribute, and Creator note links', () => {
+    renderSidebar()
+    fireEvent.click(screen.getByRole('button', { name: 'Resources' }))
     for (const label of ['Docs', 'Glossary', 'Contribute', "Creator's note"]) {
       expect(screen.getByText(label)).toBeInTheDocument()
     }
@@ -158,10 +168,11 @@ describe('AppSidebar', () => {
 
   it('menu labels hide in icon-collapse mode (icons only, no text peek)', () => {
     renderSidebar()
+    fireEvent.click(screen.getByRole('button', { name: 'Resources' }))
     const sidebar = screen.getByTestId('profile-sidebar')
     // Every text label next to an icon carries the collapse-hide class;
     // tooltips (not visible text) carry the label when collapsed.
-    const labels = ['Mathua', 'Learn', 'Graph', 'Domains', 'Leaderboard', 'History', 'Settings', 'Docs', 'Contribute', "Creator's note", 'Sign out']
+    const labels = ['Mathua', 'Learn', 'Graph', 'Domains', 'Leaderboard', 'History', 'Settings', 'Resources', 'Docs', 'Contribute', "Creator's note", 'Sign out']
     for (const label of labels) {
       const el = screen.getByText(label, { exact: true })
       expect(sidebar.contains(el)).toBe(true)
