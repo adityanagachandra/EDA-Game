@@ -76,6 +76,14 @@ export const test = base.extend({
     await context.route('**/api/next**', (route) =>
       route.fulfill({ json: { done: true, next: null, total: 0, message: 'Nothing to review' } }),
     )
+    // A guest who opens a lesson by its link mints a guest token before the first question is
+    // served, so every `/learn?concept=` page asks for one. The answer is the server's: the id
+    // the client proposed, now bound to a token. A spec that asserts on the token registers its
+    // own route and wins, because it is later.
+    await context.route('**/api/auth/guest', (route) => {
+      const { student_id } = route.request().postDataJSON() as { student_id: string }
+      return route.fulfill({ json: { token: 'e2e-guest-token', student_id } })
+    })
     // The report badge in the header asks for the learner's own moderation
     // reports on every signed-in page. An account with no reports is the
     // default the shell should assume; a spec that wants history registers its
