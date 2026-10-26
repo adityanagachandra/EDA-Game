@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
-import Header from '../../../components/Header'
-import BottomTabs from '../../../components/BottomTabs'
+import AppShell from '../../../components/app-shell'
 import Footer from '../../../components/Footer'
 import SectionHeader from '../../../components/SectionHeader'
 import AdminNav from '../../../components/AdminNav'
@@ -98,152 +97,148 @@ export default function AdminUsersPage() {
   }
 
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <SectionHeader label="Administration" title="Users" />
-          <AdminNav />
+    <AppShell>
+      <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <SectionHeader label="Administration" title="Users" />
+        <AdminNav />
 
-          {!isStaff && (
-            <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
-              This area needs a staff role. If you hold one, sign in with that account.
-            </p>
-          )}
-
-          <form
-            className="mb-4 flex gap-2"
-            onSubmit={(e) => { e.preventDefault(); setActionError(''); load(query) }}
-          >
-            <label htmlFor="admin-user-search" className="sr-only">Search accounts</label>
-            <input
-              id="admin-user-search"
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search by email, id, username or name…"
-              className="flex-1 min-w-0 border border-mathua-border bg-mathua-surface px-3 h-11 font-mono text-xs text-mathua-primary placeholder:text-mathua-muted focus:border-mathua-blue focus:outline-none"
-            />
-            <button type="submit" className="border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint px-4 h-11 font-mono text-xs">
-              Search
-            </button>
-          </form>
-
-          {actionError && (
-            <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
-              {actionError}
-            </p>
-          )}
-          {listError && (
-            <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
-              {listError}
-            </p>
-          )}
-          {notice && (
-            <p role="status" className="mb-4 border border-mathua-green-faint bg-mathua-surface p-4 font-mono text-xs text-mathua-green">
-              {notice}
-            </p>
-          )}
-
-          {/* Guarded on the error as well as the null. The other admin pages do this and this one
-              did not, which meant a learner who navigated here saw an error box from the 403 and
-              "Loading accounts…" underneath it, a page claiming to be busy while it had already
-              given up, and would keep claiming indefinitely. */}
-          {users === null && !listError && !actionError && (
-            <p className="font-mono text-xs text-mathua-muted">Loading accounts…</p>
-          )}
-
-          {users !== null && users.length === 0 && (
-            <p className="font-mono text-xs text-mathua-muted">No accounts match that search.</p>
-          )}
-
-          {users !== null && users.length > 0 && (
-            <div className="border border-mathua-border overflow-x-hidden">
-              <table className="w-full font-mono text-xs">
-                <caption className="sr-only">Accounts, their roles, and the action available on each</caption>
-                <thead>
-                  <tr className="border-b border-mathua-border text-mathua-muted text-left">
-                    <th scope="col" className="px-3 py-2 font-normal">Name</th>
-                    <th scope="col" className="px-3 py-2 font-normal">Email</th>
-                    <th scope="col" className="px-3 py-2 font-normal">Role</th>
-                    <th scope="col" className="px-3 py-2 font-normal text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users.map((u) => {
-                    const self = u.id === user?.student_id
-                    return (
-                      <tr key={u.id} className="border-b border-mathua-border last:border-b-0 align-top">
-                        <td className="px-3 py-2 min-w-0">
-                          <Link
-                            href={`/admin/users/detail?id=${encodeURIComponent(u.id)}`}
-                            className="block text-mathua-primary truncate hover:underline"
-                          >
-                            {labelFor(u)}
-                          </Link>
-                          {/* The id is how an administrator names a person over chat, and the
-                              provider flag answers "why can't they sign in with a password", 
-                              both are facts about the account, not credentials. */}
-                          <div className="text-mathua-muted truncate" title={u.id}>{u.id}</div>
-                          {u.username && <div className="text-mathua-muted truncate">@{u.username}</div>}
-                          {u.created_at && (
-                            <div className="text-mathua-muted">Joined {u.created_at.slice(0, 10)}</div>
-                          )}
-                          {!u.has_password && (
-                            <div className="text-mathua-muted">Signed in with a provider, not a password</div>
-                          )}
-                        </td>
-                        <td className="px-3 py-2 min-w-0 text-mathua-secondary break-all">{u.email || ', '}</td>
-                        <td className="px-3 py-2 whitespace-nowrap">
-                          <span className={u.role === 'student' ? 'text-mathua-muted' : 'text-mathua-blue'}>
-                            {u.role}{self ? ' (you)' : ''}
-                          </span>
-                        </td>
-                        <td className="px-3 py-2 text-right whitespace-nowrap">
-                          {canManage && !self ? (
-                            <label className="sr-only" htmlFor={`role-${u.id}`}>Change role for {labelFor(u)}</label>
-                          ) : null}
-                          {canManage && !self ? (
-                            <select
-                              id={`role-${u.id}`}
-                              value=""
-                              onChange={(e) => {
-                                const next = e.target.value as Role
-                                if (!next) return
-                                setActionError('')
-                                setNotice('')
-                                setPending({ user: u, next })
-                              }}
-                              className="border border-mathua-border bg-mathua-surface px-2 h-9 font-mono text-[11px] text-mathua-secondary"
-                            >
-                              <option value="">Change role…</option>
-                              {(me?.assignable_roles ?? []).filter((r) => r !== u.role).map((r) => (
-                                <option key={r} value={r}>{r}</option>
-                              ))}
-                            </select>
-                          ) : (
-                            <span className="font-mono text-[11px] text-mathua-muted">, </span>
-                          )}
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          <p className="mt-4 font-mono text-[11px] text-mathua-muted">
-            Learning state, XP, mastery, attempts, concept progress, is not editable here. It is
-            the learning system&apos;s record, and every change is visible at /admin/audit.
+        {!isStaff && (
+          <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
+            This area needs a staff role. If you hold one, sign in with that account.
           </p>
+        )}
 
-          <Link href="/admin" className="mt-10 inline-block font-mono text-xs text-mathua-secondary hover:text-mathua-blue">
-            ← Overview
-          </Link>
-        </main>
-      </div>
-      <BottomTabs />
+        <form
+          className="mb-4 flex gap-2"
+          onSubmit={(e) => { e.preventDefault(); setActionError(''); load(query) }}
+        >
+          <label htmlFor="admin-user-search" className="sr-only">Search accounts</label>
+          <input
+            id="admin-user-search"
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search by email, id, username or name…"
+            className="flex-1 min-w-0 border border-mathua-border bg-mathua-surface px-3 h-11 font-mono text-xs text-mathua-primary placeholder:text-mathua-muted focus:border-mathua-blue focus:outline-none"
+          />
+          <button type="submit" className="border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint px-4 h-11 font-mono text-xs">
+            Search
+          </button>
+        </form>
+
+        {actionError && (
+          <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
+            {actionError}
+          </p>
+        )}
+        {listError && (
+          <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
+            {listError}
+          </p>
+        )}
+        {notice && (
+          <p role="status" className="mb-4 border border-mathua-green-faint bg-mathua-surface p-4 font-mono text-xs text-mathua-green">
+            {notice}
+          </p>
+        )}
+
+        {/* Guarded on the error as well as the null. The other admin pages do this and this one
+            did not, which meant a learner who navigated here saw an error box from the 403 and
+            "Loading accounts…" underneath it, a page claiming to be busy while it had already
+            given up, and would keep claiming indefinitely. */}
+        {users === null && !listError && !actionError && (
+          <p className="font-mono text-xs text-mathua-muted">Loading accounts…</p>
+        )}
+
+        {users !== null && users.length === 0 && (
+          <p className="font-mono text-xs text-mathua-muted">No accounts match that search.</p>
+        )}
+
+        {users !== null && users.length > 0 && (
+          <div className="border border-mathua-border overflow-x-hidden">
+            <table className="w-full font-mono text-xs">
+              <caption className="sr-only">Accounts, their roles, and the action available on each</caption>
+              <thead>
+                <tr className="border-b border-mathua-border text-mathua-muted text-left">
+                  <th scope="col" className="px-3 py-2 font-normal">Name</th>
+                  <th scope="col" className="px-3 py-2 font-normal">Email</th>
+                  <th scope="col" className="px-3 py-2 font-normal">Role</th>
+                  <th scope="col" className="px-3 py-2 font-normal text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((u) => {
+                  const self = u.id === user?.student_id
+                  return (
+                    <tr key={u.id} className="border-b border-mathua-border last:border-b-0 align-top">
+                      <td className="px-3 py-2 min-w-0">
+                        <Link
+                          href={`/admin/users/detail?id=${encodeURIComponent(u.id)}`}
+                          className="block text-mathua-primary truncate hover:underline"
+                        >
+                          {labelFor(u)}
+                        </Link>
+                        {/* The id is how an administrator names a person over chat, and the
+                            provider flag answers "why can't they sign in with a password", 
+                            both are facts about the account, not credentials. */}
+                        <div className="text-mathua-muted truncate" title={u.id}>{u.id}</div>
+                        {u.username && <div className="text-mathua-muted truncate">@{u.username}</div>}
+                        {u.created_at && (
+                          <div className="text-mathua-muted">Joined {u.created_at.slice(0, 10)}</div>
+                        )}
+                        {!u.has_password && (
+                          <div className="text-mathua-muted">Signed in with a provider, not a password</div>
+                        )}
+                      </td>
+                      <td className="px-3 py-2 min-w-0 text-mathua-secondary break-all">{u.email || ', '}</td>
+                      <td className="px-3 py-2 whitespace-nowrap">
+                        <span className={u.role === 'student' ? 'text-mathua-muted' : 'text-mathua-blue'}>
+                          {u.role}{self ? ' (you)' : ''}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2 text-right whitespace-nowrap">
+                        {canManage && !self ? (
+                          <label className="sr-only" htmlFor={`role-${u.id}`}>Change role for {labelFor(u)}</label>
+                        ) : null}
+                        {canManage && !self ? (
+                          <select
+                            id={`role-${u.id}`}
+                            value=""
+                            onChange={(e) => {
+                              const next = e.target.value as Role
+                              if (!next) return
+                              setActionError('')
+                              setNotice('')
+                              setPending({ user: u, next })
+                            }}
+                            className="border border-mathua-border bg-mathua-surface px-2 h-9 font-mono text-[11px] text-mathua-secondary"
+                          >
+                            <option value="">Change role…</option>
+                            {(me?.assignable_roles ?? []).filter((r) => r !== u.role).map((r) => (
+                              <option key={r} value={r}>{r}</option>
+                            ))}
+                          </select>
+                        ) : (
+                          <span className="font-mono text-[11px] text-mathua-muted">, </span>
+                        )}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        <p className="mt-4 font-mono text-[11px] text-mathua-muted">
+          Learning state, XP, mastery, attempts, concept progress, is not editable here. It is
+          the learning system&apos;s record, and every change is visible at /admin/audit.
+        </p>
+
+        <Link href="/admin" className="mt-10 inline-block font-mono text-xs text-mathua-secondary hover:text-mathua-blue">
+          ← Overview
+        </Link>
+      </main>
       <Footer />
 
       <ConfirmDialog
@@ -266,6 +261,6 @@ export default function AdminUsersPage() {
           </>
         )}
       </ConfirmDialog>
-    </>
+    </AppShell>
   )
 }

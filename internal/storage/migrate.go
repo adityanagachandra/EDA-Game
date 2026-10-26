@@ -296,6 +296,14 @@ CREATE TABLE IF NOT EXISTS question_reports (
 CREATE INDEX IF NOT EXISTS idx_reports_status  ON question_reports(status, created_at);
 CREATE INDEX IF NOT EXISTS idx_reports_concept ON question_reports(concept_id);
 
+-- The last time an account opened its own report history. A resolved report
+-- newer than this is unread; one shared timestamp is enough because the page
+-- lists every report at once. Deleting the account removes the marker.
+CREATE TABLE IF NOT EXISTS report_views (
+    student_id TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
+    seen_at    TEXT NOT NULL DEFAULT ''
+);
+
 -- One optional screenshot per report. The bytes live beside the moderation
 -- record so deleting an account removes the image with the report that named
 -- it, and no upload can outlive the queue entry that explains it.

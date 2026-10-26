@@ -70,8 +70,10 @@ test('the profile menu opens beside its trigger, not at the window edge', async 
     page.route(pattern, r => r.fulfill({ json: body }))
   }
 
-  // /learn, not /profile: the profile page is built from the sidebar shell and renders no Header.
-  await page.goto('/learn')
+  // /how-it-works is a public page, so it still renders the horizontal Header.
+  // /learn and the other product pages moved to the sidebar shell and have no
+  // "Open profile menu" trigger.
+  await page.goto('/how-it-works')
   const trigger = page.getByRole('button', { name: 'Open profile menu' })
   await trigger.click()
   const panel = page.getByRole('menu', { name: 'Profile' })

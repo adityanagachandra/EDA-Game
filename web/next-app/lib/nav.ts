@@ -49,6 +49,10 @@ export const DISPLAY_LINKS: NavLink[] = [
 ]
 
 export const LOGGED_IN_LINKS: NavLink[] = [
+  // The learner's own moderation reports, distinct from /reports, which is the
+  // learning-progress report. The label says whose reports they are so the two
+  // destinations cannot be mistaken for each other.
+  { label: 'My reports', href: '/my-reports' },
   { label: 'Reports', href: '/reports' },
   { label: 'Profile', href: '/profile' },
   { label: 'Settings', href: '/settings' },

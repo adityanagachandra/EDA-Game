@@ -482,12 +482,19 @@ export default function MathLiveField({
     handleRef.current = { focus: () => ref.current?.focus() }
   }
 
+  // MathLive reads its placeholder as mathematics, so a literal space in
+  // "Your answer" is discarded and the field reads "Youranswer". Wrap authored
+  // placeholder text in \text{} so the space survives. A placeholder that is
+  // already LaTeX is left alone.
+  const fieldPlaceholder =
+    placeholder && !placeholder.startsWith('\\') ? `\\text{${placeholder}}` : placeholder
+
   return (
     <math-field
       ref={ref}
       class="mathua-math-field clear-of-tabs"
       data-status={status === 'correct' || status === 'incorrect' ? status : undefined}
-      placeholder={placeholder}
+      placeholder={fieldPlaceholder}
       aria-label={ariaLabel}
       onInput={emit}
       onFocus={() => installKeyboard(false)}

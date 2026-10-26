@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
-import Header from '../../../components/Header'
-import BottomTabs from '../../../components/BottomTabs'
+import AppShell from '../../../components/app-shell'
 import Footer from '../../../components/Footer'
 import SectionHeader from '../../../components/SectionHeader'
 import AdminNav from '../../../components/AdminNav'
@@ -90,253 +89,249 @@ export default function AdminLabPage() {
   }
 
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[1100px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <SectionHeader label="Administration" title="Lab" />
-          <AdminNav />
+    <AppShell>
+      <main className="mx-auto w-full max-w-[1100px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <SectionHeader label="Administration" title="Lab" />
+        <AdminNav />
 
-          <p className="mb-4 max-w-3xl font-mono text-[11px] leading-relaxed text-mathua-secondary">
-            Generate any concept&rsquo;s questions, answer them with the field a learner gets, and grade them with the
-            same engine. Nothing here writes an attempt, XP, streak or mastery.
-          </p>
+        <p className="mb-4 max-w-3xl font-mono text-[11px] leading-relaxed text-mathua-secondary">
+          Generate any concept&rsquo;s questions, answer them with the field a learner gets, and grade them with the
+          same engine. Nothing here writes an attempt, XP, streak or mastery.
+        </p>
 
-          <div className="mb-4 flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => setView('generate')}
-              className={
-                view === 'generate'
-                  ? 'border border-mathua-blue text-mathua-blue px-3 h-9 font-mono text-xs'
-                  : 'border border-mathua-border text-mathua-secondary hover:text-mathua-blue px-3 h-9 font-mono text-xs'
-              }
-            >
-              Generate
-            </button>
-            <button
-              type="button"
-              onClick={() => setView('formats')}
-              className={
-                view === 'formats'
-                  ? 'border border-mathua-blue text-mathua-blue px-3 h-9 font-mono text-xs'
-                  : 'border border-mathua-border text-mathua-secondary hover:text-mathua-blue px-3 h-9 font-mono text-xs'
-              }
-            >
-              Formats that differ
-            </button>
-          </div>
+        <div className="mb-4 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setView('generate')}
+            className={
+              view === 'generate'
+                ? 'border border-mathua-blue text-mathua-blue px-3 h-9 font-mono text-xs'
+                : 'border border-mathua-border text-mathua-secondary hover:text-mathua-blue px-3 h-9 font-mono text-xs'
+            }
+          >
+            Generate
+          </button>
+          <button
+            type="button"
+            onClick={() => setView('formats')}
+            className={
+              view === 'formats'
+                ? 'border border-mathua-blue text-mathua-blue px-3 h-9 font-mono text-xs'
+                : 'border border-mathua-border text-mathua-secondary hover:text-mathua-blue px-3 h-9 font-mono text-xs'
+            }
+          >
+            Formats that differ
+          </button>
+        </div>
 
-          {view === 'generate' ? (
-            <>
-              <input
-                type="search"
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                placeholder="Search concepts by id or label"
-                className="mb-3 w-full border border-mathua-border bg-mathua-code px-3 h-11 font-mono text-xs text-mathua-primary"
-              />
+        {view === 'generate' ? (
+          <>
+            <input
+              type="search"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search concepts by id or label"
+              className="mb-3 w-full border border-mathua-border bg-mathua-code px-3 h-11 font-mono text-xs text-mathua-primary"
+            />
 
-              {searchError && (
-                <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
-                  {searchError}
-                </p>
-              )}
-              {!results && !searchError && <Loading label="LOADING CONCEPTS" />}
-
-              {results && (
-                <ul className="mb-6 max-h-72 overflow-y-auto border border-mathua-border">
-                  {results.map((c) => (
-                    <li key={c.id} className="border-b border-mathua-border last:border-b-0">
-                      <button
-                        type="button"
-                        onClick={() => pick(c)}
-                        className={
-                          selected?.id === c.id
-                            ? 'w-full bg-mathua-hover px-4 py-2 text-left'
-                            : 'w-full px-4 py-2 text-left hover:bg-mathua-hover'
-                        }
-                      >
-                        <span className="flex items-baseline justify-between gap-3">
-                          <span className="font-mono text-xs text-mathua-primary">{c.label}</span>
-                          <span className="font-mono text-[10px] text-mathua-muted">{c.id}</span>
-                        </span>
-                        <span className="mt-1 block font-mono text-[10px] text-mathua-secondary">
-                          {c.domain} · {c.grading_type} · field {c.answer_input_mode}
-                          {c.answer_overridden ? ' (declared)' : ''}
-                        </span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              {results && results.length === 0 && (
-                <p className="mb-6 border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
-                  No concept matches that search.
-                </p>
-              )}
-              {results && results.length > 0 && (
-                <p className="mb-4 font-mono text-[11px] text-mathua-muted">{total} matching</p>
-              )}
-
-              {selected && (
-                <section className="border border-mathua-border bg-mathua-surface">
-                  <header className="border-b border-mathua-border px-4 py-3">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h2 className="font-mono text-xs text-mathua-primary">{selected.label}</h2>
-                      <span className="font-mono text-[10px] text-mathua-muted">{selected.id}</span>
-                    </div>
-                    <p className="mt-1 font-mono text-[10px] text-mathua-secondary">
-                      grading type {selected.grading_type} · field {selected.answer_input_mode} ·{' '}
-                      {selected.answer_overridden ? 'declared by the generator' : 'derived from the grading type'}
-                    </p>
-                    <p className="mt-1 font-mono text-[11px] text-mathua-secondary">{selected.answer_hint}</p>
-                  </header>
-
-                  <div className="border-b border-mathua-border px-4 py-3">
-                    <div className="flex flex-wrap items-center gap-4">
-                      <div>
-                        <span className="mr-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Difficulty</span>
-                        {DIFFICULTIES.map((d) => (
-                          <button
-                            key={d}
-                            type="button"
-                            onClick={() => { setDifficulty(d); void generate(selected, d, count) }}
-                            className={
-                              difficulty === d
-                                ? 'ml-1 border border-mathua-blue px-2 h-8 font-mono text-xs text-mathua-blue'
-                                : 'ml-1 border border-mathua-border px-2 h-8 font-mono text-xs text-mathua-secondary hover:text-mathua-blue'
-                            }
-                          >
-                            {d}
-                          </button>
-                        ))}
-                      </div>
-                      <div>
-                        <span className="mr-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Count</span>
-                        {COUNTS.map((n) => (
-                          <button
-                            key={n}
-                            type="button"
-                            onClick={() => { setCount(n); void generate(selected, difficulty, n) }}
-                            className={
-                              count === n
-                                ? 'ml-1 border border-mathua-blue px-2 h-8 font-mono text-xs text-mathua-blue'
-                                : 'ml-1 border border-mathua-border px-2 h-8 font-mono text-xs text-mathua-secondary hover:text-mathua-blue'
-                            }
-                          >
-                            {n}
-                          </button>
-                        ))}
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => void generate(selected, difficulty, count)}
-                        disabled={genBusy}
-                        className="border border-mathua-primary px-3 h-9 font-mono text-xs text-mathua-primary hover:bg-mathua-hover disabled:opacity-50"
-                      >
-                        {genBusy ? 'Generating…' : 'Generate again'}
-                      </button>
-                      <Link
-                        href={`/admin/lab/play?concept=${encodeURIComponent(selected.id)}`}
-                        className="border border-mathua-border px-3 h-9 inline-flex items-center font-mono text-xs text-mathua-secondary hover:text-mathua-blue"
-                      >
-                        Open the learner view
-                      </Link>
-                    </div>
-                  </div>
-
-                  {genError && (
-                    <p role="alert" className="border-b border-mathua-border px-4 py-3 font-mono text-xs text-mathua-red">
-                      {genError}
-                    </p>
-                  )}
-                  {genBusy && !generated && <Loading label="GENERATING QUESTIONS" />}
-
-                  {generated && (
-                    <ul className="space-y-3 p-4">
-                      {generated.questions.map((question, i) => (
-                        <LabQuestionCard
-                          key={`${generated.concept_id}-${i}-${question.question}`}
-                          question={question}
-                          conceptId={generated.concept_id}
-                          gradingType={generated.grading_type}
-                          index={i}
-                        />
-                      ))}
-                    </ul>
-                  )}
-                </section>
-              )}
-            </>
-          ) : (
-            <section>
-              <p className="mb-3 max-w-3xl font-mono text-[11px] leading-relaxed text-mathua-secondary">
-                Every concept whose served field or hint differs from what its grading type would give. These are the
-                concepts where the grader and the input could disagree, which is how a numeric concept ended up with a
-                digits-only keypad in front of an answer like &ldquo;5 R 2&rdquo;.
+            {searchError && (
+              <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
+                {searchError}
               </p>
+            )}
+            {!results && !searchError && <Loading label="LOADING CONCEPTS" />}
 
-              {overrideError && (
-                <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
-                  {overrideError}
-                </p>
-              )}
-              {!overrides && !overrideError && <Loading label="LOADING FORMATS" />}
+            {results && (
+              <ul className="mb-6 max-h-72 overflow-y-auto border border-mathua-border">
+                {results.map((c) => (
+                  <li key={c.id} className="border-b border-mathua-border last:border-b-0">
+                    <button
+                      type="button"
+                      onClick={() => pick(c)}
+                      className={
+                        selected?.id === c.id
+                          ? 'w-full bg-mathua-hover px-4 py-2 text-left'
+                          : 'w-full px-4 py-2 text-left hover:bg-mathua-hover'
+                      }
+                    >
+                      <span className="flex items-baseline justify-between gap-3">
+                        <span className="font-mono text-xs text-mathua-primary">{c.label}</span>
+                        <span className="font-mono text-[10px] text-mathua-muted">{c.id}</span>
+                      </span>
+                      <span className="mt-1 block font-mono text-[10px] text-mathua-secondary">
+                        {c.domain} · {c.grading_type} · field {c.answer_input_mode}
+                        {c.answer_overridden ? ' (declared)' : ''}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
 
-              {overrides && overrides.length === 0 && (
-                <p className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
-                  No concept overrides its grading type. That would mean the guard has nothing to protect.
-                </p>
-              )}
+            {results && results.length === 0 && (
+              <p className="mb-6 border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
+                No concept matches that search.
+              </p>
+            )}
+            {results && results.length > 0 && (
+              <p className="mb-4 font-mono text-[11px] text-mathua-muted">{total} matching</p>
+            )}
 
-              {overrides && overrides.length > 0 && (
-                <div className="overflow-x-auto border border-mathua-border">
-                  <table className="w-full border-collapse text-left">
-                    <thead>
-                      <tr className="border-b border-mathua-border bg-mathua-code">
-                        <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Concept</th>
-                        <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Grading type</th>
-                        <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Field</th>
-                        <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Hint</th>
-                        <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Try</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {overrides.map((c) => (
-                        <tr key={c.id} className="border-b border-mathua-border last:border-b-0">
-                          <td className="px-3 py-2">
-                            <span className="block font-mono text-xs text-mathua-primary">{c.label}</span>
-                            <span className="block font-mono text-[10px] text-mathua-muted">{c.id}</span>
-                          </td>
-                          <td className="px-3 py-2 font-mono text-[11px] text-mathua-secondary">{c.grading_type}</td>
-                          <td className="px-3 py-2 font-mono text-[11px] text-mathua-primary">{c.answer_input_mode}</td>
-                          <td className="px-3 py-2 font-mono text-[11px] text-mathua-secondary">{c.answer_hint}</td>
-                          <td className="px-3 py-2">
-                            <button
-                              type="button"
-                              onClick={() => tryFromTable(c)}
-                              className="border border-mathua-border px-2 h-8 font-mono text-[11px] text-mathua-secondary hover:text-mathua-blue"
-                            >
-                              Generate
-                            </button>
-                          </td>
-                        </tr>
+            {selected && (
+              <section className="border border-mathua-border bg-mathua-surface">
+                <header className="border-b border-mathua-border px-4 py-3">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h2 className="font-mono text-xs text-mathua-primary">{selected.label}</h2>
+                    <span className="font-mono text-[10px] text-mathua-muted">{selected.id}</span>
+                  </div>
+                  <p className="mt-1 font-mono text-[10px] text-mathua-secondary">
+                    grading type {selected.grading_type} · field {selected.answer_input_mode} ·{' '}
+                    {selected.answer_overridden ? 'declared by the generator' : 'derived from the grading type'}
+                  </p>
+                  <p className="mt-1 font-mono text-[11px] text-mathua-secondary">{selected.answer_hint}</p>
+                </header>
+
+                <div className="border-b border-mathua-border px-4 py-3">
+                  <div className="flex flex-wrap items-center gap-4">
+                    <div>
+                      <span className="mr-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Difficulty</span>
+                      {DIFFICULTIES.map((d) => (
+                        <button
+                          key={d}
+                          type="button"
+                          onClick={() => { setDifficulty(d); void generate(selected, d, count) }}
+                          className={
+                            difficulty === d
+                              ? 'ml-1 border border-mathua-blue px-2 h-8 font-mono text-xs text-mathua-blue'
+                              : 'ml-1 border border-mathua-border px-2 h-8 font-mono text-xs text-mathua-secondary hover:text-mathua-blue'
+                          }
+                        >
+                          {d}
+                        </button>
                       ))}
-                    </tbody>
-                  </table>
+                    </div>
+                    <div>
+                      <span className="mr-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Count</span>
+                      {COUNTS.map((n) => (
+                        <button
+                          key={n}
+                          type="button"
+                          onClick={() => { setCount(n); void generate(selected, difficulty, n) }}
+                          className={
+                            count === n
+                              ? 'ml-1 border border-mathua-blue px-2 h-8 font-mono text-xs text-mathua-blue'
+                              : 'ml-1 border border-mathua-border px-2 h-8 font-mono text-xs text-mathua-secondary hover:text-mathua-blue'
+                          }
+                        >
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => void generate(selected, difficulty, count)}
+                      disabled={genBusy}
+                      className="border border-mathua-primary px-3 h-9 font-mono text-xs text-mathua-primary hover:bg-mathua-hover disabled:opacity-50"
+                    >
+                      {genBusy ? 'Generating…' : 'Generate again'}
+                    </button>
+                    <Link
+                      href={`/admin/lab/play?concept=${encodeURIComponent(selected.id)}`}
+                      className="border border-mathua-border px-3 h-9 inline-flex items-center font-mono text-xs text-mathua-secondary hover:text-mathua-blue"
+                    >
+                      Open the learner view
+                    </Link>
+                  </div>
                 </div>
-              )}
-              {overrides && overrides.length > 0 && (
-                <p className="mt-3 font-mono text-[11px] text-mathua-muted">{overrides.length} concepts</p>
-              )}
-            </section>
-          )}
-        </main>
-      </div>
+
+                {genError && (
+                  <p role="alert" className="border-b border-mathua-border px-4 py-3 font-mono text-xs text-mathua-red">
+                    {genError}
+                  </p>
+                )}
+                {genBusy && !generated && <Loading label="GENERATING QUESTIONS" />}
+
+                {generated && (
+                  <ul className="space-y-3 p-4">
+                    {generated.questions.map((question, i) => (
+                      <LabQuestionCard
+                        key={`${generated.concept_id}-${i}-${question.question}`}
+                        question={question}
+                        conceptId={generated.concept_id}
+                        gradingType={generated.grading_type}
+                        index={i}
+                      />
+                    ))}
+                  </ul>
+                )}
+              </section>
+            )}
+          </>
+        ) : (
+          <section>
+            <p className="mb-3 max-w-3xl font-mono text-[11px] leading-relaxed text-mathua-secondary">
+              Every concept whose served field or hint differs from what its grading type would give. These are the
+              concepts where the grader and the input could disagree, which is how a numeric concept ended up with a
+              digits-only keypad in front of an answer like &ldquo;5 R 2&rdquo;.
+            </p>
+
+            {overrideError && (
+              <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
+                {overrideError}
+              </p>
+            )}
+            {!overrides && !overrideError && <Loading label="LOADING FORMATS" />}
+
+            {overrides && overrides.length === 0 && (
+              <p className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
+                No concept overrides its grading type. That would mean the guard has nothing to protect.
+              </p>
+            )}
+
+            {overrides && overrides.length > 0 && (
+              <div className="overflow-x-auto border border-mathua-border">
+                <table className="w-full border-collapse text-left">
+                  <thead>
+                    <tr className="border-b border-mathua-border bg-mathua-code">
+                      <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Concept</th>
+                      <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Grading type</th>
+                      <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Field</th>
+                      <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Hint</th>
+                      <th className="px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-mathua-muted">Try</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {overrides.map((c) => (
+                      <tr key={c.id} className="border-b border-mathua-border last:border-b-0">
+                        <td className="px-3 py-2">
+                          <span className="block font-mono text-xs text-mathua-primary">{c.label}</span>
+                          <span className="block font-mono text-[10px] text-mathua-muted">{c.id}</span>
+                        </td>
+                        <td className="px-3 py-2 font-mono text-[11px] text-mathua-secondary">{c.grading_type}</td>
+                        <td className="px-3 py-2 font-mono text-[11px] text-mathua-primary">{c.answer_input_mode}</td>
+                        <td className="px-3 py-2 font-mono text-[11px] text-mathua-secondary">{c.answer_hint}</td>
+                        <td className="px-3 py-2">
+                          <button
+                            type="button"
+                            onClick={() => tryFromTable(c)}
+                            className="border border-mathua-border px-2 h-8 font-mono text-[11px] text-mathua-secondary hover:text-mathua-blue"
+                          >
+                            Generate
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {overrides && overrides.length > 0 && (
+              <p className="mt-3 font-mono text-[11px] text-mathua-muted">{overrides.length} concepts</p>
+            )}
+          </section>
+        )}
+      </main>
       <Footer />
-      <BottomTabs />
-    </>
+    </AppShell>
   )
 }

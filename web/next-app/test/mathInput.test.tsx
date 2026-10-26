@@ -92,6 +92,15 @@ describe('MathAnswerInput control selection', () => {
     render(<MathAnswerInput value="" onChange={() => {}} gradingType="numeric" conceptId="arith.add.single" placeholder="Your answer" />)
     await waitFor(() => expect(screen.getByPlaceholderText(/your answer/i)).toBeTruthy())
   })
+
+  it('keeps the space in a plain-text placeholder', async () => {
+    // MathLive reads its placeholder as mathematics, where a literal space is
+    // discarded. The field used to read "Youranswer". The authored words are
+    // wrapped in \text{}, which is the only form that keeps the gap.
+    render(<MathAnswerInput value="" onChange={() => {}} gradingType="numeric" conceptId="arith.add.single" placeholder="Your answer" />)
+    const el = await mathField()
+    expect(el.getAttribute('placeholder')).toBe('\\text{Your answer}')
+  })
 })
 
 describe('MathAnswerInput answer flow', () => {

@@ -387,3 +387,48 @@ func TestAdminV2ReportsByReporter(t *testing.T) {
 		t.Errorf("limited list = %d, %v, want 1", len(short), err)
 	}
 }
+
+func TestReportsCarryReporterIdentityAndSeenMarker(t *testing.T) {
+	s := newAdminV2Store(t)
+	student, err := s.CreateStudent("Alice Example")
+	if err != nil {
+		t.Fatalf("create student: %v", err)
+	}
+	if err := s.SetUsername(student.ID, "alice"); err != nil {
+		t.Fatalf("set username: %v", err)
+	}
+	if _, err := s.CreateReport(QuestionReport{
+		ReporterID: student.ID,
+		ConceptID:  "arith.add.single",
+		Kind:       "question",
+		Question:   "1+1=?",
+		Status:     "open",
+		CreatedAt:  time.Now().UTC(),
+	}); err != nil {
+		t.Fatalf("create report: %v", err)
+	}
+
+	list, err := s.ListReports("all", 10, 0)
+	if err != nil {
+		t.Fatalf("list reports: %v", err)
+	}
+	if len(list) != 1 {
+		t.Fatalf("got %d reports, want 1", len(list))
+	}
+	if list[0].ReporterUsername != "alice" || list[0].ReporterName != "Alice Example" {
+		t.Errorf("reporter identity = %q / %q, want alice / Alice Example",
+			list[0].ReporterUsername, list[0].ReporterName)
+	}
+
+	seen, err := s.GetReportSeenAt(student.ID)
+	if err != nil || seen != "" {
+		t.Fatalf("initial seen marker = %q, %v; want empty", seen, err)
+	}
+	if err := s.SetReportSeenAt(student.ID, "2026-10-26T00:00:00Z"); err != nil {
+		t.Fatalf("set seen marker: %v", err)
+	}
+	seen, err = s.GetReportSeenAt(student.ID)
+	if err != nil || seen != "2026-10-26T00:00:00Z" {
+		t.Fatalf("seen marker = %q, %v; want 2026-10-26T00:00:00Z", seen, err)
+	}
+}

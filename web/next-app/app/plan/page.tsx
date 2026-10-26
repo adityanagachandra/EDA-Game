@@ -3,8 +3,7 @@
 import { Suspense, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import Footer from '../../components/Footer'
 import PlanEditor from '../../components/PlanEditor'
 import { isLoggedIn } from '../../lib/auth'
@@ -81,15 +80,11 @@ function PlanContent() {
 
 export default function PlanPage() {
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <Suspense fallback={<div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>}>
-          <PlanContent />
-        </Suspense>
-      </div>
-      <BottomTabs />
+    <AppShell>
+      <Suspense fallback={<div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>}>
+        <PlanContent />
+      </Suspense>
       <Footer />
-    </>
+    </AppShell>
   )
 }

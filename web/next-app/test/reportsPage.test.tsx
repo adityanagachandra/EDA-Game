@@ -10,8 +10,9 @@ vi.mock('next/link', () => ({
   ),
 }))
 
-vi.mock('@/components/Header', () => ({ default: () => null }))
-vi.mock('@/components/BottomTabs', () => ({ default: () => null }))
+vi.mock('@/components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('@/components/Footer', () => ({ default: () => null }))
 vi.mock('@/components/SectionHeader', () => ({
   default: ({ title }: { title?: string }) => <h2>{title}</h2>,
