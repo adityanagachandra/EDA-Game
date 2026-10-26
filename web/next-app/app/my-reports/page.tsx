@@ -184,8 +184,8 @@ export default function MyReportsPage() {
 
         {loggedIn && !loading && !error && reports.length === 0 && (
           <p className="mt-8 border border-mathua-border bg-mathua-surface p-4 text-sm text-mathua-secondary">
-            You have not reported a problem yet. A report is the fastest way to get a question or
-            explanation fixed, and it keeps the exact answer and format you saw.
+            You have not reported a problem yet. Reporting a problem keeps the exact answer and
+            format you saw.
           </p>
         )}
 
