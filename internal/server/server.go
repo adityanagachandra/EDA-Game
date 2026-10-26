@@ -509,6 +509,7 @@ func (s *Server) Register(mux *http.ServeMux) {
 	mux.HandleFunc("/api/reports", logRequest(cors(s.writeLimiter.middleware(s.optionalAuthMiddleware(s.handleCreateReport)))))
 	mux.HandleFunc("/api/reports/mine", logRequest(cors(s.authMiddleware(s.handleMyReports))))
 	mux.HandleFunc("/api/reports/mine/read", logRequest(cors(s.writeLimiter.middleware(s.authMiddleware(s.handleMyReportsRead)))))
+	mux.HandleFunc("/api/reports/mine/clear", logRequest(cors(s.writeLimiter.middleware(s.authMiddleware(s.handleMyReportsClear)))))
 	// Admin V2. Every route names the permission it needs, and requirePermission enforces it
 	// server-side on every request from the role the database holds, never from anything the
 	// client sends. The password login above is the old content-triage gate; it is not this
@@ -4096,14 +4097,16 @@ func (s *Server) handleGuestToken(w http.ResponseWriter, r *http.Request) {
 	}
 	sid := strings.TrimSpace(req.StudentID)
 	name := strings.TrimSpace(req.Name)
-	if len([]rune(name)) > 50 {
-		writeError(w, "name must be 1-50 characters", 400)
-		return
+	if sid == "" && name == "" {
+		name = "Guest"
+	}
+	if name != "" {
+		if err := auth.ValidateDisplayName(name); err != nil {
+			writeError(w, err.Error(), 400)
+			return
+		}
 	}
 	if sid == "" {
-		if name == "" {
-			name = "Guest"
-		}
 		st, err := s.repo.CreateStudent(name)
 		if err != nil {
 			writeError(w, "failed to create guest", 500)
@@ -4194,6 +4197,10 @@ func (s *Server) handleSignup(w http.ResponseWriter, r *http.Request) {
 		}
 		if errors.Is(err, auth.ErrGuestNotClaimable) {
 			writeError(w, "guest account is already registered, log in instead", 403)
+			return
+		}
+		if errors.Is(err, auth.ErrNameNotAllowed) {
+			writeError(w, auth.ErrNameNotAllowed.Error(), 400)
 			return
 		}
 		writeError(w, "signup failed: "+err.Error(), 400)
@@ -4354,8 +4361,8 @@ func (s *Server) handleProfileUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	name := strings.TrimSpace(req.Name)
-	if name == "" || len([]rune(name)) > 50 {
-		writeError(w, "name must be 1-50 characters", 400)
+	if err := auth.ValidateDisplayName(name); err != nil {
+		writeError(w, err.Error(), 400)
 		return
 	}
 	if err := s.repo.UpdateStudentName(studentID, name); err != nil {

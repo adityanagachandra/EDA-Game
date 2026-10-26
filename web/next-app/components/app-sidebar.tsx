@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import {
+  Bell,
   BookOpen,
   ChartNoAxesColumn,
   ChevronDown,
@@ -68,7 +69,6 @@ const NAV_ITEMS: SidebarNavItem[] = [
   { label: 'Domains', href: '/domains', icon: Layers },
   { label: 'Leaderboard', href: '/leaderboard', icon: Trophy },
   { label: 'History', href: '/history', icon: ChartNoAxesColumn },
-  { label: 'My reports', href: '/my-reports', icon: FileText },
   { label: 'Reports', href: '/reports', icon: FileText },
   { label: 'Settings', href: '/settings', icon: Settings },
 ]
@@ -109,6 +109,15 @@ export interface AppSidebarProps {
   avatarUrl?: string
   avatarPreset?: number | null
   dueReviews?: number
+  /**
+   * Whether to offer the Leaderboard entry.
+   *
+   * Purely presentational: the board is still reachable by URL and the server
+   * still anonymises the row. It is here because a learner who turned
+   * leaderboards off asked for the surface to go away, not only for their name.
+   */
+  showLeaderboards?: boolean
+  notificationUnread?: number
 }
 
 export function AppSidebar({
@@ -121,6 +130,8 @@ export function AppSidebar({
   avatarPreset,
   dueReviews = 0,
   isAdmin = false,
+  showLeaderboards = true,
+  notificationUnread = 0,
 }: AppSidebarProps) {
   const pathname = usePathname()
   // Contact is one control, not two destinations: the page and the Discord
@@ -203,30 +214,32 @@ export function AppSidebar({
                   surface rather than another destination in this one; conditional because
                   offering it to everyone would be an invitation most of them cannot accept.
                   The server refuses either way, see AppSidebarProps.isAdmin. */}
-              {(isAdmin ? [...NAV_ITEMS, ADMIN_ITEM] : NAV_ITEMS).map((item) => {
-                const active = pathname === item.href || pathname.startsWith(item.href + '/')
-                const Icon = item.icon
-                return (
-                  <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton asChild isActive={active} tooltip={item.label}>
-                      {item.href.startsWith('http') ? (
-                        <a href={item.href} target="_blank" rel="noreferrer">
-                          <Icon className="shrink-0" />
-                          <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
-                        </a>
-                      ) : (
-                        <Link href={item.href}>
-                          <Icon className="shrink-0" />
-                          <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
-                        </Link>
+              {(isAdmin ? [...NAV_ITEMS, ADMIN_ITEM] : NAV_ITEMS)
+                .filter((item) => showLeaderboards || item.href !== '/leaderboard')
+                .map((item) => {
+                  const active = pathname === item.href || pathname.startsWith(item.href + '/')
+                  const Icon = item.icon
+                  return (
+                    <SidebarMenuItem key={item.href}>
+                      <SidebarMenuButton asChild isActive={active} tooltip={item.label}>
+                        {item.href.startsWith('http') ? (
+                          <a href={item.href} target="_blank" rel="noreferrer">
+                            <Icon className="shrink-0" />
+                            <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
+                          </a>
+                        ) : (
+                          <Link href={item.href}>
+                            <Icon className="shrink-0" />
+                            <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
+                          </Link>
+                        )}
+                      </SidebarMenuButton>
+                      {item.href === '/learn' && dueReviews > 0 && (
+                        <SidebarMenuBadge>{dueReviews}</SidebarMenuBadge>
                       )}
-                    </SidebarMenuButton>
-                    {item.href === '/learn' && dueReviews > 0 && (
-                      <SidebarMenuBadge>{dueReviews}</SidebarMenuBadge>
-                    )}
-                  </SidebarMenuItem>
-                )
-              })}
+                    </SidebarMenuItem>
+                  )
+                })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -296,6 +309,38 @@ export function AppSidebar({
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 )}
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* Notifications sits below the reference library because it is a
+            mailbox, not a daily learning destination. It stays outside the
+            folded Resources disclosure so an unread report is always one
+            click away. */}
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === '/my-reports'}
+                  tooltip="Notifications"
+                >
+                  <Link href="/my-reports">
+                    <Bell className="shrink-0" />
+                    <span className="group-data-[collapsible=icon]:hidden">Notifications</span>
+                    {notificationUnread > 0 && (
+                      <>
+                        <span className="ml-auto h-2 w-2 shrink-0 rounded-full bg-mathua-red" aria-hidden="true" />
+                        <span className="sr-only">
+                          {notificationUnread === 1
+                            ? '1 unread notification'
+                            : `${notificationUnread} unread notifications`}
+                        </span>
+                      </>
+                    )}
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
