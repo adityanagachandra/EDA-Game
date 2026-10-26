@@ -53,7 +53,7 @@ describe('AppSidebar', () => {
   it('renders Navigate group without a Diagnostic entry (no CTA duplication)', () => {
     renderSidebar()
     expect(screen.getByText('Navigate')).toBeInTheDocument()
-    for (const label of ['Learn', 'Graph', 'Domains', 'Leaderboard', 'History', 'Reports', 'Settings']) {
+    for (const label of ['Learn', 'Graph', 'Domains', 'Leaderboard', 'History', 'Notifications', 'Reports', 'Settings']) {
       expect(screen.getByText(label)).toBeInTheDocument()
     }
     expect(screen.queryByText('Diagnostic')).toBeNull()
@@ -172,7 +172,7 @@ describe('AppSidebar', () => {
     const sidebar = screen.getByTestId('profile-sidebar')
     // Every text label next to an icon carries the collapse-hide class;
     // tooltips (not visible text) carry the label when collapsed.
-    const labels = ['Mathua', 'Learn', 'Graph', 'Domains', 'Leaderboard', 'History', 'Settings', 'Resources', 'Docs', 'Contribute', "Creator's note", 'Sign out']
+    const labels = ['Mathua', 'Learn', 'Graph', 'Domains', 'Leaderboard', 'History', 'Notifications', 'Settings', 'Resources', 'Docs', 'Contribute', "Creator's note", 'Sign out']
     for (const label of labels) {
       const el = screen.getByText(label, { exact: true })
       expect(sidebar.contains(el)).toBe(true)

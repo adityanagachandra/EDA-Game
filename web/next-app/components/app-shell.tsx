@@ -86,8 +86,10 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
             </SidebarTrigger>
           </div>
           {/* A block child keeps page wrappers with mx-auto centred and full
-              width. As flex items their auto margins would shrink-wrap them. */}
-          <div className="w-full min-w-0">{children}</div>
+              width. As flex items their auto margins would shrink-wrap them.
+              It also fills the inset and pushes a direct footer to the bottom,
+              so a short page never leaves empty background under the footer. */}
+          <div className="flex w-full min-w-0 flex-1 flex-col [&>*]:w-full [&>footer]:mt-auto">{children}</div>
         </SidebarInset>
       </SidebarProvider>
       <BottomTabs />
