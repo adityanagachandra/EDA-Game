@@ -57,9 +57,10 @@ function fakeUser(): FakeUser {
 vi.mock('../hooks/useAuthState', () => ({
   useAuthState: () => ({ loggedIn: authState.current.loggedIn, user: fakeUser() }),
 }))
-vi.mock('../components/Header', () => ({ default: () => <header>banner</header> }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => <footer /> }))
-vi.mock('../components/BottomTabs', () => ({ default: () => <nav /> }))
 
 const ADMIN: AdminUser = {
   id: 'a1', name: 'Root', username: 'root', email: 'root@example.com',

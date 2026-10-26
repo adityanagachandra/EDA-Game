@@ -3,8 +3,7 @@
 import { Suspense, useEffect, useMemo, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import Footer from '../../components/Footer'
 import ConceptReference from '../../components/ConceptReference'
 import RelationList, { type RelationItem } from '../../components/RelationList'
@@ -227,15 +226,11 @@ function StudyContent() {
 
 export default function StudyPage() {
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <Suspense fallback={<div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>}>
-          <StudyContent />
-        </Suspense>
-      </div>
-      <BottomTabs />
+    <AppShell>
+      <Suspense fallback={<div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>}>
+        <StudyContent />
+      </Suspense>
       <Footer />
-    </>
+    </AppShell>
   )
 }

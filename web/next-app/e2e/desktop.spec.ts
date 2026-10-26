@@ -17,8 +17,9 @@ test('graph controls are desktop-sized and minimap is readable at 1280px', async
   expect(mmBox!.width).toBeGreaterThanOrEqual(140)
   expect(mmBox!.height).toBeGreaterThanOrEqual(90)
 
-  // desktop header nav visible, bottom tabs hidden
-  await expect(page.locator('header nav')).toBeVisible()
+  // the app shell is on the sidebar; the public header nav is gone and the
+  // mobile tab bar stays hidden at this width
+  await expect(page.getByTestId('profile-sidebar')).toBeVisible()
   await expect(page.locator('nav.lg\\:hidden')).not.toBeVisible()
 
   // no horizontal overflow

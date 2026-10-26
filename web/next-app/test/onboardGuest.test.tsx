@@ -27,9 +27,10 @@ vi.mock('../lib/api', async (importOriginal) => {
   }
 })
 vi.mock('../hooks/useTheme', () => ({ useTheme: () => ({ mounted: true }) }))
-vi.mock('../components/Header', () => ({ default: () => null }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => null }))
-vi.mock('../components/BottomTabs', () => ({ default: () => null }))
 vi.mock('../components/Loading', () => ({ default: () => <div>Loading</div> }))
 vi.mock('../components/DiagnosticResults', () => ({ default: () => <div>plan body</div> }))
 

@@ -15,7 +15,9 @@ test.beforeEach(async ({ context }) => {
 })
 
 test('header shows Login for anonymous visitors', async ({ page }) => {
-  await page.goto('/graph')
+  // /privacy uses the default public Header. /how-it-works passes a custom
+  // link list without Login, and product pages have no Header at all.
+  await page.goto('/privacy')
   await expect(page.locator('header').getByText('Login').first()).toBeVisible()
 })
 
@@ -24,7 +26,7 @@ test('header shows authenticated links when a token exists', async ({ page }) =>
     localStorage.setItem('mathua_token', 'fake-token')
     localStorage.setItem('mathua_user', JSON.stringify(user))
   }, [USER])
-  await page.goto('/graph')
+  await page.goto('/privacy')
   const header = page.locator('header')
   await expect(header.getByText('Profile').first()).toBeVisible()
   await expect(header.getByText('Learn').first()).toBeVisible()

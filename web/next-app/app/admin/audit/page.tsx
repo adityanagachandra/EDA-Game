@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Header from '../../../components/Header'
-import BottomTabs from '../../../components/BottomTabs'
+import AppShell from '../../../components/app-shell'
 import Footer from '../../../components/Footer'
 import SectionHeader from '../../../components/SectionHeader'
 import AdminNav from '../../../components/AdminNav'
@@ -37,79 +36,75 @@ export default function AdminAuditPage() {
   const { isStaff } = useAdminMe()
 
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[820px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <SectionHeader label="Administration" title="Audit" />
-          <AdminNav />
+    <AppShell>
+      <main className="mx-auto w-full max-w-[820px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <SectionHeader label="Administration" title="Audit" />
+        <AdminNav />
 
-          {!isStaff && (
-            <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
-              This area needs an administrator role.
-            </p>
-          )}
+        {!isStaff && (
+          <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
+            This area needs an administrator role.
+          </p>
+        )}
 
-          {error && (
-            <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
-              {error}
-            </p>
-          )}
+        {error && (
+          <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
+            {error}
+          </p>
+        )}
 
-          {events === null && !error && (
-            <p className="font-mono text-xs text-mathua-muted">Loading the log…</p>
-          )}
+        {events === null && !error && (
+          <p className="font-mono text-xs text-mathua-muted">Loading the log…</p>
+        )}
 
-          {events !== null && events.length === 0 && (
-            <p className="font-mono text-xs text-mathua-muted">
-              No administrative activity has been recorded yet.
-            </p>
-          )}
+        {events !== null && events.length === 0 && (
+          <p className="font-mono text-xs text-mathua-muted">
+            No administrative activity has been recorded yet.
+          </p>
+        )}
 
-          {events !== null && events.length > 0 && (
-            <ol className="space-y-2">
-              {events.map((e) => {
-                const open = openId === e.id
-                return (
-                  <li key={e.id} className="border border-mathua-border bg-mathua-surface min-w-0">
-                    <button
-                      type="button"
-                      onClick={() => setOpenId(open ? null : e.id)}
-                      aria-expanded={open}
-                      className="w-full text-left px-3 py-3 font-mono text-[11px] min-w-0 hover:bg-mathua-surface-highlight"
-                    >
-                      <span className="block text-mathua-muted">{e.created_at}</span>
-                      <span className="block text-mathua-primary">{e.action}</span>
-                      <span className="block text-mathua-muted truncate">
-                        by {e.actor_id || 'unknown'} → {e.entity_type} {e.entity_id}
-                      </span>
-                      {!open && <span className="block text-mathua-blue">Before / after →</span>}
-                    </button>
-                    {open && (
-                      <div className="px-3 pb-3 min-w-0">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                          <Snapshot label="Before" json={e.before_json} />
-                          <Snapshot label="After" json={e.after_json} />
-                        </div>
-                        <p className="mt-2 font-mono text-[10px] text-mathua-muted">
-                          Event {e.id}. This record is written once and cannot be edited or deleted.
-                        </p>
+        {events !== null && events.length > 0 && (
+          <ol className="space-y-2">
+            {events.map((e) => {
+              const open = openId === e.id
+              return (
+                <li key={e.id} className="border border-mathua-border bg-mathua-surface min-w-0">
+                  <button
+                    type="button"
+                    onClick={() => setOpenId(open ? null : e.id)}
+                    aria-expanded={open}
+                    className="w-full text-left px-3 py-3 font-mono text-[11px] min-w-0 hover:bg-mathua-surface-highlight"
+                  >
+                    <span className="block text-mathua-muted">{e.created_at}</span>
+                    <span className="block text-mathua-primary">{e.action}</span>
+                    <span className="block text-mathua-muted truncate">
+                      by {e.actor_id || 'unknown'} → {e.entity_type} {e.entity_id}
+                    </span>
+                    {!open && <span className="block text-mathua-blue">Before / after →</span>}
+                  </button>
+                  {open && (
+                    <div className="px-3 pb-3 min-w-0">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <Snapshot label="Before" json={e.before_json} />
+                        <Snapshot label="After" json={e.after_json} />
                       </div>
-                    )}
-                  </li>
-                )
-              })}
-            </ol>
-          )}
+                      <p className="mt-2 font-mono text-[10px] text-mathua-muted">
+                        Event {e.id}. This record is written once and cannot be edited or deleted.
+                      </p>
+                    </div>
+                  )}
+                </li>
+              )
+            })}
+          </ol>
+        )}
 
-          <Link href="/admin" className="mt-10 inline-block font-mono text-xs text-mathua-secondary hover:text-mathua-blue">
-            ← Overview
-          </Link>
-        </main>
-      </div>
-      <BottomTabs />
+        <Link href="/admin" className="mt-10 inline-block font-mono text-xs text-mathua-secondary hover:text-mathua-blue">
+          ← Overview
+        </Link>
+      </main>
       <Footer />
-    </>
+    </AppShell>
   )
 }
 

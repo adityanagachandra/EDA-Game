@@ -3,8 +3,7 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import Header from '../../../../components/Header'
-import BottomTabs from '../../../../components/BottomTabs'
+import AppShell from '../../../../components/app-shell'
 import Footer from '../../../../components/Footer'
 import SectionHeader from '../../../../components/SectionHeader'
 import AdminNav from '../../../../components/AdminNav'
@@ -56,19 +55,15 @@ function Playground() {
 
 export default function AdminLabPlayPage() {
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <SectionHeader label="Administration" title="Learner view" />
-          <AdminNav />
-          <Suspense fallback={<p className="font-mono text-xs text-mathua-muted">Loading…</p>}>
-            <Playground />
-          </Suspense>
-        </main>
-      </div>
+    <AppShell>
+      <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <SectionHeader label="Administration" title="Learner view" />
+        <AdminNav />
+        <Suspense fallback={<p className="font-mono text-xs text-mathua-muted">Loading…</p>}>
+          <Playground />
+        </Suspense>
+      </main>
       <Footer />
-      <BottomTabs />
-    </>
+    </AppShell>
   )
 }

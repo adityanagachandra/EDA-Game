@@ -2004,7 +2004,10 @@ func (s *SQLiteStore) ListReports(status string, limit, offset int) ([]QuestionR
 	var err error
 	if status == "" || status == "all" {
 		rows, err = s.db.Query(`
-			SELECT id, reporter_id, concept_id, kind, question, expected, explanation,
+			SELECT id, reporter_id,
+			       COALESCE((SELECT username FROM students WHERE students.id = question_reports.reporter_id), ''),
+			       COALESCE((SELECT name FROM students WHERE students.id = question_reports.reporter_id), ''),
+			       concept_id, kind, question, expected, explanation,
 			       lesson_id, source, session_id, attempt_id,
 			       answer_given, grading_type, answer_hint, answer_input_mode,
 			       reason, detail, status,
@@ -2016,7 +2019,10 @@ func (s *SQLiteStore) ListReports(status string, limit, offset int) ([]QuestionR
 		`, limit, offset)
 	} else {
 		rows, err = s.db.Query(`
-			SELECT id, reporter_id, concept_id, kind, question, expected, explanation,
+			SELECT id, reporter_id,
+			       COALESCE((SELECT username FROM students WHERE students.id = question_reports.reporter_id), ''),
+			       COALESCE((SELECT name FROM students WHERE students.id = question_reports.reporter_id), ''),
+			       concept_id, kind, question, expected, explanation,
 			       lesson_id, source, session_id, attempt_id,
 			       answer_given, grading_type, answer_hint, answer_input_mode,
 			       reason, detail, status,
@@ -2037,7 +2043,8 @@ func (s *SQLiteStore) ListReports(status string, limit, offset int) ([]QuestionR
 		var r QuestionReport
 		var created string
 		if err := rows.Scan(
-			&r.ID, &r.ReporterID, &r.ConceptID, &r.Kind, &r.Question, &r.Expected,
+			&r.ID, &r.ReporterID, &r.ReporterUsername, &r.ReporterName,
+			&r.ConceptID, &r.Kind, &r.Question, &r.Expected,
 			&r.Explanation, &r.LessonID, &r.Source, &r.SessionID, &r.AttemptID,
 			&r.AnswerGiven, &r.GradingType, &r.AnswerHint, &r.AnswerInputMode,
 			&r.Reason, &r.Detail, &r.Status, &r.Resolution, &r.ResolvedBy, &r.ResolvedAt, &created,

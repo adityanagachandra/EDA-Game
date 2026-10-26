@@ -3,8 +3,7 @@
 import { Suspense, useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import Header from '../../../components/Header'
-import BottomTabs from '../../../components/BottomTabs'
+import AppShell from '../../../components/app-shell'
 import Footer from '../../../components/Footer'
 import SectionHeader from '../../../components/SectionHeader'
 import { acceptAdminInvitation, getErrorMessage } from '../../../lib/api'
@@ -68,17 +67,13 @@ function AcceptInner() {
 
 export default function AcceptInvitationPage() {
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[720px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <Suspense fallback={null}>
-            <AcceptInner />
-          </Suspense>
-        </main>
-      </div>
-      <BottomTabs />
+    <AppShell>
+      <main className="mx-auto w-full max-w-[720px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <Suspense fallback={null}>
+          <AcceptInner />
+        </Suspense>
+      </main>
       <Footer />
-    </>
+    </AppShell>
   )
 }
