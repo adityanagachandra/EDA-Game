@@ -380,17 +380,19 @@ type RemedialQueueEntry struct {
 // fields and leaves the row in place. Nothing in the system deletes one, because "what was
 // reported and what we decided" is the evidence a moderation log exists to hold.
 type QuestionReport struct {
-	ID          int64  `json:"id"`
-	ReporterID  string `json:"reporter_id"`
-	ConceptID   string `json:"concept_id"`
-	Kind        string `json:"kind"` // question | explanation | lesson_body | worked_example | diagram | message
-	Question    string `json:"question"`
-	Expected    string `json:"expected"`
-	Explanation string `json:"explanation"`
-	LessonID    string `json:"lesson_id"`
-	Source      string `json:"source"`
-	SessionID   string `json:"session_id"`
-	AttemptID   string `json:"attempt_id"`
+	ID               int64  `json:"id"`
+	ReporterID       string `json:"reporter_id"`
+	ReporterUsername string `json:"reporter_username,omitempty"`
+	ReporterName     string `json:"reporter_name,omitempty"`
+	ConceptID        string `json:"concept_id"`
+	Kind             string `json:"kind"` // question | explanation | lesson_body | worked_example | diagram | message
+	Question         string `json:"question"`
+	Expected         string `json:"expected"`
+	Explanation      string `json:"explanation"`
+	LessonID         string `json:"lesson_id"`
+	Source           string `json:"source"`
+	SessionID        string `json:"session_id"`
+	AttemptID        string `json:"attempt_id"`
 	// The answer the learner actually typed, and the format the field offered
 	// when they typed it. A moderator could previously see the question and the
 	// expected answer but not what was on screen, so a report about an
@@ -423,6 +425,11 @@ type QuestionReport struct {
 	// separately behind the moderation permission, so the queue payload stays
 	// small and an image cannot be fetched from a plain report list.
 	HasImage bool `json:"has_image"`
+	// Unread is set by the learner-facing history endpoint when a resolved or
+	// dismissed report has changed since that account last read the list. It is
+	// not stored on the report: one row can be unread for its reporter and read
+	// for a moderator, and the report itself has no reader.
+	Unread bool `json:"unread,omitempty"`
 }
 
 // ReportImage is one optional screenshot attached to a report. Bytes live in
@@ -855,6 +862,12 @@ type Repository interface {
 	// GetReportByOrigin finds an imported report by the id it had in the database it came
 	// from, which is the number the admin page and a colleague both quote.
 	GetReportByOrigin(originID string) (*QuestionReport, error)
+
+	// GetReportSeenAt returns the RFC3339 time the account last opened its
+	// report history. An empty string means it has never opened it.
+	GetReportSeenAt(studentID string) (string, error)
+	// SetReportSeenAt records that the account has now seen its report history.
+	SetReportSeenAt(studentID, seenAt string) error
 
 	// ImportReport copies a report that came from another installation into this one.
 	//

@@ -78,6 +78,29 @@ test('learn teaches, answers and awards XP on one page', async ({ page }) => {
   await expect(page.getByText('+1 XP').first()).toBeVisible({ timeout: 20_000 })
 })
 
+// A guest who opens a lesson from a link never pressed "Get started", which used to be the only
+// place a guest token was minted. The practice set was then served to nobody, and the server
+// refused every answer with 400 "student identity required", which the stepper can only report
+// as the server being unreachable. The stubbed grader above answers regardless of identity, so
+// the verdict alone cannot catch that: the request has to carry the guest's token.
+test('a guest who opens a lesson by its link answers as themself', async ({ page }) => {
+  await stubLearn(page)
+  await page.route('**/api/auth/guest', route => {
+    const { student_id } = route.request().postDataJSON() as { student_id: string }
+    return route.fulfill({ json: { token: 'deep-link-guest', student_id } })
+  })
+
+  await page.goto('/learn?concept=arith.add.single')
+  await page.getByRole('button', { name: 'Next →' }).click()
+  await expect(answerField(page)).toBeVisible({ timeout: 20_000 })
+  await typeAnswer(page, '4')
+
+  const answer = page.waitForRequest(req => req.url().includes('/api/study/answer') && req.method() === 'POST')
+  await page.getByRole('button', { name: 'Check', exact: true }).first().click()
+  expect((await answer).headers()['authorization']).toBe('Bearer deep-link-guest')
+  await expect(page.getByText('+1 XP').first()).toBeVisible({ timeout: 20_000 })
+})
+
 test('the reference material is on the learn page, and holds no way out of it', async ({ page }) => {
   await stubLearn(page)
   await page.goto('/learn?concept=arith.add.single')

@@ -1,15 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import Footer from '../../components/Footer'
 import ReviewHost from './ReviewHost'
 
 export default function ReviewPage() {
   return (
-    <>
-      <Header />
+    <AppShell>
       <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0">
         <section className="pt-8 min-w-0 overflow-hidden">
           <span className="flex mb-4">
@@ -24,7 +22,6 @@ export default function ReviewPage() {
         </section>
       </div>
       <Footer />
-      <BottomTabs />
-    </>
+    </AppShell>
   )
 }

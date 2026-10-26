@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import Header from '@/components/Header'
-import BottomTabs from '@/components/BottomTabs'
+import AppShell from '@/components/app-shell'
 import Footer from '@/components/Footer'
 import SectionHeader from '@/components/SectionHeader'
 import { getLearnerReport, getLearnerReportHistory } from '@/lib/api'
@@ -144,8 +143,7 @@ export default function ReportsPage() {
   const assessments = report?.assessments ?? []
 
   return (
-    <>
-      <Header />
+    <AppShell>
       <main className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0">
         <div className="print-report">
           <section className="pt-8 min-w-0 overflow-hidden">
@@ -565,7 +563,6 @@ export default function ReportsPage() {
         </div>
       </main>
       <Footer />
-      <BottomTabs />
-    </>
+    </AppShell>
   )
 }

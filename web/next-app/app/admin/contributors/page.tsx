@@ -1,8 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import Header from '../../../components/Header'
-import BottomTabs from '../../../components/BottomTabs'
+import AppShell from '../../../components/app-shell'
 import Footer from '../../../components/Footer'
 import SectionHeader from '../../../components/SectionHeader'
 import AdminNav from '../../../components/AdminNav'
@@ -38,70 +37,66 @@ export default function ContributorsPage() {
   useEffect(() => { load() }, [load])
 
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <SectionHeader label="Administration" title="Contributors" />
-          <AdminNav />
+    <AppShell>
+      <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <SectionHeader label="Administration" title="Contributors" />
+        <AdminNav />
 
-          {error && <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">{error}</p>}
+        {error && <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">{error}</p>}
 
-          {canManage && <InviteForm assignable={me?.assignable_roles ?? []} onCreated={load} />}
+        {canManage && <InviteForm assignable={me?.assignable_roles ?? []} onCreated={load} />}
 
-          <section className="mt-8">
-            <h2 className="mb-3 font-serif text-lg text-mathua-primary">Current staff</h2>
-            {!staff ? <Loading label="LOADING STAFF" /> : (
-              <ul className="space-y-1">
-                {staff.map((u) => (
-                  <li key={u.id} className="flex items-center justify-between border border-mathua-border bg-mathua-surface px-4 py-3">
+        <section className="mt-8">
+          <h2 className="mb-3 font-serif text-lg text-mathua-primary">Current staff</h2>
+          {!staff ? <Loading label="LOADING STAFF" /> : (
+            <ul className="space-y-1">
+              {staff.map((u) => (
+                <li key={u.id} className="flex items-center justify-between border border-mathua-border bg-mathua-surface px-4 py-3">
+                  <span className="min-w-0">
+                    <span className="font-mono text-xs text-mathua-primary">{u.name}</span>
+                    <span className="ml-2 font-mono text-[11px] text-mathua-muted">{u.email || u.username || u.id}</span>
+                  </span>
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-mathua-blue">{u.role}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section className="mt-8">
+          <h2 className="mb-3 font-serif text-lg text-mathua-primary">Invitations</h2>
+          {!invitations ? <Loading label="LOADING INVITATIONS" /> : invitations.length === 0 ? (
+            <p className="font-mono text-xs text-mathua-muted">None yet.</p>
+          ) : (
+            <ul className="space-y-1">
+              {invitations.map((inv) => {
+                const settled = inv.accepted_at || inv.revoked_at
+                const state = inv.accepted_at ? 'accepted' : inv.revoked_at ? 'revoked' : 'pending'
+                return (
+                  <li key={inv.id} className="flex items-center justify-between gap-3 border border-mathua-border bg-mathua-surface px-4 py-3">
                     <span className="min-w-0">
-                      <span className="font-mono text-xs text-mathua-primary">{u.name}</span>
-                      <span className="ml-2 font-mono text-[11px] text-mathua-muted">{u.email || u.username || u.id}</span>
+                      <span className="font-mono text-xs text-mathua-primary">{inv.email}</span>
+                      <span className="ml-2 font-mono text-[11px] uppercase tracking-wider text-mathua-blue">{inv.role}</span>
+                      <span className="ml-2 font-mono text-[10px] text-mathua-muted">{state} · expires {inv.expires_at}</span>
                     </span>
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-mathua-blue">{u.role}</span>
+                    {canManage && !settled && (
+                      <button
+                        type="button"
+                        onClick={() => { revokeAdminInvitation(inv.id).then(load).catch((e) => setError(getErrorMessage(e))) }}
+                        className="shrink-0 border border-mathua-border text-mathua-secondary hover:text-mathua-red px-3 h-8 font-mono text-[11px]"
+                      >
+                        Revoke
+                      </button>
+                    )}
                   </li>
-                ))}
-              </ul>
-            )}
-          </section>
-
-          <section className="mt-8">
-            <h2 className="mb-3 font-serif text-lg text-mathua-primary">Invitations</h2>
-            {!invitations ? <Loading label="LOADING INVITATIONS" /> : invitations.length === 0 ? (
-              <p className="font-mono text-xs text-mathua-muted">None yet.</p>
-            ) : (
-              <ul className="space-y-1">
-                {invitations.map((inv) => {
-                  const settled = inv.accepted_at || inv.revoked_at
-                  const state = inv.accepted_at ? 'accepted' : inv.revoked_at ? 'revoked' : 'pending'
-                  return (
-                    <li key={inv.id} className="flex items-center justify-between gap-3 border border-mathua-border bg-mathua-surface px-4 py-3">
-                      <span className="min-w-0">
-                        <span className="font-mono text-xs text-mathua-primary">{inv.email}</span>
-                        <span className="ml-2 font-mono text-[11px] uppercase tracking-wider text-mathua-blue">{inv.role}</span>
-                        <span className="ml-2 font-mono text-[10px] text-mathua-muted">{state} · expires {inv.expires_at}</span>
-                      </span>
-                      {canManage && !settled && (
-                        <button
-                          type="button"
-                          onClick={() => { revokeAdminInvitation(inv.id).then(load).catch((e) => setError(getErrorMessage(e))) }}
-                          className="shrink-0 border border-mathua-border text-mathua-secondary hover:text-mathua-red px-3 h-8 font-mono text-[11px]"
-                        >
-                          Revoke
-                        </button>
-                      )}
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-          </section>
-        </main>
-      </div>
-      <BottomTabs />
+                )
+              })}
+            </ul>
+          )}
+        </section>
+      </main>
       <Footer />
-    </>
+    </AppShell>
   )
 }
 

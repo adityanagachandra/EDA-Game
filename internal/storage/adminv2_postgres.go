@@ -78,6 +78,35 @@ func (s *PostgresStore) ListReportsByReporter(reporterID string, limit int) ([]Q
 	return out, rows.Err()
 }
 
+// GetReportSeenAt mirrors the SQLite lookup.
+func (s *PostgresStore) GetReportSeenAt(studentID string) (string, error) {
+	var seen string
+	err := s.db.QueryRow(`SELECT seen_at FROM report_views WHERE student_id = $1`, studentID).Scan(&seen)
+	if err == sql.ErrNoRows {
+		return "", nil
+	}
+	if err != nil {
+		return "", fmt.Errorf("get report seen time: %w", err)
+	}
+	return seen, nil
+}
+
+// SetReportSeenAt mirrors the SQLite upsert.
+func (s *PostgresStore) SetReportSeenAt(studentID, seenAt string) error {
+	if studentID == "" || seenAt == "" {
+		return fmt.Errorf("student id and seen time are required")
+	}
+	_, err := s.db.Exec(
+		`INSERT INTO report_views (student_id, seen_at) VALUES ($1, $2)
+		 ON CONFLICT(student_id) DO UPDATE SET seen_at = excluded.seen_at`,
+		studentID, seenAt,
+	)
+	if err != nil {
+		return fmt.Errorf("set report seen time: %w", err)
+	}
+	return nil
+}
+
 // CountReportsByReporter mirrors the SQLite count.
 func (s *PostgresStore) CountReportsByReporter(reporterID string) (int, error) {
 	var n int

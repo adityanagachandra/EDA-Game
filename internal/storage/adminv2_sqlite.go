@@ -102,6 +102,37 @@ func (s *SQLiteStore) ListReportsByReporter(reporterID string, limit int) ([]Que
 	return out, rows.Err()
 }
 
+// GetReportSeenAt returns the last time the account opened its own report
+// history. An empty string means it has never opened it, which makes every
+// resolved report unread.
+func (s *SQLiteStore) GetReportSeenAt(studentID string) (string, error) {
+	var seen string
+	err := s.db.QueryRow(`SELECT seen_at FROM report_views WHERE student_id = ?`, studentID).Scan(&seen)
+	if err == sql.ErrNoRows {
+		return "", nil
+	}
+	if err != nil {
+		return "", fmt.Errorf("get report seen time: %w", err)
+	}
+	return seen, nil
+}
+
+// SetReportSeenAt marks the account's report history as read up to seenAt.
+func (s *SQLiteStore) SetReportSeenAt(studentID, seenAt string) error {
+	if studentID == "" || seenAt == "" {
+		return fmt.Errorf("student id and seen time are required")
+	}
+	_, err := s.db.Exec(
+		`INSERT INTO report_views (student_id, seen_at) VALUES (?, ?)
+		 ON CONFLICT(student_id) DO UPDATE SET seen_at = excluded.seen_at`,
+		studentID, seenAt,
+	)
+	if err != nil {
+		return fmt.Errorf("set report seen time: %w", err)
+	}
+	return nil
+}
+
 // CountReportsByReporter counts every report the account filed, including resolved ones. A
 // profile that showed only the recent list would understate a person who reported ten times.
 func (s *SQLiteStore) CountReportsByReporter(reporterID string) (int, error) {
@@ -337,7 +368,10 @@ func (s *SQLiteStore) ConsumeAdminInvitation(tokenHash, studentID string) (*Admi
 
 // ── shared scan helpers ───────────────────────────────────────────────────
 
-const reportSelectColumns = `SELECT id, reporter_id, concept_id, kind, question, expected, explanation,
+const reportSelectColumns = `SELECT id, reporter_id,
+	COALESCE((SELECT username FROM students WHERE students.id = question_reports.reporter_id), ''),
+	COALESCE((SELECT name FROM students WHERE students.id = question_reports.reporter_id), ''),
+	concept_id, kind, question, expected, explanation,
 	lesson_id, source, session_id, attempt_id,
 	answer_given, grading_type, answer_hint, answer_input_mode,
 	reason, detail, status,
@@ -353,7 +387,8 @@ func scanReportRow(row rowScanner) (QuestionReport, error) {
 	var r QuestionReport
 	var created string
 	err := row.Scan(
-		&r.ID, &r.ReporterID, &r.ConceptID, &r.Kind, &r.Question, &r.Expected,
+		&r.ID, &r.ReporterID, &r.ReporterUsername, &r.ReporterName,
+		&r.ConceptID, &r.Kind, &r.Question, &r.Expected,
 		&r.Explanation, &r.LessonID, &r.Source, &r.SessionID, &r.AttemptID,
 		&r.AnswerGiven, &r.GradingType, &r.AnswerHint, &r.AnswerInputMode,
 		&r.Reason, &r.Detail, &r.Status, &r.Resolution, &r.ResolvedBy, &r.ResolvedAt, &created,

@@ -60,9 +60,10 @@ vi.mock('../lib/auth', () => ({
   setUserInfo: (info: typeof mockUser) => setUserInfoMock(info),
 }))
 
-vi.mock('../components/Header', () => ({ default: () => <div data-testid="header-stub" /> }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => <div data-testid="footer-stub" /> }))
-vi.mock('../components/BottomTabs', () => ({ default: () => <div data-testid="tabs-stub" /> }))
 
 import SettingsPage from '../app/settings/page'
 import { DICEBEAR_STYLES } from '../lib/dicebear'

@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import Header from '../../../components/Header'
-import BottomTabs from '../../../components/BottomTabs'
+import AppShell from '../../../components/app-shell'
 import Footer from '../../../components/Footer'
 import SectionHeader from '../../../components/SectionHeader'
 import AdminNav from '../../../components/AdminNav'
@@ -110,135 +109,131 @@ export default function AdminLeaguesPage() {
   const thisWeek = week ? week === weekKeyOf(new Date()) : false
 
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <SectionHeader label="Administration" title="Leagues" />
-          <AdminNav />
+    <AppShell>
+      <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <SectionHeader label="Administration" title="Leagues" />
+        <AdminNav />
 
-          <div className="mb-4 flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              disabled={!week}
-              onClick={() => week && load(shiftWeek(week, -7))}
-              className="border border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue px-3 h-9 font-mono text-xs disabled:opacity-50"
-            >
-              Earlier week
-            </button>
-            <p className="font-mono text-xs text-mathua-primary">
-              {week ? `Week of ${weekLabel(week)}` : 'Loading the week'}
-            </p>
-            <button
-              type="button"
-              disabled={!week || thisWeek}
-              onClick={() => week && load(shiftWeek(week, 7))}
-              className="border border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue px-3 h-9 font-mono text-xs disabled:opacity-50"
-            >
-              Later week
-            </button>
-          </div>
+        <div className="mb-4 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            disabled={!week}
+            onClick={() => week && load(shiftWeek(week, -7))}
+            className="border border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue px-3 h-9 font-mono text-xs disabled:opacity-50"
+          >
+            Earlier week
+          </button>
+          <p className="font-mono text-xs text-mathua-primary">
+            {week ? `Week of ${weekLabel(week)}` : 'Loading the week'}
+          </p>
+          <button
+            type="button"
+            disabled={!week || thisWeek}
+            onClick={() => week && load(shiftWeek(week, 7))}
+            className="border border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue px-3 h-9 font-mono text-xs disabled:opacity-50"
+          >
+            Later week
+          </button>
+        </div>
 
-          {error && (
-            <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">{error}</p>
-          )}
+        {error && (
+          <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">{error}</p>
+        )}
 
-          {!leagues && !error && <Loading label="LOADING LEAGUES" />}
+        {!leagues && !error && <Loading label="LOADING LEAGUES" />}
 
-          {leagues && leagues.length === 0 && !error && (
-            <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
-              No league was formed in this week. Cohorts appear once a learner has earned XP.
-            </p>
-          )}
+        {leagues && leagues.length === 0 && !error && (
+          <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
+            No league was formed in this week. Cohorts appear once a learner has earned XP.
+          </p>
+        )}
 
-          {leagues && leagues.length > 0 && (
-            <p className="mb-6 font-mono text-[11px] text-mathua-muted">
-              {leagues.length} league{leagues.length === 1 ? '' : 's'}, {seats} learner{seats === 1 ? '' : 's'} seated.
-              {' '}A full league moves {promote} up and {promote} down; short leagues move a third of themselves and cohorts under six do not move.
-            </p>
-          )}
+        {leagues && leagues.length > 0 && (
+          <p className="mb-6 font-mono text-[11px] text-mathua-muted">
+            {leagues.length} league{leagues.length === 1 ? '' : 's'}, {seats} learner{seats === 1 ? '' : 's'} seated.
+            {' '}A full league moves {promote} up and {promote} down; short leagues move a third of themselves and cohorts under six do not move.
+          </p>
+        )}
 
-          {rosterError && (
-            <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">{rosterError}</p>
-          )}
+        {rosterError && (
+          <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">{rosterError}</p>
+        )}
 
-          <div className="space-y-8">
-            {tiers.map(([tier, items]) => (
-              <section key={tier} className="space-y-3">
-                <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-mathua-border pb-2">
-                  <h2 className="font-mono text-xs text-mathua-primary">{tierLabel(tier)}</h2>
-                  <span className="font-mono text-[10px] text-mathua-muted">
-                    {items.length} league{items.length === 1 ? '' : 's'}
-                  </span>
-                </div>
-                <ul className="space-y-2">
-                  {items.map((l) => {
-                    const key = `${l.tier}/${l.league_no}`
-                    const expanded = open === key
-                    return (
-                      <li key={key} className="border border-mathua-border bg-mathua-surface">
-                        <button
-                          type="button"
-                          aria-expanded={expanded}
-                          aria-label={`${tierLabel(l.tier)} league ${l.league_no}, ${l.size} learner${l.size === 1 ? '' : 's'}`}
-                          onClick={() => { void toggle(l) }}
-                          className="flex w-full flex-wrap items-baseline justify-between gap-2 px-3 py-3 text-left"
-                        >
-                          <span className="font-mono text-xs text-mathua-primary">League {l.league_no}</span>
-                          <span className="font-mono text-[10px] text-mathua-muted">
-                            {l.size} learner{l.size === 1 ? '' : 's'}
-                            {l.movers > 0 ? `, ${l.movers} up and ${l.movers} down` : ', nobody moves'}
-                          </span>
-                        </button>
-                        {expanded && (
-                          <div className="border-t border-mathua-border px-3 py-3">
-                            {!rosters[key] && <Loading label="LOADING STANDINGS" />}
-                            {rosters[key] && rosters[key].length === 0 && (
-                              <p className="font-mono text-[11px] text-mathua-secondary">Nobody holds a seat in this league.</p>
-                            )}
-                            {rosters[key] && rosters[key].length > 0 && (
-                              <table className="w-full border-collapse font-mono text-[11px]">
-                                <thead>
-                                  <tr className="text-mathua-muted">
-                                    <th scope="col" className="py-1 pr-2 text-left font-normal">Rank</th>
-                                    <th scope="col" className="py-1 pr-2 text-left font-normal">Learner</th>
-                                    <th scope="col" className="py-1 text-right font-normal">XP this week</th>
+        <div className="space-y-8">
+          {tiers.map(([tier, items]) => (
+            <section key={tier} className="space-y-3">
+              <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-mathua-border pb-2">
+                <h2 className="font-mono text-xs text-mathua-primary">{tierLabel(tier)}</h2>
+                <span className="font-mono text-[10px] text-mathua-muted">
+                  {items.length} league{items.length === 1 ? '' : 's'}
+                </span>
+              </div>
+              <ul className="space-y-2">
+                {items.map((l) => {
+                  const key = `${l.tier}/${l.league_no}`
+                  const expanded = open === key
+                  return (
+                    <li key={key} className="border border-mathua-border bg-mathua-surface">
+                      <button
+                        type="button"
+                        aria-expanded={expanded}
+                        aria-label={`${tierLabel(l.tier)} league ${l.league_no}, ${l.size} learner${l.size === 1 ? '' : 's'}`}
+                        onClick={() => { void toggle(l) }}
+                        className="flex w-full flex-wrap items-baseline justify-between gap-2 px-3 py-3 text-left"
+                      >
+                        <span className="font-mono text-xs text-mathua-primary">League {l.league_no}</span>
+                        <span className="font-mono text-[10px] text-mathua-muted">
+                          {l.size} learner{l.size === 1 ? '' : 's'}
+                          {l.movers > 0 ? `, ${l.movers} up and ${l.movers} down` : ', nobody moves'}
+                        </span>
+                      </button>
+                      {expanded && (
+                        <div className="border-t border-mathua-border px-3 py-3">
+                          {!rosters[key] && <Loading label="LOADING STANDINGS" />}
+                          {rosters[key] && rosters[key].length === 0 && (
+                            <p className="font-mono text-[11px] text-mathua-secondary">Nobody holds a seat in this league.</p>
+                          )}
+                          {rosters[key] && rosters[key].length > 0 && (
+                            <table className="w-full border-collapse font-mono text-[11px]">
+                              <thead>
+                                <tr className="text-mathua-muted">
+                                  <th scope="col" className="py-1 pr-2 text-left font-normal">Rank</th>
+                                  <th scope="col" className="py-1 pr-2 text-left font-normal">Learner</th>
+                                  <th scope="col" className="py-1 text-right font-normal">XP this week</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {rosters[key].map((m) => (
+                                  <tr key={m.student_id} className="border-t border-mathua-border">
+                                    <td className="py-1 pr-2 text-mathua-secondary">{m.rank}</td>
+                                    <td className="py-1 pr-2">
+                                      <Link
+                                        href={`/admin/users/detail?id=${encodeURIComponent(m.student_id)}`}
+                                        className="text-mathua-blue hover:underline"
+                                      >
+                                        {memberLabel(m)}
+                                      </Link>
+                                      {m.username && m.username !== memberLabel(m) && (
+                                        <span className="ml-2 text-mathua-muted">@{m.username}</span>
+                                      )}
+                                    </td>
+                                    <td className="py-1 text-right text-mathua-primary">{m.xp}</td>
                                   </tr>
-                                </thead>
-                                <tbody>
-                                  {rosters[key].map((m) => (
-                                    <tr key={m.student_id} className="border-t border-mathua-border">
-                                      <td className="py-1 pr-2 text-mathua-secondary">{m.rank}</td>
-                                      <td className="py-1 pr-2">
-                                        <Link
-                                          href={`/admin/users/detail?id=${encodeURIComponent(m.student_id)}`}
-                                          className="text-mathua-blue hover:underline"
-                                        >
-                                          {memberLabel(m)}
-                                        </Link>
-                                        {m.username && m.username !== memberLabel(m) && (
-                                          <span className="ml-2 text-mathua-muted">@{m.username}</span>
-                                        )}
-                                      </td>
-                                      <td className="py-1 text-right text-mathua-primary">{m.xp}</td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                            )}
-                          </div>
-                        )}
-                      </li>
-                    )
-                  })}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </main>
-      </div>
-      <BottomTabs />
+                                ))}
+                              </tbody>
+                            </table>
+                          )}
+                        </div>
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </main>
       <Footer />
-    </>
+    </AppShell>
   )
 }

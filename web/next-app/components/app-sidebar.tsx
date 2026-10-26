@@ -68,6 +68,7 @@ const NAV_ITEMS: SidebarNavItem[] = [
   { label: 'Domains', href: '/domains', icon: Layers },
   { label: 'Leaderboard', href: '/leaderboard', icon: Trophy },
   { label: 'History', href: '/history', icon: ChartNoAxesColumn },
+  { label: 'My reports', href: '/my-reports', icon: FileText },
   { label: 'Reports', href: '/reports', icon: FileText },
   { label: 'Settings', href: '/settings', icon: Settings },
 ]
@@ -125,6 +126,11 @@ export function AppSidebar({
   // Contact is one control, not two destinations: the page and the Discord
   // server answer different needs, so the choice belongs after the click.
   const [contactOpen, setContactOpen] = useState(false)
+  // The five reference links are not part of the daily learning loop, so they
+  // stay folded away. Eight primary destinations plus one disclosure is a
+  // shorter rail than thirteen links, and every reference page remains one
+  // click away.
+  const [resourcesOpen, setResourcesOpen] = useState(false)
   const router = useRouter()
   const { toggleSidebar } = useSidebar()
   // The theme control used to live only in Header, and /profile does not render one, so this
@@ -225,52 +231,68 @@ export function AppSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>Resources</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {RESOURCE_ITEMS.map((item) => {
-                const active = pathname === item.href || pathname.startsWith(item.href + '/')
-                const Icon = item.icon
-                return (
-                  <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton asChild isActive={active} tooltip={item.label}>
-                      <Link href={item.href}>
-                        <Icon className="shrink-0" />
-                        <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                )
-              })}
               <SidebarMenuItem>
                 <SidebarMenuButton
                   type="button"
-                  isActive={pathname === '/contact'}
-                  tooltip="Contact admins"
-                  aria-expanded={contactOpen}
-                  onClick={() => setContactOpen((open) => !open)}
+                  tooltip="Resources"
+                  aria-expanded={resourcesOpen}
+                  onClick={() => setResourcesOpen((open) => !open)}
                 >
-                  <Mail className="shrink-0" />
-                  <span className="group-data-[collapsible=icon]:hidden">Contact admins</span>
+                  <BookOpen className="shrink-0" />
+                  <span className="group-data-[collapsible=icon]:hidden">Resources</span>
                   <ChevronDown
-                    className={`ml-auto shrink-0 transition-transform group-data-[collapsible=icon]:hidden ${contactOpen ? 'rotate-180' : ''}`}
+                    className={`ml-auto shrink-0 transition-transform group-data-[collapsible=icon]:hidden ${resourcesOpen ? 'rotate-180' : ''}`}
                   />
                 </SidebarMenuButton>
-                {contactOpen && (
+                {resourcesOpen && (
                   <SidebarMenuSub>
+                    {RESOURCE_ITEMS.map((item) => {
+                      const active = pathname === item.href || pathname.startsWith(item.href + '/')
+                      const Icon = item.icon
+                      return (
+                        <SidebarMenuSubItem key={item.href}>
+                          <SidebarMenuSubButton asChild isActive={active}>
+                            <Link href={item.href}>
+                              <Icon className="shrink-0" />
+                              <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      )
+                    })}
                     <SidebarMenuSubItem>
-                      <SidebarMenuSubButton asChild>
-                        <Link href="/contact">
-                          <span>Contact page</span>
-                        </Link>
+                      <SidebarMenuSubButton
+                        type="button"
+                        isActive={pathname === '/contact'}
+                        aria-expanded={contactOpen}
+                        onClick={() => setContactOpen((open) => !open)}
+                      >
+                        <Mail className="shrink-0" />
+                        <span className="group-data-[collapsible=icon]:hidden">Contact admins</span>
+                        <ChevronDown
+                          className={`ml-auto shrink-0 transition-transform group-data-[collapsible=icon]:hidden ${contactOpen ? 'rotate-180' : ''}`}
+                        />
                       </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton asChild>
-                        <a href="https://discord.gg/qXPeQ2jys" target="_blank" rel="noreferrer">
-                          <span>Discord server</span>
-                        </a>
-                      </SidebarMenuSubButton>
+                      {contactOpen && (
+                        <SidebarMenuSub>
+                          <SidebarMenuSubItem>
+                            <SidebarMenuSubButton asChild>
+                              <Link href="/contact">
+                                <span>Contact page</span>
+                              </Link>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                          <SidebarMenuSubItem>
+                            <SidebarMenuSubButton asChild>
+                              <a href="https://discord.gg/qXPeQ2jys" target="_blank" rel="noreferrer">
+                                <span>Discord server</span>
+                              </a>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        </SidebarMenuSub>
+                      )}
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 )}
