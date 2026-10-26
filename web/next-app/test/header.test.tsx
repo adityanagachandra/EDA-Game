@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll, beforeEach, afterEach, vi } from 'vitest'
-import { render, screen, fireEvent, within, cleanup } from '@testing-library/react'
+import { render, screen, fireEvent, within, cleanup, waitFor, act } from '@testing-library/react'
 import Header from '../components/Header'
 
 beforeAll(() => {
@@ -50,11 +50,21 @@ vi.mock('../hooks/useChrome', () => ({
 }))
 
 // `getSettings` is called and `.then`d by the header's avatar effect, so the mock must return a
-// promise. A bare `vi.fn()` returns undefined and the header throws before it can render.
+// promise. A bare `vi.fn()` returns undefined and the header throws before it can render. It is
+// hoisted so a test can override the resolution per case: the leaderboard privacy tests below
+// need the header to observe a stored `hidden` value, and the avatar path must keep working.
+const { getSettingsMock } = vi.hoisted(() => ({
+  getSettingsMock: vi.fn(async () => ({})),
+}))
+
 vi.mock('../lib/api', async importOriginal => ({
   ...(await importOriginal<typeof import('../lib/api')>()),
-  getSettings: vi.fn(async () => ({})),
+  getSettings: getSettingsMock,
 }))
+
+beforeEach(() => {
+  getSettingsMock.mockReset().mockResolvedValue({})
+})
 
 describe('Header mobile nav menu', () => {
   beforeEach(() => {
@@ -472,5 +482,70 @@ describe('the beta sign', () => {
     expect(badge.getAttribute('title')).toMatch(/still moving/)
     const wordmark = screen.getByRole('link', { name: /Mathua/ })
     expect(wordmark.parentElement?.contains(badge)).toBe(true)
+  })
+})
+
+// Leaderboard privacy is owned by the settings blob and enforced by the server. The header's
+// half is navigational: `hidden` removes every route to the board, while `anonymous` keeps them
+// because a learner who competes without a name still wants to see the standings. Removing the
+// entry must reach all three surfaces, the desktop row, the More menu and the mobile compass,
+// and a custom links list (the docs section menu) is not exempt.
+describe('Header leaderboard privacy', () => {
+  beforeEach(() => {
+    mockUser = { student_id: 's1', name: 'Nelson', username: 'wis' }
+    chromeRef.visible = true
+  })
+
+  afterEach(() => { mockUser = null })
+
+  it('removes Leaderboard from the primary row, More and the compass when hidden', async () => {
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'hidden' })
+    render(<Header />)
+
+    await waitFor(() =>
+      expect(screen.queryByRole('link', { name: 'Leaderboard' })).toBeNull(),
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: 'More navigation' }))
+    const more = screen.getByRole('menu', { name: 'More navigation' })
+    expect(within(more).queryByRole('menuitem', { name: 'Leaderboard' })).toBeNull()
+    // More is still the route to everything else, so the filter cannot have emptied it.
+    expect(within(more).getByRole('menuitem', { name: 'Glossary' })).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Open navigation menu' }))
+    const compass = screen.getByRole('menu', { name: 'Site navigation' })
+    expect(within(compass).queryByRole('menuitem', { name: 'Leaderboard' })).toBeNull()
+    expect(within(compass).getByRole('menuitem', { name: 'Glossary' })).toBeInTheDocument()
+  })
+
+  it('keeps Leaderboard when the learner is anonymous', async () => {
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'anonymous' })
+    render(<Header />)
+
+    // Flush the resolved settings read first. Without this the assertion would
+    // pass on the default state before the header had seen `anonymous`, so a bug
+    // that hid the entry for both values would go unnoticed.
+    await act(async () => {
+      await Promise.resolve()
+    })
+    expect(getSettingsMock).toHaveBeenCalledTimes(1)
+    expect(screen.getByRole('link', { name: 'Leaderboard' })).toBeInTheDocument()
+  })
+
+  it('filters a custom links list as well when hidden', async () => {
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'hidden' })
+    render(
+      <Header
+        links={[
+          { label: 'Graph', href: '/graph' },
+          { label: 'Leaderboard', href: '/leaderboard' },
+          { label: 'Docs', href: '/docs' },
+        ]}
+      />,
+    )
+
+    await waitFor(() => expect(screen.queryByRole('link', { name: 'Leaderboard' })).toBeNull())
+    expect(screen.getByRole('link', { name: 'Graph' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Docs' })).toBeInTheDocument()
   })
 })

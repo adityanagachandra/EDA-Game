@@ -41,6 +41,10 @@ export default function Header({ links }: HeaderProps) {
   const [moreOpen, setMoreOpen] = useState(false)
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(undefined)
   const [avatarPreset, setAvatarPreset] = useState<number | null>(null)
+  // Leaderboard navigation follows the privacy setting the server reads to
+  // anonymise the rows. Default true so a slow settings call never removes a
+  // destination; only an explicit `hidden` does.
+  const [showLeaderboards, setShowLeaderboards] = useState(true)
   // The trigger and the panel are separate DOM subtrees now, so outside-click has to check both:
   // the panel is no longer a descendant of the trigger, and treating it as outside would close
   // the menu on the very mousedown that is about to activate a menu item.
@@ -80,6 +84,7 @@ export default function Header({ links }: HeaderProps) {
     if (!loggedIn || !user) {
       setAvatarUrl(undefined)
       setAvatarPreset(null)
+      setShowLeaderboards(true)
       return
     }
     // Dead-token cleanup is lazy: any strict API call below that answers
@@ -95,9 +100,12 @@ export default function Header({ links }: HeaderProps) {
       const resolved = resolveAvatar(user, s)
       setAvatarPreset(resolved.preset ?? null)
       setAvatarUrl(resolved.url)
+      setShowLeaderboards(s.leaderboard_privacy !== 'hidden')
     }).catch(() => {
       setAvatarPreset(null)
       setAvatarUrl(user.avatar_url)
+      // A failed read cannot be evidence that leaderboards were turned off.
+      setShowLeaderboards(true)
     })
   }, [loggedIn, user])
 
@@ -131,12 +139,17 @@ export default function Header({ links }: HeaderProps) {
   // Desktop row: full link set. Mobile compass: overflow only (destinations
   // missing from the bottom tabs) so nothing appears twice on one screen.
   // A custom links list (e.g. docs section menu) is shown in full.
-  const displayLinks = links || desktopLinks(loggedIn)
+  //
+  // Leaderboard is filtered from every list, custom ones included, when the
+  // learner turned it off. Only `hidden` does this: `anonymous` keeps the
+  // destination because the board is still useful without a name on it.
+  const showLink = (link: HeaderLink) => showLeaderboards || link.href !== '/leaderboard'
+  const displayLinks = (links || desktopLinks(loggedIn)).filter(showLink)
   // The default signed-in row was twelve destinations wide and overlapped itself
   // on a laptop. Keep the learning journey in the row and put the reference and
   // account destinations behind one More menu. A custom links list (docs
   // section menu) is still shown in full because it is already short.
-  const primaryLinks = links || displayLinks.filter((link) => PRIMARY_HREFS.has(link.href))
+  const primaryLinks = links ? displayLinks : displayLinks.filter((link) => PRIMARY_HREFS.has(link.href))
   const moreLinks = links ? [] : displayLinks.filter((link) => !PRIMARY_HREFS.has(link.href))
   const moreActive = moreLinks.some(
     (link) => pathname === link.href || (pathname ?? '').startsWith(link.href + '/'),
@@ -146,7 +159,9 @@ export default function Header({ links }: HeaderProps) {
   // because `/profile` is one tap from the tab bar and nothing on any other page
   // offered it. The role comes from `/api/auth/me` via the session, and offering it
   // grants nothing, the admin routes re-check it server-side.
-  const compassLinks = links || overflowLinks(loggedIn, isStaffRole(user?.role))
+  const compassLinks = links
+    ? displayLinks
+    : overflowLinks(loggedIn, isStaffRole(user?.role)).filter(showLink)
 
   return (
     // The header hides by sliding up, not by collapsing. Collapsing its height

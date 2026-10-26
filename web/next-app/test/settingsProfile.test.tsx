@@ -255,4 +255,53 @@ describe('Settings Profile section', () => {
     await waitFor(() => expect(requestEmailVerificationMock).toHaveBeenCalled())
     expect(await screen.findByText(/check your inbox/)).toBeInTheDocument()
   })
+
+  // Leaderboard privacy is a three-way choice, not a switch: the middle option
+  // exists so a learner can compete without being named. The default must be the
+  // behaviour that predates the setting, and the value has to reach the same
+  // settings blob the server reads to anonymise the rows.
+  it('offers three leaderboard privacy choices with the name shown by default', async () => {
+    render(<SettingsPage />)
+    const named = await screen.findByRole('button', { name: 'Show my name' })
+    expect(named).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('button', { name: 'Show as anonymous' })).toHaveAttribute('aria-pressed', 'false')
+    expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).toHaveAttribute('aria-pressed', 'false')
+    // The description names what the middle choice looks like on the board and
+    // what the last one costs, rather than leaving three labels to guess at.
+    expect(screen.getByText(/Anonymous shows your row as Anonymous/)).toBeInTheDocument()
+    expect(screen.getByText(/removes the leaderboard from navigation/)).toBeInTheDocument()
+  })
+
+  it('saves the anonymous choice and keeps the rest of the settings blob', async () => {
+    getSettingsMock.mockResolvedValue({ show_timer: true, leaderboard_privacy: 'named' })
+    render(<SettingsPage />)
+    fireEvent.click(await screen.findByRole('button', { name: 'Show as anonymous' }))
+    await waitFor(() =>
+      expect(updateSettingsMock).toHaveBeenCalledWith({ show_timer: true, leaderboard_privacy: 'anonymous' }),
+    )
+    expect(screen.getByRole('button', { name: 'Show as anonymous' })).toHaveAttribute('aria-pressed', 'true')
+    expect(await screen.findByText('Settings saved.')).toBeInTheDocument()
+  })
+
+  it('saves the hidden choice, which the server reads to drop the name and the nav entry', async () => {
+    render(<SettingsPage />)
+    fireEvent.click(await screen.findByRole('button', { name: 'Turn off leaderboards' }))
+    await waitFor(() => expect(updateSettingsMock).toHaveBeenCalledWith({ leaderboard_privacy: 'hidden' }))
+    expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).toHaveAttribute('aria-pressed', 'true')
+  })
+
+  // Optimistic UI is only safe if it can be undone. Unlike the timer switch,
+  // this value also removes a navigation destination, so a failed save has to
+  // put the previous choice back rather than leave the app claiming a state the
+  // server never stored.
+  it('reverts the privacy choice when the save fails', async () => {
+    updateSettingsMock.mockRejectedValue(new Error('offline'))
+    render(<SettingsPage />)
+    fireEvent.click(await screen.findByRole('button', { name: 'Turn off leaderboards' }))
+    expect(await screen.findByText(/check your connection/)).toBeInTheDocument()
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: 'Show my name' })).toHaveAttribute('aria-pressed', 'true'),
+    )
+    expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).toHaveAttribute('aria-pressed', 'false')
+  })
 })
