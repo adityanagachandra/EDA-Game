@@ -34,10 +34,97 @@ import { DiagnosticStep, ResultsStep, WelcomeStep } from './steps'
 
 type Step = 'welcome' | 'diagnostic' | 'results'
 
-// MA parity: the Diagnostic doesn't have to be completed at once, the
-// session id persists in sessionStorage so Back/refresh resumes it.
+// MA parity: the Diagnostic doesn't have to be completed at once. The session
+// id is kept in sessionStorage for Back/refresh and in localStorage for a later
+// visit, so leaving the site does not throw the run away.
 const DIAG_KEY = 'mathua_diag_session_onboard'
 const STEP_KEY = 'mathua_onboard_step'
+const DIAG_AT_KEY = 'mathua_diag_session_at'
+const RESUME_TTL_MS = 7 * 24 * 60 * 60 * 1000
+
+// The session id used to live only in sessionStorage, which a phone discards
+// when the tab or PWA closes. The diagnostic is long enough that leaving for a
+// while is normal, so keep a dated copy in localStorage and fall back to the
+// per-tab value for older browsers or private mode.
+function readStoredSession(): { sid: string; step: string } {
+  let sid = ''
+  let step = ''
+  try {
+    const at = Number(localStorage.getItem(DIAG_AT_KEY) || '0')
+    if (at && Date.now() - at < RESUME_TTL_MS) {
+      sid = localStorage.getItem(DIAG_KEY) || ''
+      step = localStorage.getItem(STEP_KEY) || ''
+    } else if (at) {
+      localStorage.removeItem(DIAG_KEY)
+      localStorage.removeItem(STEP_KEY)
+      localStorage.removeItem(DIAG_AT_KEY)
+    }
+  } catch { /* storage unavailable */ }
+  if (!sid) {
+    try {
+      sid = sessionStorage.getItem(DIAG_KEY) || ''
+      step = sessionStorage.getItem(STEP_KEY) || ''
+    } catch { /* storage unavailable */ }
+  }
+  return { sid, step }
+}
+
+function storeSession(sid: string, step: string): void {
+  try {
+    sessionStorage.setItem(DIAG_KEY, sid)
+    sessionStorage.setItem(STEP_KEY, step)
+  } catch { /* storage unavailable */ }
+  try {
+    localStorage.setItem(DIAG_KEY, sid)
+    localStorage.setItem(STEP_KEY, step)
+    localStorage.setItem(DIAG_AT_KEY, String(Date.now()))
+  } catch { /* storage unavailable */ }
+}
+
+function storeStep(step: string): void {
+  try { sessionStorage.setItem(STEP_KEY, step) } catch { /* storage unavailable */ }
+  try {
+    localStorage.setItem(STEP_KEY, step)
+    localStorage.setItem(DIAG_AT_KEY, String(Date.now()))
+  } catch { /* storage unavailable */ }
+}
+
+function clearStoredSession(): void {
+  try {
+    sessionStorage.removeItem(DIAG_KEY)
+    sessionStorage.removeItem(STEP_KEY)
+  } catch { /* storage unavailable */ }
+  try {
+    localStorage.removeItem(DIAG_KEY)
+    localStorage.removeItem(STEP_KEY)
+    localStorage.removeItem(DIAG_AT_KEY)
+  } catch { /* storage unavailable */ }
+}
+
+function clearStoredStep(): void {
+  try { sessionStorage.removeItem(STEP_KEY) } catch { /* storage unavailable */ }
+  try { localStorage.removeItem(STEP_KEY) } catch { /* storage unavailable */ }
+}
+
+function setStoredDemo(on: boolean): void {
+  try {
+    if (on) {
+      sessionStorage.setItem(DEMO_KEY, '1')
+      localStorage.setItem(DEMO_KEY, '1')
+    } else {
+      sessionStorage.removeItem(DEMO_KEY)
+      localStorage.removeItem(DEMO_KEY)
+    }
+  } catch { /* storage unavailable */ }
+}
+
+function isStoredDemo(): boolean {
+  try {
+    return localStorage.getItem(DEMO_KEY) === '1' || sessionStorage.getItem(DEMO_KEY) === '1'
+  } catch {
+    return false
+  }
+}
 
 // A guest run is a demo: the server opens a session against a student row
 // created from a typed name, and nothing can sign back into that row. Session
@@ -113,20 +200,11 @@ export default function OnboardPage() {
     // the pause is still offered separately, and only for a run that has not had
     // its scope changed underneath it.
     setDomains(result)
-    let saved = ''
-    let activeStep = ''
-    try {
-      saved = sessionStorage.getItem(DIAG_KEY) || ''
-      activeStep = sessionStorage.getItem(STEP_KEY) || ''
-      setHasPaused(!!saved)
-    } catch {
-      setHasPaused(false)
-    }
-    try {
-      setDemo(sessionStorage.getItem(DEMO_KEY) === '1')
-    } catch {
-      setDemo(false)
-    }
+    const stored = readStoredSession()
+    const saved = stored.sid
+    const activeStep = stored.step
+    setHasPaused(!!saved)
+    setDemo(isStoredDemo())
     if (activeStep === 'diagnostic' && saved) {
       void resumeDiagnostic(saved)
     }
@@ -139,10 +217,7 @@ export default function OnboardPage() {
   function dropPausedRun() {
     if (!hasPaused) return
     sessionId.current = ''
-    try {
-      sessionStorage.removeItem(DIAG_KEY)
-      sessionStorage.removeItem(STEP_KEY)
-    } catch { /* ignore */ }
+    clearStoredSession()
     setHasPaused(false)
   }
 
@@ -184,11 +259,8 @@ export default function OnboardPage() {
   // a bug that would only appear for guests.
   function beginSession(res: GoalDiagStartRes) {
     sessionId.current = res.session_id
-    try {
-      sessionStorage.setItem(DIAG_KEY, res.session_id)
-      sessionStorage.setItem(STEP_KEY, 'diagnostic')
-      setHasPaused(true)
-    } catch { /* storage unavailable, session simply won't resume */ }
+    storeSession(res.session_id, 'diagnostic')
+    setHasPaused(true)
     setQuestion(res.question || '')
     conceptId.current = res.concept_id || ''
     questionShownAt.current = Date.now()
@@ -221,7 +293,7 @@ export default function OnboardPage() {
       }
       setDemo(false)
       setNeedsName(false)
-      try { sessionStorage.removeItem(DEMO_KEY) } catch { /* ignore */ }
+      setStoredDemo(false)
       beginSession(res)
     } catch (err) {
       if (getErrorStatus(err) === 401) {
@@ -247,7 +319,7 @@ export default function OnboardPage() {
       }
       setDemo(true)
       setNeedsName(false)
-      try { sessionStorage.setItem(DEMO_KEY, '1') } catch { /* ignore */ }
+      setStoredDemo(true)
       beginSession(res)
     } catch {
       toast.error("Something went wrong, but we're working on it.")
@@ -258,31 +330,20 @@ export default function OnboardPage() {
 
   async function resumeDiagnostic(savedSid?: string) {
     let sid = savedSid || ''
-    if (!sid) {
-      try {
-        sid = sessionStorage.getItem(DIAG_KEY) || ''
-      } catch {
-        sid = ''
-      }
-    }
+    if (!sid) sid = readStoredSession().sid
     if (!sid) return
     setLoading(true)
     try {
       const data = await resumeGoalDiagnostic(sid)
       if (data.done) {
-        try {
-          sessionStorage.removeItem(DIAG_KEY)
-          sessionStorage.removeItem(STEP_KEY)
-        } catch { /* ignore */ }
+        clearStoredSession()
         setHasPaused(false)
         setStep('welcome')
         toast.error('That diagnostic already finished, start a fresh one below.')
         setLoading(false)
         return
       }
-      try {
-        sessionStorage.setItem(STEP_KEY, 'diagnostic')
-      } catch { /* ignore */ }
+      storeStep('diagnostic')
       sessionId.current = sid
       setQuestion(data.question || '')
       conceptId.current = data.concept_id || ''
@@ -304,10 +365,7 @@ export default function OnboardPage() {
       setRetryConcept('')
       setStep('diagnostic')
     } catch {
-      try {
-        sessionStorage.removeItem(DIAG_KEY)
-        sessionStorage.removeItem(STEP_KEY)
-      } catch { /* ignore */ }
+      clearStoredSession()
       setHasPaused(false)
       setStep('welcome')
       toast.error('Could not resume, that session expired. Start a fresh diagnostic.')
@@ -387,8 +445,7 @@ export default function OnboardPage() {
           setFinished(true)
           setStep('results')
           try {
-            sessionStorage.removeItem(DIAG_KEY)
-            sessionStorage.removeItem(STEP_KEY)
+            clearStoredSession()
           } catch { /* ignore */ }
           setHasPaused(false)
           setLoading(false)
@@ -409,10 +466,7 @@ export default function OnboardPage() {
       const planRes = await getGoalPlan(sessionId.current)
       setPlan(planRes)
       setStep('results')
-      try {
-        sessionStorage.removeItem(DIAG_KEY)
-        sessionStorage.removeItem(STEP_KEY)
-      } catch { /* ignore */ }
+      clearStoredSession()
       setHasPaused(false)
     } catch (e) {
       setPlanError(getErrorMessage(e) || 'Could not generate plan.')
@@ -535,7 +589,7 @@ export default function OnboardPage() {
               <button
                 type="button"
                 onClick={() => {
-                  try { sessionStorage.removeItem(STEP_KEY) } catch { /* ignore */ }
+                  clearStoredStep()
                   setStep('welcome')
                 }}
                 className="text-mathua-secondary text-sm hover:text-mathua-primary"

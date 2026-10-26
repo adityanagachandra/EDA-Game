@@ -18,7 +18,7 @@ vi.mock('next/link', () => ({
 }))
 vi.mock('../lib/api', async (importOriginal) => {
   const mod = await importOriginal<typeof import('../lib/api')>()
-  return { ...mod, startGoalDiagnostic: vi.fn(), getGoalPlan: vi.fn() }
+  return { ...mod, startGoalDiagnostic: vi.fn(), resumeGoalDiagnostic: vi.fn(), getGoalPlan: vi.fn() }
 })
 vi.mock('../hooks/useTheme', () => ({ useTheme: () => ({ mounted: true }) }))
 vi.mock('../components/app-shell', () => ({
@@ -45,7 +45,9 @@ beforeEach(() => {
   push.mockReset()
   replace.mockReset()
   sessionStorage.clear()
+  localStorage.clear()
   vi.mocked(api.startGoalDiagnostic).mockReset()
+  vi.mocked(api.resumeGoalDiagnostic).mockReset()
   vi.mocked(api.getGoalPlan).mockReset()
 })
 
@@ -166,6 +168,25 @@ describe('/onboard domain selection', () => {
     expect(startButton().disabled).toBe(false)
     expect(Number(scopeShown())).toBe(scopeSize(idsForDomain('geometry')))
     expect(sessionStorage.getItem('mathua_diag_session_onboard')).toBeNull()
+  })
+
+  it('resumes a saved diagnostic from localStorage after the tab is gone', async () => {
+    vi.mocked(api.resumeGoalDiagnostic).mockResolvedValue({
+      done: false,
+      question: 'Resumed question',
+      concept_id: 'c1',
+      concept_name: 'C',
+      grading_type: 'numeric',
+      progress: { answered: 1, estimated_total: 25, min_total: 25, max_total: 45, probe_budget: 45, done: false },
+    } as never)
+    localStorage.setItem('mathua_diag_session_onboard', 's-saved')
+    localStorage.setItem('mathua_onboard_step', 'diagnostic')
+    localStorage.setItem('mathua_diag_session_at', String(Date.now()))
+
+    render(<OnboardPage />)
+
+    await waitFor(() => expect(api.resumeGoalDiagnostic).toHaveBeenCalledWith('s-saved'))
+    expect(await screen.findByText('Resumed question')).toBeTruthy()
   })
 
   it('offers a way into the topics without taking the test', async () => {
