@@ -269,6 +269,13 @@ CREATE TABLE IF NOT EXISTS question_reports (
 CREATE INDEX IF NOT EXISTS idx_reports_status  ON question_reports(status, created_at);
 CREATE INDEX IF NOT EXISTS idx_reports_concept ON question_reports(concept_id);
 
+-- The last time an account opened its own report history. See the SQLite
+-- schema for why one timestamp per account is enough.
+CREATE TABLE IF NOT EXISTS report_views (
+    student_id TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
+    seen_at    TEXT NOT NULL DEFAULT ''
+);
+
 -- One optional screenshot per report, beside the moderation row. ON DELETE
 -- CASCADE is what makes account deletion remove the image too.
 CREATE TABLE IF NOT EXISTS report_images (
@@ -2247,7 +2254,10 @@ func (s *PostgresStore) ListReports(status string, limit, offset int) ([]Questio
 	var err error
 	if status == "" || status == "all" {
 		rows, err = s.db.Query(`
-			SELECT id, reporter_id, concept_id, kind, question, expected, explanation,
+			SELECT id, reporter_id,
+			       COALESCE((SELECT username FROM students WHERE students.id = question_reports.reporter_id), ''),
+			       COALESCE((SELECT name FROM students WHERE students.id = question_reports.reporter_id), ''),
+			       concept_id, kind, question, expected, explanation,
 			       lesson_id, source, session_id, attempt_id,
 			       answer_given, grading_type, answer_hint, answer_input_mode,
 			       reason, detail, status,
@@ -2259,7 +2269,10 @@ func (s *PostgresStore) ListReports(status string, limit, offset int) ([]Questio
 		`, limit, offset)
 	} else {
 		rows, err = s.db.Query(`
-			SELECT id, reporter_id, concept_id, kind, question, expected, explanation,
+			SELECT id, reporter_id,
+			       COALESCE((SELECT username FROM students WHERE students.id = question_reports.reporter_id), ''),
+			       COALESCE((SELECT name FROM students WHERE students.id = question_reports.reporter_id), ''),
+			       concept_id, kind, question, expected, explanation,
 			       lesson_id, source, session_id, attempt_id,
 			       answer_given, grading_type, answer_hint, answer_input_mode,
 			       reason, detail, status,
@@ -2280,7 +2293,8 @@ func (s *PostgresStore) ListReports(status string, limit, offset int) ([]Questio
 		var r QuestionReport
 		var created string
 		if err := rows.Scan(
-			&r.ID, &r.ReporterID, &r.ConceptID, &r.Kind, &r.Question, &r.Expected,
+			&r.ID, &r.ReporterID, &r.ReporterUsername, &r.ReporterName,
+			&r.ConceptID, &r.Kind, &r.Question, &r.Expected,
 			&r.Explanation, &r.LessonID, &r.Source, &r.SessionID, &r.AttemptID,
 			&r.AnswerGiven, &r.GradingType, &r.AnswerHint, &r.AnswerInputMode,
 			&r.Reason, &r.Detail, &r.Status, &r.Resolution, &r.ResolvedBy, &r.ResolvedAt, &created,

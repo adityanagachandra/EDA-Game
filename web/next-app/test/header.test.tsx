@@ -262,22 +262,27 @@ describe('Header profile menu', () => {
     expect(panel.className).not.toMatch(/top-\[calc/)
   })
 
-  it('offers Profile, then Contact, then Sign out, and each closes the menu', () => {
+  it('offers My reports, Profile, Contact, then Sign out, and each closes the menu', () => {
     mockUser = { student_id: 's1', name: 'Nelson', username: 'wis' }
     render(<Header />)
     fireEvent.click(screen.getByRole('button', { name: 'Open profile menu' }))
     const items = screen.getAllByRole('menuitem')
-    // Contact sits between the two so that a learner who cannot find the footer still has a
-    // route to a person while signed in, which is exactly the state in which an account
-    // problem happens.
-    expect(items.map(i => i.textContent)).toEqual(['Profile', 'Contact', 'Sign out'])
+    // Contact sits between the account links and the sign-out action so that a
+    // learner who cannot find the footer still has a route to a person while
+    // signed in, which is exactly the state in which an account problem happens.
+    expect(items.map(i => i.textContent)).toEqual(['My reports', 'Profile', 'Contact', 'Sign out'])
 
     fireEvent.click(items[0])
-    expect(pushMock).toHaveBeenCalledWith('/profile')
+    expect(pushMock).toHaveBeenCalledWith('/my-reports')
     expect(screen.queryByRole('menu', { name: 'Profile' })).toBeNull()
 
     fireEvent.click(screen.getByRole('button', { name: 'Open profile menu' }))
     fireEvent.click(screen.getAllByRole('menuitem')[1])
+    expect(pushMock).toHaveBeenCalledWith('/profile')
+    expect(screen.queryByRole('menu', { name: 'Profile' })).toBeNull()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Open profile menu' }))
+    fireEvent.click(screen.getAllByRole('menuitem')[2])
     expect(pushMock).toHaveBeenCalledWith('/contact')
     expect(screen.queryByRole('menu', { name: 'Profile' })).toBeNull()
   })
