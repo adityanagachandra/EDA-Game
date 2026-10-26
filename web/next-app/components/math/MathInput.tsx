@@ -208,16 +208,23 @@ export default function MathInput({
   // from `value` because a host's value is the *plain* answer it will submit, and it
   // only catches up after a render, the hint must not wait for the round trip.
   const [typedLatex, setTypedLatex] = useState('')
-
-  useEffect(() => {
-    if (!value) {
-      setTypedLatex('')
-    }
-  }, [value])
   // What has been typed into the plain input while MathLive loads. Local, because the
   // host's `value` is LaTeX and this control is showing plain text; the two only meet
   // when `MathLiveField` mounts and pushes `value` in.
   const [loadingText, setLoadingText] = useState('')
+
+  // An empty value from the host is the host taking the answer back: the next question
+  // arrived, a retry wiped the box. Both local copies of what was typed go with it.
+  // `loadingText` used to stay, so a learner who typed into the loading input and
+  // pressed "I don't know" before the editor's chunk arrived found the same text in
+  // the next question's box, and anything typed after that was appended to it and
+  // handed to the editor on mount.
+  useEffect(() => {
+    if (!value) {
+      setTypedLatex('')
+      setLoadingText('')
+    }
+  }, [value])
   // Whether the learner is in the loading input. State, not a ref: the suspended
   // `MathLiveField` mounts with the props of this component's last render, so the
   // value has to have caused one.
