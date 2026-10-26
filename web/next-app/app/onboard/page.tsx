@@ -40,6 +40,9 @@ type Step = 'welcome' | 'diagnostic' | 'results'
 const DIAG_KEY = 'mathua_diag_session_onboard'
 const STEP_KEY = 'mathua_onboard_step'
 const DIAG_AT_KEY = 'mathua_diag_session_at'
+// The server keeps the run for the same seven days (diagnosticRetention in
+// internal/server/server.go). Offering a resume the server has already swept
+// ends in "the server restarted and forgot this run", so the two must agree.
 const RESUME_TTL_MS = 7 * 24 * 60 * 60 * 1000
 
 // The session id used to live only in sessionStorage, which a phone discards
