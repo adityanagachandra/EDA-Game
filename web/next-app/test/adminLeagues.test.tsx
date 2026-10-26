@@ -17,8 +17,9 @@ vi.mock('../hooks/useAdminMe', () => ({
   }),
 }))
 
-vi.mock('../components/Header', () => ({ default: () => <header>banner</header> }))
-vi.mock('../components/BottomTabs', () => ({ default: () => <nav>tabs</nav> }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => <footer>footer</footer> }))
 vi.mock('../components/AdminNav', () => ({ default: () => <nav>sections</nav> }))
 

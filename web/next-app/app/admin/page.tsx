@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import Footer from '../../components/Footer'
 import SectionHeader from '../../components/SectionHeader'
 import AdminNav from '../../components/AdminNav'
@@ -32,99 +31,95 @@ export default function AdminOverviewPage() {
   }, [])
 
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <SectionHeader label="Administration" title="Overview" />
-          <AdminNav />
+    <AppShell>
+      <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <SectionHeader label="Administration" title="Overview" />
+        <AdminNav />
 
-          {!isStaff && (
-            <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
-              This area needs a staff role. If you hold one, sign in with that account.
-            </p>
-          )}
+        {!isStaff && (
+          <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
+            This area needs a staff role. If you hold one, sign in with that account.
+          </p>
+        )}
 
-          {error && (
-            <p role="alert" className="border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
-              {error}
-            </p>
-          )}
+        {error && (
+          <p role="alert" className="border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
+            {error}
+          </p>
+        )}
 
-          {!data && !error && <Loading label="LOADING OVERVIEW" />}
+        {!data && !error && <Loading label="LOADING OVERVIEW" />}
 
-          {data && (
-            <>
-              <Link
-                href="/admin/reports?status=open"
-                className="mb-8 flex items-center justify-between border border-mathua-border bg-mathua-surface p-4 hover:border-mathua-blue"
-              >
-                <span className="font-mono text-xs uppercase tracking-wider text-mathua-muted">Reports needing attention</span>
-                <span className={`font-mono text-2xl tabular-nums ${data.reports.outstanding > 0 ? 'text-mathua-red' : 'text-mathua-primary'}`}>
-                  {data.reports.outstanding}
-                </span>
-              </Link>
+        {data && (
+          <>
+            <Link
+              href="/admin/reports?status=open"
+              className="mb-8 flex items-center justify-between border border-mathua-border bg-mathua-surface p-4 hover:border-mathua-blue"
+            >
+              <span className="font-mono text-xs uppercase tracking-wider text-mathua-muted">Reports needing attention</span>
+              <span className={`font-mono text-2xl tabular-nums ${data.reports.outstanding > 0 ? 'text-mathua-red' : 'text-mathua-primary'}`}>
+                {data.reports.outstanding}
+              </span>
+            </Link>
 
-              <dl className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                <Stat label="Open" value={data.reports.open} />
-                <Stat label="Reviewing" value={data.reports.reviewing} />
-                <Stat label="Resolved" value={data.reports.resolved} />
-                <Stat label="Active now" value={data.active_now} />
-                <Stat label="Guests now" value={data.active_now_guests} />
-                <Stat label="Active today" value={data.active_today} />
-                <Stat label="Guests today" value={data.active_today_guests} />
-                <Stat label="Staff" value={data.staff} />
-                <Stat label="Owners" value={data.owners} />
-                <Stat label="Accounts" value={data.users} />
-                <Stat label="Concepts" value={data.concepts} />
-                <Stat label="Domains" value={data.domains} />
-                <Stat label="Stored questions" value={data.questions} />
-              </dl>
+            <dl className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <Stat label="Open" value={data.reports.open} />
+              <Stat label="Reviewing" value={data.reports.reviewing} />
+              <Stat label="Resolved" value={data.reports.resolved} />
+              <Stat label="Active now" value={data.active_now} />
+              <Stat label="Guests now" value={data.active_now_guests} />
+              <Stat label="Active today" value={data.active_today} />
+              <Stat label="Guests today" value={data.active_today_guests} />
+              <Stat label="Staff" value={data.staff} />
+              <Stat label="Owners" value={data.owners} />
+              <Stat label="Accounts" value={data.users} />
+              <Stat label="Concepts" value={data.concepts} />
+              <Stat label="Domains" value={data.domains} />
+              <Stat label="Stored questions" value={data.questions} />
+            </dl>
 
-              {/* Zero owners is a broken deployment: no owner means nobody can grant owner, and
-                  every administrative route is a 403 including the one that would fix it. The
-                  recovery is the operator command, which is why it is named here. */}
-              {data.owners === 0 && (
-                <p role="alert" className="mt-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
-                  No owners exist. Every administrative route answers 403 until one is promoted
-                  from the machine: <code>mathua admin promote &lt;email&gt;</code>
+            {/* Zero owners is a broken deployment: no owner means nobody can grant owner, and
+                every administrative route is a 403 including the one that would fix it. The
+                recovery is the operator command, which is why it is named here. */}
+            {data.owners === 0 && (
+              <p role="alert" className="mt-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">
+                No owners exist. Every administrative route answers 403 until one is promoted
+                from the machine: <code>mathua admin promote &lt;email&gt;</code>
+              </p>
+            )}
+
+            <section className="mt-10">
+              <div className="flex items-baseline justify-between gap-3">
+                <h2 className="font-serif text-lg text-mathua-primary">Recent admin activity</h2>
+                <Link href="/admin/audit" className="font-mono text-[11px] text-mathua-blue hover:underline">
+                  Full log →
+                </Link>
+              </div>
+              {data.recent_activity.length === 0 ? (
+                <p className="mt-3 font-mono text-xs text-mathua-muted">
+                  Nothing yet. Role changes and moderation decisions are recorded here.
                 </p>
+              ) : (
+                <ul className="mt-3 space-y-1">
+                  {data.recent_activity.map((e) => (
+                    <li key={e.id} className="font-mono text-[11px] text-mathua-secondary">
+                      <span className="text-mathua-muted">{e.created_at}</span>{' '}
+                      <span className="text-mathua-primary">{e.action}</span>{' '}
+                      {e.entity_type}#{e.entity_id}
+                    </li>
+                  ))}
+                </ul>
               )}
+            </section>
+          </>
+        )}
 
-              <section className="mt-10">
-                <div className="flex items-baseline justify-between gap-3">
-                  <h2 className="font-serif text-lg text-mathua-primary">Recent admin activity</h2>
-                  <Link href="/admin/audit" className="font-mono text-[11px] text-mathua-blue hover:underline">
-                    Full log →
-                  </Link>
-                </div>
-                {data.recent_activity.length === 0 ? (
-                  <p className="mt-3 font-mono text-xs text-mathua-muted">
-                    Nothing yet. Role changes and moderation decisions are recorded here.
-                  </p>
-                ) : (
-                  <ul className="mt-3 space-y-1">
-                    {data.recent_activity.map((e) => (
-                      <li key={e.id} className="font-mono text-[11px] text-mathua-secondary">
-                        <span className="text-mathua-muted">{e.created_at}</span>{' '}
-                        <span className="text-mathua-primary">{e.action}</span>{' '}
-                        {e.entity_type}#{e.entity_id}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </section>
-            </>
-          )}
-
-          <Link href="/profile" className="mt-10 inline-block font-mono text-xs text-mathua-secondary hover:text-mathua-blue">
-            ← Profile
-          </Link>
-        </main>
-      </div>
-      <BottomTabs />
+        <Link href="/profile" className="mt-10 inline-block font-mono text-xs text-mathua-secondary hover:text-mathua-blue">
+          ← Profile
+        </Link>
+      </main>
       <Footer />
-    </>
+    </AppShell>
   )
 }
 

@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import Header from '../../../components/Header'
-import BottomTabs from '../../../components/BottomTabs'
+import AppShell from '../../../components/app-shell'
 import Footer from '../../../components/Footer'
 import SectionHeader from '../../../components/SectionHeader'
 import AdminNav from '../../../components/AdminNav'
@@ -62,72 +61,68 @@ export default function AdminReportsPage() {
   useEffect(() => { load() }, [load])
 
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
-          <SectionHeader label="Administration" title="Reports" />
-          <AdminNav />
+    <AppShell>
+      <main className="mx-auto w-full max-w-[900px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
+        <SectionHeader label="Administration" title="Reports" />
+        <AdminNav />
 
-          <div className="mb-4 flex flex-wrap gap-2">
-            {FILTERS.map((f) => (
-              <button
-                key={f.key}
-                type="button"
-                onClick={() => setFilter(f.key)}
-                className={
-                  filter === f.key
-                    ? 'border border-mathua-blue text-mathua-blue px-3 h-9 font-mono text-xs'
-                    : 'border border-mathua-border text-mathua-secondary hover:text-mathua-blue px-3 h-9 font-mono text-xs'
-                }
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
+        <div className="mb-4 flex flex-wrap gap-2">
+          {FILTERS.map((f) => (
+            <button
+              key={f.key}
+              type="button"
+              onClick={() => setFilter(f.key)}
+              className={
+                filter === f.key
+                  ? 'border border-mathua-blue text-mathua-blue px-3 h-9 font-mono text-xs'
+                  : 'border border-mathua-border text-mathua-secondary hover:text-mathua-blue px-3 h-9 font-mono text-xs'
+              }
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
 
-          {error && (
-            <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">{error}</p>
-          )}
+        {error && (
+          <p role="alert" className="mb-4 border border-mathua-red bg-mathua-surface p-4 font-mono text-xs text-mathua-red">{error}</p>
+        )}
 
-          {!reports && !error && <Loading label="LOADING REPORTS" />}
-          {reports && reports.length === 0 && !error && (
-            <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
-              Nothing here.
-            </p>
-          )}
+        {!reports && !error && <Loading label="LOADING REPORTS" />}
+        {reports && reports.length === 0 && !error && (
+          <p role="status" className="border border-mathua-border bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
+            Nothing here.
+          </p>
+        )}
 
-          <div className="space-y-6">
-            {groups.map(([concept, items]) => {
-              const unsettled = items.filter((r) => r.status === 'open' || r.status === 'reviewing')
-              return (
-                <section key={concept} className="space-y-3">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-mathua-border pb-2">
-                    <h2 className="font-mono text-xs text-mathua-primary">
-                      {concept || (items.every((r) => r.kind === 'message') ? 'Messages' : '(no concept)')}
-                    </h2>
-                    <span className="font-mono text-[10px] text-mathua-muted">
-                      {items.length} report{items.length === 1 ? '' : 's'}
-                      {unsettled.length !== items.length ? `, ${unsettled.length} unsettled` : ''}
-                    </span>
-                  </div>
-                  {can('reports.moderate') && concept && unsettled.length > 1 && (
-                    <BulkClose conceptId={concept} count={unsettled.length} onDone={load} />
-                  )}
-                  <ul className="space-y-3">
-                    {items.map((r) => (
-                      <ReportCard key={r.id} report={r} canModerate={can('reports.moderate')} onChanged={load} />
-                    ))}
-                  </ul>
-                </section>
-              )
-            })}
-          </div>
-        </main>
-      </div>
-      <BottomTabs />
+        <div className="space-y-6">
+          {groups.map(([concept, items]) => {
+            const unsettled = items.filter((r) => r.status === 'open' || r.status === 'reviewing')
+            return (
+              <section key={concept} className="space-y-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-mathua-border pb-2">
+                  <h2 className="font-mono text-xs text-mathua-primary">
+                    {concept || (items.every((r) => r.kind === 'message') ? 'Messages' : '(no concept)')}
+                  </h2>
+                  <span className="font-mono text-[10px] text-mathua-muted">
+                    {items.length} report{items.length === 1 ? '' : 's'}
+                    {unsettled.length !== items.length ? `, ${unsettled.length} unsettled` : ''}
+                  </span>
+                </div>
+                {can('reports.moderate') && concept && unsettled.length > 1 && (
+                  <BulkClose conceptId={concept} count={unsettled.length} onDone={load} />
+                )}
+                <ul className="space-y-3">
+                  {items.map((r) => (
+                    <ReportCard key={r.id} report={r} canModerate={can('reports.moderate')} onChanged={load} />
+                  ))}
+                </ul>
+              </section>
+            )
+          })}
+        </div>
+      </main>
       <Footer />
-    </>
+    </AppShell>
   )
 }
 

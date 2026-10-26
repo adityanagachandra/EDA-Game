@@ -17,9 +17,10 @@ vi.mock('../hooks/useAuthState', () => ({
   }),
 }))
 
-vi.mock('../components/Header', () => ({ default: () => <header /> }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => <footer /> }))
-vi.mock('../components/BottomTabs', () => ({ default: () => <nav /> }))
 vi.mock('../components/KatexContent', () => ({
   default: ({ children }: { children: React.ReactNode }) => <span>{children}</span>,
 }))

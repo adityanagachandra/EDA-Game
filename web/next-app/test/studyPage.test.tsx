@@ -15,8 +15,9 @@ vi.mock('next/navigation', () => ({
   useSearchParams: () => params,
 }))
 
-vi.mock('../components/Header', () => ({ default: () => null }))
-vi.mock('../components/BottomTabs', () => ({ default: () => null }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => null }))
 
 vi.mock('../lib/auth', async (importOriginal) => ({

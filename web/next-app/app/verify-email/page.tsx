@@ -3,8 +3,7 @@
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import SectionHeader from '../../components/SectionHeader'
 import Footer from '../../components/Footer'
 import Loading from '../../components/Loading'
@@ -36,8 +35,7 @@ function VerifyEmailInner() {
   }, [searchParams])
 
   return (
-    <>
-      <Header />
+    <AppShell>
       <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0">
         <section className="pt-8 max-w-md mx-auto mt-8 sm:mt-12 min-w-0 overflow-hidden text-center">
           <SectionHeader label="Email" title="Verify email" />
@@ -57,8 +55,7 @@ function VerifyEmailInner() {
         </section>
       </div>
       <Footer />
-      <BottomTabs />
-    </>
+    </AppShell>
   )
 }
 
