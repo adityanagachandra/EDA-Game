@@ -82,7 +82,7 @@ func newAdminEnv(t *testing.T) *adminEnv {
 	}
 
 	env.studentTok = signup("Ada", "ada", "ada@example.com")
-	env.adminTok = signup("Root", "root", "root@example.com")
+	env.adminTok = signup("Rooty", "rooty", "root@example.com")
 	thirdTok := signup("Third", "third", "third@example.com")
 
 	me := func(tok string) string {

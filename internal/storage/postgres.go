@@ -609,6 +609,11 @@ func pgAuthMigrate(db *sql.DB) error {
 	if err := ensureEmailUniqueIndexPostgres(db); err != nil {
 		return err
 	}
+	// Usernames are the public handle; see the SQLite twin for the retry
+	// policy and the legacy-duplicate skip.
+	if err := ensureUsernameUniqueIndexPostgres(db); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -635,6 +640,30 @@ func ensureEmailUniqueIndexPostgres(db *sql.DB) error {
 	}
 	if _, err := db.Exec("CREATE UNIQUE INDEX uidx_students_email ON students(lower(email)) WHERE email IS NOT NULL AND email <> ''"); err != nil {
 		return fmt.Errorf("create email unique index: %w", err)
+	}
+	return nil
+}
+
+// ensureUsernameUniqueIndexPostgres mirrors the SQLite username index. The
+// app-level FindByUsername check is check-then-insert; this index is what makes
+// the uniqueness guarantee hold under two simultaneous signups.
+func ensureUsernameUniqueIndexPostgres(db *sql.DB) error {
+	var name string
+	if err := db.QueryRow("SELECT indexname FROM pg_indexes WHERE schemaname = current_schema() AND indexname = 'uidx_students_username'").Scan(&name); err == nil && name != "" {
+		return nil
+	} else if err != nil && err != sql.ErrNoRows {
+		return fmt.Errorf("check username unique index: %w", err)
+	}
+	var dupes int
+	if err := db.QueryRow("SELECT COUNT(*) FROM (SELECT lower(username) FROM students WHERE username IS NOT NULL AND username <> '' GROUP BY lower(username) HAVING COUNT(*) > 1) d").Scan(&dupes); err != nil {
+		return fmt.Errorf("audit duplicate usernames: %w", err)
+	}
+	if dupes > 0 {
+		log.Printf("storage: %d duplicate username groups; skipping unique username index until resolved", dupes)
+		return nil
+	}
+	if _, err := db.Exec("CREATE UNIQUE INDEX uidx_students_username ON students(lower(username)) WHERE username IS NOT NULL AND username <> ''"); err != nil {
+		return fmt.Errorf("create username unique index: %w", err)
 	}
 	return nil
 }

@@ -81,6 +81,8 @@ func TestSignup_RequiresTrimmedBoundedName(t *testing.T) {
 		{"", "noname", "name is required"},
 		{"   ", "spaces", "name is required"},
 		{strings.Repeat("x", 51), "longname", "name must be 1-50 characters"},
+		{"what the fuck", "badname", "that name is not allowed"},
+		{"Clean Name", "sh1t", "that name is not allowed"},
 	} {
 		if _, _, err := svc.Signup(tc.name, tc.username, "Engine!n1"); err == nil || err.Error() != tc.want {
 			t.Errorf("signup(%q): expected %q, got %v", tc.name, tc.want, err)
