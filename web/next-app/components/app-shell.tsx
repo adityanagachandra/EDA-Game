@@ -85,7 +85,9 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
               <ChevronsRight size={10} className="text-mathua-muted" />
             </SidebarTrigger>
           </div>
-          {children}
+          {/* A block child keeps page wrappers with mx-auto centred and full
+              width. As flex items their auto margins would shrink-wrap them. */}
+          <div className="w-full min-w-0">{children}</div>
         </SidebarInset>
       </SidebarProvider>
       <BottomTabs />
