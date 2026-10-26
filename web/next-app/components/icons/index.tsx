@@ -23,6 +23,7 @@
 
 import { forwardRef } from 'react'
 import {
+  BellIcon,
   BookOpenIcon,
   ChartNoAxesColumnIcon,
   ChevronsLeftIcon,
@@ -114,6 +115,7 @@ function wrap(Icon: AnyIcon) {
 
 // Navigation and chrome.
 export const BookOpen = wrap(BookOpenIcon as never)
+export const Bell = wrap(BellIcon as never)
 export const ChartNoAxesColumn = wrap(ChartNoAxesColumnIcon as never)
 export const ChevronsLeft = wrap(ChevronsLeftIcon as never)
 export const ChevronsRight = wrap(ChevronsRightIcon as never)
