@@ -923,6 +923,10 @@ export interface UserSettings {
 	avatar_dicebear?: { style: string; seed: string } | null
 	avatar_custom?: boolean
 	avatar_version?: number | null
+	// How the leaderboard and league rows name this learner. The server reads
+	// the same key from the opaque settings blob; a missing key means "named",
+	// which is the behaviour that existed before the setting.
+	leaderboard_privacy?: 'named' | 'anonymous' | 'hidden'
 }
 
 export async function getSettings(): Promise<UserSettings> {

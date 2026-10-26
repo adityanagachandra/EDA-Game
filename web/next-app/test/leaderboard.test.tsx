@@ -3,15 +3,33 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { LeaderboardBoard, MyLeague } from '../lib/api'
 import LeaderboardPage from '../app/leaderboard/page'
 
-const { getLeaderboard, getMyLeague } = vi.hoisted(() => ({
+const { getLeaderboard, getMyLeague, getSettingsMock } = vi.hoisted(() => ({
   getLeaderboard: vi.fn(),
   getMyLeague: vi.fn(),
+  getSettingsMock: vi.fn(),
 }))
 
 vi.mock('../lib/api', async (importOriginal) => {
   const actual = await importOriginal<typeof import('../lib/api')>()
-  return { ...actual, getLeaderboard, getMyLeague }
+  return { ...actual, getLeaderboard, getMyLeague, getSettings: getSettingsMock }
 })
+
+// Signed out by default: every test that predates leaderboard privacy is about
+// the board itself, and a visitor has no settings to read. The privacy tests
+// below flip this to a signed-in learner.
+//
+// The user object is a module constant rather than a fresh literal: AppShell
+// depends on `user` by identity, and a new object on every render re-ran its
+// settings effect until the settings mock had been called repeatedly.
+let mockLoggedIn = false
+const mockAuthUser = { student_id: 's1', name: 'Ada', username: 'ada' }
+
+vi.mock('../hooks/useAuthState', () => ({
+  useAuthState: () => ({
+    loggedIn: mockLoggedIn,
+    user: mockLoggedIn ? mockAuthUser : null,
+  }),
+}))
 
 vi.mock('next/navigation', () => ({
   usePathname: () => '/leaderboard',
@@ -65,8 +83,10 @@ function league(overrides: Partial<MyLeague> = {}): MyLeague {
 }
 
 beforeEach(() => {
+  mockLoggedIn = false
   getLeaderboard.mockReset()
   getMyLeague.mockReset()
+  getSettingsMock.mockReset().mockResolvedValue({})
 })
 
 // The board answers three different questions, and the old page answered one of
@@ -165,5 +185,47 @@ describe('the leaderboard page', () => {
     expect(await screen.findByText(/Could not load this board/)).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: 'Retry' }))
     expect(await screen.findAllByText('Ada')).not.toHaveLength(0)
+  })
+
+  // The navigation drops the entry, but a stored bookmark or typed URL still
+  // arrives here. Saying why is the difference between a page that is turned off
+  // and a page that looks broken. The server anonymises the rows in this mode,
+  // so the state also says the learner is anonymous rather than unnamed.
+  it('explains that leaderboards are off for a learner who hid them', async () => {
+    mockLoggedIn = true
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'hidden' })
+    getLeaderboard.mockResolvedValue(board())
+    render(<LeaderboardPage />)
+
+    expect(await screen.findByText('Leaderboards are turned off')).toBeInTheDocument()
+    expect(screen.getByText(/anonymous on the public ranking/)).toBeInTheDocument()
+    // Scoped to the state card: the app shell also carries a Settings rail link.
+    const card = screen.getByText('Leaderboards are turned off').closest('div')!
+    expect(within(card).getByRole('link', { name: 'Settings' })).toHaveAttribute('href', '/settings')
+    expect(screen.queryByRole('tablist')).toBeNull()
+    expect(screen.queryByRole('table')).toBeNull()
+  })
+
+  it('keeps the board for an anonymous learner, who still competes', async () => {
+    mockLoggedIn = true
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'anonymous' })
+    getLeaderboard.mockResolvedValue(board())
+    render(<LeaderboardPage />)
+
+    // Wait for a row rather than the table: the skeleton is a table too, so a
+    // role query can resolve against the loading state and then lose the node it
+    // returned when the real rows replace it. Ada appears twice (podium and row).
+    expect(await screen.findAllByText('Ada')).not.toHaveLength(0)
+    expect(screen.getByRole('table')).toBeInTheDocument()
+    expect(screen.queryByText('Leaderboards are turned off')).toBeNull()
+  })
+
+  it('never reads settings for a signed-out visitor', async () => {
+    getLeaderboard.mockResolvedValue(board())
+    render(<LeaderboardPage />)
+
+    expect(await screen.findAllByText('Ada')).not.toHaveLength(0)
+    expect(screen.getByRole('table')).toBeInTheDocument()
+    expect(getSettingsMock).not.toHaveBeenCalled()
   })
 })

@@ -104,6 +104,12 @@ func (c *Computer) MyLeague(studentID string, now time.Time) (*MyLeague, error) 
 		}, publicID); av != nil {
 			line.Avatar = av
 		}
+		// Same rule as the public board: an opted-out learner competes under a
+		// rank-derived placeholder, and the caller still recognises their own
+		// seat through IsMe.
+		if IsAnonymous(r.Settings) {
+			line.ID, line.Name, line.Avatar = anonymousIdentity(r.Rank)
+		}
 		if r.StudentID == studentID {
 			line.IsMe = true
 			out.Me = &LeaguePlace{Rank: r.Rank, XP: r.XP}

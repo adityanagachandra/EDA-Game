@@ -245,4 +245,25 @@ describe('AppSidebar', () => {
     renderSidebar()
     expect(screen.queryByRole('link', { name: /Admin/ })).toBeNull()
   })
+
+  // A learner who turns leaderboards off asked for the surface to go away, so the
+  // rail must lose the entry and not merely stop naming them on the board. The
+  // default is the pre-existing behaviour and is asserted too, because a prop
+  // defaulting to false would quietly remove a destination for everyone.
+  it('removes the Leaderboard entry when leaderboards are turned off', () => {
+    renderSidebar({ showLeaderboards: false })
+    const sidebar = screen.getByTestId('profile-sidebar')
+    expect(sidebar.querySelector('a[href="/leaderboard"]')).toBeNull()
+    expect(within(sidebar).queryByText('Leaderboard')).toBeNull()
+    // Only that destination is gone: the rest of the daily loop stays.
+    expect(sidebar.querySelector('a[href="/learn"]')).not.toBeNull()
+    expect(within(sidebar).getByText('Settings')).toBeInTheDocument()
+  })
+
+  it('keeps the Leaderboard entry by default', () => {
+    renderSidebar()
+    const sidebar = screen.getByTestId('profile-sidebar')
+    expect(sidebar.querySelector('a[href="/leaderboard"]')).not.toBeNull()
+    expect(within(sidebar).getByText('Leaderboard')).toBeInTheDocument()
+  })
 })

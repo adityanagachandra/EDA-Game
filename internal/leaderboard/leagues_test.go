@@ -74,6 +74,73 @@ func TestMyLeague_SeatsAndRanksTheCallersCohort(t *testing.T) {
 	}
 }
 
+// A league line follows the same rule as the public board, and the caller
+// still recognises their own anonymised seat.
+func TestMyLeague_AnonymisesOptedOutMembers(t *testing.T) {
+	repo := leagueRepo(t)
+	var ids []string
+	for i := 0; i < 8; i++ {
+		st, err := repo.CreateStudent(fmt.Sprintf("learner%d", i))
+		if err != nil {
+			t.Fatalf("create %d: %v", i, err)
+		}
+		if err := repo.SetUsername(st.ID, fmt.Sprintf("learner%d", i)); err != nil {
+			t.Fatalf("username %d: %v", i, err)
+		}
+		if err := repo.AwardXP(st.ID, 10*(i+1), "test", fmt.Sprintf("privacy:%d", i)); err != nil {
+			t.Fatalf("award %d: %v", i, err)
+		}
+		ids = append(ids, st.ID)
+	}
+	hidden := ids[7] // highest XP, rank 1
+	if err := repo.SetAvatarURL(hidden, "https://photos.example/learner7.jpg"); err != nil {
+		t.Fatalf("avatar url: %v", err)
+	}
+	if err := repo.UpdateSettings(hidden, `{"leaderboard_privacy":"hidden","avatar_custom":true,"avatar_dicebear":{"style":"bottts","seed":"learner7"},"avatar_version":4}`); err != nil {
+		t.Fatalf("settings: %v", err)
+	}
+
+	now := time.Now().UTC()
+	computer := NewComputer(repo)
+	board, err := computer.MyLeague(ids[0], now)
+	if err != nil {
+		t.Fatalf("my league: %v", err)
+	}
+	if len(board.Members) != 8 {
+		t.Fatalf("members = %d, want 8", len(board.Members))
+	}
+	gone := board.Members[0]
+	if gone.ID != "anonymous-1" || gone.Name != "Anonymous" {
+		t.Errorf("hidden member = %+v, want anonymous-1/Anonymous", gone)
+	}
+	if gone.Avatar == nil || gone.Avatar.Kind != "generated" || gone.Avatar.Style != "notionists" {
+		t.Errorf("hidden member avatar = %+v, want a generic generated face", gone.Avatar)
+	}
+	if gone.Avatar != nil && (gone.Avatar.URL != "" || gone.Avatar.Version != 0) {
+		t.Errorf("hidden member avatar leaks learner data: %+v", gone.Avatar)
+	}
+	if gone.IsMe {
+		t.Error("another learner's seat marked as the caller")
+	}
+	// The named members are untouched.
+	if board.Members[1].ID != "learner6" || board.Members[1].Name != "learner6" {
+		t.Errorf("second seat = %+v, want learner6 unchanged", board.Members[1])
+	}
+
+	// The caller's own seat is anonymised but still theirs.
+	own, err := computer.MyLeague(hidden, now)
+	if err != nil {
+		t.Fatalf("own league: %v", err)
+	}
+	if own.Me == nil || own.Me.Rank != 1 {
+		t.Fatalf("me = %+v, want rank 1", own.Me)
+	}
+	mine := own.Members[0]
+	if !mine.IsMe || mine.Name != "Anonymous" || mine.ID != "anonymous-1" {
+		t.Errorf("own seat = %+v, want anonymous-1/Anonymous and IsMe", mine)
+	}
+}
+
 func TestMyLeague_GuestAndZeroXPGetNoSeat(t *testing.T) {
 	repo := leagueRepo(t)
 	now := time.Date(2026, 10, 21, 12, 0, 0, 0, time.UTC)

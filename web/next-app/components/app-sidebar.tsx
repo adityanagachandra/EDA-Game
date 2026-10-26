@@ -109,6 +109,14 @@ export interface AppSidebarProps {
   avatarUrl?: string
   avatarPreset?: number | null
   dueReviews?: number
+  /**
+   * Whether to offer the Leaderboard entry.
+   *
+   * Purely presentational: the board is still reachable by URL and the server
+   * still anonymises the row. It is here because a learner who turned
+   * leaderboards off asked for the surface to go away, not only for their name.
+   */
+  showLeaderboards?: boolean
 }
 
 export function AppSidebar({
@@ -121,6 +129,7 @@ export function AppSidebar({
   avatarPreset,
   dueReviews = 0,
   isAdmin = false,
+  showLeaderboards = true,
 }: AppSidebarProps) {
   const pathname = usePathname()
   // Contact is one control, not two destinations: the page and the Discord
@@ -203,30 +212,32 @@ export function AppSidebar({
                   surface rather than another destination in this one; conditional because
                   offering it to everyone would be an invitation most of them cannot accept.
                   The server refuses either way, see AppSidebarProps.isAdmin. */}
-              {(isAdmin ? [...NAV_ITEMS, ADMIN_ITEM] : NAV_ITEMS).map((item) => {
-                const active = pathname === item.href || pathname.startsWith(item.href + '/')
-                const Icon = item.icon
-                return (
-                  <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton asChild isActive={active} tooltip={item.label}>
-                      {item.href.startsWith('http') ? (
-                        <a href={item.href} target="_blank" rel="noreferrer">
-                          <Icon className="shrink-0" />
-                          <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
-                        </a>
-                      ) : (
-                        <Link href={item.href}>
-                          <Icon className="shrink-0" />
-                          <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
-                        </Link>
+              {(isAdmin ? [...NAV_ITEMS, ADMIN_ITEM] : NAV_ITEMS)
+                .filter((item) => showLeaderboards || item.href !== '/leaderboard')
+                .map((item) => {
+                  const active = pathname === item.href || pathname.startsWith(item.href + '/')
+                  const Icon = item.icon
+                  return (
+                    <SidebarMenuItem key={item.href}>
+                      <SidebarMenuButton asChild isActive={active} tooltip={item.label}>
+                        {item.href.startsWith('http') ? (
+                          <a href={item.href} target="_blank" rel="noreferrer">
+                            <Icon className="shrink-0" />
+                            <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
+                          </a>
+                        ) : (
+                          <Link href={item.href}>
+                            <Icon className="shrink-0" />
+                            <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
+                          </Link>
+                        )}
+                      </SidebarMenuButton>
+                      {item.href === '/learn' && dueReviews > 0 && (
+                        <SidebarMenuBadge>{dueReviews}</SidebarMenuBadge>
                       )}
-                    </SidebarMenuButton>
-                    {item.href === '/learn' && dueReviews > 0 && (
-                      <SidebarMenuBadge>{dueReviews}</SidebarMenuBadge>
-                    )}
-                  </SidebarMenuItem>
-                )
-              })}
+                    </SidebarMenuItem>
+                  )
+                })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

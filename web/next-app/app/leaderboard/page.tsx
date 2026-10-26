@@ -8,9 +8,11 @@ import SectionHeader from '../../components/SectionHeader'
 import Footer from '../../components/Footer'
 import Avatar from '../../components/Avatar'
 import { LeaderboardTableSkeleton } from '../../components/skeletons/LeaderboardSkeleton'
+import { useAuthState } from '../../hooks/useAuthState'
 import {
   getLeaderboard,
   getMyLeague,
+  getSettings,
   type LeaderboardBoard,
   type LeaderboardEntry,
   type LeaderboardView,
@@ -203,6 +205,7 @@ function BoardTable({ board, view }: { board: LeaderboardBoard; view: Leaderboar
 
 export default function LeaderboardPage() {
   const { mounted } = useTheme()
+  const { loggedIn } = useAuthState()
   const [countdown, setCountdown] = useState(computeCountdown)
   const [tab, setTab] = useState<Tab>('weekly')
   const [page, setPage] = useState(1)
@@ -211,6 +214,28 @@ export default function LeaderboardPage() {
   const [league, setLeague] = useState<MyLeague | null>(null)
   const [loading, setLoading] = useState(true)
   const [failed, setFailed] = useState(false)
+  // Visible until the account's own settings say otherwise. A signed-out visitor
+  // has no settings to read, and a failed read cannot be evidence that a learner
+  // turned leaderboards off.
+  const [showLeaderboards, setShowLeaderboards] = useState(true)
+
+  useEffect(() => {
+    if (!loggedIn) {
+      setShowLeaderboards(true)
+      return
+    }
+    let live = true
+    getSettings()
+      .then((s) => {
+        if (live) setShowLeaderboards(s.leaderboard_privacy !== 'hidden')
+      })
+      .catch(() => {
+        if (live) setShowLeaderboards(true)
+      })
+    return () => {
+      live = false
+    }
+  }, [loggedIn])
 
   useEffect(() => {
     const update = () => setCountdown(computeCountdown())
@@ -246,6 +271,36 @@ export default function LeaderboardPage() {
     return (
       <AppShell>
         <div style={{ background: 'var(--bg)', minHeight: '100vh' }} />
+        <Footer />
+      </AppShell>
+    )
+  }
+
+  // The rail and the header already drop the destination; this states why, so a
+  // learner who reaches the URL directly is not looking at a page they believe
+  // they turned off. The server has anonymised the rows either way.
+  if (!showLeaderboards) {
+    return (
+      <AppShell>
+        <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0">
+          <section className="pt-8 min-w-0 overflow-hidden">
+            <span className="flex mb-4">
+              <button type="button" onClick={() => { if (window.history.length > 1) window.history.back() }} className="text-mathua-secondary text-sm hover:text-mathua-blue">
+                ← Back
+              </button>
+            </span>
+
+            <SectionHeader label="Competition" title="Leaderboard" />
+
+            <div className="border border-mathua-border bg-mathua-surface p-6 mt-6 max-w-[560px] mx-auto text-center">
+              <p className="font-mono text-sm text-mathua-primary">Leaderboards are turned off</p>
+              <p className="text-mathua-secondary text-sm mt-2">
+                You are anonymous on the public ranking, so your name never appears on it. Change this in <Link href="/settings" className="text-mathua-blue hover:underline">Settings</Link>.
+              </p>
+            </div>
+          </section>
+        </div>
+
         <Footer />
       </AppShell>
     )

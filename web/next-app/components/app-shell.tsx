@@ -23,11 +23,16 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
   const [dueReviews, setDueReviews] = useState<number | undefined>(undefined)
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(undefined)
   const [avatarPreset, setAvatarPreset] = useState<number | null>(null)
+  // Leaderboard navigation follows the same setting the server reads to anonymise
+  // the rows. Default true so a slow or failed settings call never removes a
+  // destination the learner has not actually turned off.
+  const [showLeaderboards, setShowLeaderboards] = useState(true)
 
   useEffect(() => {
     if (!loggedIn || !user) {
       setAvatarUrl(undefined)
       setAvatarPreset(null)
+      setShowLeaderboards(true)
       return
     }
     let live = true
@@ -37,9 +42,12 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
         const resolved = resolveAvatar(user, settings)
         setAvatarPreset(resolved.preset ?? null)
         setAvatarUrl(resolved.url)
+        setShowLeaderboards(settings.leaderboard_privacy !== 'hidden')
       })
       .catch(() => {
-        // The generated seed avatar is still a usable fallback.
+        // The generated seed avatar is still a usable fallback, and a failed
+        // settings read cannot be evidence that leaderboards were turned off.
+        if (live) setShowLeaderboards(true)
       })
     return () => {
       live = false
@@ -77,6 +85,7 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
           avatarUrl={overrides.avatarUrl ?? avatarUrl}
           avatarPreset={overrides.avatarPreset !== undefined ? overrides.avatarPreset : avatarPreset}
           dueReviews={overrides.dueReviews ?? dueReviews}
+          showLeaderboards={overrides.showLeaderboards ?? showLeaderboards}
         />
         <SidebarInset>
           <div className="mb-2 flex justify-start md:hidden px-4 sm:px-6 pt-8">
