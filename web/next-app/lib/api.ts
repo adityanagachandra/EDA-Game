@@ -1948,6 +1948,8 @@ export async function adminMe(): Promise<AdminMe> {
 const QuestionReportSchema = z.object({
 	id: z.number(),
 	reporter_id: z.string(),
+	reporter_username: z.string().optional(),
+	reporter_name: z.string().optional(),
 	concept_id: z.string(),
 	kind: z.string(),
 	question: z.string(),
@@ -1980,10 +1982,33 @@ const QuestionReportSchema = z.object({
 	// Older rows and non-image reports carry false/absent. The moderation page
 	// fetches the bytes separately because an <img> tag cannot send the token.
 	has_image: z.boolean().optional(),
+	unread: z.boolean().optional(),
 })
 export type QuestionReport = z.infer<typeof QuestionReportSchema>
 
 export type ModerationStatus = 'open' | 'reviewing' | 'resolved' | 'dismissed'
+
+export interface MyReportsResponse {
+	reports: QuestionReport[]
+	unread: number
+}
+
+// The learner-facing view of the reports this account filed. Moderation is
+// separate; this endpoint returns only the caller's rows.
+export async function listMyReports(): Promise<MyReportsResponse> {
+	const res = await authedFetch(`${API_BASE}/api/reports/mine`, { cache: 'no-store' })
+	if (!res.ok) await throwWithResponse(res, 'Could not load your reports')
+	const data = (await res.json()) as { reports?: unknown; unread?: unknown }
+	return {
+		reports: validateResponse(z.array(QuestionReportSchema), data.reports ?? [], 'myReports'),
+		unread: typeof data.unread === 'number' ? data.unread : 0,
+	}
+}
+
+export async function markMyReportsRead(): Promise<void> {
+	const res = await authedFetch(`${API_BASE}/api/reports/mine/read`, { method: 'POST' })
+	if (!res.ok) await throwWithResponse(res, 'Could not mark your reports as read')
+}
 
 export async function listAdminReports(status?: string): Promise<{ reports: QuestionReport[] }> {
 	const qs = status && status !== 'all' ? `?status=${encodeURIComponent(status)}` : ''

@@ -2,9 +2,14 @@
 .gitignore
 node_modules
 web/node_modules
+web/next-app/node_modules
 web/.next
 web/next-app/.next
 web/next-app/out
+# Build products and local tool state, none of which the image copies.
+.codegraph
+bin
+mathua
 # Keep lesson markdown (data/lessons/**/*.md) — don't use wild *.md
 README.md
 CONTRIBUTING.md

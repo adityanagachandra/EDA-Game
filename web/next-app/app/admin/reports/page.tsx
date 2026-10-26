@@ -218,6 +218,11 @@ function ReportCard({ report, canModerate, onChanged }: { report: QuestionReport
         <span className="min-w-0">
           <span className="font-mono text-xs text-mathua-primary">{report.concept_id || '(no concept)'}</span>
           <span className="ml-2 font-mono text-[11px] text-mathua-muted">{report.kind} · {report.reason}</span>
+          <span className="ml-2 font-mono text-[11px] text-mathua-blue">
+            {report.reporter_username
+              ? `@${report.reporter_username}`
+              : report.reporter_name || report.reporter_id || '(anon)'}
+          </span>
         </span>
         <span className="flex shrink-0 items-center gap-2">
           <StatusPill status={report.status} />
@@ -235,11 +240,16 @@ function ReportCard({ report, canModerate, onChanged }: { report: QuestionReport
                   <Link
                     href={`/admin/users/detail?id=${encodeURIComponent(report.reporter_id)}`}
                     className="break-all text-mathua-blue hover:underline"
-                    title="Open this account"
+                    title={`Open this account (${report.reporter_id})`}
                   >
-                    {report.reporter_id}
+                    {report.reporter_username
+                      ? `@${report.reporter_username}`
+                      : report.reporter_name || report.reporter_id}
                   </Link>
                 ) : '(anon)'}
+                {report.reporter_username && report.reporter_name && (
+                  <span className="ml-1 text-mathua-muted">({report.reporter_name})</span>
+                )}
               </dd>
             </div>
             <div><dt className="text-mathua-muted">When</dt><dd>{report.created_at}</dd></div>

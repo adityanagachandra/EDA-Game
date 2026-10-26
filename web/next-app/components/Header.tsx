@@ -12,6 +12,7 @@ import { registerChromePart } from '../lib/chrome'
 import { signOut, isStaffRole } from '../lib/auth'
 import { resolveAvatar } from '../lib/dicebear'
 import Avatar from './Avatar'
+import ReportUpdatesBadge from './ReportUpdatesBadge'
 import { getSettings } from '../lib/api'
 import { desktopLinks, overflowLinks, type HeaderLink } from '../lib/nav'
 
@@ -232,6 +233,7 @@ export default function Header({ links }: HeaderProps) {
                   <Compass ref={compassRef} size={15} isAnimated={false} />
                 </button>
             </div>
+            <ReportUpdatesBadge enabled={loggedIn} />
             {loggedIn && user ? (
               <div className="relative" ref={menuRef}>
                 <button
@@ -334,6 +336,17 @@ export default function Header({ links }: HeaderProps) {
             <div className="font-mono text-xs text-mathua-primary truncate">{user?.name}</div>
             {user?.username && <div className="font-mono text-[10px] text-mathua-muted truncate">@{user.username}</div>}
           </div>
+          <button
+            type="button"
+            role="menuitem"
+            onClick={() => {
+              setOpen(false)
+              router.push('/my-reports')
+            }}
+            className="w-full text-left px-3 py-2 font-mono text-xs text-mathua-muted hover:text-mathua-blue hover:bg-mathua-surface-elevated transition-colors"
+          >
+            My reports
+          </button>
           <button
             type="button"
             role="menuitem"
