@@ -180,11 +180,8 @@ func (a *AuthService) signup(name, username, password, guestID string) (string, 
 	// raw API/service callers bypass them, trim and enforce here so no
 	// blank or oversized name ever reaches the leaderboard.
 	name = strings.TrimSpace(name)
-	if name == "" {
-		return "", nil, errors.New("name is required")
-	}
-	if len([]rune(name)) > 50 {
-		return "", nil, errors.New("name must be 1-50 characters")
+	if err := ValidateDisplayName(name); err != nil {
+		return "", nil, err
 	}
 	username = NormalizeUsername(username)
 	if username == "" {

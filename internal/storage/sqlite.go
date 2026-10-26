@@ -175,6 +175,12 @@ func authMigrate(db *sql.DB) error {
 	if err := ensureEmailUniqueIndexSQLite(db); err != nil {
 		return err
 	}
+	// Usernames are the public handle, so two accounts must not share one.
+	// Same retry-on-clean pattern as email: legacy duplicate groups are left
+	// alone and the index is attempted again on the next boot.
+	if err := ensureUsernameUniqueIndexSQLite(db); err != nil {
+		return err
+	}
 	// One-time data backfills (drift fixes), version-guarded:
 	// v1 daily goal 150 → 30 (MA 20-40); v2 username lowercasing except
 	// colliding groups (same lower form twice, manual rename, never merge).
@@ -263,6 +269,32 @@ func ensureEmailUniqueIndexSQLite(db *sql.DB) error {
 	}
 	if _, err := db.Exec("CREATE UNIQUE INDEX uidx_students_email ON students(lower(email)) WHERE email IS NOT NULL AND email != ''"); err != nil {
 		return fmt.Errorf("create email unique index: %w", err)
+	}
+	return nil
+}
+
+// ensureUsernameUniqueIndexSQLite enforces one-username-one-account at the DB
+// layer. The app-level FindByUsername check is check-then-insert and a race
+// can slip two signups past it. Expression index on lower(username) matches
+// the normalization used by signup. Legacy duplicate groups are skipped with
+// a count and retried on the next boot rather than failing startup.
+func ensureUsernameUniqueIndexSQLite(db *sql.DB) error {
+	var name string
+	if err := db.QueryRow("SELECT name FROM sqlite_master WHERE type='index' AND name='idx_students_username_unique'").Scan(&name); err == nil && name != "" {
+		return nil
+	} else if err != nil && err != sql.ErrNoRows {
+		return fmt.Errorf("check username unique index: %w", err)
+	}
+	var dupes int
+	if err := db.QueryRow("SELECT COUNT(*) FROM (SELECT lower(username) FROM students WHERE username IS NOT NULL AND trim(username) != '' GROUP BY lower(username) HAVING COUNT(*) > 1)").Scan(&dupes); err != nil {
+		return fmt.Errorf("audit duplicate usernames: %w", err)
+	}
+	if dupes > 0 {
+		log.Printf("storage: %d duplicate username groups; skipping unique username index until resolved", dupes)
+		return nil
+	}
+	if _, err := db.Exec("CREATE UNIQUE INDEX idx_students_username_unique ON students(lower(username)) WHERE username IS NOT NULL AND trim(username) != ''"); err != nil {
+		return fmt.Errorf("create username unique index: %w", err)
 	}
 	return nil
 }

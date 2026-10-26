@@ -44,7 +44,7 @@ func ValidateUsername(u string) error {
 		}
 		return errors.New("username may only contain letters, numbers, underscore, and dot")
 	}
-	return nil
+	return validateUsernameModeration(u)
 }
 
 // ValidatePassword enforces the signup password policy: at least 8
