@@ -57,6 +57,11 @@ vi.mock('../lib/api', async importOriginal => ({
 }))
 
 describe('Header mobile nav menu', () => {
+  beforeEach(() => {
+    mockUser = null
+    chromeRef.visible = true
+  })
+
   it('renders a collapsed Compass menu button with no menu items visible', () => {
     render(<Header />)
     const button = screen.getByRole('button', { name: 'Open navigation menu' })
@@ -174,6 +179,60 @@ describe('Header mobile nav menu', () => {
     const menu = screen.getByRole('menu', { name: 'Site navigation' })
     const labels = within(menu).getAllByRole('menuitem').map(i => i.textContent)
     expect(labels).toEqual(['Graph', 'Docs', 'Architecture', 'Contributing', 'Note', 'Discord'])
+  })
+
+  it('folds secondary signed-in destinations into a desktop More menu', () => {
+    mockUser = { student_id: 's1', name: 'Nelson', username: 'wis' }
+    render(<Header />)
+
+    for (const label of ['Learn', 'Review', 'Graph', 'Domains', 'Leaderboard']) {
+      expect(screen.getByRole('link', { name: label })).toBeTruthy()
+    }
+    // The account links moved off the row. They are still one click away in
+    // More, and the avatar menu keeps its own copy of Profile and Notifications.
+    expect(screen.queryByRole('link', { name: 'Notifications' })).toBeNull()
+
+    const more = screen.getByRole('button', { name: 'More navigation' })
+    expect(more).toHaveAttribute('aria-expanded', 'false')
+    fireEvent.click(more)
+    expect(more).toHaveAttribute('aria-expanded', 'true')
+
+    const menu = screen.getByRole('menu', { name: 'More navigation' })
+    const items = within(menu).getAllByRole('menuitem')
+    expect(items.map(i => i.textContent)).toEqual([
+      'Glossary',
+      'Contact',
+      'Notifications',
+      'Reports',
+      'Profile',
+      'Settings',
+      'Discord',
+    ])
+    expect(items.map(i => i.getAttribute('href'))).toEqual([
+      '/glossary',
+      '/contact',
+      '/my-reports',
+      '/reports',
+      '/profile',
+      '/settings',
+      'https://discord.gg/qXPeQ2jys',
+    ])
+
+    fireEvent.click(items[0])
+    expect(screen.queryByRole('menu', { name: 'More navigation' })).toBeNull()
+  })
+
+  it('keeps a custom link list inline without a More menu', () => {
+    render(
+      <Header
+        links={[
+          { label: 'Docs', href: '/docs' },
+          { label: 'Architecture', href: '/docs/architecture' },
+        ]}
+      />
+    )
+    expect(screen.queryByRole('button', { name: 'More navigation' })).toBeNull()
+    expect(screen.getByRole('link', { name: 'Docs' })).toBeTruthy()
   })
 
   it('marks the current page with aria-current', () => {

@@ -28,7 +28,12 @@ test('header shows authenticated links when a token exists', async ({ page }) =>
   }, [USER])
   await page.goto('/privacy')
   const header = page.locator('header')
-  await expect(header.getByText('Profile').first()).toBeVisible()
   await expect(header.getByText('Learn').first()).toBeVisible()
+  await expect(header.getByText('Review').first()).toBeVisible()
   await expect(header.getByText('Login')).toHaveCount(0)
+  // Profile moved into More when the row was shortened, so the signed-in
+  // assertion opens the panel instead of looking for a link that is no longer
+  // on the primary row.
+  await header.getByRole('button', { name: 'More navigation' }).click()
+  await expect(header.getByRole('menu', { name: 'More navigation' }).getByText('Profile').first()).toBeVisible()
 })

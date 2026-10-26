@@ -61,8 +61,17 @@ describe('AppSidebar', () => {
     expect(screen.queryByText('Review Now')).toBeNull()
   })
 
-  it('offers no way into the closed reference library', () => {
-    // The sidebar keeps its own list rather than importing nav.ts, which makes it the one
+  it('places Notifications below the Resources group', () => {
+    renderSidebar()
+    const resources = screen.getByRole('button', { name: 'Resources' })
+    const notifications = screen.getByText('Notifications').closest('a')
+    expect(notifications).not.toBeNull()
+    expect(
+      resources.compareDocumentPosition(notifications as Node) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy()
+  })
+
+  it('offers no way into the closed reference library', () => {    // The sidebar keeps its own list rather than importing nav.ts, which makes it the one
     // navigation surface a change to lib/nav.ts cannot reach. It held a Study entry for as long
     // as the library existed, so this asserts the entry is gone rather than assuming it.
     renderSidebar()
