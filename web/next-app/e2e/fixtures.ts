@@ -76,6 +76,13 @@ export const test = base.extend({
     await context.route('**/api/next**', (route) =>
       route.fulfill({ json: { done: true, next: null, total: 0, message: 'Nothing to review' } }),
     )
+    // The report badge in the header asks for the learner's own moderation
+    // reports on every signed-in page. An account with no reports is the
+    // default the shell should assume; a spec that wants history registers its
+    // own route and wins, because it is later.
+    await context.route('**/api/reports/mine**', (route) =>
+      route.fulfill({ json: { reports: [], unread: 0 } }),
+    )
 
     await use(context)
 
