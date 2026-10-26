@@ -2014,6 +2014,11 @@ export async function markMyReportsRead(): Promise<void> {
 	if (!res.ok) await throwWithResponse(res, 'Could not mark your reports as read')
 }
 
+export async function clearMyReports(): Promise<void> {
+	const res = await authedFetch(`${API_BASE}/api/reports/mine/clear`, { method: 'POST' })
+	if (!res.ok) await throwWithResponse(res, 'Could not clear your reports')
+}
+
 export async function listAdminReports(status?: string): Promise<{ reports: QuestionReport[] }> {
 	const qs = status && status !== 'all' ? `?status=${encodeURIComponent(status)}` : ''
 	const res = await authedFetch(`${API_BASE}/api/admin/reports${qs}`, { cache: 'no-store' })

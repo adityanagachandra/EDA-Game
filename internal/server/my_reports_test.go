@@ -117,3 +117,63 @@ func TestMyReportsRequiresAuthentication(t *testing.T) {
 		t.Fatalf("anonymous status = %d, want 401", rec.Code)
 	}
 }
+
+func TestMyReportsClearHidesOldRowsAndKeepsNewOnes(t *testing.T) {
+	s, mux, store := reportsTestMux(t)
+	token, student := signupReportLearner(t, s, "Ada Example", "ada")
+
+	if _, err := store.CreateReport(storage.QuestionReport{
+		ReporterID: student.ID,
+		ConceptID:  "a",
+		Kind:       "question",
+		Question:   "old report",
+		CreatedAt:  time.Now().UTC().Add(-time.Hour),
+	}); err != nil {
+		t.Fatalf("create old report: %v", err)
+	}
+
+	get := func() int {
+		req := httptest.NewRequest(http.MethodGet, "/api/reports/mine", nil)
+		req.Header.Set("Authorization", "Bearer "+token)
+		rec := httptest.NewRecorder()
+		mux.ServeHTTP(rec, req)
+		if rec.Code != http.StatusOK {
+			t.Fatalf("GET /api/reports/mine status %d: %s", rec.Code, rec.Body.String())
+		}
+		var body struct {
+			Reports []storage.QuestionReport `json:"reports"`
+		}
+		if err := json.Unmarshal(rec.Body.Bytes(), &body); err != nil {
+			t.Fatalf("decode reports: %v", err)
+		}
+		return len(body.Reports)
+	}
+
+	if got := get(); got != 1 {
+		t.Fatalf("before clear got %d reports, want 1", got)
+	}
+
+	clear := httptest.NewRequest(http.MethodPost, "/api/reports/mine/clear", nil)
+	clear.Header.Set("Authorization", "Bearer "+token)
+	clearRec := httptest.NewRecorder()
+	mux.ServeHTTP(clearRec, clear)
+	if clearRec.Code != http.StatusOK {
+		t.Fatalf("clear status %d: %s", clearRec.Code, clearRec.Body.String())
+	}
+	if got := get(); got != 0 {
+		t.Fatalf("after clear got %d reports, want 0", got)
+	}
+
+	if _, err := store.CreateReport(storage.QuestionReport{
+		ReporterID: student.ID,
+		ConceptID:  "b",
+		Kind:       "question",
+		Question:   "new report",
+		CreatedAt:  time.Now().UTC().Add(time.Minute),
+	}); err != nil {
+		t.Fatalf("create new report: %v", err)
+	}
+	if got := get(); got != 1 {
+		t.Fatalf("after a new report got %d reports, want 1", got)
+	}
+}

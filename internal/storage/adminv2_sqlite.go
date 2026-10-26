@@ -133,6 +133,37 @@ func (s *SQLiteStore) SetReportSeenAt(studentID, seenAt string) error {
 	return nil
 }
 
+// GetReportClearedAt returns when the account last cleared its history.
+func (s *SQLiteStore) GetReportClearedAt(studentID string) (string, error) {
+	var cleared string
+	err := s.db.QueryRow(`SELECT cleared_at FROM report_views WHERE student_id = ?`, studentID).Scan(&cleared)
+	if err == sql.ErrNoRows {
+		return "", nil
+	}
+	if err != nil {
+		return "", fmt.Errorf("get report cleared time: %w", err)
+	}
+	return cleared, nil
+}
+
+// ClearReports hides the current history and marks it seen in one write.
+func (s *SQLiteStore) ClearReports(studentID, clearedAt string) error {
+	if studentID == "" || clearedAt == "" {
+		return fmt.Errorf("student id and cleared time are required")
+	}
+	_, err := s.db.Exec(
+		`INSERT INTO report_views (student_id, seen_at, cleared_at) VALUES (?, ?, ?)
+		 ON CONFLICT(student_id) DO UPDATE SET
+		   seen_at = excluded.seen_at,
+		   cleared_at = excluded.cleared_at`,
+		studentID, clearedAt, clearedAt,
+	)
+	if err != nil {
+		return fmt.Errorf("clear reports: %w", err)
+	}
+	return nil
+}
+
 // CountReportsByReporter counts every report the account filed, including resolved ones. A
 // profile that showed only the recent list would understate a person who reported ten times.
 func (s *SQLiteStore) CountReportsByReporter(reporterID string) (int, error) {

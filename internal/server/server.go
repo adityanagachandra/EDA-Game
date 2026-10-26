@@ -509,6 +509,7 @@ func (s *Server) Register(mux *http.ServeMux) {
 	mux.HandleFunc("/api/reports", logRequest(cors(s.writeLimiter.middleware(s.optionalAuthMiddleware(s.handleCreateReport)))))
 	mux.HandleFunc("/api/reports/mine", logRequest(cors(s.authMiddleware(s.handleMyReports))))
 	mux.HandleFunc("/api/reports/mine/read", logRequest(cors(s.writeLimiter.middleware(s.authMiddleware(s.handleMyReportsRead)))))
+	mux.HandleFunc("/api/reports/mine/clear", logRequest(cors(s.writeLimiter.middleware(s.authMiddleware(s.handleMyReportsClear)))))
 	// Admin V2. Every route names the permission it needs, and requirePermission enforces it
 	// server-side on every request from the role the database holds, never from anything the
 	// client sends. The password login above is the old content-triage gate; it is not this

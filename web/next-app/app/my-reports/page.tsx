@@ -5,7 +5,7 @@ import Link from 'next/link'
 import AppShell from '@/components/app-shell'
 import Footer from '@/components/Footer'
 import KatexContent from '@/components/KatexContent'
-import { listMyReports, markMyReportsRead, type QuestionReport } from '@/lib/api'
+import { clearMyReports, listMyReports, markMyReportsRead, type QuestionReport } from '@/lib/api'
 import { useAuthState } from '@/hooks/useAuthState'
 
 function statusLabel(status: string): string {
@@ -53,6 +53,9 @@ export default function MyReportsPage() {
   const [unread, setUnread] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [confirmClear, setConfirmClear] = useState(false)
+  const [clearing, setClearing] = useState(false)
+  const [clearError, setClearError] = useState('')
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -83,6 +86,22 @@ export default function MyReportsPage() {
     else setLoading(false)
   }, [loggedIn, load])
 
+  async function handleClear() {
+    setClearing(true)
+    setClearError('')
+    try {
+      await clearMyReports()
+      setReports([])
+      setUnread(0)
+      setConfirmClear(false)
+      window.dispatchEvent(new Event('report-updates-changed'))
+    } catch (e) {
+      setClearError(e instanceof Error ? e.message : 'Your history could not be cleared.')
+    } finally {
+      setClearing(false)
+    }
+  }
+
   return (
     <AppShell>
       <div className="bg-mathua-bg text-mathua-primary">
@@ -94,13 +113,50 @@ export default function MyReportsPage() {
               Updates on the problems you reported and what moderation decided.
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="font-mono text-[11px] text-mathua-muted underline underline-offset-2 hover:text-mathua-blue"
-          >
-            Report another problem
-          </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            {reports.length > 0 && (
+              <button
+                type="button"
+                onClick={() => { setConfirmClear(true); setClearError('') }}
+                className="font-mono text-[11px] text-mathua-muted underline underline-offset-2 hover:text-mathua-red"
+              >
+                Clear history
+              </button>
+            )}
+            <Link
+              href="/contact"
+              className="font-mono text-[11px] text-mathua-muted underline underline-offset-2 hover:text-mathua-blue"
+            >
+              Report another problem
+            </Link>
+          </div>
         </div>
+
+        {confirmClear && (
+          <div className="mt-6 border border-mathua-border bg-mathua-surface p-4">
+            <p className="text-sm text-mathua-secondary">
+              Clear this list? The reports stay with moderation, but they leave your history.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => void handleClear()}
+                disabled={clearing}
+                className="border border-mathua-red px-3 h-9 font-mono text-xs text-mathua-red disabled:opacity-50"
+              >
+                {clearing ? 'Clearing…' : 'Yes, clear history'}
+              </button>
+              <button
+                type="button"
+                onClick={() => setConfirmClear(false)}
+                className="border border-mathua-border px-3 h-9 font-mono text-xs text-mathua-secondary"
+              >
+                Cancel
+              </button>
+            </div>
+            {clearError && <p className="mt-2 font-mono text-[11px] text-mathua-red">{clearError}</p>}
+          </div>
+        )}
 
         {unread > 0 && (
           <p className="mt-6 border border-[var(--accent-blue)]/40 bg-mathua-surface px-4 py-3 font-mono text-[11px] text-mathua-secondary">

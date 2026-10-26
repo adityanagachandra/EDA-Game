@@ -301,7 +301,8 @@ CREATE INDEX IF NOT EXISTS idx_reports_concept ON question_reports(concept_id);
 -- lists every report at once. Deleting the account removes the marker.
 CREATE TABLE IF NOT EXISTS report_views (
     student_id TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
-    seen_at    TEXT NOT NULL DEFAULT ''
+    seen_at    TEXT NOT NULL DEFAULT '',
+    cleared_at TEXT NOT NULL DEFAULT ''
 );
 
 -- One optional screenshot per report. The bytes live beside the moderation

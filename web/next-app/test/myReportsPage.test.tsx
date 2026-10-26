@@ -1,13 +1,14 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import MyReportsPage from '../app/my-reports/page'
-import { listMyReports, markMyReportsRead } from '../lib/api'
+import { clearMyReports, listMyReports, markMyReportsRead } from '../lib/api'
 import type { QuestionReport } from '../lib/api'
 
 vi.mock('../lib/api', async (importOriginal) => ({
   ...(await importOriginal<typeof import('../lib/api')>()),
   listMyReports: vi.fn(),
   markMyReportsRead: vi.fn(),
+  clearMyReports: vi.fn(),
 }))
 
 vi.mock('../hooks/useAuthState', () => ({
@@ -51,6 +52,7 @@ function report(over: Partial<QuestionReport> & { id: number }): QuestionReport 
 beforeEach(() => {
   vi.clearAllMocks()
   vi.mocked(markMyReportsRead).mockResolvedValue(undefined)
+  vi.mocked(clearMyReports).mockResolvedValue(undefined)
 })
 
 describe('the learner report history', () => {
@@ -109,6 +111,21 @@ describe('the learner report history', () => {
     expect(screen.getByText('Fixed.')).toBeTruthy()
     await waitFor(() => expect(markMyReportsRead).toHaveBeenCalledTimes(1))
     expect(screen.queryByText(/marker failed/)).toBeNull()
+  })
+
+  it('clears the history after confirmation', async () => {
+    vi.mocked(listMyReports).mockResolvedValue({
+      unread: 0,
+      reports: [report({ id: 11, question: 'a report to clear' })],
+    })
+    render(<MyReportsPage />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Clear history' }))
+    expect(screen.getByText(/Clear this list/)).toBeTruthy()
+    fireEvent.click(screen.getByRole('button', { name: 'Yes, clear history' }))
+
+    await waitFor(() => expect(clearMyReports).toHaveBeenCalledTimes(1))
+    expect(await screen.findByText(/You have not reported a problem yet/)).toBeTruthy()
   })
 
   it('explains the empty state without pretending there is history', async () => {

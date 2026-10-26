@@ -50,6 +50,11 @@ function expectFixedBox(link: Element) {
 }
 
 describe('AppSidebar', () => {
+  it('shows an unread notification alert on the Notifications item', () => {
+    renderSidebar({ notificationUnread: 2 })
+    expect(screen.getByText('2 unread notifications')).toBeInTheDocument()
+  })
+
   it('renders Navigate group without a Diagnostic entry (no CTA duplication)', () => {
     renderSidebar()
     expect(screen.getByText('Navigate')).toBeInTheDocument()

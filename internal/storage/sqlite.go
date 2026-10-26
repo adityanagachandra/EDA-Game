@@ -110,6 +110,7 @@ func authMigrate(db *sql.DB) error {
 		"ALTER TABLE students ADD COLUMN league_week TEXT NOT NULL DEFAULT ''",
 		"ALTER TABLE students ADD COLUMN league_moved INTEGER NOT NULL DEFAULT 0",
 		"ALTER TABLE students ADD COLUMN share_token TEXT NOT NULL DEFAULT ''",
+		"ALTER TABLE report_views ADD COLUMN cleared_at TEXT NOT NULL DEFAULT ''",
 		"CREATE INDEX IF NOT EXISTS idx_students_username ON students(username)",
 		"CREATE INDEX IF NOT EXISTS idx_students_share ON students(share_token)",
 		"ALTER TABLE students ADD COLUMN email TEXT NOT NULL DEFAULT ''",
