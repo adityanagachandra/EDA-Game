@@ -3,15 +3,15 @@
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
 import Footer from '../../components/Footer'
+import AppShell from '../../components/app-shell'
 import LearnStepper from '../../components/LearnStepper'
 import LessonCredits from '../../components/LessonCredits'
 import NextUpCard from '../../components/NextUpCard'
 import type { Shelf } from '../../lib/nextUp'
 import { fetchShelf } from '../../lib/recommendations'
 import { parseReturnStack } from '../../lib/learnReturn'
+import { ensureGuestToken } from '../../lib/auth'
 
 /**
  * The learner's entry point: whatever the engine recommends, rendered as one card plus the
@@ -107,9 +107,27 @@ function LearnContent() {
   const searchParams = useSearchParams()
   const concept = searchParams.get('concept') || ''
   const returnStack = parseReturnStack(searchParams)
+  // A guest who lands here from a direct link never pressed "Get started", so
+  // nothing minted their guest token. Without it the practice set is served
+  // anonymously, the server anchors it to nobody, and every answer comes back
+  // 400 "student identity required", which the stepper can only show as the
+  // server being unreachable. Mint it before the first question is served.
+  // A registered user or a stored guest token resolves at once. A mint that
+  // fails, or stalls until its ten-second timeout, falls through to the page
+  // as it was before, so an outage costs a wait and never a blank lesson.
+  const [identityReady, setIdentityReady] = useState(false)
+  useEffect(() => {
+    let cancelled = false
+    ensureGuestToken().finally(() => { if (!cancelled) setIdentityReady(true) })
+    return () => { cancelled = true }
+  }, [])
 
   if (!concept) {
     return <LearnEntry />
+  }
+
+  if (!identityReady) {
+    return <div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>
   }
 
   return (
@@ -127,15 +145,11 @@ function LearnContent() {
 
 export default function LearnPage() {
   return (
-    <>
-      <Header />
-      <div className="pt-[var(--chrome-top)] lg:pt-0">
-        <Suspense fallback={<div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>}>
-          <LearnContent />
-        </Suspense>
-      </div>
-      <BottomTabs />
+    <AppShell>
+      <Suspense fallback={<div className="p-6 font-mono text-xs text-mathua-muted">Loading…</div>}>
+        <LearnContent />
+      </Suspense>
       <Footer />
-    </>
+    </AppShell>
   )
 }

@@ -24,9 +24,10 @@ vi.mock('../hooks/useAdminMe', () => ({
   }),
 }))
 
-vi.mock('../components/Header', () => ({ default: () => <header /> }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => <footer /> }))
-vi.mock('../components/BottomTabs', () => ({ default: () => <nav /> }))
 vi.mock('../components/KatexContent', () => ({
   default: ({ children }: { children: React.ReactNode }) => <span>{children}</span>,
 }))
@@ -122,5 +123,32 @@ describe('the report queue groups by concept', () => {
     await screen.findByRole('heading', { name: 'algebra.linear' })
     expect(screen.queryByRole('button', { name: 'Resolve all' })).toBeNull()
     expect(screen.queryByRole('button', { name: 'Dismiss all' })).toBeNull()
+  })
+
+  it('names the reporter by username, not by an opaque account id', async () => {
+    vi.mocked(listAdminReports).mockResolvedValue({
+      reports: [
+        report({
+          id: 1,
+          reporter_id: 'stu_0123456789abcdef',
+          reporter_username: 'ada',
+          reporter_name: 'Ada Example',
+        }),
+      ],
+    })
+    render(<AdminReportsPage />)
+
+    // The queue row names the reporter at a glance.
+    expect(await screen.findByText('@ada')).toBeTruthy()
+
+    // The identity also sits in the expanded card, so open it the way a
+    // moderator would. The link still points at the account, but the words a
+    // moderator reads are the username and the display name. A raw id was the
+    // complaint.
+    const matches = await screen.findAllByText('algebra.linear')
+    fireEvent.click(matches[matches.length - 1].closest('button') as HTMLButtonElement)
+
+    expect(screen.getByText('(Ada Example)')).toBeTruthy()
+    expect(screen.queryByText('stu_0123456789abcdef')).toBeNull()
   })
 })

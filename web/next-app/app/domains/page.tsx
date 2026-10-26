@@ -3,8 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import SectionHeader from '../../components/SectionHeader'
 import Footer from '../../components/Footer'
 import Loading from '../../components/Loading'
@@ -196,13 +195,19 @@ export default function DomainsPage() {
     triggerRef.current = null
   }
 
-  if (!mounted || domains === null) return <Loading label="Loading curriculum" full />
+  if (!mounted || domains === null) {
+    return (
+      <AppShell>
+        <Loading label="Loading curriculum" full />
+        <Footer />
+      </AppShell>
+    )
+  }
 
   const selectedRow = ordered.find((d) => d.id === selected) ?? null
 
   return (
-    <>
-      <Header />
+    <AppShell>
       <main className="mx-auto w-full max-w-[820px] min-w-0 px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden">
         {selected === null ? (
           <>
@@ -376,7 +381,6 @@ export default function DomainsPage() {
         )}
       </main>
       <Footer />
-      <BottomTabs />
-    </>
+    </AppShell>
   )
 }

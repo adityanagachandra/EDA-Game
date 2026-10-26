@@ -21,11 +21,12 @@ vi.mock('next/navigation', () => ({
 
 vi.mock('../lib/auth', () => ({ isLoggedIn: vi.fn() }))
 
-// The editor, header, tabs and footer are irrelevant here and pull in their own
-// data fetches; the page's own copy is the subject.
+// The editor, shell and footer are irrelevant here and pull in their own data
+// fetches; the page's own copy is the subject.
 vi.mock('../components/PlanEditor', () => ({ default: () => <div data-testid="editor" /> }))
-vi.mock('../components/Header', () => ({ default: () => null }))
-vi.mock('../components/BottomTabs', () => ({ default: () => null }))
+vi.mock('../components/app-shell', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}))
 vi.mock('../components/Footer', () => ({ default: () => null }))
 
 describe('plan page next steps', () => {

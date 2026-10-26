@@ -4,8 +4,7 @@ import { useTheme } from '../../hooks/useTheme'
 import { useState, useEffect, useMemo, useCallback, useRef, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import dynamic from 'next/dynamic'
 import SectionHeader from '../../components/SectionHeader'
 import ProgressSummary from '../../components/ProgressSummary'
@@ -209,11 +208,17 @@ function GraphContent() {
     if (c && c.domain !== activeDomain) setActiveDomain(null)
   }, [conceptParam, domainParam, activeDomain, conceptById, concepts.length])
 
-  if (!mounted) return <div style={{ background: 'var(--bg)', minHeight: '100vh' }} />
+  if (!mounted) {
+    return (
+      <AppShell>
+        <div style={{ background: 'var(--bg)', minHeight: '100vh' }} />
+        <Footer />
+      </AppShell>
+    )
+  }
 
   return (
-    <>
-      <Header />
+    <AppShell>
       <div className="w-full max-w-none px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0">
       <section className="pt-8 min-w-0 overflow-hidden">
         <span className="flex justify-between mb-4">
@@ -296,8 +301,7 @@ function GraphContent() {
     </div>
 
     <Footer />
-    <BottomTabs />
-    </>
+    </AppShell>
   )
 }
 

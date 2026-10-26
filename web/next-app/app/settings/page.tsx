@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import Header from '../../components/Header'
-import BottomTabs from '../../components/BottomTabs'
+import AppShell from '../../components/app-shell'
 import SectionHeader from '../../components/SectionHeader'
 import DangerZone from '../../components/DangerZone'
 import DeleteAccount from '../../components/DeleteAccount'
@@ -344,34 +343,29 @@ export default function SettingsPage() {
 
   if (restricted) {
     return (
-      <>
-        <Header />
+      <AppShell>
         <div className="max-w-container mx-auto px-4 sm:px-6 py-20 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-20 text-center overflow-x-hidden min-w-0">
           <p className="font-mono text-xs text-mathua-secondary mb-4">Settings needs an account: your preferences are stored per account.</p>
           <Link href="/login" className="border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint px-6 py-2 font-mono text-xs min-h-[36px] inline-flex items-center justify-center">Sign in</Link>
         </div>
-        <BottomTabs />
         <Footer />
-      </>
+      </AppShell>
     )
   }
 
   if (loading) {
     return (
-      <>
-        <Header />
-        <div className="max-w-container mx-auto px-4 sm:px-6 pt-[var(--chrome-top)] pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 text-center overflow-x-hidden min-w-0">
+      <AppShell>
+        <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 text-center overflow-x-hidden min-w-0">
           <Loading label="LOADING SETTINGS" />
         </div>
-        <BottomTabs />
         <Footer />
-      </>
+      </AppShell>
     )
   }
 
   return (
-    <>
-      <Header />
+    <AppShell>
       <div className="max-w-container mx-auto px-4 sm:px-6 pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0 overflow-x-hidden min-w-0">
         <section className="pt-8 min-w-0 overflow-hidden">
           <span className="flex justify-between items-center mb-4">
@@ -739,7 +733,6 @@ export default function SettingsPage() {
       </div>
 
       <Footer />
-      <BottomTabs />
-    </>
+    </AppShell>
   )
 }
