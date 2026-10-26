@@ -20,6 +20,11 @@ interface HeaderProps {
   links?: HeaderLink[]
 }
 
+// The destinations that stay on the top row. Everything else moves into More,
+// because a signed-in public page was rendering twelve links and the row
+// overlapped itself before the beta sign.
+const PRIMARY_HREFS = new Set(['/learn', '/review', '/graph', '/domains', '/leaderboard', '/login'])
+
 export default function Header({ links }: HeaderProps) {
   const { mounted, toggleTheme } = useTheme()
   const { loggedIn, user } = useAuthState()
@@ -33,6 +38,7 @@ export default function Header({ links }: HeaderProps) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+  const [moreOpen, setMoreOpen] = useState(false)
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(undefined)
   const [avatarPreset, setAvatarPreset] = useState<number | null>(null)
   // The trigger and the panel are separate DOM subtrees now, so outside-click has to check both:
@@ -42,6 +48,8 @@ export default function Header({ links }: HeaderProps) {
   const menuPanelRef = useRef<HTMLDivElement>(null)
   const navMenuRef = useRef<HTMLDivElement>(null)
   const navPanelRef = useRef<HTMLDivElement>(null)
+  const moreMenuRef = useRef<HTMLDivElement>(null)
+  const morePanelRef = useRef<HTMLDivElement>(null)
   const compassRef = useRef<IconHandle>(null)
   const sunMoonRef = useRef<IconHandle>(null)
 
@@ -103,11 +111,13 @@ export default function Header({ links }: HeaderProps) {
       // which is why every destination in the mobile menu was dead: the items were in the DOM
       // and nothing could reach them.
       if (navMenuRef.current && !navMenuRef.current.contains(t) && !navPanelRef.current?.contains(t)) setNavOpen(false)
+      if (moreMenuRef.current && !moreMenuRef.current.contains(t) && !morePanelRef.current?.contains(t)) setMoreOpen(false)
     }
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {
         setOpen(false)
         setNavOpen(false)
+        setMoreOpen(false)
       }
     }
     document.addEventListener('mousedown', onClick)
@@ -122,6 +132,15 @@ export default function Header({ links }: HeaderProps) {
   // missing from the bottom tabs) so nothing appears twice on one screen.
   // A custom links list (e.g. docs section menu) is shown in full.
   const displayLinks = links || desktopLinks(loggedIn)
+  // The default signed-in row was twelve destinations wide and overlapped itself
+  // on a laptop. Keep the learning journey in the row and put the reference and
+  // account destinations behind one More menu. A custom links list (docs
+  // section menu) is still shown in full because it is already short.
+  const primaryLinks = links || displayLinks.filter((link) => PRIMARY_HREFS.has(link.href))
+  const moreLinks = links ? [] : displayLinks.filter((link) => !PRIMARY_HREFS.has(link.href))
+  const moreActive = moreLinks.some(
+    (link) => pathname === link.href || (pathname ?? '').startsWith(link.href + '/'),
+  )
   // The Admin entry reaches mobile through the compass overflow. The desktop rail on
   // /profile has always carried it; a phone had no route to administration at all,
   // because `/profile` is one tap from the tab bar and nothing on any other page
@@ -181,7 +200,7 @@ export default function Header({ links }: HeaderProps) {
             </span>
 
             <nav className="hidden md:flex items-center gap-2">
-              {displayLinks.map((link, i) => (
+              {primaryLinks.map((link, i) => (
                 <span key={link.href} className="flex items-center gap-2">
                   {i > 0 && (
                     <span className="font-mono text-xs text-mathua-blue select-none">|</span>
@@ -194,17 +213,71 @@ export default function Header({ links }: HeaderProps) {
                   </Link>
                 </span>
               ))}
-              <span className="flex items-center gap-2">
-                <span className="font-mono text-xs text-mathua-blue select-none">|</span>
-                <a
-                  href="https://discord.gg/qXPeQ2jys"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="link-underline font-mono text-xs text-mathua-muted hover:text-mathua-blue whitespace-nowrap transition-colors"
-                >
-                  Discord
-                </a>
-              </span>
+              {links ? (
+                <span className="flex items-center gap-2">
+                  <span className="font-mono text-xs text-mathua-blue select-none">|</span>
+                  <a
+                    href="https://discord.gg/qXPeQ2jys"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link-underline font-mono text-xs text-mathua-muted hover:text-mathua-blue whitespace-nowrap transition-colors"
+                  >
+                    Discord
+                  </a>
+                </span>
+              ) : (
+                <div className="relative flex items-center gap-2" ref={moreMenuRef}>
+                  <span className="font-mono text-xs text-mathua-blue select-none">|</span>
+                  <button
+                    type="button"
+                    onClick={() => setMoreOpen(o => !o)}
+                    aria-label="More navigation"
+                    aria-expanded={moreOpen}
+                    aria-haspopup="menu"
+                    className={`link-underline font-mono text-xs whitespace-nowrap transition-colors ${
+                      moreActive ? 'text-mathua-blue' : 'text-mathua-muted hover:text-mathua-blue'
+                    }`}
+                  >
+                    More
+                  </button>
+                  {moreOpen && chromeVisible && (
+                    <div
+                      role="menu"
+                      aria-label="More navigation"
+                      ref={morePanelRef}
+                      className="absolute right-0 top-full mt-2 min-w-[200px] bg-mathua-surface border border-mathua-border shadow-lg py-1 z-50"
+                    >
+                      {moreLinks.map(link => {
+                        const active = pathname === link.href || (pathname ?? '').startsWith(link.href + '/')
+                        return (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            role="menuitem"
+                            aria-current={active ? 'page' : undefined}
+                            onClick={() => setMoreOpen(false)}
+                            className={`flex items-center min-h-[40px] px-4 font-mono text-xs whitespace-nowrap transition-colors ${
+                              active ? 'text-mathua-blue' : 'text-mathua-muted hover:text-mathua-blue hover:bg-mathua-surface-elevated'
+                            }`}
+                          >
+                            {link.label}
+                          </Link>
+                        )
+                      })}
+                      <a
+                        href="https://discord.gg/qXPeQ2jys"
+                        role="menuitem"
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => setMoreOpen(false)}
+                        className="flex items-center min-h-[40px] px-4 font-mono text-xs whitespace-nowrap text-mathua-muted transition-colors hover:bg-mathua-surface-elevated hover:text-mathua-blue"
+                      >
+                        Discord
+                      </a>
+                    </div>
+                  )}
+                </div>
+              )}
             </nav>
           </div>
 

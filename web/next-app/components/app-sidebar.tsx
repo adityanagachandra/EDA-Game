@@ -69,7 +69,6 @@ const NAV_ITEMS: SidebarNavItem[] = [
   { label: 'Domains', href: '/domains', icon: Layers },
   { label: 'Leaderboard', href: '/leaderboard', icon: Trophy },
   { label: 'History', href: '/history', icon: ChartNoAxesColumn },
-  { label: 'Notifications', href: '/my-reports', icon: Bell },
   { label: 'Reports', href: '/reports', icon: FileText },
   { label: 'Settings', href: '/settings', icon: Settings },
 ]
@@ -297,6 +296,28 @@ export function AppSidebar({
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 )}
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* Notifications sits below the reference library because it is a
+            mailbox, not a daily learning destination. It stays outside the
+            folded Resources disclosure so an unread report is always one
+            click away. */}
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === '/my-reports'}
+                  tooltip="Notifications"
+                >
+                  <Link href="/my-reports">
+                    <Bell className="shrink-0" />
+                    <span className="group-data-[collapsible=icon]:hidden">Notifications</span>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
