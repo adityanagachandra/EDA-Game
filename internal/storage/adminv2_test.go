@@ -432,3 +432,25 @@ func TestReportsCarryReporterIdentityAndSeenMarker(t *testing.T) {
 		t.Fatalf("seen marker = %q, %v; want 2026-10-26T00:00:00Z", seen, err)
 	}
 }
+
+func TestClearReportsSetsSeenAndCleared(t *testing.T) {
+	s := newAdminV2Store(t)
+	student, err := s.CreateStudent("Ada Example")
+	if err != nil {
+		t.Fatalf("create student: %v", err)
+	}
+	if err := s.SetReportSeenAt(student.ID, "2026-10-20T00:00:00Z"); err != nil {
+		t.Fatalf("set seen: %v", err)
+	}
+	if err := s.ClearReports(student.ID, "2026-10-26T00:00:00Z"); err != nil {
+		t.Fatalf("clear reports: %v", err)
+	}
+	cleared, err := s.GetReportClearedAt(student.ID)
+	if err != nil || cleared != "2026-10-26T00:00:00Z" {
+		t.Fatalf("cleared = %q, %v; want 2026-10-26T00:00:00Z", cleared, err)
+	}
+	seen, err := s.GetReportSeenAt(student.ID)
+	if err != nil || seen != "2026-10-26T00:00:00Z" {
+		t.Fatalf("seen = %q, %v; want the clear timestamp", seen, err)
+	}
+}

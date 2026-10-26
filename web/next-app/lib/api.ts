@@ -923,6 +923,10 @@ export interface UserSettings {
 	avatar_dicebear?: { style: string; seed: string } | null
 	avatar_custom?: boolean
 	avatar_version?: number | null
+	// How the leaderboard and league rows name this learner. The server reads
+	// the same key from the opaque settings blob; a missing key means "named",
+	// which is the behaviour that existed before the setting.
+	leaderboard_privacy?: 'named' | 'anonymous' | 'hidden'
 }
 
 export async function getSettings(): Promise<UserSettings> {
@@ -2008,6 +2012,11 @@ export async function listMyReports(): Promise<MyReportsResponse> {
 export async function markMyReportsRead(): Promise<void> {
 	const res = await authedFetch(`${API_BASE}/api/reports/mine/read`, { method: 'POST' })
 	if (!res.ok) await throwWithResponse(res, 'Could not mark your reports as read')
+}
+
+export async function clearMyReports(): Promise<void> {
+	const res = await authedFetch(`${API_BASE}/api/reports/mine/clear`, { method: 'POST' })
+	if (!res.ok) await throwWithResponse(res, 'Could not clear your reports')
 }
 
 export async function listAdminReports(status?: string): Promise<{ reports: QuestionReport[] }> {

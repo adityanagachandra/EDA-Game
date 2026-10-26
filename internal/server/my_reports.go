@@ -32,6 +32,22 @@ func (s *Server) handleMyReports(w http.ResponseWriter, r *http.Request) {
 	if reports == nil {
 		reports = []storage.QuestionReport{}
 	}
+	cleared, err := s.repo.GetReportClearedAt(sid)
+	if err != nil {
+		writeError(w, "failed to load report history", http.StatusInternalServerError)
+		return
+	}
+	clearedAt, _ := time.Parse(time.RFC3339, cleared)
+	if !clearedAt.IsZero() {
+		kept := reports[:0]
+		for _, report := range reports {
+			if !report.CreatedAt.After(clearedAt) {
+				continue
+			}
+			kept = append(kept, report)
+		}
+		reports = kept
+	}
 	seen, err := s.repo.GetReportSeenAt(sid)
 	if err != nil {
 		writeError(w, "failed to load report history", http.StatusInternalServerError)
@@ -72,4 +88,24 @@ func (s *Server) handleMyReportsRead(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, map[string]interface{}{"ok": true, "seen_at": now})
+}
+
+// POST /api/reports/mine/clear hides the current report history for this
+// learner. The moderation rows stay, so the audit trail is intact.
+func (s *Server) handleMyReportsClear(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		writeError(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+	sid, _ := r.Context().Value(authStudentKey{}).(string)
+	if sid == "" {
+		writeError(w, "authentication required", http.StatusUnauthorized)
+		return
+	}
+	now := time.Now().UTC().Format(time.RFC3339)
+	if err := s.repo.ClearReports(sid, now); err != nil {
+		writeError(w, "failed to clear reports", http.StatusInternalServerError)
+		return
+	}
+	writeJSON(w, map[string]interface{}{"ok": true, "cleared_at": now})
 }

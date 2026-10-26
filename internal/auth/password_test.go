@@ -1,6 +1,9 @@
 package auth
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
 func TestValidatePassword(t *testing.T) {
 	cases := []struct {
@@ -80,12 +83,45 @@ func TestValidateUsername(t *testing.T) {
 		{"invalid char space", "user name", true},
 		{"invalid char at", "user@name", true},
 		{"invalid char hash", "user#1", true},
+		{"allows classic despite ass substring", "classic", false},
+		{"allows bass because ass is exact only", "bass", false},
+		{"allows rooty", "rooty", false},
+		{"reserved admin", "admin", true},
+		{"reserved root through leet", "r00t", true},
+		{"blocked shit through leet", "sh1t", true},
+		{"blocked exact ass", "ass", true},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			err := ValidateUsername(tc.u)
 			if (err != nil) != tc.wantErr {
 				t.Errorf("ValidateUsername(%q) err=%v, wantErr=%v", tc.u, err, tc.wantErr)
+			}
+		})
+	}
+}
+
+func TestValidateDisplayName(t *testing.T) {
+	cases := []struct {
+		name    string
+		value   string
+		wantErr bool
+	}{
+		{"ordinary name", "Ada Lovelace", false},
+		{"duplicate display names are allowed", "Ada Lovelace", false},
+		{"classic is not a blocked substring", "Classic", false},
+		{"empty", "   ", true},
+		{"too long", strings.Repeat("a", 51), true},
+		{"reserved Mathua", "Mathua", true},
+		{"reserved admin", "Admin", true},
+		{"blocked phrase", "what the fuck", true},
+		{"blocked leet", "sh1t", true},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			err := ValidateDisplayName(tc.value)
+			if (err != nil) != tc.wantErr {
+				t.Errorf("ValidateDisplayName(%q) err=%v, wantErr=%v", tc.value, err, tc.wantErr)
 			}
 		})
 	}

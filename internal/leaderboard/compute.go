@@ -3,8 +3,10 @@ package leaderboard
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"net/url"
+	"strings"
 	"time"
 
 	"github.com/chuma-beep/mathua/internal/levels"
@@ -154,7 +156,67 @@ func entryFromRow(r storage.LeaderboardRow, rank int, meID string) Entry {
 		IsMe:     meID != "" && r.StudentID == meID,
 		Avatar:   avatarFor(r, id),
 	}
+	if IsAnonymous(r.AvatarSettings) {
+		e.ID, e.Name, e.Avatar = anonymousIdentity(rank)
+	}
 	return e
+}
+
+// Leaderboard privacy modes, read from the opaque settings blob the frontend
+// owns. Anything else, a missing key, an unknown value or a corrupt blob, means
+// "named": the default must stay the behaviour that existed before the setting.
+const (
+	PrivacyNamed     = "named"
+	PrivacyAnonymous = "anonymous"
+	PrivacyHidden    = "hidden"
+
+	anonymousName = "Anonymous"
+)
+
+// leaderboardSettings mirrors only the key this package reads. The blob is
+// owned by the frontend, so unknown keys are ignored by encoding/json.
+type leaderboardSettings struct {
+	LeaderboardPrivacy string `json:"leaderboard_privacy"`
+}
+
+// Privacy normalises the leaderboard privacy mode held in a student's settings
+// blob. It is tolerant on purpose: a learner must not become visible again, or
+// disappear, because a settings blob was written by an older client.
+func Privacy(raw string) string {
+	if strings.TrimSpace(raw) == "" {
+		return PrivacyNamed
+	}
+	var s leaderboardSettings
+	if err := json.Unmarshal([]byte(raw), &s); err != nil {
+		return PrivacyNamed
+	}
+	switch mode := strings.ToLower(strings.TrimSpace(s.LeaderboardPrivacy)); mode {
+	case PrivacyAnonymous, PrivacyHidden:
+		return mode
+	default:
+		return PrivacyNamed
+	}
+}
+
+// IsAnonymous reports whether the settings blob asks the board to withhold the
+// learner's name and public id.
+func IsAnonymous(raw string) bool {
+	return Privacy(raw) != PrivacyNamed
+}
+
+// anonymousIdentity is the identity a board or league line publishes in place
+// of a learner who opted out. The rank keeps the id unique inside one page or
+// one league, which the interface needs to key rows, while carrying nothing
+// derived from the account: no username, no hashed id, no avatar version.
+func anonymousIdentity(rank int) (string, string, *Avatar) {
+	return fmt.Sprintf("anonymous-%d", rank), anonymousName, anonymousAvatar()
+}
+
+// anonymousAvatar is the generic generated face. It deliberately drops the
+// learner's own style, seed and version, a style plus a version is already a
+// usable fingerprint.
+func anonymousAvatar() *Avatar {
+	return &Avatar{Kind: "generated", Style: "notionists"}
 }
 
 func avatarFor(r storage.LeaderboardRow, publicID string) *Avatar {

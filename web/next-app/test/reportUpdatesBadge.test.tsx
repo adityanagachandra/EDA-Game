@@ -17,7 +17,7 @@ describe('the report update badge', () => {
     vi.mocked(listMyReports).mockResolvedValue({ unread: 2, reports: [] })
     render(<ReportUpdatesBadge enabled />)
 
-    const link = await screen.findByRole('link', { name: '2 report updates' })
+    const link = await screen.findByRole('link', { name: '2 unread notifications' })
     expect(link).toHaveAttribute('href', '/my-reports')
     expect(link).toHaveTextContent('2')
   })
@@ -25,12 +25,12 @@ describe('the report update badge', () => {
   it('clears when the history page marks the verdicts read', async () => {
     vi.mocked(listMyReports).mockResolvedValueOnce({ unread: 1, reports: [] })
     render(<ReportUpdatesBadge enabled />)
-    expect(await screen.findByRole('link', { name: '1 report update' })).toBeTruthy()
+    expect(await screen.findByRole('link', { name: '1 unread notification' })).toBeTruthy()
 
     vi.mocked(listMyReports).mockResolvedValueOnce({ unread: 0, reports: [] })
     window.dispatchEvent(new Event('report-updates-changed'))
 
-    await waitFor(() => expect(screen.queryByRole('link', { name: /report update/ })).toBeNull())
+    await waitFor(() => expect(screen.queryByRole('link', { name: /notification/ })).toBeNull())
   })
 
   it('does not fetch for a signed-out visitor', async () => {

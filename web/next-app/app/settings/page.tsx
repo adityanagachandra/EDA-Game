@@ -19,6 +19,17 @@ import { Dices } from '../../components/icons'
 import Loading from '../../components/Loading'
 import Avatar from '../../components/Avatar'
 
+type LeaderboardPrivacy = NonNullable<UserSettings['leaderboard_privacy']>
+
+// Three explicit choices, because the middle one is the point: a learner who
+// wants to compete but not be named should not have to disappear from the board
+// to get that. `named` is first so the default reads as the normal state.
+const LEADERBOARD_PRIVACY_CHOICES: { value: LeaderboardPrivacy; label: string }[] = [
+  { value: 'named', label: 'Show my name' },
+  { value: 'anonymous', label: 'Show as anonymous' },
+  { value: 'hidden', label: 'Turn off leaderboards' },
+]
+
 export default function SettingsPage() {
   const { push } = useRouter()
   const [settings, setSettings] = useState<UserSettings>({})
@@ -119,6 +130,31 @@ export default function SettingsPage() {
       console.error('updateSettings failed')
     }
   }
+
+  // The privacy handler reverts on failure, unlike the timer switch, because the
+  // navigation itself follows this value: leaving a hidden learner with a visible
+  // Leaderboard rail would disagree with the server, which has already withheld
+  // their name.
+  const handleLeaderboardPrivacy = async (value: LeaderboardPrivacy) => {
+    const previous = settings.leaderboard_privacy ?? 'named'
+    if (previous === value) return
+    const next: UserSettings = { ...settings, leaderboard_privacy: value }
+    setSettings(next)
+    setSaved(false)
+    try {
+      await updateSettings(next)
+      setSaved(true)
+      window.dispatchEvent(new Event('settings-changed'))
+      setTimeout(() => setSaved(false), 2000)
+    } catch {
+      console.error('updateSettings failed')
+      setSettings(current => ({ ...current, leaderboard_privacy: previous }))
+      setSaveError('Couldn\u2019t save, check your connection and try again.')
+      setTimeout(() => setSaveError(''), 3000)
+    }
+  }
+
+  const leaderboardPrivacy = settings.leaderboard_privacy ?? 'named'
 
   const paused = !!settings.pause_until
   const pausedLabel = (() => {
@@ -442,6 +478,41 @@ export default function SettingsPage() {
                       Resume now
                     </button>
                   )}
+                </div>
+              </div>
+
+              <div className="border-t border-mathua-border pt-6 min-w-0">
+                <span id="leaderboard-privacy-label" className="font-mono text-sm text-mathua-primary">Leaderboard privacy</span>
+                <p id="leaderboard-privacy-help" className="text-mathua-muted text-xs mt-1">
+                  Anonymous shows your row as Anonymous on the public board. Turning leaderboards off also removes the leaderboard from navigation. You can turn them back on here at any time.
+                </p>
+                <div
+                  role="group"
+                  aria-labelledby="leaderboard-privacy-label"
+                  aria-describedby="leaderboard-privacy-help"
+                  className="flex flex-wrap gap-2 mt-3"
+                >
+                  {LEADERBOARD_PRIVACY_CHOICES.map(choice => {
+                    const selected = leaderboardPrivacy === choice.value
+                    const isOffToggle = choice.value === 'hidden'
+                    const label = isOffToggle && selected ? 'Turn on leaderboards' : choice.label
+                    const nextValue = isOffToggle && selected ? 'named' : choice.value
+                    return (
+                      <button
+                        key={choice.value}
+                        type="button"
+                        aria-pressed={isOffToggle ? undefined : selected}
+                        onClick={() => handleLeaderboardPrivacy(nextValue)}
+                        className={`border rounded-none px-4 h-9 text-xs font-mono transition-colors ${
+                          selected
+                            ? 'border-mathua-blue text-mathua-blue bg-mathua-blue-faint'
+                            : 'border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue'
+                        }`}
+                      >
+                        {label}
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
 

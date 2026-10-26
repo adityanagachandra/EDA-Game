@@ -353,6 +353,7 @@ const PLAN_FIXTURE = {
 describe('onboard diagnostic flow', () => {
   beforeEach(() => {
     sessionStorage.clear()
+    localStorage.clear()
   })
 
   // The diagnostic runs inside /onboard now; /goals redirects unless it is the

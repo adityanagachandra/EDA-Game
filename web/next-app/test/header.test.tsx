@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll, beforeEach, afterEach, vi } from 'vitest'
-import { render, screen, fireEvent, within, cleanup } from '@testing-library/react'
+import { render, screen, fireEvent, within, cleanup, waitFor, act } from '@testing-library/react'
 import Header from '../components/Header'
 
 beforeAll(() => {
@@ -50,13 +50,28 @@ vi.mock('../hooks/useChrome', () => ({
 }))
 
 // `getSettings` is called and `.then`d by the header's avatar effect, so the mock must return a
-// promise. A bare `vi.fn()` returns undefined and the header throws before it can render.
-vi.mock('../lib/api', async importOriginal => ({
-  ...(await importOriginal<typeof import('../lib/api')>()),
-  getSettings: vi.fn(async () => ({})),
+// promise. A bare `vi.fn()` returns undefined and the header throws before it can render. It is
+// hoisted so a test can override the resolution per case: the leaderboard privacy tests below
+// need the header to observe a stored `hidden` value, and the avatar path must keep working.
+const { getSettingsMock } = vi.hoisted(() => ({
+  getSettingsMock: vi.fn(async () => ({})),
 }))
 
+vi.mock('../lib/api', async importOriginal => ({
+  ...(await importOriginal<typeof import('../lib/api')>()),
+  getSettings: getSettingsMock,
+}))
+
+beforeEach(() => {
+  getSettingsMock.mockReset().mockResolvedValue({})
+})
+
 describe('Header mobile nav menu', () => {
+  beforeEach(() => {
+    mockUser = null
+    chromeRef.visible = true
+  })
+
   it('renders a collapsed Compass menu button with no menu items visible', () => {
     render(<Header />)
     const button = screen.getByRole('button', { name: 'Open navigation menu' })
@@ -176,6 +191,60 @@ describe('Header mobile nav menu', () => {
     expect(labels).toEqual(['Graph', 'Docs', 'Architecture', 'Contributing', 'Note', 'Discord'])
   })
 
+  it('folds secondary signed-in destinations into a desktop More menu', () => {
+    mockUser = { student_id: 's1', name: 'Nelson', username: 'wis' }
+    render(<Header />)
+
+    for (const label of ['Learn', 'Review', 'Graph', 'Domains', 'Leaderboard']) {
+      expect(screen.getByRole('link', { name: label })).toBeTruthy()
+    }
+    // The account links moved off the row. They are still one click away in
+    // More, and the avatar menu keeps its own copy of Profile and Notifications.
+    expect(screen.queryByRole('link', { name: 'Notifications' })).toBeNull()
+
+    const more = screen.getByRole('button', { name: 'More navigation' })
+    expect(more).toHaveAttribute('aria-expanded', 'false')
+    fireEvent.click(more)
+    expect(more).toHaveAttribute('aria-expanded', 'true')
+
+    const menu = screen.getByRole('menu', { name: 'More navigation' })
+    const items = within(menu).getAllByRole('menuitem')
+    expect(items.map(i => i.textContent)).toEqual([
+      'Glossary',
+      'Contact',
+      'Notifications',
+      'Reports',
+      'Profile',
+      'Settings',
+      'Discord',
+    ])
+    expect(items.map(i => i.getAttribute('href'))).toEqual([
+      '/glossary',
+      '/contact',
+      '/my-reports',
+      '/reports',
+      '/profile',
+      '/settings',
+      'https://discord.gg/qXPeQ2jys',
+    ])
+
+    fireEvent.click(items[0])
+    expect(screen.queryByRole('menu', { name: 'More navigation' })).toBeNull()
+  })
+
+  it('keeps a custom link list inline without a More menu', () => {
+    render(
+      <Header
+        links={[
+          { label: 'Docs', href: '/docs' },
+          { label: 'Architecture', href: '/docs/architecture' },
+        ]}
+      />
+    )
+    expect(screen.queryByRole('button', { name: 'More navigation' })).toBeNull()
+    expect(screen.getByRole('link', { name: 'Docs' })).toBeTruthy()
+  })
+
   it('marks the current page with aria-current', () => {
     mockPathname = '/docs/architecture'
     render(
@@ -262,7 +331,7 @@ describe('Header profile menu', () => {
     expect(panel.className).not.toMatch(/top-\[calc/)
   })
 
-  it('offers My reports, Profile, Contact, then Sign out, and each closes the menu', () => {
+  it('offers Notifications, Profile, Contact, then Sign out, and each closes the menu', () => {
     mockUser = { student_id: 's1', name: 'Nelson', username: 'wis' }
     render(<Header />)
     fireEvent.click(screen.getByRole('button', { name: 'Open profile menu' }))
@@ -270,7 +339,7 @@ describe('Header profile menu', () => {
     // Contact sits between the account links and the sign-out action so that a
     // learner who cannot find the footer still has a route to a person while
     // signed in, which is exactly the state in which an account problem happens.
-    expect(items.map(i => i.textContent)).toEqual(['My reports', 'Profile', 'Contact', 'Sign out'])
+    expect(items.map(i => i.textContent)).toEqual(['Notifications', 'Profile', 'Contact', 'Sign out'])
 
     fireEvent.click(items[0])
     expect(pushMock).toHaveBeenCalledWith('/my-reports')
@@ -413,5 +482,70 @@ describe('the beta sign', () => {
     expect(badge.getAttribute('title')).toMatch(/still moving/)
     const wordmark = screen.getByRole('link', { name: /Mathua/ })
     expect(wordmark.parentElement?.contains(badge)).toBe(true)
+  })
+})
+
+// Leaderboard privacy is owned by the settings blob and enforced by the server. The header's
+// half is navigational: `hidden` removes every route to the board, while `anonymous` keeps them
+// because a learner who competes without a name still wants to see the standings. Removing the
+// entry must reach all three surfaces, the desktop row, the More menu and the mobile compass,
+// and a custom links list (the docs section menu) is not exempt.
+describe('Header leaderboard privacy', () => {
+  beforeEach(() => {
+    mockUser = { student_id: 's1', name: 'Nelson', username: 'wis' }
+    chromeRef.visible = true
+  })
+
+  afterEach(() => { mockUser = null })
+
+  it('removes Leaderboard from the primary row, More and the compass when hidden', async () => {
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'hidden' })
+    render(<Header />)
+
+    await waitFor(() =>
+      expect(screen.queryByRole('link', { name: 'Leaderboard' })).toBeNull(),
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: 'More navigation' }))
+    const more = screen.getByRole('menu', { name: 'More navigation' })
+    expect(within(more).queryByRole('menuitem', { name: 'Leaderboard' })).toBeNull()
+    // More is still the route to everything else, so the filter cannot have emptied it.
+    expect(within(more).getByRole('menuitem', { name: 'Glossary' })).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Open navigation menu' }))
+    const compass = screen.getByRole('menu', { name: 'Site navigation' })
+    expect(within(compass).queryByRole('menuitem', { name: 'Leaderboard' })).toBeNull()
+    expect(within(compass).getByRole('menuitem', { name: 'Glossary' })).toBeInTheDocument()
+  })
+
+  it('keeps Leaderboard when the learner is anonymous', async () => {
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'anonymous' })
+    render(<Header />)
+
+    // Flush the resolved settings read first. Without this the assertion would
+    // pass on the default state before the header had seen `anonymous`, so a bug
+    // that hid the entry for both values would go unnoticed.
+    await act(async () => {
+      await Promise.resolve()
+    })
+    expect(getSettingsMock).toHaveBeenCalledTimes(1)
+    expect(screen.getByRole('link', { name: 'Leaderboard' })).toBeInTheDocument()
+  })
+
+  it('filters a custom links list as well when hidden', async () => {
+    getSettingsMock.mockResolvedValue({ leaderboard_privacy: 'hidden' })
+    render(
+      <Header
+        links={[
+          { label: 'Graph', href: '/graph' },
+          { label: 'Leaderboard', href: '/leaderboard' },
+          { label: 'Docs', href: '/docs' },
+        ]}
+      />,
+    )
+
+    await waitFor(() => expect(screen.queryByRole('link', { name: 'Leaderboard' })).toBeNull())
+    expect(screen.getByRole('link', { name: 'Graph' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Docs' })).toBeInTheDocument()
   })
 })
