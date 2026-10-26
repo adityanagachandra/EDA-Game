@@ -70,6 +70,7 @@ describe('the learner report history', () => {
 
     render(<MyReportsPage />)
 
+    expect(screen.getByRole('heading', { name: 'Notifications' })).toBeTruthy()
     expect(await screen.findByText('Resolved')).toBeTruthy()
     expect(screen.getByText('The expected answer was corrected.')).toBeTruthy()
     expect(screen.getByText(/1 report has a new verdict/)).toBeTruthy()

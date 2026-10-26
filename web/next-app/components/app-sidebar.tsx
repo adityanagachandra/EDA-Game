@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import {
+  Bell,
   BookOpen,
   ChartNoAxesColumn,
   ChevronDown,
@@ -68,7 +69,7 @@ const NAV_ITEMS: SidebarNavItem[] = [
   { label: 'Domains', href: '/domains', icon: Layers },
   { label: 'Leaderboard', href: '/leaderboard', icon: Trophy },
   { label: 'History', href: '/history', icon: ChartNoAxesColumn },
-  { label: 'My reports', href: '/my-reports', icon: FileText },
+  { label: 'Notifications', href: '/my-reports', icon: Bell },
   { label: 'Reports', href: '/reports', icon: FileText },
   { label: 'Settings', href: '/settings', icon: Settings },
 ]

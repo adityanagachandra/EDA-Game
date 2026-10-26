@@ -38,9 +38,9 @@ export default function ReportUpdatesBadge({ enabled }: { enabled: boolean }) {
   return (
     <Link
       href="/my-reports"
-      aria-label={unread === 1 ? '1 report update' : `${unread} report updates`}
+      aria-label={unread === 1 ? '1 unread notification' : `${unread} unread notifications`}
       className="flex min-h-[44px] min-w-[24px] items-center justify-center font-mono text-[10px] text-mathua-blue"
-      title="Open my reports"
+      title="Open notifications"
     >
       <span className="border border-mathua-blue px-1.5 py-0.5 leading-none">{unread}</span>
     </Link>

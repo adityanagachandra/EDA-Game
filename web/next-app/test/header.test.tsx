@@ -262,7 +262,7 @@ describe('Header profile menu', () => {
     expect(panel.className).not.toMatch(/top-\[calc/)
   })
 
-  it('offers My reports, Profile, Contact, then Sign out, and each closes the menu', () => {
+  it('offers Notifications, Profile, Contact, then Sign out, and each closes the menu', () => {
     mockUser = { student_id: 's1', name: 'Nelson', username: 'wis' }
     render(<Header />)
     fireEvent.click(screen.getByRole('button', { name: 'Open profile menu' }))
@@ -270,7 +270,7 @@ describe('Header profile menu', () => {
     // Contact sits between the account links and the sign-out action so that a
     // learner who cannot find the footer still has a route to a person while
     // signed in, which is exactly the state in which an account problem happens.
-    expect(items.map(i => i.textContent)).toEqual(['My reports', 'Profile', 'Contact', 'Sign out'])
+    expect(items.map(i => i.textContent)).toEqual(['Notifications', 'Profile', 'Contact', 'Sign out'])
 
     fireEvent.click(items[0])
     expect(pushMock).toHaveBeenCalledWith('/my-reports')
