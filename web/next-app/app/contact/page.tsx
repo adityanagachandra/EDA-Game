@@ -83,7 +83,7 @@ export default function ContactPage() {
         <p style={textStyle}>
           If you would rather write here than on another site, use the box. It reaches the
           same queue as a report about a question, and one person reads it. There is no
-          automatic reply, so use X below if you need an answer.
+          automatic reply, so use X below if you need to reach me directly.
         </p>
         <ContactBox />
 
@@ -156,9 +156,8 @@ export default function ContactPage() {
 
         <h2 style={h2Style}>What happens next</h2>
         <p style={textStyle}>
-          Every report is read. Mathua is in beta and maintained by one person, so a reply can
-          take a while. When a fix ships, the reports that led to it are closed with the reason
-          recorded against each one, so the trail says what was wrong and what changed.
+          Every report is read. When a fix ships, the reports that led to it are closed with the
+          reason recorded against each one, so the trail says what was wrong and what changed.
         </p>
       </div>
       <Footer />

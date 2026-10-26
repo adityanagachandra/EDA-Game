@@ -273,7 +273,8 @@ CREATE INDEX IF NOT EXISTS idx_reports_concept ON question_reports(concept_id);
 -- schema for why one timestamp per account is enough.
 CREATE TABLE IF NOT EXISTS report_views (
     student_id TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
-    seen_at    TEXT NOT NULL DEFAULT ''
+    seen_at    TEXT NOT NULL DEFAULT '',
+    cleared_at TEXT NOT NULL DEFAULT ''
 );
 
 -- One optional screenshot per report, beside the moderation row. ON DELETE
@@ -489,6 +490,7 @@ func pgAuthMigrate(db *sql.DB) error {
 		"ALTER TABLE students ADD COLUMN IF NOT EXISTS league_week TEXT NOT NULL DEFAULT ''",
 		"ALTER TABLE students ADD COLUMN IF NOT EXISTS league_moved INTEGER NOT NULL DEFAULT 0",
 		"ALTER TABLE students ADD COLUMN IF NOT EXISTS share_token TEXT NOT NULL DEFAULT ''",
+		"ALTER TABLE report_views ADD COLUMN IF NOT EXISTS cleared_at TEXT NOT NULL DEFAULT ''",
 		"CREATE INDEX IF NOT EXISTS idx_students_username ON students(username)",
 		"CREATE INDEX IF NOT EXISTS idx_students_share ON students(share_token)",
 		"ALTER TABLE students ADD COLUMN IF NOT EXISTS email TEXT NOT NULL DEFAULT ''",

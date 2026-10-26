@@ -117,6 +117,7 @@ export interface AppSidebarProps {
    * leaderboards off asked for the surface to go away, not only for their name.
    */
   showLeaderboards?: boolean
+  notificationUnread?: number
 }
 
 export function AppSidebar({
@@ -130,6 +131,7 @@ export function AppSidebar({
   dueReviews = 0,
   isAdmin = false,
   showLeaderboards = true,
+  notificationUnread = 0,
 }: AppSidebarProps) {
   const pathname = usePathname()
   // Contact is one control, not two destinations: the page and the Discord
@@ -327,6 +329,16 @@ export function AppSidebar({
                   <Link href="/my-reports">
                     <Bell className="shrink-0" />
                     <span className="group-data-[collapsible=icon]:hidden">Notifications</span>
+                    {notificationUnread > 0 && (
+                      <>
+                        <span className="ml-auto h-2 w-2 shrink-0 rounded-full bg-mathua-red" aria-hidden="true" />
+                        <span className="sr-only">
+                          {notificationUnread === 1
+                            ? '1 unread notification'
+                            : `${notificationUnread} unread notifications`}
+                        </span>
+                      </>
+                    )}
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
