@@ -85,7 +85,7 @@ export default function MyReportsPage() {
 
   return (
     <AppShell>
-      <div className="min-h-screen bg-mathua-bg text-mathua-primary">
+      <div className="bg-mathua-bg text-mathua-primary">
         <main className="max-w-container mx-auto px-4 md:px-6 py-10 pb-28">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
@@ -184,8 +184,8 @@ export default function MyReportsPage() {
           </p>
         )}
       </main>
-        <Footer />
       </div>
+      <Footer />
     </AppShell>
   )
 }
