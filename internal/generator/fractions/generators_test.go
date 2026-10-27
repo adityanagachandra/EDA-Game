@@ -168,3 +168,16 @@ func TestCrossComparePrintedProductsMatchFacts(t *testing.T) {
 		}
 	}
 }
+
+func TestFracSubWordNamesTheWholeCake(t *testing.T) {
+	g := &fracSubWordGen{}
+	for i := 0; i < 200; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if !strings.Contains(p.Question, "of the whole cake") {
+			t.Fatalf("question does not say the subtrahend is of the whole cake: %q", p.Question)
+		}
+		if !strings.Contains(p.Question, "How much of the whole cake is left?") {
+			t.Fatalf("question does not state the quantity being asked for: %q", p.Question)
+		}
+	}
+}
