@@ -96,7 +96,7 @@ async function openLearn(
   await page.route('**/api/study/answer', route => {
     const body = JSON.parse(route.request().postData() ?? '{}') as { answer?: string }
     const right = body.answer === '4' || body.answer === '2+2'
-    return route.fulfill({ json: { correct: right, feedback: 'Correct!', xp: right ? 1 : 0, halted: false } })
+    return route.fulfill({ json: { correct: right, feedback: 'Correct!', xp: right ? 1 : 0, explanation: 'Two and two.', expected_answer: '4', halted: false } })
   })
   await page.route('**/api/scores/**', route =>
     route.fulfill({ json: { lifetime_points: 0, weekly_score: 0, speed_bonus: 0, concepts_mastered: 1, current_streak: 0, level: 'Novice', xp_total: 0, xp_today: 0, daily_xp_goal: 10, spaced_reps: {}, avg_learning_time: 1 } }),

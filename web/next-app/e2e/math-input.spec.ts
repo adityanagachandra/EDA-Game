@@ -333,7 +333,7 @@ test.describe('submission is unchanged', () => {
       // assertion about the wire format rather than about the mock's arithmetic.
       const body = JSON.parse(route.request().postData() ?? '{}') as { answer?: string }
       const right = body.answer === '4' || body.answer === '2+2'
-      return route.fulfill({ json: { correct: right, feedback: 'Correct!', xp: right ? 1 : 0, halted: false } })
+      return route.fulfill({ json: { correct: right, feedback: 'Correct!', xp: right ? 1 : 0, explanation: 'Two and two.', expected_answer: '4', halted: false } })
     })
     await openLearn(page)
     await fresh(page, '2+2')
@@ -368,7 +368,7 @@ test.describe('submission is unchanged', () => {
     await page.route('**/api/study/answer', route => {
       const body = JSON.parse(route.request().postData() ?? '{}') as { answer?: string }
       const right = body.answer === '4' || body.answer === '2+2'
-      return route.fulfill({ json: { correct: right, feedback: 'Nope', xp: right ? 1 : 0, explanation: 'Two and two.', halted: false } })
+      return route.fulfill({ json: { correct: right, feedback: 'Nope', xp: right ? 1 : 0, explanation: 'Two and two.', expected_answer: '4', halted: false } })
     })
     await openLearn(page)
     await expect(page.getByText('2 + 2 = ?').first()).toBeVisible()
