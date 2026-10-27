@@ -659,6 +659,15 @@ func TestLeaderboardCarriesUsernameAndAvatar(t *testing.T) {
 	if c, p, v := AvatarBits(""); c || p != nil || v != 0 {
 		t.Errorf("empty settings should yield zero bits")
 	}
+	if p := AvatarPreset(`{"avatar_preset":4}`); p == nil || *p != 4 {
+		t.Errorf("legacy preset = %v, want 4", p)
+	}
+	if p := AvatarPreset("not-json"); p != nil {
+		t.Errorf("corrupt settings preset = %v, want nil", p)
+	}
+	if p := AvatarPreset(""); p != nil {
+		t.Errorf("empty settings preset = %v, want nil", p)
+	}
 }
 
 // Migrate (idempotent)

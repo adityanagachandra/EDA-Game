@@ -324,6 +324,23 @@ func AvatarBits(raw string) (custom bool, pick *AvatarRef, version int) {
 	return s.AvatarCustom, s.AvatarDicebear, s.AvatarVersion
 }
 
+// AvatarPreset extracts the legacy preset number, which predates the DiceBear
+// pick and is still honoured for accounts created before those were offered.
+// It is separate from AvatarBits so existing leaderboard callers do not pay for
+// a field they no longer render.
+func AvatarPreset(raw string) *int {
+	if strings.TrimSpace(raw) == "" {
+		return nil
+	}
+	var s struct {
+		AvatarPreset *int `json:"avatar_preset"`
+	}
+	if err := json.Unmarshal([]byte(raw), &s); err != nil {
+		return nil
+	}
+	return s.AvatarPreset
+}
+
 type DailyActivity struct {
 	Date      string   `json:"date"`
 	Questions int      `json:"questions"`

@@ -27,11 +27,17 @@ type adminLeaguesBody struct {
 		Size     int    `json:"size"`
 		Movers   int    `json:"movers"`
 		Members  []struct {
-			Rank      int    `json:"rank"`
-			Name      string `json:"name"`
-			Username  string `json:"username"`
-			StudentID string `json:"student_id"`
-			XP        int    `json:"xp"`
+			Rank           int    `json:"rank"`
+			Name           string `json:"name"`
+			Username       string `json:"username"`
+			StudentID      string `json:"student_id"`
+			XP             int    `json:"xp"`
+			AvatarURL      string `json:"avatar_url"`
+			AvatarDicebear *struct {
+				Style string `json:"style"`
+				Seed  string `json:"seed"`
+			} `json:"avatar_dicebear"`
+			AvatarPreset *int `json:"avatar_preset"`
 		} `json:"members"`
 	} `json:"leagues"`
 }
@@ -81,6 +87,15 @@ func seedLeagueXP(t *testing.T, e *adminEnv) string {
 func TestAdminLeaguesListsThePyramidAndOneRoster(t *testing.T) {
 	e := newAdminEnv(t)
 	graceID := seedLeagueXP(t, e)
+	if err := e.store.SetAvatarImage(e.studentID, "image/png", []byte("custom-photo")); err != nil {
+		t.Fatalf("set custom avatar: %v", err)
+	}
+	if err := e.store.UpdateSettings(e.studentID, `{"avatar_custom":true,"avatar_version":7,"avatar_preset":2}`); err != nil {
+		t.Fatalf("set ada avatar settings: %v", err)
+	}
+	if err := e.store.UpdateSettings(graceID, `{"avatar_dicebear":{"style":"notionists","seed":"grace-seed"}}`); err != nil {
+		t.Fatalf("set grace avatar settings: %v", err)
+	}
 
 	rec := e.do(t, "GET", "/api/admin/leagues", e.adminTok, "")
 	if rec.Code != 200 {
@@ -142,6 +157,18 @@ func TestAdminLeaguesListsThePyramidAndOneRoster(t *testing.T) {
 	}
 	if members[1].Username != "grace" || members[1].Name != "Grace" {
 		t.Errorf("second row identity = %q/%q, want Grace/grace", members[1].Name, members[1].Username)
+	}
+	wantCustom := "/api/avatar/" + e.studentID + "?v=7"
+	if members[0].AvatarURL != wantCustom {
+		t.Errorf("custom avatar url = %q, want %q", members[0].AvatarURL, wantCustom)
+	}
+	if members[0].AvatarPreset == nil || *members[0].AvatarPreset != 2 {
+		t.Errorf("legacy preset = %v, want 2", members[0].AvatarPreset)
+	}
+	if members[1].AvatarDicebear == nil ||
+		members[1].AvatarDicebear.Style != "notionists" ||
+		members[1].AvatarDicebear.Seed != "grace-seed" {
+		t.Errorf("dicebear pick = %+v, want notionists/grace-seed", members[1].AvatarDicebear)
 	}
 }
 
