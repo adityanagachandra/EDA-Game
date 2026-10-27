@@ -232,3 +232,43 @@ func TestOAuth_CaseInsensitiveMerge(t *testing.T) {
 		t.Errorf("expected stored email untouched, got %q", got.Email)
 	}
 }
+
+func TestOAuth_BlockedProviderNameFallsBack(t *testing.T) {
+	svc := newTestService(t)
+
+	_, st, err := svc.LoginOrCreateOAuth(OAuthProfile{
+		Provider: "github", ProviderID: "blocked-name",
+		Email: "jackson@example.com", EmailVerified: true,
+		Name: "Jackson Fuck you",
+	})
+	if err != nil {
+		t.Fatalf("login: %v", err)
+	}
+	if st.Name != "jackson" {
+		t.Errorf("name = %q, want the email local part %q", st.Name, "jackson")
+	}
+
+	_, st2, err := svc.LoginOrCreateOAuth(OAuthProfile{
+		Provider: "github", ProviderID: "blocked-name-and-email",
+		Email: "admin@example.com", EmailVerified: true,
+		Name: "Jackson Fuck you",
+	})
+	if err != nil {
+		t.Fatalf("second login: %v", err)
+	}
+	if st2.Name != "Learner" {
+		t.Errorf("name = %q, want the neutral fallback %q", st2.Name, "Learner")
+	}
+
+	_, st3, err := svc.LoginOrCreateOAuth(OAuthProfile{
+		Provider: "github", ProviderID: "real-name",
+		Email: "kshitij@example.com", EmailVerified: true,
+		Name: "Kshitij",
+	})
+	if err != nil {
+		t.Fatalf("third login: %v", err)
+	}
+	if st3.Name != "Kshitij" {
+		t.Errorf("name = %q, want the real name %q", st3.Name, "Kshitij")
+	}
+}
