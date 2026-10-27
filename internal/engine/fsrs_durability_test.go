@@ -78,6 +78,53 @@ func TestFSRSDurability_DecayDecoupledFromFourteenDays(t *testing.T) {
 	}
 }
 
+func TestFSRSDurability_AboveCapStabilityDecaysLater(t *testing.T) {
+	e := testEngine(t)
+	st, err := e.CreateStudent("fsrs-above-cap")
+	if err != nil {
+		t.Fatalf("create student: %v", err)
+	}
+
+	now := time.Now().UTC()
+	lastRev := now.AddDate(0, 0, -40000)
+	due := now.AddDate(0, 0, -1)
+	difficulty := 4.0
+	capped := 36500.0
+	corrected := 50658.40798282004
+
+	for conceptID, stability := range map[string]float64{"a": capped, "b": corrected} {
+		stability := stability
+		p := &storage.ConceptProgress{
+			StudentID:       st.ID,
+			ConceptID:       conceptID,
+			Status:          "MASTERED",
+			Streak:          5,
+			BestStreak:      5,
+			AvgResponseTime: 8.0,
+			Attempts:        8,
+			LastReviewed:    &lastRev,
+			NextReviewDue:   &due,
+			FSRSStability:   &stability,
+			FSRSDifficulty:  &difficulty,
+			FSRSLastReview:  &lastRev,
+		}
+		if err := e.repo.UpsertProgress(p); err != nil {
+			t.Fatalf("upsert progress %s: %v", conceptID, err)
+		}
+	}
+
+	progressMap, err := e.GetProgress(st.ID)
+	if err != nil {
+		t.Fatalf("get progress: %v", err)
+	}
+	if got := progressMap["a"]; got == nil || got.Status != "DECAYING" {
+		t.Errorf("concept a status = %v, want DECAYING for stability 36500 at 40000 days", got)
+	}
+	if got := progressMap["b"]; got == nil || got.Status != "MASTERED" {
+		t.Errorf("concept b status = %v, want MASTERED for stability 50658.40798282004 at 40000 days", got)
+	}
+}
+
 func TestFSRSDurability_LowStabilityDecaysPromptly(t *testing.T) {
 	e := testEngine(t)
 	st, err := e.CreateStudent("fsrs-low-stability")

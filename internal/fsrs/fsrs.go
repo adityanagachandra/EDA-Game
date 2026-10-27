@@ -30,12 +30,13 @@
 //
 // # Expected values
 //
-// The numbers in vectors_test.go were produced by py-fsrs 6.3.2, the reference
+// The numbers in vectors_test.go were produced by fsrs==6.3.2, the reference
 // implementation, with fuzzing disabled. They are recorded literally rather
 // than recomputed, so that changing a formula fails a test instead of silently
-// changing what the test expects. The one intentional difference is clamping:
-// the reference's interval helper can return 0, while Mathua clamps to the
-// range [1, 36500] because a due date in the past is not a schedule.
+// changing what the test expects. Intervals are clamped to [1, 36500] because a
+// due date in the past is not a schedule. The reference clamps the interval to
+// the same range in 6.3.2, so that clamp is not a difference. Stability itself
+// is not capped, because the reference lets it exceed the maximum interval.
 package fsrs
 
 import "math"
@@ -45,8 +46,10 @@ const (
 	// of zero would make the forgetting curve a division by zero.
 	StabilityMin = 0.001
 
-	// MaxStabilityDays bounds stability. The reference uses 36,500 days (100
-	// years) as its maximum interval, and stability is an interval in disguise.
+	// MaxStabilityDays is the reference maximum interval, in days. It is used
+	// when seeding stability from an SM-2 interval. It does not bound
+	// NextStability: the reference lets stability grow past this value and
+	// clamps only the interval it derives from it.
 	MaxStabilityDays = 36500.0
 
 	// MaxIntervalDays is the longest interval this package will return.
