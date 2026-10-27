@@ -33,7 +33,7 @@ interface QEntry {
   answer: string
   checking: boolean
   servedAt: number
-  feedback: { correct: boolean; text: string; diagnosis?: string; xp: number } | null
+  feedback: { correct: boolean; text: string; expected: string; diagnosis?: string; xp: number } | null
 }
 
 type Entry =
@@ -401,7 +401,8 @@ export default function LearnStepper({ conceptId, returnStack = [] }: Props) {
           checking: false,
           feedback: {
             correct: true,
-            text: res.explanation ?? entry.q.explanation,
+            text: res.explanation ?? '',
+            expected: res.expected_answer ?? '',
             diagnosis: res.diagnosis,
             xp: res.xp ?? 0,
           },
@@ -431,7 +432,8 @@ export default function LearnStepper({ conceptId, returnStack = [] }: Props) {
           checking: false,
           feedback: {
             correct: false,
-            text: res.explanation || entry.q.explanation,
+            text: res.explanation || '',
+            expected: res.expected_answer ?? '',
             diagnosis: res.diagnosis,
             xp: 0,
           },
@@ -823,7 +825,7 @@ export default function LearnStepper({ conceptId, returnStack = [] }: Props) {
                     <span className="text-mathua-muted">you answered “{qe.answer}”</span>
                   </p>
                   <p className="mt-1.5 font-mono text-xs text-mathua-primary">
-                    Answer: <KatexContent>{qe.q.answer}</KatexContent>
+                    Answer: <KatexContent>{qe.feedback.expected}</KatexContent>
                   </p>
                   {/* The explanation is the solution for *this* instance, shown
                       on both verdicts: a correct answer still needs the

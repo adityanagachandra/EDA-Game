@@ -1168,8 +1168,9 @@ export async function getLessons(studentId?: string): Promise<LessonsRes> {
 
 export interface PracticeQuestion {
 	question: string
-	answer: string
-	explanation: string
+	// The answer and explanation are deliberately absent. They are returned by
+	// POST /api/study/answer after the learner submits, so the served question
+	// cannot be inspected for its verdict before evidence is produced.
 	// Declared by the generator that produced the question, because the
 	// concept's grading type describes the grader and not the answer syntax.
 	answer_hint?: string

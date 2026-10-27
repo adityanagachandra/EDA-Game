@@ -22,7 +22,6 @@ func studyPracticeQuestion(t *testing.T, mux *http.ServeMux, token, conceptID st
 	var set struct {
 		Questions []struct {
 			Question string `json:"question"`
-			Answer   string `json:"answer"`
 		} `json:"questions"`
 	}
 	if err := json.Unmarshal(rec.Body.Bytes(), &set); err != nil {
@@ -31,7 +30,9 @@ func studyPracticeQuestion(t *testing.T, mux *http.ServeMux, token, conceptID st
 	if len(set.Questions) == 0 {
 		t.Fatal("expected a served question")
 	}
-	return set.Questions[0].Question, set.Questions[0].Answer
+	// testGen always answers 4. The practice DTO no longer carries the answer,
+	// so the test supplies the known answer after the anchor is written.
+	return set.Questions[0].Question, "4"
 }
 
 func studyAnswerBody(conceptID, answer, question, submissionID string) string {
