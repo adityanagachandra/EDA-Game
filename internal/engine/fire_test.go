@@ -5,13 +5,14 @@ import (
 	"time"
 
 	"github.com/chuma-beep/mathua/internal/concepts"
+	"github.com/chuma-beep/mathua/internal/fire"
 	"github.com/chuma-beep/mathua/internal/generator"
 	"github.com/chuma-beep/mathua/internal/mastery"
 	"github.com/chuma-beep/mathua/internal/repetition"
 	"github.com/chuma-beep/mathua/internal/storage"
 )
 
-func fireEngine(t *testing.T) (*Engine, storage.Repository) {
+func fireEngine(t *testing.T, opts ...Option) (*Engine, storage.Repository) {
 	t.Helper()
 	d, err := concepts.Build([]concepts.Concept{
 		{
@@ -55,7 +56,7 @@ func fireEngine(t *testing.T) (*Engine, storage.Repository) {
 	reg.Register("adv", &testGen{answer: "20"})
 	reg.Register("standalone", &testGen{answer: "30"})
 
-	return New(store, d, reg, nil, nil), store
+	return New(store, d, reg, nil, nil, opts...), store
 }
 
 func TestEngine_FIRe_CompletedAttemptAllocatesImplicitCredit(t *testing.T) {
@@ -130,7 +131,7 @@ func TestEngine_FIRe_CompletedAttemptAllocatesImplicitCredit(t *testing.T) {
 	}
 }
 
-func TestEngine_FIRe_BankedCreditSuppressesExplicitReviewAndAdvancesInterval(t *testing.T) {
+func TestEngine_FIRe_BankedCreditDoesNotSuppressOrAdvance(t *testing.T) {
 	e, repo := fireEngine(t)
 	st, err := e.CreateStudent("charlie")
 	if err != nil {
@@ -139,9 +140,7 @@ func TestEngine_FIRe_BankedCreditSuppressesExplicitReviewAndAdvancesInterval(t *
 
 	now := time.Now().UTC()
 	past := now.AddDate(0, 0, -5)
-
-	// Prereq is due for review
-	err = repo.UpsertProgress(&storage.ConceptProgress{
+	if err := repo.UpsertProgress(&storage.ConceptProgress{
 		StudentID:      st.ID,
 		ConceptID:      "prereq",
 		Status:         string(mastery.StatusMastered),
@@ -151,101 +150,44 @@ func TestEngine_FIRe_BankedCreditSuppressesExplicitReviewAndAdvancesInterval(t *
 		SM2Interval:    5,
 		SM2EFactor:     2.5,
 		SM2Repetitions: 1,
-	})
-	if err != nil {
+	}); err != nil {
 		t.Fatalf("upsert prereq: %v", err)
-	}
-
-	// Before credit: review is due
-	due, err := e.ReviewsDue(st.ID)
-	if err != nil {
-		t.Fatalf("reviews due: %v", err)
-	}
-	if due != 1 {
-		t.Fatalf("expected 1 due review before credit, got %d", due)
 	}
 
 	sess, err := repo.CreateSession(st.ID)
 	if err != nil {
 		t.Fatalf("create session: %v", err)
 	}
+	cs := repo.(storage.CreditStore)
+	if _, _, err := cs.AllocateCredit(st.ID, "attempt:fire:1", 0, []storage.CreditCandidate{
+		{ConceptID: "prereq", RawUnits: repetition.Micro},
+	}); err != nil {
+		t.Fatalf("allocate credit: %v", err)
+	}
+
+	due, err := e.ReviewsDue(st.ID)
+	if err != nil {
+		t.Fatalf("reviews due: %v", err)
+	}
+	if due != 1 {
+		t.Fatalf("shadow credit changed the due count: got %d, want 1", due)
+	}
 	rq, err := e.NextReviewQuestion(sess.ID, st.ID)
 	if err != nil {
 		t.Fatalf("next review: %v", err)
 	}
 	if rq == nil || rq.ConceptID != "prereq" {
-		t.Fatalf("expected prereq review question before credit, got %+v", rq)
+		t.Fatalf("shadow credit suppressed the explicit review: got %+v", rq)
 	}
-
-	// Reset active session state for next question test
-	sess2, err := repo.CreateSession(st.ID)
-	if err != nil {
-		t.Fatalf("create session 2: %v", err)
-	}
-
-	// Bank 1 implicit repetition ordinal for prereq
-	cs := repo.(storage.CreditStore)
-	_, _, err = cs.AllocateCredit(st.ID, "attempt:fire:1", 0, []storage.CreditCandidate{
-		{ConceptID: "prereq", RawUnits: repetition.Micro},
-	})
-	if err != nil {
-		t.Fatalf("allocate credit: %v", err)
-	}
-
-	// After banking credit: calling ReviewsDue or NextReviewQuestion satisfies the review
-	dueAfter, err := e.ReviewsDue(st.ID)
-	if err != nil {
-		t.Fatalf("reviews due after credit: %v", err)
-	}
-	if dueAfter != 0 {
-		t.Fatalf("expected 0 due reviews after credit, got %d", dueAfter)
-	}
-
-	rqAfter, err := e.NextReviewQuestion(sess2.ID, st.ID)
-	if err != nil {
-		t.Fatalf("next review after credit: %v", err)
-	}
-	if rqAfter != nil {
-		t.Fatalf("expected nil review question after implicit satisfaction, got %+v", rqAfter)
-	}
-
-	// Verify that concept_progress interval has advanced in the database
 	p, err := repo.GetProgress(st.ID, "prereq")
 	if err != nil {
 		t.Fatalf("get progress: %v", err)
 	}
-	if p.NextReviewDue == nil || !p.NextReviewDue.After(now) {
-		t.Fatalf("expected next review due in future, got %v", p.NextReviewDue)
+	if p.NextReviewDue == nil || p.NextReviewDue.Unix() != past.Unix() {
+		t.Fatalf("shadow credit moved the due date: got %v, want %v", p.NextReviewDue, past)
 	}
-	if p.SM2Interval <= 5 {
-		t.Fatalf("expected SM2 interval to advance beyond 5, got %d", p.SM2Interval)
-	}
-
-	// Verify that the credit ordinal was projected. The credit was banked in the
-	// cycle the ledger opened for this learner, and consuming it closes that
-	// cycle, so the projected ordinal lives there rather than in the current one.
-	// Reading epoch 0 would ask the cycle that has just begun, which holds
-	// nothing by design.
-	const bankedEpoch = 1
-	acc, err := cs.AccountOf(st.ID, "prereq", bankedEpoch)
-	if err != nil {
-		t.Fatalf("account of prereq: %v", err)
-	}
-	if acc.Projected != 1 {
-		t.Fatalf("expected 1 projected ordinal, got %d", acc.Projected)
-	}
-	if acc.Pending() != 0 {
-		t.Fatalf("expected 0 pending ordinals, got %d", acc.Pending())
-	}
-
-	// The cycle that opened on consumption holds no credit, which is what stops
-	// a second advance in the same cycle.
-	next, err := cs.AccountOf(st.ID, "prereq", 0)
-	if err != nil {
-		t.Fatalf("account of next cycle: %v", err)
-	}
-	if next.Projected != 0 || next.Pending() != 0 {
-		t.Fatalf("next cycle already holds credit: projected=%d pending=%d", next.Projected, next.Pending())
+	if p.SM2Interval != 5 {
+		t.Fatalf("shadow credit changed the interval: got %d, want 5", p.SM2Interval)
 	}
 }
 
@@ -306,7 +248,7 @@ func TestEngine_FIRe_NonEncompassedConceptIsNotSuppressed(t *testing.T) {
 	}
 }
 
-func TestEngine_FIRe_SubmitAnswerImmediatelySatisfiesEncompassedReview(t *testing.T) {
+func TestEngine_FIRe_SubmitAnswerDoesNotMoveEncompassedReview(t *testing.T) {
 	e, repo := fireEngine(t)
 	st, err := e.CreateStudent("diana")
 	if err != nil {
@@ -357,15 +299,192 @@ func TestEngine_FIRe_SubmitAnswerImmediatelySatisfiesEncompassedReview(t *testin
 		t.Fatalf("expected correct answer")
 	}
 
-	// Immediately inspect prereq progress in storage without calling GetNextTask or ReviewsDue
+	// Shadow records the credit but must not move the encompassed review.
 	p, err := repo.GetProgress(st.ID, "prereq")
 	if err != nil {
 		t.Fatalf("get progress: %v", err)
 	}
-	if p.NextReviewDue == nil || !p.NextReviewDue.After(now) {
-		t.Fatalf("expected next review due immediately advanced into future, got %v", p.NextReviewDue)
+	if p.NextReviewDue == nil || p.NextReviewDue.Unix() != past.Unix() {
+		t.Fatalf("shadow credit moved the due date: got %v, want %v", p.NextReviewDue, past)
 	}
-	if p.SM2Interval <= 5 {
-		t.Fatalf("expected SM2 interval to advance beyond 5 immediately, got %d", p.SM2Interval)
+	if p.SM2Interval != 5 {
+		t.Fatalf("shadow credit changed the interval: got %d, want 5", p.SM2Interval)
+	}
+}
+
+func TestEngine_FIRe_OffDoesNotAllocateOrQueueCredit(t *testing.T) {
+	e, repo := fireEngine(t, WithFIReMode(fire.Off))
+	if e.fireMode != fire.Off {
+		t.Fatalf("fire mode = %s, want off", e.fireMode)
+	}
+	for _, effect := range e.studyEffectsFor("adv", "attempt-off", true, false, nil) {
+		if effect.Effect == studyEffectImplicitCredit {
+			t.Fatal("off mode queued an implicit_credit effect")
+		}
+	}
+
+	st, err := e.CreateStudent("off-learner")
+	if err != nil {
+		t.Fatalf("create student: %v", err)
+	}
+	now := time.Now().UTC()
+	if err := repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID: st.ID, ConceptID: "prereq", Status: string(mastery.StatusMastered),
+		Streak: 3, LastReviewed: &now, SM2Interval: 10, SM2EFactor: 2.5, SM2Repetitions: 2,
+	}); err != nil {
+		t.Fatalf("upsert prereq: %v", err)
+	}
+	if err := repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID: st.ID, ConceptID: "standalone", Status: string(mastery.StatusMastered),
+		Streak: 3, LastReviewed: &now, SM2Interval: 10, SM2EFactor: 2.5, SM2Repetitions: 2,
+	}); err != nil {
+		t.Fatalf("upsert standalone: %v", err)
+	}
+	sess, err := repo.CreateSession(st.ID)
+	if err != nil {
+		t.Fatalf("create session: %v", err)
+	}
+	q, err := e.NextQuestion(sess.ID, st.ID)
+	if err != nil || q == nil || q.ConceptID != "adv" {
+		t.Fatalf("next question = %+v, %v; want adv", q, err)
+	}
+	if _, err := e.SubmitAnswer(sess.ID, st.ID, q.AttemptID, "20", 5.0); err != nil {
+		t.Fatalf("submit: %v", err)
+	}
+	cs := repo.(storage.CreditStore)
+	acc, err := cs.AccountOf(st.ID, "prereq", 0)
+	if err != nil {
+		t.Fatalf("account: %v", err)
+	}
+	if acc.RetainedUnits != 0 {
+		t.Fatalf("off mode retained %d units, want 0", acc.RetainedUnits)
+	}
+}
+
+func TestEngine_FIRe_ShadowServingDoesNotWriteProgress(t *testing.T) {
+	e, repo := fireEngine(t)
+	st, err := e.CreateStudent("serve-learner")
+	if err != nil {
+		t.Fatalf("create student: %v", err)
+	}
+	now := time.Now().UTC()
+	past := now.AddDate(0, 0, -5)
+	if err := repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID: st.ID, ConceptID: "prereq", Status: string(mastery.StatusMastered),
+		Streak: 3, LastReviewed: &past, NextReviewDue: &past,
+		SM2Interval: 5, SM2EFactor: 2.5, SM2Repetitions: 1,
+	}); err != nil {
+		t.Fatalf("upsert prereq: %v", err)
+	}
+	cs := repo.(storage.CreditStore)
+	if _, _, err := cs.AllocateCredit(st.ID, "attempt:serve", 0, []storage.CreditCandidate{
+		{ConceptID: "prereq", RawUnits: repetition.Micro},
+	}); err != nil {
+		t.Fatalf("allocate credit: %v", err)
+	}
+	before, err := repo.GetProgress(st.ID, "prereq")
+	if err != nil || before == nil || before.NextReviewDue == nil {
+		t.Fatalf("read before serving: %v", err)
+	}
+	beforeDue := *before.NextReviewDue
+	beforeInterval := before.SM2Interval
+
+	sess, err := repo.CreateSession(st.ID)
+	if err != nil {
+		t.Fatalf("create session: %v", err)
+	}
+	if _, err := e.NextQuestion(sess.ID, st.ID); err != nil {
+		t.Fatalf("next question: %v", err)
+	}
+	if _, err := e.ReviewsDue(st.ID); err != nil {
+		t.Fatalf("reviews due: %v", err)
+	}
+	if _, err := e.RecommendNext(st.ID, nil); err != nil {
+		t.Fatalf("recommend next: %v", err)
+	}
+
+	after, err := repo.GetProgress(st.ID, "prereq")
+	if err != nil || after == nil || after.NextReviewDue == nil {
+		t.Fatalf("read after serving: %v", err)
+	}
+	if after.NextReviewDue.Unix() != beforeDue.Unix() {
+		t.Fatalf("serving moved the due date: got %v, want %v", after.NextReviewDue, beforeDue)
+	}
+	if after.SM2Interval != beforeInterval {
+		t.Fatalf("serving changed the interval: got %d, want %d", after.SM2Interval, beforeInterval)
+	}
+}
+
+func TestEngine_FIRe_OffDrainsQueuedCreditEffectWithoutWriting(t *testing.T) {
+	e, repo := fireEngine(t, WithFIReMode(fire.Off))
+	st, err := e.CreateStudent("drain-off")
+	if err != nil {
+		t.Fatalf("create student: %v", err)
+	}
+	if err := e.applyStudyEffect(storage.StudyAnswerEffect{
+		Effect:    studyEffectImplicitCredit,
+		StudentID: st.ID,
+		PayloadJSON: studyEffectJSON(studyEffectPayload{
+			ConceptID: "adv", AttemptID: "queued-off", Correct: true,
+		}),
+	}); err != nil {
+		t.Fatalf("drain queued effect: %v", err)
+	}
+	cs := repo.(storage.CreditStore)
+	acc, err := cs.AccountOf(st.ID, "prereq", 0)
+	if err != nil {
+		t.Fatalf("account: %v", err)
+	}
+	if acc.RetainedUnits != 0 {
+		t.Fatalf("off mode wrote %d retained units, want 0", acc.RetainedUnits)
+	}
+}
+
+func TestEngine_FIRe_ShadowRetryAllocatesOnceWithoutProjecting(t *testing.T) {
+	e, repo := fireEngine(t)
+	st, err := e.CreateStudent("retry-shadow")
+	if err != nil {
+		t.Fatalf("create student: %v", err)
+	}
+	now := time.Now().UTC()
+	past := now.AddDate(0, 0, -5)
+	if err := repo.UpsertProgress(&storage.ConceptProgress{
+		StudentID: st.ID, ConceptID: "prereq", Status: string(mastery.StatusMastered),
+		Streak: 3, LastReviewed: &past, NextReviewDue: &past,
+		SM2Interval: 5, SM2EFactor: 2.5, SM2Repetitions: 1,
+	}); err != nil {
+		t.Fatalf("upsert prereq: %v", err)
+	}
+	before, err := repo.GetProgress(st.ID, "prereq")
+	if err != nil || before == nil || before.NextReviewDue == nil {
+		t.Fatalf("read before: %v", err)
+	}
+	beforeDue := before.NextReviewDue.Unix()
+	effect := storage.StudyAnswerEffect{
+		Effect:    studyEffectImplicitCredit,
+		StudentID: st.ID,
+		PayloadJSON: studyEffectJSON(studyEffectPayload{
+			ConceptID: "adv", AttemptID: "retry-shadow", Correct: true,
+		}),
+	}
+	for i := 0; i < 3; i++ {
+		if err := e.applyStudyEffect(effect); err != nil {
+			t.Fatalf("retry %d: %v", i, err)
+		}
+	}
+	cs := repo.(storage.CreditStore)
+	acc, err := cs.AccountOf(st.ID, "prereq", 0)
+	if err != nil {
+		t.Fatalf("account: %v", err)
+	}
+	if acc.RetainedUnits != repetition.Micro {
+		t.Fatalf("retries retained %d units, want one Micro", acc.RetainedUnits)
+	}
+	after, err := repo.GetProgress(st.ID, "prereq")
+	if err != nil || after == nil || after.NextReviewDue == nil {
+		t.Fatalf("read after: %v", err)
+	}
+	if after.NextReviewDue.Unix() != beforeDue {
+		t.Fatalf("retry moved the due date: got %v, want unix %d", after.NextReviewDue, beforeDue)
 	}
 }

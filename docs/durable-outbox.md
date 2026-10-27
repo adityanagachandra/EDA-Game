@@ -90,3 +90,19 @@ separate performance investigation.
 
 This task is not required for the correctness of the answer record itself. It
 is required before claiming crash-safe post-commit effects.
+
+## FIRe mode
+
+FIRe is the implicit-repetition ledger. It is observation only. Set
+`MATHUA_FIRE_MODE` to one of two values at startup:
+
+- `shadow` is the default. The engine records ledger rows but does not project
+  credit, move a due date, change mastery or FSRS state, suppress a review or
+  alter question serving.
+- `off` disables FIRe. The engine does not allocate ledger rows and drains any
+  queued `implicit_credit` effect without applying it.
+
+There is no active mode. Empty, unset, malformed or unknown values resolve to
+`shadow`, so a typo cannot enable scheduling effects. The process resolves the
+value once and injects it into the engine. The engine, outbox and scheduler do
+not read the environment.

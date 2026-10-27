@@ -20,6 +20,7 @@ import (
 	"github.com/chuma-beep/mathua/internal/auth"
 	"github.com/chuma-beep/mathua/internal/concepts"
 	"github.com/chuma-beep/mathua/internal/engine"
+	"github.com/chuma-beep/mathua/internal/fire"
 	"github.com/chuma-beep/mathua/internal/generator/all"
 	"github.com/chuma-beep/mathua/internal/lessons"
 	"github.com/chuma-beep/mathua/internal/planning"
@@ -261,7 +262,9 @@ func main() {
 			planner.SetDestinations(ds)
 		}
 	}
-	eng := engine.New(repo, dag, reg, ll, planner)
+	fireMode := fire.Parse(os.Getenv("MATHUA_FIRE_MODE"))
+	log.Printf("FIRe mode: %s (set MATHUA_FIRE_MODE=shadow or off)", fireMode)
+	eng := engine.New(repo, dag, reg, ll, planner, engine.WithFIReMode(fireMode))
 	// The ledger began mid-week; replay the week so the first board does not
 	// erase effort earned before it existed. Idempotent by attempt key.
 	if replayed, err := eng.BackfillWeeklyXP(time.Now().UTC()); err != nil {

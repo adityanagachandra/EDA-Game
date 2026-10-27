@@ -6,6 +6,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/chuma-beep/mathua/internal/fire"
 	"github.com/chuma-beep/mathua/internal/storage"
 )
 
@@ -36,14 +37,19 @@ func studyEffectJSON(p studyEffectPayload) string {
 // studyEffectsFor lists the post-commit work in the order the outbox should
 // apply it. The rows are written in the same transaction as the answer, so a
 // crash after commit leaves durable work instead of a log line.
-func studyEffectsFor(conceptID, attemptID string, correct, halted bool, remedial []string) []storage.StudyEffectInput {
+func (e *Engine) studyEffectsFor(conceptID, attemptID string, correct, halted bool, remedial []string) []storage.StudyEffectInput {
 	effects := []storage.StudyEffectInput{
 		{Effect: studyEffectPropagateWeakness},
-		{Effect: studyEffectImplicitCredit, PayloadJSON: studyEffectJSON(studyEffectPayload{
-			ConceptID: conceptID,
-			AttemptID: attemptID,
-			Correct:   correct,
-		})},
+	}
+	if e.fireMode.CollectsLedger() {
+		effects = append(effects, storage.StudyEffectInput{
+			Effect: studyEffectImplicitCredit,
+			PayloadJSON: studyEffectJSON(studyEffectPayload{
+				ConceptID: conceptID,
+				AttemptID: attemptID,
+				Correct:   correct,
+			}),
+		})
 	}
 	if correct {
 		effects = append(effects, storage.StudyEffectInput{
@@ -128,6 +134,11 @@ func (e *Engine) applyStudyEffect(effect storage.StudyAnswerEffect) error {
 	case studyEffectPropagateWeakness:
 		return e.propagateWeakness(effect.StudentID)
 	case studyEffectImplicitCredit:
+		if e.fireMode == fire.Off {
+			// An effect queued before the mode changed must be drained, not
+			// retried forever. Off means no ledger write and no projection.
+			return nil
+		}
 		return e.allocateImplicitCreditErr(gradedAttempt{
 			studentID: effect.StudentID,
 			conceptID: p.ConceptID,

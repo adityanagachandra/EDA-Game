@@ -312,14 +312,6 @@ func buildCandidates(dag *concepts.DAG, snapshots map[string]*ConceptSnapshot, n
 		}
 		snap := snapshots[c.ID]
 		effStatus, isReview := effectiveState(snap, now)
-		isEncompassed := (snap != nil && snap.Encompassed) || (dag != nil && len(dag.EncompassedBy(c.ID)) > 0)
-		if isReview && snap != nil && snap.BankedOrdinals > 0 && isEncompassed {
-			isReview = false
-			if effStatus == "DECAYING" {
-				effStatus = mastery.StatusMastered
-			}
-			AdvanceSnapshotInterval(snap, now)
-		}
 		if effStatus == mastery.StatusMastered && !isReview {
 			if snap == nil || snap.WeaknessScore < weaknessPracticeFloor {
 				continue
@@ -399,9 +391,7 @@ func computePriority(snap *ConceptSnapshot, now time.Time, isDecaying bool) floa
 	}
 	priority := 0.5*daysSinceLastSeen + 0.2*(1.0-masteryScore) + 0.3*weakness
 	if isDecaying {
-		if snap == nil || snap.BankedOrdinals == 0 || !snap.Encompassed {
-			priority += 5.0
-		}
+		priority += 5.0
 		if snap != nil && snap.FSRSStability != nil && *snap.FSRSStability > 0 {
 			var elapsedDays float64
 			if snap.FSRSLastReview != nil && !snap.FSRSLastReview.IsZero() {
