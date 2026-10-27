@@ -2,6 +2,7 @@ package machinelearning
 
 import (
 	"math/rand"
+	"strings"
 	"testing"
 
 	"github.com/chuma-beep/mathua/internal/generator"
@@ -34,5 +35,26 @@ func TestFuzz(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func TestCrossEntropyNegativeLabelShowsMinus(t *testing.T) {
+	g := &crossEntropyGen{}
+	found := false
+	for i := 0; i < 2000; i++ {
+		p := g.Generate(generator.GeneratorContext{Difficulty: rand.Float64()})
+		if !strings.Contains(p.Question, "true label 0") {
+			continue
+		}
+		found = true
+		if strings.Contains(p.Question, "-ln(1 p)") {
+			t.Fatalf("negative-label question still omits the minus: %q", p.Question)
+		}
+		if !strings.Contains(p.Question, "-ln(1 - p)") {
+			t.Fatalf("negative-label question does not show -ln(1 - p): %q", p.Question)
+		}
+	}
+	if !found {
+		t.Fatal("did not sample a true-label-0 case")
 	}
 }

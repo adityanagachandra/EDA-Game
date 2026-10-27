@@ -118,7 +118,7 @@ func (g *crossEntropyGen) Generate(ctx generator.GeneratorContext) generator.Pro
 		ce := -math.Log(1 - prob)
 		answer := fmt.Sprintf("%.2f", ce)
 		return mlChoice(
-			fmt.Sprintf("What is the binary cross-entropy loss for a true label 0 and a predicted probability %.1f? (-ln(1 p))", prob),
+			fmt.Sprintf("What is the binary cross-entropy loss for a true label 0 and a predicted probability %.1f? (-ln(1 - p))", prob),
 			answer,
 			fmt.Sprintf("The loss is -ln(1 - %.1f) = %.2f. Predicting %.1f for a negative case is costly because the model was confident and wrong.", prob, ce, prob),
 			fmt.Sprintf("%.2f", prob),
