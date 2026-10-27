@@ -947,7 +947,7 @@ func TestPractice_WritesTheStudyAnchor(t *testing.T) {
 		t.Fatalf("practice: %d %s", rec.Code, rec.Body.String())
 	}
 	var set struct {
-		Questions []struct{ Question, Answer, Explanation string } `json:"questions"`
+		Questions []struct{ Question string } `json:"questions"`
 	}
 	if err := json.Unmarshal(rec.Body.Bytes(), &set); err != nil {
 		t.Fatalf("decode practice: %v", err)
@@ -955,8 +955,27 @@ func TestPractice_WritesTheStudyAnchor(t *testing.T) {
 	if len(set.Questions) == 0 {
 		t.Fatal("expected a served question")
 	}
+	// The served DTO must not contain the answer or the explanation. Both live
+	// only in the server-side anchor until the learner submits.
+	var raw map[string]json.RawMessage
+	if err := json.Unmarshal(rec.Body.Bytes(), &raw); err != nil {
+		t.Fatalf("decode raw practice: %v", err)
+	}
+	var rawQuestions []map[string]json.RawMessage
+	if err := json.Unmarshal(raw["questions"], &rawQuestions); err != nil {
+		t.Fatalf("decode raw questions: %v", err)
+	}
+	if len(rawQuestions) == 0 {
+		t.Fatal("expected a raw served question")
+	}
+	if _, ok := rawQuestions[0]["answer"]; ok {
+		t.Error("practice response exposed the answer before submission")
+	}
+	if _, ok := rawQuestions[0]["explanation"]; ok {
+		t.Error("practice response exposed the explanation before submission")
+	}
 	question := set.Questions[0].Question
-	answer := set.Questions[0].Answer
+	answer := "4"
 
 	// A deliberately wrong answer for that exact question. Before the
 	// middleware it came back 409 (no anchor); now it grades, and the answer it
@@ -983,6 +1002,7 @@ func TestPractice_WritesTheStudyAnchor(t *testing.T) {
 	var res struct {
 		Correct        bool   `json:"correct"`
 		ExpectedAnswer string `json:"expected_answer"`
+		Explanation    string `json:"explanation"`
 	}
 	if err := json.Unmarshal(rec.Body.Bytes(), &res); err != nil {
 		t.Fatalf("decode answer: %v", err)
@@ -992,6 +1012,9 @@ func TestPractice_WritesTheStudyAnchor(t *testing.T) {
 	}
 	if res.ExpectedAnswer != answer {
 		t.Errorf("expected_answer = %q, want the served %q", res.ExpectedAnswer, answer)
+	}
+	if res.Explanation == "" {
+		t.Error("the graded answer must return the explanation the practice DTO withheld")
 	}
 }
 
@@ -1011,7 +1034,7 @@ func TestStudyAnswer_AnchoredNotClientSupplied(t *testing.T) {
 		t.Fatalf("practice: %d %s", rec.Code, rec.Body.String())
 	}
 	var set struct {
-		Questions []struct{ Question, Answer string } `json:"questions"`
+		Questions []struct{ Question string } `json:"questions"`
 	}
 	if err := json.Unmarshal(rec.Body.Bytes(), &set); err != nil {
 		t.Fatalf("decode practice: %v", err)
@@ -1020,7 +1043,7 @@ func TestStudyAnswer_AnchoredNotClientSupplied(t *testing.T) {
 		t.Fatal("expected a served question")
 	}
 	question := set.Questions[0].Question
-	anchored := set.Questions[0].Answer
+	anchored := "4"
 
 	// The forgery: answer something wrong while claiming it is what was
 	// expected. A server that honoured the client would call this correct.
@@ -1099,7 +1122,7 @@ func TestStudyAnswer_GradesFirstBatchAfterASecondPracticeFetch(t *testing.T) {
 	_, mux, _ := varyingGuestServer(t)
 	token, studentID := quizGuest(t, mux)
 
-	serve := func(exclude []string) []struct{ Question, Answer, Explanation string } {
+	serve := func(exclude []string) []struct{ Question string } {
 		t.Helper()
 		u := fmt.Sprintf("/api/lessons/a/practice?count=3&seed=11&difficulty=0.4&exclude=%s",
 			url.QueryEscape(strings.Join(exclude, "\n")))
@@ -1111,7 +1134,7 @@ func TestStudyAnswer_GradesFirstBatchAfterASecondPracticeFetch(t *testing.T) {
 			t.Fatalf("practice: %d %s", rec.Code, rec.Body.String())
 		}
 		var set struct {
-			Questions []struct{ Question, Answer, Explanation string } `json:"questions"`
+			Questions []struct{ Question string } `json:"questions"`
 		}
 		if err := json.Unmarshal(rec.Body.Bytes(), &set); err != nil {
 			t.Fatalf("decode practice: %v", err)
@@ -1120,6 +1143,13 @@ func TestStudyAnswer_GradesFirstBatchAfterASecondPracticeFetch(t *testing.T) {
 			t.Fatal("expected a served question")
 		}
 		return set.Questions
+	}
+	seededAnswer := func(question string) string {
+		var n int
+		if _, err := fmt.Sscanf(question, "seeded %d + 1 = ?", &n); err == nil {
+			return strconv.Itoa(n + 1)
+		}
+		return "4"
 	}
 
 	// Batch one is what the learner answers; batch two is the prefetch the
@@ -1136,10 +1166,11 @@ func TestStudyAnswer_GradesFirstBatchAfterASecondPracticeFetch(t *testing.T) {
 		}
 	}
 
+	answer := seededAnswer(first[0].Question)
 	body, _ := json.Marshal(map[string]interface{}{
 		"concept_id":    "a",
 		"submission_id": "sub-first-batch",
-		"answer":        first[0].Answer,
+		"answer":        answer,
 		"elapsed":       5.0,
 		"question":      first[0].Question,
 		"student_id":    studentID,
@@ -1161,8 +1192,8 @@ func TestStudyAnswer_GradesFirstBatchAfterASecondPracticeFetch(t *testing.T) {
 	if !res.Correct {
 		t.Error("expected the served answer to grade correct")
 	}
-	if res.ExpectedAnswer != first[0].Answer {
-		t.Errorf("graded against %q, want the first batch's %q", res.ExpectedAnswer, first[0].Answer)
+	if res.ExpectedAnswer != answer {
+		t.Errorf("graded against %q, want the first batch's %q", res.ExpectedAnswer, answer)
 	}
 
 	// A genuinely unserved question is still refused: merging must not weaken
@@ -1848,7 +1879,7 @@ func TestLessons_ResolvesIdentityFromToken(t *testing.T) {
 		t.Fatalf("practice: %d %s", rec.Code, rec.Body.String())
 	}
 	var set struct {
-		Questions []struct{ Question, Answer string } `json:"questions"`
+		Questions []struct{ Question string } `json:"questions"`
 	}
 	if err := json.Unmarshal(rec.Body.Bytes(), &set); err != nil {
 		t.Fatalf("decode practice: %v", err)
@@ -1859,7 +1890,7 @@ func TestLessons_ResolvesIdentityFromToken(t *testing.T) {
 	body, _ := json.Marshal(map[string]interface{}{
 		"concept_id":    "a",
 		"submission_id": "sub-set",
-		"answer":        set.Questions[0].Answer,
+		"answer":        "4",
 		"elapsed":       5.0,
 		"question":      set.Questions[0].Question,
 		"student_id":    studentID,
@@ -2049,7 +2080,7 @@ func TestPracticeNeverReturnsEmptyOnceEveryVariantHasBeenSeen(t *testing.T) {
 		t.Fatalf("with every variant excluded: %d %s", rec.Code, rec.Body.String())
 	}
 	var set struct {
-		Questions []struct{ Question, Answer string } `json:"questions"`
+		Questions []struct{ Question string } `json:"questions"`
 	}
 	if err := json.Unmarshal(rec.Body.Bytes(), &set); err != nil {
 		t.Fatalf("decode: %v", err)
@@ -2058,10 +2089,25 @@ func TestPracticeNeverReturnsEmptyOnceEveryVariantHasBeenSeen(t *testing.T) {
 		t.Fatal("practice returned no questions after every variant was excluded, the Learn " +
 			"feed treats an empty list as success and stops appending, stranding the learner")
 	}
-	// And they must still be answerable: a repeat with no anchor is a 409 waiting to happen.
-	for _, q := range set.Questions {
-		if q.Answer == "" {
-			t.Errorf("served question %q has no answer", q.Question)
+	// The served questions must not leak their answers or explanations. The
+	// answer is held by the anchor written above and returned only on submit.
+	var raw map[string]json.RawMessage
+	if err := json.Unmarshal(rec.Body.Bytes(), &raw); err != nil {
+		t.Fatalf("decode raw: %v", err)
+	}
+	var rawQuestions []map[string]json.RawMessage
+	if err := json.Unmarshal(raw["questions"], &rawQuestions); err != nil {
+		t.Fatalf("decode raw questions: %v", err)
+	}
+	for i, q := range set.Questions {
+		if q.Question == "" {
+			t.Errorf("served question %d is empty", i)
+		}
+		if _, ok := rawQuestions[i]["answer"]; ok {
+			t.Errorf("served question %q exposed its answer", q.Question)
+		}
+		if _, ok := rawQuestions[i]["explanation"]; ok {
+			t.Errorf("served question %q exposed its explanation", q.Question)
 		}
 	}
 }
