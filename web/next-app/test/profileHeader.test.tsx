@@ -31,6 +31,7 @@ describe('ProfileHeader', () => {
     expect(screen.getByText(/Tester · LV 01 Novice/)).toBeTruthy()
     const position = screen.getByRole('region', { name: 'Where you are' })
     expect(position.textContent).toMatch(/1 of 3 you can reach/)
+    expect(position.textContent).toMatch(/120 XP all-time/)
     expect(position.textContent).toMatch(/Mastered 1 · Unlocked 3 · In progress 0/)
   })
 
@@ -40,7 +41,9 @@ describe('ProfileHeader', () => {
     )
     // No stat strip anymore: the only "Mastered" is the breakdown sentence.
     expect(screen.queryByText('MASTERED')).toBeNull()
+    // The old tile label is gone, but the cumulative XP value stays on the reach line.
     expect(screen.queryByText('TOTAL XP')).toBeNull()
+    expect(screen.getByText(/120 XP all-time/)).toBeTruthy()
     expect(screen.getByText(/Mastered 1 · Unlocked/)).toBeTruthy()
   })
 

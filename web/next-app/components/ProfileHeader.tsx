@@ -13,12 +13,13 @@ import Avatar from './Avatar'
  * It replaced a bordered stat strip (avatar, LV tile, XP/TOTAL/STREAK/WEEKLY tiles, one progress
  * bar) stacked on a position card (big number, second bar, 3-column grid). Every fact below used
  * to have its own tile and label; now each line carries several, which is the whole reduction.
- * TOTAL XP and the WEEKLY leaderboard link were cut as part of it, the first is vanity next to
- * today's goal, the second is navigation, and neither answers "where am I".
+ * The weekly leaderboard link was cut as part of it, because it is navigation, not a position.
+ * All-time XP stays on the reach line because it is the learner's cumulative work, not a
+ * same-day vanity number.
  *
  * What the rewrite must not lose (all pinned by tests): the `Where you are` region, the literal
- * `of {n} you can reach`, the review-debt line with its `/review` link, the frontier sentence,
- * and the footer passthrough. `ProfileStats` is untouched and still serves `/share`.
+ * `of {n} you can reach`, the all-time XP value, the review-debt line with its `/review` link and
+ * the frontier sentence. `ProfileStats` is untouched and still serves `/share`.
  */
 export default function ProfileHeader({
   name,
@@ -65,7 +66,7 @@ export default function ProfileHeader({
             {name} · LV {levelNum} {scores.level}
           </p>
           <p className="mt-1.5 font-mono text-[11px] text-mathua-secondary break-words [overflow-wrap:anywhere]">
-            {counts.mastered} of {counts.unlocked} you can reach · {scores.xp_today}/{scores.daily_xp_goal} XP today · {scores.current_streak} day{scores.current_streak !== 1 ? 's' : ''} streak
+            {counts.mastered} of {counts.unlocked} you can reach · {scores.xp_total.toLocaleString()} XP all-time · {scores.xp_today}/{scores.daily_xp_goal} XP today · {scores.current_streak} day{scores.current_streak !== 1 ? 's' : ''} streak
           </p>
           <p className="mt-1.5 font-mono text-[11px] text-mathua-muted break-words [overflow-wrap:anywhere]">
             Mastered {counts.mastered} · Unlocked {counts.unlocked} · In progress {counts.learning + counts.completed}
