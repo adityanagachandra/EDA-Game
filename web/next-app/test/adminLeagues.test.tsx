@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import AdminLeaguesPage from '../app/admin/leagues/page'
-import { getAdminLeagues } from '../lib/api'
+import { getAdminLeagues, API_BASE } from '../lib/api'
 
 vi.mock('../lib/api', async (importOriginal) => ({
   ...(await importOriginal<typeof import('../lib/api')>()),
@@ -63,11 +63,33 @@ const roster = {
     {
       tier: 'bronze',
       league_no: 1,
-      size: 2,
+      size: 3,
       movers: 0,
       members: [
-        { rank: 1, name: 'Ada', username: 'ada', student_id: 'stu_ada', xp: 120 },
-        { rank: 2, name: '', username: 'ghostly', student_id: 'stu_ghost', xp: 40 },
+        {
+          rank: 1,
+          name: 'Ada',
+          username: 'ada',
+          student_id: 'stu_ada',
+          xp: 120,
+          avatar_url: 'https://images.example/ada.jpg',
+        },
+        {
+          rank: 2,
+          name: '',
+          username: 'ghostly',
+          student_id: 'stu_ghost',
+          xp: 40,
+          avatar_dicebear: { style: 'notionists', seed: 'ghost-seed' },
+        },
+        {
+          rank: 3,
+          name: 'Custom',
+          username: 'custom',
+          student_id: 'stu_custom',
+          xp: 10,
+          avatar_url: '/api/avatar/stu_custom?v=3',
+        },
       ],
     },
   ],
@@ -109,6 +131,17 @@ describe('admin leagues', () => {
     // A learner without a name is shown by username rather than by raw id.
     expect(screen.getByText('ghostly')).toBeTruthy()
     expect(screen.getByText('120')).toBeTruthy()
+
+    // Profile pictures are rendered beside the account link. A custom or remote
+    // URL wins over the generated pick, so Ada is an image and ghostly is the
+    // DiceBear URL built from the style and seed.
+    const adaAvatar = screen.getByRole('img', { name: 'Ada avatar' })
+    expect(adaAvatar.getAttribute('src')).toBe('https://images.example/ada.jpg')
+    const ghostAvatar = screen.getByRole('img', { name: 'ghostly avatar' })
+    expect(ghostAvatar.getAttribute('src')).toContain('notionists')
+    expect(ghostAvatar.getAttribute('src')).toContain('ghost-seed')
+    const customAvatar = screen.getByRole('img', { name: 'Custom avatar' })
+    expect(customAvatar.getAttribute('src')).toBe(`${API_BASE}/api/avatar/stu_custom?v=3`)
 
     const link = screen.getByRole('link', { name: 'Ada' })
     expect(link.getAttribute('href')).toBe('/admin/users/detail?id=stu_ada')

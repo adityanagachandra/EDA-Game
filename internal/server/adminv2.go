@@ -6,6 +6,7 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"time"
@@ -715,6 +716,13 @@ type adminLeagueRow struct {
 	Username  string `json:"username"`
 	StudentID string `json:"student_id"`
 	XP        int    `json:"xp"`
+	// AvatarURL is already resolved for the admin view: a custom upload uses
+	// the public by-id route so the admin page never renders its own avatar,
+	// and a Google photo keeps its remote URL. The remaining fields let the
+	// page build a DiceBear image or fall back to a legacy preset.
+	AvatarURL      string             `json:"avatar_url,omitempty"`
+	AvatarDicebear *storage.AvatarRef `json:"avatar_dicebear,omitempty"`
+	AvatarPreset   *int               `json:"avatar_preset,omitempty"`
 }
 
 // adminLeague is one league in the week's pyramid. Members is omitted unless the caller asked
@@ -812,12 +820,23 @@ func (s *Server) handleAdminLeagues(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			for _, row := range rows {
+				custom, pick, version := storage.AvatarBits(row.Settings)
+				avatarURL := row.AvatarURL
+				if custom && row.StudentID != "" {
+					avatarURL = "/api/avatar/" + url.PathEscape(row.StudentID)
+					if version > 0 {
+						avatarURL += "?v=" + strconv.Itoa(version)
+					}
+				}
 				entry.Members = append(entry.Members, adminLeagueRow{
-					Rank:      row.Rank,
-					Name:      row.Name,
-					Username:  row.Username,
-					StudentID: row.StudentID,
-					XP:        row.XP,
+					Rank:           row.Rank,
+					Name:           row.Name,
+					Username:       row.Username,
+					StudentID:      row.StudentID,
+					XP:             row.XP,
+					AvatarURL:      avatarURL,
+					AvatarDicebear: pick,
+					AvatarPreset:   storage.AvatarPreset(row.Settings),
 				})
 			}
 		}

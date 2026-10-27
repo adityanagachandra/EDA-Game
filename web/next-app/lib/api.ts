@@ -1844,6 +1844,9 @@ const AdminLeagueMemberSchema = z.object({
 	username: z.string(),
 	student_id: z.string(),
 	xp: z.number(),
+	avatar_url: z.string().optional(),
+	avatar_dicebear: z.object({ style: z.string(), seed: z.string() }).nullable().optional(),
+	avatar_preset: z.number().nullable().optional(),
 })
 
 const AdminLeagueSchema = z.object({

@@ -7,7 +7,9 @@ import Footer from '../../../components/Footer'
 import SectionHeader from '../../../components/SectionHeader'
 import AdminNav from '../../../components/AdminNav'
 import Loading from '../../../components/Loading'
-import { getAdminLeagues, getErrorMessage, type AdminLeague, type AdminLeagueMember } from '../../../lib/api'
+import Avatar from '../../../components/Avatar'
+import { dicebearUrl, isDicebearStyle } from '../../../lib/dicebear'
+import { API_BASE, getAdminLeagues, getErrorMessage, type AdminLeague, type AdminLeagueMember } from '../../../lib/api'
 
 // The league pyramid, week by week.
 //
@@ -52,6 +54,29 @@ function tierLabel(tier: string): string {
 
 function memberLabel(m: AdminLeagueMember): string {
   return m.name || m.username || m.student_id
+}
+
+function MemberAvatar({ member }: { member: AdminLeagueMember }) {
+  // A custom upload arrives as a public by-id URL, so it wins over the remote
+  // Google photo and the generated pick in the same order the rest of the app
+  // uses. A legacy preset has no URL and becomes the Avatar's initial palette.
+  const pick = member.avatar_dicebear
+  // A custom upload comes back as a server-relative path because the API and
+  // the web export are separate origins. A Google photo or any other absolute
+  // URL is already complete.
+  const storedURL = member.avatar_url
+  const url = storedURL
+    ? (storedURL.startsWith('/') ? `${API_BASE}${storedURL}` : storedURL)
+    : (pick && isDicebearStyle(pick.style) ? dicebearUrl(pick.style, pick.seed) : undefined)
+  return (
+    <Avatar
+      seed={member.student_id}
+      name={memberLabel(member)}
+      size={24}
+      url={url}
+      preset={member.avatar_preset ?? null}
+    />
+  )
 }
 
 export default function AdminLeaguesPage() {
@@ -207,15 +232,20 @@ export default function AdminLeaguesPage() {
                                   <tr key={m.student_id} className="border-t border-mathua-border">
                                     <td className="py-1 pr-2 text-mathua-secondary">{m.rank}</td>
                                     <td className="py-1 pr-2">
-                                      <Link
-                                        href={`/admin/users/detail?id=${encodeURIComponent(m.student_id)}`}
-                                        className="text-mathua-blue hover:underline"
-                                      >
-                                        {memberLabel(m)}
-                                      </Link>
-                                      {m.username && m.username !== memberLabel(m) && (
-                                        <span className="ml-2 text-mathua-muted">@{m.username}</span>
-                                      )}
+                                      <span className="flex min-w-0 items-center gap-2">
+                                        <MemberAvatar member={m} />
+                                        <span className="min-w-0">
+                                          <Link
+                                            href={`/admin/users/detail?id=${encodeURIComponent(m.student_id)}`}
+                                            className="text-mathua-blue hover:underline"
+                                          >
+                                            {memberLabel(m)}
+                                          </Link>
+                                          {m.username && m.username !== memberLabel(m) && (
+                                            <span className="ml-2 text-mathua-muted">@{m.username}</span>
+                                          )}
+                                        </span>
+                                      </span>
                                     </td>
                                     <td className="py-1 text-right text-mathua-primary">{m.xp}</td>
                                   </tr>
