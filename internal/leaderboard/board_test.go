@@ -247,11 +247,22 @@ func TestBoard_AnonymisesOptedOutLearners(t *testing.T) {
 			}
 
 			got := board.Entries[0]
-			if got.Name != "Anonymous" {
-				t.Errorf("name = %q, want Anonymous", got.Name)
+			if got.Name == "Anonymous" {
+				t.Errorf("name = %q, want a generated alias", got.Name)
 			}
-			if got.ID != "anonymous-1" {
-				t.Errorf("id = %q, want anonymous-1", got.ID)
+			if parts := strings.Fields(got.Name); len(parts) != 3 || len(parts[2]) != 4 {
+				t.Errorf("name = %q, want adjective noun 4-digit suffix", got.Name)
+			}
+			if !strings.HasPrefix(got.ID, "anon-") {
+				t.Errorf("id = %q, want a stable anon- alias", got.ID)
+			}
+			// The alias is stable across reads, not rerolled per request.
+			again, err := NewComputer(store).Board("", ViewWeekly, 1, 25, now)
+			if err != nil {
+				t.Fatalf("board again: %v", err)
+			}
+			if again.Entries[0].Name != got.Name || again.Entries[0].ID != got.ID {
+				t.Errorf("alias changed between reads: %+v then %+v", got, again.Entries[0])
 			}
 			if got.Avatar == nil || got.Avatar.Kind != "generated" || got.Avatar.Style != "notionists" {
 				t.Errorf("avatar = %+v, want a generic generated face", got.Avatar)
@@ -302,14 +313,35 @@ func TestBoard_AnonymisedCallerIsStillMe(t *testing.T) {
 	if len(board.Entries) != 2 || !board.Entries[0].IsMe {
 		t.Fatalf("entries = %+v, want the caller marked first", board.Entries)
 	}
-	if board.Entries[0].Name != "Anonymous" {
-		t.Errorf("caller's own name = %q, want Anonymous", board.Entries[0].Name)
+	if board.Entries[0].Name == "Anonymous" || !strings.HasPrefix(board.Entries[0].ID, "anon-") {
+		t.Errorf("caller's own row = %+v, want a generated alias", board.Entries[0])
 	}
 	if board.Me == nil || board.Me.Rank != 1 {
 		t.Errorf("me = %+v, want rank 1 with no name field", board.Me)
 	}
 	if board.Entries[1].IsMe {
 		t.Error("another learner's row marked as the caller")
+	}
+}
+
+// The alias must be stable for one account and different for another, so two
+// anonymous learners do not collapse into the same visible competitor.
+func TestAnonymousIdentityIsStableAndDistinct(t *testing.T) {
+	idA, nameA, avatarA := anonymousIdentity("student-a")
+	idAgain, nameAgain, _ := anonymousIdentity("student-a")
+	idB, nameB, _ := anonymousIdentity("student-b")
+
+	if nameA != nameAgain || idA != idAgain {
+		t.Fatalf("alias changed for one account: %q/%q then %q/%q", nameA, idA, nameAgain, idAgain)
+	}
+	if nameA == nameB || idA == idB {
+		t.Fatalf("two accounts share an alias: %q/%q and %q/%q", nameA, idA, nameB, idB)
+	}
+	if !strings.HasPrefix(idA, "anon-") || !strings.HasPrefix(idB, "anon-") {
+		t.Errorf("aliases = %q and %q, want anon- ids", idA, idB)
+	}
+	if avatarA == nil || avatarA.Kind != "generated" || avatarA.Style != "notionists" {
+		t.Errorf("alias avatar = %+v, want the generic generated face", avatarA)
 	}
 }
 
