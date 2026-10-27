@@ -484,7 +484,7 @@ export default function SettingsPage() {
               <div className="border-t border-mathua-border pt-6 min-w-0">
                 <span id="leaderboard-privacy-label" className="font-mono text-sm text-mathua-primary">Leaderboard privacy</span>
                 <p id="leaderboard-privacy-help" className="text-mathua-muted text-xs mt-1">
-                  Anonymous shows your row as Anonymous on the public board. Turning leaderboards off also removes the leaderboard from navigation. You can turn them back on here at any time.
+                  Anonymous gives you a random name on the public board. Turning leaderboards off also removes the leaderboard from navigation. You can turn them back on here at any time.
                 </p>
                 <div
                   role="group"

@@ -108,7 +108,7 @@ func (c *Computer) MyLeague(studentID string, now time.Time) (*MyLeague, error) 
 		// rank-derived placeholder, and the caller still recognises their own
 		// seat through IsMe.
 		if IsAnonymous(r.Settings) {
-			line.ID, line.Name, line.Avatar = anonymousIdentity(r.Rank)
+			line.ID, line.Name, line.Avatar = anonymousIdentity(r.StudentID)
 		}
 		if r.StudentID == studentID {
 			line.IsMe = true

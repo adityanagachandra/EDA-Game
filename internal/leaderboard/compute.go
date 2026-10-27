@@ -2,6 +2,7 @@ package leaderboard
 
 import (
 	"crypto/sha256"
+	"encoding/binary"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -157,7 +158,7 @@ func entryFromRow(r storage.LeaderboardRow, rank int, meID string) Entry {
 		Avatar:   avatarFor(r, id),
 	}
 	if IsAnonymous(r.AvatarSettings) {
-		e.ID, e.Name, e.Avatar = anonymousIdentity(rank)
+		e.ID, e.Name, e.Avatar = anonymousIdentity(r.StudentID)
 	}
 	return e
 }
@@ -169,8 +170,20 @@ const (
 	PrivacyNamed     = "named"
 	PrivacyAnonymous = "anonymous"
 	PrivacyHidden    = "hidden"
+)
 
-	anonymousName = "Anonymous"
+// The alias word lists are deliberately short and neutral. The suffix comes
+// from the same hash, so two learners with the same two words still get
+// different names in practice.
+var (
+	anonymousAdjectives = []string{
+		"Amber", "Bold", "Calm", "Clever", "Cosmic", "Crisp", "Eager", "Golden",
+		"Honest", "Jolly", "Kind", "Lucid", "Nimble", "Quiet", "Sunny", "Swift",
+	}
+	anonymousNouns = []string{
+		"Otter", "Falcon", "Maple", "Comet", "River", "Panda", "Cedar", "Lark",
+		"Dolphin", "Sparrow", "Willow", "Badger", "Heron", "Fox", "Koala", "Wren",
+	}
 )
 
 // leaderboardSettings mirrors only the key this package reads. The blob is
@@ -205,11 +218,21 @@ func IsAnonymous(raw string) bool {
 }
 
 // anonymousIdentity is the identity a board or league line publishes in place
-// of a learner who opted out. The rank keeps the id unique inside one page or
-// one league, which the interface needs to key rows, while carrying nothing
-// derived from the account: no username, no hashed id, no avatar version.
-func anonymousIdentity(rank int) (string, string, *Avatar) {
-	return fmt.Sprintf("anonymous-%d", rank), anonymousName, anonymousAvatar()
+// of a learner who opted out. The alias is stable for the account and carries
+// nothing derived from the username or display name. The hash is namespaced so
+// changing the alias vocabulary later does not accidentally make the same
+// learner look like a different person mid-week.
+func anonymousIdentity(studentID string) (string, string, *Avatar) {
+	seed := studentID
+	if seed == "" {
+		seed = "anonymous"
+	}
+	sum := sha256.Sum256([]byte("mathua-anon-v1:" + seed))
+	adjective := anonymousAdjectives[binary.BigEndian.Uint32(sum[0:4])%uint32(len(anonymousAdjectives))]
+	noun := anonymousNouns[binary.BigEndian.Uint32(sum[4:8])%uint32(len(anonymousNouns))]
+	number := binary.BigEndian.Uint32(sum[8:12]) % 10000
+	id := "anon-" + hex.EncodeToString(sum[12:18])
+	return id, fmt.Sprintf("%s %s %04d", adjective, noun, number), anonymousAvatar()
 }
 
 // anonymousAvatar is the generic generated face. It deliberately drops the
