@@ -297,6 +297,7 @@ func (a *AuthService) LoginOrCreateOAuth(p OAuthProfile) (string, *storage.Stude
 		return "", nil, jwt.ErrTokenRequiredClaimMissing
 	}
 	p.Email = NormalizeEmail(p.Email)
+	p.Name = SafeDisplayName(p.Name, p.Email)
 	if st, err := a.repo.FindStudentByIdentity(p.Provider, p.ProviderID); err != nil {
 		return "", nil, err
 	} else if st != nil {

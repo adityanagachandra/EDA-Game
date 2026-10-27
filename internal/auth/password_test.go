@@ -110,11 +110,15 @@ func TestValidateDisplayName(t *testing.T) {
 		{"ordinary name", "Ada Lovelace", false},
 		{"duplicate display names are allowed", "Ada Lovelace", false},
 		{"classic is not a blocked substring", "Classic", false},
+		{"Kshitij is a real name, not shit", "Kshitij", false},
+		{"Shittu is a real name, not shit", "Abdulazeez Shittu", false},
 		{"empty", "   ", true},
 		{"too long", strings.Repeat("a", 51), true},
 		{"reserved Mathua", "Mathua", true},
 		{"reserved admin", "Admin", true},
 		{"blocked phrase", "what the fuck", true},
+		{"blocked multi-word name", "Jackson Fuck you", true},
+		{"blocked exact word in a phrase", "what the shit", true},
 		{"blocked leet", "sh1t", true},
 	}
 	for _, tc := range cases {
