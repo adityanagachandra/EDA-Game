@@ -48,7 +48,7 @@ func blocked(term string, exact bool) blockedTerm {
 // legitimate repeated letters in ordinary names.
 var blockedTerms = []blockedTerm{
 	blocked("fuck", false),
-	blocked("shit", false),
+	blocked("shit", true),
 	blocked("bitch", false),
 	blocked("cunt", false),
 	blocked("pussy", false),
@@ -144,6 +144,32 @@ func nameIsAllowed(compact string) bool {
 	return true
 }
 
+// exactTermInTokens catches an exact-only term when it is a separate word.
+// The compacted whole name cannot do that: "what the shit" becomes
+// "whattheshit" and the exact pattern no longer matches, while "Kshitij" and
+// "Shittu" must stay legal because those are real names that contain the
+// letters by accident.
+func exactTermInTokens(name string) bool {
+	tokens := strings.FieldsFunc(name, func(r rune) bool {
+		return !unicode.IsLetter(r) && !unicode.IsDigit(r)
+	})
+	for _, token := range tokens {
+		compact := compactName(token)
+		if compact == "" {
+			continue
+		}
+		if reservedNames[compact] {
+			return true
+		}
+		for _, term := range blockedTerms {
+			if term.exact && term.pattern.MatchString(compact) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 // ValidateDisplayName applies the same moderation to a display name that a
 // username receives. Display names stay repeatable, because the username is
 // the unique handle. The empty and length messages are preserved for callers
@@ -156,10 +182,26 @@ func ValidateDisplayName(name string) error {
 	if len([]rune(name)) > 50 {
 		return errors.New("name must be 1-50 characters")
 	}
-	if !nameIsAllowed(compactName(name)) {
+	if !nameIsAllowed(compactName(name)) || exactTermInTokens(name) {
 		return ErrNameNotAllowed
 	}
 	return nil
+}
+
+// SafeDisplayName is the OAuth entry point. A provider-supplied name is not
+// user input this service accepted, so a blocked or malformed name must not
+// fail the sign-in. Keep the provider name when it passes, fall back to the
+// email local part when that is acceptable, then use a neutral label.
+func SafeDisplayName(name, email string) string {
+	name = strings.TrimSpace(name)
+	if ValidateDisplayName(name) == nil {
+		return name
+	}
+	local := strings.TrimSpace(strings.SplitN(email, "@", 2)[0])
+	if ValidateDisplayName(local) == nil {
+		return local
+	}
+	return "Learner"
 }
 
 // validateUsernameModeration is called after the character rules, so the
