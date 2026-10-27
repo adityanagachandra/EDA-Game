@@ -268,7 +268,7 @@ describe('Settings Profile section', () => {
     expect(screen.getByRole('button', { name: 'Turn off leaderboards' })).not.toHaveAttribute('aria-pressed')
     // The description names what the middle choice looks like on the board and
     // what the last one costs, rather than leaving three labels to guess at.
-    expect(screen.getByText(/Anonymous shows your row as Anonymous/)).toBeInTheDocument()
+    expect(screen.getByText(/Anonymous gives you a random name/)).toBeInTheDocument()
     expect(screen.getByText(/removes the leaderboard from navigation/)).toBeInTheDocument()
   })
 

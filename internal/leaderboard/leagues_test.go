@@ -2,6 +2,7 @@ package leaderboard
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 	"time"
 
@@ -110,8 +111,8 @@ func TestMyLeague_AnonymisesOptedOutMembers(t *testing.T) {
 		t.Fatalf("members = %d, want 8", len(board.Members))
 	}
 	gone := board.Members[0]
-	if gone.ID != "anonymous-1" || gone.Name != "Anonymous" {
-		t.Errorf("hidden member = %+v, want anonymous-1/Anonymous", gone)
+	if gone.Name == "Anonymous" || !strings.HasPrefix(gone.ID, "anon-") {
+		t.Errorf("hidden member = %+v, want a generated alias", gone)
 	}
 	if gone.Avatar == nil || gone.Avatar.Kind != "generated" || gone.Avatar.Style != "notionists" {
 		t.Errorf("hidden member avatar = %+v, want a generic generated face", gone.Avatar)
@@ -136,8 +137,8 @@ func TestMyLeague_AnonymisesOptedOutMembers(t *testing.T) {
 		t.Fatalf("me = %+v, want rank 1", own.Me)
 	}
 	mine := own.Members[0]
-	if !mine.IsMe || mine.Name != "Anonymous" || mine.ID != "anonymous-1" {
-		t.Errorf("own seat = %+v, want anonymous-1/Anonymous and IsMe", mine)
+	if !mine.IsMe || mine.Name != gone.Name || mine.ID != gone.ID {
+		t.Errorf("own seat = %+v, want the same alias as %+v and IsMe", mine, gone)
 	}
 }
 
