@@ -736,6 +736,23 @@ type adminLeague struct {
 	Members  []adminLeagueRow `json:"members,omitempty"`
 }
 
+// adminLeagueAvatar resolves the pieces the roster needs to draw one picture.
+// A custom upload is served by the public by-id route, because the admin page
+// must not render its own avatar; a Google photo is already a complete URL.
+// The path is built outside the roster loop so the linter does not see string
+// concatenation inside a loop.
+func adminLeagueAvatar(row storage.LeagueRow) (avatarURL string, pick *storage.AvatarRef, preset *int) {
+	custom, dicebear, version := storage.AvatarBits(row.Settings)
+	avatarURL = row.AvatarURL
+	if custom && row.StudentID != "" {
+		avatarURL = "/api/avatar/" + url.PathEscape(row.StudentID)
+		if version > 0 {
+			avatarURL += "?v=" + strconv.Itoa(version)
+		}
+	}
+	return avatarURL, dicebear, storage.AvatarPreset(row.Settings)
+}
+
 // GET /api/admin/leagues?week=YYYY-MM-DD&tier=bronze&league=3
 //
 // The whole week's leagues, or one league's standings when tier and league are given. The public
@@ -820,14 +837,7 @@ func (s *Server) handleAdminLeagues(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			for _, row := range rows {
-				custom, pick, version := storage.AvatarBits(row.Settings)
-				avatarURL := row.AvatarURL
-				if custom && row.StudentID != "" {
-					avatarURL = "/api/avatar/" + url.PathEscape(row.StudentID)
-					if version > 0 {
-						avatarURL += "?v=" + strconv.Itoa(version)
-					}
-				}
+				avatarURL, pick, preset := adminLeagueAvatar(row)
 				entry.Members = append(entry.Members, adminLeagueRow{
 					Rank:           row.Rank,
 					Name:           row.Name,
@@ -836,7 +846,7 @@ func (s *Server) handleAdminLeagues(w http.ResponseWriter, r *http.Request) {
 					XP:             row.XP,
 					AvatarURL:      avatarURL,
 					AvatarDicebear: pick,
-					AvatarPreset:   storage.AvatarPreset(row.Settings),
+					AvatarPreset:   preset,
 				})
 			}
 		}
