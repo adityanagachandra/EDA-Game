@@ -180,8 +180,8 @@ export default function ReportsPage() {
                   aria-pressed={days === p.days}
                   className={`px-3 h-8 font-mono text-[11px] uppercase tracking-wider border rounded-none transition-colors ${
                     days === p.days
-                      ? 'bg-[var(--text-primary)] text-[var(--bg)] border-[var(--text-primary)]'
-                      : 'border-[var(--border)] hover:bg-[var(--surface)]'
+                      ? 'border-mathua-blue bg-mathua-blue text-white'
+                      : 'border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue'
                   }`}
                 >
                   {p.label}
@@ -228,7 +228,7 @@ export default function ReportsPage() {
 
             {report && (
               <>
-                <div className="flex flex-wrap gap-2 mt-6 border-b border-[var(--border)] report-no-print" role="tablist" aria-label="Report sections">
+                <div className="flex flex-wrap gap-2 mt-6 report-no-print" role="tablist" aria-label="Report sections">
                   {TABS.map((t) => (
                     <button
                       key={t.id}
@@ -238,10 +238,10 @@ export default function ReportsPage() {
                       aria-controls={`panel-${t.id}`}
                       id={`tab-${t.id}`}
                       onClick={() => setTab(t.id)}
-                      className={`px-3 py-2 text-sm border-b-2 -mb-px transition-colors ${
+                      className={`px-3 py-2 text-sm border rounded-none transition-colors ${
                         tab === t.id
-                          ? 'border-[var(--text-primary)] font-medium'
-                          : 'border-transparent text-mathua-secondary hover:text-mathua-primary'
+                          ? 'border-mathua-blue bg-mathua-blue text-white font-medium'
+                          : 'border-mathua-border text-mathua-secondary hover:border-mathua-blue hover:text-mathua-blue'
                       }`}
                     >
                       {t.label}

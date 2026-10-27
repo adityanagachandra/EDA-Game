@@ -139,4 +139,19 @@ describe('Reports page', () => {
     fireEvent.click(retry)
     await waitFor(() => expect(screen.getAllByText('Mastered').length).toBeGreaterThan(0))
   })
+
+  it('marks active filters and tabs with the same square blue treatment', async () => {
+    vi.mocked(getLearnerReport).mockResolvedValue(baseReport)
+    render(<ReportsPage />)
+    await screen.findByRole('heading', { name: 'Reports' })
+
+    const period = screen.getByRole('button', { name: 'Last 30 days' })
+    const tab = screen.getByRole('tab', { name: 'Overview' })
+    for (const control of [period, tab]) {
+      expect(control.className).toContain('bg-mathua-blue')
+      expect(control.className).toContain('text-white')
+      expect(control.className).toContain('border-mathua-blue')
+      expect(control.className).toContain('rounded-none')
+    }
+  })
 })
