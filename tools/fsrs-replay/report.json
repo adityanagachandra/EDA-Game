@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "model": "fsrs-6-long-term",
+  "fixtures": [
+    {
+      "id": "steady_good",
+      "description": "Twelve successful reviews with growing gaps.",
+      "sm2": {
+        "name": "sm2",
+        "final_due_day": 69914,
+        "final_interval": 58125
+      },
+      "fsrs_capped": {
+        "name": "fsrs_capped",
+        "final_due_day": 27429,
+        "final_interval": 15640,
+        "final_stability": 15639.933500309551,
+        "final_difficulty": 2.0426946899204483,
+        "max_stability": 15639.933500309551
+      },
+      "fsrs_corrected": {
+        "name": "fsrs_corrected",
+        "final_due_day": 27429,
+        "final_interval": 15640,
+        "final_stability": 15639.933500309551,
+        "final_difficulty": 2.0426946899204483,
+        "max_stability": 15639.933500309551
+      },
+      "stability_delta": 0,
+      "interval_delta": 0,
+      "due_day_delta": 0,
+      "sm2_interval_delta": -42485,
+      "sm2_due_day_delta": -42485
+    },
+    {
+      "id": "cap_boundary",
+      "description": "Starts at the stability cap and repeats successful reviews at long gaps.",
+      "sm2": {
+        "name": "sm2",
+        "final_due_day": 146095,
+        "final_interval": 95
+      },
+      "fsrs_capped": {
+        "name": "fsrs_capped",
+        "final_due_day": 182500,
+        "final_interval": 36500,
+        "final_stability": 36500,
+        "final_difficulty": 9.941002047899818,
+        "max_stability": 36500,
+        "cap_hits": 4
+      },
+      "fsrs_corrected": {
+        "name": "fsrs_corrected",
+        "final_due_day": 182500,
+        "final_interval": 36500,
+        "final_stability": 50658.40798282004,
+        "final_difficulty": 9.941002047899818,
+        "max_stability": 50658.40798282004
+      },
+      "stability_delta": 14158.407982820041,
+      "interval_delta": 0,
+      "due_day_delta": 0,
+      "sm2_interval_delta": 36405,
+      "sm2_due_day_delta": 36405
+    },
+    {
+      "id": "above_cap_input",
+      "description": "Starts above the stability cap to exercise the former input clamp.",
+      "sm2": {
+        "name": "sm2",
+        "final_due_day": 73014,
+        "final_interval": 14
+      },
+      "fsrs_capped": {
+        "name": "fsrs_capped",
+        "final_due_day": 109500,
+        "final_interval": 36500,
+        "final_stability": 36500,
+        "final_difficulty": 6.654557743224379,
+        "max_stability": 36500,
+        "cap_hits": 3
+      },
+      "fsrs_corrected": {
+        "name": "fsrs_corrected",
+        "final_due_day": 109500,
+        "final_interval": 36500,
+        "final_stability": 78125.24188134431,
+        "final_difficulty": 6.654557743224379,
+        "max_stability": 78125.24188134431
+      },
+      "stability_delta": 41625.24188134431,
+      "interval_delta": 0,
+      "due_day_delta": 0,
+      "sm2_interval_delta": 36486,
+      "sm2_due_day_delta": 36486
+    },
+    {
+      "id": "mixed_ratings",
+      "description": "Good, lapse, Good, Easy and Hard in one sequence.",
+      "sm2": {
+        "name": "sm2",
+        "final_due_day": 124,
+        "final_interval": 39
+      },
+      "fsrs_capped": {
+        "name": "fsrs_capped",
+        "final_due_day": 173,
+        "final_interval": 88,
+        "final_stability": 88.1098077884923,
+        "final_difficulty": 7.644599304759225,
+        "max_stability": 88.1098077884923
+      },
+      "fsrs_corrected": {
+        "name": "fsrs_corrected",
+        "final_due_day": 173,
+        "final_interval": 88,
+        "final_stability": 88.1098077884923,
+        "final_difficulty": 7.644599304759225,
+        "max_stability": 88.1098077884923
+      },
+      "stability_delta": 0,
+      "interval_delta": 0,
+      "due_day_delta": 0,
+      "sm2_interval_delta": 49,
+      "sm2_due_day_delta": 49
+    },
+    {
+      "id": "frequent_lapses",
+      "description": "Repeated lapses with short gaps.",
+      "sm2": {
+        "name": "sm2",
+        "final_due_day": 28,
+        "final_interval": 6
+      },
+      "fsrs_capped": {
+        "name": "fsrs_capped",
+        "final_due_day": 26,
+        "final_interval": 4,
+        "final_stability": 4.313161734878198,
+        "final_difficulty": 9.665390748772571,
+        "max_stability": 4.313161734878198
+      },
+      "fsrs_corrected": {
+        "name": "fsrs_corrected",
+        "final_due_day": 26,
+        "final_interval": 4,
+        "final_stability": 4.313161734878198,
+        "final_difficulty": 9.665390748772571,
+        "max_stability": 4.313161734878198
+      },
+      "stability_delta": 0,
+      "interval_delta": 0,
+      "due_day_delta": 0,
+      "sm2_interval_delta": -2,
+      "sm2_due_day_delta": -2
+    }
+  ],
+  "summary": {
+    "fixtures": 5,
+    "capped_cap_hits": 7,
+    "fixtures_with_stability_difference": 2,
+    "fixtures_with_interval_difference": 0,
+    "fixtures_with_due_day_difference": 0,
+    "max_stability_delta": 41625.24188134431
+  }
+}

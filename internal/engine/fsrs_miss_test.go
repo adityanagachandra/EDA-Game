@@ -208,11 +208,11 @@ func TestFSRSCorrectAnswerMovesReviewClock(t *testing.T) {
 	}
 }
 
-// TestFSRSImplicitCreditAdvancesOncePerCycle pins that implicit credit moves FSRS state
-// once per cycle and never again. PR #152 made the ordinal side of that rule explicit;
-// this asserts the stability side follows it, because the FSRS advance sits behind the
-// same ProjectCredit guard.
-func TestFSRSImplicitCreditAdvancesOncePerCycle(t *testing.T) {
+// TestFSRSImplicitCreditDoesNotMoveStateInShadow pins that shadow credit is
+// observational. Banking an ordinal may not advance FSRS stability, the due
+// date or the SM-2 interval, no matter how many times the serving paths ask
+// for implicit reviews.
+func TestFSRSImplicitCreditDoesNotMoveStateInShadow(t *testing.T) {
 	e := traceEngine(t)
 	diff := 0.5
 	st, err := e.CreateStudent("fsrs-credit")
@@ -264,29 +264,29 @@ func TestFSRSImplicitCreditAdvancesOncePerCycle(t *testing.T) {
 		t.Fatalf("save found: %v", err)
 	}
 
-	if err := e.SatisfyImplicitReviews(st.ID); err != nil {
-		t.Fatalf("project credit: %v", err)
+	before, err := e.repo.GetProgress(st.ID, "found")
+	if err != nil || before == nil || before.NextReviewDue == nil {
+		t.Fatalf("read found before shadow calls: %v", err)
+	}
+	beforeInterval := before.SM2Interval
+	beforeDue := *before.NextReviewDue
+
+	for i := 0; i < 3; i++ {
+		if err := e.SatisfyImplicitReviews(st.ID); err != nil {
+			t.Fatalf("shadow satisfy %d: %v", i, err)
+		}
 	}
 	after, err := e.repo.GetProgress(st.ID, "found")
-	if err != nil || after == nil || after.FSRSStability == nil {
-		t.Fatalf("read found after projection: %v", err)
+	if err != nil || after == nil || after.FSRSStability == nil || after.NextReviewDue == nil {
+		t.Fatalf("read found after shadow calls: %v", err)
 	}
-	first := *after.FSRSStability
-	if first <= stability {
-		t.Fatalf("stability after projection = %f, want above the seeded %f", first, stability)
+	if *after.FSRSStability != stability {
+		t.Fatalf("shadow credit moved FSRS stability from %f to %f", stability, *after.FSRSStability)
 	}
-
-	// Further calls must find nothing left to project and leave stability untouched.
-	for i := 0; i < 2; i++ {
-		if err := e.SatisfyImplicitReviews(st.ID); err != nil {
-			t.Fatalf("reproject %d: %v", i, err)
-		}
-		again, err := e.repo.GetProgress(st.ID, "found")
-		if err != nil || again == nil || again.FSRSStability == nil {
-			t.Fatalf("read found after reproject %d: %v", i, err)
-		}
-		if *again.FSRSStability != first {
-			t.Fatalf("reprojection %d moved stability from %f to %f, want it unchanged", i, first, *again.FSRSStability)
-		}
+	if after.SM2Interval != beforeInterval {
+		t.Fatalf("shadow credit moved SM-2 interval from %d to %d", beforeInterval, after.SM2Interval)
+	}
+	if !after.NextReviewDue.Equal(beforeDue) {
+		t.Fatalf("shadow credit moved due date from %v to %v", beforeDue, *after.NextReviewDue)
 	}
 }

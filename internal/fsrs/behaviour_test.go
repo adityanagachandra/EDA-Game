@@ -57,8 +57,8 @@ func TestIntervalIsTheInverseOfRetrievability(t *testing.T) {
 			t.Errorf("Interval(%v) = %d, want %d", s, got, want)
 		}
 		// R(I(S),S) = 0.9 only while the interval was not clamped. Below one
-		// day the floor of 1 applies, so the round trip is deliberately not
-		// exact there; that is the documented deviation from the reference.
+		// day the floor of 1 applies in both Mathua and the reference, so the
+		// round trip is deliberately not exact there.
 		if float64(got) == s {
 			closeEnough(t, "R at the interval", p.Retrievability(float64(got), s), DefaultRetention)
 		}
@@ -70,8 +70,9 @@ func TestIntervalRoundingAndBounds(t *testing.T) {
 	if got := p.IntervalForRetention(10, 0.8); got != 33 {
 		t.Errorf("interval at 0.8 retention = %d, want 33", got)
 	}
-	// Below one day the reference formula returns 0. A due date that is
-	// already past is not a schedule, so Mathua clamps it to one day.
+	// Below one day the reference also clamps the interval to one day in
+	// fsrs==6.3.2. A due date that is already past is not a schedule, so
+	// both implementations floor it to one day.
 	if got := p.IntervalForRetention(1, 0.95); got != 1 {
 		t.Errorf("sub-day interval = %d, want the 1-day floor", got)
 	}
@@ -275,13 +276,91 @@ func TestFSRSEdgeCasesAndClamping(t *testing.T) {
 		t.Errorf("NextStability with NaN R = %v, want %v", sNaNR, sDefR)
 	}
 
-	// clampStability upper bound (MaxStabilityDays) and NaN
+	// Stability itself is not capped at MaxStabilityDays. The reference lets it
+	// grow past the maximum interval and clamps only the interval. This is the
+	// regression that the Phase 3 conformance work corrected.
 	hugeS := p.NextStability(1e9, 1, 1.0, Easy)
-	if hugeS > MaxStabilityDays {
-		t.Errorf("NextStability huge S = %v, want <= MaxStabilityDays", hugeS)
+	closeEnough(t, "NextStability huge S", hugeS, 1e9)
+	if got := p.Interval(hugeS); got != MaxIntervalDays {
+		t.Errorf("Interval(1e9) = %d, want %d", got, MaxIntervalDays)
 	}
 	nanS := p.NextStability(math.NaN(), 5, 0.9, Good)
 	if nanS < StabilityMin {
 		t.Errorf("NextStability with NaN S = %v, want >= StabilityMin", nanS)
 	}
+}
+
+func TestNonFiniteInputsFailClosed(t *testing.T) {
+	p := DefaultParameters()
+	inf := math.Inf(1)
+	negInf := math.Inf(-1)
+	nan := math.NaN()
+
+	finite := func(t *testing.T, label string, got, lo, hi float64) {
+		t.Helper()
+		if math.IsNaN(got) || math.IsInf(got, 0) {
+			t.Fatalf("%s = %v, want a finite value", label, got)
+		}
+		if got < lo || got > hi {
+			t.Fatalf("%s = %v, want [%v, %v]", label, got, lo, hi)
+		}
+	}
+
+	t.Run("next stability", func(t *testing.T) {
+		cases := []struct {
+			name           string
+			stability      float64
+			difficulty     float64
+			retrievability float64
+		}{
+			{"positive infinite stability", inf, 5, 0.9},
+			{"negative infinite stability", negInf, 5, 0.9},
+			{"positive infinite difficulty", 10, inf, 0.9},
+			{"negative infinite difficulty", 10, negInf, 0.9},
+			{"NaN difficulty", 10, nan, 0.9},
+			{"positive infinite retrievability", 10, 5, inf},
+			{"negative infinite retrievability", 10, 5, negInf},
+			{"NaN retrievability", 10, 5, nan},
+		}
+		for _, tc := range cases {
+			got := p.NextStability(tc.stability, tc.difficulty, tc.retrievability, Good)
+			finite(t, tc.name, got, StabilityMin, math.Inf(1))
+		}
+	})
+
+	t.Run("retrievability", func(t *testing.T) {
+		for _, elapsed := range []float64{nan, inf, negInf} {
+			if got := p.Retrievability(elapsed, 10); got != 0 {
+				t.Errorf("Retrievability with elapsed %v = %v, want 0", elapsed, got)
+			}
+		}
+		for _, stability := range []float64{nan, inf, negInf, 0, -1} {
+			finite(t, "Retrievability non-finite stability", p.Retrievability(1, stability), 0, 1)
+		}
+	})
+
+	t.Run("interval", func(t *testing.T) {
+		for _, stability := range []float64{nan, inf, negInf} {
+			if got := p.IntervalForRetention(stability, 0.9); got != 1 {
+				t.Errorf("IntervalForRetention with stability %v = %d, want 1", stability, got)
+			}
+		}
+		// A value this large used to overflow the int conversion before the
+		// clamp could apply.
+		if got := p.Interval(1e300); got != MaxIntervalDays {
+			t.Errorf("Interval(1e300) = %d, want %d", got, MaxIntervalDays)
+		}
+	})
+
+	t.Run("difficulty", func(t *testing.T) {
+		for _, difficulty := range []float64{nan, inf, negInf} {
+			finite(t, "NextDifficulty", p.NextDifficulty(difficulty, Good), 1, 10)
+		}
+	})
+
+	t.Run("initial stability remains finite", func(t *testing.T) {
+		for _, rating := range []Rating{Again, Hard, Good, Easy} {
+			finite(t, ratingName(rating), p.InitialStability(rating), StabilityMin, math.Inf(1))
+		}
+	})
 }

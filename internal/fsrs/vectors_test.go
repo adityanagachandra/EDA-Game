@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-// These are not recomputed values. They are the numbers py-fsrs 6.3.2 produced
+// These are not recomputed values. They are the numbers fsrs==6.3.2 produced
 // with fuzzing disabled, written down literally so that changing a formula
 // fails a test instead of quietly changing what the test expects.
 //

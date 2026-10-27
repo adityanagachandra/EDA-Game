@@ -345,6 +345,83 @@ func TestEffectiveState_NextReviewDuePassed(t *testing.T) {
 	}
 }
 
+func aboveCapSnapshot(stability float64, now time.Time) *ConceptSnapshot {
+	last := now.AddDate(0, 0, -40000)
+	due := now.Add(-time.Hour)
+	return &ConceptSnapshot{
+		Status:         mastery.StatusMastered,
+		LastReviewed:   last,
+		LastAttempted:  now.Add(-24 * time.Hour),
+		NextReviewDue:  &due,
+		FSRSStability:  &stability,
+		FSRSLastReview: &last,
+		Streak:         5,
+		RequiredStreak: 3,
+	}
+}
+
+func TestEffectiveState_AboveCapStabilityStillDue(t *testing.T) {
+	now := time.Now().UTC()
+	cappedStatus, cappedReview := effectiveState(aboveCapSnapshot(36500, now), now)
+	correctedStatus, correctedReview := effectiveState(aboveCapSnapshot(50658.40798282004, now), now)
+
+	if cappedStatus != mastery.Status("DECAYING") {
+		t.Errorf("capped status = %s, want DECAYING", cappedStatus)
+	}
+	if correctedStatus != mastery.StatusMastered {
+		t.Errorf("corrected status = %s, want MASTERED", correctedStatus)
+	}
+	if !cappedReview || !correctedReview {
+		t.Error("both above-cap snapshots have a past due date and must remain due")
+	}
+}
+
+func TestComputePriority_AboveCapStabilityLowersDecayBonus(t *testing.T) {
+	now := time.Now().UTC()
+	capped := computePriority(aboveCapSnapshot(36500, now), now, true)
+	corrected := computePriority(aboveCapSnapshot(50658.40798282004, now), now, true)
+	if !(corrected < capped) {
+		t.Errorf("corrected priority = %f, want lower than capped %f", corrected, capped)
+	}
+}
+
+func TestNextReview_AboveCapStabilityRemainsDueAndOrdersLower(t *testing.T) {
+	now := time.Now().UTC()
+	d := miniDAG(t)
+	s := New(d)
+
+	for _, tc := range []struct {
+		name      string
+		stability float64
+	}{
+		{name: "capped", stability: 36500},
+		{name: "corrected", stability: 50658.40798282004},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			snap := map[string]*ConceptSnapshot{"a": aboveCapSnapshot(tc.stability, now)}
+			if got := s.DueReviewCount(snap, now); got != 1 {
+				t.Fatalf("DueReviewCount = %d, want 1", got)
+			}
+			nx := s.NextReview(snap, "")
+			if nx == nil || nx.Concept.ID != "a" || !nx.IsReview {
+				t.Fatalf("NextReview = %+v, want due review a", nx)
+			}
+		})
+	}
+
+	snap := map[string]*ConceptSnapshot{
+		"a": aboveCapSnapshot(36500, now),
+		"b": aboveCapSnapshot(50658.40798282004, now),
+	}
+	nx := s.NextReview(snap, "")
+	if nx == nil {
+		t.Fatal("expected a review")
+	}
+	if nx.Concept.ID != "a" {
+		t.Errorf("NextReview picked %s, want the higher-priority capped concept a", nx.Concept.ID)
+	}
+}
+
 func TestSelectWithBalance_ForcesReviewWhenUnderRatio(t *testing.T) {
 	newTop := Candidate{Concept: &concepts.Concept{ID: "n"}, Priority: 10}
 	reviewLow := Candidate{Concept: &concepts.Concept{ID: "r"}, IsReview: true, Priority: 1}

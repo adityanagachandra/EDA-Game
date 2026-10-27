@@ -28,14 +28,6 @@ func fireDAG(t *testing.T) *concepts.DAG {
 			Encompasses:      []string{"prereq"},
 			MasteryThreshold: concepts.MasteryThreshold{Streak: 3, AvgTimeSeconds: 10},
 		},
-		{
-			ID:               "standalone",
-			Label:            "Standalone Topic",
-			Domain:           "geometry",
-			Subdomain:        "shapes",
-			Prerequisites:    []string{},
-			MasteryThreshold: concepts.MasteryThreshold{Streak: 3, AvgTimeSeconds: 10},
-		},
 	})
 	if err != nil {
 		t.Fatalf("build fire DAG: %v", err)
@@ -43,14 +35,9 @@ func fireDAG(t *testing.T) *concepts.DAG {
 	return d
 }
 
-func TestFIRe_BankedImplicitCreditSuppressesExplicitReview(t *testing.T) {
-	d := fireDAG(t)
-	s := New(d)
-	now := time.Now().UTC()
+func dueSnapshots(now time.Time, banked int) map[string]*ConceptSnapshot {
 	past := now.AddDate(0, 0, -5)
-
-	// Concept prereq is mastered but due for explicit review
-	snapWithoutCredit := map[string]*ConceptSnapshot{
+	return map[string]*ConceptSnapshot{
 		"prereq": {
 			Status:         mastery.StatusMastered,
 			LastReviewed:   past,
@@ -58,94 +45,58 @@ func TestFIRe_BankedImplicitCreditSuppressesExplicitReview(t *testing.T) {
 			RequiredStreak: 3,
 			Interval:       5,
 			EFactor:        2.5,
-			BankedOrdinals: 0,
+			BankedOrdinals: banked,
+			Encompassed:    true,
 		},
 		"adv": {
 			Status:         mastery.StatusLearning,
 			RequiredStreak: 3,
 		},
-	}
-
-	// Without banked credit, prereq must be selected as a due review
-	reviewWithout := s.NextReview(snapWithoutCredit, "")
-	if reviewWithout == nil || reviewWithout.Concept.ID != "prereq" {
-		t.Fatalf("expected prereq due for review without credit, got %+v", reviewWithout)
-	}
-
-	// Now test with 1 banked implicit repetition ordinal
-	snapWithCredit := map[string]*ConceptSnapshot{
-		"prereq": {
-			Status:         mastery.StatusMastered,
-			LastReviewed:   past,
-			NextReviewDue:  &past,
-			RequiredStreak: 3,
-			Interval:       5,
-			EFactor:        2.5,
-			BankedOrdinals: 1,
-			LearningSpeed:  1.0,
-		},
-		"adv": {
-			Status:         mastery.StatusLearning,
-			RequiredStreak: 3,
-		},
-	}
-
-	// Banked implicit credit must suppress redundant review
-	reviewWith := s.NextReview(snapWithCredit, "")
-	if reviewWith != nil {
-		t.Fatalf("expected review suppressed by implicit credit, got concept %s", reviewWith.Concept.ID)
-	}
-
-	// The interval must have advanced and the ordinal must be consumed
-	prereqSnap := snapWithCredit["prereq"]
-	if prereqSnap.BankedOrdinals != 0 {
-		t.Fatalf("expected banked ordinals decremented to 0, got %d", prereqSnap.BankedOrdinals)
-	}
-	if prereqSnap.NextReviewDue == nil || !prereqSnap.NextReviewDue.After(now) {
-		t.Fatalf("expected next review due pushed into future, got %v", prereqSnap.NextReviewDue)
-	}
-	if prereqSnap.Interval <= 5 {
-		t.Fatalf("expected interval to advance beyond 5 days, got %d", prereqSnap.Interval)
 	}
 }
 
-func TestFIRe_NextSmart_SuppressesEncompassedReviewTask(t *testing.T) {
+func TestFIRe_BankedOrdinalDoesNotSuppressReview(t *testing.T) {
 	d := fireDAG(t)
 	s := New(d)
 	now := time.Now().UTC()
-	past := now.AddDate(0, 0, -20)
+	snap := dueSnapshots(now, 3)
+	due := *snap["prereq"].NextReviewDue
 
-	snap := map[string]*ConceptSnapshot{
-		"prereq": {
-			Status:         mastery.StatusMastered,
-			LastReviewed:   past,
-			NextReviewDue:  &past,
-			RequiredStreak: 3,
-			Interval:       6,
-			EFactor:        2.5,
-			BankedOrdinals: 1,
-			LearningSpeed:  1.0,
-		},
-		"adv": {
-			Status:         mastery.StatusLearning,
-			RequiredStreak: 3,
-		},
+	review := s.NextReview(snap, "")
+	if review == nil || review.Concept.ID != "prereq" {
+		t.Fatalf("banked credit suppressed the review: got %+v", review)
 	}
+	prereq := snap["prereq"]
+	if prereq.BankedOrdinals != 3 {
+		t.Fatalf("banked ordinals changed to %d, want 3", prereq.BankedOrdinals)
+	}
+	if prereq.NextReviewDue == nil || !prereq.NextReviewDue.Equal(due) {
+		t.Fatalf("banked credit moved the due date: got %v, want %v", prereq.NextReviewDue, due)
+	}
+	if prereq.Interval != 5 {
+		t.Fatalf("banked credit moved the interval: got %d, want 5", prereq.Interval)
+	}
+}
 
-	// NextSmart with high reviewCount to trigger review preference
+func TestFIRe_NextSmartKeepsTheReview(t *testing.T) {
+	d := fireDAG(t)
+	s := New(d)
+	now := time.Now().UTC()
+	snap := dueSnapshots(now, 1)
+
 	cands := s.NextSmart(snap, nil, 10, 0, nil)
 	for _, c := range cands {
 		if c.Concept.ID == "prereq" && c.IsReview {
-			t.Fatalf("expected prereq review suppressed in NextSmart, but got review candidate")
+			return
 		}
 	}
+	t.Fatalf("banked credit removed the prereq review from NextSmart: %+v", cands)
 }
 
-func TestFIRe_ComputePriority_SuppressesDecayBonus(t *testing.T) {
+func TestFIRe_BankedOrdinalDoesNotChangePriority(t *testing.T) {
 	now := time.Now().UTC()
 	past := now.AddDate(0, 0, -15)
-
-	snapWithCredit := &ConceptSnapshot{
+	with := &ConceptSnapshot{
 		Status:         mastery.StatusMastered,
 		LastReviewed:   past,
 		LastAttempted:  past,
@@ -154,136 +105,43 @@ func TestFIRe_ComputePriority_SuppressesDecayBonus(t *testing.T) {
 		BankedOrdinals: 1,
 		Encompassed:    true,
 	}
-
-	snapWithoutCredit := &ConceptSnapshot{
+	without := &ConceptSnapshot{
 		Status:         mastery.StatusMastered,
 		LastReviewed:   past,
 		LastAttempted:  past,
 		NextReviewDue:  &past,
 		RequiredStreak: 3,
-		BankedOrdinals: 0,
 		Encompassed:    true,
 	}
-
-	pWith := computePriority(snapWithCredit, now, true)
-	pWithout := computePriority(snapWithoutCredit, now, true)
-
-	diff := pWithout - pWith
-	if diff < 4.99 || diff > 5.01 {
-		t.Fatalf("expected 5.0 decay priority difference when credit suppresses review, got %f", diff)
+	if a, b := computePriority(with, now, true), computePriority(without, now, true); a != b {
+		t.Fatalf("banked credit changed priority: with %f, without %f", a, b)
 	}
 }
 
-func TestFIRe_BackwardsCompatibility_NonEncompassedConcept(t *testing.T) {
+func TestFIRe_EligibilityIgnoresBankedOrdinal(t *testing.T) {
 	d := fireDAG(t)
-	s := New(d)
 	now := time.Now().UTC()
-	past := now.AddDate(0, 0, -10)
-
-	// Concept standalone has no encompassing parents in the DAG
-	snap := map[string]*ConceptSnapshot{
-		"standalone": {
-			Status:         mastery.StatusMastered,
-			LastReviewed:   past,
-			NextReviewDue:  &past,
-			RequiredStreak: 3,
-			Interval:       3,
-			EFactor:        2.5,
-			BankedOrdinals: 1,
-			Encompassed:    false,
-		},
-	}
-
-	// Since standalone is not encompassed, implicit credit must not suppress review
-	review := s.NextReview(snap, "")
-	if review == nil || review.Concept.ID != "standalone" {
-		t.Fatalf("expected non-encompassed concept to remain due for review, got %+v", review)
+	snap := dueSnapshots(now, 2)
+	el := EligibilityOf(snap, now, d.Concept("prereq"))
+	if el.State != StateDueForReview {
+		t.Fatalf("eligibility = %s, want %s", el.State, StateDueForReview)
 	}
 }
 
-func TestFIRe_ChainedOrdinalsAdvance(t *testing.T) {
+func TestFIRe_ChainedOrdinalDoesNotAdvance(t *testing.T) {
 	d := fireDAG(t)
 	s := New(d)
 	now := time.Now().UTC()
-	past := now.AddDate(0, 0, -10)
+	snap := dueSnapshots(now, 2)
+	due := *snap["prereq"].NextReviewDue
 
-	snap := map[string]*ConceptSnapshot{
-		"prereq": {
-			Status:         mastery.StatusMastered,
-			LastReviewed:   past,
-			NextReviewDue:  &past,
-			RequiredStreak: 3,
-			Interval:       4,
-			EFactor:        2.5,
-			BankedOrdinals: 2,
-			LearningSpeed:  1.0,
-		},
-		"adv": {
-			Status:         mastery.StatusLearning,
-			RequiredStreak: 3,
-		},
-	}
-
-	// First cycle: consumes 1 ordinal
+	s.NextReview(snap, "")
 	s.NextReview(snap, "")
 	prereq := snap["prereq"]
-	if prereq.BankedOrdinals != 1 {
-		t.Fatalf("expected 1 ordinal remaining, got %d", prereq.BankedOrdinals)
+	if prereq.BankedOrdinals != 2 {
+		t.Fatalf("banked ordinals changed to %d, want 2", prereq.BankedOrdinals)
 	}
-	firstDue := *prereq.NextReviewDue
-	if !firstDue.After(now) {
-		t.Fatalf("expected first due date in future, got %v", firstDue)
-	}
-
-	// Simulate time passing until the advanced review becomes due again
-	secondPast := now.Add(-time.Hour)
-	snap["prereq"].NextReviewDue = &secondPast
-	snap["prereq"].LastReviewed = secondPast
-
-	// Second cycle: consumes second ordinal and advances further
-	s.NextReview(snap, "")
-	if prereq.BankedOrdinals != 0 {
-		t.Fatalf("expected 0 ordinals remaining after second cycle, got %d", prereq.BankedOrdinals)
-	}
-	if !prereq.NextReviewDue.After(firstDue) {
-		t.Fatalf("expected second due date after first due date, got %v <= %v", prereq.NextReviewDue, firstDue)
-	}
-}
-
-func TestFIRe_EligibilityStateRemainsMastered(t *testing.T) {
-	d := fireDAG(t)
-	now := time.Now().UTC()
-	past := now.AddDate(0, 0, -15)
-
-	snapWithCredit := map[string]*ConceptSnapshot{
-		"prereq": {
-			Status:         mastery.StatusMastered,
-			LastReviewed:   past,
-			NextReviewDue:  &past,
-			RequiredStreak: 3,
-			BankedOrdinals: 1,
-			Encompassed:    true,
-		},
-	}
-
-	c := d.Concept("prereq")
-	el := EligibilityOf(snapWithCredit, now, c)
-	if el.State != StateMastered {
-		t.Fatalf("expected StateMastered when credit suppresses review, got %s", el.State)
-	}
-
-	snapWithoutCredit := map[string]*ConceptSnapshot{
-		"prereq": {
-			Status:         mastery.StatusMastered,
-			LastReviewed:   past,
-			NextReviewDue:  &past,
-			RequiredStreak: 3,
-			BankedOrdinals: 0,
-			Encompassed:    true,
-		},
-	}
-	elNoCredit := EligibilityOf(snapWithoutCredit, now, c)
-	if elNoCredit.State != StateDueForReview {
-		t.Fatalf("expected StateDueForReview without credit, got %s", elNoCredit.State)
+	if prereq.NextReviewDue == nil || !prereq.NextReviewDue.Equal(due) {
+		t.Fatalf("banked credit moved the due date: got %v, want %v", prereq.NextReviewDue, due)
 	}
 }

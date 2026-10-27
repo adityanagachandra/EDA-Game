@@ -16,6 +16,7 @@ import (
 
 	"github.com/chuma-beep/mathua/internal/concepts"
 	"github.com/chuma-beep/mathua/internal/diagnostic"
+	"github.com/chuma-beep/mathua/internal/fire"
 	"github.com/chuma-beep/mathua/internal/fsrs"
 	"github.com/chuma-beep/mathua/internal/generator"
 	"github.com/chuma-beep/mathua/internal/grader"
@@ -219,6 +220,9 @@ type Engine struct {
 	diag     *diagnostic.Engine
 	ll       *lessons.Loader
 	planner  *planning.Planner
+	// fireMode is resolved once at startup. The engine never reads the
+	// environment, so every path in this process sees the same mode.
+	fireMode fire.Mode
 
 	mu         sync.Mutex
 	sessions   map[string]*activeSession
@@ -262,8 +266,22 @@ const maxQuizRemedial = 10
 // The targeted remedial cap lives in storage as storage.MaxRemedialQueue: the queue is
 // persisted, and the cap is enforced inside the enqueue transaction that owns it.
 
-func New(repo storage.Repository, dag *concepts.DAG, reg *generator.Registry, ll *lessons.Loader, planner *planning.Planner) *Engine {
-	return &Engine{
+// Option configures an Engine at construction. It exists so callers can choose
+// an explicit FIRe mode without every test having to pass one.
+type Option func(*Engine)
+
+// WithFIReMode sets the already-resolved FIRe mode. Parsing belongs at the
+// process edge, not here.
+func WithFIReMode(mode fire.Mode) Option {
+	return func(e *Engine) {
+		if mode == fire.Off || mode == fire.Shadow {
+			e.fireMode = mode
+		}
+	}
+}
+
+func New(repo storage.Repository, dag *concepts.DAG, reg *generator.Registry, ll *lessons.Loader, planner *planning.Planner, opts ...Option) *Engine {
+	e := &Engine{
 		dag:           dag,
 		repo:          repo,
 		sched:         scheduler.New(dag),
@@ -275,6 +293,7 @@ func New(repo storage.Repository, dag *concepts.DAG, reg *generator.Registry, ll
 		diag:          diagnostic.NewEngine(dag, reg),
 		ll:            ll,
 		planner:       planner,
+		fireMode:      fire.Shadow,
 		sessions:      make(map[string]*activeSession),
 		activePath:    make(map[string]map[string]bool),
 		studyMisses:   make(map[string]int),
@@ -285,6 +304,12 @@ func New(repo storage.Repository, dag *concepts.DAG, reg *generator.Registry, ll
 		resetGen:      make(map[string]uint64),
 		kpStates:      make(map[string]*mastery.KPStateMachine),
 	}
+	for _, opt := range opts {
+		if opt != nil {
+			opt(e)
+		}
+	}
+	return e
 }
 
 // persistedKPOrdinalLocked reports the knowledge-point position stored with the
@@ -2053,7 +2078,7 @@ func (e *Engine) commitStudyAnswer(studentID, conceptID, submissionID, answer st
 		TopicSpeed:   topicSpeed,
 		XPAmount:     xp,
 		XPReason:     "answer",
-		Effects:      studyEffectsFor(conceptID, ga.attemptID, gr.Correct, halted, remedial),
+		Effects:      e.studyEffectsFor(conceptID, ga.attemptID, gr.Correct, halted, remedial),
 	})
 	if err != nil {
 		return nil, err
@@ -3755,7 +3780,7 @@ func (e *Engine) allocateImplicitCredit(o gradedAttempt) {
 }
 
 func (e *Engine) allocateImplicitCreditErr(o gradedAttempt) error {
-	if !o.correct || e.dag == nil {
+	if e.fireMode == fire.Off || !o.correct || e.dag == nil {
 		return nil
 	}
 	c := e.dag.Concept(o.conceptID)
@@ -3780,7 +3805,9 @@ func (e *Engine) allocateImplicitCreditErr(o gradedAttempt) error {
 	if _, _, err := cs.AllocateCredit(o.studentID, attemptKey, 0, cands); err != nil {
 		return err
 	}
-	return e.SatisfyImplicitReviews(o.studentID)
+	// Shadow records the observation and stops. SatisfyImplicitReviews is
+	// deliberately not called: projecting here would move a due date.
+	return nil
 }
 
 // BackfillWeeklyXP replays this week's attempts into the XP ledger.

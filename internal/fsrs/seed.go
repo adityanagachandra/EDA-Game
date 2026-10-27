@@ -71,7 +71,7 @@ func SeedFromInterval(intervalDays int, due, now time.Time) (Seeded, error) {
 	if due.IsZero() {
 		return Seeded{}, fmt.Errorf("fsrs: cannot seed without a due date")
 	}
-	stability := clampStability(float64(intervalDays))
+	stability := clampStabilityMin(float64(intervalDays))
 	if math.IsNaN(stability) {
 		return Seeded{}, fmt.Errorf("fsrs: cannot seed from a non-finite interval")
 	}

@@ -295,6 +295,22 @@ func TestEffectiveStatusFSRS_NilStabilityFallsBackToDecayDays(t *testing.T) {
 	}
 }
 
+func TestEffectiveStatusFSRS_AboveCapStabilityStaysMasteredLonger(t *testing.T) {
+	// At 40,000 days the capped stability has already fallen below 0.90.
+	capped := 36500.0
+	if got := EffectiveStatusFSRS(StatusMastered, 40000, &capped, 14); got != "DECAYING" {
+		t.Errorf("expected DECAYING for capped stability at 40,000 days, got %q", got)
+	}
+
+	// The reference-backed value is above 36,500 and keeps retrievability
+	// above 0.90 at the same elapsed time. This is the downstream effect of
+	// removing the stability cap; it is not an interval change.
+	uncapped := 50658.40798282004
+	if got := EffectiveStatusFSRS(StatusMastered, 40000, &uncapped, 14); got != StatusMastered {
+		t.Errorf("expected MASTERED for corrected stability at 40,000 days, got %q", got)
+	}
+}
+
 // SM2Quality
 
 func TestSM2Quality_Perfect(t *testing.T) {
