@@ -7,7 +7,17 @@ import AppShell from '../../../../components/app-shell'
 import Footer from '../../../../components/Footer'
 import SectionHeader from '../../../../components/SectionHeader'
 import AdminNav from '../../../../components/AdminNav'
-import { getAdminUser, getErrorMessage, type AdminUserDetail, type Role } from '../../../../lib/api'
+import Avatar from '../../../../components/Avatar'
+import { dicebearUrl, isDicebearStyle } from '../../../../lib/dicebear'
+import {
+  API_BASE,
+  getAdminUser,
+  getErrorMessage,
+  type AdminUser,
+  type AdminUserAvatar,
+  type AdminUserDetail,
+  type Role,
+} from '../../../../lib/api'
 import { useAdminMe } from '../../../../hooks/useAdminMe'
 
 // One account, as an administrator needs to see it while answering a report or a support
@@ -31,6 +41,26 @@ function roleLabel(role: Role): string {
 
 function labelFor(user: { name?: string; username?: string; email?: string; id: string }): string {
   return user.name || user.username || user.email || user.id
+}
+
+// The same precedence the sidebar and profile use: custom upload, Google
+// photo, DiceBear pick, then the generated initial. The server resolves the
+// custom-upload path because only it knows the account's photo version.
+function UserAvatar({ user, avatar }: { user: AdminUser; avatar: AdminUserAvatar }) {
+  const pick = avatar.avatar_dicebear
+  const storedURL = avatar.avatar_url
+  const url = storedURL
+    ? (storedURL.startsWith('/') ? `${API_BASE}${storedURL}` : storedURL)
+    : (pick && isDicebearStyle(pick.style) ? dicebearUrl(pick.style, pick.seed) : undefined)
+  return (
+    <Avatar
+      seed={user.id}
+      name={labelFor(user)}
+      size={56}
+      url={url}
+      preset={avatar.avatar_preset ?? null}
+    />
+  )
 }
 
 function Count({ label, value }: { label: string; value: number | string }) {
@@ -94,7 +124,10 @@ function AccountDetail() {
         {data && (
           <>
             <section className="border border-mathua-border bg-mathua-surface p-4">
-              <h2 className="font-mono text-sm text-mathua-primary">{labelFor(data.user)}</h2>
+              <div className="flex items-center gap-3">
+                <UserAvatar user={data.user} avatar={data.avatar} />
+                <h2 className="font-mono text-sm text-mathua-primary">{labelFor(data.user)}</h2>
+              </div>
               <dl className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-[11px] text-mathua-secondary">
                 <div><dt className="text-mathua-muted">Account id</dt><dd className="break-all" title={data.user.id}>{data.user.id}</dd></div>
                 <div><dt className="text-mathua-muted">Role</dt><dd className={data.user.role === 'student' ? 'text-mathua-muted' : 'text-mathua-blue'}>{roleLabel(data.user.role)}</dd></div>

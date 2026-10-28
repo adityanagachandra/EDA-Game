@@ -1810,8 +1810,21 @@ const AdminUserReportSchema = z.object({
 export type AdminUserReport = z.infer<typeof AdminUserReportSchema>
 export type AdminActivity = z.infer<typeof AdminActivitySchema>
 
+// The account detail page shows the same picture the learner sees in their
+// profile. The server resolves the precedence once: a custom upload becomes a
+// relative by-id route, a Google photo stays absolute, and DiceBear or a
+// legacy preset travels as data for the client to draw.
+const AdminUserAvatarSchema = z.object({
+	avatar_url: z.string().optional(),
+	avatar_dicebear: z.object({ style: z.string(), seed: z.string() }).nullable().optional(),
+	avatar_preset: z.number().nullable().optional(),
+})
+
+export type AdminUserAvatar = z.infer<typeof AdminUserAvatarSchema>
+
 export interface AdminUserDetail {
 	user: AdminUser
+	avatar: AdminUserAvatar
 	history: AdminAuditEvent[]
 	activity: AdminActivity
 	reports: AdminUserReport[]
@@ -1824,6 +1837,7 @@ export async function getAdminUser(id: string): Promise<AdminUserDetail> {
 	return validateResponse(
 		z.object({
 			user: AdminUserSchema,
+			avatar: AdminUserAvatarSchema,
 			history: z.array(AdminAuditEventSchema),
 			activity: AdminActivitySchema,
 			reports: z.array(AdminUserReportSchema),
