@@ -240,6 +240,73 @@ CREATE TABLE IF NOT EXISTS quiz_completions (
 );
 CREATE INDEX IF NOT EXISTS idx_quiz_completions_student ON quiz_completions(student_id, completed_at);
 
+CREATE TABLE IF NOT EXISTS timed_quiz_baselines (
+    student_id   TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
+    baseline_xp  INTEGER NOT NULL DEFAULT 0,
+    baseline_at  BIGINT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS timed_quiz_runs (
+    id                TEXT PRIMARY KEY,
+    student_id        TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+    started_at        BIGINT NOT NULL,
+    deadline_at       BIGINT NOT NULL,
+    completed_at      BIGINT NOT NULL DEFAULT 0,
+    status            TEXT NOT NULL DEFAULT 'active',
+    question_count    INTEGER NOT NULL DEFAULT 0,
+    correct_count     INTEGER NOT NULL DEFAULT 0,
+    unanswered_count  INTEGER NOT NULL DEFAULT 0,
+    xp_earned         INTEGER NOT NULL DEFAULT 0,
+    created_at        BIGINT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_timed_quiz_runs_student
+    ON timed_quiz_runs(student_id, status, deadline_at);
+CREATE UNIQUE INDEX IF NOT EXISTS uidx_timed_quiz_active
+    ON timed_quiz_runs(student_id) WHERE status = 'active';
+
+CREATE TABLE IF NOT EXISTS timed_quiz_items (
+    id               TEXT PRIMARY KEY,
+    run_id           TEXT NOT NULL REFERENCES timed_quiz_runs(id) ON DELETE CASCADE,
+    concept_id       TEXT NOT NULL,
+    position         INTEGER NOT NULL,
+    question         TEXT NOT NULL,
+    expected_answer  TEXT NOT NULL,
+    explanation      TEXT NOT NULL DEFAULT '',
+    grading_type     TEXT NOT NULL DEFAULT '',
+    difficulty       DOUBLE PRECISION,
+    served_at        BIGINT NOT NULL,
+    answered_at      BIGINT NOT NULL DEFAULT 0,
+    elapsed_seconds  DOUBLE PRECISION NOT NULL DEFAULT 0,
+    answer           TEXT NOT NULL DEFAULT '',
+    correct          INTEGER NOT NULL DEFAULT 0,
+    status           TEXT NOT NULL DEFAULT 'served',
+    submission_id    TEXT NOT NULL DEFAULT '',
+    xp_earned        INTEGER NOT NULL DEFAULT 0,
+    UNIQUE(run_id, concept_id)
+);
+CREATE INDEX IF NOT EXISTS idx_timed_quiz_items_run
+    ON timed_quiz_items(run_id, position);
+
+CREATE TABLE IF NOT EXISTS review_events (
+    id                BIGSERIAL PRIMARY KEY,
+    student_id        TEXT NOT NULL,
+    concept_id        TEXT NOT NULL,
+    attempt_id        TEXT NOT NULL UNIQUE,
+    rating            INTEGER NOT NULL,
+    correct           INTEGER NOT NULL,
+    elapsed_seconds   DOUBLE PRECISION NOT NULL,
+    reviewed_at       BIGINT NOT NULL,
+    stability_before  DOUBLE PRECISION,
+    difficulty_before DOUBLE PRECISION,
+    due_before        TEXT,
+    stability_after   DOUBLE PRECISION,
+    difficulty_after  DOUBLE PRECISION,
+    due_after         TEXT,
+    created_at        BIGINT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_review_events_student
+    ON review_events(student_id, reviewed_at);
+
 CREATE TABLE IF NOT EXISTS question_reports (
     id          SERIAL PRIMARY KEY,
     reporter_id TEXT NOT NULL DEFAULT '',
@@ -599,6 +666,9 @@ func pgAuthMigrate(db *sql.DB) error {
 		5: {`UPDATE students SET role = 'owner' WHERE role = 'admin'`,
 			`UPDATE question_reports SET status = 'reviewing' WHERE status = 'confirmed'`,
 			`UPDATE question_reports SET status = 'resolved' WHERE status = 'fixed'`},
+		6: {`INSERT INTO timed_quiz_baselines (student_id, baseline_xp, baseline_at)
+			SELECT id, xp_total, (extract(epoch from now()) * 1000000000)::bigint FROM students
+			ON CONFLICT (student_id) DO NOTHING`},
 	}
 	for v := 1; v <= len(dataMigrations); v++ {
 		if err := runOncePostgres(db, v, dataMigrations[v]); err != nil {
@@ -714,6 +784,9 @@ func (s *PostgresStore) CreateStudent(name string) (*Student, error) {
 	if err != nil {
 		return nil, fmt.Errorf("create student: %w", err)
 	}
+	if err := s.timedQuiz().ensureBaselineAt(id, now); err != nil {
+		return nil, err
+	}
 	return &Student{ID: id, Name: name, Settings: "{}", CreatedAt: now}, nil
 }
 
@@ -740,6 +813,9 @@ func (s *PostgresStore) ClaimGuestStudent(id, name string) (*Student, error) {
 	if st == nil {
 		return nil, fmt.Errorf("claim guest student: row missing after upsert")
 	}
+	if err := s.timedQuiz().ensureBaselineAt(st.ID, st.CreatedAt); err != nil {
+		return nil, err
+	}
 	return st, nil
 }
 
@@ -752,6 +828,9 @@ func (s *PostgresStore) CreateUser(name, username, passwordHash string) (*Studen
 	)
 	if err != nil {
 		return nil, fmt.Errorf("create user: %w", err)
+	}
+	if err := s.timedQuiz().ensureBaselineAt(id, now); err != nil {
+		return nil, err
 	}
 	return &Student{ID: id, Name: name, Username: username, PasswordHash: passwordHash, Settings: "{}", CreatedAt: now}, nil
 }
@@ -774,7 +853,16 @@ func (s *PostgresStore) AdoptGuestAsUser(id, name, username, passwordHash string
 	if n != 1 {
 		return nil, fmt.Errorf("adopt guest as user: guest row is not claimable")
 	}
-	return s.GetStudent(id)
+	st, err := s.GetStudent(id)
+	if err != nil {
+		return nil, err
+	}
+	if st != nil {
+		if err := s.timedQuiz().ensureBaselineAt(st.ID, st.CreatedAt); err != nil {
+			return nil, err
+		}
+	}
+	return st, nil
 }
 
 func (s *PostgresStore) GetStudent(id string) (*Student, error) {
@@ -819,6 +907,9 @@ func (s *PostgresStore) CreateGoogleUser(name, email, googleID, avatarURL string
 		if err := s.CreateIdentity("google", googleID, id, email, true); err != nil {
 			return nil, err
 		}
+	}
+	if err := s.timedQuiz().ensureBaselineAt(id, now); err != nil {
+		return nil, err
 	}
 	return &Student{ID: id, Name: name, Email: email, EmailVerified: true, GoogleID: googleID, AvatarURL: avatarURL, Settings: "{}", CreatedAt: now}, nil
 }
@@ -973,6 +1064,9 @@ func (s *PostgresStore) CreateOAuthUser(provider, providerID, name, email string
 		return nil, fmt.Errorf("create oauth user: %w", err)
 	}
 	if err := s.CreateIdentity(provider, providerID, id, email, emailVerified); err != nil {
+		return nil, err
+	}
+	if err := s.timedQuiz().ensureBaselineAt(id, now); err != nil {
 		return nil, err
 	}
 	return &Student{ID: id, Name: name, Email: email, EmailVerified: emailVerified, AvatarURL: avatarURL, Settings: "{}", CreatedAt: now}, nil
@@ -1680,6 +1774,10 @@ func (s *PostgresStore) ResetProgress(studentID string) error {
 		{"DELETE FROM concept_progress WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM student_topic_speed WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM quiz_completions WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_items WHERE run_id IN (SELECT id FROM timed_quiz_runs WHERE student_id = $1)", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_runs WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_baselines WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM review_events WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM student_remedial_queue WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM server_sessions WHERE kind IN ('study_expected','study_plan') AND (key = $1 OR key LIKE $1 || '|%')", []interface{}{studentID}},
 		{`UPDATE students SET xp_total = 0, xp_today = 0, diagnostic_completed = 0, diagnostic_completed_at = '',
@@ -1726,6 +1824,10 @@ func (s *PostgresStore) DeleteAccount(studentID string) error {
 		{"DELETE FROM concept_progress WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM student_topic_speed WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM quiz_completions WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_items WHERE run_id IN (SELECT id FROM timed_quiz_runs WHERE student_id = $1)", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_runs WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_baselines WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM review_events WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM student_remedial_queue WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM server_sessions WHERE kind IN ('study_expected','study_plan','study_plan_prefs') AND (key = $1 OR key LIKE $1 || '|%')", []interface{}{studentID}},
 		{"DELETE FROM question_reports WHERE reporter_id = $1", []interface{}{studentID}},
@@ -1778,6 +1880,10 @@ func insertAttemptPostgresTx(tx *sql.Tx, entry AttemptEntry) (int64, error) {
 
 func (s *PostgresStore) CommitStudySubmission(c StudySubmissionCommit) (StudySubmissionOutcome, error) {
 	return commitStudySubmissionTx(s.db, rebindDollars, insertAttemptPostgresTx, c)
+}
+
+func (s *PostgresStore) CommitReviewSubmission(c ReviewSubmissionCommit) (ReviewSubmissionOutcome, error) {
+	return commitReviewSubmissionTx(s.db, rebindDollars, insertAttemptPostgresTx, c)
 }
 
 func (s *PostgresStore) GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error) {

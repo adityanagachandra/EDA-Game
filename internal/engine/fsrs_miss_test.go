@@ -57,7 +57,7 @@ func TestFSRSMissSchedulesImmediately(t *testing.T) {
 
 	if _, _, err := e.applyGradedAttempt(p, gradedAttempt{
 		studentID: st.ID, conceptID: "a", requiredStreak: 3,
-		timeThreshold: 60, elapsed: 40, correct: false,
+		timeThreshold: 60, elapsed: 40, correct: false, review: true,
 	}); err != nil {
 		t.Fatalf("apply miss: %v", err)
 	}
@@ -120,7 +120,7 @@ func TestFSRSMissSchedulesImmediately(t *testing.T) {
 	fresh := reviewStateRow(t, st2.ID, string(mastery.StatusPracticing), 1, now)
 	if _, _, err := e.applyGradedAttempt(fresh, gradedAttempt{
 		studentID: st2.ID, conceptID: "a", requiredStreak: 3,
-		timeThreshold: 60, elapsed: 40, correct: false,
+		timeThreshold: 60, elapsed: 40, correct: false, review: true,
 	}); err != nil {
 		t.Fatalf("apply miss to practicing row: %v", err)
 	}
@@ -143,7 +143,7 @@ func TestFSRSMissThenSuccessReschedules(t *testing.T) {
 
 	if _, _, err := e.applyGradedAttempt(p, gradedAttempt{
 		studentID: st.ID, conceptID: "a", requiredStreak: 3,
-		timeThreshold: 60, elapsed: 40, correct: false,
+		timeThreshold: 60, elapsed: 40, correct: false, review: true,
 	}); err != nil {
 		t.Fatalf("apply miss: %v", err)
 	}
@@ -153,7 +153,7 @@ func TestFSRSMissThenSuccessReschedules(t *testing.T) {
 	for i := 1; i <= 3; i++ {
 		if _, _, err := e.applyGradedAttempt(p, gradedAttempt{
 			studentID: st.ID, conceptID: "a", requiredStreak: 3,
-			timeThreshold: 60, elapsed: 6, correct: true,
+			timeThreshold: 60, elapsed: 6, correct: true, review: true,
 		}); err != nil {
 			t.Fatalf("apply recovery %d: %v", i, err)
 		}
@@ -191,7 +191,7 @@ func TestFSRSCorrectAnswerMovesReviewClock(t *testing.T) {
 	// One correct answer with the streak still below the tier threshold, so no advance.
 	if _, _, err := e.applyGradedAttempt(p, gradedAttempt{
 		studentID: st.ID, conceptID: "a", requiredStreak: 3,
-		timeThreshold: 60, elapsed: 6, correct: true,
+		timeThreshold: 60, elapsed: 6, correct: true, review: true,
 	}); err != nil {
 		t.Fatalf("apply correct answer: %v", err)
 	}
@@ -202,9 +202,10 @@ func TestFSRSCorrectAnswerMovesReviewClock(t *testing.T) {
 	if *p.FSRSStability <= stabilityBefore {
 		t.Errorf("stability after a correct answer = %f, want growth from %f", *p.FSRSStability, stabilityBefore)
 	}
-	// The due date is gated on the tier, and this answer did not reach it.
-	if !p.NextReviewDue.Equal(dueBefore) {
-		t.Errorf("NextReviewDue moved on a non-advancing answer: %v, want %v", p.NextReviewDue, dueBefore)
+	// A spaced review schedules the next retrieval even when the mastery tier
+	// does not advance. The due date must move forward from the old one.
+	if p.NextReviewDue == nil || !p.NextReviewDue.After(dueBefore) {
+		t.Errorf("NextReviewDue after a correct review = %v, want after %v", p.NextReviewDue, dueBefore)
 	}
 }
 

@@ -34,6 +34,7 @@ import (
 	"github.com/chuma-beep/mathua/internal/quiz"
 	"github.com/chuma-beep/mathua/internal/scoring"
 	"github.com/chuma-beep/mathua/internal/storage"
+	"github.com/chuma-beep/mathua/internal/timedquiz"
 	"github.com/chuma-beep/mathua/internal/xp"
 )
 
@@ -520,6 +521,12 @@ func (s *Server) Register(mux *http.ServeMux) {
 	mux.HandleFunc("/api/next", logRequest(cors(s.optionalAuthMiddleware(s.handleNext))))
 	mux.HandleFunc("/api/reviews/session", logRequest(cors(s.authMiddleware(s.writeLimiter.middleware(s.handleReviewsSession)))))
 	mux.HandleFunc("/api/reviews/answer", logRequest(cors(s.authMiddleware(s.writeLimiter.middleware(gradingTimeout(gradingDeadline, s.handleReviewsAnswer))))))
+	mux.HandleFunc("/api/timed-quiz", logRequest(cors(s.authMiddleware(s.handleTimedQuizSummary))))
+	mux.HandleFunc("/api/timed-quiz/session", logRequest(cors(s.authMiddleware(s.writeLimiter.middleware(s.handleTimedQuizSession)))))
+	mux.HandleFunc("/api/timed-quiz/answer", logRequest(cors(s.authMiddleware(s.writeLimiter.middleware(gradingTimeout(gradingDeadline, s.handleTimedQuizAnswer))))))
+	mux.HandleFunc("/api/timed-quiz/skip", logRequest(cors(s.authMiddleware(s.writeLimiter.middleware(s.handleTimedQuizSkip)))))
+	mux.HandleFunc("/api/timed-quiz/finalize", logRequest(cors(s.authMiddleware(s.writeLimiter.middleware(s.handleTimedQuizFinalize)))))
+	mux.HandleFunc("/api/timed-quiz/result", logRequest(cors(s.authMiddleware(s.handleTimedQuizResult))))
 	// The lesson routes stay publicly readable, Study is reference and is
 	// indexed, so auth is optional, but it must be *present*: the practice
 	// branch writes the server-side answer anchor, and it can only key that
@@ -3389,6 +3396,645 @@ func effectiveAnswerElapsed(client, server float64) float64 {
 		return server
 	}
 	return client
+}
+
+// timedQuizStore returns the durable timed-quiz surface. The repository is
+// always one of the two SQL stores in production, but keeping the assertion
+// local means a test double without timed-quiz methods cannot panic.
+func (s *Server) timedQuizStore() (storage.TimedQuizStore, bool) {
+	store, ok := s.repo.(storage.TimedQuizStore)
+	return store, ok
+}
+
+func (s *Server) timedQuizConceptName(cid string) string {
+	if c := s.eng.GetDAG().Concept(cid); c != nil {
+		return c.Label
+	}
+	return cid
+}
+
+func timedQuizRunSummary(run *storage.TimedQuizRun) map[string]interface{} {
+	if run == nil {
+		return nil
+	}
+	out := map[string]interface{}{
+		"run_id":           run.ID,
+		"status":           run.Status,
+		"started_at":       run.StartedAt.UnixMilli(),
+		"deadline_at":      run.DeadlineAt.UnixMilli(),
+		"question_count":   run.QuestionCount,
+		"correct_count":    run.CorrectCount,
+		"unanswered_count": run.UnansweredCount,
+		"xp_earned":        run.XPEarned,
+	}
+	if run.CompletedAt != nil {
+		out["completed_at"] = run.CompletedAt.UnixMilli()
+	}
+	return out
+}
+
+func (s *Server) timedQuizQuestion(item storage.TimedQuizItem) map[string]interface{} {
+	payload := map[string]interface{}{
+		"id":           item.ID,
+		"item_id":      item.ID,
+		"concept_id":   item.ConceptID,
+		"concept_name": s.timedQuizConceptName(item.ConceptID),
+		"position":     item.Position,
+		"question":     item.Question,
+		"grading_type": item.GradingType,
+		"served_at":    item.ServedAt.UnixMilli(),
+		"status":       item.Status,
+	}
+	return s.withAnswerFormat(payload, item.ConceptID)
+}
+
+func (s *Server) timedQuizSessionPayload(run *storage.TimedQuizRun, items []storage.TimedQuizItem) map[string]interface{} {
+	questions := make([]map[string]interface{}, 0, len(items))
+	for _, item := range items {
+		if item.Status == timedquiz.ItemServed {
+			questions = append(questions, s.timedQuizQuestion(item))
+		}
+	}
+	return map[string]interface{}{
+		"run_id":           run.ID,
+		"status":           run.Status,
+		"started_at":       run.StartedAt.UnixMilli(),
+		"deadline_at":      run.DeadlineAt.UnixMilli(),
+		"server_now":       time.Now().UTC().UnixMilli(),
+		"duration_seconds": int(timedquiz.Duration.Seconds()),
+		"questions_total":  run.QuestionCount,
+		"closed_book":      true,
+		"items":            questions,
+	}
+}
+
+func (s *Server) timedQuizResultPayload(run *storage.TimedQuizRun, items []storage.TimedQuizItem) map[string]interface{} {
+	rows := make([]map[string]interface{}, 0, len(items))
+	remediation := make([]map[string]interface{}, 0)
+	seenRemediation := make(map[string]bool)
+	scorePercent := 0
+	if run.QuestionCount > 0 {
+		scorePercent = int(math.Round(float64(run.CorrectCount) * 100 / float64(run.QuestionCount)))
+	}
+	for _, item := range items {
+		row := map[string]interface{}{
+			"item_id":         item.ID,
+			"concept_id":      item.ConceptID,
+			"concept_name":    s.timedQuizConceptName(item.ConceptID),
+			"position":        item.Position,
+			"question":        item.Question,
+			"expected_answer": item.ExpectedAnswer,
+			"answer":          item.Answer,
+			"correct":         item.Correct,
+			"status":          item.Status,
+			"explanation":     item.Explanation,
+			"xp_earned":       item.XPEarned,
+			"elapsed_seconds": item.ElapsedSeconds,
+		}
+		rows = append(rows, row)
+		if item.Status == timedquiz.ItemAnswered && !item.Correct && !seenRemediation[item.ConceptID] {
+			seenRemediation[item.ConceptID] = true
+			remediation = append(remediation, map[string]interface{}{
+				"concept_id":   item.ConceptID,
+				"concept_name": s.timedQuizConceptName(item.ConceptID),
+				"href":         "/learn?concept=" + url.QueryEscape(item.ConceptID),
+			})
+		}
+	}
+	out := timedQuizRunSummary(run)
+	out["score_percent"] = scorePercent
+	out["items"] = rows
+	out["remediation"] = remediation
+	return out
+}
+
+func (s *Server) writeTimedQuizResult(w http.ResponseWriter, run *storage.TimedQuizRun, items []storage.TimedQuizItem) {
+	writeJSON(w, s.timedQuizResultPayload(run, items))
+}
+
+func timedQuizAllDone(items []storage.TimedQuizItem) bool {
+	for _, item := range items {
+		if item.Status == timedquiz.ItemServed {
+			return false
+		}
+	}
+	return len(items) > 0
+}
+
+// GET /api/timed-quiz returns the gate, any active run and the latest result.
+func (s *Server) handleTimedQuizSummary(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, `{"error":"method not allowed"}`, http.StatusMethodNotAllowed)
+		return
+	}
+	studentID, _ := r.Context().Value(authStudentKey{}).(string)
+	if studentID == "" {
+		writeError(w, "authentication required", http.StatusUnauthorized)
+		return
+	}
+	store, ok := s.timedQuizStore()
+	if !ok {
+		writeError(w, "timed quiz storage is not available", http.StatusInternalServerError)
+		return
+	}
+	eligible, err := s.eng.TimedQuizEligibleXP(studentID)
+	if err != nil {
+		writeError(w, "failed to check timed quiz eligibility", http.StatusInternalServerError)
+		return
+	}
+	active, err := store.GetActiveTimedQuizRun(studentID)
+	if err != nil {
+		writeError(w, "failed to load timed quiz", http.StatusInternalServerError)
+		return
+	}
+	latest, err := store.LatestTimedQuizRun(studentID)
+	if err != nil {
+		writeError(w, "failed to load timed quiz result", http.StatusInternalServerError)
+		return
+	}
+	out := map[string]interface{}{
+		"eligible_xp": eligible,
+		"gate_xp":     timedquiz.GateXP,
+		"due":         eligible >= timedquiz.GateXP,
+		"server_now":  time.Now().UTC().UnixMilli(),
+	}
+	if active != nil {
+		out["active"] = timedQuizRunSummary(active)
+	}
+	if latest != nil {
+		out["latest"] = timedQuizRunSummary(latest)
+	}
+	writeJSON(w, out)
+}
+
+// POST /api/timed-quiz/session starts or resumes a durable timed run. An
+// expired active run is finalized and its result is returned instead of a
+// fresh question set; the completed run consumes the gate.
+func (s *Server) handleTimedQuizSession(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, `{"error":"method not allowed"}`, http.StatusMethodNotAllowed)
+		return
+	}
+	studentID, _ := r.Context().Value(authStudentKey{}).(string)
+	if studentID == "" {
+		writeError(w, "authentication required", http.StatusUnauthorized)
+		return
+	}
+	store, ok := s.timedQuizStore()
+	if !ok {
+		writeError(w, "timed quiz storage is not available", http.StatusInternalServerError)
+		return
+	}
+	run, items, err := s.eng.StartTimedQuiz(studentID)
+	if err != nil {
+		switch {
+		case errors.Is(err, timedquiz.ErrNotDue):
+			writeError(w, "timed quiz is not due yet", http.StatusConflict)
+		case errors.Is(err, timedquiz.ErrNoCandidates):
+			writeError(w, "no studied concepts are available for a timed quiz", http.StatusUnprocessableEntity)
+		default:
+			log.Printf("handleTimedQuizSession: %v", err)
+			writeError(w, "failed to start timed quiz", http.StatusInternalServerError)
+		}
+		return
+	}
+	if run.Status == timedquiz.StatusActive && time.Now().UTC().After(run.DeadlineAt) {
+		finalized, ferr := store.FinalizeTimedQuizRun(run.ID, studentID, time.Now().UTC())
+		if ferr != nil {
+			writeError(w, "failed to finalize timed quiz", http.StatusInternalServerError)
+			return
+		}
+		items, _ = store.GetTimedQuizItems(finalized.ID)
+		writeJSON(w, map[string]interface{}{"expired": true, "result": s.timedQuizResultPayload(finalized, items)})
+		return
+	}
+	writeJSON(w, s.timedQuizSessionPayload(run, items))
+}
+
+// POST /api/timed-quiz/answer grades one item. submission_id is the durable
+// idempotency key: a retry with the same key replays the stored item result and
+// cannot award XP twice. A late answer is refused and the run is finalized.
+func (s *Server) handleTimedQuizAnswer(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, `{"error":"method not allowed"}`, http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		RunID        string  `json:"run_id"`
+		ItemID       string  `json:"item_id"`
+		Answer       string  `json:"answer"`
+		Elapsed      float64 `json:"elapsed"`
+		SubmissionID string  `json:"submission_id"`
+		DontKnow     bool    `json:"dont_know"`
+	}
+	if err := decodeJSON(w, r, &req); err != nil {
+		writeError(w, "invalid request", http.StatusBadRequest)
+		return
+	}
+	if req.RunID == "" || req.ItemID == "" || req.SubmissionID == "" {
+		writeError(w, "run_id, item_id and submission_id required", http.StatusBadRequest)
+		return
+	}
+	if len(req.Answer) > 4096 {
+		writeError(w, "answer too long", http.StatusBadRequest)
+		return
+	}
+	studentID, _ := r.Context().Value(authStudentKey{}).(string)
+	if studentID == "" {
+		writeError(w, "authentication required", http.StatusUnauthorized)
+		return
+	}
+	store, ok := s.timedQuizStore()
+	if !ok {
+		writeError(w, "timed quiz storage is not available", http.StatusInternalServerError)
+		return
+	}
+	run, err := store.GetTimedQuizRun(req.RunID, studentID)
+	if err != nil {
+		writeError(w, "failed to load timed quiz", http.StatusInternalServerError)
+		return
+	}
+	if run == nil {
+		writeError(w, "timed quiz not found", http.StatusNotFound)
+		return
+	}
+	items, err := store.GetTimedQuizItems(run.ID)
+	if err != nil {
+		writeError(w, "failed to load timed quiz items", http.StatusInternalServerError)
+		return
+	}
+	var item *storage.TimedQuizItem
+	for i := range items {
+		if items[i].ID == req.ItemID {
+			item = &items[i]
+			break
+		}
+	}
+	if item == nil {
+		writeError(w, "timed quiz item not found", http.StatusNotFound)
+		return
+	}
+	// A retry of an accepted submission returns the same item result, even
+	// after the run completed or its deadline passed. A submission that is
+	// still being written is allowed through to finish its own claim.
+	if item.SubmissionID == req.SubmissionID && (item.Status == timedquiz.ItemAnswered || item.Status == timedquiz.ItemSkipped) {
+		writeJSON(w, map[string]interface{}{
+			"run_id":       run.ID,
+			"item_id":      item.ID,
+			"concept_id":   item.ConceptID,
+			"concept_name": s.timedQuizConceptName(item.ConceptID),
+			"correct":      item.Correct,
+			"feedback":     timedQuizFeedback(item.Correct),
+			"explanation":  item.Explanation,
+			"xp":           item.XPEarned,
+			"completed":    run.Status == timedquiz.StatusCompleted,
+		})
+		return
+	}
+	if run.Status == timedquiz.StatusCompleted {
+		writeError(w, "timed quiz is already complete", http.StatusConflict)
+		return
+	}
+	if item.Status != timedquiz.ItemServed && !(item.Status == timedquiz.ItemSubmitting && item.SubmissionID == req.SubmissionID) {
+		writeError(w, "timed quiz item has already been submitted", http.StatusConflict)
+		return
+	}
+	if time.Now().UTC().After(run.DeadlineAt) {
+		finalized, ferr := store.FinalizeTimedQuizRun(run.ID, studentID, time.Now().UTC())
+		if ferr != nil {
+			writeError(w, "failed to finalize timed quiz", http.StatusInternalServerError)
+			return
+		}
+		items, _ = store.GetTimedQuizItems(finalized.ID)
+		writeJSON(w, map[string]interface{}{"expired": true, "result": s.timedQuizResultPayload(finalized, items)})
+		return
+	}
+	claimed, err := store.ClaimTimedQuizItem(item.ID, run.ID, req.SubmissionID)
+	if err != nil {
+		writeError(w, "failed to claim timed quiz item", http.StatusInternalServerError)
+		return
+	}
+	if !claimed {
+		if item.Status == timedquiz.ItemSubmitting && item.SubmissionID == req.SubmissionID {
+			// This request already owns the claim; it is resuming after a
+			// lost response or a crash between the claim and the item write.
+			claimed = true
+		} else {
+			// Another submission won the claim. Never grade or award XP here:
+			// only the request that owns the durable claim may write the attempt.
+			fresh, _ := store.GetTimedQuizItems(run.ID)
+			for i := range fresh {
+				if fresh[i].ID == item.ID && fresh[i].SubmissionID == req.SubmissionID {
+					item = &fresh[i]
+					claimed = true
+					break
+				}
+			}
+		}
+	}
+	if !claimed {
+		writeError(w, "timed quiz item has already been submitted", http.StatusConflict)
+		return
+	}
+	elapsed := effectiveAnswerElapsed(req.Elapsed, time.Since(item.ServedAt).Seconds())
+	if elapsed < MinAnswerSeconds && !req.DontKnow {
+		writeError(w, "answer submitted too quickly", http.StatusBadRequest)
+		return
+	}
+	var res *engine.AnswerResult
+	if req.DontKnow {
+		res, err = s.eng.SubmitTimedQuizDontKnow(studentID, item.ConceptID, item.ExpectedAnswer, elapsed, item.Question, item.Difficulty, req.SubmissionID)
+	} else {
+		res, err = s.eng.SubmitTimedQuizAnswer(studentID, item.ConceptID, req.Answer, item.ExpectedAnswer, elapsed, item.Question, item.Difficulty, req.SubmissionID)
+	}
+	if err != nil {
+		log.Printf("handleTimedQuizAnswer: submit: %v", err)
+		writeError(w, "failed to grade timed quiz answer", http.StatusInternalServerError)
+		return
+	}
+	if res.Ungraded {
+		// No attempt or XP was written. Release the claim so the learner can
+		// retry the same question instead of leaving it stuck as submitting.
+		_, _ = store.UpdateTimedQuizItem(item.ID, run.ID, "", req.SubmissionID, false, 0, 0, timedquiz.ItemServed)
+		writeJSON(w, map[string]interface{}{"run_id": run.ID, "item_id": item.ID, "ungraded": true, "feedback": res.Feedback})
+		return
+	}
+	// On a replayed submission the engine returns the stored response JSON
+	// rather than a populated AnswerResult. Decode it so the item write and the
+	// response use the original verdict, not zero values.
+	if res.ResponseJSON != "" {
+		var stored struct {
+			Correct     bool   `json:"correct"`
+			Feedback    string `json:"feedback"`
+			Explanation string `json:"explanation"`
+			NewStatus   string `json:"new_status"`
+			XP          int    `json:"xp"`
+		}
+		if err := json.Unmarshal([]byte(res.ResponseJSON), &stored); err != nil {
+			writeError(w, "failed to read stored timed quiz answer", http.StatusInternalServerError)
+			return
+		}
+		res.Correct = stored.Correct
+		res.Feedback = stored.Feedback
+		res.Explanation = stored.Explanation
+		res.NewStatus = mastery.Status(stored.NewStatus)
+		res.XP = stored.XP
+	}
+	updated, err := store.UpdateTimedQuizItem(item.ID, run.ID, req.Answer, req.SubmissionID, res.Correct, elapsed, res.XP, timedquiz.ItemAnswered)
+	if err != nil {
+		writeError(w, "failed to save timed quiz answer", http.StatusInternalServerError)
+		return
+	}
+	if !updated {
+		// Another request won the item. If it used the same key, the result is
+		// already durable; otherwise this request must not pretend it wrote.
+		fresh, _ := store.GetTimedQuizItems(run.ID)
+		for i := range fresh {
+			if fresh[i].ID == item.ID && fresh[i].SubmissionID == req.SubmissionID {
+				writeJSON(w, map[string]interface{}{"run_id": run.ID, "item_id": item.ID, "concept_id": item.ConceptID, "concept_name": s.timedQuizConceptName(item.ConceptID), "correct": fresh[i].Correct, "feedback": timedQuizFeedback(fresh[i].Correct), "explanation": fresh[i].Explanation, "xp": fresh[i].XPEarned, "completed": run.Status == timedquiz.StatusCompleted})
+				return
+			}
+		}
+		writeError(w, "timed quiz item has already been submitted", http.StatusConflict)
+		return
+	}
+	items, _ = store.GetTimedQuizItems(run.ID)
+	out := map[string]interface{}{
+		"run_id":       run.ID,
+		"item_id":      item.ID,
+		"concept_id":   item.ConceptID,
+		"concept_name": s.timedQuizConceptName(item.ConceptID),
+		"correct":      res.Correct,
+		"feedback":     res.Feedback,
+		"explanation":  res.Explanation,
+		"xp":           res.XP,
+		"new_status":   res.NewStatus,
+	}
+	if timedQuizAllDone(items) {
+		finalized, ferr := store.FinalizeTimedQuizRun(run.ID, studentID, time.Now().UTC())
+		if ferr != nil {
+			writeError(w, "failed to finalize timed quiz", http.StatusInternalServerError)
+			return
+		}
+		items, _ = store.GetTimedQuizItems(finalized.ID)
+		out["completed"] = true
+		out["result"] = s.timedQuizResultPayload(finalized, items)
+	}
+	writeJSON(w, out)
+}
+
+// POST /api/timed-quiz/skip marks one item unanswered without grading it. A
+// skipped item counts as unanswered in the result, earns no XP and creates no
+// attempt or review event.
+func (s *Server) handleTimedQuizSkip(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, `{"error":"method not allowed"}`, http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		RunID  string `json:"run_id"`
+		ItemID string `json:"item_id"`
+	}
+	if err := decodeJSON(w, r, &req); err != nil {
+		writeError(w, "invalid request", http.StatusBadRequest)
+		return
+	}
+	if req.RunID == "" || req.ItemID == "" {
+		writeError(w, "run_id and item_id required", http.StatusBadRequest)
+		return
+	}
+	studentID, _ := r.Context().Value(authStudentKey{}).(string)
+	if studentID == "" {
+		writeError(w, "authentication required", http.StatusUnauthorized)
+		return
+	}
+	store, ok := s.timedQuizStore()
+	if !ok {
+		writeError(w, "timed quiz storage is not available", http.StatusInternalServerError)
+		return
+	}
+	run, err := store.GetTimedQuizRun(req.RunID, studentID)
+	if err != nil || run == nil {
+		writeError(w, "timed quiz not found", http.StatusNotFound)
+		return
+	}
+	items, err := store.GetTimedQuizItems(run.ID)
+	if err != nil {
+		writeError(w, "failed to load timed quiz items", http.StatusInternalServerError)
+		return
+	}
+	var item *storage.TimedQuizItem
+	for i := range items {
+		if items[i].ID == req.ItemID {
+			item = &items[i]
+			break
+		}
+	}
+	if item == nil {
+		writeError(w, "timed quiz item not found", http.StatusNotFound)
+		return
+	}
+	if run.Status == timedquiz.StatusCompleted {
+		writeError(w, "timed quiz is already complete", http.StatusConflict)
+		return
+	}
+	if item.Status == timedquiz.ItemSkipped {
+		writeJSON(w, map[string]interface{}{"run_id": run.ID, "item_id": item.ID, "skipped": true, "completed": false})
+		return
+	}
+	skipID := "skip:" + item.ID
+	if item.Status != timedquiz.ItemServed && !(item.Status == timedquiz.ItemSubmitting && item.SubmissionID == skipID) {
+		writeError(w, "timed quiz item has already been answered", http.StatusConflict)
+		return
+	}
+	if time.Now().UTC().After(run.DeadlineAt) {
+		finalized, ferr := store.FinalizeTimedQuizRun(run.ID, studentID, time.Now().UTC())
+		if ferr != nil {
+			writeError(w, "failed to finalize timed quiz", http.StatusInternalServerError)
+			return
+		}
+		items, _ = store.GetTimedQuizItems(finalized.ID)
+		writeJSON(w, map[string]interface{}{"expired": true, "result": s.timedQuizResultPayload(finalized, items)})
+		return
+	}
+	claimed, err := store.ClaimTimedQuizItem(item.ID, run.ID, skipID)
+	if err != nil {
+		writeError(w, "failed to claim timed quiz item", http.StatusInternalServerError)
+		return
+	}
+	if !claimed {
+		fresh, _ := store.GetTimedQuizItems(run.ID)
+		for i := range fresh {
+			if fresh[i].ID == item.ID && fresh[i].SubmissionID == skipID {
+				claimed = true
+				item = &fresh[i]
+				break
+			}
+		}
+	}
+	if !claimed {
+		writeError(w, "timed quiz item has already been submitted", http.StatusConflict)
+		return
+	}
+	if _, err := store.UpdateTimedQuizItem(item.ID, run.ID, "", skipID, false, 0, 0, timedquiz.ItemSkipped); err != nil {
+		writeError(w, "failed to skip timed quiz item", http.StatusInternalServerError)
+		return
+	}
+	items, _ = store.GetTimedQuizItems(run.ID)
+	out := map[string]interface{}{"run_id": run.ID, "item_id": item.ID, "skipped": true, "xp": 0}
+	if timedQuizAllDone(items) {
+		finalized, ferr := store.FinalizeTimedQuizRun(run.ID, studentID, time.Now().UTC())
+		if ferr != nil {
+			writeError(w, "failed to finalize timed quiz", http.StatusInternalServerError)
+			return
+		}
+		items, _ = store.GetTimedQuizItems(finalized.ID)
+		out["completed"] = true
+		out["result"] = s.timedQuizResultPayload(finalized, items)
+	}
+	writeJSON(w, out)
+}
+
+// POST /api/timed-quiz/finalize closes a run exactly once. Repeated calls
+// return the persisted result, including after a restart.
+func (s *Server) handleTimedQuizFinalize(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, `{"error":"method not allowed"}`, http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		RunID string `json:"run_id"`
+	}
+	if err := decodeJSON(w, r, &req); err != nil {
+		writeError(w, "invalid request", http.StatusBadRequest)
+		return
+	}
+	if req.RunID == "" {
+		writeError(w, "run_id required", http.StatusBadRequest)
+		return
+	}
+	studentID, _ := r.Context().Value(authStudentKey{}).(string)
+	if studentID == "" {
+		writeError(w, "authentication required", http.StatusUnauthorized)
+		return
+	}
+	store, ok := s.timedQuizStore()
+	if !ok {
+		writeError(w, "timed quiz storage is not available", http.StatusInternalServerError)
+		return
+	}
+	run, err := store.GetTimedQuizRun(req.RunID, studentID)
+	if err != nil || run == nil {
+		writeError(w, "timed quiz not found", http.StatusNotFound)
+		return
+	}
+	if run.Status == timedquiz.StatusActive {
+		run, err = store.FinalizeTimedQuizRun(run.ID, studentID, time.Now().UTC())
+		if err != nil {
+			writeError(w, "failed to finalize timed quiz", http.StatusInternalServerError)
+			return
+		}
+	}
+	items, err := store.GetTimedQuizItems(run.ID)
+	if err != nil {
+		writeError(w, "failed to load timed quiz result", http.StatusInternalServerError)
+		return
+	}
+	s.writeTimedQuizResult(w, run, items)
+}
+
+// GET /api/timed-quiz/result?id=<run_id> returns a completed run. An active
+// run whose deadline has passed is finalized first, so a reload cannot leave a
+// learner staring at a countdown that will never end.
+func (s *Server) handleTimedQuizResult(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, `{"error":"method not allowed"}`, http.StatusMethodNotAllowed)
+		return
+	}
+	runID := r.URL.Query().Get("id")
+	if runID == "" {
+		writeError(w, "id required", http.StatusBadRequest)
+		return
+	}
+	studentID, _ := r.Context().Value(authStudentKey{}).(string)
+	if studentID == "" {
+		writeError(w, "authentication required", http.StatusUnauthorized)
+		return
+	}
+	store, ok := s.timedQuizStore()
+	if !ok {
+		writeError(w, "timed quiz storage is not available", http.StatusInternalServerError)
+		return
+	}
+	run, err := store.GetTimedQuizRun(runID, studentID)
+	if err != nil || run == nil {
+		writeError(w, "timed quiz not found", http.StatusNotFound)
+		return
+	}
+	if run.Status == timedquiz.StatusActive {
+		if !time.Now().UTC().After(run.DeadlineAt) {
+			writeError(w, "timed quiz is still in progress", http.StatusConflict)
+			return
+		}
+		run, err = store.FinalizeTimedQuizRun(run.ID, studentID, time.Now().UTC())
+		if err != nil {
+			writeError(w, "failed to finalize timed quiz", http.StatusInternalServerError)
+			return
+		}
+	}
+	items, err := store.GetTimedQuizItems(run.ID)
+	if err != nil {
+		writeError(w, "failed to load timed quiz result", http.StatusInternalServerError)
+		return
+	}
+	s.writeTimedQuizResult(w, run, items)
+}
+
+func timedQuizFeedback(correct bool) string {
+	if correct {
+		return "Correct"
+	}
+	return "Incorrect"
 }
 
 // POST /api/quiz/session, the routine mastery check, own grading path.

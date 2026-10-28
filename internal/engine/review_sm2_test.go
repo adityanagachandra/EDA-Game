@@ -48,6 +48,7 @@ func TestMasteredReviewAdvancesSM2AndInterval(t *testing.T) {
 		timeThreshold:  10.0,
 		elapsed:        4.0,
 		correct:        true,
+		review:         true,
 	})
 	if err != nil {
 		t.Fatalf("applyGradedAttempt: %v", err)

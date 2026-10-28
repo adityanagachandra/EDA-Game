@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { useTheme } from '../../hooks/useTheme'
 import { getUserInfo, ensureGuestId, ensureGuestToken, getGuestId, isLoggedIn, isStaffRole, type UserInfo } from '../../lib/auth'
 import { ensureDicebearAvatar, resolveAvatar } from '../../lib/dicebear'
-import { getActivity, getProgress, getWeaknesses, getDueReviews, getEfficacy, getScores, getSettings, getMe } from '../../lib/api'
-import type { DailyActivity, Scores, WeaknessRes, ConceptProgress, EfficacyReport } from '../../lib/api'
+import { getActivity, getProgress, getWeaknesses, getDueReviews, getEfficacy, getScores, getSettings, getMe, getTimedQuiz } from '../../lib/api'
+import type { DailyActivity, Scores, WeaknessRes, ConceptProgress, EfficacyReport, TimedQuizSummaryRes } from '../../lib/api'
 import ProfileHeader from '../../components/ProfileHeader'
 import ActivityHeatmap from '../../components/ActivityHeatmap'
 import StrugglesSection from '../../components/StrugglesSection'
@@ -82,6 +82,7 @@ export default function ProfilePage() {
   const [weaknesses, setWeaknesses] = useState<WeaknessRes | null>(null)
   const [efficacy, setEfficacy] = useState<EfficacyReport | null>(null)
   const [dueReviews, setDueReviews] = useState(0)
+  const [timedQuiz, setTimedQuiz] = useState<TimedQuizSummaryRes | null>(null)
   const [shelf, setShelf] = useState<Shelf | null>(null)
   const [shelfFailed, setShelfFailed] = useState(false)
   // Placement is the server's record, not local storage's. `isLoggedIn` accounts
@@ -192,6 +193,9 @@ export default function ProfilePage() {
           setWeaknesses(weaknessesRes)
           getDueReviews().then(r => {
             if (alive) setDueReviews(r.count)
+          }).catch(() => {})
+          getTimedQuiz().then(t => {
+            if (alive) setTimedQuiz(t)
           }).catch(() => {})
           getEfficacy().then(e => {
             if (alive) setEfficacy(e)
@@ -466,6 +470,28 @@ export default function ProfilePage() {
             </div>
             <Link href="/goals?quiz=1" className="w-full sm:w-auto sm:shrink-0 border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint px-6 py-2 font-mono text-xs min-h-[36px] inline-flex items-center justify-center text-center whitespace-nowrap">
               {scores.quiz_active ? 'Resume mastery check →' : 'Start mastery check →'}
+            </Link>
+          </div>
+        )}
+
+        {timedQuiz && (timedQuiz.due || timedQuiz.active || timedQuiz.latest) && (
+          <div className="mt-6 w-full min-w-0 overflow-hidden border border-mathua-border p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <div className="w-full sm:flex-1 min-w-0">
+              <div className="flex flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:gap-2 flex-wrap">
+                <span className="shrink-0 border border-mathua-blue text-mathua-blue px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider">
+                  {timedQuiz.active ? 'Timed quiz in progress' : timedQuiz.due ? 'Timed quiz due' : 'Timed quiz'}
+                </span>
+                <span className="break-words font-mono text-[11px] sm:text-xs text-mathua-primary">
+                  {timedQuiz.active
+                    ? 'Resume your server-timed run'
+                    : timedQuiz.due
+                      ? `${timedQuiz.eligible_xp}/${timedQuiz.gate_xp} eligible XP earned`
+                      : `Last result: ${timedQuiz.latest?.correct_count}/${timedQuiz.latest?.question_count}`}
+                </span>
+              </div>
+            </div>
+            <Link href="/timed-quiz" className="w-full sm:w-auto sm:shrink-0 border border-mathua-blue text-mathua-blue hover:bg-mathua-blue-faint px-6 py-2 font-mono text-xs min-h-[36px] inline-flex items-center justify-center text-center whitespace-nowrap">
+              {timedQuiz.active ? 'Resume timed quiz →' : timedQuiz.due ? 'Start timed quiz →' : 'View result →'}
             </Link>
           </div>
         )}

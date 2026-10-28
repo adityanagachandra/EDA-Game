@@ -1607,6 +1607,163 @@ export async function skipQuizQuestion(sessionId: string): Promise<QuizAnswerRes
 	return res.json()
 }
 
+// Timed quiz. This is a separate assessment from the mastery check: its gate
+// counts positive XP earned after the durable rollout baseline, and the run is
+// server-timed.
+export interface TimedQuizRunSummary {
+	run_id: string
+	status: string
+	started_at: number
+	deadline_at: number
+	completed_at?: number
+	question_count: number
+	correct_count: number
+	unanswered_count: number
+	xp_earned: number
+}
+
+export interface TimedQuizSummaryRes {
+	eligible_xp: number
+	gate_xp: number
+	due: boolean
+	server_now: number
+	active?: TimedQuizRunSummary
+	latest?: TimedQuizRunSummary
+}
+
+export interface TimedQuizQuestion {
+	id: string
+	item_id: string
+	concept_id: string
+	concept_name: string
+	position: number
+	question: string
+	grading_type?: string
+	answer_hint?: string
+	answer_input_mode?: 'numeric' | 'text'
+	served_at: number
+	status: string
+}
+
+export interface TimedQuizSessionRes {
+	run_id: string
+	status: string
+	started_at: number
+	deadline_at: number
+	server_now: number
+	duration_seconds: number
+	questions_total: number
+	closed_book: boolean
+	items: TimedQuizQuestion[]
+}
+
+export interface TimedQuizResultItem {
+	item_id: string
+	concept_id: string
+	concept_name: string
+	position: number
+	question: string
+	expected_answer: string
+	answer: string
+	correct: boolean
+	status: string
+	explanation: string
+	xp_earned: number
+	elapsed_seconds: number
+}
+
+export interface TimedQuizRemediation {
+	concept_id: string
+	concept_name: string
+	href: string
+}
+
+export interface TimedQuizResultRes extends TimedQuizRunSummary {
+	score_percent: number
+	items: TimedQuizResultItem[]
+	remediation: TimedQuizRemediation[]
+}
+
+export interface TimedQuizAnswerRes {
+	run_id: string
+	item_id: string
+	concept_id?: string
+	concept_name?: string
+	correct?: boolean
+	feedback?: string
+	explanation?: string
+	xp?: number
+	new_status?: string
+	completed?: boolean
+	result?: TimedQuizResultRes
+	expired?: boolean
+	skipped?: boolean
+	ungraded?: boolean
+}
+
+export async function getTimedQuiz(): Promise<TimedQuizSummaryRes> {
+	const headers = { ...getAuthHeaders() } satisfies Record<string, string>
+	const res = await authedFetch(`${API_BASE}/api/timed-quiz`, { headers })
+	if (!res.ok) await throwWithResponse(res, `Timed quiz summary failed: ${res.status}`)
+	return res.json()
+}
+
+export async function startTimedQuizSession(): Promise<TimedQuizSessionRes | { expired: true; result: TimedQuizResultRes }> {
+	const headers = { 'Content-Type': 'application/json', ...getAuthHeaders() } satisfies Record<string, string>
+	const res = await authedFetch(`${API_BASE}/api/timed-quiz/session`, { method: 'POST', headers })
+	if (!res.ok) await throwWithResponse(res, `Timed quiz session start failed: ${res.status}`)
+	return res.json()
+}
+
+export async function submitTimedQuizAnswer(
+	runId: string,
+	itemId: string,
+	answer: string,
+	elapsed: number,
+	submissionId: string,
+	dontKnow = false,
+): Promise<TimedQuizAnswerRes> {
+	const headers = { 'Content-Type': 'application/json', ...getAuthHeaders() } satisfies Record<string, string>
+	const res = await authedFetch(`${API_BASE}/api/timed-quiz/answer`, {
+		method: 'POST',
+		retryAttempts: 1,
+		timeoutMs: 25000,
+		headers,
+		body: JSON.stringify({ run_id: runId, item_id: itemId, answer, elapsed, submission_id: submissionId, dont_know: dontKnow }),
+	})
+	if (!res.ok) await throwWithResponse(res, `Timed quiz answer failed: ${res.status}`)
+	return res.json()
+}
+
+export async function skipTimedQuizItem(runId: string, itemId: string): Promise<TimedQuizAnswerRes> {
+	const headers = { 'Content-Type': 'application/json', ...getAuthHeaders() } satisfies Record<string, string>
+	const res = await authedFetch(`${API_BASE}/api/timed-quiz/skip`, {
+		method: 'POST',
+		headers,
+		body: JSON.stringify({ run_id: runId, item_id: itemId }),
+	})
+	if (!res.ok) await throwWithResponse(res, `Timed quiz skip failed: ${res.status}`)
+	return res.json()
+}
+
+export async function finalizeTimedQuiz(runId: string): Promise<TimedQuizResultRes> {
+	const headers = { 'Content-Type': 'application/json', ...getAuthHeaders() } satisfies Record<string, string>
+	const res = await authedFetch(`${API_BASE}/api/timed-quiz/finalize`, {
+		method: 'POST',
+		headers,
+		body: JSON.stringify({ run_id: runId }),
+	})
+	if (!res.ok) await throwWithResponse(res, `Timed quiz finalize failed: ${res.status}`)
+	return res.json()
+}
+
+export async function getTimedQuizResult(runId: string): Promise<TimedQuizResultRes> {
+	const headers = { ...getAuthHeaders() } satisfies Record<string, string>
+	const res = await authedFetch(`${API_BASE}/api/timed-quiz/result?id=${encodeURIComponent(runId)}`, { headers })
+	if (!res.ok) await throwWithResponse(res, `Timed quiz result failed: ${res.status}`)
+	return res.json()
+}
+
 export async function validateToken(): Promise<{ valid: boolean; student_id: string }> {
 	const headers = getAuthHeaders()
 	if (!headers.Authorization) return { valid: false, student_id: '' }
