@@ -69,6 +69,52 @@ func TestAdminUserDetailCarriesActivityAndReports(t *testing.T) {
 	}
 }
 
+func TestAdminUserDetailCarriesAvatar(t *testing.T) {
+	e := newAdminEnv(t)
+
+	var body struct {
+		Avatar struct {
+			AvatarURL      string             `json:"avatar_url"`
+			AvatarDicebear *storage.AvatarRef `json:"avatar_dicebear"`
+			AvatarPreset   *int               `json:"avatar_preset"`
+		} `json:"avatar"`
+	}
+	fetch := func() {
+		t.Helper()
+		rec := e.do(t, "GET", "/api/admin/users/"+e.studentID, e.adminTok, "")
+		if rec.Code != 200 {
+			t.Fatalf("detail: %d %s", rec.Code, rec.Body.String())
+		}
+		if err := json.Unmarshal(rec.Body.Bytes(), &body); err != nil {
+			t.Fatalf("decode: %v", err)
+		}
+	}
+
+	if err := e.store.UpdateSettings(e.studentID,
+		`{"avatar_dicebear":{"style":"notionists","seed":"ada-seed"}}`); err != nil {
+		t.Fatalf("set dicebear avatar: %v", err)
+	}
+	fetch()
+	if body.Avatar.AvatarDicebear == nil ||
+		body.Avatar.AvatarDicebear.Style != "notionists" ||
+		body.Avatar.AvatarDicebear.Seed != "ada-seed" {
+		t.Errorf("dicebear = %+v, want notionists/ada-seed", body.Avatar.AvatarDicebear)
+	}
+
+	if err := e.store.UpdateSettings(e.studentID,
+		`{"avatar_custom":true,"avatar_version":7,"avatar_preset":3}`); err != nil {
+		t.Fatalf("set custom avatar: %v", err)
+	}
+	fetch()
+	want := "/api/avatar/" + e.studentID + "?v=7"
+	if body.Avatar.AvatarURL != want {
+		t.Errorf("avatar_url = %q, want %q", body.Avatar.AvatarURL, want)
+	}
+	if body.Avatar.AvatarPreset == nil || *body.Avatar.AvatarPreset != 3 {
+		t.Errorf("preset = %v, want 3", body.Avatar.AvatarPreset)
+	}
+}
+
 // Counts, not content. The page must not carry an answer the learner typed, because a moderator
 // has no business reading it to settle a report about a generator.
 func TestAdminUserDetailOmitsLearnerAnswers(t *testing.T) {

@@ -671,6 +671,16 @@ func (s *Server) adminUserActivity(id string) (adminUserActivity, error) {
 	return out, nil
 }
 
+// adminAccountAvatar is the account-detail view of the same avatar fields the
+// league roster carries. It is separate from storage.AdminUser because that
+// projection is also written into audit snapshots, and a role change has no
+// reason to record a picture.
+type adminAccountAvatar struct {
+	AvatarURL      string             `json:"avatar_url,omitempty"`
+	AvatarDicebear *storage.AvatarRef `json:"avatar_dicebear,omitempty"`
+	AvatarPreset   *int               `json:"avatar_preset,omitempty"`
+}
+
 // adminUserDetail backs GET /api/admin/users/{id}. It returns the non-sensitive projection, the
 // account's role history from the audit trail, the counts-only activity summary and the reports
 // that account filed. The reporter's own reports are included because the question an
@@ -685,6 +695,17 @@ func (s *Server) adminUserDetail(w http.ResponseWriter, r *http.Request, id stri
 	if user == nil {
 		writeError(w, "user not found", 404)
 		return
+	}
+	student, err := s.repo.GetStudent(id)
+	if err != nil {
+		log.Printf("admin user avatar %s: %v", id, err)
+		writeError(w, "failed to read account avatar", 500)
+		return
+	}
+	avatar := adminAccountAvatar{}
+	if student != nil {
+		avatar.AvatarURL, avatar.AvatarDicebear, avatar.AvatarPreset =
+			adminAvatar(student.ID, student.AvatarURL, student.Settings)
 	}
 	history, err := s.repo.ListAdminAuditFor("user", id, 50)
 	if err != nil {
@@ -703,7 +724,7 @@ func (s *Server) adminUserDetail(w http.ResponseWriter, r *http.Request, id stri
 		return
 	}
 	writeJSON(w, map[string]interface{}{
-		"user": user, "history": history, "activity": activity, "reports": reports,
+		"user": user, "avatar": avatar, "history": history, "activity": activity, "reports": reports,
 	})
 }
 
@@ -736,21 +757,20 @@ type adminLeague struct {
 	Members  []adminLeagueRow `json:"members,omitempty"`
 }
 
-// adminLeagueAvatar resolves the pieces the roster needs to draw one picture.
-// A custom upload is served by the public by-id route, because the admin page
-// must not render its own avatar; a Google photo is already a complete URL.
-// The path is built outside the roster loop so the linter does not see string
-// concatenation inside a loop.
-func adminLeagueAvatar(row storage.LeagueRow) (avatarURL string, pick *storage.AvatarRef, preset *int) {
-	custom, dicebear, version := storage.AvatarBits(row.Settings)
-	avatarURL = row.AvatarURL
-	if custom && row.StudentID != "" {
-		avatarURL = "/api/avatar/" + url.PathEscape(row.StudentID)
+// adminAvatar resolves the pieces an administrator's page needs to draw one
+// picture. A custom upload is served by the public by-id route, because the
+// admin page must not render its own avatar; a Google photo is already a
+// complete URL. The same precedence applies to every admin surface that shows
+// an account.
+func adminAvatar(studentID, avatarURL, settings string) (string, *storage.AvatarRef, *int) {
+	custom, dicebear, version := storage.AvatarBits(settings)
+	if custom && studentID != "" {
+		avatarURL = "/api/avatar/" + url.PathEscape(studentID)
 		if version > 0 {
 			avatarURL += "?v=" + strconv.Itoa(version)
 		}
 	}
-	return avatarURL, dicebear, storage.AvatarPreset(row.Settings)
+	return avatarURL, dicebear, storage.AvatarPreset(settings)
 }
 
 // GET /api/admin/leagues?week=YYYY-MM-DD&tier=bronze&league=3
@@ -837,7 +857,7 @@ func (s *Server) handleAdminLeagues(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			for _, row := range rows {
-				avatarURL, pick, preset := adminLeagueAvatar(row)
+				avatarURL, pick, preset := adminAvatar(row.StudentID, row.AvatarURL, row.Settings)
 				entry.Members = append(entry.Members, adminLeagueRow{
 					Rank:           row.Rank,
 					Name:           row.Name,
