@@ -5,7 +5,7 @@ import Link from 'next/link'
 import AppShell from '@/components/app-shell'
 import Footer from '@/components/Footer'
 import KatexContent from '@/components/KatexContent'
-import { clearMyReports, listMyReports, markMyReportsRead, type QuestionReport } from '@/lib/api'
+import { clearMyReports, listAnnouncements, listMyReports, markAnnouncementsRead, markMyReportsRead, type Announcement, type QuestionReport } from '@/lib/api'
 import { useAuthState } from '@/hooks/useAuthState'
 
 function statusLabel(status: string): string {
@@ -50,7 +50,9 @@ function fmtDate(value?: string): string {
 export default function MyReportsPage() {
   const { loggedIn, user } = useAuthState()
   const [reports, setReports] = useState<QuestionReport[]>([])
+  const [announcements, setAnnouncements] = useState<Announcement[]>([])
   const [unread, setUnread] = useState(0)
+  const [announcementUnread, setAnnouncementUnread] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [confirmClear, setConfirmClear] = useState(false)
@@ -73,6 +75,20 @@ export default function MyReportsPage() {
         } catch {
           // Keep the unread marker and the list.
         }
+      }
+
+      // Announcements are a separate feed. A failure there must not hide the
+      // report history that already loaded.
+      try {
+        const feed = await listAnnouncements()
+        setAnnouncements(feed.announcements)
+        setAnnouncementUnread(feed.unread)
+        if (feed.unread > 0) {
+          await markAnnouncementsRead()
+          window.dispatchEvent(new Event('announcements-changed'))
+        }
+      } catch {
+        // Keep the report list usable.
       }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Your reports could not be loaded.')
@@ -110,7 +126,7 @@ export default function MyReportsPage() {
           <div>
             <h1 className="font-mono text-xl text-mathua-primary">Notifications</h1>
             <p className="mt-1 text-sm text-mathua-secondary">
-              Updates on the problems you reported and what moderation decided.
+              Product updates and the verdicts on the problems you reported.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -165,6 +181,13 @@ export default function MyReportsPage() {
           </p>
         )}
 
+        {announcementUnread > 0 && (
+          <p className="mt-6 border border-[var(--accent-blue)]/40 bg-mathua-surface px-4 py-3 font-mono text-[11px] text-mathua-secondary">
+            {announcementUnread === 1 ? '1 new announcement.' : `${announcementUnread} new announcements.`} The
+            unread marker clears after this page opens.
+          </p>
+        )}
+
         {!loggedIn && (
           <p className="mt-8 border border-mathua-border bg-mathua-surface p-4 text-sm text-mathua-secondary">
             <Link href="/login" className="text-mathua-blue underline underline-offset-2">
@@ -180,6 +203,27 @@ export default function MyReportsPage() {
           <p className="mt-8 border border-[var(--accent-red)]/40 bg-mathua-surface p-4 font-mono text-xs text-mathua-secondary">
             {error}
           </p>
+        )}
+
+        {loggedIn && !loading && !error && announcements.length > 0 && (
+          <section className="mt-8" aria-labelledby="announcements-heading">
+            <h2 id="announcements-heading" className="font-mono text-sm uppercase tracking-wider text-mathua-muted">
+              Announcements
+            </h2>
+            <ul className="mt-3 space-y-3">
+              {announcements.map((announcement) => (
+                <li key={announcement.id} className="border border-mathua-border bg-mathua-surface p-4">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="font-mono text-xs text-mathua-primary">{announcement.title}</h3>
+                    <span className="font-mono text-[10px] text-mathua-muted">
+                      {fmtDate(announcement.published_at || announcement.created_at)}
+                    </span>
+                  </div>
+                  <KatexContent className="mt-3 text-sm text-mathua-secondary">{announcement.body}</KatexContent>
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
 
         {loggedIn && !loading && !error && reports.length === 0 && (

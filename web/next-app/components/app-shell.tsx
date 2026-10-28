@@ -7,7 +7,7 @@ import BottomTabs from './BottomTabs'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from './ui/sidebar'
 import { useAuthState } from '../hooks/useAuthState'
 import { isStaffRole } from '../lib/auth'
-import { getDueReviews, getSettings, listMyReports } from '../lib/api'
+import { getDueReviews, getSettings, listAnnouncements, listMyReports } from '../lib/api'
 import { resolveAvatar } from '../lib/dicebear'
 
 type AppShellProps = {
@@ -84,20 +84,29 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
       return
     }
     let live = true
-    const load = () => {
-      listMyReports()
-        .then((data) => {
-          if (live) setNotificationUnread(data.unread)
-        })
-        .catch(() => {
-          // A failed count must not take the shell down.
-        })
+    const load = async () => {
+      const [reports, announcements] = await Promise.allSettled([listMyReports(), listAnnouncements()])
+      if (!live) return
+      let total = 0
+      let loaded = false
+      if (reports.status === 'fulfilled') {
+        total += reports.value.unread
+        loaded = true
+      }
+      if (announcements.status === 'fulfilled') {
+        total += announcements.value.unread
+        loaded = true
+      }
+      // A failed count must not take the shell down.
+      if (loaded) setNotificationUnread(total)
     }
-    load()
+    void load()
     window.addEventListener('report-updates-changed', load)
+    window.addEventListener('announcements-changed', load)
     return () => {
       live = false
       window.removeEventListener('report-updates-changed', load)
+      window.removeEventListener('announcements-changed', load)
     }
   }, [loggedIn])
 
