@@ -467,6 +467,33 @@ type ReviewEventStore interface {
 	RecordReviewEvent(event ReviewEvent) error
 }
 
+// ReviewSubmissionCommit is one spaced-review answer. The review event, the
+// graded attempt, the progress transition and the XP award are committed
+// together so an FSRS change can never exist without its audit row.
+type ReviewSubmissionCommit struct {
+	StudentID    string
+	SubmissionID string
+	Event        ReviewEvent
+	Attempt      AttemptEntry
+	Progress     *ConceptProgress
+	TopicSpeed   *TopicSpeed
+	XPAmount     int
+	XPReason     string
+}
+
+// ReviewSubmissionOutcome reports the attempt created by a review commit, or
+// that an event with the same idempotency key already exists.
+type ReviewSubmissionOutcome struct {
+	AttemptID int64
+	Replayed  bool
+}
+
+// ReviewSubmissionStore is the atomic review-answer writer. It is separate
+// from Repository so existing test doubles do not need the method.
+type ReviewSubmissionStore interface {
+	CommitReviewSubmission(ReviewSubmissionCommit) (ReviewSubmissionOutcome, error)
+}
+
 // MaxRemedialQueue caps the per-student remedial queue.
 const MaxRemedialQueue = 10
 

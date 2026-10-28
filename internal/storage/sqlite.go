@@ -1494,6 +1494,10 @@ func (s *SQLiteStore) CommitStudySubmission(c StudySubmissionCommit) (StudySubmi
 	return commitStudySubmissionTx(s.db, rebindQuestion, insertAttemptSQLiteTx, c)
 }
 
+func (s *SQLiteStore) CommitReviewSubmission(c ReviewSubmissionCommit) (ReviewSubmissionOutcome, error) {
+	return commitReviewSubmissionTx(s.db, rebindQuestion, insertAttemptSQLiteTx, c)
+}
+
 func (s *SQLiteStore) GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error) {
 	return getStudySubmission(s.db, rebindQuestion, studentID, operation, submissionID)
 }

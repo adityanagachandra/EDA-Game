@@ -1882,6 +1882,10 @@ func (s *PostgresStore) CommitStudySubmission(c StudySubmissionCommit) (StudySub
 	return commitStudySubmissionTx(s.db, rebindDollars, insertAttemptPostgresTx, c)
 }
 
+func (s *PostgresStore) CommitReviewSubmission(c ReviewSubmissionCommit) (ReviewSubmissionOutcome, error) {
+	return commitReviewSubmissionTx(s.db, rebindDollars, insertAttemptPostgresTx, c)
+}
+
 func (s *PostgresStore) GetStudySubmission(studentID, operation, submissionID string) (*StudySubmission, error) {
 	return getStudySubmission(s.db, rebindDollars, studentID, operation, submissionID)
 }

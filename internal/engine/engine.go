@@ -1448,7 +1448,7 @@ func (e *Engine) SubmitAnswer(sessionID, studentID, attemptID, answer string, el
 		}
 	}
 
-	newStatus, evidence, err := e.applyGradedAttempt(progress, gradedAttempt{
+	ga := gradedAttempt{
 		attemptID:      attemptID,
 		studentID:      studentID,
 		conceptID:      sessionFields.conceptID,
@@ -1460,54 +1460,14 @@ func (e *Engine) SubmitAnswer(sessionID, studentID, attemptID, answer string, el
 		difficulty:     difficultyOrNil(sessionFields.questionDifficulty),
 		kpOrdinal:      sessionFields.kpOrdinal,
 		review:         sessionFields.isReview,
-	})
+	}
+	// Review answers commit the progress transition, the attempt, the review
+	// event and XP in one transaction. Computing the transition here leaves the
+	// repository untouched until that transaction, so a failed commit cannot
+	// strand a valid FSRS update without its audit row.
+	newStatus, evidence, topicSpeed, kpUpdate, err := e.computeGradedAttempt(progress, ga)
 	if err != nil {
 		return nil, fmt.Errorf("save progress: %w", err)
-	}
-
-	// Record attempt. Its id is the XP ledger's event key: one answer, one
-	// award, and a replayed award for that id is refused by the unique index.
-	xpAttemptID, err := e.repo.RecordAttempt(storage.AttemptEntry{
-		SessionID:      sessionID,
-		StudentID:      studentID,
-		ConceptID:      sessionFields.conceptID,
-		Answer:         answer,
-		Expected:       sessionFields.expectedAnswer,
-		Correct:        gr.Correct,
-		ElapsedSeconds: elapsedSeconds,
-		Timestamp:      nowUTC(),
-		Question:       sessionFields.questionText,
-		Source:         sourceForTask(sessionFields.isReview),
-		Explanation:    sessionFields.explanation,
-		Difficulty:     difficultyOrNil(sessionFields.questionDifficulty),
-	})
-	if err != nil {
-		return nil, fmt.Errorf("record attempt: %w", err)
-	}
-
-	// A review event is the durable record of the FSRS transition. The unique
-	// attempt key makes a replayed submission a no-op. A failure here must not
-	// discard a graded answer, so it is logged rather than returned.
-	if sessionFields.isReview {
-		if store, ok := e.repo.(storage.ReviewEventStore); ok {
-			after := reviewBefore
-			after.ReviewedAt = nowUTC()
-			if progress.FSRSStability != nil {
-				v := *progress.FSRSStability
-				after.StabilityAfter = &v
-			}
-			if progress.FSRSDifficulty != nil {
-				v := *progress.FSRSDifficulty
-				after.DifficultyAfter = &v
-			}
-			if progress.NextReviewDue != nil {
-				v := *progress.NextReviewDue
-				after.DueAfter = &v
-			}
-			if err := store.RecordReviewEvent(after); err != nil {
-				log.Printf("warning: record review event %s: %v", after.AttemptID, err)
-			}
-		}
 	}
 
 	// The active session already holds the explanation the generator produced
@@ -1614,9 +1574,105 @@ func (e *Engine) SubmitAnswer(sessionID, studentID, attemptID, answer string, el
 		// a penalty; before this, a slow miss between two fast ones still cost XP.
 		as.rushCount = 0
 	}
-	if xp != 0 {
-		if err := e.repo.AwardXP(studentID, xp, "study", fmt.Sprintf("attempt:%d", xpAttemptID)); err != nil {
-			log.Printf("warning: failed to add XP for student %s: %v", studentID, err)
+
+	attemptEntry := storage.AttemptEntry{
+		SessionID:      sessionID,
+		StudentID:      studentID,
+		ConceptID:      sessionFields.conceptID,
+		Answer:         answer,
+		Expected:       sessionFields.expectedAnswer,
+		Correct:        gr.Correct,
+		ElapsedSeconds: elapsedSeconds,
+		Timestamp:      nowUTC(),
+		Question:       sessionFields.questionText,
+		Source:         sourceForTask(sessionFields.isReview),
+		Explanation:    sessionFields.explanation,
+		Difficulty:     difficultyOrNil(sessionFields.questionDifficulty),
+	}
+
+	if sessionFields.isReview {
+		if store, ok := e.repo.(storage.ReviewSubmissionStore); ok {
+			after := reviewBefore
+			after.ReviewedAt = nowUTC()
+			if progress.FSRSStability != nil {
+				v := *progress.FSRSStability
+				after.StabilityAfter = &v
+			}
+			if progress.FSRSDifficulty != nil {
+				v := *progress.FSRSDifficulty
+				after.DifficultyAfter = &v
+			}
+			if progress.NextReviewDue != nil {
+				v := *progress.NextReviewDue
+				after.DueAfter = &v
+			}
+			outcome, err := store.CommitReviewSubmission(storage.ReviewSubmissionCommit{
+				StudentID:    studentID,
+				SubmissionID: after.AttemptID,
+				Event:        after,
+				Attempt:      attemptEntry,
+				Progress:     progress,
+				TopicSpeed:   topicSpeed,
+				XPAmount:     xp,
+				XPReason:     "study",
+			})
+			if err != nil {
+				return nil, fmt.Errorf("commit review: %w", err)
+			}
+			if outcome.Replayed {
+				log.Printf("warning: review submission %s replayed without a second write", after.AttemptID)
+			} else {
+				e.publishKPState(kpUpdate)
+				e.PropagateWeakness(studentID)
+				e.allocateImplicitCredit(ga)
+			}
+		} else {
+			// Test doubles that do not implement the atomic store keep the old
+			// separate-write path. Production stores always implement it.
+			if err := e.writeGradedProgress(progress, topicSpeed, kpUpdate, ga); err != nil {
+				return nil, fmt.Errorf("save progress: %w", err)
+			}
+			xpAttemptID, err := e.repo.RecordAttempt(attemptEntry)
+			if err != nil {
+				return nil, fmt.Errorf("record attempt: %w", err)
+			}
+			if eventStore, ok := e.repo.(storage.ReviewEventStore); ok {
+				after := reviewBefore
+				after.ReviewedAt = nowUTC()
+				if progress.FSRSStability != nil {
+					v := *progress.FSRSStability
+					after.StabilityAfter = &v
+				}
+				if progress.FSRSDifficulty != nil {
+					v := *progress.FSRSDifficulty
+					after.DifficultyAfter = &v
+				}
+				if progress.NextReviewDue != nil {
+					v := *progress.NextReviewDue
+					after.DueAfter = &v
+				}
+				if err := eventStore.RecordReviewEvent(after); err != nil {
+					log.Printf("warning: record review event %s: %v", after.AttemptID, err)
+				}
+			}
+			if xp != 0 {
+				if err := e.repo.AwardXP(studentID, xp, "study", fmt.Sprintf("attempt:%d", xpAttemptID)); err != nil {
+					log.Printf("warning: failed to add XP for student %s: %v", studentID, err)
+				}
+			}
+		}
+	} else {
+		if err := e.writeGradedProgress(progress, topicSpeed, kpUpdate, ga); err != nil {
+			return nil, fmt.Errorf("save progress: %w", err)
+		}
+		xpAttemptID, err := e.repo.RecordAttempt(attemptEntry)
+		if err != nil {
+			return nil, fmt.Errorf("record attempt: %w", err)
+		}
+		if xp != 0 {
+			if err := e.repo.AwardXP(studentID, xp, "study", fmt.Sprintf("attempt:%d", xpAttemptID)); err != nil {
+				log.Printf("warning: failed to add XP for student %s: %v", studentID, err)
+			}
 		}
 	}
 
@@ -3998,18 +4054,29 @@ func (e *Engine) applyGradedAttempt(progress *storage.ConceptProgress, o gradedA
 	if err != nil {
 		return status, evidence, err
 	}
+	if err := e.writeGradedProgress(progress, topicSpeed, kpUpdate, o); err != nil {
+		return status, evidence, err
+	}
+	return status, evidence, nil
+}
+
+// writeGradedProgress persists the in-memory progress transition and its
+// derived topic speed, then publishes the same post-commit side effects the
+// study and review paths use. It does not record the attempt or XP; those are
+// owned by the caller so the review path can commit them together.
+func (e *Engine) writeGradedProgress(progress *storage.ConceptProgress, topicSpeed *storage.TopicSpeed, kpUpdate *kpStateUpdate, o gradedAttempt) error {
 	if topicSpeed != nil {
 		if err := e.repo.UpsertTopicSpeed(topicSpeed); err != nil {
 			log.Printf("warning: upsert topic speed %s/%s: %v", o.studentID, o.conceptID, err)
 		}
 	}
 	if err := e.repo.UpsertProgress(progress); err != nil {
-		return status, evidence, err
+		return err
 	}
 	e.publishKPState(kpUpdate)
 	e.PropagateWeakness(o.studentID)
 	e.allocateImplicitCredit(o)
-	return status, evidence, nil
+	return nil
 }
 
 // allocateImplicitCredit is best-effort and stays outside the atomic study
