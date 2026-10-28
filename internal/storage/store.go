@@ -379,6 +379,94 @@ type QuizCompletion struct {
 	XPTotal     int    `json:"xp_total"`
 }
 
+// TimedQuizBaseline is the XP floor from which a learner's timed-quiz gate is
+// measured. Existing learners are seeded at rollout, so historical XP never
+// creates an immediate timed quiz. A new account starts at zero.
+type TimedQuizBaseline struct {
+	StudentID  string
+	BaselineXP int
+	BaselineAt time.Time
+}
+
+// TimedQuizRun is one durable timed quiz. The server owns the deadline and the
+// question set; a client can resume it after a reload or a server restart.
+type TimedQuizRun struct {
+	ID              string
+	StudentID       string
+	StartedAt       time.Time
+	DeadlineAt      time.Time
+	CompletedAt     *time.Time
+	Status          string
+	QuestionCount   int
+	CorrectCount    int
+	UnansweredCount int
+	XPEarned        int
+	CreatedAt       time.Time
+}
+
+// TimedQuizItem is one served question. ExpectedAnswer is deliberately stored
+// server-side and is never sent with the question.
+type TimedQuizItem struct {
+	ID             string
+	RunID          string
+	ConceptID      string
+	Position       int
+	Question       string
+	ExpectedAnswer string
+	Explanation    string
+	GradingType    string
+	Difficulty     *float64
+	ServedAt       time.Time
+	AnsweredAt     *time.Time
+	ElapsedSeconds float64
+	Answer         string
+	Correct        bool
+	Status         string
+	SubmissionID   string
+	XPEarned       int
+}
+
+// ReviewEvent is the durable record of one spaced-review attempt and the FSRS
+// transition it caused. AttemptID is unique, so a replayed submission cannot
+// create a second event or a second scheduler update.
+type ReviewEvent struct {
+	StudentID        string
+	ConceptID        string
+	AttemptID        string
+	Rating           int
+	Correct          bool
+	ElapsedSeconds   float64
+	ReviewedAt       time.Time
+	StabilityBefore  *float64
+	DifficultyBefore *float64
+	DueBefore        *time.Time
+	StabilityAfter   *float64
+	DifficultyAfter  *float64
+	DueAfter         *time.Time
+}
+
+// TimedQuizStore is the durable timed-quiz and review-event surface. It is
+// separate from Repository so existing test doubles do not need every method.
+type TimedQuizStore interface {
+	EnsureTimedQuizBaseline(studentID string) (TimedQuizBaseline, error)
+	GetTimedQuizBaseline(studentID string) (*TimedQuizBaseline, error)
+	TimedQuizEligibleXP(studentID string, since time.Time) (int, error)
+	CreateTimedQuizRun(run TimedQuizRun, items []TimedQuizItem) error
+	GetActiveTimedQuizRun(studentID string) (*TimedQuizRun, error)
+	GetTimedQuizRun(id, studentID string) (*TimedQuizRun, error)
+	LatestTimedQuizRun(studentID string) (*TimedQuizRun, error)
+	GetTimedQuizItems(runID string) ([]TimedQuizItem, error)
+	ClaimTimedQuizItem(itemID, runID, submissionID string) (bool, error)
+	UpdateTimedQuizItem(itemID, runID, answer, submissionID string, correct bool, elapsed float64, xp int, status string) (bool, error)
+	FinalizeTimedQuizRun(runID, studentID string, now time.Time) (*TimedQuizRun, error)
+	RecordReviewEvent(event ReviewEvent) error
+}
+
+// ReviewEventStore is the narrow review-event writer used by the engine.
+type ReviewEventStore interface {
+	RecordReviewEvent(event ReviewEvent) error
+}
+
 // MaxRemedialQueue caps the per-student remedial queue.
 const MaxRemedialQueue = 10
 

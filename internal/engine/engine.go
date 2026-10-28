@@ -29,6 +29,7 @@ import (
 	"github.com/chuma-beep/mathua/internal/scheduler"
 	"github.com/chuma-beep/mathua/internal/scoring"
 	"github.com/chuma-beep/mathua/internal/storage"
+	"github.com/chuma-beep/mathua/internal/timedquiz"
 	xppolicy "github.com/chuma-beep/mathua/internal/xp"
 )
 
@@ -1423,6 +1424,30 @@ func (e *Engine) SubmitAnswer(sessionID, studentID, attemptID, answer string, el
 		}
 	}
 
+	reviewBefore := storage.ReviewEvent{
+		StudentID:      studentID,
+		ConceptID:      sessionFields.conceptID,
+		AttemptID:      sessionID + ":" + attemptID,
+		Rating:         int(fsrs.NativeRating(gr.Correct)),
+		Correct:        gr.Correct,
+		ElapsedSeconds: elapsedSeconds,
+		ReviewedAt:     nowUTC(),
+	}
+	if sessionFields.isReview {
+		if progress.FSRSStability != nil {
+			v := *progress.FSRSStability
+			reviewBefore.StabilityBefore = &v
+		}
+		if progress.FSRSDifficulty != nil {
+			v := *progress.FSRSDifficulty
+			reviewBefore.DifficultyBefore = &v
+		}
+		if progress.NextReviewDue != nil {
+			v := *progress.NextReviewDue
+			reviewBefore.DueBefore = &v
+		}
+	}
+
 	newStatus, evidence, err := e.applyGradedAttempt(progress, gradedAttempt{
 		attemptID:      attemptID,
 		studentID:      studentID,
@@ -1434,6 +1459,7 @@ func (e *Engine) SubmitAnswer(sessionID, studentID, attemptID, answer string, el
 		questionText:   sessionFields.questionText,
 		difficulty:     difficultyOrNil(sessionFields.questionDifficulty),
 		kpOrdinal:      sessionFields.kpOrdinal,
+		review:         sessionFields.isReview,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("save progress: %w", err)
@@ -1457,6 +1483,31 @@ func (e *Engine) SubmitAnswer(sessionID, studentID, attemptID, answer string, el
 	})
 	if err != nil {
 		return nil, fmt.Errorf("record attempt: %w", err)
+	}
+
+	// A review event is the durable record of the FSRS transition. The unique
+	// attempt key makes a replayed submission a no-op. A failure here must not
+	// discard a graded answer, so it is logged rather than returned.
+	if sessionFields.isReview {
+		if store, ok := e.repo.(storage.ReviewEventStore); ok {
+			after := reviewBefore
+			after.ReviewedAt = nowUTC()
+			if progress.FSRSStability != nil {
+				v := *progress.FSRSStability
+				after.StabilityAfter = &v
+			}
+			if progress.FSRSDifficulty != nil {
+				v := *progress.FSRSDifficulty
+				after.DifficultyAfter = &v
+			}
+			if progress.NextReviewDue != nil {
+				v := *progress.NextReviewDue
+				after.DueAfter = &v
+			}
+			if err := store.RecordReviewEvent(after); err != nil {
+				log.Printf("warning: record review event %s: %v", after.AttemptID, err)
+			}
+		}
 	}
 
 	// The active session already holds the explanation the generator produced
@@ -1726,7 +1777,7 @@ func (e *Engine) submitStudyAnswer(studentID, conceptID, answer string, elapsedS
 	if strings.HasSuffix(conceptID, ".word") {
 		taskType = TaskMultistep
 	}
-	return e.submitAnswerWithTask(studentID, conceptID, answer, "", elapsedSeconds, taskType, true, false, questionText, submissionID, nil)
+	return e.submitAnswerWithTask(studentID, conceptID, answer, "", elapsedSeconds, taskType, true, false, questionText, submissionID, "study", nil)
 }
 
 // SubmitQuizAnswer is the single-path quiz grader: TaskQuiz base XP (20),
@@ -1740,14 +1791,29 @@ func (e *Engine) submitStudyAnswer(studentID, conceptID, answer string, elapsedS
 // attempt with a difficulty nobody actually served and because the whole point of this
 // argument is that the quiz path produces the same evidence as the study path.
 func (e *Engine) SubmitQuizAnswer(studentID, conceptID, answer, expected string, elapsedSeconds float64, questionText string, difficulty *float64) (*AnswerResult, error) {
-	return e.submitAnswerWithTask(studentID, conceptID, answer, expected, elapsedSeconds, TaskQuiz, false, false, questionText, "", difficulty)
+	return e.submitAnswerWithTask(studentID, conceptID, answer, expected, elapsedSeconds, TaskQuiz, false, false, questionText, "", "", difficulty)
 }
 
 // SubmitQuizDontKnow records an admitted unknown ("I don't know" button) as
 // a quiz miss: weakness up, streak reset, remedial queued, but no XP and no
 // rushing penalty (an instant admit is honesty, not rushing).
 func (e *Engine) SubmitQuizDontKnow(studentID, conceptID, expected string, elapsedSeconds float64, questionText string, difficulty *float64) (*AnswerResult, error) {
-	return e.submitAnswerWithTask(studentID, conceptID, "", expected, elapsedSeconds, TaskQuiz, false, true, questionText, "", difficulty)
+	return e.submitAnswerWithTask(studentID, conceptID, "", expected, elapsedSeconds, TaskQuiz, false, true, questionText, "", "", difficulty)
+}
+
+// SubmitTimedQuizAnswer grades one answer in a durable timed run. It uses the
+// same mastery and XP path as a mastery check, but records the answer under the
+// timed_quiz submission namespace and never moves FSRS: only spaced review does
+// that. submissionID makes a retried request replay its stored result.
+func (e *Engine) SubmitTimedQuizAnswer(studentID, conceptID, answer, expected string, elapsedSeconds float64, questionText string, difficulty *float64, submissionID string) (*AnswerResult, error) {
+	return e.submitAnswerWithTask(studentID, conceptID, answer, expected, elapsedSeconds, TaskQuiz, false, false, questionText, submissionID, "timed_quiz", difficulty)
+}
+
+// SubmitTimedQuizDontKnow records an admitted unknown in a timed run. It is a
+// miss for mastery evidence and no XP is awarded, but it creates no review
+// event and does not reschedule the concept.
+func (e *Engine) SubmitTimedQuizDontKnow(studentID, conceptID, expected string, elapsedSeconds float64, questionText string, difficulty *float64, submissionID string) (*AnswerResult, error) {
+	return e.submitAnswerWithTask(studentID, conceptID, "", expected, elapsedSeconds, TaskQuiz, false, true, questionText, submissionID, "timed_quiz", difficulty)
 }
 
 // difficulty is the difficulty the question that produced this attempt was served at, or
@@ -1755,7 +1821,7 @@ func (e *Engine) SubmitQuizDontKnow(studentID, conceptID, expected string, elaps
 // passed by the caller from the served problem. It is never derived from the learner's
 // current weakness, because that is a different number: it is the difficulty a *future*
 // question would get, not the one the learner just answered.
-func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected string, elapsedSeconds float64, taskType string, useAnchor bool, dontKnow bool, questionText, submissionID string, difficulty *float64) (*AnswerResult, error) {
+func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected string, elapsedSeconds float64, taskType string, useAnchor bool, dontKnow bool, questionText, submissionID, operation string, difficulty *float64) (*AnswerResult, error) {
 	if e.dag.Concept(conceptID) == nil {
 		return nil, fmt.Errorf("%w: %q", ErrUnknownConcept, conceptID)
 	}
@@ -1838,6 +1904,9 @@ func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected str
 			SM2EFactor: 2.5,
 		}
 	}
+	if operation == "" {
+		operation = "study"
+	}
 	ga := gradedAttempt{
 		attemptID:      fmt.Sprintf("task:%s:%s:%d", studentID, conceptID, nowUTC().UnixNano()),
 		studentID:      studentID,
@@ -1848,6 +1917,8 @@ func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected str
 		correct:        gr.Correct,
 		questionText:   questionText,
 		difficulty:     difficulty,
+		review:         false,
+		operation:      operation,
 	}
 	var newStatus mastery.Status
 	var evidence mastery.Evidence
@@ -1987,6 +2058,20 @@ func (e *Engine) submitAnswerWithTask(studentID, conceptID, answer, expected str
 	}, nil
 }
 
+func operationOrDefault(operation string) string {
+	if operation == "" {
+		return "study"
+	}
+	return operation
+}
+
+func xpReasonForOperation(operation string) string {
+	if operation == "timed_quiz" {
+		return "timed_quiz"
+	}
+	return "answer"
+}
+
 func studySubmissionHash(studentID, conceptID, answer string, elapsed float64, question string) string {
 	h := sha256.New()
 	fmt.Fprintf(h, "%s\x00%s\x00%s\x00%.6f\x00%s", studentID, conceptID, answer, elapsed, question)
@@ -2070,14 +2155,14 @@ func (e *Engine) commitStudyAnswer(studentID, conceptID, submissionID, answer st
 	outcome, err := store.CommitStudySubmission(storage.StudySubmissionCommit{
 		StudentID:    studentID,
 		SubmissionID: submissionID,
-		Operation:    "study",
+		Operation:    operationOrDefault(ga.operation),
 		RequestHash:  studySubmissionHash(studentID, conceptID, answer, elapsed, questionText),
 		ResponseJSON: responseJSON,
 		Attempt:      attemptEntry,
 		Progress:     progress,
 		TopicSpeed:   topicSpeed,
 		XPAmount:     xp,
-		XPReason:     "answer",
+		XPReason:     xpReasonForOperation(ga.operation),
 		Effects:      e.studyEffectsFor(conceptID, ga.attemptID, gr.Correct, halted, remedial),
 	})
 	if err != nil {
@@ -2201,6 +2286,187 @@ func (e *Engine) QuizDue(studentID string) (bool, error) {
 		return false, err
 	}
 	return since >= QuizGateXP, nil
+}
+
+// TimedQuizEligibleXP returns the positive XP the learner has earned since
+// their durable timed-quiz baseline. Historical XP and later penalties do not
+// count: a learner reaches the 150 XP gate by earning, not by having a large
+// lifetime total.
+func (e *Engine) TimedQuizEligibleXP(studentID string) (int, error) {
+	if studentID == "" {
+		return 0, nil
+	}
+	store, ok := e.repo.(storage.TimedQuizStore)
+	if !ok {
+		return 0, fmt.Errorf("timed quiz storage is not available")
+	}
+	baseline, err := store.EnsureTimedQuizBaseline(studentID)
+	if err != nil {
+		return 0, fmt.Errorf("ensure timed quiz baseline: %w", err)
+	}
+	since := baseline.BaselineAt
+	// A completed timed quiz consumes the gate: only XP earned after that
+	// completion can make the next one due. The durable run row is the source
+	// of truth, so this survives a restart and cannot be reset by a client.
+	if latest, err := store.LatestTimedQuizRun(studentID); err != nil {
+		return 0, fmt.Errorf("load latest timed quiz: %w", err)
+	} else if latest != nil && latest.CompletedAt != nil && latest.CompletedAt.After(since) {
+		since = *latest.CompletedAt
+	}
+	eligible, err := store.TimedQuizEligibleXP(studentID, since)
+	if err != nil {
+		return 0, fmt.Errorf("count timed quiz XP: %w", err)
+	}
+	return eligible, nil
+}
+
+// TimedQuizDue reports whether the learner has earned enough XP since the
+// rollout baseline. It is deliberately separate from QuizDue and QuizGateXP,
+// which remain the 50 XP mastery-check rule.
+func (e *Engine) TimedQuizDue(studentID string) (bool, error) {
+	eligible, err := e.TimedQuizEligibleXP(studentID)
+	if err != nil {
+		return false, err
+	}
+	return eligible >= timedquiz.GateXP, nil
+}
+
+// StartTimedQuiz returns the learner's active run, or creates one when the
+// timed gate is due. The run and its questions are durable before the response
+// is sent, so a reload or server restart resumes the same deadline and items.
+func (e *Engine) StartTimedQuiz(studentID string) (*storage.TimedQuizRun, []storage.TimedQuizItem, error) {
+	if studentID == "" {
+		return nil, nil, timedquiz.ErrNotDue
+	}
+	store, ok := e.repo.(storage.TimedQuizStore)
+	if !ok {
+		return nil, nil, fmt.Errorf("timed quiz storage is not available")
+	}
+	if active, err := store.GetActiveTimedQuizRun(studentID); err != nil {
+		return nil, nil, fmt.Errorf("load active timed quiz: %w", err)
+	} else if active != nil {
+		items, err := store.GetTimedQuizItems(active.ID)
+		if err != nil {
+			return nil, nil, fmt.Errorf("load active timed quiz items: %w", err)
+		}
+		return active, items, nil
+	}
+
+	due, err := e.TimedQuizDue(studentID)
+	if err != nil {
+		return nil, nil, err
+	}
+	if !due {
+		return nil, nil, timedquiz.ErrNotDue
+	}
+
+	progress, err := e.repo.GetAllProgress(studentID)
+	if err != nil {
+		return nil, nil, fmt.Errorf("load timed quiz candidates: %w", err)
+	}
+	weak := e.timedQuizCandidateWeakness(studentID, progress)
+	if len(weak) == 0 {
+		return nil, nil, timedquiz.ErrNoCandidates
+	}
+	var recent map[string]bool
+	if len(weak) > timedquiz.QuizSize {
+		recent = e.recentQuizConcepts(studentID)
+	}
+	selected := quiz.PickQuizConceptsFromCandidates(e.dag, weak, recent)
+	if len(selected) == 0 {
+		return nil, nil, timedquiz.ErrNoCandidates
+	}
+
+	qEng := quiz.NewEngine(e.dag, e.registry)
+	sess := qEng.Start(selected)
+	for _, c := range sess.Order {
+		sess.Difficulties[c.ID] = e.DifficultyFor(studentID, c.ID)
+	}
+	now := nowUTC()
+	runID := fmt.Sprintf("tq:%s:%d", studentID, now.UnixNano())
+	items := make([]storage.TimedQuizItem, 0, len(sess.Order))
+	for i := range sess.Order {
+		// NextQuestion reads Order[Index] and deliberately does not advance it:
+		// the mastery-check flow advances only after an answer. A timed run has
+		// to build all five items up front, so it moves the cursor itself.
+		sess.Index = i
+		prob, cid, err := qEng.NextQuestion(sess)
+		if err != nil {
+			return nil, nil, fmt.Errorf("generate timed quiz question: %w", err)
+		}
+		if prob == nil {
+			break
+		}
+		gradingType := ""
+		if c := e.dag.Concept(cid); c != nil {
+			gradingType = c.GradingType
+		}
+		items = append(items, storage.TimedQuizItem{
+			ID:             fmt.Sprintf("%s:%d", runID, i),
+			RunID:          runID,
+			ConceptID:      cid,
+			Position:       i,
+			Question:       prob.Question,
+			ExpectedAnswer: prob.Answer,
+			Explanation:    prob.Explanation,
+			GradingType:    gradingType,
+			Difficulty:     prob.Difficulty,
+			ServedAt:       now,
+			Status:         timedquiz.ItemServed,
+		})
+	}
+	if len(items) == 0 {
+		return nil, nil, timedquiz.ErrNoCandidates
+	}
+	run := storage.TimedQuizRun{
+		ID:            runID,
+		StudentID:     studentID,
+		StartedAt:     now,
+		DeadlineAt:    now.Add(timedquiz.Duration),
+		Status:        timedquiz.StatusActive,
+		QuestionCount: len(items),
+		CreatedAt:     now,
+	}
+	if err := store.CreateTimedQuizRun(run, items); err != nil {
+		// The partial unique index is the cross-process guard against two
+		// concurrent starts. If another request won, resume its run.
+		if active, getErr := store.GetActiveTimedQuizRun(studentID); getErr == nil && active != nil {
+			activeItems, itemsErr := store.GetTimedQuizItems(active.ID)
+			if itemsErr == nil {
+				return active, activeItems, nil
+			}
+		}
+		return nil, nil, fmt.Errorf("create timed quiz run: %w", err)
+	}
+	return &run, items, nil
+}
+
+// timedQuizCandidateWeakness is the timed-run candidate rule. Unlike the
+// mastery check, a timed quiz samples previously learned material, including
+// MASTERED concepts, because fluency across acquired concepts is what it
+// measures. It still requires at least one graded attempt and satisfied
+// prerequisites, so an unassessed or locked concept cannot appear.
+func (e *Engine) timedQuizCandidateWeakness(studentID string, progress map[string]*storage.ConceptProgress) map[string]float64 {
+	if len(progress) == 0 {
+		return nil
+	}
+	snapshots := e.conceptSnapshotsFrom(studentID, progress)
+	now := time.Now()
+	out := make(map[string]float64, len(progress))
+	for _, c := range e.dag.Order() {
+		p := progress[c.ID]
+		if p == nil || p.Status == string(mastery.StatusUnseen) {
+			continue
+		}
+		if p.Attempts == 0 {
+			continue
+		}
+		if !scheduler.EligibilityOf(snapshots, now, c).Eligible {
+			continue
+		}
+		out[c.ID] = p.WeaknessScore
+	}
+	return out
 }
 
 // HasQuizCandidates reports whether the learner has at least one concept that
@@ -3446,6 +3712,13 @@ type gradedAttempt struct {
 	// bug that let the quiz path record unknown difficulty for every attempt.
 	difficulty *float64
 	kpOrdinal  int
+	// operation names the durable answer-submission namespace for idempotent
+	// writes: "study" for Learn, "timed_quiz" for a timed run.
+	operation string
+	// review is true only when this answer came from the spaced-review path.
+	// Practice, mastery checks and timed quizzes are mastery evidence, but
+	// they must not move the FSRS clock or create a review event.
+	review bool
 }
 
 // applyGradedAttempt is the single mastery authority.
@@ -3618,64 +3891,82 @@ func (e *Engine) computeGradedAttempt(progress *storage.ConceptProgress, o grade
 		LearningSpeed: newSpeed,
 	}
 
-	// FSRS-6 update: compute continuous stability and difficulty
-	fsrsParams := fsrs.DefaultParameters()
-	fsrsRating := fsrs.NativeRating(o.correct)
-	var prevStab, prevDiff float64
-	if progress.FSRSStability != nil && *progress.FSRSStability > 0 {
-		prevStab = *progress.FSRSStability
-	} else if progress.SM2Interval >= 1 {
-		due := nowUTC().AddDate(0, 0, progress.SM2Interval)
-		if progress.NextReviewDue != nil && !progress.NextReviewDue.IsZero() {
-			due = *progress.NextReviewDue
-		}
-		if s, err := fsrs.SeedFromInterval(progress.SM2Interval, due, nowUTC()); err == nil {
-			prevStab = s.Stability
+	initialMastery := newStatus == mastery.StatusMastered && mastery.Status(oldStatus) != mastery.StatusMastered && oldStatus != "DECAYING"
+
+	// FSRS is the spaced-review scheduler, not a per-answer activity meter.
+	// Practice, mastery checks and timed quizzes still produce mastery evidence
+	// above, but they must not move the review clock. Only a spaced-review
+	// answer advances FSRS; the one exception is the first transition to
+	// MASTERED, which initializes the review state so the concept can enter the
+	// queue at all.
+	if o.review || initialMastery {
+		fsrsParams := fsrs.DefaultParameters()
+		fsrsRating := fsrs.NativeRating(o.correct)
+		var prevStab, prevDiff float64
+		if progress.FSRSStability != nil && *progress.FSRSStability > 0 {
+			prevStab = *progress.FSRSStability
+		} else if progress.SM2Interval >= 1 {
+			due := nowUTC().AddDate(0, 0, progress.SM2Interval)
+			if progress.NextReviewDue != nil && !progress.NextReviewDue.IsZero() {
+				due = *progress.NextReviewDue
+			}
+			if s, err := fsrs.SeedFromInterval(progress.SM2Interval, due, nowUTC()); err == nil {
+				prevStab = s.Stability
+			} else {
+				prevStab = fsrsParams.InitialStability(fsrsRating)
+			}
 		} else {
 			prevStab = fsrsParams.InitialStability(fsrsRating)
 		}
-	} else {
-		prevStab = fsrsParams.InitialStability(fsrsRating)
-	}
 
-	if progress.FSRSDifficulty != nil && *progress.FSRSDifficulty > 0 {
-		prevDiff = *progress.FSRSDifficulty
-	} else {
-		prevDiff = fsrsParams.InitialDifficulty(fsrsRating)
-	}
+		if progress.FSRSDifficulty != nil && *progress.FSRSDifficulty > 0 {
+			prevDiff = *progress.FSRSDifficulty
+		} else {
+			prevDiff = fsrsParams.InitialDifficulty(fsrsRating)
+		}
 
-	var elapsedDays float64
-	if progress.FSRSLastReview != nil && !progress.FSRSLastReview.IsZero() {
-		elapsedDays = nowUTC().Sub(*progress.FSRSLastReview).Hours() / 24.0
-	} else if progress.LastReviewed != nil && !progress.LastReviewed.IsZero() {
-		elapsedDays = nowUTC().Sub(*progress.LastReviewed).Hours() / 24.0
-	}
-	if elapsedDays < 0 {
-		elapsedDays = 0
-	}
+		var elapsedDays float64
+		if progress.FSRSLastReview != nil && !progress.FSRSLastReview.IsZero() {
+			elapsedDays = nowUTC().Sub(*progress.FSRSLastReview).Hours() / 24.0
+		} else if progress.LastReviewed != nil && !progress.LastReviewed.IsZero() {
+			elapsedDays = nowUTC().Sub(*progress.LastReviewed).Hours() / 24.0
+		}
+		if elapsedDays < 0 {
+			elapsedDays = 0
+		}
 
-	var nextStab, nextDiff float64
-	if progress.FSRSStability == nil && progress.SM2Interval < 1 {
-		nextStab = fsrsParams.InitialStability(fsrsRating)
-		nextDiff = fsrsParams.InitialDifficulty(fsrsRating)
-	} else {
-		retrievability := fsrsParams.Retrievability(elapsedDays, prevStab)
-		nextStab = fsrsParams.NextStability(prevStab, prevDiff, retrievability, fsrsRating)
-		nextDiff = fsrsParams.NextDifficulty(prevDiff, fsrsRating)
+		var nextStab, nextDiff float64
+		if progress.FSRSStability == nil && progress.SM2Interval < 1 {
+			nextStab = fsrsParams.InitialStability(fsrsRating)
+			nextDiff = fsrsParams.InitialDifficulty(fsrsRating)
+		} else {
+			retrievability := fsrsParams.Retrievability(elapsedDays, prevStab)
+			nextStab = fsrsParams.NextStability(prevStab, prevDiff, retrievability, fsrsRating)
+			nextDiff = fsrsParams.NextDifficulty(prevDiff, fsrsRating)
+		}
+		progress.FSRSStability = &nextStab
+		progress.FSRSDifficulty = &nextDiff
+		reviewedAt := nowUTC()
+		progress.FSRSLastReview = &reviewedAt
+		progress.LastReviewed = &reviewedAt
+
+		if !o.correct {
+			// A lapse belongs in front of the learner now, not after a full
+			// interval. This is the only miss that moves the review date.
+			progress.NextReviewDue = &reviewedAt
+		} else {
+			fsrsInterval := fsrsParams.Interval(nextStab)
+			reviewInterval := nextSM2.Interval
+			if fsrsInterval > reviewInterval {
+				reviewInterval = fsrsInterval
+			}
+			if reviewInterval < 1 {
+				reviewInterval = 1
+			}
+			nextReview := reviewedAt.AddDate(0, 0, reviewInterval)
+			progress.NextReviewDue = &nextReview
+		}
 	}
-	progress.FSRSStability = &nextStab
-	progress.FSRSDifficulty = &nextDiff
-	// The review clock moves on every graded answer, not only on an advance.
-	//
-	// Stability is computed from the elapsed time since the previous review, so the clock
-	// has to be the previous review and it then has to move, or the next computation
-	// measures from the same stale instant again. Leaving it behind inflated stability on
-	// every repeat: the learner answered, the elapsed time did not grow, and the estimate
-	// grew anyway. A miss and a correct answer that does not yet advance a tier both move
-	// the clock here; only NextReviewDue is gated on the tier, below, because a review date
-	// that moved on every attempt would walk away from a learner who is still working.
-	reviewedAt := nowUTC()
-	progress.FSRSLastReview = &reviewedAt
 
 	if newStatus == mastery.StatusMastered && mastery.Status(oldStatus) != mastery.StatusMastered {
 		now := nowUTC()
@@ -3694,55 +3985,6 @@ func (e *Engine) computeGradedAttempt(progress *storage.ConceptProgress, o grade
 			progress.IsProvisional = false
 			progress.PlacementSeeded = false
 		}
-	}
-	// The decay clock starts when a tier is attained, not when a streak happens to reach
-	// the old threshold.
-	//
-	// It was gated on `streak >= required && avg time <= threshold`, which was a proxy for
-	// "a tier was just advanced" back when that was what advancement meant. It is not any
-	// more: the ladder advances on evidence, so a concept can reach MASTERED with a streak
-	// of 1. That left `LastReviewed` nil, and `GetProgress` treats a nil `LastReviewed` as
-	// fully decayed, so a concept could be MASTERED and simultaneously read as DECAYING,
-	// depending on which rule fired first. Seen in the engine tests as the ladder passing
-	// through DECAYING on its way up.
-	//
-	// A tier attainment or successful review of a mastered concept is exactly what the decay
-	// clock should measure from: the last time the learner demonstrated this concept.
-	isReviewSuccess := isReview && o.correct
-	if advanced || isReviewSuccess || (progress.Streak >= o.requiredStreak && progress.AvgResponseTime <= o.timeThreshold) {
-		now := nowUTC()
-		progress.LastReviewed = &now
-		progress.FSRSLastReview = &now
-		fsrsInterval := fsrsParams.Interval(nextStab)
-		reviewInterval := nextSM2.Interval
-		if fsrsInterval > reviewInterval {
-			reviewInterval = fsrsInterval
-		}
-		if reviewInterval < 1 {
-			reviewInterval = 1
-		}
-		nextReview := now.AddDate(0, 0, reviewInterval)
-		progress.NextReviewDue = &nextReview
-	}
-
-	// A miss is a lapse, and a lapse has to be scheduled as one.
-	//
-	// Stability collapses above, from hundreds of days to about a week for a concept the
-	// learner had mastered, but the block just above moves FSRSLastReview and
-	// NextReviewDue only when a tier advanced. So a missed review reset the stability while
-	// both the review timestamp and the due date kept the values from the last successful
-	// review: retrievability then computed from a stale clock, which read zero forever and
-	// made the concept permanently due, while the shelf displayed a date months away. The
-	// queue and the record disagreed, and the record was the one the learner saw.
-	//
-	// The due date is now, not now plus the FSRS interval, because a concept the learner has
-	// just failed belongs in front of them rather than in a week. Remediation still routes
-	// through the existing rules, two consecutive misses enqueue the concept and its key
-	// prerequisites, so this changes when the review is offered, not what a miss is worth.
-	if !o.correct {
-		missedAt := nowUTC()
-		progress.FSRSLastReview = &missedAt
-		progress.NextReviewDue = &missedAt
 	}
 
 	return newStatus, evidence, topicSpeed, kpUpdate, nil

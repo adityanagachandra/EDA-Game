@@ -213,6 +213,11 @@ func authMigrate(db *sql.DB) error {
 		5: {`UPDATE students SET role = 'owner' WHERE role = 'admin'`,
 			`UPDATE question_reports SET status = 'reviewing' WHERE status = 'confirmed'`,
 			`UPDATE question_reports SET status = 'resolved' WHERE status = 'fixed'`},
+		// v6 timed-quiz rollout baseline: historical XP must not make an
+		// existing learner immediately eligible. New accounts get a 0 baseline
+		// at creation.
+		6: {`INSERT OR IGNORE INTO timed_quiz_baselines (student_id, baseline_xp, baseline_at)
+			SELECT id, xp_total, CAST(strftime('%s','now') AS INTEGER) * 1000000000 FROM students`},
 	}
 	for v := 1; v <= len(dataMigrations); v++ {
 		if err := runOnceSQLite(db, v, dataMigrations[v]); err != nil {
@@ -316,6 +321,9 @@ func (s *SQLiteStore) CreateStudent(name string) (*Student, error) {
 	if err != nil {
 		return nil, fmt.Errorf("create student: %w", err)
 	}
+	if err := s.timedQuiz().ensureBaselineAt(id, now); err != nil {
+		return nil, err
+	}
 	return &Student{ID: id, Name: name, Settings: "{}", CreatedAt: now}, nil
 }
 
@@ -342,6 +350,9 @@ func (s *SQLiteStore) ClaimGuestStudent(id, name string) (*Student, error) {
 	if st == nil {
 		return nil, fmt.Errorf("claim guest student: row missing after upsert")
 	}
+	if err := s.timedQuiz().ensureBaselineAt(st.ID, st.CreatedAt); err != nil {
+		return nil, err
+	}
 	return st, nil
 }
 
@@ -354,6 +365,9 @@ func (s *SQLiteStore) CreateUser(name, username, passwordHash string) (*Student,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("create user: %w", err)
+	}
+	if err := s.timedQuiz().ensureBaselineAt(id, now); err != nil {
+		return nil, err
 	}
 	return &Student{ID: id, Name: name, Username: username, PasswordHash: passwordHash, Settings: "{}", CreatedAt: now}, nil
 }
@@ -376,7 +390,16 @@ func (s *SQLiteStore) AdoptGuestAsUser(id, name, username, passwordHash string) 
 	if n != 1 {
 		return nil, fmt.Errorf("adopt guest as user: guest row is not claimable")
 	}
-	return s.GetStudent(id)
+	st, err := s.GetStudent(id)
+	if err != nil {
+		return nil, err
+	}
+	if st != nil {
+		if err := s.timedQuiz().ensureBaselineAt(st.ID, st.CreatedAt); err != nil {
+			return nil, err
+		}
+	}
+	return st, nil
 }
 
 func scanStudent(row interface{ Scan(...interface{}) error }) (*Student, error) {
@@ -475,6 +498,9 @@ func (s *SQLiteStore) CreateGoogleUser(name, email, googleID, avatarURL string) 
 		if err := s.CreateIdentity("google", googleID, id, email, true); err != nil {
 			return nil, err
 		}
+	}
+	if err := s.timedQuiz().ensureBaselineAt(id, now); err != nil {
+		return nil, err
 	}
 	return &Student{ID: id, Name: name, Email: email, EmailVerified: true, GoogleID: googleID, AvatarURL: avatarURL, Settings: "{}", CreatedAt: now}, nil
 }
@@ -634,6 +660,9 @@ func (s *SQLiteStore) CreateOAuthUser(provider, providerID, name, email string, 
 		return nil, fmt.Errorf("create oauth user: %w", err)
 	}
 	if err := s.CreateIdentity(provider, providerID, id, email, emailVerified); err != nil {
+		return nil, err
+	}
+	if err := s.timedQuiz().ensureBaselineAt(id, now); err != nil {
 		return nil, err
 	}
 	return &Student{ID: id, Name: name, Email: email, EmailVerified: emailVerified, AvatarURL: avatarURL, Settings: "{}", CreatedAt: now}, nil
@@ -1353,6 +1382,10 @@ func (s *SQLiteStore) ResetProgress(studentID string) error {
 		{"DELETE FROM concept_progress WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM student_topic_speed WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM quiz_completions WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_items WHERE run_id IN (SELECT id FROM timed_quiz_runs WHERE student_id = ?)", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_runs WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_baselines WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM review_events WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM student_remedial_queue WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM server_sessions WHERE kind IN ('study_expected','study_plan') AND (key = ? OR key LIKE ? || '|%')", []interface{}{studentID, studentID}},
 		{`UPDATE students SET xp_total = 0, xp_today = 0, diagnostic_completed = 0, diagnostic_completed_at = '',
@@ -1401,6 +1434,10 @@ func (s *SQLiteStore) DeleteAccount(studentID string) error {
 		{"DELETE FROM concept_progress WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM student_topic_speed WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM quiz_completions WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_items WHERE run_id IN (SELECT id FROM timed_quiz_runs WHERE student_id = ?)", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_runs WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM timed_quiz_baselines WHERE student_id = ?", []interface{}{studentID}},
+		{"DELETE FROM review_events WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM student_remedial_queue WHERE student_id = ?", []interface{}{studentID}},
 		{"DELETE FROM server_sessions WHERE kind IN ('study_expected','study_plan','study_plan_prefs') AND (key = ? OR key LIKE ? || '|%')", []interface{}{studentID, studentID}},
 		{"DELETE FROM question_reports WHERE reporter_id = ?", []interface{}{studentID}},

@@ -2756,7 +2756,7 @@ func TestEngine_ProvisionalFallback_StudyAnchorPath(t *testing.T) {
 	}
 }
 
-func TestEngine_FSRS_LiveStateTransitions(t *testing.T) {
+func TestEngine_FSRS_StudyDoesNotMoveReviewState(t *testing.T) {
 	e := testEngine(t)
 	st, err := e.CreateStudent("fsrs-learner")
 	if err != nil {
@@ -2767,7 +2767,8 @@ func TestEngine_FSRS_LiveStateTransitions(t *testing.T) {
 		t.Fatalf("create session: %v", err)
 	}
 
-	// First question on concept a
+	// A practice answer is mastery evidence, not a spaced review. It must not
+	// create an FSRS schedule, even on a correct answer.
 	q1, err := e.NextQuestion(sess.ID, st.ID)
 	if err != nil {
 		t.Fatalf("next question: %v", err)
@@ -2779,52 +2780,31 @@ func TestEngine_FSRS_LiveStateTransitions(t *testing.T) {
 	if !ans1.Correct {
 		t.Fatalf("expected answer 1 correct")
 	}
-
 	p1, err := e.repo.GetProgress(st.ID, q1.ConceptID)
 	if err != nil {
 		t.Fatalf("get progress 1: %v", err)
 	}
-	if p1.FSRSStability == nil || *p1.FSRSStability <= 0 {
-		t.Fatalf("expected valid FSRSStability after first correct attempt, got %v", p1.FSRSStability)
+	if p1.FSRSStability != nil || p1.FSRSDifficulty != nil {
+		t.Fatalf("practice created an FSRS schedule: stability=%v difficulty=%v", p1.FSRSStability, p1.FSRSDifficulty)
 	}
-	if p1.FSRSDifficulty == nil || *p1.FSRSDifficulty <= 0 {
-		t.Fatalf("expected valid FSRSDifficulty after first correct attempt, got %v", p1.FSRSDifficulty)
-	}
-	stab1 := *p1.FSRSStability
-
-	// Second question on concept a
-	q2, err := e.NextQuestion(sess.ID, st.ID)
-	if err != nil {
-		t.Fatalf("next question 2: %v", err)
-	}
-	ans2, err := e.SubmitAnswer(sess.ID, st.ID, q2.AttemptID, "42", 2.5)
-	if err != nil {
-		t.Fatalf("submit answer 2: %v", err)
-	}
-	if !ans2.Correct {
-		t.Fatalf("expected answer 2 correct")
+	if p1.NextReviewDue != nil {
+		t.Fatalf("practice created a review due date: %v", p1.NextReviewDue)
 	}
 
-	p2, err := e.repo.GetProgress(st.ID, q2.ConceptID)
-	if err != nil {
-		t.Fatalf("get progress 2: %v", err)
-	}
-	stab2 := *p2.FSRSStability
-	if stab2 <= stab1 {
-		t.Errorf("expected stability to increase on repeated correct recall: stab1=%f stab2=%f", stab1, stab2)
-	}
-
-	// Test decay detection via retrievability
+	// The queue still reads deliberately seeded FSRS state. This is the decay
+	// path, not a claim that practice scheduled it.
 	now := time.Now().UTC()
 	past := now.Add(-30 * 24 * time.Hour)
-	p2.Status = string(mastery.StatusMastered)
-	p2.FSRSLastReview = &past
+	p1.Status = string(mastery.StatusMastered)
+	stability, difficulty := 30.0, 5.0
+	p1.FSRSStability = &stability
+	p1.FSRSDifficulty = &difficulty
+	p1.FSRSLastReview = &past
 	futureDue := now.Add(10 * 24 * time.Hour)
-	p2.NextReviewDue = &futureDue
-	if err := e.repo.UpsertProgress(p2); err != nil {
+	p1.NextReviewDue = &futureDue
+	if err := e.repo.UpsertProgress(p1); err != nil {
 		t.Fatalf("upsert progress past review: %v", err)
 	}
-
 	dueCount, err := e.ReviewsDue(st.ID)
 	if err != nil {
 		t.Fatalf("reviews due: %v", err)

@@ -229,6 +229,77 @@ CREATE TABLE IF NOT EXISTS quiz_completions (
 );
 CREATE INDEX IF NOT EXISTS idx_quiz_completions_student ON quiz_completions(student_id, completed_at);
 
+-- Timed quizzes are separate from the 50 XP mastery check. baseline_at is
+-- the rollout boundary: only positive XP ledger events at or after it count
+-- toward the 150 XP gate.
+CREATE TABLE IF NOT EXISTS timed_quiz_baselines (
+    student_id   TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
+    baseline_xp  INTEGER NOT NULL DEFAULT 0,
+    baseline_at  INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS timed_quiz_runs (
+    id                TEXT PRIMARY KEY,
+    student_id        TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+    started_at        INTEGER NOT NULL,
+    deadline_at       INTEGER NOT NULL,
+    completed_at      INTEGER NOT NULL DEFAULT 0,
+    status            TEXT NOT NULL DEFAULT 'active',
+    question_count    INTEGER NOT NULL DEFAULT 0,
+    correct_count     INTEGER NOT NULL DEFAULT 0,
+    unanswered_count  INTEGER NOT NULL DEFAULT 0,
+    xp_earned         INTEGER NOT NULL DEFAULT 0,
+    created_at        INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_timed_quiz_runs_student
+    ON timed_quiz_runs(student_id, status, deadline_at);
+CREATE UNIQUE INDEX IF NOT EXISTS uidx_timed_quiz_active
+    ON timed_quiz_runs(student_id) WHERE status = 'active';
+
+CREATE TABLE IF NOT EXISTS timed_quiz_items (
+    id               TEXT PRIMARY KEY,
+    run_id           TEXT NOT NULL REFERENCES timed_quiz_runs(id) ON DELETE CASCADE,
+    concept_id       TEXT NOT NULL,
+    position         INTEGER NOT NULL,
+    question         TEXT NOT NULL,
+    expected_answer  TEXT NOT NULL,
+    explanation      TEXT NOT NULL DEFAULT '',
+    grading_type     TEXT NOT NULL DEFAULT '',
+    difficulty       REAL,
+    served_at        INTEGER NOT NULL,
+    answered_at      INTEGER NOT NULL DEFAULT 0,
+    elapsed_seconds  REAL NOT NULL DEFAULT 0,
+    answer           TEXT NOT NULL DEFAULT '',
+    correct          INTEGER NOT NULL DEFAULT 0,
+    status           TEXT NOT NULL DEFAULT 'served',
+    submission_id    TEXT NOT NULL DEFAULT '',
+    xp_earned        INTEGER NOT NULL DEFAULT 0,
+    UNIQUE(run_id, concept_id)
+);
+CREATE INDEX IF NOT EXISTS idx_timed_quiz_items_run
+    ON timed_quiz_items(run_id, position);
+
+-- One row per spaced-review attempt. attempt_id is the idempotency key.
+CREATE TABLE IF NOT EXISTS review_events (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id        TEXT NOT NULL,
+    concept_id        TEXT NOT NULL,
+    attempt_id        TEXT NOT NULL UNIQUE,
+    rating            INTEGER NOT NULL,
+    correct           INTEGER NOT NULL,
+    elapsed_seconds   REAL NOT NULL,
+    reviewed_at       INTEGER NOT NULL,
+    stability_before  REAL,
+    difficulty_before REAL,
+    due_before        TEXT,
+    stability_after   REAL,
+    difficulty_after  REAL,
+    due_after         TEXT,
+    created_at        INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_review_events_student
+    ON review_events(student_id, reviewed_at);
+
 CREATE TABLE IF NOT EXISTS avatar_images (
     student_id   TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
     content_type TEXT NOT NULL,
