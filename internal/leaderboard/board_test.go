@@ -229,7 +229,7 @@ func TestBoard_AnonymisesOptedOutLearners(t *testing.T) {
 	for _, tc := range cases {
 		t.Run(tc.mode, func(t *testing.T) {
 			store := testRepo(t)
-			hidden := seed(t, store, "Ada Lovelace", "ada", 30)
+			hidden := seed(t, store, "Ada Lovelace", "ada-user", 30)
 			visible := seed(t, store, "Grace Hopper", "grace", 20)
 			seed(t, store, "Alan Turing", "alan", 10)
 			if err := store.SetAvatarURL(hidden, "https://photos.example/ada.jpg"); err != nil {
@@ -280,7 +280,10 @@ func TestBoard_AnonymisesOptedOutLearners(t *testing.T) {
 			if err != nil {
 				t.Fatalf("marshal: %v", err)
 			}
-			for _, leak := range []string{"Ada", "ada", "photos.example", "bottts", hidden, visible} {
+			// Check whole handles rather than short substrings. The stable
+			// anonymous id is hexadecimal, so a short handle such as "ada" can
+			// appear inside it by chance and turn the assertion into a flake.
+			for _, leak := range []string{"Ada Lovelace", "ada-user", "photos.example", "bottts", hidden, visible} {
 				if leak == "" {
 					continue
 				}
