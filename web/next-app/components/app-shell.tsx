@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { AppSidebar, type AppSidebarProps } from './app-sidebar'
-import { ChevronsRight } from './icons'
+import { Bell, ChevronsRight } from './icons'
 import BottomTabs from './BottomTabs'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from './ui/sidebar'
 import { useAuthState } from '../hooks/useAuthState'
@@ -101,12 +102,19 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
       if (loaded) setNotificationUnread(total)
     }
     void load()
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') void load()
+    }
     window.addEventListener('report-updates-changed', load)
     window.addEventListener('announcements-changed', load)
+    window.addEventListener('focus', load)
+    document.addEventListener('visibilitychange', onVisible)
     return () => {
       live = false
       window.removeEventListener('report-updates-changed', load)
       window.removeEventListener('announcements-changed', load)
+      window.removeEventListener('focus', load)
+      document.removeEventListener('visibilitychange', onVisible)
     }
   }, [loggedIn])
 
@@ -127,11 +135,31 @@ export default function AppShell({ children, ...overrides }: AppShellProps) {
           notificationUnread={overrides.notificationUnread ?? notificationUnread}
         />
         <SidebarInset>
-          <div className="mb-2 flex justify-start md:hidden px-4 sm:px-6 pt-8">
+          <div className="mb-2 flex items-center justify-between md:hidden px-4 sm:px-6 pt-8">
             <SidebarTrigger variant="ghost" className="flex-col gap-0.5">
               <span aria-hidden="true" className="font-mono text-sm text-mathua-blue">λ</span>
               <ChevronsRight size={10} className="text-mathua-muted" />
             </SidebarTrigger>
+            <Link
+              href="/my-reports"
+              aria-label={
+                notificationUnread === 0
+                  ? 'Notifications'
+                  : notificationUnread === 1
+                    ? '1 unread notification'
+                    : `${notificationUnread} unread notifications`
+              }
+              title="Open notifications"
+              className="relative flex h-11 w-11 items-center justify-center text-mathua-muted hover:text-mathua-blue"
+            >
+              <Bell />
+              {notificationUnread > 0 && (
+                <span
+                  className="absolute right-2 top-2 h-2 w-2 rounded-full bg-mathua-red"
+                  aria-hidden="true"
+                />
+              )}
+            </Link>
           </div>
           {/* A block child keeps page wrappers with mx-auto centred and full
               width. As flex items their auto margins would shrink-wrap them.

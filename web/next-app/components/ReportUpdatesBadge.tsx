@@ -33,12 +33,19 @@ export default function ReportUpdatesBadge({ enabled }: { enabled: boolean }) {
       if (loaded) setUnread(total)
     }
     void load()
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') void load()
+    }
     window.addEventListener('report-updates-changed', load)
     window.addEventListener('announcements-changed', load)
+    window.addEventListener('focus', load)
+    document.addEventListener('visibilitychange', onVisible)
     return () => {
       cancelled = true
       window.removeEventListener('report-updates-changed', load)
       window.removeEventListener('announcements-changed', load)
+      window.removeEventListener('focus', load)
+      document.removeEventListener('visibilitychange', onVisible)
     }
   }, [enabled])
 
