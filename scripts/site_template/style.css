@@ -443,3 +443,6 @@ body:not(.can-ask) .ask-only { display: none; }
 .ann-entry .msg { margin: 8px 0; }
 @media (prefers-reduced-motion: no-preference) { .ann-bar, .ann-pop { animation: ann-in 120ms ease-out; } }
 @keyframes ann-in { from { opacity: 0; transform: translateY(4px); } }
+/* While the page cannot hear keys (inside claude.ai, after a click outside it), the key hint says so. */
+body.unfocused .hint[data-keys] { font-size: 0; }
+body.unfocused .hint[data-keys]::after { content: "Click the page to use the keyboard"; font-size: 13px; }

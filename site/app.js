@@ -68,9 +68,24 @@ function upgradeSubTitles(domainId) {
   });
 }
 
+// Inside claude.ai the page is a frame, and keys go to whichever frame was clicked last, so a
+// reader who scrolls here from the chat presses keys into claude.ai. Ask for focus when the
+// pointer moves over the page, and mark the body while the page cannot hear keys so the
+// practice hint can say to click first.
+let focusAsked = 0;
+addEventListener("pointermove", () => {
+  if (document.hasFocus() || Date.now() - focusAsked < 400) return;
+  focusAsked = Date.now();
+  try { window.focus(); } catch {}
+}, { passive: true });
+const markFocus = () => document.body.classList.toggle("unfocused", !document.hasFocus());
+addEventListener("focus", markFocus);
+addEventListener("blur", markFocus);
+markFocus();
+
 // One keyboard handler at a time, owned by the practice box on screen.
 let keyHandler = null;
-document.addEventListener("keydown", (e) => {
+addEventListener("keydown", (e) => {
   if (e.key === "Escape" && document.body.classList.contains("drawer-open")) return closeDrawer(true);
   if (keyHandler && !document.body.classList.contains("drawer-open")) keyHandler(e);
 });
@@ -349,14 +364,14 @@ function practice(domainId, c, nextConcept, focusBox) {
           <kbd aria-hidden="true">${keys[k]}</kbd><span class="o-t">${unwrapP(render(o))}</span></button>`).join("")}
       </div>
       <div class="p-act"><button class="btn primary" id="check" disabled>Check</button>
-        <span class="hint">Press ${keys[0]}–${keys[keys.length - 1]} or 1–${keys.length} to choose, Enter to check</span></div>`
+        <span class="hint" data-keys>Press ${keys[0]}–${keys[keys.length - 1]} or 1–${keys.length} to choose, Enter to check</span></div>`
     : `
       <form class="num" autocomplete="off">
         <label for="ans" class="sr-only">Your answer</label>
         <input id="ans" class="field" placeholder="Your answer" inputmode="decimal" spellcheck="false">
         <button class="btn primary">Check</button>
       </form>
-      <p class="hint">Enter to check. Numbers are accepted to the precision shown in the answer.</p>`}
+      <p class="hint" data-keys>Enter to check. Numbers are accepted to the precision shown in the answer.</p>`}
     <div id="fb" aria-live="polite"></div>`;
 
   let chosen = null, graded = false;
@@ -396,7 +411,7 @@ function practice(domainId, c, nextConcept, focusBox) {
       <div class="p-act">
         <button class="btn primary" id="again">Next problem</button>
         ${st.done && nextConcept ? `<a class="btn" href="#/d/${domainId}/${nextConcept.id}">Next concept</a>` : ""}
-        <span class="hint">Enter for the next problem</span>
+        <span class="hint" data-keys>Enter for the next problem</span>
       </div>`;
     const again = document.getElementById("again");
     again.onclick = nextProblem;
