@@ -3,19 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>EDA-Game</title>
-<meta name="description" content="An adaptive path from first principles to designing modern, agent-first EDA tools: 33 domains, 1607 concepts, lessons and practice.">
+<meta name="description" content="Electronic design automation from first principles to agent-first tools: short lessons and practice, concept by concept.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=174fb936">
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="#/">EDA-Game</a>
-  <nav><a href="#/">Domains</a><a href="#/tracks">Tracks</a><a href="#/glossary">Glossary</a><a href="#/about">About</a></nav>
+<a class="skip" href="#app">Skip to content</a>
+<header class="top" role="banner">
+  <div class="top-in">
+    <a class="brand" href="#/" aria-label="EDA-Game home">EDA-Game</a>
+    <nav aria-label="Primary">
+      <a href="#/" data-nav="home">Domains</a>
+      <a href="#/tracks" data-nav="tracks">Tracks</a>
+      <a href="#/glossary" data-nav="glossary">Glossary</a>
+      <a href="#/about" data-nav="about">About</a>
+    </nav>
+  </div>
 </header>
-<main id="app"><p class="muted">Loading…</p></main>
+<main id="app" tabindex="-1"><p class="muted loading">Loading…</p></main>
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=7ca9cae0"></script>
 </body>
 </html>

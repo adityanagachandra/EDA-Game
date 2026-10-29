@@ -105,8 +105,20 @@ def main():
     }
     (SITE / "data" / "index.json").write_text(json.dumps(index, indent=1))
     write_glossary()
+    bust_cache()
     print(f"site/: {len(index_domains)} domains, {index['concepts']} concepts, "
           f"{sum(len(v) for v in problems.values())} problems")
+
+
+def bust_cache():
+    """Version app.js and style.css by content hash, so returning visitors never mix old and new."""
+    import hashlib
+    page = SITE / "index.html"
+    html = page.read_text()
+    for name in ("app.js", "style.css"):
+        tag = hashlib.sha1((SITE / name).read_bytes()).hexdigest()[:8]
+        html = html.replace(f'"{name}"', f'"{name}?v={tag}"')
+    page.write_text(html)
 
 
 def write_glossary():
