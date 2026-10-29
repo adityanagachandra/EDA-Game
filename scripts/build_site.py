@@ -105,9 +105,46 @@ def main():
     }
     (SITE / "data" / "index.json").write_text(json.dumps(index, indent=1))
     write_glossary()
+    build_artifact()
     bust_cache()
     print(f"site/: {len(index_domains)} domains, {index['concepts']} concepts, "
           f"{sum(len(v) for v in problems.values())} problems")
+
+
+ARTIFACT = ROOT / "artifact"
+KATEX = ROOT / "web/next-app/node_modules/katex/dist"
+
+
+def build_artifact():
+    """Write artifact/eda-game.html, the claude.ai artifact version of the reader.
+
+    An artifact may load scripts only from a few CDNs and stylesheets only from Google Fonts,
+    so the page inlines its CSS (KaTeX's included, with its fonts as data URIs) and its own
+    scripts. The lesson data is published beside it from site/data. Inside the artifact,
+    notes.js finds the db and sample capabilities and turns on synced notes and Ask Claude.
+    """
+    import base64
+    import re
+    css = (KATEX / "katex.min.css").read_text()
+
+    def font(m):
+        data = base64.b64encode((KATEX / "fonts" / m.group(1)).read_bytes()).decode()
+        return f'src:url(data:font/woff2;base64,{data}) format("woff2")'
+    css = re.sub(r'src:url\(fonts/([^)]+\.woff2)\) format\("woff2"\)[^;}]*', font, css)
+    version = json.loads((KATEX.parent / "package.json").read_text())["version"]
+    html = (SITE / "index.html").read_text()
+    body = html.split("<body>", 1)[1].split("</body>", 1)[0]
+    body = re.sub(r'<script src="(app|notes)\.js[^"]*"></script>\n?', "", body)
+    body = body.replace("katex@0.16.11", f"katex@{version}")
+    page = (
+        "<title>EDA-Game</title>\n"
+        f"<style>{css}\n{(SITE / 'style.css').read_text()}</style>\n"
+        f"{body}\n"
+        f"<script>{(SITE / 'app.js').read_text()}</script>\n"
+        f"<script>{(SITE / 'notes.js').read_text()}</script>\n"
+    )
+    ARTIFACT.mkdir(exist_ok=True)
+    (ARTIFACT / "eda-game.html").write_text(page)
 
 
 def bust_cache():
@@ -115,7 +152,7 @@ def bust_cache():
     import hashlib
     page = SITE / "index.html"
     html = page.read_text()
-    for name in ("app.js", "style.css"):
+    for name in ("app.js", "notes.js", "style.css"):
         tag = hashlib.sha1((SITE / name).read_bytes()).hexdigest()[:8]
         html = html.replace(f'"{name}"', f'"{name}?v={tag}"')
     page.write_text(html)

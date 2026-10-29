@@ -25,7 +25,7 @@
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #111112;
     --bg-2: #1c1c1e;
     --bg-3: #2c2c2e;
@@ -45,7 +45,28 @@
   }
 }
 
+:root[data-theme="dark"] {
+    --bg: #111112;
+    --bg-2: #1c1c1e;
+    --bg-3: #2c2c2e;
+    --ink: #f5f5f7;
+    --ink-2: #d2d2d7;
+    --muted: #a1a1a6;
+    --line: rgba(255, 255, 255, 0.12);
+    --line-2: rgba(255, 255, 255, 0.2);
+    --accent: #3d9bff;
+    --accent-ink: #001a33;
+    --accent-soft: rgba(61, 155, 255, 0.12);
+    --good: #4cd571;
+    --good-soft: rgba(48, 209, 88, 0.12);
+    --bad: #ff7b72;
+    --bad-soft: rgba(255, 69, 58, 0.13);
+    --code-bg: #1c1c1e;
+}
+:root[data-theme="light"] { color-scheme: light; }
+
 /* ---------- Base ---------- */
+[hidden] { display: none !important; }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); }
 body {
@@ -368,3 +389,56 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 24px 96px; }
 @media (max-width: 360px) {
   .tiles { grid-template-columns: 1fr; }
 }
+
+/* ---------- Annotations and Ask Claude ---------- */
+:root { --hl: rgba(255, 204, 0, 0.32); --hl-note: rgba(255, 170, 0, 0.42); --shadow: 0 8px 28px rgba(0, 0, 0, 0.14), 0 1px 3px rgba(0, 0, 0, 0.08); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --hl: rgba(255, 214, 10, 0.22); --hl-note: rgba(255, 179, 0, 0.32); --shadow: 0 8px 28px rgba(0, 0, 0, 0.5); } }
+:root[data-theme="dark"] { --hl: rgba(255, 214, 10, 0.22); --hl-note: rgba(255, 179, 0, 0.32); --shadow: 0 8px 28px rgba(0, 0, 0, 0.5); }
+mark.ann { background: var(--hl); color: inherit; border-radius: 2px; cursor: pointer; padding: 0 1px; }
+mark.ann.has-note { background: var(--hl-note); box-shadow: inset 0 -1.5px 0 rgba(200, 120, 0, 0.7); }
+mark.ann.flash { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ann-bar { position: fixed; z-index: 60; display: flex; gap: 2px; padding: 4px; background: var(--ink); border-radius: 10px; box-shadow: var(--shadow); }
+.ann-bar button { font: 500 13px/1 var(--sans); color: var(--bg); background: transparent; border: 0; padding: 8px 10px; border-radius: 7px; cursor: pointer; white-space: nowrap; }
+.ann-bar button:hover, .ann-bar button:focus-visible { background: rgba(127, 127, 127, 0.28); outline: none; }
+body:not(.can-ask) .ask-only { display: none; }
+.ann-pop { position: fixed; z-index: 61; width: min(360px, calc(100vw - 16px)); background: var(--bg); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px; display: grid; gap: 10px; }
+.ann-pop blockquote, .ann-quote { margin: 0; padding: 2px 0 2px 10px; border-left: 2px solid var(--hl-note); color: var(--ink-2); font-size: 14px; line-height: 1.45; }
+.ann-pop textarea, .ann-chat-f textarea { width: 100%; font: 15px/1.45 var(--sans); color: var(--ink); background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; resize: vertical; }
+.ann-pop textarea:focus, .ann-chat-f textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+.ann-row { display: flex; gap: 8px; align-items: center; }
+.ann-flex { flex: 1; }
+.ann-ui .btn { font: 500 14px/1 var(--sans); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--bg); color: var(--ink); cursor: pointer; }
+.ann-ui .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.ann-ui .btn.quiet { border-color: transparent; color: var(--muted); }
+.ann-ui .btn:disabled { opacity: 0.5; cursor: default; }
+.small { font-size: 13px; }
+.ann-margin { margin: 40px 0 8px; max-width: var(--measure); }
+.ann-hint { margin: 0; }
+.ann-h { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 8px; letter-spacing: 0; }
+.ann-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.ann-item { display: grid; gap: 2px; width: 100%; text-align: left; font: inherit; background: transparent; border: 0; border-left: 2px solid var(--hl-note); padding: 6px 10px; cursor: pointer; color: var(--ink); border-radius: 0 6px 6px 0; }
+.ann-item:hover { background: var(--bg-2); }
+.ann-q { font-size: 14px; color: var(--ink-2); }
+.ann-t { font-size: 14px; }
+.ann-k { font-size: 12px; color: var(--accent); font-weight: 600; }
+.ann-chat { position: fixed; z-index: 55; top: calc(var(--header-h) + env(safe-area-inset-top, 0px)); right: 0; bottom: 0; width: min(420px, 100vw); display: flex; flex-direction: column; background: var(--bg); border-left: 1px solid var(--line); box-shadow: var(--shadow); padding-right: env(safe-area-inset-right, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.ann-chat-h { display: flex; gap: 8px; align-items: baseline; padding: 12px 16px; border-bottom: 1px solid var(--line); min-width: 0; }
+.ann-chat-h .muted { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.ann-chat-body { flex: 1; overflow-y: auto; padding: 16px; display: grid; gap: 14px; align-content: start; }
+.ann-chat-f { border-top: 1px solid var(--line); padding: 12px 16px; display: grid; gap: 8px; }
+.msg { font-size: 15px; line-height: 1.55; min-width: 0; overflow-wrap: anywhere; }
+.msg.user { justify-self: end; max-width: 88%; background: var(--bg-2); border-radius: 12px; padding: 8px 12px; }
+.msg.assistant p { margin: 0 0 0.6em; }
+.msg.assistant p:last-child { margin-bottom: 0; }
+.msg.thinking { color: var(--muted); }
+.msg .katex-display { overflow-x: auto; overflow-y: hidden; }
+@media (min-width: 1200px) { body.chat-open main { padding-right: 420px; } }
+.ann-group { padding-block: 18px; border-top: 1px solid var(--line); }
+.ann-group h2 { font-size: 18px; margin: 0 0 10px; }
+.ann-entry { margin: 0 0 12px; }
+.ann-entry blockquote { margin: 0; padding-left: 12px; border-left: 2px solid var(--hl-note); color: var(--ink-2); }
+.ann-entry p { margin: 6px 0 0 14px; }
+.ann-entry summary { cursor: pointer; font-weight: 500; }
+.ann-entry .msg { margin: 8px 0; }
+@media (prefers-reduced-motion: no-preference) { .ann-bar, .ann-pop { animation: ann-in 120ms ease-out; } }
+@keyframes ann-in { from { opacity: 0; transform: translateY(4px); } }

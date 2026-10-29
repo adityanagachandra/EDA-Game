@@ -25,6 +25,7 @@ const pct = (n, d) => (d ? Math.round((100 * n) / d) : 0);
 const meter = (n, d, label) => `<span class="meter" role="img" aria-label="${esc(label || `${n} of ${d} learned`)}"><i style="width:${pct(n, d)}%"></i></span>`;
 
 // Markdown with $…$ and $$…$$ math: lift the math out, render the markdown, put KaTeX back.
+window.edaRender = (md) => render(md);
 function render(md) {
   const math = [];
   const keep = (tex, display) => { math.push([tex, display]); return `@@M${math.length - 1}@@`; };
@@ -257,6 +258,7 @@ async function domain(id, conceptId) {
     h1 ? h1.insertAdjacentHTML("afterend", html) : document.getElementById("lesson").insertAdjacentHTML("afterbegin", html);
   }
   practice(id, c, next);
+  window.__edaCtx = { page: "concept", concept: c.id, domain: id, label: c.label };
 }
 
 function domainLanding(meta, concepts, p) {
@@ -501,7 +503,10 @@ async function route() {
   else if (page === "glossary") await glossary();
   else if (page === "tracks") tracks();
   else if (page === "about") about();
+  else if (page === "notes") app.innerHTML = "";
   else home();
+  document.dispatchEvent(new CustomEvent("eda:render", { detail: window.__edaCtx || { page: navKey } }));
+  window.__edaCtx = null;
   const h1 = app.querySelector("h1");
   document.title = page && h1 ? `${h1.textContent.trim()} · EDA-Game` : "EDA-Game";
   window.scrollTo(0, 0);
