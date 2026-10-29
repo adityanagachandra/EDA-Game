@@ -1,0 +1,5 @@
+[
+  {"label": "Intrinsic density from the band gap", "section": "Intrinsic density from the band gap", "subgoals": ["Write the electron and hole densities with effective densities of states", "Multiply them to eliminate the Fermi level", "Evaluate the square root of NcNv times the exponential of minus Eg over 2kT"]},
+  {"label": "Intrinsic density at another temperature", "section": "Intrinsic density at another temperature", "subgoals": ["Scale Nc and Nv by the 3/2 power of the temperature ratio", "Recompute kT at the new temperature", "Evaluate the intrinsic density with the new prefactor and exponent"]},
+  {"label": "How fast the intrinsic density grows", "section": "How fast the intrinsic density grows", "subgoals": ["Divide the intrinsic-density formula at two temperatures", "Evaluate the temperature-ratio prefactor and the Arrhenius-like exponential", "Relate the growth of ni and ni squared to junction leakage"]}
+]

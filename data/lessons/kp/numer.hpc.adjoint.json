@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Sweeping adjoints backwards through the graph",
+  "section": "Sweeping adjoints backwards through the graph",
+  "subgoals": [
+   "Evaluate the function forward and record the graph",
+   "Seed the output adjoint with one",
+   "Accumulate adjoints backwards with local partial derivatives"
+  ]
+ },
+ {
+  "label": "Adjoint sensitivity of a linear circuit",
+  "section": "Adjoint sensitivity of a linear circuit",
+  "subgoals": [
+   "Set c to select the output",
+   "Solve the transposed system for lambda",
+   "Read sensitivities as lambda entries or minus lambda_i times x_j"
+  ]
+ },
+ {
+  "label": "When reverse mode pays off",
+  "section": "When reverse mode pays off",
+  "subgoals": [
+   "Compare forward passes per input with reverse passes per output",
+   "Estimate reverse cost as a small multiple of one evaluation",
+   "Budget tape memory and checkpoint long computations"
+  ]
+ }
+]

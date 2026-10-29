@@ -1,0 +1,5 @@
+[
+  {"label": "Floating gates", "section": "Floating gates", "subgoals": ["Collect the terminal kinds on each net", "Keep nets that touch only gates", "Remove the nets declared as ports and count the rest"]},
+  {"label": "Well taps", "section": "Well taps", "subgoals": ["Find the taps contained in each well region", "Flag wells that contain no tap", "Check the distance from devices to the nearest tap where the deck requires it"]},
+  {"label": "Other electrical rules", "section": "Other electrical rules", "subgoals": ["Name the electrical hazard each check guards against", "Propagate net voltages for voltage-aware checks", "Separate errors that block signoff from warnings"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Tier 1: rule decks and parameters", "section": "Tier 1: rule decks and parameters", "subgoals": ["Check whether the engine already reads the value to change", "Change the value without touching code", "Rerun reference layouts to confirm only intended results moved"]},
+  {"label": "Tier 2: plug-ins at a seam", "section": "Tier 2: plug-ins at a seam", "subgoals": ["Find the seam whose interface carries the needed context", "Implement the new behaviour behind that seam", "Show with a differential run that only intended results changed"]},
+  {"label": "Tier 3: touching the kernel", "section": "Tier 3: touching the kernel", "subgoals": ["Recognize a change to representation or exact computation", "Route it through review with full regression", "Add a seam when the same kind of core change recurs"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Shear strain in a joint", "section": "Shear strain in a joint", "subgoals": ["Multiply the CTE mismatch by the temperature swing", "Multiply by the distance from the neutral point", "Divide by the joint height"]},
+  {"label": "Coffin-Manson scaling", "section": "Coffin-Manson scaling", "subgoals": ["Take the ratio of the two strains", "Raise it to the fatigue exponent", "Scale the known lifetime by the result"]},
+  {"label": "Geometry levers for life", "section": "Geometry levers for life", "subgoals": ["Express life as height over DNP raised to the exponent", "Scale the known life to the new DNP", "Name the other levers that lower strain"]}
+]

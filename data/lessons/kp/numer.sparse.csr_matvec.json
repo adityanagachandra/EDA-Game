@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The row loop over the row pointer",
+  "section": "The row loop over the row pointer",
+  "subgoals": [
+   "Loop over rows using consecutive row_ptr entries",
+   "Find the start position of the row in val",
+   "Offset by the nonzeros of the row with smaller column index"
+  ]
+ },
+ {
+  "label": "Computing one output entry",
+  "section": "Computing one output entry",
+  "subgoals": [
+   "Read the positions of the row from row_ptr",
+   "Multiply each stored value by the x entry at its column",
+   "Sum the products to get the output entry"
+  ]
+ },
+ {
+  "label": "Cost and memory traffic of SpMV",
+  "section": "Cost and memory traffic of SpMV",
+  "subgoals": [
+   "Count two flops per stored nonzero",
+   "Add value, index, row-pointer and vector bytes",
+   "Divide flops by bytes to show the kernel is memory bound"
+  ]
+ }
+]

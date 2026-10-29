@@ -1,0 +1,5 @@
+[
+  {"label": "The first conjugate gradient step", "section": "The first conjugate gradient step", "subgoals": ["Set the initial residual and search direction to b", "Compute the step length as r dot r over p dot A p", "Advance x along the search direction"]},
+  {"label": "Convergence and conditioning", "section": "Convergence and conditioning", "subgoals": ["Compute the condition number from the extreme eigenvalues", "Evaluate the convergence factor rho", "Relate iteration count to the square root of kappa"]},
+  {"label": "Making the solve fast in a placer", "section": "Making the solve fast in a placer", "subgoals": ["Precondition with the diagonal or an incomplete factor", "Warm-start from the previous placement", "Stop at a loose tolerance and solve x and y in parallel"]}
+]

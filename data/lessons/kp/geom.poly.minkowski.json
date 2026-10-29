@@ -1,0 +1,5 @@
+[
+  {"label": "Sums of rectangles", "section": "Sums of rectangles", "subgoals": ["Add the lower ends of the x-ranges and the upper ends", "Do the same for the y-ranges", "Multiply the summed dimensions for the area"]},
+  {"label": "Convex sums and edge directions", "section": "Convex sums and edge directions", "subgoals": ["List the outward normal directions of each polygon", "Merge the directions and fuse the shared ones", "Count the edges of the merged boundary"]},
+  {"label": "Configuration space for placement", "section": "Configuration space for placement", "subgoals": ["Reduce the moving shape to its reference point", "Grow the obstacle by the moving shape and the spacing", "Compute the area of the forbidden region"]}
+]

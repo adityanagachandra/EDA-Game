@@ -1,0 +1,5 @@
+[
+  {"label": "Hashconsing builds the initial classes", "section": "Hashconsing builds the initial classes", "subgoals": ["Insert leaves as single-node classes", "Canonicalize children to class ids before lookup", "Reuse an existing class on a hash hit and count the classes"]},
+  {"label": "Unions and congruence", "section": "Unions and congruence", "subgoals": ["Merge the asserted classes in union-find", "Re-canonicalize parent e-nodes and merge any that coincide", "Repeat until no new merge happens and count the classes"]},
+  {"label": "Rebuilding efficiently", "section": "Rebuilding efficiently", "subgoals": ["Defer congruence repair to a rebuild at the end of each iteration", "Re-canonicalize affected parents from a worklist", "Count congruence-induced merges beyond the asserted unions"]}
+]

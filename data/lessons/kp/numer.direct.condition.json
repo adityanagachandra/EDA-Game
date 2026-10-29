@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Condition number of a conductance matrix",
+  "section": "Condition number of a conductance matrix",
+  "subgoals": [
+   "Take the largest absolute row sum of G",
+   "Invert G and take the largest absolute row sum of the inverse",
+   "Multiply the two norms"
+  ]
+ },
+ {
+  "label": "From residual to error bound",
+  "section": "From residual to error bound",
+  "subgoals": [
+   "Compute the relative residual of the solution",
+   "Multiply it by the condition number",
+   "Read the product as the worst-case relative error"
+  ]
+ },
+ {
+  "label": "Conductance spread, gmin and digits lost",
+  "section": "Conductance spread, gmin and digits lost",
+  "subgoals": [
+   "Take log10 of the condition number",
+   "Subtract it from the sixteen digits of double precision",
+   "Rescale or reformulate when too few digits remain"
+  ]
+ }
+]

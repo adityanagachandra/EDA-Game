@@ -1,0 +1,5 @@
+[
+  {"label": "RUDY as a feature", "section": "RUDY as a feature", "subgoals": ["Take the bounding-box width and height of the net", "Divide the half-perimeter by the box area", "Spread that density over every point of the box"]},
+  {"label": "From nets to a tile map", "section": "From nets to a tile map", "subgoals": ["Compute each net's overlap area with the tile", "Multiply each overlap by the net's density and sum", "Divide by the tile area for the tile's density"]},
+  {"label": "Judging a congestion map", "section": "Judging a congestion map", "subgoals": ["Square and average the per-tile errors and take the root", "Divide by the range of the actual values", "Check hotspot recall separately from the map-wide error"]}
+]

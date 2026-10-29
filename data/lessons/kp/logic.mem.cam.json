@@ -1,0 +1,5 @@
+[
+  {"label": "Parallel match", "section": "Parallel match", "subgoals": ["Compare the key against every entry in parallel", "Skip don't-care bits in a ternary entry", "Count the entries whose specified bits all equal the key"]},
+  {"label": "Priority among multiple matches", "section": "Priority among multiple matches", "subgoals": ["Find every matching entry", "Pass the match lines through a priority encoder", "Return the lowest-indexed match"]},
+  {"label": "Cost and alternatives", "section": "Cost and alternatives", "subgoals": ["Compare CAM cell cost with an SRAM cell", "Scale search energy with entries times width", "Weigh a CAM against a hashed SRAM lookup"]}
+]

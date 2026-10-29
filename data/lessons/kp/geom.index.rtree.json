@@ -1,0 +1,5 @@
+[
+  {"label": "Node bounding rectangles", "section": "Node bounding rectangles", "subgoals": ["Take the minimum left and bottom edges of the entries", "Take the maximum right and top edges", "Compute the area of the resulting bounding rectangle"]},
+  {"label": "Descending into children", "section": "Descending into children", "subgoals": ["Test the window against each child's bounding rectangle", "Descend only into the children it meets", "Prune the rest with their subtrees"]},
+  {"label": "Counting the work of a query", "section": "Counting the work of a query", "subgoals": ["Count the tests against the root's entries", "Add the entries of every visited child", "Separate the tests performed from the entries reported"]}
+]

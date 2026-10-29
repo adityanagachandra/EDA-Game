@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Datapath and controller",
+  "section": "Datapath and controller",
+  "subgoals": [
+   "Separate units, registers and multiplexers from the state machine",
+   "Assign one controller state per control step",
+   "Derive each state's selects, load enables and function selects"
+  ]
+ },
+ {
+  "label": "State count and encoding",
+  "section": "State count and encoding",
+  "subgoals": [
+   "Count the states as the schedule steps plus the idle state",
+   "Take the ceiling of log2 of the state count for binary encoding",
+   "Count one flip-flop per state for one-hot encoding"
+  ]
+ },
+ {
+  "label": "Where the controller shapes timing and area",
+  "section": "Where the controller shapes timing and area",
+  "subgoals": [
+   "Trace each shared unit's multiplexers back to controller selects",
+   "Check FSM decoding and enable fanout as a timing path",
+   "Model pipelined loops as an II-state kernel with stage-valid bits"
+  ]
+ }
+]

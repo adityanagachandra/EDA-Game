@@ -1,0 +1,5 @@
+[
+  {"label": "The structure of a D_NET", "section": "The structure of a D_NET", "subgoals": ["Read the header units before any value", "Separate connection points from internal nodes", "Tell ground capacitors from coupling capacitors by their node count"]},
+  {"label": "The header total", "section": "The header total", "subgoals": ["Sum every ground capacitor in the CAP section", "Add every coupling capacitor of the net", "Compare the sum with the header total"]},
+  {"label": "What SPEF does and does not carry", "section": "What SPEF does and does not carry", "subgoals": ["Produce one parasitic file per extraction corner", "Match SPEF names to the loaded netlist", "Instantiate each coupling capacitor once when merging nets"]}
+]

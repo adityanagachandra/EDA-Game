@@ -1,0 +1,5 @@
+[
+  {"label": "Three pins and the median point", "section": "Three pins and the median point", "subgoals": ["Take the median x and median y as the Steiner point", "Connect each pin to it with monotone wires", "Read the length as the bounding-box half-perimeter"]},
+  {"label": "Exact search for small nets", "section": "Exact search for small nets", "subgoals": ["Enumerate sets of at most n - 2 candidate Hanan points", "Compute the MST of the pins plus each set", "Take the minimum over all sets as the RSMT"]},
+  {"label": "Savings and hardness", "section": "Savings and hardness", "subgoals": ["Subtract the RSMT length from the MST length", "Expect savings of about ten percent and at most one third", "Use heuristics for large nets because the problem is NP-hard"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Fitting the table entry", "section": "Fitting the table entry", "subgoals": ["Collect fast and golden values for one pattern class", "Compute the least-squares scale factor", "Write it into the class's configuration entry"]},
+  {"label": "Applying the calibrated table", "section": "Applying the calibrated table", "subgoals": ["Multiply each segment of the class by its factor", "Sum the corrected segments for the net", "Record the table version with the parasitic output"]},
+  {"label": "Validation before promotion", "section": "Validation before promotion", "subgoals": ["Scale each held-out fast value by the new factor", "Count held-out nets outside the tolerance", "Promote only when the count meets the validation budget"]}
+]

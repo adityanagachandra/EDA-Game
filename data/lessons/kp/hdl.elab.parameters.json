@@ -1,0 +1,5 @@
+[
+  {"label": "Defaults and named overrides", "section": "Defaults and named overrides", "subgoals": ["Start from the parameter defaults in the module header", "Replace only the parameters the instance overrides by name", "Evaluate localparams and port widths with the instance's values"]},
+  {"label": "Values passed down the hierarchy", "section": "Values passed down the hierarchy", "subgoals": ["Resolve the parent's parameters before the child's", "Evaluate each override expression with the parent's values", "Create one specialization per distinct parameter set"]},
+  {"label": "Positional overrides", "section": "Positional overrides", "subgoals": ["Map positional values onto parameters in declaration order", "Recompute derived values after the mapping", "Prefer named overrides to avoid order coupling"]}
+]

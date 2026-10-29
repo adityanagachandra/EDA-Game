@@ -1,0 +1,5 @@
+[
+  {"label": "Directives as configuration", "section": "Directives as configuration", "subgoals": ["Express layer limits as minimum and maximum routing layers", "Express net-specific limits as per-class layer ranges or non-default rules", "Express capacity reservations as layer adjustments"]},
+  {"label": "Tier 1 versus Tier 2", "section": "Tier 1 versus Tier 2", "subgoals": ["Match the request to an existing setting for Tier 1", "Escalate conditional behaviour to a plug-in", "Reject directives that make a pin unreachable"]},
+  {"label": "Directives still need verification", "section": "Directives still need verification", "subgoals": ["Estimate the capacity a directive removes", "Run the golden designs to check DRC, overflow and timing", "Turn recurring plug-in requests into new settings"]}
+]

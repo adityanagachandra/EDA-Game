@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Truth tables and their size",
+    "section": "Truth tables and their size",
+    "subgoals": [
+      "Count the rows of an n-input truth table",
+      "Count the distinct n-input functions as 2 to the 2 to the n",
+      "Explain why truth tables are used only on small cuts"
+    ]
+  },
+  {
+    "label": "And-inverter graphs",
+    "section": "And-inverter graphs",
+    "subgoals": [
+      "Count n minus 1 AND nodes for an n-input AND or OR",
+      "Count three AND nodes for an XOR or a multiplexer",
+      "Sum the node counts of unshared subnetworks"
+    ]
+  },
+  {
+    "label": "BDDs and canonicity",
+    "section": "BDDs and canonicity",
+    "subgoals": [
+      "Explain canonicity under a fixed variable order",
+      "Count BDD nodes for AND and for parity",
+      "Name functions whose BDDs blow up under every order"
+    ]
+  }
+]

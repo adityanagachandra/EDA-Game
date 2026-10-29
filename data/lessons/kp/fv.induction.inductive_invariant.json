@@ -1,0 +1,5 @@
+[
+  {"label": "Initiation and consecution", "section": "Initiation and consecution", "subgoals": ["Check that every initial state lies in P", "Check that every transition from a P-state lands in P", "Conclude that P is an inductive invariant when both checks pass"]},
+  {"label": "Invariant versus inductive", "section": "Invariant versus inductive", "subgoals": ["Compute the reachable states", "Test whether all of them satisfy P", "Classify P as inductive, failing initiation, invariant but not inductive, or not invariant"]},
+  {"label": "Reading the four outcomes", "section": "Reading the four outcomes", "subgoals": ["Treat failed initiation as a reset or property error", "Treat a reachable violation as a real bug with a BMC trace", "Treat an unreachable CTI as a call to strengthen the property"]}
+]

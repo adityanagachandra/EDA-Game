@@ -1,0 +1,5 @@
+[
+  {"label": "Core and change surface", "section": "Core and change surface", "subgoals": ["Place the solver mathematics and netlist correctness in the core", "Place modes, selection, patterns and calibration on the change surface", "Expose per-net summaries and error estimates as observation hooks"]},
+  {"label": "Tiers for extraction requests", "section": "Tiers for extraction requests", "subgoals": ["Classify the request as configuration, plug-in or core edit", "Check whether an existing seam already covers it", "Escalate to a core edit only with review and full regression"]},
+  {"label": "Designing the capacitance-model seam", "section": "Designing the capacitance-model seam", "subgoals": ["Pass the full cross-section context through the seam", "Call plug-ins per batch with plain data", "Require deterministic results for identical inputs"]}
+]

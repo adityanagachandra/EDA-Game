@@ -1,0 +1,5 @@
+[
+  {"label": "Expected demand of one net", "section": "Expected demand of one net", "subgoals": ["Trace both L shapes of the connection", "Assign probability one half to each L", "Add one half for each L that crosses the edge"]},
+  {"label": "Summing many nets", "section": "Summing many nets", "subgoals": ["Compute each net's expected contribution to the edge", "Sum the contributions by linearity of expectation", "Repeat over every edge to build the demand map"]},
+  {"label": "Expected overflow is not overflow of the expectation", "section": "Expected overflow is not overflow of the expectation", "subgoals": ["Write the demand on the edge as a random variable over L choices", "Enumerate its distribution and average the clipped overflow", "Compare with the overflow of the mean demand"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The leakage law", "section": "The leakage law", "subgoals": ["Write leakage as exponential in minus Vt over n vT", "Compute the factor for the given Vt step", "Multiply the low-Vt leakage by the factor"]},
+  {"label": "One path: a knapsack", "section": "One path: a knapsack", "subgoals": ["List each swap's delay cost and leakage saving", "Choose the set that fits in the slack with the largest saving", "Compare the optimum with the greedy-by-ratio choice"]},
+  {"label": "Shared gates and many paths", "section": "Shared gates and many paths", "subgoals": ["Charge a shared gate's delay against every path through it", "Keep every path's slack non-negative", "Re-time incrementally after each batch of swaps"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Merging fanin cut sets", "section": "Merging fanin cut sets", "subgoals": ["Visit nodes in topological order", "Pair one cut of each fanin and take the union", "Drop unions over k leaves and merge duplicates"]},
+  {"label": "Filtering by size and dominance", "section": "Filtering by size and dominance", "subgoals": ["Add the trivial cut of the node", "Remove cuts that strictly contain another cut", "Use leaf signatures to speed the containment test"]},
+  {"label": "Computing the cut function", "section": "Computing the cut function", "subgoals": ["Assign each cut leaf a free variable pattern", "Evaluate the cone above the leaves with complemented edges", "Read the cut function as a truth table over the leaves"]}
+]

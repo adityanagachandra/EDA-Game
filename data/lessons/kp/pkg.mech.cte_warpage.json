@@ -1,0 +1,5 @@
+[
+  {"label": "Curvature of a symmetric bilayer", "section": "Curvature of a symmetric bilayer", "subgoals": ["Compute the mismatch strain", "Multiply by three and divide by twice the thickness", "Invert the curvature for the radius"]},
+  {"label": "Timoshenko's general formula", "section": "Timoshenko's general formula", "subgoals": ["Compute the thickness and modulus ratios", "Evaluate the numerator and the bracketed denominator", "Divide and invert for the radius of curvature"]},
+  {"label": "From curvature to warpage", "section": "From curvature to warpage", "subgoals": ["Square the span", "Multiply by curvature and divide by eight", "Compare the deflection with the coplanarity limit"]}
+]

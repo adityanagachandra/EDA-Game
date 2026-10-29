@@ -1,0 +1,5 @@
+[
+  {"label": "The acceptance funnel", "section": "The acceptance funnel", "subgoals": ["Apply the validity rate to the generated count", "Apply the specification pass rate to the valid designs", "Apply the novelty rate to the spec-meeting designs"]},
+  {"label": "Cost per accepted design", "section": "Cost per accepted design", "subgoals": ["Add generation cost for all designs and simulation cost for valid ones", "Count the designs that meet the specification", "Divide total cost by accepted designs"]},
+  {"label": "Comparing with simple search", "section": "Comparing with simple search", "subgoals": ["Compute the baseline's accepted designs per minute", "Compute the generator's accepted designs per minute", "Charge training cost and check diversity before comparing"]}
+]

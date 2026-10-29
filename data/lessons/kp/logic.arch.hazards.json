@@ -1,0 +1,5 @@
+[
+  {"label": "The five-stage pipeline and data hazards", "section": "The five-stage pipeline and data hazards", "subgoals": ["Place register reads in ID and writes in WB", "Require a dependent read at least three cycles after the producer's decode", "Stall the dependent instruction and every later one by the shortfall"]},
+  {"label": "Forwarding and the load-use hazard", "section": "Forwarding and the load-use hazard", "subgoals": ["Forward ALU results to the next instruction without a stall", "Stall one cycle when an instruction uses a load result immediately", "Add the stall cycles to five plus the instruction count minus one"]},
+  {"label": "Structural and control hazards", "section": "Structural and control hazards", "subgoals": ["Name the shared resource in a structural hazard", "Flush the instructions fetched after an unresolved taken branch", "Count the flushed slots as the branch penalty"]}
+]

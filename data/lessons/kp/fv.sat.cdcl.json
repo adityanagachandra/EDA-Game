@@ -1,0 +1,5 @@
+[
+  {"label": "The CDCL loop", "section": "The CDCL loop", "subgoals": ["Decide, then propagate to a fixpoint", "Report SAT on a full assignment and UNSAT on a level-0 conflict", "Analyze the conflict, learn the clause and backjump"]},
+  {"label": "Why learned clauses are sound and useful", "section": "Why learned clauses are sound and useful", "subgoals": ["Derive the learned clause by resolving reasons into the conflict clause", "Argue soundness: every resolvent is implied by the formula", "Explain how the clause blocks the conflict's cause in all later branches"]},
+  {"label": "Managing the learned-clause database", "section": "Managing the learned-clause database", "subgoals": ["Delete only learned clauses, never original ones", "Rank learned clauses by LBD and recent activity", "Log learned clauses and deletions as a checkable proof"]}
+]

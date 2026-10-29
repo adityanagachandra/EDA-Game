@@ -1,0 +1,29 @@
+[
+ {
+  "label": "What maps where",
+  "section": "What maps where",
+  "subgoals": [
+   "Map additions onto carry primitives fed by LUTs",
+   "Map multiplications and multiply-accumulates onto DSP blocks",
+   "Map arrays to block RAM, LUT RAM or registers by size and read style"
+  ]
+ },
+ {
+  "label": "Coding style decides inference",
+  "section": "Coding style decides inference",
+  "subgoals": [
+   "Match the memory's read timing to the RAM primitive",
+   "Remove whole-array resets from inferred memories",
+   "Register multiplier ports so the DSP can absorb the registers"
+  ]
+ },
+ {
+  "label": "Consequences downstream",
+  "section": "Consequences downstream",
+  "subgoals": [
+   "Place carry chains and hard blocks as constrained macros",
+   "Fall back to soft logic when a hard resource runs out",
+   "Account for whole-tile allocation in utilization"
+  ]
+ }
+]

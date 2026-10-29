@@ -1,0 +1,5 @@
+[
+  {"label": "Rings, straps, rails and vias", "section": "Rings, straps, rails and vias", "subgoals": ["Name the ring, strap, rail and via levels of the hierarchy", "Count squares as length over width", "Multiply by the sheet resistance"]},
+  {"label": "The routing cost", "section": "The routing cost", "subgoals": ["Compute the strap width per pitch", "Convert it to a share of the layer", "Explain the trade between drop and routing capacity"]},
+  {"label": "Parallel paths", "section": "Parallel paths", "subgoals": ["Combine parallel straps", "Explain why a mesh needs a network solve", "Compare area-array bumps with peripheral pads"]}
+]

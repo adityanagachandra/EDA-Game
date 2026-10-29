@@ -1,0 +1,5 @@
+[
+  {"label": "A function that rewards interleaving", "section": "A function that rewards interleaving", "subgoals": ["Read each pair x_i, y_i consecutively in the order", "Note that the graph only remembers which pair it has reached", "Count one x node and one y node per pair: 2n"]},
+  {"label": "The same function under a bad order", "section": "The same function under a bad order", "subgoals": ["Show that each subset of x variables set to 1 leaves a different function of the y variables", "Count 2^n - 1 nodes on the x levels and 2^n - 1 on the y levels", "Add them to get 2^(n+1) - 2"]},
+  {"label": "Comparing orders and finding good ones", "section": "Comparing orders and finding good ones", "subgoals": ["Build the ROBDD under each candidate order", "Count the nonterminal nodes of each", "Subtract the counts and explain the difference by which variables are kept together"]}
+]

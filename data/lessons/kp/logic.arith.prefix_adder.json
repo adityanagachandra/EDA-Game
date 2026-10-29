@@ -1,0 +1,5 @@
+[
+  {"label": "The prefix operator", "section": "The prefix operator", "subgoals": ["Combine a high span and a low span as G high plus P high times G low", "Multiply the two propagates", "Read the carry into bit i plus one as the prefix generate from bit i down to zero"]},
+  {"label": "Computing the prefix generates", "section": "Computing the prefix generates", "subgoals": ["Compute generate and propagate for every bit", "Combine spans with the prefix operator up to each position", "Count the positions whose prefix generate is one"]},
+  {"label": "Depth, size and fanout", "section": "Depth, size and fanout", "subgoals": ["Bound the depth below by the ceiling of log base two of n", "Count n over two nodes per level in Sklansky", "Compare fanout and wiring across prefix networks at equal depth"]}
+]

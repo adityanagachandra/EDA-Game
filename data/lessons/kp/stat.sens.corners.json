@@ -1,0 +1,5 @@
+[
+  {"label": "What a corner represents", "section": "What a corner represents", "subgoals": ["Read the first letter as NMOS and the second as PMOS", "Describe a corner as a joint global shift to about three sigma", "Identify skewed corners as the check for ratioed circuits"]},
+  {"label": "Choosing and counting corners", "section": "Choosing and counting corners", "subgoals": ["Combine process, voltage, temperature and interconnect into an analysis point", "Multiply the independent choices to count combinations", "Check both temperature extremes when temperature inversion is possible"]},
+  {"label": "Where corners mislead", "section": "Where corners mislead", "subgoals": ["Quantify the stacked-corner pessimism in output sigmas", "Name local variation as what corners omit", "Check that the metric is monotone in the corner parameters before trusting a corner"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The diode equation", "section": "The diode equation", "subgoals": ["Divide the voltage by n times kT/q", "Exponentiate, subtract one and multiply by the saturation current", "Express the current in a unit between 1 and 1000"]},
+  {"label": "Voltage for a given current", "section": "Voltage for a given current", "subgoals": ["Take the ratio of target current to saturation current", "Apply the natural log", "Multiply by n times kT/q to get the voltage"]},
+  {"label": "Voltage per decade and the ideality factor", "section": "Voltage per decade and the ideality factor", "subgoals": ["Write the voltage step as n times kT/q times ln of the current ratio", "Read the ideality factor from the measured slope per decade", "Explain why simulators limit junction voltage steps"]}
+]

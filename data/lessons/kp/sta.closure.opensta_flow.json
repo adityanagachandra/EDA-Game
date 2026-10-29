@@ -1,0 +1,5 @@
+[
+  {"label": "The four inputs", "section": "The four inputs", "subgoals": ["Load cell timing models with read_liberty", "Load and link the netlist with read_verilog and link_design", "Apply constraints with read_sdc and parasitics with read_spef"]},
+  {"label": "Running the analysis and reading results", "section": "Running the analysis and reading results", "subgoals": ["Mark clocks propagated once a clock tree exists", "Print paths with report_checks for setup and hold", "Extract summary numbers with report_wns and report_tns"]},
+  {"label": "A timer embedded in a flow", "section": "A timer embedded in a flow", "subgoals": ["Query the embedded timer in memory from optimization tools", "Rely on incremental invalidation after each netlist change", "Identify which timer behaviors belong behind stable extension points"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Window overlap", "section": "Window overlap", "subgoals": ["Read each aggressor's switching window", "Test each window for overlap with the victim's", "Treat non-overlapping aggressors as quiet"]},
+  {"label": "Pessimism removed", "section": "Pessimism removed", "subgoals": ["Compute the delta delay assuming every aggressor opposes", "Compute it counting only overlapping aggressors", "Subtract to find the pessimism the windows remove"]},
+  {"label": "The windowed delta and the iteration", "section": "The windowed delta and the iteration", "subgoals": ["Sum the couplings of the overlapping aggressors", "Compute the delta delay from the driver resistance", "Recompute windows with the deltas and repeat until they settle"]}
+]

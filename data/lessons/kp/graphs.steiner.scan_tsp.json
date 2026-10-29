@@ -1,0 +1,5 @@
+[
+  {"label": "Chain length as a path length", "section": "Chain length as a path length", "subgoals": ["Start the path at the scan-in port", "Add the Manhattan length of each hop in order", "Minimize over orders as a traveling-salesman path"]},
+  {"label": "Nearest-neighbour construction", "section": "Nearest-neighbour construction", "subgoals": ["Hop from the port to the nearest unvisited flop", "Repeat until every flop is visited", "Watch for stranded far flops and a long final hop"]},
+  {"label": "2-opt improvement", "section": "2-opt improvement", "subgoals": ["Reverse a contiguous segment of the order", "Compare the hops into and out of the segment before and after", "Repeat improving moves until none remains"]}
+]

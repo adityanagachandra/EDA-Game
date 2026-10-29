@@ -1,0 +1,5 @@
+[
+  {"label": "Applying a transformation to a truth table", "section": "Applying a transformation to a truth table", "subgoals": ["Evaluate the transformed arguments for each assignment", "Copy the corresponding bit of f into g", "Read the resulting bits as an integer"]},
+  {"label": "The canonical representative", "section": "The canonical representative", "subgoals": ["Enumerate the transformations of the chosen group", "Take the smallest resulting truth-table integer", "Compare canonical forms through a hash table"]},
+  {"label": "Signatures that prune the search", "section": "Signatures that prune the search", "subgoals": ["Count the ones of each positive and negative cofactor", "Compare the multisets of counts to reject non-matches", "Order inputs by their counts to shrink the permutations tried"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Error of a single prediction",
+  "section": "Error of a single prediction",
+  "subgoals": [
+   "Compute the absolute difference between prediction and synthesis",
+   "Divide by the synthesis value and scale to percent",
+   "Check whether the model captures the true binding constraint"
+  ]
+ },
+ {
+  "label": "Mean absolute percentage error",
+  "section": "Mean absolute percentage error",
+  "subgoals": [
+   "Compute the percentage error of each validation design",
+   "Average them to get the MAPE",
+   "Validate on configurations and kernels held out from training"
+  ]
+ },
+ {
+  "label": "Ranking quality matters more than error",
+  "section": "Ranking quality matters more than error",
+  "subgoals": [
+   "List every pair of designs",
+   "Count the pairs ordered differently by surrogate and synthesis",
+   "Compute Kendall's tau from concordant and discordant counts"
+  ]
+ }
+]

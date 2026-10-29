@@ -1,0 +1,5 @@
+[
+  {"label": "Holes, exclusions and plateaus", "section": "Holes, exclusions and plateaus", "subgoals": ["Merge coverage across all runs before reading holes", "Classify each hole as reachable, unreachable or illegal", "Read a plateau as a stimulus problem, not a seed problem"]},
+  {"label": "Ranking tests with greedy set cover", "section": "Ranking tests with greedy set cover", "subgoals": ["Pick the test that covers the most bins first", "Recompute each remaining test's gain over the uncovered bins", "Stop when no test adds a new bin"]},
+  {"label": "The coverage-driven loop", "section": "The coverage-driven loop", "subgoals": ["Diagnose why a hole is improbable under current stimulus", "Choose dist weights, a throttling sequence or a directed test accordingly", "Confirm the hole closes without regressions before sign-off"]}
+]

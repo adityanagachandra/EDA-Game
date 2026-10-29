@@ -1,0 +1,5 @@
+[
+  {"label": "Shift and add from binary", "section": "Shift and add from binary", "subgoals": ["Write the constant in binary", "Turn each 1 bit into a shifted copy of the input", "Count one fewer adder than the number of 1 bits"]},
+  {"label": "Canonical signed digits", "section": "Canonical signed digits", "subgoals": ["Replace each run of ones by a plus one above it and a minus one below it", "Compute digits from the least significant bit with 2 minus K mod 4 for odd K", "Count the nonzero digits of the recoded constant"]},
+  {"label": "Savings and beyond single constants", "section": "Savings and beyond single constants", "subgoals": ["Charge one adder or subtractor per nonzero digit after the first", "Compare the CSD count with the binary count", "Share intermediate sums across constants in multiple-constant multiplication"]}
+]

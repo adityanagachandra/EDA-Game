@@ -1,0 +1,5 @@
+[
+  {"label": "Driving the harness", "section": "Driving the harness", "subgoals": ["Require precise minimal diffs against existing source", "Require reliable tool calling over long loops", "Check whether prompts may leave the site"]},
+  {"label": "Running continuous selection", "section": "Running continuous selection", "subgoals": ["Place selection close to the data in the fast loop", "Fine-tune a smaller model on selection records", "Require locally runnable weights"]},
+  {"label": "Becoming the on-site domain model", "section": "Becoming the on-site domain model", "subgoals": ["Require open weights and a permissive license", "Confirm fine-tuned derivatives may ship to customers", "Rule closed API models out of the on-site roles"]}
+]

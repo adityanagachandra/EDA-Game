@@ -1,0 +1,5 @@
+[
+  {"label": "Pinned toolchains and offline builds", "section": "Pinned toolchains and offline builds", "subgoals": ["Bundle compiler, libraries and dependencies in pinned versions", "Remove every network fetch from the build", "Record the toolchain identity in provenance"]},
+  {"label": "Hosting the model inside the boundary", "section": "Hosting the model inside the boundary", "subgoals": ["Serve an open-weights model on hardware inside the boundary", "Point the harness adapter at the local server", "Deliver model updates as reviewed artifacts"]},
+  {"label": "Packaging engines for a site", "section": "Packaging engines for a site", "subgoals": ["Choose source or compiled-only packaging per engine", "Publish headers and manifests for every seam", "Deliver signed, versioned bundles with rollback"]}
+]

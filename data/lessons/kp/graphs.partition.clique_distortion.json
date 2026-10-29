@@ -1,0 +1,5 @@
+[
+  {"label": "Counting crossing clique edges", "section": "Counting crossing clique edges", "subgoals": ["Count the pins of the net on each side", "Multiply the two counts to get crossing clique edges", "Compare with the hyperedge cut of 1"]},
+  {"label": "Weighting to reduce the distortion", "section": "Weighting to reduce the distortion", "subgoals": ["Weight each clique edge by 1/(k - 1)", "Compute the crossing weight m(k - m)/(k - 1)", "Note that no single weight makes every split cost 1"]},
+  {"label": "Graph cut versus hypergraph cut", "section": "Graph cut versus hypergraph cut", "subgoals": ["Sum m(k - m)/(k - 1) over nets to get the graph cut", "Check that the graph cut is at least the number of cut nets", "Keep nets as hyperedges when the objective counts cut nets"]}
+]

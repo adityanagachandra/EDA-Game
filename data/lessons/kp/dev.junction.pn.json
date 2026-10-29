@@ -1,0 +1,5 @@
+[
+  {"label": "The built-in potential", "section": "The built-in potential", "subgoals": ["Form the product of the two dopings divided by ni squared", "Take the natural log of that ratio", "Multiply by the thermal voltage kT/q"]},
+  {"label": "How the built-in potential depends on doping", "section": "How the built-in potential depends on doping", "subgoals": ["Note that only the product of the dopings enters, inside a logarithm", "Add kT/q times ln of the change factor", "Bound the built-in potential by the band gap"]},
+  {"label": "Built-in potential at temperature", "section": "Built-in potential at temperature", "subgoals": ["Recompute kT/q and ni at the new temperature", "Evaluate the logarithm with the new ni squared", "Explain why the built-in potential falls with heating"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Why printed shapes differ from drawn ones", "section": "Why printed shapes differ from drawn ones", "subgoals": ["Describe the low-pass blurring of the image", "Name corner rounding, line-end shortening and proximity bias", "Estimate the interaction range of proximity effects"]},
+  {"label": "Rule-based and model-based OPC", "section": "Rule-based and model-based OPC", "subgoals": ["Contrast table-driven and simulation-driven correction", "Define edge placement error at a fragment", "Order the fragment, simulate, move and verify steps"]},
+  {"label": "Inverse lithography and cost", "section": "Inverse lithography and cost", "subgoals": ["Pose mask synthesis as an optimization over pixels", "Compare ILT with fragment-based OPC on window and cost", "Explain why OPC makes cell behaviour depend on context"]}
+]

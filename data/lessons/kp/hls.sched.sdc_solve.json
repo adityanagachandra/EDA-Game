@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Constraints as a weighted graph",
+  "section": "Constraints as a weighted graph",
+  "subgoals": [
+   "Draw an edge from i to j of weight w for each constraint",
+   "Start every variable at zero",
+   "Relax edges in topological order to get the longest paths"
+  ]
+ },
+ {
+  "label": "Upper bounds become backward edges",
+  "section": "Upper bounds become backward edges",
+  "subgoals": [
+   "Rewrite each upper bound as a lower bound with negated weight",
+   "Add the corresponding backward edge",
+   "Relax all edges repeatedly until no start time changes"
+  ]
+ },
+ {
+  "label": "Feasibility and positive cycles",
+  "section": "Feasibility and positive cycles",
+  "subgoals": [
+   "Find the longest forward path between the constrained operations",
+   "Close the cycle with the backward edge",
+   "Require the cycle weight to be at most zero"
+  ]
+ }
+]

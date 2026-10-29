@@ -1,0 +1,29 @@
+[
+ {
+  "label": "New run time after offloading",
+  "section": "New run time after offloading",
+  "subgoals": [
+   "Keep the non-accelerated fraction at its software time",
+   "Divide the kernel time by the accelerator speedup",
+   "Add the transfer time"
+  ]
+ },
+ {
+  "label": "Overall speedup and Amdahl's limit",
+  "section": "Overall speedup and Amdahl's limit",
+  "subgoals": [
+   "Divide the original time by the new time",
+   "Bound the speedup by one over the non-accelerated fraction",
+   "Rank candidate kernels by time fraction and arithmetic intensity"
+  ]
+ },
+ {
+  "label": "The break-even speedup",
+  "section": "The break-even speedup",
+  "subgoals": [
+   "Set the accelerated kernel time plus transfer equal to the software kernel time",
+   "Solve for the break-even speedup",
+   "Reject kernels whose transfer cost alone exceeds their software time"
+  ]
+ }
+]

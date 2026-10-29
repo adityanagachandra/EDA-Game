@@ -1,0 +1,5 @@
+[
+  {"label": "Coverage of the change surface", "section": "Coverage of the change surface", "subgoals": ["List every condition in the change", "Require tests on both sides of each condition", "Include the exact boundary value"]},
+  {"label": "What the intended effect cannot catch", "section": "What the intended effect cannot catch", "subgoals": ["Check unintended movers across all objects", "Cover every metric and corner the change may affect", "Run legality checks on every output"]},
+  {"label": "Goldens that rot", "section": "Goldens that rot", "subgoals": ["Reject goldens regenerated from the changed engine", "Pin baselines to an engine version", "Keep tolerances near the measured noise"]}
+]

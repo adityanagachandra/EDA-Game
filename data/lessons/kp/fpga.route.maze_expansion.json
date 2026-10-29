@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Shortest paths with node costs",
+  "section": "Shortest paths with node costs",
+  "subgoals": [
+   "Seed the queue with the source's reachable wires at their own cost",
+   "Pop the cheapest wire and relax its neighbors by adding their cost",
+   "Stop when a wire reaching the sink is popped"
+  ]
+ },
+ {
+  "label": "Routing multi-sink nets",
+  "section": "Routing multi-sink nets",
+  "subgoals": [
+   "Route the first sink by a full wavefront search",
+   "Add its path to the tree at zero cost",
+   "Search from the whole tree for the next sink"
+  ]
+ },
+ {
+  "label": "Directed search",
+  "section": "Directed search",
+  "subgoals": [
+   "Estimate the remaining cost from distance and the cheapest wire cost",
+   "Order the queue by g plus alpha times h",
+   "Expand the node with the smallest f"
+  ]
+ }
+]

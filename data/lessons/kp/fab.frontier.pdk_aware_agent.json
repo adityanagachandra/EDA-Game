@@ -1,0 +1,5 @@
+[
+  {"label": "Reading process facts instead of recalling them", "section": "Reading process facts instead of recalling them", "subgoals": ["Answer process questions through PDK-parsing tool calls", "Match skills to the design's process and PDK version", "Diff PDK versions before acting on a mismatch"]},
+  {"label": "Which tier a process change lands in", "section": "Which tier a process change lands in", "subgoals": ["Classify a value change as configuration", "Classify a new rule kind as a plug-in at a rule-check seam", "Reserve legality and kernel edits for human-approved core changes"]},
+  {"label": "Guarding against invented and gamed process data", "section": "Guarding against invented and gamed process data", "subgoals": ["Require citations for every process value an agent outputs", "Make rule decks read-only to optimizing agents", "Escalate ambiguous rules with both readings tested"]}
+]

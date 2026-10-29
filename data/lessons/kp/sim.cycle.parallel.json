@@ -1,0 +1,5 @@
+[
+  {"label": "Work and span of a cycle's task graph", "section": "Work and span of a cycle's task graph", "subgoals": ["Sum all task costs to get the work W", "Compute each task's finish time from its predecessors", "Take the latest finish time as the span S"]},
+  {"label": "Speedup bounds", "section": "Speedup bounds", "subgoals": ["Bound the time per cycle below by max(W/P, S)", "Compute the best speedup as min(P, W/S)", "Apply Brent's bound T_P <= W/P + S for a greedy scheduler"]},
+  {"label": "Why synchronization dominates", "section": "Why synchronization dominates", "subgoals": ["Add the per-cycle barrier cost to the parallel time", "Merge fine-grained logic into coarse balanced tasks", "Minimize the values that cross between partitions"]}
+]

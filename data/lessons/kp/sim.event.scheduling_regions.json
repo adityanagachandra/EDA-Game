@@ -1,0 +1,5 @@
+[
+  {"label": "The region order of a time step", "section": "The region order of a time step", "subgoals": ["List the regions from Preponed to Postponed", "Place blocking assignments and nonblocking right-hand sides in Active", "Place nonblocking updates in NBA and assertion evaluation in Observed"]},
+  {"label": "Blocking versus nonblocking results", "section": "Blocking versus nonblocking results", "subgoals": ["Execute blocking assignments in order with immediate updates", "Read every nonblocking right-hand side before any update", "Apply nonblocking updates together in the NBA region"]},
+  {"label": "Races between processes", "section": "Races between processes", "subgoals": ["Identify two processes that read and write the same variable at one edge", "Explain why either process order is legal", "Replace blocking register writes with nonblocking assignments"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Softmax weights", "section": "Softmax weights", "subgoals": ["Apply the chain rule to gamma ln of the sum", "Read the derivative as the pin's softmax weight", "Note that the weights are positive and sum to one"]},
+  {"label": "The full gradient of a net", "section": "The full gradient of a net", "subgoals": ["Subtract the minimum-side softmax from the maximum-side softmax", "Check that each component lies between -1 and 1", "Verify the gradients of a net sum to zero"]},
+  {"label": "From pins to cells", "section": "From pins to cells", "subgoals": ["Sum the pin gradients over every net on the cell", "Compute each net's exponential sums once and reuse them", "Subtract the net maximum before exponentiating"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Full factorial designs", "section": "Full factorial designs", "subgoals": ["Count combinations as levels to the power of factors", "Prefer two levels for estimating main effects and interactions", "Recognize exponential growth as the limit on full factorials"]},
+  {"label": "Fractional factorial designs", "section": "Fractional factorial designs", "subgoals": ["Divide the full run count by 2 to the p", "Name aliasing as the cost of running a fraction", "Choose the resolution for which effects must stay separable"]},
+  {"label": "Runs for a quadratic model", "section": "Runs for a quadratic model", "subgoals": ["Count intercept, linear, quadratic and interaction coefficients", "Add axial points to a two-level core for curvature", "Sum the core, axial and centre runs of a central composite design"]}
+]

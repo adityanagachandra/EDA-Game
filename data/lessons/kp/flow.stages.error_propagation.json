@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Re-running the descendants",
+    "section": "Re-running the descendants",
+    "subgoals": [
+      "Locate the changed stage in the chain",
+      "Count the changed stage and every later stage",
+      "Find all stages reachable from a change in a DAG flow"
+    ]
+  },
+  {
+    "label": "Adding up the cost",
+    "section": "Adding up the cost",
+    "subgoals": [
+      "Sum the run times of the stages that must re-run",
+      "Compare a full re-run with a late ECO",
+      "Explain why fixes are pushed late and local"
+    ]
+  },
+  {
+    "label": "Iterations that may fail",
+    "section": "Iterations that may fail",
+    "subgoals": [
+      "Model attempts as geometric with success probability q",
+      "Divide the per-attempt cost by q for the expected cost",
+      "Relate a poor early decision to a lower q"
+    ]
+  }
+]

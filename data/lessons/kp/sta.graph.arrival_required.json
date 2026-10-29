@@ -1,0 +1,5 @@
+[
+  {"label": "Required time at an endpoint", "section": "Required time at an endpoint", "subgoals": ["Find the capturing clock edge at the endpoint", "Add the capture clock latency", "Subtract the setup time to get the endpoint required time"]},
+  {"label": "Backward propagation with a minimum", "section": "Backward propagation with a minimum", "subgoals": ["Visit nodes in reverse topological order", "Subtract each fanout arc's delay from the fanout's required time", "Keep the smallest result as the node's required time"]},
+  {"label": "Why the minimum governs", "section": "Why the minimum governs", "subgoals": ["Trace which endpoint produced a node's required time", "Explain that the strictest reachable endpoint sets the deadline", "Recognize that a wrong endpoint constraint corrupts its whole fanin cone"]}
+]

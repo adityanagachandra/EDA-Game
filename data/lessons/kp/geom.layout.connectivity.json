@@ -1,0 +1,5 @@
+[
+  {"label": "Components on one layer", "section": "Components on one layer", "subgoals": ["Report every pair of shapes that overlap or share an edge", "Ignore pairs that touch only at a corner", "Count the connected components as nets"]},
+  {"label": "Across layers through vias", "section": "Across layers through vias", "subgoals": ["Union same-layer shapes that touch or overlap", "Union the M1 and M2 shapes overlapped by each via", "Count the remaining components as nets"]},
+  {"label": "Union-find in practice", "section": "Union-find in practice", "subgoals": ["Find the roots of both shapes in each union call", "Merge only when the roots differ", "Count the merges and subtract from the shape count"]}
+]

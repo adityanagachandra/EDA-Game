@@ -1,0 +1,5 @@
+[
+  {"label": "Golden cases from closed-form physics", "section": "Golden cases from closed-form physics", "subgoals": ["Pick cases with closed-form answers for each physics", "Set tolerances tied to mesh resolution", "Check the convergence order under refinement"]},
+  {"label": "Differential checks on reference designs", "section": "Differential checks on reference designs", "subgoals": ["Run baseline and changed engines on reference packages", "Require unrelated outputs to stay identical", "Make meshing and ordering deterministic"]},
+  {"label": "Measured ground truth", "section": "Measured ground truth", "subgoals": ["Add measured thermal, warpage and life cases with uncertainty", "Pass when predictions fall inside the uncertainty", "Detect material-library drift with measured cases"]}
+]

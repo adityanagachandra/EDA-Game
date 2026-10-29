@@ -1,0 +1,5 @@
+[
+  {"label": "M1: swap adjacent operands", "section": "M1: swap adjacent operands", "subgoals": ["List the operands in order, ignoring operators", "Swap two neighbouring operands in that list", "Keep every operator in its original position"]},
+  {"label": "M2: complement a chain", "section": "M2: complement a chain", "subgoals": ["Find the maximal runs of consecutive operators", "Complement every operator in the chosen chain", "Confirm the alternating chain stays normalized"]},
+  {"label": "M3: swap an operand and an operator, with a check", "section": "M3: swap an operand and an operator, with a check", "subgoals": ["Swap an adjacent operand and operator", "Check every prefix for the balloting property", "Reject results with two identical adjacent operators"]}
+]

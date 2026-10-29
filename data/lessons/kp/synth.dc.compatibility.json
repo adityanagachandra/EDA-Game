@@ -1,0 +1,5 @@
+[
+  {"label": "Why full ODCs conflict", "section": "Why full ODCs conflict", "subgoals": ["Find a point where two inputs of a gate are both unobservable", "Show that flipping both changes the gate's output", "Conclude that full ODCs are valid only one node at a time"]},
+  {"label": "Building compatible don't cares", "section": "Building compatible don't cares", "subgoals": ["Order the fanins of each gate", "Give the first fanin its full observability don't care", "Restrict later fanins to points that stay unobservable under earlier changes"]},
+  {"label": "Choosing a strategy", "section": "Choosing a strategy", "subgoals": ["Recompute exact don't cares when changing one node at a time", "Use compatible don't cares when changing many nodes against one snapshot", "Verify each change on a window with SAT as the alternative"]}
+]

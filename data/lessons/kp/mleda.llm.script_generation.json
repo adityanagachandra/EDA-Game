@@ -1,0 +1,5 @@
+[
+  {"label": "Scripts as tool programs", "section": "Scripts as tool programs", "subgoals": ["Establish the flow state the script runs in", "Retrieve the installed version's command reference", "Map the request onto the documented commands and options"]},
+  {"label": "Hallucinated commands and silent errors", "section": "Hallucinated commands and silent errors", "subgoals": ["Validate every command and option against the tool's registry", "Inspect reports or design state for the requested effect", "Replace hardcoded design values with database queries"]},
+  {"label": "Sandboxing and checking a generated flow", "section": "Sandboxing and checking a generated flow", "subgoals": ["Run the script in a sandbox without network access", "Flag changes broader than the request", "Fix seeds and compare QoR against a baseline before adoption"]}
+]

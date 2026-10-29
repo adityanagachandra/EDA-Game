@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Counting work per unit type",
+  "section": "Counting work per unit type",
+  "subgoals": [
+   "Count the operations of each type",
+   "Divide by the number of units of that type",
+   "Round up to get the step bound for that type"
+  ]
+ },
+ {
+  "label": "Multicycle operations occupy units longer",
+  "section": "Multicycle operations occupy units longer",
+  "subgoals": [
+   "Multiply the operation count by the occupancy per operation",
+   "Divide the unit-steps of work by the number of units",
+   "Use occupancy one for fully pipelined units"
+  ]
+ },
+ {
+  "label": "Combining the bounds",
+  "section": "Combining the bounds",
+  "subgoals": [
+   "Compute the critical-path length of the DFG",
+   "Compute the bound for every unit type",
+   "Take the maximum as the lower bound on schedule length"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Dividing by a cube", "section": "Dividing by a cube", "subgoals": ["Keep the cubes of F that contain every literal of the divisor cube", "Strike the divisor's literals from each kept cube", "Collect the other cubes as the remainder"]},
+  {"label": "Dividing by a multi-cube divisor", "section": "Dividing by a multi-cube divisor", "subgoals": ["Compute the cube quotient of F by each cube of D", "Intersect the cube quotients to get Q", "Subtract the cubes of DQ from F to get R"]},
+  {"label": "What algebraic means", "section": "What algebraic means", "subgoals": ["State the identity F = DQ + R as polynomial equality", "Require disjoint supports for the divisor and the quotient", "Name the Boolean identities that weak division cannot use"]}
+]

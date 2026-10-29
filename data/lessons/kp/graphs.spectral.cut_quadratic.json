@@ -1,0 +1,5 @@
+[
+  {"label": "The sum-of-squares identity", "section": "The sum-of-squares identity", "subgoals": ["Take the difference of x across each edge", "Square it and multiply by the edge weight", "Sum over edges to evaluate the quadratic form"]},
+  {"label": "Bisections as plus-or-minus-one vectors", "section": "Bisections as plus-or-minus-one vectors", "subgoals": ["Encode side A as +1 and side B as -1", "Read x transpose L x as four times the cut", "Relax to real vectors to obtain an eigenvalue problem"]},
+  {"label": "The same form in placement", "section": "The same form in placement", "subgoals": ["Expand nets as weighted cliques on real positions", "Evaluate x transpose L x as quadratic wirelength", "Fix I/O pins and solve the movable block's linear system"]}
+]

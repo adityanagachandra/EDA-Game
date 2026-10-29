@@ -1,0 +1,5 @@
+[
+  {"label": "What each stage decides", "section": "What each stage decides", "subgoals": ["Describe the gcell graph with edge capacities", "Name route guides as the global router's output", "Assign spacing, pin access and via geometry to detailed routing"]},
+  {"label": "Why the coarse model can mislead", "section": "Why the coarse model can mislead", "subgoals": ["Explain why gcell capacity overestimates real capacity", "Use layer adjustments to reserve slack for detailed routing", "Read global overflow as a forecast of detailed-routing trouble"]},
+  {"label": "Consequences for the flow", "section": "Consequences for the flow", "subgoals": ["Interpret a wirelength jump from placement to global routing", "Feed global congestion back into routability-driven placement", "Weigh gcell size against runtime and capacity accuracy"]}
+]

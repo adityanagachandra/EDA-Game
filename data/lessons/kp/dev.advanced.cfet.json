@@ -1,0 +1,5 @@
+[
+  {"label": "What a CFET stacks", "section": "What a CFET stacks", "subgoals": ["Place the n and p nanosheet stacks one above the other", "Connect shared gate and output through vertical contacts", "Distinguish monolithic from sequential integration"]},
+  {"label": "Layout, routing and extraction", "section": "Layout, routing and extraction", "subgoals": ["Relate shorter cells to fewer routing tracks and harder pin access", "Explain why backside power delivery pairs with CFET", "Add tier-aware geometry and inter-tier coupling to extraction"]},
+  {"label": "Outlook and modeling", "section": "Outlook and modeling", "subgoals": ["Reuse gate-all-around channel models for each tier", "Add inter-tier coupling, per-tier parameters and thermal terms", "Treat density gains as projections that depend on contacts and tracks"]}
+]

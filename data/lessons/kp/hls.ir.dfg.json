@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Nodes, edges and three-address code",
+  "section": "Nodes, edges and three-address code",
+  "subgoals": [
+   "Rewrite the block in three-address form",
+   "Draw one node per operation and one edge per operand that names an earlier result",
+   "Exclude primary-input operands from the edge count"
+  ]
+ },
+ {
+  "label": "Depth: the longest dependence chain",
+  "section": "Depth: the longest dependence chain",
+  "subgoals": [
+   "Order the operations topologically",
+   "Set each level to one plus the largest predecessor level",
+   "Report the largest level as the depth"
+  ]
+ },
+ {
+  "label": "Sinks, sources and what the graph leaves out",
+  "section": "Sinks, sources and what the graph leaves out",
+  "subgoals": [
+   "Mark the operations whose results are never read inside the block",
+   "Treat each sink as a value that must leave the block",
+   "Add explicit edges for memory ordering the operands do not show"
+  ]
+ }
+]

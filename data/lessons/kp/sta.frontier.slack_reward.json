@@ -1,0 +1,5 @@
+[
+  {"label": "A slack-based reward", "section": "A slack-based reward", "subgoals": ["Clip WNS at zero and multiply by its weight", "Add the weighted TNS", "Subtract the weighted area increase"]},
+  {"label": "Computing it from endpoint slacks", "section": "Computing it from endpoint slacks", "subgoals": ["Compute WNS and TNS from the engine's endpoint slacks", "Evaluate the weighted reward", "Fix the constraints, corners and engine version across episodes"]},
+  {"label": "Reward hacking and the grounded check", "section": "Reward hacking and the grounded check", "subgoals": ["Re-time every result with the original constraints", "Recompute WNS and TNS over all endpoints", "Compare the grounded reward with the proxy reward to expose hacks"]}
+]

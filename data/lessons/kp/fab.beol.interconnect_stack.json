@@ -1,0 +1,5 @@
+[
+  {"label": "Layers, pitches and directions", "section": "Layers, pitches and directions", "subgoals": ["Read a layer's pitch, direction and thickness", "Group layers into local, intermediate and global tiers", "Compute tracks across a block from its width and the pitch"]},
+  {"label": "Routing supply across the stack", "section": "Routing supply across the stack", "subgoals": ["Assign each layer's track count by its direction", "Sum track supply across the layers", "Subtract power and blockage to get effective capacity"]},
+  {"label": "Why long wires go up", "section": "Why long wires go up", "subgoals": ["Scale cross-section area with pitch squared", "Compute the resistance ratio between two layers", "Justify promoting long nets to upper layers"]}
+]

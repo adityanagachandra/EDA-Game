@@ -1,0 +1,5 @@
+[
+  {"label": "What legalization must achieve", "section": "What legalization must achieve", "subgoals": ["List the row, site, orientation and overlap conditions of legality", "Assign each cell a row and an x position", "Preserve the global solution by minimising displacement"]},
+  {"label": "Measuring displacement", "section": "Measuring displacement", "subgoals": ["Compute each cell's Manhattan displacement", "Sum for the total and take the largest for the maximum", "Square and sum for the quadratic measure"]},
+  {"label": "Why the metric matters downstream", "section": "Why the metric matters downstream", "subgoals": ["Link total displacement to lost wirelength", "Link maximum displacement to timing risk and leftover overflow", "Bound and weight moves of timing-critical cells"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Accumulating history",
+  "section": "Accumulating history",
+  "subgoals": [
+   "Compute each iteration's overuse of the node",
+   "Multiply the overuse by h_fac",
+   "Add it to the accumulated history"
+  ]
+ },
+ {
+  "label": "Growing the present cost",
+  "section": "Growing the present cost",
+  "subgoals": [
+   "Compute p_fac as p_0 times m to the iteration minus 1",
+   "Compute the present cost from the node's overuse",
+   "Price the node with base plus history times present cost"
+  ]
+ },
+ {
+  "label": "History breaks ties for good",
+  "section": "History breaks ties for good",
+  "subgoals": [
+   "Write the contested node's cost as a function of the iteration",
+   "Compare it with the detour's cost each iteration",
+   "Find the first iteration where the node costs more"
+  ]
+ }
+]

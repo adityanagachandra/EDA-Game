@@ -1,0 +1,5 @@
+[
+  {"label": "Mismatch strain", "section": "Mismatch strain", "subgoals": ["Subtract the two CTEs", "Multiply by the temperature change from the stress-free state", "Express the strain in ppm or percent"]},
+  {"label": "Biaxial stress in a constrained film", "section": "Biaxial stress in a constrained film", "subgoals": ["Compute the biaxial modulus from E and Poisson's ratio", "Multiply by the mismatch strain", "Compare the stress with the material's yield"]},
+  {"label": "Temperature swing to a stress limit", "section": "Temperature swing to a stress limit", "subgoals": ["Rearrange the stress formula for the temperature swing", "Substitute modulus, Poisson's ratio and mismatch", "Note where edges invalidate the film formula"]}
+]

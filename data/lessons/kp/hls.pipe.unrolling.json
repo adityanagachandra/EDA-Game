@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Main loop and remainder",
+  "section": "Main loop and remainder",
+  "subgoals": [
+   "Divide the trip count by the unroll factor for the main trips",
+   "Take the trip count modulo the factor for the remainder",
+   "Guard or peel the remainder when the trip count is unknown"
+  ]
+ },
+ {
+  "label": "Cycles under resource limits",
+  "section": "Cycles under resource limits",
+  "subgoals": [
+   "Multiply per-iteration operation counts by U",
+   "Take the maximum of depth and each resource bound",
+   "Multiply by the number of unrolled trips"
+  ]
+ },
+ {
+  "label": "Where unrolling stops paying",
+  "section": "Where unrolling stops paying",
+  "subgoals": [
+   "Bound U by depth times units divided by operations for each type",
+   "Take the smallest bound as the useful unroll limit",
+   "Check memory ports and recurrences before unrolling further"
+  ]
+ }
+]

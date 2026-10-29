@@ -1,0 +1,865 @@
+[
+ {
+  "id": "pcb.flow.schematic_to_layout",
+  "label": "The PCB design flow",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.flow",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "flow.stages.rtl_to_gds",
+   "flow.repr.netlist"
+  ],
+  "key_prerequisites": [
+   "flow.repr.netlist"
+  ],
+  "encompasses": [
+   "flow.repr.netlist"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 45
+  }
+ },
+ {
+  "id": "pcb.flow.symbols_footprints",
+  "label": "Symbols, footprints and land patterns",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.flow",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.flow.schematic_to_layout",
+   "geom.rect.bbox"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.schematic_to_layout"
+  ],
+  "encompasses": [
+   "pcb.flow.schematic_to_layout"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 50
+  }
+ },
+ {
+  "id": "pcb.flow.bom",
+  "label": "Bills of materials",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.flow",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.flow.symbols_footprints",
+   "pcb.flow.schematic_to_layout"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.symbols_footprints"
+  ],
+  "encompasses": [
+   "pcb.flow.symbols_footprints"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "pcb.flow.netlist_handoff",
+  "label": "Netlist handoff and annotation",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.flow",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.flow.symbols_footprints",
+   "flow.repr.netlist",
+   "graphs.model.hypergraph"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.symbols_footprints"
+  ],
+  "encompasses": [
+   "pcb.flow.symbols_footprints"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 50
+  }
+ },
+ {
+  "id": "pcb.flow.erc",
+  "label": "Electrical rule checking of schematics",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.flow",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.flow.netlist_handoff",
+   "em.circuit.kcl_kvl",
+   "graphs.model.hypergraph"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.netlist_handoff"
+  ],
+  "encompasses": [
+   "pcb.flow.netlist_handoff"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.flow.tools",
+  "label": "The PCB tool landscape",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.flow",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.flow.schematic_to_layout",
+   "pcb.flow.netlist_handoff",
+   "flow.industry.tool_landscape"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.schematic_to_layout"
+  ],
+  "encompasses": [],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 45
+  }
+ },
+ {
+  "id": "pcb.stackup.layers",
+  "label": "Stackup build: thickness, layer count and symmetry",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.stackup",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.flow.schematic_to_layout",
+   "em.field.electrostatics_capacitance"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.schematic_to_layout"
+  ],
+  "encompasses": [],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 100
+  }
+ },
+ {
+  "id": "pcb.stackup.copper_resistance",
+  "label": "Trace resistance from copper weight",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.stackup",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.stackup.layers",
+   "em.circuit.kcl_kvl"
+  ],
+  "key_prerequisites": [
+   "pcb.stackup.layers"
+  ],
+  "encompasses": [
+   "pcb.stackup.layers"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.stackup.current_capacity",
+  "label": "Trace current capacity rules of thumb",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.stackup",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.stackup.copper_resistance",
+   "pcb.stackup.layers"
+  ],
+  "key_prerequisites": [
+   "pcb.stackup.copper_resistance"
+  ],
+  "encompasses": [
+   "pcb.stackup.copper_resistance",
+   "pcb.stackup.layers"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "pcb.stackup.controlled_impedance",
+  "label": "Stackups and controlled impedance",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.stackup",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.stackup.layers",
+   "em.tline.telegrapher",
+   "em.field.electrostatics_capacitance"
+  ],
+  "key_prerequisites": [
+   "em.tline.telegrapher",
+   "pcb.stackup.layers"
+  ],
+  "encompasses": [
+   "pcb.stackup.layers"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "pcb.stackup.prop_delay",
+  "label": "Propagation delay and effective dielectric constant",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.stackup",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.stackup.controlled_impedance",
+   "em.tline.telegrapher"
+  ],
+  "key_prerequisites": [
+   "pcb.stackup.controlled_impedance"
+  ],
+  "encompasses": [
+   "em.tline.telegrapher"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 100
+  }
+ },
+ {
+  "id": "pcb.stackup.flex_rigid_flex",
+  "label": "Flex and rigid-flex boards",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.stackup",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.stackup.layers",
+   "pcb.stackup.copper_resistance"
+  ],
+  "key_prerequisites": [
+   "pcb.stackup.layers"
+  ],
+  "encompasses": [
+   "pcb.stackup.layers"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 55
+  }
+ },
+ {
+  "id": "pcb.via.types",
+  "label": "Via types",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.via",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.stackup.layers",
+   "route.layer.via_minimization",
+   "em.tline.telegrapher"
+  ],
+  "key_prerequisites": [
+   "pcb.stackup.layers"
+  ],
+  "encompasses": [
+   "pcb.stackup.layers"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 55
+  }
+ },
+ {
+  "id": "pcb.via.aspect_ratio",
+  "label": "Via aspect ratios and drill limits",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.via",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.via.types",
+   "pcb.stackup.layers"
+  ],
+  "key_prerequisites": [
+   "pcb.via.types"
+  ],
+  "encompasses": [
+   "pcb.via.types",
+   "pcb.stackup.layers"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "pcb.via.hdi",
+  "label": "HDI build-ups and microvia stacking",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.via",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.via.aspect_ratio",
+   "pcb.via.types"
+  ],
+  "key_prerequisites": [
+   "pcb.via.types"
+  ],
+  "encompasses": [
+   "pcb.via.aspect_ratio"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.layout.placement",
+  "label": "Board placement and ratsnest length",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.layout",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.flow.netlist_handoff",
+   "graphs.steiner.mst",
+   "geom.rect.manhattan"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.netlist_handoff",
+   "graphs.steiner.mst"
+  ],
+  "encompasses": [
+   "pcb.flow.netlist_handoff"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "pcb.layout.autorouter",
+  "label": "Board autorouters versus chip routers",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.layout",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.layout.placement",
+   "route.global.rip_up_reroute",
+   "route.maze.lee",
+   "pcb.via.types"
+  ],
+  "key_prerequisites": [
+   "route.global.rip_up_reroute",
+   "pcb.layout.placement"
+  ],
+  "encompasses": [
+   "pcb.layout.placement"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 50
+  }
+ },
+ {
+  "id": "pcb.layout.bga_escape",
+  "label": "BGA fanout and escape routing",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.layout",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.layout.autorouter",
+   "pcb.via.types",
+   "pcb.flow.symbols_footprints"
+  ],
+  "key_prerequisites": [
+   "pcb.layout.autorouter"
+  ],
+  "encompasses": [
+   "pcb.via.types"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "pcb.diff.odd_even",
+  "label": "Odd and even modes of coupled lines",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.diff",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.stackup.controlled_impedance",
+   "em.tline.telegrapher"
+  ],
+  "key_prerequisites": [
+   "pcb.stackup.controlled_impedance"
+  ],
+  "encompasses": [
+   "pcb.stackup.controlled_impedance"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 55
+  }
+ },
+ {
+  "id": "pcb.diff.pairs",
+  "label": "Differential pairs",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.diff",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.diff.odd_even",
+   "pcb.stackup.controlled_impedance"
+  ],
+  "key_prerequisites": [
+   "pcb.diff.odd_even"
+  ],
+  "encompasses": [
+   "pcb.diff.odd_even"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "pcb.diff.length_matching",
+  "label": "Length matching from a skew budget",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.diff",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.diff.pairs",
+   "pcb.stackup.prop_delay"
+  ],
+  "key_prerequisites": [
+   "pcb.stackup.prop_delay"
+  ],
+  "encompasses": [
+   "pcb.stackup.prop_delay",
+   "pcb.diff.pairs"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.si.reflection",
+  "label": "Reflections at board impedance discontinuities",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.stackup.controlled_impedance",
+   "em.tline.reflection"
+  ],
+  "key_prerequisites": [
+   "em.tline.reflection"
+  ],
+  "encompasses": [
+   "pcb.stackup.controlled_impedance"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.si.ibis",
+  "label": "IBIS models",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.si",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.si.reflection",
+   "em.circuit.nodal_analysis"
+  ],
+  "key_prerequisites": [
+   "pcb.si.reflection"
+  ],
+  "encompasses": [
+   "pcb.si.reflection"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 55
+  }
+ },
+ {
+  "id": "pcb.si.touchstone",
+  "label": "Touchstone files and channel S-parameters",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "em.tline.s_parameters",
+   "pcb.si.reflection"
+  ],
+  "key_prerequisites": [
+   "em.tline.s_parameters"
+  ],
+  "encompasses": [
+   "pcb.si.reflection"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 100
+  }
+ },
+ {
+  "id": "pcb.si.ibis_ami",
+  "label": "IBIS-AMI and SerDes channel simulation",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.si",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.si.ibis",
+   "pcb.si.touchstone",
+   "em.signal.laplace_transfer"
+  ],
+  "key_prerequisites": [
+   "pcb.si.ibis"
+  ],
+  "encompasses": [
+   "pcb.si.ibis"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "pcb.si.pdn_target",
+  "label": "Power delivery: target impedance and decoupling",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "em.circuit.rlc",
+   "em.field.inductance",
+   "pcb.stackup.layers"
+  ],
+  "key_prerequisites": [
+   "em.circuit.rlc"
+  ],
+  "encompasses": [
+   "em.circuit.rlc"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.assembly.tht_smt",
+  "label": "Through-hole versus surface-mount technology",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.assembly",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.flow.symbols_footprints",
+   "pcb.via.types"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.symbols_footprints"
+  ],
+  "encompasses": [
+   "pcb.flow.symbols_footprints"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 45
+  }
+ },
+ {
+  "id": "pcb.assembly.dfa",
+  "label": "Design for assembly",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.assembly",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.assembly.tht_smt",
+   "pcb.layout.placement"
+  ],
+  "key_prerequisites": [
+   "pcb.assembly.tht_smt"
+  ],
+  "encompasses": [
+   "pcb.assembly.tht_smt"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 50
+  }
+ },
+ {
+  "id": "pcb.assembly.pick_place",
+  "label": "Pick-and-place data and throughput",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.assembly",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.assembly.dfa",
+   "pcb.flow.bom"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.bom"
+  ],
+  "encompasses": [
+   "pcb.flow.bom"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.assembly.reflow",
+  "label": "Reflow soldering profiles",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.assembly",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.assembly.tht_smt",
+   "calc.deriv.applications"
+  ],
+  "key_prerequisites": [
+   "pcb.assembly.tht_smt"
+  ],
+  "encompasses": [
+   "pcb.assembly.tht_smt"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.verify.drc",
+  "label": "Board design rule checking",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.verify",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pv.drc.rule_types",
+   "geom.rect.bbox",
+   "pcb.layout.autorouter"
+  ],
+  "key_prerequisites": [
+   "pv.drc.rule_types"
+  ],
+  "encompasses": [
+   "geom.rect.bbox"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "pcb.verify.dft",
+  "label": "Design for test on boards",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.verify",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.flow.netlist_handoff",
+   "pcb.layout.placement",
+   "stat.prob.basic"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.netlist_handoff"
+  ],
+  "encompasses": [
+   "pcb.flow.netlist_handoff"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "pcb.verify.bringup",
+  "label": "Board bring-up and hardware debugging",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.verify",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.verify.dft",
+   "pcb.si.pdn_target",
+   "pcb.si.reflection"
+  ],
+  "key_prerequisites": [
+   "pcb.verify.dft"
+  ],
+  "encompasses": [
+   "pcb.verify.dft"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 55
+  }
+ },
+ {
+  "id": "pcb.output.gerber_odb",
+  "label": "Gerber and ODB++",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.output",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.verify.drc",
+   "pv.format.gds_oasis",
+   "pcb.stackup.layers"
+  ],
+  "key_prerequisites": [
+   "pv.format.gds_oasis"
+  ],
+  "encompasses": [
+   "pcb.stackup.layers"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 55
+  }
+ },
+ {
+  "id": "pcb.output.ipc_standards",
+  "label": "IPC standards for design, fabrication and assembly",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.output",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.output.gerber_odb",
+   "pcb.assembly.dfa",
+   "pcb.stackup.current_capacity"
+  ],
+  "key_prerequisites": [
+   "pcb.output.gerber_odb"
+  ],
+  "encompasses": [],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 45
+  }
+ },
+ {
+  "id": "pcb.frontier.constraint_agent",
+  "label": "Agents for board constraint setup and placement",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.layout.placement",
+   "pcb.diff.length_matching",
+   "agentic.tiers.change",
+   "agentic.engine.four_layer"
+  ],
+  "key_prerequisites": [
+   "agentic.tiers.change"
+  ],
+  "encompasses": [
+   "pcb.layout.placement"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "pcb.frontier.autorouter_golden",
+  "label": "Judging an AI autorouter by DRC and SI",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.frontier",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.verify.drc",
+   "pcb.si.reflection",
+   "pcb.diff.length_matching",
+   "agentic.verify.golden_differential"
+  ],
+  "key_prerequisites": [
+   "agentic.verify.golden_differential"
+  ],
+  "encompasses": [
+   "pcb.verify.drc",
+   "pcb.diff.length_matching"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "pcb.frontier.schematic_review",
+  "label": "Schematic-review agents",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.flow.erc",
+   "ml.eval.precision",
+   "agentic.harness.loop"
+  ],
+  "key_prerequisites": [
+   "pcb.flow.erc"
+  ],
+  "encompasses": [
+   "pcb.flow.erc"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "pcb.frontier.routing_reward",
+  "label": "Tool-grounded rewards for board routing",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.frontier",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "pcb.frontier.autorouter_golden",
+   "agentic.rl.tool_grounded"
+  ],
+  "key_prerequisites": [
+   "agentic.rl.tool_grounded"
+  ],
+  "encompasses": [
+   "pcb.frontier.autorouter_golden"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "pcb.frontier.package_codesign",
+  "label": "PCB and package co-design agents",
+  "domain": "pcb_design",
+  "subdomain": "pcb_design.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "pcb.layout.bga_escape",
+   "pcb.si.ibis_ami",
+   "agentic.signoff.eco_loop"
+  ],
+  "key_prerequisites": [
+   "pcb.layout.bga_escape"
+  ],
+  "encompasses": [
+   "pcb.layout.bga_escape"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ }
+]

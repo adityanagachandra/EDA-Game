@@ -1,0 +1,5 @@
+[
+  {"label": "Paths and the next, always, eventually operators", "section": "Paths and the next, always, eventually operators", "subgoals": ["Unfold the lasso into its prefix and repeating loop", "Read X as the next position, G as all later positions, F as some later position", "Evaluate the formula at position 0"]},
+  {"label": "Nesting: infinitely often, eventually always, until", "section": "Nesting: infinitely often, eventually always, until", "subgoals": ["Locate the loop of the lasso", "Decide G F and F G from the loop's states", "Check until by finding the first q and testing p before it"]},
+  {"label": "Response and implication patterns", "section": "Response and implication patterns", "subgoals": ["Find every position where the antecedent holds", "Check the consequent from that position, following the loop", "Conclude that the G formula holds only if every antecedent position passes"]}
+]

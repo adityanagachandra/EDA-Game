@@ -1,0 +1,5 @@
+[
+  {"label": "Saturation current", "section": "Saturation current", "subgoals": ["Confirm saturation by comparing V_DS with the overdrive", "Square the overdrive", "Multiply by one half k prime times W over L"]},
+  {"label": "Sizing for a target current", "section": "Sizing for a target current", "subgoals": ["Double the target current", "Divide by k prime times the overdrive squared", "Round to the available widths or fin counts"]},
+  {"label": "Transconductance in saturation", "section": "Transconductance in saturation", "subgoals": ["Differentiate the square law with respect to V_GS", "Express gm as two times the current over the overdrive", "Compare gm over I_D at different overdrives"]}
+]

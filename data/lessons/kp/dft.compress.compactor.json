@@ -1,0 +1,5 @@
+[
+  {"label": "XOR space compaction", "section": "XOR space compaction", "subgoals": ["Group the chain outputs into XOR trees", "Compute each output as the parity of its group's bits", "Confirm that a single error always flips its group's output"]},
+  {"label": "Aliasing", "section": "Aliasing", "subgoals": ["Recognize that two errors in one group cancel", "Sum g choose 2 over the groups for aliasing pairs", "Connect chains to several outputs to separate their columns"]},
+  {"label": "Unknown values and masking", "section": "Unknown values and masking", "subgoals": ["Mark every group containing an X as unobservable for that cycle", "Count the chains in the groups free of X", "Gate the X chain to a constant with masking logic"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Why learn on site", "section": "Why learn on site", "subgoals": ["Collect accurate-engine results from normal flow runs as labels", "Retrain the fast model on the customer's own distribution", "Require open weights for any model trained on site"]},
+  {"label": "The IP boundary", "section": "The IP boundary", "subgoals": ["Treat weights and derived features as sensitive as the designs", "Keep training and inference inside the sandbox", "Export only reviewed design-independent skills and metrics"]},
+  {"label": "Keeping a learning loop safe", "section": "Keeping a learning loop safe", "subgoals": ["Version models and gate promotion on golden regressions", "Regress on earlier blocks to catch forgetting", "Store tool version and settings with every label"]}
+]

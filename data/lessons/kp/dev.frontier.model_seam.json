@@ -1,0 +1,5 @@
+[
+  {"label": "What crosses the seam", "section": "What crosses the seam", "subgoals": ["Pass voltages, temperature and instance parameters into the model", "Return currents, charges and their derivatives to the solver", "Allow models to declare internal nodes behind the seam"]},
+  {"label": "Rules that keep the seam fast and correct", "section": "Rules that keep the seam fast and correct", "subgoals": ["Supply analytic derivatives consistent with the currents", "Batch evaluations per model type", "Keep plug-ins deterministic and test them through the real solver"]},
+  {"label": "Robustness, versioning and new model types", "section": "Robustness, versioning and new model types", "subgoals": ["Sweep stress biases to catch non-finite outputs", "Freeze and version the extension ABI", "Hold learned models to the same contract inside a sandbox"]}
+]

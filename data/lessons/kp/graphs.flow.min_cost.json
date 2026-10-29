@@ -1,0 +1,5 @@
+[
+  {"label": "Cost per unit along paths", "section": "Cost per unit along paths", "subgoals": ["Attach a per-unit cost to each arc", "Find the cheapest s-t path for one unit", "Multiply flow by cost on each arc and sum"]},
+  {"label": "Successive shortest paths", "section": "Successive shortest paths", "subgoals": ["Find the cheapest path in the residual graph", "Push the bottleneck amount along it", "Repeat until the demand is met, using backward arcs at negative cost"]},
+  {"label": "Legalization as a transportation problem", "section": "Legalization as a transportation problem", "subgoals": ["Model overfull bins as supplies and free room as demands", "Cost each move by its distance", "Solve the transportation problem as a min-cost flow"]}
+]

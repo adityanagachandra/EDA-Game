@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The kernel as covariance",
+    "section": "The kernel as covariance",
+    "subgoals": [
+      "Compute the squared distance between the two inputs",
+      "Divide by twice the squared length scale and exponentiate the negative",
+      "Scale by the signal variance"
+    ]
+  },
+  {
+    "label": "The posterior mean from one observation",
+    "section": "The posterior mean from one observation",
+    "subgoals": [
+      "Compute the kernel between the query and the observed input",
+      "Divide by the observed input's variance plus noise",
+      "Multiply by the observed value"
+    ]
+  },
+  {
+    "label": "The posterior variance",
+    "section": "The posterior variance",
+    "subgoals": [
+      "Square the kernel between the query and the observed input",
+      "Divide by the observed variance plus noise",
+      "Subtract from the prior variance at the query"
+    ]
+  }
+]

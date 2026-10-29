@@ -1,0 +1,5 @@
+[
+  {"label": "The seam and its context", "section": "The seam and its context", "subgoals": ["Define the plug-in input as cells with positions, widths, rows and tags", "Return a cost the core adds to its move evaluation", "Leave legality to the core legalizer"]},
+  {"label": "Computing the rule's cost", "section": "Computing the rule's cost", "subgoals": ["Walk group members in x order in each row", "Sum the gaps between consecutive members and scale by lambda", "Update the cost incrementally for the rows a move touches"]},
+  {"label": "Proving the plug-in", "section": "Proving the plug-in", "subgoals": ["Write golden tests with hand-computed rule costs", "Run a with-and-without differential over the regression suite", "Ship a manifest naming the rule's inputs and weight"]}
+]

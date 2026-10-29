@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The unit count a schedule implies",
+  "section": "The unit count a schedule implies",
+  "subgoals": [
+   "Group the operations of one type by control step",
+   "Count the busiest step",
+   "Count busy intervals instead of starts for multicycle units"
+  ]
+ },
+ {
+  "label": "The counting lower bound under a latency target",
+  "section": "The counting lower bound under a latency target",
+  "subgoals": [
+   "Divide the operation count by the number of steps",
+   "Round up to get the minimum unit count",
+   "Check whether the dependences allow an even spread"
+  ]
+ },
+ {
+  "label": "Where operations sit inside their frames",
+  "section": "Where operations sit inside their frames",
+  "subgoals": [
+   "Compute the ASAP and ALAP placements under the latency bound",
+   "Count the per-step demand of each placement",
+   "Move mobile operations from busy steps to quiet steps within their frames"
+  ]
+ }
+]

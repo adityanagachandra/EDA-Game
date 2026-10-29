@@ -1,0 +1,5 @@
+[
+  {"label": "What a STIL file describes", "section": "What a STIL file describes", "subgoals": ["Declare the pins in Signals and the buses in SignalGroups", "Map waveform characters to timed edges in a WaveformTable", "Describe the chains in ScanStructures and the shifts in procedures"]},
+  {"label": "Stimulus, response and masks", "section": "Stimulus, response and masks", "subgoals": ["Drive with 0 and 1 and compare with L and H", "Mask unknown outputs with X", "Keep scan data in procedures so it maps to scan memory"]},
+  {"label": "Translation to the tester", "section": "Translation to the tester", "subgoals": ["Map signals to tester channels and timing sets", "Suspect timing translation when every die fails in the same cycle", "Use CTL for core-level test reuse"]}
+]

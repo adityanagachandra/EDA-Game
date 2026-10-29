@@ -1,0 +1,5 @@
+[
+  {"label": "Building the miter", "section": "Building the miter", "subgoals": ["Connect both circuits to the same primary inputs", "XOR corresponding outputs and OR the XORs together", "Count the input vectors on which the two truth tables differ"]},
+  {"label": "Sizing the miter glue", "section": "Sizing the miter glue", "subgoals": ["Count 4 clauses per output XOR", "Add n + 1 clauses for the OR and 1 for the assertion", "Count one new variable per XOR plus one for the OR"]},
+  {"label": "Sharing inputs and structure", "section": "Sharing inputs and structure", "subgoals": ["Count the shared primary inputs once", "Add the gates of both circuits", "Add the miter glue variables to get the total"]}
+]

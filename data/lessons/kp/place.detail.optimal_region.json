@@ -1,0 +1,5 @@
+[
+  {"label": "Why medians appear", "section": "Why medians appear", "subgoals": ["Remove the cell and find each net's interval of other pins", "Collect the lower and upper bounds of every interval", "Take the interval between the k-th and k+1-th sorted bounds"]},
+  {"label": "The gain from moving there", "section": "The gain from moving there", "subgoals": ["Compute the total span at the current position", "Compute it inside the optimal interval", "Subtract to get the potential gain"]},
+  {"label": "Using optimal regions in detailed placement", "section": "Using optimal regions in detailed placement", "subgoals": ["Search for swaps and gaps inside the optimal region", "Skip cells already inside their region", "Use weighted medians when nets carry timing weights"]}
+]

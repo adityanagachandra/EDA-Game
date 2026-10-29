@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Simulation, formal and emulation",
+    "section": "Simulation, formal and emulation",
+    "subgoals": [
+      "Distinguish simulation, formal proof and emulation by what they guarantee",
+      "Name equivalence checking as the RTL-to-netlist proof",
+      "Match each method to the design size it handles"
+    ]
+  },
+  {
+    "label": "Coverage closes the loop",
+    "section": "Coverage closes the loop",
+    "subgoals": [
+      "Multiply the bin counts of crossed coverpoints",
+      "Divide hit bins by total bins to get coverage percentage",
+      "Explain why full coverage does not prove correctness"
+    ]
+  },
+  {
+    "label": "Why late bugs cost more",
+    "section": "Why late bugs cost more",
+    "subgoals": [
+      "List the stages a bug can escape to",
+      "Multiply the fix cost by the factor per stage escaped",
+      "Relate the cost growth to verification effort"
+    ]
+  }
+]

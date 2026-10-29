@@ -1,0 +1,5 @@
+[
+  {"label": "Header changes recompile their dependents", "section": "Header changes recompile their dependents", "subgoals": ["Follow includes transitively from each translation unit", "Mark units that reach the edited header as stale", "Count the stale translation units"]},
+  {"label": "Parallel compile and the link step", "section": "Parallel compile and the link step", "subgoals": ["Divide the stale units by the parallel job count, rounding up", "Multiply the waves by the compile time", "Add the link time to get the build time"]},
+  {"label": "Finding the most expensive header", "section": "Finding the most expensive header", "subgoals": ["Count dependent translation units for every header", "Pick the header with the most dependents", "Name a structural fix such as forward declarations or splitting"]}
+]

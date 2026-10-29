@@ -1,0 +1,29 @@
+[
+ {
+  "label": "What makes generated code synthesizable",
+  "section": "What makes generated code synthesizable",
+  "subgoals": [
+   "Replace dynamic containers and recursion with fixed-size structures",
+   "Bound every data-dependent loop",
+   "Run the C testbench against the reference before any synthesis"
+  ]
+ },
+ {
+  "label": "The harness loop",
+  "section": "The harness loop",
+  "subgoals": [
+   "Run checks in increasing cost order",
+   "Return error text, mismatching vectors or II reasons to the model",
+   "Accept code only after co-simulation passes"
+  ]
+ },
+ {
+  "label": "Measuring and bounding the system",
+  "section": "Measuring and bounding the system",
+  "subgoals": [
+   "Score systems by simulation and co-simulation pass rate plus QoR",
+   "Add boundary and randomized vectors to the tests",
+   "Decide explicitly which design data may cross the IP boundary"
+  ]
+ }
+]

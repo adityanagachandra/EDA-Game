@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The direct cost",
+    "section": "The direct cost",
+    "subgoals": [
+      "Add the mask cost and engineering cost of a fix",
+      "Distinguish a full respin from a metal-only fix",
+      "Convert engineer-months to cost"
+    ]
+  },
+  {
+    "label": "The cost of delay",
+    "section": "The cost of delay",
+    "subgoals": [
+      "Multiply months of delay by monthly revenue",
+      "Add the delay cost to the direct cost",
+      "Explain why delay usually dominates"
+    ]
+  },
+  {
+    "label": "Expected cost and the value of verification",
+    "section": "Expected cost and the value of verification",
+    "subgoals": [
+      "Multiply respin probability by respin cost",
+      "Multiply the reduction in probability by the cost",
+      "Compare that value with the cost of extra verification"
+    ]
+  }
+]

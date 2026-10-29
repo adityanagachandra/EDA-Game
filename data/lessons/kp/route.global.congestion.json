@@ -1,0 +1,5 @@
+[
+  {"label": "Overflowed edges", "section": "Overflowed edges", "subgoals": ["Compute demand minus capacity on each edge", "Clip negative values to zero to get overflow", "Count the edges with positive overflow"]},
+  {"label": "Total and maximum overflow", "section": "Total and maximum overflow", "subgoals": ["Sum the clipped overflows over all edges", "Take the maximum single overflow", "Interpret concentrated overflow as a routability risk"]},
+  {"label": "Moving demand", "section": "Moving demand", "subgoals": ["Recompute both edges' demand after the move", "Recompute both overflows and the change in the total", "Prefer moves onto edges with slack"]}
+]

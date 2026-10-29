@@ -1,0 +1,29 @@
+[
+  {
+    "label": "When BO fits an EDA tuning problem",
+    "section": "When BO fits an EDA tuning problem",
+    "subgoals": [
+      "Confirm the evaluation is expensive, gradient-free and budget-limited",
+      "Model each specification as a constraint with its own surrogate",
+      "Reduce dimensionality and encode categorical knobs properly"
+    ]
+  },
+  {
+    "label": "Batches, noise and fidelity",
+    "section": "Batches, noise and fidelity",
+    "subgoals": [
+      "Propose a diverse batch per round to fill parallel licenses",
+      "Include a noise term fitted to seed-to-seed variation",
+      "Mix cheap low-fidelity runs with confirming full runs"
+    ]
+  },
+  {
+    "label": "Judging BO results",
+    "section": "Judging BO results",
+    "subgoals": [
+      "Re-run the chosen configuration on held-out designs and seeds",
+      "Compare against random search at the same budget",
+      "Check that every signoff requirement appears in the formulation"
+    ]
+  }
+]

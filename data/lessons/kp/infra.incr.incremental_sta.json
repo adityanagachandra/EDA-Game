@@ -1,0 +1,5 @@
+[
+  {"label": "Edits reach the timer through callbacks", "section": "Edits reach the timer through callbacks", "subgoals": ["Register the timer as an observer of database edits", "Update the timer's graph to mirror each edit", "Record invalid arcs and pins instead of recomputing"]},
+  {"label": "Invalidate, then propagate in level order", "section": "Invalidate, then propagate in level order", "subgoals": ["Recalculate delays of the invalid arcs", "Refresh invalid arrivals in increasing level order and required times in decreasing order", "Stop at pins whose recomputed value is unchanged"]},
+  {"label": "What makes an incremental update expensive", "section": "What makes an incremental update expensive", "subgoals": ["Identify edits whose effect is global, such as clock changes", "Batch edits between queries", "Ask local slack questions instead of global ones inside the loop"]}
+]

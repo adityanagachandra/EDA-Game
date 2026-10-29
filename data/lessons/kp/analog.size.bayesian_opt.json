@@ -1,0 +1,5 @@
+[
+  {"label": "Probability of improvement", "section": "Probability of improvement", "subgoals": ["Read the surrogate's mean and sigma at a candidate", "Standardize the incumbent minus the mean by sigma", "Evaluate the normal CDF to get the probability of improvement"]},
+  {"label": "Expected improvement", "section": "Expected improvement", "subgoals": ["Compute z from the incumbent, mean and sigma", "Combine the mean term and the uncertainty term", "Weight by the probability of feasibility for constrained sizing"]},
+  {"label": "Confidence bounds and practical limits", "section": "Confidence bounds and practical limits", "subgoals": ["Compute mu minus kappa sigma for each candidate", "Pick the smallest bound rather than the smallest mean", "Scale with sparse models, trust regions and batch acquisition"]}
+]

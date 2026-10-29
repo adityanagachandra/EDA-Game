@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Minimizing the energy along conjugate directions",
+  "section": "Minimizing the energy along conjugate directions",
+  "subgoals": [
+   "Write the energy function of the SPD system",
+   "Identify its gradient with minus the residual",
+   "Search along A-conjugate directions instead of the residual"
+  ]
+ },
+ {
+  "label": "One CG iteration by hand",
+  "section": "One CG iteration by hand",
+  "subgoals": [
+   "Compute alpha from the residual norm and p transpose A p",
+   "Update the iterate and the residual",
+   "Compute beta and the next search direction"
+  ]
+ },
+ {
+  "label": "Exact termination and the Krylov subspace",
+  "section": "Exact termination and the Krylov subspace",
+  "subgoals": [
+   "Count the distinct eigenvalues of the matrix",
+   "Bound the iterations by that count in exact arithmetic",
+   "Stop on a residual test in floating point"
+  ]
+ }
+]

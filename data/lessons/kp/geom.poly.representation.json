@@ -1,0 +1,5 @@
+[
+  {"label": "Vertex rings and their orientation", "section": "Vertex rings and their orientation", "subgoals": ["Store each polygon as an oriented ring of vertices", "Normalize rings by removing collinear and repeated vertices", "Use the sign of the area to separate outer rings from holes"]},
+  {"label": "Edge sets, trapezoids and scanlines", "section": "Edge sets, trapezoids and scanlines", "subgoals": ["Convert rings into oriented edges for a Boolean sweep", "Cut regions into bands of intervals for clipping and writing", "Weigh the exactness a bitmap gives up"]},
+  {"label": "Holes, cut lines and file formats", "section": "Holes, cut lines and file formats", "subgoals": ["Recognize a keyhole cut line in a boundary", "Merge cut-line polygons before running checks", "Exploit repetition and hierarchy records instead of flattening"]}
+]

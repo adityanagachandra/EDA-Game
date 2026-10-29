@@ -1,0 +1,5 @@
+[
+  {"label": "The z-score of a period", "section": "The z-score of a period", "subgoals": ["Subtract the mean delay from the period", "Divide by the sigma of the delay", "Read the result as the number of sigma of margin"]},
+  {"label": "Yield at a given period", "section": "Yield at a given period", "subgoals": ["Compute the z-score of the period", "Look up the standard normal distribution at z", "Express the result as a percentage of dies"]},
+  {"label": "The period for a target yield", "section": "The period for a target yield", "subgoals": ["Look up the standard normal quantile for the target yield", "Multiply it by the delay sigma", "Add the mean to get the required period"]}
+]

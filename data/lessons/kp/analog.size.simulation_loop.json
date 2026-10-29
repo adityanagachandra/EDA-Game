@@ -1,0 +1,5 @@
+[
+  {"label": "The simulation budget", "section": "The simulation budget", "subgoals": ["Multiply iterations, candidates, corners and seconds per simulation", "Divide by the parallel licenses to get wall-clock time", "Stage corners and Monte Carlo to keep the budget feasible"]},
+  {"label": "Gradients from a black box", "section": "Gradients from a black box", "subgoals": ["Count n plus one simulations for forward differences", "Count two n for central differences and multiply by corners", "Weigh adjoint sensitivities and step-size error"]},
+  {"label": "Estimating yield in the loop", "section": "Estimating yield in the loop", "subgoals": ["Estimate yield as passes over samples", "Compute the binomial standard error", "Treat differences below the standard error as noise"]}
+]

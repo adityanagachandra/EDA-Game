@@ -1,0 +1,5 @@
+[
+  {"label": "Rectilinear distance and the MST", "section": "Rectilinear distance and the MST", "subgoals": ["Compute Manhattan distances between all pin pairs", "Build a minimum spanning tree on those distances", "Compare its length with the half-perimeter lower bound"]},
+  {"label": "Prim's algorithm on pins", "section": "Prim's algorithm on pins", "subgoals": ["Start the tree at one pin", "Add the shortest edge from the tree to an outside pin", "Update each outside pin's distance to the tree after every step"]},
+  {"label": "What the MST estimate is good for", "section": "What the MST estimate is good for", "subgoals": ["Use the MST as a length estimate for nets with four or more pins", "Use its topology for pre-route delay estimates", "Bound the MST by 3/2 of the Steiner minimum"]}
+]

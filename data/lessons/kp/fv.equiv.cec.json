@@ -1,0 +1,5 @@
+[
+  {"label": "The CEC flow", "section": "The CEC flow", "subgoals": ["Match inputs, outputs and registers between the designs", "Cut the registers into pseudo-inputs and pseudo-outputs", "Build one miter per output cone and solve it"]},
+  {"label": "Simplify before you solve", "section": "Simplify before you solve", "subgoals": ["Merge both designs with structural hashing", "Use random simulation to separate non-equivalent nodes", "Prove the remaining candidates bottom-up with SAT and merge them"]},
+  {"label": "Engines and results", "section": "Engines and results", "subgoals": ["Choose BDDs for small control cones and SAT for large netlists", "Run the check with a tool such as ABC's cec", "Classify each result as proof, real difference, environment issue or timeout"]}
+]

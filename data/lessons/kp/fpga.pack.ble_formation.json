@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Pairing in a single-output BLE",
+  "section": "Pairing in a single-output BLE",
+  "subgoals": [
+   "Find each flip-flop's driving LUT",
+   "Pair them only when the LUT drives nothing else",
+   "Count LUTs plus flip-flops minus pairs"
+  ]
+ },
+ {
+  "label": "From BLEs to clusters",
+  "section": "From BLEs to clusters",
+  "subgoals": [
+   "Compute the BLE count from the pairing",
+   "Divide by the cluster size and round up",
+   "Treat the result as a lower bound that pin limits can raise"
+  ]
+ },
+ {
+  "label": "Elements with two outputs",
+  "section": "Elements with two outputs",
+  "subgoals": [
+   "Allow pairing whenever the LUT drives the flip-flop",
+   "Give each LUT at most one absorbed flip-flop",
+   "Recount the elements under the relaxed rule"
+  ]
+ }
+]

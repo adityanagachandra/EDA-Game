@@ -1,0 +1,5 @@
+[
+  {"label": "The PathFinder cost", "section": "The PathFinder cost", "subgoals": ["Compute the present factor from occupancy plus one minus capacity", "Add the base and history costs", "Multiply the sum by the present factor"]},
+  {"label": "Routing on negotiated costs", "section": "Routing on negotiated costs", "subgoals": ["Rip up the net and reprice every resource", "Search for the cheapest path on the current costs", "Update occupancies so later nets see the new congestion"]},
+  {"label": "Raising the price over iterations", "section": "Raising the price over iterations", "subgoals": ["Start with a small present factor that tolerates sharing", "Multiply the present factor each iteration", "Stop when no resource is overused"]}
+]

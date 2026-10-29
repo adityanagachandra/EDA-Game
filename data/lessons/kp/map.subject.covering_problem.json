@@ -1,0 +1,5 @@
+[
+  {"label": "Subject graphs and pattern graphs", "section": "Subject graphs and pattern graphs", "subgoals": ["Rewrite the network into NAND2 and INV nodes", "Rewrite each library cell into one or more pattern graphs over the same base", "Ask whether a cell's pattern appears rooted at a subject node"]},
+  {"label": "Covers and their costs", "section": "Covers and their costs", "subgoals": ["Place a pattern at a subject node to form a match", "Require every match input to be a primary input or another match's root", "Sum the cell costs of the chosen matches"]},
+  {"label": "What the formulation leaves out", "section": "What the formulation leaves out", "subgoals": ["Name the decomposition as a fixed input of the search", "Contrast structural matches with functional ones", "List what an area cover ignores: load, wiring and sizing"]}
+]

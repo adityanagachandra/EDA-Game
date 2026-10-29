@@ -1,0 +1,5 @@
+[
+  {"label": "Tolerance bands from the standard error", "section": "Tolerance bands from the standard error", "subgoals": ["Compute the standard error at the true value", "Multiply by z for the acceptance half-width", "Size N so the bias to be caught exceeds the band"]},
+  {"label": "The suite-wide false-alarm rate", "section": "The suite-wide false-alarm rate", "subgoals": ["Compute one minus one minus alpha to the m", "Interpret the result as the chance a correct change is rejected", "Treat the suite false-alarm rate as a design target"]},
+  {"label": "Setting per-test thresholds", "section": "Setting per-test thresholds", "subgoals": ["Divide the family-wise rate by the number of tests", "Halve the per-test rate for a two-sided test", "Invert the Gaussian tail for the per-test z threshold"]}
+]

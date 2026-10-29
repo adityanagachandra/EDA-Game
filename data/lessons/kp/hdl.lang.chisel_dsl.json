@@ -1,0 +1,5 @@
+[
+  {"label": "Generators embedded in a host language", "section": "Generators embedded in a host language", "subgoals": ["Run host-language control flow at elaboration time", "Build run-time selection with hardware constructs such as when", "Use host-language abstractions to parameterize the generator"]},
+  {"label": "Connection semantics and widths", "section": "Connection semantics and widths", "subgoals": ["Let the last connection to a signal win", "Choose + or +& depending on whether the carry is kept", "Mark intentionally undriven signals as DontCare"]},
+  {"label": "The landscape of hardware DSLs", "section": "The landscape of hardware DSLs", "subgoals": ["Compare hosts and approaches of the common hardware DSLs", "Trace reports from generated Verilog back to the generator", "Choose a generator when the design is a parameterized family"]}
+]

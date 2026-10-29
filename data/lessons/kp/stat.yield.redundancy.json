@@ -1,0 +1,5 @@
+[
+  {"label": "Yield with spares", "section": "Yield with spares", "subgoals": ["Model the fault count as Poisson with mean lambda", "Sum the Poisson probabilities up to the number of spares", "Note the optimistic assumptions of fault-free spares and one spare per fault"]},
+  {"label": "Sizing the redundancy", "section": "Sizing the redundancy", "subgoals": ["Accumulate the Poisson cumulative distribution term by term", "Stop at the first count that meets the target", "Weigh the spare area against the recovered yield"]},
+  {"label": "Block-level redundancy", "section": "Block-level redundancy", "subgoals": ["Count the total blocks as needed plus spares", "Sum the binomial probabilities of at most s failures", "Compare with the yield of the same chip without spares"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "A specific switching scenario", "section": "A specific switching scenario", "subgoals": ["Add the ground and pin capacitance", "Multiply each coupling by its aggressor's Miller factor", "Sum everything to get the effective load"]},
+  {"label": "The worst case", "section": "The worst case", "subgoals": ["Collect all couplings of the victim", "Double their sum for the worst case", "Add ground and pin capacitance"]},
+  {"label": "The spread between cases", "section": "The spread between cases", "subgoals": ["Compute the best case with every factor at zero", "Compute the worst case with every factor at two", "Divide worst by best to get the spread"]}
+]

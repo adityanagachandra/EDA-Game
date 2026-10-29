@@ -1,0 +1,5 @@
+[
+  {"label": "The best single-transistor gain", "section": "The best single-transistor gain", "subgoals": ["Model the stage as gm driving ro with an ideal load", "Multiply millisiemens by kilohms to get gain in volts per volt", "Count the stages needed to reach a target gain"]},
+  {"label": "The current cancels", "section": "The current cancels", "subgoals": ["Substitute the square-law gm and ro into the product", "Cancel the drain current to get two over lambda times overdrive", "Rewrite the gain as gm over Id times the Early voltage"]},
+  {"label": "Why scaling hurts and what designers do", "section": "Why scaling hurts and what designers do", "subgoals": ["Connect drain-induced barrier lowering to falling output resistance", "Trade longer channels and cascodes for gain against speed", "Read intrinsic gain from tables as a function of L and gm over Id"]}
+]

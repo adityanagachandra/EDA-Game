@@ -1,0 +1,5 @@
+[
+  {"label": "Poisson yield of a large die", "section": "Poisson yield of a large die", "subgoals": ["Convert the die area to square centimetres", "Multiply by the defect density", "Exponentiate the negative product for the yield"]},
+  {"label": "Chiplet yield with interface overhead", "section": "Chiplet yield with interface overhead", "subgoals": ["Inflate the logic area by the overhead fraction", "Divide by the number of chiplets", "Compute each chiplet's Poisson yield"]},
+  {"label": "Silicon per good system", "section": "Silicon per good system", "subgoals": ["Divide monolithic area by monolithic yield", "Divide total chiplet area by chiplet yield", "Take the ratio and list the costs it omits"]}
+]

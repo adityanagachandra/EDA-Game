@@ -1,0 +1,5 @@
+[
+  {"label": "Super-agents across the flow", "section": "Super-agents across the flow", "subgoals": ["Group products by area of the flow", "Identify the engines each agent orchestrates", "Map the products onto the agent-first architecture"]},
+  {"label": "Domain models and tool feedback", "section": "Domain models and tool feedback", "subgoals": ["Describe domain models refined with tool feedback", "Contrast open-weights on-premises with hosted partnerships", "Relate the choice to the three model roles"]},
+  {"label": "Reading a vendor claim", "section": "Reading a vendor claim", "subgoals": ["Identify up-to figures and unnamed baselines", "Ask for baseline, designs, metric, runs and signoff results", "Evaluate on your own benchmark"]}
+]

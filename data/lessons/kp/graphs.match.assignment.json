@@ -1,0 +1,5 @@
+[
+  {"label": "The assignment problem", "section": "The assignment problem", "subgoals": ["Write the cost of each cell in each slot as a matrix", "Search for the permutation with the least total cost", "Enumerate only for very small windows"]},
+  {"label": "Polynomial-time solution", "section": "Polynomial-time solution", "subgoals": ["Keep dual prices so reduced costs stay non-negative", "Grow a matching on zero reduced-cost entries", "Solve it as a unit-capacity min-cost flow when convenient"]},
+  {"label": "The gap to greedy assignment", "section": "The gap to greedy assignment", "subgoals": ["Let each cell take its cheapest free slot in order", "Compute the greedy cost minus the optimal cost", "Use exact assignment on sliding windows inside detailed placement"]}
+]

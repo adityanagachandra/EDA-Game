@@ -1,0 +1,5 @@
+[
+  {"label": "Reference counts in a mapping", "section": "Reference counts in a mapping", "subgoals": ["Count how many selected gates or outputs use each node", "Treat count zero as not built", "Increment a leaf's count when a cut that uses it is chosen"]},
+  {"label": "Computing the exact area of a cut", "section": "Computing the exact area of a cut", "subgoals": ["Add the cut's own gate area", "Recurse into each leaf whose count rises from zero", "Count a shared newly used node once and restore the counts afterwards"]},
+  {"label": "Why it improves on area flow", "section": "Why it improves on area flow", "subgoals": ["Charge nothing for leaves already used by the cover", "Switch each node to the cut with the smallest exact area within its required time", "Order the passes: area flow first, exact area last"]}
+]

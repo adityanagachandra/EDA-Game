@@ -1,0 +1,5 @@
+[
+  {"label": "The agent proposes, the engines compute", "section": "The agent proposes, the engines compute", "subgoals": ["Encode a candidate as a vector of DTCO knobs", "Split selection by the agent from computation by engines", "Use fast flows to rank and full flows to confirm"]},
+  {"label": "Designing a tool-grounded reward", "section": "Designing a tool-grounded reward", "subgoals": ["Reward routed PPA under DRC and routability constraints", "Include cost and several benchmark blocks in the reward", "Withhold reward from unverified fast results"]},
+  {"label": "Reward hacking and hand-off", "section": "Reward hacking and hand-off", "subgoals": ["Identify a reward exploit from a proxy's blind spot", "Close the exploit and audit the top candidates", "Hand off ranked results with provenance for human decision"]}
+]

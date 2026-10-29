@@ -1,0 +1,29 @@
+[
+ {
+  "label": "II sets the throughput",
+  "section": "II sets the throughput",
+  "subgoals": [
+   "Divide the clock frequency by the II",
+   "Read the result as samples per second in steady state",
+   "Leave the iteration latency out of the throughput"
+  ]
+ },
+ {
+  "label": "The II a rate requires",
+  "section": "The II a rate requires",
+  "subgoals": [
+   "Divide the clock frequency by the required sample rate",
+   "Round down to a whole number of cycles",
+   "Choose the largest II that meets the rate to maximize sharing"
+  ]
+ },
+ {
+  "label": "Forbidden latencies on a shared resource",
+  "section": "Forbidden latencies on a shared resource",
+  "subgoals": [
+   "List the offsets at which one iteration uses the resource",
+   "Reduce the offsets modulo a candidate II",
+   "Accept the smallest II that leaves every residue distinct"
+  ]
+ }
+]

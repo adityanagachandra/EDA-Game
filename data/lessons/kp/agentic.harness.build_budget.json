@@ -1,0 +1,5 @@
+[
+  {"label": "Compile units an edit touches", "section": "Compile units an edit touches", "subgoals": ["Count the translation units that include the edited file", "Multiply units by compile time and add the link", "Compare a header edit with an edit inside the plug-in"]},
+  {"label": "Expected build time with a compiler cache", "section": "Expected build time with a compiler cache", "subgoals": ["Charge changed units the full miss time", "Weight unchanged units by hit and miss probabilities", "Add the link time to the expected compile time"]},
+  {"label": "Attempts per hour", "section": "Attempts per hour", "subgoals": ["Sum model, build and test time per attempt", "Divide an hour by the attempt time", "Find which step most limits attempts per hour"]}
+]

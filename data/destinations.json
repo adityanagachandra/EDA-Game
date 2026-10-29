@@ -1,26 +1,143 @@
 [
   {
+    "id": "eda-tool-designer",
+    "name": "EDA Tool Designer: the full ramp",
+    "description": "Every EDA domain in dependency order, from the flow and its mathematics to agent-first engine architecture. The aggressive path to designing modern EDA tools.",
+    "courses": [
+      "eda_landscape",
+      "boolean_reasoning",
+      "eda_graph_algorithms",
+      "computational_geometry",
+      "optimization_for_eda",
+      "numerical_methods_for_eda",
+      "variability_statistics",
+      "circuits_and_electromagnetics",
+      "semiconductor_devices",
+      "digital_logic_design",
+      "fabrication_and_dtco",
+      "cmos_circuits_and_cells",
+      "hdl_and_compilers",
+      "logic_synthesis",
+      "formal_verification",
+      "functional_verification",
+      "circuit_simulation",
+      "technology_mapping",
+      "high_level_synthesis",
+      "timing_analysis",
+      "test_and_dft",
+      "floorplanning_and_placement",
+      "analog_mixed_signal_rf",
+      "fpga_eda",
+      "clock_and_power",
+      "routing",
+      "extraction_and_signoff",
+      "physical_verification_dfm",
+      "pcb_design",
+      "packaging_and_integration",
+      "eda_software_infrastructure",
+      "ml_for_eda",
+      "agent_first_eda"
+    ]
+  },
+  {
+    "id": "eda-physical-design",
+    "name": "Physical Design Engines",
+    "description": "Partitioning, placement, clock trees, routing, extraction and physical verification, with the timing and optimization they rest on.",
+    "courses": [
+      "eda_graph_algorithms",
+      "computational_geometry",
+      "optimization_for_eda",
+      "timing_analysis",
+      "floorplanning_and_placement",
+      "clock_and_power",
+      "routing",
+      "extraction_and_signoff",
+      "physical_verification_dfm"
+    ]
+  },
+  {
+    "id": "eda-synthesis-verification",
+    "name": "Synthesis and Verification Engines",
+    "description": "Boolean reasoning, HDL compilers, logic synthesis, technology mapping, HLS, simulation, formal verification and test.",
+    "courses": [
+      "boolean_reasoning",
+      "hdl_and_compilers",
+      "logic_synthesis",
+      "technology_mapping",
+      "high_level_synthesis",
+      "functional_verification",
+      "formal_verification",
+      "test_and_dft"
+    ]
+  },
+  {
+    "id": "eda-circuits-devices",
+    "name": "Circuits, Devices and Simulation",
+    "description": "Electromagnetics, devices, fabrication, CMOS cells, circuit simulation and analog design automation.",
+    "courses": [
+      "circuits_and_electromagnetics",
+      "numerical_methods_for_eda",
+      "semiconductor_devices",
+      "fabrication_and_dtco",
+      "cmos_circuits_and_cells",
+      "circuit_simulation",
+      "analog_mixed_signal_rf"
+    ]
+  },
+  {
+    "id": "eda-agent-first",
+    "name": "Agent-First EDA Architect",
+    "description": "The landscape, the software infrastructure of real tools, machine learning for EDA, and agent-first engine architecture.",
+    "courses": [
+      "eda_landscape",
+      "eda_software_infrastructure",
+      "ml_for_eda",
+      "agent_first_eda"
+    ]
+  },
+  {
+    "id": "eda-systems",
+    "name": "Boards, Packages and FPGAs",
+    "description": "FPGA CAD, PCB design, packaging, chiplets and 3D integration.",
+    "courses": [
+      "fpga_eda",
+      "pcb_design",
+      "packaging_and_integration"
+    ]
+  },
+  {
     "id": "math-for-ml",
     "name": "Mathematics for Machine Learning",
     "description": "Calculus, linear algebra, and probability/statistics foundations for ML, with prerequisites pulled in automatically.",
-    "courses": ["calc1", "linalg", "probstat"]
+    "courses": [
+      "calc1",
+      "linalg",
+      "probstat"
+    ]
   },
   {
     "id": "calculus",
     "name": "Calculus",
     "description": "Single and multivariable calculus path (Calculus I + II).",
-    "courses": ["calc1", "calc2"]
+    "courses": [
+      "calc1",
+      "calc2"
+    ]
   },
   {
     "id": "linear-algebra",
     "name": "Linear Algebra",
     "description": "Vectors, matrices, and transformations.",
-    "courses": ["linalg"]
+    "courses": [
+      "linalg"
+    ]
   },
   {
     "id": "probability-stats",
     "name": "Probability & Statistics",
     "description": "Descriptive statistics, probability, distributions, and inference.",
-    "courses": ["probstat"]
+    "courses": [
+      "probstat"
+    ]
   }
 ]

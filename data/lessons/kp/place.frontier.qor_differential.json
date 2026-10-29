@@ -1,0 +1,5 @@
+[
+  {"label": "Golden tests for placer kernels", "section": "Golden tests for placer kernels", "subgoals": ["Write known-answer tests for wirelength, density and legalization kernels", "Compare incremental deltas with full recomputation", "Fix seeds and reductions so runs are bit-identical"]},
+  {"label": "Measuring QoR change", "section": "Measuring QoR change", "subgoals": ["Compute the percent change of each metric per design", "Summarise ratios with the geometric mean", "Include runtime alongside quality metrics"]},
+  {"label": "Promotion gates", "section": "Promotion gates", "subgoals": ["Write per-design thresholds for each metric", "Block promotion when any design fails a threshold", "Calibrate thresholds against baseline run-to-run noise"]}
+]

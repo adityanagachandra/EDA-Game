@@ -12,20 +12,20 @@ assessed; `3` is a candidate, not a decision. Regenerate with `-band 2` or `-ban
 
 | Metric | Value |
 |---|---|
-| Total concepts | 1250 |
-| Total units | 124 |
+| Total concepts | 2857 |
+| Total units | 439 |
 | Minimum unit size | 1 |
-| Median unit size | 6 |
+| Median unit size | 4 |
 | Maximum unit size | 61 |
-| Singleton units | 27 |
-| Units with <= 3 concepts | 38 |
-| Units with > 25 concepts | 11 |
+| Singleton units | 111 |
+| Units with <= 3 concepts | 211 |
+| Units with > 25 concepts | 13 |
 | Units with > 50 concepts | 3 |
-| Cross-unit prerequisite edges (derived) | 377 |
+| Cross-unit prerequisite edges (derived) | 2249 |
 | Backward band edges | 0 |
 
-If the learner is assessed once per unit, then 124 assessments cover the corpus, and the
-median is one assessment per 6 concepts. That is the frequency question this report
+If the learner is assessed once per unit, then 439 assessments cover the corpus, and the
+median is one assessment per 4 concepts. That is the frequency question this report
 exists to make concrete.
 
 ## Proposed units
@@ -37,6 +37,13 @@ exists to make concrete.
 | `abstract_algebra.b8` | abstract_algebra | 8 | 15 | 4 | 24–26 |
 | `abstract_algebra.b9` | abstract_algebra | 9 | 12 | 4 | 27–29 |
 | `abstract_algebra.b10` | abstract_algebra | 10 | 2 | 1 | 30–31 |
+| `agent_first_eda.b26` | agent_first_eda | 26 | 1 | 1 | 79–79 |
+| `agent_first_eda.b27` | agent_first_eda | 27 | 5 | 2 | 81–83 |
+| `agent_first_eda.b28` | agent_first_eda | 28 | 17 | 7 | 84–86 |
+| `agent_first_eda.b29` | agent_first_eda | 29 | 14 | 6 | 87–89 |
+| `agent_first_eda.b30` | agent_first_eda | 30 | 2 | 1 | 90–91 |
+| `agent_first_eda.b31` | agent_first_eda | 31 | 5 | 4 | 94–95 |
+| `agent_first_eda.b32` | agent_first_eda | 32 | 5 | 4 | 96–98 |
 | `algebra.b3` | algebra | 3 | 4 | 1 | 10–11 |
 | `algebra.b4` | algebra | 4 | 1 | 1 | 12–12 |
 | `algebra.b5` | algebra | 5 | 5 | 1 | 16–17 |
@@ -44,15 +51,68 @@ exists to make concrete.
 | `algebra.b7` | algebra | 7 | 42 | 9 | 21–23 |
 | `algebra.b8` | algebra | 8 | 30 | 10 | 24–26 |
 | `algebra.b9` | algebra | 9 | 7 | 4 | 27–28 |
+| `analog_mixed_signal_rf.b14` | analog_mixed_signal_rf | 14 | 2 | 2 | 43–44 |
+| `analog_mixed_signal_rf.b15` | analog_mixed_signal_rf | 15 | 4 | 2 | 45–46 |
+| `analog_mixed_signal_rf.b18` | analog_mixed_signal_rf | 18 | 7 | 3 | 54–56 |
+| `analog_mixed_signal_rf.b19` | analog_mixed_signal_rf | 19 | 10 | 4 | 57–59 |
+| `analog_mixed_signal_rf.b20` | analog_mixed_signal_rf | 20 | 13 | 5 | 60–62 |
+| `analog_mixed_signal_rf.b21` | analog_mixed_signal_rf | 21 | 10 | 5 | 63–64 |
+| `analog_mixed_signal_rf.b28` | analog_mixed_signal_rf | 28 | 2 | 1 | 84–86 |
+| `analog_mixed_signal_rf.b29` | analog_mixed_signal_rf | 29 | 2 | 1 | 87–88 |
+| `analog_mixed_signal_rf.b31` | analog_mixed_signal_rf | 31 | 1 | 1 | 95–95 |
 | `arithmetic.b0` | arithmetic | 0 | 8 | 4 | 0–2 |
 | `arithmetic.b1` | arithmetic | 1 | 16 | 7 | 3–5 |
 | `arithmetic.b2` | arithmetic | 2 | 16 | 9 | 6–8 |
 | `arithmetic.b3` | arithmetic | 3 | 20 | 5 | 9–11 |
+| `boolean_reasoning.b5` | boolean_reasoning | 5 | 1 | 1 | 17–17 |
+| `boolean_reasoning.b6` | boolean_reasoning | 6 | 9 | 4 | 19–20 |
+| `boolean_reasoning.b7` | boolean_reasoning | 7 | 12 | 4 | 21–23 |
+| `boolean_reasoning.b8` | boolean_reasoning | 8 | 3 | 2 | 24–25 |
+| `boolean_reasoning.b9` | boolean_reasoning | 9 | 7 | 5 | 28–29 |
+| `boolean_reasoning.b10` | boolean_reasoning | 10 | 6 | 1 | 30–32 |
+| `boolean_reasoning.b28` | boolean_reasoning | 28 | 2 | 1 | 85–86 |
+| `boolean_reasoning.b29` | boolean_reasoning | 29 | 2 | 1 | 87–88 |
+| `boolean_reasoning.b31` | boolean_reasoning | 31 | 1 | 1 | 95–95 |
 | `calculus.b8` | calculus | 8 | 1 | 1 | 26–26 |
 | `calculus.b9` | calculus | 9 | 28 | 4 | 27–29 |
 | `calculus.b10` | calculus | 10 | 59 | 7 | 30–32 |
 | `calculus.b11` | calculus | 11 | 56 | 6 | 33–35 |
 | `calculus.b12` | calculus | 12 | 61 | 7 | 36–38 |
+| `circuit_simulation.b13` | circuit_simulation | 13 | 4 | 2 | 39–41 |
+| `circuit_simulation.b14` | circuit_simulation | 14 | 8 | 4 | 42–44 |
+| `circuit_simulation.b15` | circuit_simulation | 15 | 8 | 4 | 45–47 |
+| `circuit_simulation.b16` | circuit_simulation | 16 | 13 | 3 | 48–50 |
+| `circuit_simulation.b17` | circuit_simulation | 17 | 8 | 5 | 51–53 |
+| `circuit_simulation.b18` | circuit_simulation | 18 | 5 | 3 | 54–56 |
+| `circuit_simulation.b19` | circuit_simulation | 19 | 3 | 3 | 57–58 |
+| `circuit_simulation.b28` | circuit_simulation | 28 | 2 | 1 | 84–85 |
+| `circuit_simulation.b29` | circuit_simulation | 29 | 2 | 1 | 87–87 |
+| `circuit_simulation.b31` | circuit_simulation | 31 | 1 | 1 | 95–95 |
+| `circuits_and_electromagnetics.b11` | circuits_and_electromagnetics | 11 | 1 | 1 | 35–35 |
+| `circuits_and_electromagnetics.b12` | circuits_and_electromagnetics | 12 | 8 | 3 | 36–38 |
+| `circuits_and_electromagnetics.b13` | circuits_and_electromagnetics | 13 | 14 | 5 | 39–41 |
+| `circuits_and_electromagnetics.b14` | circuits_and_electromagnetics | 14 | 21 | 7 | 42–44 |
+| `circuits_and_electromagnetics.b15` | circuits_and_electromagnetics | 15 | 4 | 2 | 45–46 |
+| `circuits_and_electromagnetics.b28` | circuits_and_electromagnetics | 28 | 2 | 1 | 85–86 |
+| `circuits_and_electromagnetics.b29` | circuits_and_electromagnetics | 29 | 2 | 1 | 87–88 |
+| `circuits_and_electromagnetics.b31` | circuits_and_electromagnetics | 31 | 1 | 1 | 95–95 |
+| `clock_and_power.b18` | clock_and_power | 18 | 2 | 1 | 54–55 |
+| `clock_and_power.b23` | clock_and_power | 23 | 6 | 3 | 70–71 |
+| `clock_and_power.b24` | clock_and_power | 24 | 15 | 5 | 72–74 |
+| `clock_and_power.b25` | clock_and_power | 25 | 2 | 2 | 75–77 |
+| `clock_and_power.b26` | clock_and_power | 26 | 9 | 3 | 78–80 |
+| `clock_and_power.b27` | clock_and_power | 27 | 10 | 3 | 81–83 |
+| `clock_and_power.b28` | clock_and_power | 28 | 1 | 1 | 86–86 |
+| `clock_and_power.b29` | clock_and_power | 29 | 2 | 1 | 87–88 |
+| `clock_and_power.b30` | clock_and_power | 30 | 1 | 1 | 91–91 |
+| `clock_and_power.b31` | clock_and_power | 31 | 1 | 1 | 95–95 |
+| `cmos_circuits_and_cells.b17` | cmos_circuits_and_cells | 17 | 8 | 4 | 51–53 |
+| `cmos_circuits_and_cells.b18` | cmos_circuits_and_cells | 18 | 15 | 5 | 54–56 |
+| `cmos_circuits_and_cells.b19` | cmos_circuits_and_cells | 19 | 14 | 5 | 57–59 |
+| `cmos_circuits_and_cells.b20` | cmos_circuits_and_cells | 20 | 7 | 1 | 60–62 |
+| `cmos_circuits_and_cells.b28` | cmos_circuits_and_cells | 28 | 2 | 1 | 84–85 |
+| `cmos_circuits_and_cells.b29` | cmos_circuits_and_cells | 29 | 2 | 1 | 87–88 |
+| `cmos_circuits_and_cells.b31` | cmos_circuits_and_cells | 31 | 1 | 1 | 95–95 |
 | `complex_numbers.b3` | complex_numbers | 3 | 4 | 2 | 10–11 |
 | `complex_numbers.b6` | complex_numbers | 6 | 1 | 1 | 20–20 |
 | `complex_numbers.b7` | complex_numbers | 7 | 10 | 2 | 21–23 |
@@ -60,10 +120,30 @@ exists to make concrete.
 | `complex_numbers.b10` | complex_numbers | 10 | 2 | 2 | 32–32 |
 | `complex_numbers.b11` | complex_numbers | 11 | 11 | 2 | 33–35 |
 | `complex_numbers.b12` | complex_numbers | 12 | 4 | 2 | 36–38 |
+| `computational_geometry.b8` | computational_geometry | 8 | 7 | 3 | 24–26 |
+| `computational_geometry.b9` | computational_geometry | 9 | 11 | 4 | 27–29 |
+| `computational_geometry.b10` | computational_geometry | 10 | 9 | 2 | 30–32 |
+| `computational_geometry.b11` | computational_geometry | 11 | 1 | 1 | 35–35 |
+| `computational_geometry.b12` | computational_geometry | 12 | 8 | 3 | 36–38 |
+| `computational_geometry.b27` | computational_geometry | 27 | 1 | 1 | 83–83 |
+| `computational_geometry.b28` | computational_geometry | 28 | 2 | 1 | 85–86 |
+| `computational_geometry.b29` | computational_geometry | 29 | 1 | 1 | 87–87 |
+| `computational_geometry.b31` | computational_geometry | 31 | 1 | 1 | 95–95 |
 | `differential_equations.b11` | differential_equations | 11 | 3 | 2 | 33–35 |
 | `differential_equations.b12` | differential_equations | 12 | 14 | 4 | 36–38 |
 | `differential_equations.b13` | differential_equations | 13 | 17 | 4 | 39–41 |
 | `differential_equations.b14` | differential_equations | 14 | 8 | 5 | 42–44 |
+| `digital_logic_design.b3` | digital_logic_design | 3 | 3 | 1 | 10–11 |
+| `digital_logic_design.b4` | digital_logic_design | 4 | 1 | 1 | 12–12 |
+| `digital_logic_design.b5` | digital_logic_design | 5 | 1 | 1 | 16–16 |
+| `digital_logic_design.b6` | digital_logic_design | 6 | 4 | 2 | 18–20 |
+| `digital_logic_design.b8` | digital_logic_design | 8 | 6 | 2 | 24–26 |
+| `digital_logic_design.b9` | digital_logic_design | 9 | 17 | 6 | 27–29 |
+| `digital_logic_design.b10` | digital_logic_design | 10 | 15 | 6 | 30–32 |
+| `digital_logic_design.b11` | digital_logic_design | 11 | 2 | 1 | 33–34 |
+| `digital_logic_design.b28` | digital_logic_design | 28 | 2 | 1 | 84–86 |
+| `digital_logic_design.b29` | digital_logic_design | 29 | 2 | 1 | 87–88 |
+| `digital_logic_design.b31` | digital_logic_design | 31 | 1 | 1 | 95–95 |
 | `discrete_math.b1` | discrete_math | 1 | 1 | 1 | 5–5 |
 | `discrete_math.b2` | discrete_math | 2 | 2 | 1 | 7–8 |
 | `discrete_math.b4` | discrete_math | 4 | 4 | 2 | 13–14 |
@@ -72,10 +152,102 @@ exists to make concrete.
 | `discrete_math.b7` | discrete_math | 7 | 4 | 2 | 21–22 |
 | `discrete_math.b8` | discrete_math | 8 | 1 | 1 | 26–26 |
 | `discrete_math.b9` | discrete_math | 9 | 7 | 3 | 27–29 |
+| `eda_graph_algorithms.b5` | eda_graph_algorithms | 5 | 1 | 1 | 17–17 |
+| `eda_graph_algorithms.b6` | eda_graph_algorithms | 6 | 7 | 3 | 19–20 |
+| `eda_graph_algorithms.b7` | eda_graph_algorithms | 7 | 14 | 6 | 21–23 |
+| `eda_graph_algorithms.b8` | eda_graph_algorithms | 8 | 16 | 5 | 24–26 |
+| `eda_graph_algorithms.b9` | eda_graph_algorithms | 9 | 5 | 4 | 27–29 |
+| `eda_graph_algorithms.b10` | eda_graph_algorithms | 10 | 4 | 2 | 30–31 |
+| `eda_graph_algorithms.b28` | eda_graph_algorithms | 28 | 2 | 1 | 85–86 |
+| `eda_graph_algorithms.b29` | eda_graph_algorithms | 29 | 2 | 1 | 87–88 |
+| `eda_graph_algorithms.b31` | eda_graph_algorithms | 31 | 1 | 1 | 95–95 |
+| `eda_landscape.b6` | eda_landscape | 6 | 2 | 1 | 19–20 |
+| `eda_landscape.b7` | eda_landscape | 7 | 1 | 1 | 21–21 |
+| `eda_landscape.b9` | eda_landscape | 9 | 2 | 1 | 28–29 |
+| `eda_landscape.b10` | eda_landscape | 10 | 10 | 5 | 30–32 |
+| `eda_landscape.b11` | eda_landscape | 11 | 11 | 3 | 33–35 |
+| `eda_landscape.b12` | eda_landscape | 12 | 5 | 2 | 36–38 |
+| `eda_landscape.b13` | eda_landscape | 13 | 12 | 6 | 39–41 |
+| `eda_landscape.b14` | eda_landscape | 14 | 2 | 2 | 42–42 |
+| `eda_landscape.b27` | eda_landscape | 27 | 1 | 1 | 82–82 |
+| `eda_landscape.b28` | eda_landscape | 28 | 1 | 1 | 86–86 |
+| `eda_landscape.b29` | eda_landscape | 29 | 1 | 1 | 87–87 |
+| `eda_landscape.b31` | eda_landscape | 31 | 1 | 1 | 95–95 |
+| `eda_landscape.b32` | eda_landscape | 32 | 1 | 1 | 96–96 |
+| `eda_software_infrastructure.b10` | eda_software_infrastructure | 10 | 1 | 1 | 32–32 |
+| `eda_software_infrastructure.b11` | eda_software_infrastructure | 11 | 7 | 3 | 33–35 |
+| `eda_software_infrastructure.b12` | eda_software_infrastructure | 12 | 8 | 5 | 36–37 |
+| `eda_software_infrastructure.b13` | eda_software_infrastructure | 13 | 1 | 1 | 40–40 |
+| `eda_software_infrastructure.b20` | eda_software_infrastructure | 20 | 1 | 1 | 62–62 |
+| `eda_software_infrastructure.b21` | eda_software_infrastructure | 21 | 2 | 2 | 63–63 |
+| `eda_software_infrastructure.b22` | eda_software_infrastructure | 22 | 2 | 1 | 66–67 |
+| `eda_software_infrastructure.b24` | eda_software_infrastructure | 24 | 1 | 1 | 72–72 |
+| `eda_software_infrastructure.b25` | eda_software_infrastructure | 25 | 1 | 1 | 77–77 |
+| `eda_software_infrastructure.b26` | eda_software_infrastructure | 26 | 10 | 4 | 78–80 |
+| `eda_software_infrastructure.b27` | eda_software_infrastructure | 27 | 10 | 4 | 81–83 |
+| `eda_software_infrastructure.b28` | eda_software_infrastructure | 28 | 3 | 2 | 85–86 |
+| `eda_software_infrastructure.b29` | eda_software_infrastructure | 29 | 5 | 4 | 87–89 |
+| `eda_software_infrastructure.b30` | eda_software_infrastructure | 30 | 4 | 2 | 90–91 |
+| `extraction_and_signoff.b21` | extraction_and_signoff | 21 | 2 | 2 | 65–65 |
+| `extraction_and_signoff.b22` | extraction_and_signoff | 22 | 4 | 2 | 66–68 |
+| `extraction_and_signoff.b23` | extraction_and_signoff | 23 | 10 | 3 | 69–71 |
+| `extraction_and_signoff.b24` | extraction_and_signoff | 24 | 1 | 1 | 72–72 |
+| `extraction_and_signoff.b27` | extraction_and_signoff | 27 | 1 | 1 | 83–83 |
+| `extraction_and_signoff.b28` | extraction_and_signoff | 28 | 2 | 2 | 85–86 |
+| `extraction_and_signoff.b29` | extraction_and_signoff | 29 | 14 | 5 | 87–89 |
+| `extraction_and_signoff.b30` | extraction_and_signoff | 30 | 6 | 3 | 90–91 |
+| `extraction_and_signoff.b31` | extraction_and_signoff | 31 | 1 | 1 | 95–95 |
+| `fabrication_and_dtco.b19` | fabrication_and_dtco | 19 | 9 | 3 | 57–59 |
+| `fabrication_and_dtco.b20` | fabrication_and_dtco | 20 | 9 | 3 | 60–62 |
+| `fabrication_and_dtco.b21` | fabrication_and_dtco | 21 | 8 | 3 | 63–65 |
+| `fabrication_and_dtco.b22` | fabrication_and_dtco | 22 | 15 | 5 | 66–68 |
+| `fabrication_and_dtco.b23` | fabrication_and_dtco | 23 | 3 | 1 | 69–70 |
+| `fabrication_and_dtco.b28` | fabrication_and_dtco | 28 | 2 | 1 | 85–85 |
+| `fabrication_and_dtco.b29` | fabrication_and_dtco | 29 | 2 | 1 | 87–88 |
+| `fabrication_and_dtco.b31` | fabrication_and_dtco | 31 | 1 | 1 | 95–95 |
+| `floorplanning_and_placement.b8` | floorplanning_and_placement | 8 | 1 | 1 | 26–26 |
+| `floorplanning_and_placement.b9` | floorplanning_and_placement | 9 | 4 | 1 | 27–28 |
+| `floorplanning_and_placement.b12` | floorplanning_and_placement | 12 | 3 | 1 | 36–37 |
+| `floorplanning_and_placement.b14` | floorplanning_and_placement | 14 | 1 | 1 | 42–42 |
+| `floorplanning_and_placement.b22` | floorplanning_and_placement | 22 | 1 | 1 | 66–66 |
+| `floorplanning_and_placement.b24` | floorplanning_and_placement | 24 | 1 | 1 | 74–74 |
+| `floorplanning_and_placement.b25` | floorplanning_and_placement | 25 | 6 | 4 | 75–77 |
+| `floorplanning_and_placement.b26` | floorplanning_and_placement | 26 | 29 | 6 | 78–80 |
+| `floorplanning_and_placement.b27` | floorplanning_and_placement | 27 | 5 | 3 | 81–82 |
+| `floorplanning_and_placement.b28` | floorplanning_and_placement | 28 | 2 | 1 | 85–86 |
+| `floorplanning_and_placement.b29` | floorplanning_and_placement | 29 | 1 | 1 | 87–87 |
+| `floorplanning_and_placement.b31` | floorplanning_and_placement | 31 | 1 | 1 | 95–95 |
+| `formal_verification.b7` | formal_verification | 7 | 2 | 1 | 23–23 |
+| `formal_verification.b8` | formal_verification | 8 | 3 | 2 | 24–26 |
+| `formal_verification.b10` | formal_verification | 10 | 10 | 5 | 30–32 |
+| `formal_verification.b11` | formal_verification | 11 | 16 | 7 | 33–35 |
+| `formal_verification.b12` | formal_verification | 12 | 16 | 6 | 36–38 |
+| `formal_verification.b13` | formal_verification | 13 | 6 | 2 | 39–41 |
+| `formal_verification.b28` | formal_verification | 28 | 2 | 1 | 84–85 |
+| `formal_verification.b29` | formal_verification | 29 | 2 | 1 | 87–88 |
+| `formal_verification.b30` | formal_verification | 30 | 1 | 1 | 91–91 |
+| `fpga_eda.b9` | fpga_eda | 9 | 1 | 1 | 29–29 |
+| `fpga_eda.b10` | fpga_eda | 10 | 4 | 1 | 30–31 |
+| `fpga_eda.b14` | fpga_eda | 14 | 3 | 2 | 42–44 |
+| `fpga_eda.b15` | fpga_eda | 15 | 5 | 2 | 45–47 |
+| `fpga_eda.b18` | fpga_eda | 18 | 3 | 1 | 55–56 |
+| `fpga_eda.b20` | fpga_eda | 20 | 1 | 1 | 62–62 |
+| `fpga_eda.b21` | fpga_eda | 21 | 4 | 3 | 63–65 |
+| `fpga_eda.b22` | fpga_eda | 22 | 10 | 5 | 66–68 |
+| `fpga_eda.b24` | fpga_eda | 24 | 1 | 1 | 72–72 |
+| `fpga_eda.b28` | fpga_eda | 28 | 2 | 1 | 84–85 |
+| `fpga_eda.b29` | fpga_eda | 29 | 2 | 1 | 87–88 |
+| `fpga_eda.b31` | fpga_eda | 31 | 1 | 1 | 95–95 |
 | `fractions.b2` | fractions | 2 | 8 | 4 | 6–8 |
 | `fractions.b3` | fractions | 3 | 23 | 9 | 9–11 |
 | `fractions.b4` | fractions | 4 | 13 | 6 | 12–14 |
 | `fractions.b5` | fractions | 5 | 1 | 1 | 15–15 |
+| `functional_verification.b10` | functional_verification | 10 | 5 | 3 | 31–32 |
+| `functional_verification.b11` | functional_verification | 11 | 3 | 1 | 33–35 |
+| `functional_verification.b12` | functional_verification | 12 | 16 | 8 | 36–38 |
+| `functional_verification.b13` | functional_verification | 13 | 16 | 6 | 39–40 |
+| `functional_verification.b28` | functional_verification | 28 | 2 | 1 | 85–86 |
+| `functional_verification.b29` | functional_verification | 29 | 3 | 1 | 87–88 |
 | `geometry.b0` | geometry | 0 | 8 | 5 | 0–2 |
 | `geometry.b1` | geometry | 1 | 15 | 7 | 3–4 |
 | `geometry.b2` | geometry | 2 | 2 | 2 | 8–8 |
@@ -90,6 +262,21 @@ exists to make concrete.
 | `graph_theory.b6` | graph_theory | 6 | 12 | 5 | 18–20 |
 | `graph_theory.b7` | graph_theory | 7 | 19 | 6 | 21–23 |
 | `graph_theory.b8` | graph_theory | 8 | 4 | 2 | 24–25 |
+| `hdl_and_compilers.b10` | hdl_and_compilers | 10 | 8 | 3 | 30–32 |
+| `hdl_and_compilers.b11` | hdl_and_compilers | 11 | 12 | 4 | 33–35 |
+| `hdl_and_compilers.b12` | hdl_and_compilers | 12 | 10 | 5 | 36–38 |
+| `hdl_and_compilers.b13` | hdl_and_compilers | 13 | 12 | 5 | 39–41 |
+| `hdl_and_compilers.b14` | hdl_and_compilers | 14 | 3 | 1 | 42–43 |
+| `hdl_and_compilers.b28` | hdl_and_compilers | 28 | 3 | 1 | 84–86 |
+| `hdl_and_compilers.b29` | hdl_and_compilers | 29 | 2 | 1 | 87–88 |
+| `high_level_synthesis.b12` | high_level_synthesis | 12 | 1 | 1 | 38–38 |
+| `high_level_synthesis.b13` | high_level_synthesis | 13 | 3 | 1 | 40–41 |
+| `high_level_synthesis.b14` | high_level_synthesis | 14 | 11 | 3 | 42–44 |
+| `high_level_synthesis.b15` | high_level_synthesis | 15 | 17 | 5 | 45–47 |
+| `high_level_synthesis.b16` | high_level_synthesis | 16 | 5 | 3 | 48–49 |
+| `high_level_synthesis.b28` | high_level_synthesis | 28 | 3 | 1 | 84–86 |
+| `high_level_synthesis.b29` | high_level_synthesis | 29 | 1 | 1 | 87–87 |
+| `high_level_synthesis.b31` | high_level_synthesis | 31 | 1 | 1 | 95–95 |
 | `linear_algebra.b0` | linear_algebra | 0 | 1 | 1 | 2–2 |
 | `linear_algebra.b1` | linear_algebra | 1 | 5 | 2 | 3–5 |
 | `linear_algebra.b2` | linear_algebra | 2 | 1 | 1 | 8–8 |
@@ -98,6 +285,18 @@ exists to make concrete.
 | `linear_algebra.b7` | linear_algebra | 7 | 6 | 2 | 21–23 |
 | `linear_algebra.b8` | linear_algebra | 8 | 5 | 1 | 24–26 |
 | `linear_algebra.b9` | linear_algebra | 9 | 6 | 2 | 27–28 |
+| `logic_synthesis.b9` | logic_synthesis | 9 | 1 | 1 | 27–27 |
+| `logic_synthesis.b12` | logic_synthesis | 12 | 4 | 3 | 37–38 |
+| `logic_synthesis.b13` | logic_synthesis | 13 | 12 | 5 | 39–41 |
+| `logic_synthesis.b14` | logic_synthesis | 14 | 21 | 4 | 42–44 |
+| `logic_synthesis.b15` | logic_synthesis | 15 | 10 | 6 | 45–47 |
+| `logic_synthesis.b17` | logic_synthesis | 17 | 1 | 1 | 53–53 |
+| `logic_synthesis.b18` | logic_synthesis | 18 | 3 | 2 | 54–55 |
+| `logic_synthesis.b20` | logic_synthesis | 20 | 1 | 1 | 61–61 |
+| `logic_synthesis.b27` | logic_synthesis | 27 | 1 | 1 | 83–83 |
+| `logic_synthesis.b28` | logic_synthesis | 28 | 1 | 1 | 85–85 |
+| `logic_synthesis.b29` | logic_synthesis | 29 | 2 | 1 | 87–88 |
+| `logic_synthesis.b31` | logic_synthesis | 31 | 1 | 1 | 95–95 |
 | `machine_learning.b3` | machine_learning | 3 | 5 | 2 | 9–11 |
 | `machine_learning.b4` | machine_learning | 4 | 1 | 1 | 14–14 |
 | `machine_learning.b7` | machine_learning | 7 | 5 | 3 | 21–23 |
@@ -106,6 +305,17 @@ exists to make concrete.
 | `machine_learning.b10` | machine_learning | 10 | 2 | 1 | 31–32 |
 | `machine_learning.b11` | machine_learning | 11 | 9 | 4 | 33–35 |
 | `machine_learning.b12` | machine_learning | 12 | 11 | 4 | 36–37 |
+| `ml_for_eda.b7` | ml_for_eda | 7 | 2 | 1 | 21–23 |
+| `ml_for_eda.b20` | ml_for_eda | 20 | 1 | 1 | 62–62 |
+| `ml_for_eda.b21` | ml_for_eda | 21 | 2 | 1 | 63–63 |
+| `ml_for_eda.b22` | ml_for_eda | 22 | 8 | 5 | 66–68 |
+| `ml_for_eda.b23` | ml_for_eda | 23 | 3 | 1 | 69–71 |
+| `ml_for_eda.b26` | ml_for_eda | 26 | 2 | 1 | 79–80 |
+| `ml_for_eda.b27` | ml_for_eda | 27 | 4 | 1 | 81–83 |
+| `ml_for_eda.b29` | ml_for_eda | 29 | 2 | 1 | 87–88 |
+| `ml_for_eda.b30` | ml_for_eda | 30 | 4 | 4 | 91–92 |
+| `ml_for_eda.b31` | ml_for_eda | 31 | 11 | 5 | 93–95 |
+| `ml_for_eda.b32` | ml_for_eda | 32 | 3 | 2 | 96–97 |
 | `number_theory.b2` | number_theory | 2 | 1 | 1 | 8–8 |
 | `number_theory.b3` | number_theory | 3 | 13 | 2 | 9–11 |
 | `number_theory.b4` | number_theory | 4 | 15 | 4 | 12–14 |
@@ -119,6 +329,49 @@ exists to make concrete.
 | `numerical_analysis.b10` | numerical_analysis | 10 | 4 | 1 | 30–32 |
 | `numerical_analysis.b11` | numerical_analysis | 11 | 6 | 2 | 33–35 |
 | `numerical_analysis.b12` | numerical_analysis | 12 | 8 | 1 | 36–38 |
+| `numerical_methods_for_eda.b2` | numerical_methods_for_eda | 2 | 2 | 1 | 7–8 |
+| `numerical_methods_for_eda.b3` | numerical_methods_for_eda | 3 | 1 | 1 | 10–10 |
+| `numerical_methods_for_eda.b8` | numerical_methods_for_eda | 8 | 6 | 3 | 24–26 |
+| `numerical_methods_for_eda.b9` | numerical_methods_for_eda | 9 | 4 | 2 | 27–29 |
+| `numerical_methods_for_eda.b10` | numerical_methods_for_eda | 10 | 7 | 2 | 30–32 |
+| `numerical_methods_for_eda.b11` | numerical_methods_for_eda | 11 | 6 | 3 | 33–35 |
+| `numerical_methods_for_eda.b12` | numerical_methods_for_eda | 12 | 4 | 3 | 36–38 |
+| `numerical_methods_for_eda.b13` | numerical_methods_for_eda | 13 | 7 | 2 | 39–41 |
+| `numerical_methods_for_eda.b14` | numerical_methods_for_eda | 14 | 8 | 3 | 42–44 |
+| `numerical_methods_for_eda.b15` | numerical_methods_for_eda | 15 | 2 | 1 | 45–45 |
+| `numerical_methods_for_eda.b27` | numerical_methods_for_eda | 27 | 1 | 1 | 82–82 |
+| `numerical_methods_for_eda.b28` | numerical_methods_for_eda | 28 | 1 | 1 | 86–86 |
+| `numerical_methods_for_eda.b29` | numerical_methods_for_eda | 29 | 1 | 1 | 87–87 |
+| `numerical_methods_for_eda.b31` | numerical_methods_for_eda | 31 | 2 | 1 | 95–95 |
+| `optimization_for_eda.b11` | optimization_for_eda | 11 | 13 | 6 | 33–35 |
+| `optimization_for_eda.b12` | optimization_for_eda | 12 | 26 | 9 | 36–38 |
+| `optimization_for_eda.b13` | optimization_for_eda | 13 | 11 | 4 | 39–41 |
+| `optimization_for_eda.b28` | optimization_for_eda | 28 | 2 | 1 | 85–86 |
+| `optimization_for_eda.b29` | optimization_for_eda | 29 | 2 | 1 | 87–88 |
+| `optimization_for_eda.b31` | optimization_for_eda | 31 | 1 | 1 | 95–95 |
+| `packaging_and_integration.b21` | packaging_and_integration | 21 | 1 | 1 | 65–65 |
+| `packaging_and_integration.b22` | packaging_and_integration | 22 | 9 | 3 | 66–68 |
+| `packaging_and_integration.b23` | packaging_and_integration | 23 | 3 | 2 | 69–69 |
+| `packaging_and_integration.b27` | packaging_and_integration | 27 | 3 | 1 | 82–83 |
+| `packaging_and_integration.b28` | packaging_and_integration | 28 | 2 | 1 | 84–84 |
+| `packaging_and_integration.b29` | packaging_and_integration | 29 | 10 | 6 | 87–89 |
+| `packaging_and_integration.b30` | packaging_and_integration | 30 | 9 | 4 | 90–92 |
+| `packaging_and_integration.b31` | packaging_and_integration | 31 | 10 | 4 | 93–95 |
+| `pcb_design.b11` | pcb_design | 11 | 2 | 1 | 34–35 |
+| `pcb_design.b12` | pcb_design | 12 | 5 | 3 | 36–38 |
+| `pcb_design.b13` | pcb_design | 13 | 1 | 1 | 41–41 |
+| `pcb_design.b14` | pcb_design | 14 | 13 | 5 | 42–44 |
+| `pcb_design.b15` | pcb_design | 15 | 2 | 2 | 45–45 |
+| `pcb_design.b28` | pcb_design | 28 | 3 | 2 | 84–86 |
+| `pcb_design.b29` | pcb_design | 29 | 7 | 3 | 87–89 |
+| `pcb_design.b30` | pcb_design | 30 | 7 | 4 | 90–92 |
+| `physical_verification_dfm.b25` | physical_verification_dfm | 25 | 1 | 1 | 77–77 |
+| `physical_verification_dfm.b26` | physical_verification_dfm | 26 | 6 | 3 | 78–80 |
+| `physical_verification_dfm.b27` | physical_verification_dfm | 27 | 15 | 4 | 81–83 |
+| `physical_verification_dfm.b28` | physical_verification_dfm | 28 | 11 | 4 | 84–86 |
+| `physical_verification_dfm.b29` | physical_verification_dfm | 29 | 7 | 3 | 87–89 |
+| `physical_verification_dfm.b30` | physical_verification_dfm | 30 | 2 | 1 | 90–91 |
+| `physical_verification_dfm.b31` | physical_verification_dfm | 31 | 1 | 1 | 95–95 |
 | `prealgebra.b0` | prealgebra | 0 | 1 | 1 | 1–1 |
 | `prealgebra.b2` | prealgebra | 2 | 1 | 1 | 8–8 |
 | `prealgebra.b3` | prealgebra | 3 | 17 | 6 | 9–11 |
@@ -139,6 +392,23 @@ exists to make concrete.
 | `real_analysis.b10` | real_analysis | 10 | 26 | 5 | 30–32 |
 | `real_analysis.b11` | real_analysis | 11 | 15 | 4 | 33–35 |
 | `real_analysis.b12` | real_analysis | 12 | 4 | 1 | 36–37 |
+| `routing.b25` | routing | 25 | 1 | 1 | 77–77 |
+| `routing.b26` | routing | 26 | 1 | 1 | 80–80 |
+| `routing.b27` | routing | 27 | 10 | 4 | 81–83 |
+| `routing.b28` | routing | 28 | 21 | 6 | 84–86 |
+| `routing.b29` | routing | 29 | 13 | 6 | 87–89 |
+| `routing.b30` | routing | 30 | 4 | 1 | 90–91 |
+| `routing.b31` | routing | 31 | 1 | 1 | 95–95 |
+| `semiconductor_devices.b13` | semiconductor_devices | 13 | 1 | 1 | 41–41 |
+| `semiconductor_devices.b14` | semiconductor_devices | 14 | 5 | 2 | 42–44 |
+| `semiconductor_devices.b15` | semiconductor_devices | 15 | 4 | 3 | 45–47 |
+| `semiconductor_devices.b16` | semiconductor_devices | 16 | 5 | 2 | 48–50 |
+| `semiconductor_devices.b17` | semiconductor_devices | 17 | 11 | 2 | 51–53 |
+| `semiconductor_devices.b18` | semiconductor_devices | 18 | 15 | 7 | 54–56 |
+| `semiconductor_devices.b19` | semiconductor_devices | 19 | 7 | 4 | 57–58 |
+| `semiconductor_devices.b28` | semiconductor_devices | 28 | 2 | 1 | 85–86 |
+| `semiconductor_devices.b29` | semiconductor_devices | 29 | 2 | 1 | 87–88 |
+| `semiconductor_devices.b31` | semiconductor_devices | 31 | 1 | 1 | 95–95 |
 | `statistics.b0` | statistics | 0 | 2 | 1 | 1–2 |
 | `statistics.b1` | statistics | 1 | 1 | 1 | 3–3 |
 | `statistics.b2` | statistics | 2 | 1 | 1 | 8–8 |
@@ -147,6 +417,39 @@ exists to make concrete.
 | `statistics.b5` | statistics | 5 | 9 | 1 | 15–17 |
 | `statistics.b6` | statistics | 6 | 1 | 1 | 18–18 |
 | `statistics.b8` | statistics | 8 | 1 | 1 | 24–24 |
+| `technology_mapping.b17` | technology_mapping | 17 | 1 | 1 | 53–53 |
+| `technology_mapping.b18` | technology_mapping | 18 | 5 | 3 | 54–56 |
+| `technology_mapping.b19` | technology_mapping | 19 | 5 | 2 | 57–59 |
+| `technology_mapping.b20` | technology_mapping | 20 | 12 | 6 | 60–62 |
+| `technology_mapping.b21` | technology_mapping | 21 | 9 | 5 | 63–65 |
+| `technology_mapping.b22` | technology_mapping | 22 | 2 | 1 | 66–67 |
+| `technology_mapping.b28` | technology_mapping | 28 | 2 | 1 | 84–86 |
+| `technology_mapping.b29` | technology_mapping | 29 | 2 | 1 | 87–87 |
+| `test_and_dft.b6` | test_and_dft | 6 | 1 | 1 | 20–20 |
+| `test_and_dft.b7` | test_and_dft | 7 | 3 | 1 | 21–22 |
+| `test_and_dft.b8` | test_and_dft | 8 | 1 | 1 | 24–24 |
+| `test_and_dft.b9` | test_and_dft | 9 | 2 | 2 | 29–29 |
+| `test_and_dft.b10` | test_and_dft | 10 | 7 | 3 | 30–32 |
+| `test_and_dft.b11` | test_and_dft | 11 | 8 | 3 | 33–35 |
+| `test_and_dft.b12` | test_and_dft | 12 | 9 | 4 | 36–38 |
+| `test_and_dft.b13` | test_and_dft | 13 | 9 | 5 | 39–41 |
+| `test_and_dft.b14` | test_and_dft | 14 | 8 | 3 | 42–44 |
+| `test_and_dft.b28` | test_and_dft | 28 | 2 | 1 | 85–86 |
+| `test_and_dft.b29` | test_and_dft | 29 | 1 | 1 | 87–87 |
+| `test_and_dft.b30` | test_and_dft | 30 | 1 | 1 | 91–91 |
+| `test_and_dft.b31` | test_and_dft | 31 | 1 | 1 | 95–95 |
+| `timing_analysis.b13` | timing_analysis | 13 | 1 | 1 | 41–41 |
+| `timing_analysis.b14` | timing_analysis | 14 | 1 | 1 | 42–42 |
+| `timing_analysis.b20` | timing_analysis | 20 | 5 | 2 | 61–62 |
+| `timing_analysis.b21` | timing_analysis | 21 | 6 | 3 | 63–65 |
+| `timing_analysis.b22` | timing_analysis | 22 | 15 | 6 | 66–68 |
+| `timing_analysis.b23` | timing_analysis | 23 | 8 | 5 | 69–71 |
+| `timing_analysis.b24` | timing_analysis | 24 | 12 | 3 | 72–74 |
+| `timing_analysis.b25` | timing_analysis | 25 | 2 | 1 | 75–75 |
+| `timing_analysis.b28` | timing_analysis | 28 | 1 | 1 | 86–86 |
+| `timing_analysis.b29` | timing_analysis | 29 | 2 | 1 | 87–87 |
+| `timing_analysis.b30` | timing_analysis | 30 | 2 | 1 | 91–92 |
+| `timing_analysis.b31` | timing_analysis | 31 | 1 | 1 | 95–95 |
 | `topology.b10` | topology | 10 | 10 | 3 | 30–32 |
 | `topology.b11` | topology | 11 | 19 | 9 | 33–35 |
 | `topology.b12` | topology | 12 | 13 | 7 | 36–38 |
@@ -156,6 +459,18 @@ exists to make concrete.
 | `trigonometry.b5` | trigonometry | 5 | 1 | 1 | 15–15 |
 | `trigonometry.b7` | trigonometry | 7 | 22 | 5 | 21–23 |
 | `trigonometry.b8` | trigonometry | 8 | 15 | 5 | 24–25 |
+| `variability_statistics.b4` | variability_statistics | 4 | 2 | 1 | 13–14 |
+| `variability_statistics.b5` | variability_statistics | 5 | 3 | 3 | 15–17 |
+| `variability_statistics.b6` | variability_statistics | 6 | 11 | 4 | 18–20 |
+| `variability_statistics.b7` | variability_statistics | 7 | 2 | 1 | 21–21 |
+| `variability_statistics.b9` | variability_statistics | 9 | 2 | 2 | 28–29 |
+| `variability_statistics.b11` | variability_statistics | 11 | 8 | 4 | 33–35 |
+| `variability_statistics.b12` | variability_statistics | 12 | 7 | 2 | 36–38 |
+| `variability_statistics.b13` | variability_statistics | 13 | 1 | 1 | 39–39 |
+| `variability_statistics.b28` | variability_statistics | 28 | 1 | 1 | 85–85 |
+| `variability_statistics.b29` | variability_statistics | 29 | 1 | 1 | 87–87 |
+| `variability_statistics.b30` | variability_statistics | 30 | 1 | 1 | 91–91 |
+| `variability_statistics.b31` | variability_statistics | 31 | 2 | 1 | 95–95 |
 
 ## Backward band edges
 
@@ -170,19 +485,19 @@ at every width.
 
 | Band width | Units | Median | Max | Singletons | <=3 | >25 | Backward |
 |---|---|---|---|---|---|---|---|
-| 2 | 162 | 5 | 56 | 28 | 53 | 6 | 0 |
-| 3 | 124 | 6 | 61 | 27 | 38 | 11 | 0 |
-| 4 | 98 | 9 | 78 | 11 | 26 | 10 | 0 |
-| 5 | 84 | 9 | 89 | 8 | 18 | 12 | 0 |
-| 6 | 81 | 11 | 115 | 10 | 19 | 17 | 0 |
-| 8 | 63 | 13 | 139 | 6 | 11 | 18 | 0 |
-| 10 | 53 | 17 | 176 | 4 | 9 | 17 | 0 |
-| 12 | 54 | 16 | 144 | 2 | 7 | 20 | 0 |
-| 15 | 42 | 22 | 176 | 1 | 4 | 20 | 0 |
-| 20 | 35 | 31 | 205 | 2 | 4 | 20 | 0 |
-| 45 | 21 | 45 | 205 | 0 | 0 | 21 | 0 |
+| 2 | 568 | 3 | 56 | 160 | 291 | 6 | 0 |
+| 3 | 439 | 4 | 61 | 111 | 211 | 13 | 0 |
+| 4 | 357 | 5 | 78 | 79 | 151 | 16 | 0 |
+| 5 | 319 | 5 | 89 | 71 | 133 | 19 | 0 |
+| 6 | 278 | 5 | 115 | 51 | 101 | 26 | 0 |
+| 8 | 234 | 6 | 139 | 28 | 84 | 35 | 0 |
+| 10 | 206 | 7 | 176 | 34 | 60 | 38 | 0 |
+| 12 | 176 | 11 | 144 | 12 | 30 | 39 | 0 |
+| 15 | 170 | 7 | 176 | 20 | 43 | 42 | 0 |
+| 20 | 133 | 15 | 205 | 10 | 18 | 45 | 0 |
+| 45 | 108 | 21 | 205 | 16 | 29 | 52 | 0 |
 
-**No width is clean.** Small widths fragment, at 3 there are 27 singleton units, which is a
+**No width is clean.** Small widths fragment, at 3 there are 111 singleton units, which is a
 quiz per concept and is exactly what §12 rules out. Large widths stop fragmenting but produce
 units too large to assess: at 45 the partition is just the 17 domains themselves, whose
 largest is 128 concepts. The usable widths trade fragmentation against size rather than
@@ -197,7 +512,7 @@ The subdomain condensation of the concept DAG **contains cycles**: grouping conc
 subdomain discards the per-concept ordering, so a concept in subdomain A can be a
 prerequisite of one in subdomain B whose other members depend on A.
 
-**107 of 125 subdomains cannot be levelled**, they sit inside a cycle, or downstream
+**362 of 125 subdomains cannot be levelled**, they sit inside a cycle, or downstream
 of one, so no depth function exists for them at all. (Tarjan puts 26 inside cycles and
 the remaining 34 behind them; Kahn cannot order either group, because ordering a node
 requires its predecessors to be ordered first.) An implementation that ignores this
@@ -209,143 +524,462 @@ Unresolvable subdomains:
 `abstract_algebra.fields` 
 `abstract_algebra.rings` 
 `abstract_algebra.structures` 
-`algebra.conics` 
+`agent_first_eda.architecture` 
 
+`agent_first_eda.harness` 
+`agent_first_eda.learning` 
+`agent_first_eda.models` 
+`agent_first_eda.orchestration` 
+
+`agent_first_eda.safety` 
+`agent_first_eda.tiers` 
+`algebra.conics` 
 `algebra.equations` 
+
 `algebra.inequalities` 
 `algebra.linear` 
 `algebra.logarithms` 
-
 `algebra.rational` 
+
 `algebra.sequences` 
 `algebra.systems` 
-`arithmetic.addition` 
+`analog_mixed_signal_rf.amp` 
+`analog_mixed_signal_rf.frontier` 
 
+`analog_mixed_signal_rf.layout` 
+`analog_mixed_signal_rf.ms` 
+`analog_mixed_signal_rf.pll` 
+`analog_mixed_signal_rf.rf` 
+
+`analog_mixed_signal_rf.size` 
+`analog_mixed_signal_rf.special` 
+`arithmetic.addition` 
+`boolean_reasoning.algo` 
+
+`boolean_reasoning.cnf` 
+`boolean_reasoning.complexity` 
+`boolean_reasoning.cover` 
+`boolean_reasoning.decomp` 
+
+`boolean_reasoning.frontier` 
+`boolean_reasoning.func` 
+`boolean_reasoning.order` 
 `calculus.advanced` 
+
 `calculus.derivatives` 
 `calculus.integrals` 
 `calculus.limits` 
-
 `calculus.multivariable` 
+
 `calculus.polar` 
 `calculus.sequences` 
 `calculus.series` 
-
 `calculus.vector` 
-`complex_numbers.topology` 
-`differential_equations.basics` 
-`differential_equations.boundary` 
 
+`circuit_simulation.ac` 
+`circuit_simulation.dc` 
+`circuit_simulation.fast` 
+`circuit_simulation.frontier` 
+
+`circuit_simulation.mna` 
+`circuit_simulation.mor` 
+`circuit_simulation.pss` 
+`circuit_simulation.tool` 
+
+`circuit_simulation.var` 
+`circuits_and_electromagnetics.ac` 
+`circuits_and_electromagnetics.circuit` 
+`circuits_and_electromagnetics.emc` 
+
+`circuits_and_electromagnetics.frontier` 
+`circuits_and_electromagnetics.signal` 
+`circuits_and_electromagnetics.solver` 
+`circuits_and_electromagnetics.tline` 
+
+`clock_and_power.analysis` 
+`clock_and_power.buffered` 
+`clock_and_power.frontier` 
+`clock_and_power.gating` 
+
+`clock_and_power.lowpower` 
+`clock_and_power.objective` 
+`clock_and_power.pdn` 
+`clock_and_power.skew` 
+
+`clock_and_power.topology` 
+`cmos_circuits_and_cells.cell` 
+`cmos_circuits_and_cells.delay` 
+`cmos_circuits_and_cells.gate` 
+
+`cmos_circuits_and_cells.lib` 
+`cmos_circuits_and_cells.power` 
+`cmos_circuits_and_cells.seq` 
+`cmos_circuits_and_cells.special` 
+
+`complex_numbers.topology` 
+`computational_geometry.decomp` 
+`computational_geometry.frontier` 
+`computational_geometry.layout` 
+
+`computational_geometry.poly` 
+`computational_geometry.prox` 
+`computational_geometry.sweep` 
+`differential_equations.basics` 
+
+`differential_equations.boundary` 
 `differential_equations.first_order` 
 `differential_equations.integral` 
 `differential_equations.nonlinear` 
-`differential_equations.numerical` 
 
+`differential_equations.numerical` 
 `differential_equations.pde` 
 `differential_equations.second_order` 
 `differential_equations.stability` 
-`differential_equations.systems` 
 
+`differential_equations.systems` 
 `differential_equations.transforms` 
+`digital_logic_design.arith` 
+`digital_logic_design.frontier` 
+
+`digital_logic_design.fsm` 
+`digital_logic_design.mem` 
 `discrete_math.graph_theory` 
 `discrete_math.logic` 
-`discrete_math.proof` 
 
+`discrete_math.proof` 
 `discrete_math.recurrence` 
 `discrete_math.sets` 
-`frac.compare` 
-`frac.div` 
+`eda_graph_algorithms.coloring` 
 
+`eda_graph_algorithms.dag` 
+`eda_graph_algorithms.flow` 
+`eda_graph_algorithms.frontier` 
+`eda_graph_algorithms.model` 
+
+`eda_graph_algorithms.partition` 
+`eda_graph_algorithms.path` 
+`eda_graph_algorithms.spectral` 
+`eda_graph_algorithms.steiner` 
+
+`eda_landscape.branches` 
+`eda_landscape.frontier` 
+`eda_landscape.history` 
+`eda_landscape.industry` 
+
+`eda_landscape.metrics` 
+`eda_landscape.overview` 
+`eda_landscape.stages` 
+`eda_software_infrastructure.api` 
+
+`eda_software_infrastructure.arch` 
+`eda_software_infrastructure.flow` 
+`eda_software_infrastructure.frontier` 
+`eda_software_infrastructure.incr` 
+
+`eda_software_infrastructure.parse` 
+`eda_software_infrastructure.pdk` 
+`extraction_and_signoff.capacitance` 
+`extraction_and_signoff.format` 
+
+`extraction_and_signoff.frontier` 
+`extraction_and_signoff.inductance` 
+`extraction_and_signoff.reduction` 
+`extraction_and_signoff.resistance` 
+
+`extraction_and_signoff.si` 
+`extraction_and_signoff.signoff` 
+`fabrication_and_dtco.beol` 
+`fabrication_and_dtco.dtco` 
+
+`fabrication_and_dtco.frontier` 
+`fabrication_and_dtco.litho` 
+`fabrication_and_dtco.pdk` 
+`fabrication_and_dtco.process` 
+
+`fabrication_and_dtco.yield` 
+`floorplanning_and_placement.driven` 
+`floorplanning_and_placement.floorplan` 
+`floorplanning_and_placement.format` 
+
+`floorplanning_and_placement.frontier` 
+`floorplanning_and_placement.macro` 
+`floorplanning_and_placement.overview` 
+`formal_verification.bdd` 
+
+`formal_verification.bmc` 
+`formal_verification.equiv` 
+`formal_verification.frontier` 
+`formal_verification.ic3` 
+
+`formal_verification.induction` 
+`formal_verification.mc` 
+`formal_verification.sat` 
+`formal_verification.smt` 
+
+`formal_verification.sva` 
+`fpga_eda.arch` 
+`fpga_eda.flow` 
+`fpga_eda.impl` 
+
+`fpga_eda.map` 
+`fpga_eda.pack` 
+`fpga_eda.route` 
+`frac.compare` 
+
+`frac.div` 
 `frac.mixed` 
 `frac.mult` 
 `frac.sub` 
-`fractions.division` 
 
+`fractions.division` 
+`functional_verification.accel` 
+`functional_verification.assert` 
+`functional_verification.cdc` 
+
+`functional_verification.cycle` 
+`functional_verification.frontier` 
+`functional_verification.random` 
+`functional_verification.tb` 
+
+`functional_verification.uvm` 
 `geometry.basics` 
 `geometry.transform` 
 `graph_theory.basics` 
-`graph_theory.coloring` 
 
+`graph_theory.coloring` 
 `graph_theory.connectivity` 
 `graph_theory.extremal` 
 `graph_theory.flows` 
-`graph_theory.matching` 
 
+`graph_theory.matching` 
 `graph_theory.planarity` 
 `graph_theory.spectral` 
+`hdl_and_compilers.compile` 
+
+`hdl_and_compilers.elab` 
+`hdl_and_compilers.frontier` 
+`hdl_and_compilers.ir` 
+`hdl_and_compilers.lang` 
+
+`hdl_and_compilers.opt` 
+`hdl_and_compilers.rtl` 
+`hdl_and_compilers.sv` 
+`hdl_and_compilers.verilog` 
+
+`high_level_synthesis.bind` 
+`high_level_synthesis.frontier` 
+`high_level_synthesis.ir` 
+`high_level_synthesis.sched` 
+
+`high_level_synthesis.sys` 
 `linear_algebra.decompositions` 
 `linear_algebra.eigenvalues` 
-
 `linear_algebra.inner_product` 
+
 `linear_algebra.matrices` 
 `linear_algebra.systems` 
 `linear_algebra.transformations` 
+`logic_synthesis.aig` 
 
+`logic_synthesis.datapath` 
+`logic_synthesis.dc` 
+`logic_synthesis.frontier` 
+`logic_synthesis.fsm` 
+
+`logic_synthesis.multilevel` 
+`logic_synthesis.overview` 
+`logic_synthesis.seq` 
+`logic_synthesis.tool` 
+
+`logic_synthesis.twolevel` 
 `machine_learning.nlp` 
 `machine_learning.reinforcement` 
 `machine_learning.trees` 
-`number_theory.applications` 
 
+`ml_for_eda.diff` 
+`ml_for_eda.eval` 
+`ml_for_eda.found` 
+`ml_for_eda.frontier` 
+
+`ml_for_eda.gen` 
+`ml_for_eda.gnn` 
+`ml_for_eda.llm` 
+`ml_for_eda.predict` 
+
+`ml_for_eda.rl` 
+`number_theory.applications` 
 `numerical_analysis.errors` 
 `numerical_analysis.integration` 
-`numerical_analysis.roots` 
-`prealgebra.equations` 
 
+`numerical_analysis.roots` 
+`numerical_methods_for_eda.frontier` 
+`numerical_methods_for_eda.iter` 
+`numerical_methods_for_eda.mor` 
+
+`numerical_methods_for_eda.sparse` 
+`optimization_for_eda.bayes` 
+`optimization_for_eda.convex` 
+`optimization_for_eda.dp` 
+
+`optimization_for_eda.formulate` 
+`optimization_for_eda.frontier` 
+`optimization_for_eda.gradient` 
+`optimization_for_eda.ip` 
+
+`optimization_for_eda.lagrange` 
+`optimization_for_eda.lp` 
+`optimization_for_eda.meta` 
+`optimization_for_eda.multi` 
+
+`packaging_and_integration.adv` 
+`packaging_and_integration.basic` 
+`packaging_and_integration.chiplet` 
+`packaging_and_integration.eda3d` 
+
+`packaging_and_integration.frontier` 
+`packaging_and_integration.mech` 
+`packaging_and_integration.rel` 
+`packaging_and_integration.thermal` 
+
+`packaging_and_integration.wlp` 
+`pcb_design.assembly` 
+`pcb_design.diff` 
+`pcb_design.flow` 
+
+`pcb_design.frontier` 
+`pcb_design.layout` 
+`pcb_design.output` 
+`pcb_design.si` 
+
+`pcb_design.stackup` 
+`pcb_design.verify` 
+`pcb_design.via` 
+`physical_verification_dfm.antenna` 
+
+`physical_verification_dfm.dfm` 
+`physical_verification_dfm.drc` 
+`physical_verification_dfm.fill` 
+`physical_verification_dfm.frontier` 
+
+`physical_verification_dfm.lvs` 
+`physical_verification_dfm.tapeout` 
+`prealgebra.equations` 
 `prealgebra.inequalities` 
+
 `precalculus.conics` 
 `precalculus.discrete` 
 `precalculus.exponential` 
-
 `precalculus.functions` 
+
 `precalculus.parametric` 
 `precalculus.polar` 
 `precalculus.polynomials` 
-
 `precalculus.rational` 
+
 `precalculus.sequences` 
 `precalculus.systems` 
 `precalculus.vectors` 
-
 `probability_theory.characteristic` 
+
 `probability_theory.convergence` 
 `probability_theory.distributions` 
 `probability_theory.processes` 
-
 `real_analysis.deriv` 
+
 `real_analysis.limit` 
 `real_analysis.metric` 
 `real_analysis.order` 
-
 `real_analysis.seq` 
+
+`routing.channel` 
+`routing.detail` 
+`routing.driven` 
+`routing.frontier` 
+
+`routing.global` 
+`routing.grid` 
+`routing.layer` 
+`routing.maze` 
+
+`routing.pattern` 
+`semiconductor_devices.advanced` 
+`semiconductor_devices.frontier` 
+`semiconductor_devices.junction` 
+
+`semiconductor_devices.mos` 
+`semiconductor_devices.physics` 
+`semiconductor_devices.rel` 
+`semiconductor_devices.scaling` 
+
+`semiconductor_devices.sce` 
+`semiconductor_devices.var` 
 `statistics.distributions` 
+`technology_mapping.buffer` 
+
+`technology_mapping.cut` 
+`technology_mapping.frontier` 
+`technology_mapping.load` 
+`technology_mapping.lut` 
+
+`technology_mapping.match` 
+`technology_mapping.size` 
+`technology_mapping.subject` 
+`technology_mapping.tools` 
+
+`technology_mapping.tree` 
+`test_and_dft.ate` 
+`test_and_dft.atpg` 
+`test_and_dft.compress` 
+
+`test_and_dft.fault` 
+`test_and_dft.frontier` 
+`test_and_dft.mbist` 
+`test_and_dft.scan` 
+
+`timing_analysis.check` 
+`timing_analysis.closure` 
+`timing_analysis.constraint` 
+`timing_analysis.frontier` 
+
+`timing_analysis.graph` 
+`timing_analysis.incremental` 
+`timing_analysis.path` 
+`timing_analysis.var` 
+
 `topology.algebraic` 
 `topology.basics` 
-
 `topology.compact` 
 `topology.connected` 
+
 `topology.constructions` 
 `topology.covering` 
-
 `topology.dimension` 
 `topology.invariants` 
+
 `topology.knot` 
 `topology.manifolds` 
-
 `topology.metrization` 
 `topology.separation` 
+
 `trigonometry.advanced` 
 `trigonometry.functions` 
-
 `trigonometry.graphs` 
 `trigonometry.hyperbolic` 
-`trigonometry.identities` 
 
-Concept depth is a proper topological ranking on an acyclic graph, so it resolves all 1250
+`trigonometry.identities` 
+`variability_statistics.frontier` 
+`variability_statistics.mc` 
+`variability_statistics.rel` 
+
+`variability_statistics.sens` 
+`variability_statistics.yield` 
+
+Concept depth is a proper topological ranking on an acyclic graph, so it resolves all 2857
 concepts and yields zero backward band edges by construction.
 
 ## Validation findings
 
-- **anomaly** `singleton_units`: 27 unit(s) hold a single concept; the spec forbids a quiz per concept, so these need merging
+- **anomaly** `singleton_units`: 111 unit(s) hold a single concept; the spec forbids a quiz per concept, so these need merging
 
 ## Not decided here
 

@@ -1,0 +1,5 @@
+[
+  {"label": "Ground-state confinement energy", "section": "Ground-state confinement energy", "subgoals": ["Write the particle-in-a-box energy with the confinement mass", "Evaluate 0.376 eV nm squared over mass ratio times thickness squared", "Note the inverse-square dependence on thickness"]},
+  {"label": "Subband spacing", "section": "Subband spacing", "subgoals": ["Multiply the ground-state energy by four for the second level", "Subtract to get three times E1", "Compare the spacing with kT to judge subband occupancy"]},
+  {"label": "Threshold and band-gap effects", "section": "Threshold and band-gap effects", "subgoals": ["Compute ground-state shifts for electrons and holes", "Add them for the band-gap widening", "Differentiate with respect to thickness to estimate threshold sensitivity"]}
+]

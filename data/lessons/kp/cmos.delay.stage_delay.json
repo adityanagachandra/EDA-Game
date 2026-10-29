@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The three terms",
+    "section": "The three terms",
+    "subgoals": [
+      "Express the load as electrical effort over the gate's input capacitance",
+      "Multiply logical effort by electrical effort to get stage effort",
+      "Add the parasitic delay to get the stage delay in tau units"
+    ]
+  },
+  {
+    "label": "A worked stage",
+    "section": "A worked stage",
+    "subgoals": [
+      "Compute h from the stated input and load capacitances",
+      "Evaluate g times h plus p for each stage",
+      "Add stage delays and convert with tau to picoseconds"
+    ]
+  },
+  {
+    "label": "What the linear model hides",
+    "section": "What the linear model hides",
+    "subgoals": [
+      "Note that the model is linear in load and ignores input slew",
+      "Use it to compare choices inside an optimization loop",
+      "Verify chosen sizes with a table-driven timer"
+    ]
+  }
+]

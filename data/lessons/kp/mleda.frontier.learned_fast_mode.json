@@ -1,0 +1,5 @@
+[
+  {"label": "The loop's cost", "section": "The loop's cost", "subgoals": ["Multiply all candidates by the fast-mode time", "Add accurate runs for the uncertain fraction and the final picks", "Convert the total to the reporting unit"]},
+  {"label": "Speedup and what dominates it", "section": "Speedup and what dominates it", "subgoals": ["Divide the accurate-only cost by the loop's cost", "Compare savings from faster inference and from less recursion", "Track recursion rate and fast-accurate disagreement as observations"]},
+  {"label": "When to abandon the fast mode", "section": "When to abandon the fast mode", "subgoals": ["Set loop cost equal to accurate-only cost", "Solve for the recursion fraction", "Switch to the accurate engine when the rate approaches it"]}
+]

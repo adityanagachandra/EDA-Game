@@ -1,0 +1,5 @@
+[
+  {"label": "Counting occurrences", "section": "Counting occurrences", "subgoals": ["Test whether every literal of the cube appears in each product term", "Count the product terms the cube divides across all functions", "Discard candidates that divide only one product term"]},
+  {"label": "Literals after extracting a cube", "section": "Literals after extracting a cube", "subgoals": ["Remove k literals from each of the m divided cubes", "Add one literal X to each of those cubes", "Add the k literals of the new node X"]},
+  {"label": "The value formula", "section": "The value formula", "subgoals": ["Compute the saving as m times k minus m minus k", "Compare the savings of all candidate cubes", "Extract the best candidate and recompute the occurrence counts"]}
+]

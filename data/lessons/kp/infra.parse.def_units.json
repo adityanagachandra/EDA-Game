@@ -1,0 +1,5 @@
+[
+  {"label": "From DEF integers to microns", "section": "From DEF integers to microns", "subgoals": ["Read n from the UNITS DISTANCE MICRONS statement", "Divide the DEF integer by n to get microns", "Keep integers inside the database and convert only at the edges"]},
+  {"label": "Die area from DIEAREA", "section": "Die area from DIEAREA", "subgoals": ["Subtract the corner coordinates to get width and height in dbu", "Convert width and height to microns separately", "Multiply the micron lengths for the area"]},
+  {"label": "LEF microns into DEF rows", "section": "LEF microns into DEF rows", "subgoals": ["Multiply the LEF site width by n to get the step in dbu", "Multiply the step by the site count and add the row origin", "Confirm every converted value is an integer at the chosen resolution"]}
+]

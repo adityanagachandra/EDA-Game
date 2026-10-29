@@ -1,0 +1,5 @@
+[
+  {"label": "Ensemble disagreement", "section": "Ensemble disagreement", "subgoals": ["Average the ensemble members' predictions", "Average the squared deviations from that mean", "Read high variance as model uncertainty at this point"]},
+  {"label": "Uncertainty sampling", "section": "Uncertainty sampling", "subgoals": ["Compute the predictive variance for every candidate", "Select the candidate with the largest variance", "Weight by relevance when only part of the space matters"]},
+  {"label": "Counting the saving", "section": "Counting the saving", "subgoals": ["Multiply labels saved by the cost per label", "Count retraining rounds from the batch size", "Subtract retraining hours from the label saving"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Definitions, instances and flattening",
+    "section": "Definitions, instances and flattening",
+    "subgoals": [
+      "Distinguish a module definition from an instance",
+      "Multiply instance counts along each root-to-leaf path",
+      "Sum the path products to get the flattened cell count"
+    ]
+  },
+  {
+    "label": "Top-down and bottom-up",
+    "section": "Top-down and bottom-up",
+    "subgoals": [
+      "Describe a budget passed down from architect to block",
+      "Describe a characterized block passed up for assembly",
+      "Locate the block boundary where budgets meet characterizations"
+    ]
+  },
+  {
+    "label": "What hierarchy buys and costs",
+    "section": "What hierarchy buys and costs",
+    "subgoals": [
+      "Count the cells stored once per definition",
+      "Divide flattened cells by definition cells to get the saving",
+      "Name the cross-boundary optimizations that hierarchy blocks"
+    ]
+  }
+]

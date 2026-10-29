@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Port-level protocols",
+  "section": "Port-level protocols",
+  "subgoals": [
+   "Use a plain port only for values held stable by the environment",
+   "Transfer data only when valid and ready are both high",
+   "Wrap the function call with start, done and idle signals"
+  ]
+ },
+ {
+  "label": "Streams, memories and buses",
+  "section": "Streams, memories and buses",
+  "subgoals": [
+   "Map in-order, read-once arguments to streams",
+   "Map random-access arrays to RAM ports",
+   "Map large external arrays to a bursting bus master and control to a register interface"
+  ]
+ },
+ {
+  "label": "How interfaces bound performance",
+  "section": "How interfaces bound performance",
+  "subgoals": [
+   "Count interface accesses per iteration against the ports",
+   "Hide bus latency with bursts and outstanding requests",
+   "Size FIFOs so blocking writes cannot deadlock"
+  ]
+ }
+]

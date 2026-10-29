@@ -1,0 +1,5 @@
+[
+  {"label": "Flow variables", "section": "Flow variables", "subgoals": ["Give each commodity one variable per directed arc", "Count arcs as twice the undirected edges", "Multiply commodities by arcs to count variables"]},
+  {"label": "Conservation and capacity", "section": "Conservation and capacity", "subgoals": ["Write conservation at every vertex for every commodity", "Write one capacity row per edge summing all commodities", "Identify the capacity rows as the coupling constraints"]},
+  {"label": "Min-max utilisation", "section": "Min-max utilisation", "subgoals": ["Compute each edge's total flow divided by its capacity", "Take the maximum as the utilisation of the solution", "Read an optimum above one as proof of congestion"]}
+]

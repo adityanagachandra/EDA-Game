@@ -1,0 +1,5 @@
+[
+  {"label": "Counting Z shapes", "section": "Counting Z shapes", "subgoals": ["Measure the column and row offsets between the pins", "Count interior columns for HVH shapes and interior rows for VHV shapes", "Exclude jogs at the pin columns or rows, which are L shapes"]},
+  {"label": "All pattern candidates", "section": "All pattern candidates", "subgoals": ["Count the two L shapes for pins that differ in both coordinates", "Add the Z shapes to get the full candidate count", "Price each candidate by the edges it crosses"]},
+  {"label": "What patterns miss", "section": "What patterns miss", "subgoals": ["Count monotone routes as lattice paths", "Subtract the L and Z patterns", "Escalate from patterns to monotonic and maze routing"]}
+]

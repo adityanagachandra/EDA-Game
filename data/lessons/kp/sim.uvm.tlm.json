@@ -1,0 +1,5 @@
+[
+  {"label": "Ports, exports and analysis ports", "section": "Ports, exports and analysis ports", "subgoals": ["Call interface methods through ports and implement them at imps", "Broadcast each write from an analysis port to every subscriber", "Decouple producer and consumer rates with a TLM FIFO"]},
+  {"label": "SystemC TLM-2.0: loosely and approximately timed", "section": "SystemC TLM-2.0: loosely and approximately timed", "subgoals": ["Package transactions in the generic payload", "Use blocking b_transport with timing annotation for loosely timed models", "Use phased nb_transport for approximately timed models"]},
+  {"label": "Temporal decoupling and the quantum", "section": "Temporal decoupling and the quantum", "subgoals": ["Keep a local time offset ahead of global time", "Synchronize once per quantum, about T over q times", "Trade a larger quantum's speed against timing skew between initiators"]}
+]

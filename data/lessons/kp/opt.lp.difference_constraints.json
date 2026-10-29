@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Compaction as a longest path",
+    "section": "Compaction as a longest path",
+    "subgoals": [
+      "Draw one weighted edge per minimum-spacing constraint",
+      "Relax the edges in topological order taking maxima",
+      "Read each minimum position as a longest-path distance"
+    ]
+  },
+  {
+    "label": "Feasible solutions by shortest paths",
+    "section": "Feasible solutions by shortest paths",
+    "subgoals": [
+      "Turn each constraint into an edge of the given weight",
+      "Add a source with zero-weight edges to every variable",
+      "Run Bellman-Ford and read the distances as a solution"
+    ]
+  },
+  {
+    "label": "Negative cycles and the clock-skew bound",
+    "section": "Negative cycles and the clock-skew bound",
+    "subgoals": [
+      "Sum the constraints around a cycle so the variables cancel",
+      "Require the summed weight to be nonnegative for feasibility",
+      "Solve the cycle condition for the smallest clock period"
+    ]
+  }
+]

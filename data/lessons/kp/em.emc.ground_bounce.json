@@ -1,0 +1,5 @@
+[
+  {"label": "L di/dt noise", "section": "L di/dt noise", "subgoals": ["Estimate the current change and the time over which it happens", "Multiply the inductance by the current slope", "Express nanohenries times milliamperes per nanosecond in millivolts"]},
+  {"label": "Simultaneous switching through shared pins", "section": "Simultaneous switching through shared pins", "subgoals": ["Divide the pin inductance by the number of parallel pins", "Multiply the per-driver current slope by the number of drivers", "Multiply the two to estimate the bounce"]},
+  {"label": "Decoupling charge", "section": "Decoupling charge", "subgoals": ["Compute the charge as the extra current times its duration", "Divide the charge by the allowed droop", "Express milliamperes times nanoseconds per millivolt in nanofarads"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Freezing the extension ABI", "section": "Freezing the extension ABI", "subgoals": ["Distinguish the source API from the binary ABI", "Identify layout and signature changes that break plug-ins", "Add capability through versioned interfaces"]},
+  {"label": "Versioning every change", "section": "Versioning every change", "subgoals": ["Give each tier of change its own version record", "Attach the request, evidence and approver", "Name exact versions in each run's provenance"]},
+  {"label": "Rollback and compatibility", "section": "Rollback and compatibility", "subgoals": ["Keep old artifacts immutable and available", "Map each tier to its rollback action", "Refuse plug-ins built for an incompatible ABI"]}
+]

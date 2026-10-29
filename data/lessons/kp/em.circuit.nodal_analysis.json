@@ -1,0 +1,5 @@
+[
+  {"label": "Writing one node equation", "section": "Writing one node equation", "subgoals": ["Choose a reference node and name the other node voltages", "Express each leaving branch current through node voltages", "Set the sum of leaving currents equal to the injected current"]},
+  {"label": "Solving a two-node network", "section": "Solving a two-node network", "subgoals": ["Fill the diagonal with the conductances touching each node", "Fill the off-diagonals with minus the coupling conductances", "Solve the two-by-two system by elimination or Cramer's rule"]},
+  {"label": "Three-node networks", "section": "Three-node networks", "subgoals": ["Write the three KCL equations as a tridiagonal system", "Eliminate from the far end back toward the source", "Back-substitute to recover every node voltage"]}
+]

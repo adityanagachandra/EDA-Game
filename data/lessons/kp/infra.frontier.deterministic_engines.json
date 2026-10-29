@@ -1,0 +1,5 @@
+[
+  {"label": "Same seed, same result", "section": "Same seed, same result", "subgoals": ["Draw randomness from an explicit seeded generator passed down", "Break ties by stable keys such as object ids", "Fix partitions and merge order so thread count changes only speed"]},
+  {"label": "Recording what a result depends on", "section": "Recording what a result depends on", "subgoals": ["Record engine version, parameters, seed and thread count", "Hash input files instead of storing only their paths", "Store the seed of the chosen run when selecting among several"]},
+  {"label": "Why agents need determinism", "section": "Why agents need determinism", "subgoals": ["Separate a change's effect from run-to-run noise in differential tests", "Keep tool-grounded rewards free of seed noise", "Compare settings over several seeds when an engine is seed-sensitive"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Measuring the estimator",
+  "section": "Measuring the estimator",
+  "subgoals": [
+   "Pair each path's estimated and routed slack",
+   "Average the absolute differences",
+   "Note whether the errors lean optimistic or pessimistic"
+  ]
+ },
+ {
+  "label": "Guard bands decide when to recurse",
+  "section": "Guard bands decide when to recurse",
+  "subgoals": [
+   "Compare each estimated slack with the guard band",
+   "Send the paths below it to the accurate timer",
+   "Size the guard band from the measured error distribution"
+  ]
+ },
+ {
+  "label": "False passes are the dangerous error",
+  "section": "False passes are the dangerous error",
+  "subgoals": [
+   "Find paths with non-negative estimates and negative routed slack",
+   "Count them as false passes",
+   "Tune the guard band to drive false passes toward zero"
+  ]
+ }
+]

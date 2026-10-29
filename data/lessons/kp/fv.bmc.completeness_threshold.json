@@ -1,0 +1,5 @@
+[
+  {"label": "The reachability diameter", "section": "The reachability diameter", "subgoals": ["Run breadth-first search from the initial states", "Record the distance of every reachable state", "Take the largest distance as the reachability diameter"]},
+  {"label": "The recurrence diameter", "section": "The recurrence diameter", "subgoals": ["Enumerate loop-free paths from the initial states", "Find the longest one, counting transitions", "Compare it with the reachability diameter"]},
+  {"label": "Diameters of counters", "section": "Diameters of counters", "subgoals": ["Trace the counter's states from reset as a single cycle", "Use 2^n - 1 for one counter and lcm(a, b) - 1 for two lockstep counters", "Conclude whether BMC to that depth is practical"]}
+]

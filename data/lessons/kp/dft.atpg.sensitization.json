@@ -1,0 +1,5 @@
+[
+  {"label": "Activation", "section": "Activation", "subgoals": ["Set the fault-free value of the site opposite the stuck value", "Justify that value back to the primary inputs", "Check activation by simulating the fault-free circuit"]},
+  {"label": "Sensitizing a path", "section": "Sensitizing a path", "subgoals": ["Choose a path from the fault site to an output", "Set every side input on the path to its non-controlling value", "Watch for errors that reconverge and cancel"]},
+  {"label": "Branch faults and choosing a test", "section": "Branch faults and choosing a test", "subgoals": ["Propagate a branch fault only through the gate that branch feeds", "Check activation and propagation for each candidate vector", "Reject vectors that set a side input to its controlling value"]}
+]

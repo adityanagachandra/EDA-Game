@@ -1,0 +1,5 @@
+[
+  {"label": "Hashing AND nodes", "section": "Hashing AND nodes", "subgoals": ["Normalize each node's pair of input literals", "Look the pair up in the hash table", "Merge on a hit and count only the nodes created"]},
+  {"label": "Cascading merges", "section": "Cascading merges", "subgoals": ["Replace each input literal by its representative", "Recompute the node's key after the replacement", "Merge whenever the updated key already exists"]},
+  {"label": "Trivial simplifications", "section": "Trivial simplifications", "subgoals": ["Apply AND(x, x) = x and AND(x, not x) = 0 before hashing", "Propagate the resulting aliases and constants to the readers", "Count the AND nodes that remain in the table"]}
+]

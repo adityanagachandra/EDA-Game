@@ -1,0 +1,5 @@
+[
+  {"label": "The electric field", "section": "The electric field", "subgoals": ["Convert the thickness to centimetres", "Divide voltage by thickness", "Express the field in megavolts per centimetre"]},
+  {"label": "Field acceleration models", "section": "Field acceleration models", "subgoals": ["Subtract the use field from the stress field", "Multiply by the field acceleration parameter", "Exponentiate for the lifetime ratio"]},
+  {"label": "Weibull statistics and area scaling", "section": "Weibull statistics and area scaling", "subgoals": ["Take the ratio of test area to product area", "Raise it to one over the Weibull shape", "Multiply the test characteristic life by the factor"]}
+]

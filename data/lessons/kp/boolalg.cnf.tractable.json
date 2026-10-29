@@ -1,0 +1,5 @@
+[
+  {"label": "2-SAT and the implication graph", "section": "2-SAT and the implication graph", "subgoals": ["Turn each two-literal clause into two implications", "Find the strongly connected components", "Declare unsatisfiable when x and not x share a component"]},
+  {"label": "Horn clauses and forward chaining", "section": "Horn clauses and forward chaining", "subgoals": ["Check that every clause has at most one positive literal", "Set variables true only when forced", "Declare unsatisfiable when a purely negative clause is falsified"]},
+  {"label": "XOR constraints and where hardness begins", "section": "XOR constraints and where hardness begins", "subgoals": ["Write XOR constraints as linear equations over GF(2)", "Solve them by Gaussian elimination", "Recognize that three-literal OR clauses break every polynomial method known"]}
+]

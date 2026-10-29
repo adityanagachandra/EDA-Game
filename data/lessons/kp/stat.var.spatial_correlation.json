@@ -1,0 +1,5 @@
+[
+  {"label": "A distance-based correlation model", "section": "A distance-based correlation model", "subgoals": ["Write the correlation as a function of distance only", "Evaluate the exponential kernel at the given distance and correlation length", "Require the resulting covariance matrix to be positive semidefinite"]},
+  {"label": "Correlation of two gate delays", "section": "Correlation of two gate delays", "subgoals": ["Share the global variance fully between the two gates", "Weight the spatial variance by the distance correlation", "Divide the covariance by the total variance"]},
+  {"label": "Skew between two sinks", "section": "Skew between two sinks", "subgoals": ["Cancel the global term in a difference of delays", "Weight the spatial variance by one minus the correlation", "Take the square root of the summed variances for the skew sigma"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The penalized minimizer",
+    "section": "The penalized minimizer",
+    "subgoals": [
+      "Write the objective plus the weighted squared violation",
+      "Set the derivative to zero on the violating side",
+      "Solve for the minimizer as a weighted average"
+    ]
+  },
+  {
+    "label": "How the violation shrinks",
+    "section": "How the violation shrinks",
+    "subgoals": [
+      "Subtract the constraint bound from the penalized minimizer",
+      "Read the violation as the gap divided by one plus the weight",
+      "Relate the penalty force to the constraint's multiplier"
+    ]
+  },
+  {
+    "label": "Choosing the penalty weight",
+    "section": "Choosing the penalty weight",
+    "subgoals": [
+      "Set the violation formula equal to the target tolerance",
+      "Solve for the smallest sufficient weight",
+      "Raise the weight gradually with warm starts to limit ill-conditioning"
+    ]
+  }
+]

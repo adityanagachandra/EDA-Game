@@ -1,0 +1,5 @@
+[
+  {"label": "The conflict graph", "section": "The conflict graph", "subgoals": ["Join every pair of shapes closer than same-mask spacing", "Color the graph with one color per mask", "Test for odd cycles to decide two-mask decomposability"]},
+  {"label": "Counting conflicts from geometry", "section": "Counting conflicts from geometry", "subgoals": ["Check adjacent-track pairs for overlapping x ranges", "Check same-track neighbours for a short tip-to-tip gap", "Count each qualifying pair as one conflict"]},
+  {"label": "Coloring violations", "section": "Coloring violations", "subgoals": ["Look up the mask of both shapes of every conflict edge", "Count the edges whose shapes share a mask", "Fix each by rerouting or stitching"]}
+]

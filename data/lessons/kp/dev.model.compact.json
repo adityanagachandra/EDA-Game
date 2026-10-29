@@ -1,0 +1,5 @@
+[
+  {"label": "The contract with the simulator", "section": "The contract with the simulator", "subgoals": ["Return terminal currents, charges and their voltage derivatives", "Keep every quantity smooth across operating regions", "Derive capacitances from terminal charges to conserve charge"]},
+  {"label": "Formulations and qualification", "section": "Formulations and qualification", "subgoals": ["Classify a model by its core variable: threshold, surface potential or inversion charge", "Require one parameter set to scale across geometry and temperature", "Run symmetry and derivative tests in addition to current fits"]},
+  {"label": "Engineering a compact model", "section": "Engineering a compact model", "subgoals": ["Weigh evaluation cost per call against accuracy", "Prefer physics-based expressions to raw tables for smoothness and extrapolation", "Respect the qualified range and include noise and parasitics"]}
+]

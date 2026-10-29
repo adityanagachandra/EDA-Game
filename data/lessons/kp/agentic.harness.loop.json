@@ -1,0 +1,5 @@
+[
+  {"label": "The six steps", "section": "The six steps", "subgoals": ["Map the request to the smallest safe change", "Build incrementally and run golden and QoR tests", "Return failures as feedback or show passing diffs for review"]},
+  {"label": "Who does what", "section": "Who does what", "subgoals": ["Limit the model to proposing text", "Give the harness every file write, build and test run", "Reserve acceptance for a human reviewer"]},
+  {"label": "Termination and escalation", "section": "Termination and escalation", "subgoals": ["Set an attempt and wall-time budget per request", "Detect oscillation between alternating edits", "Escalate edits that leave the declared tier"]}
+]

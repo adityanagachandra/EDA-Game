@@ -1,0 +1,5 @@
+[
+  {"label": "Elmore delay through a shared trunk", "section": "Elmore delay through a shared trunk", "subgoals": ["Charge all wire and pin capacitance through the driver", "Charge the trunk with half its own capacitance plus everything below it", "Add the branch to the critical sink with its own load"]},
+  {"label": "Delay with separate wires", "section": "Delay with separate wires", "subgoals": ["Compute the total capacitance including the extra wire", "Charge the critical sink's own wire with only its own load", "Compare the two topologies' delay to the critical sink"]},
+  {"label": "Choosing by criticality", "section": "Choosing by criticality", "subgoals": ["Read each net's slack from the timer", "Give non-critical nets the shortest tree", "Give critical nets the topology that minimises delay to their critical sinks"]}
+]

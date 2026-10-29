@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The x-update",
+    "section": "The x-update",
+    "subgoals": [
+      "Write the partition's own cost plus the scaled penalty toward the other copy",
+      "Set the derivative to zero",
+      "Solve for the new copy using the current other copy and dual"
+    ]
+  },
+  {
+    "label": "The z-update with the new x",
+    "section": "The z-update with the new x",
+    "subgoals": [
+      "Compute the new x first",
+      "Write the second partition's cost plus the penalty toward the new x",
+      "Solve for the new z"
+    ]
+  },
+  {
+    "label": "The dual update and convergence",
+    "section": "The dual update and convergence",
+    "subgoals": [
+      "Add the current disagreement to the scaled dual",
+      "Track the primal and dual residuals each iteration",
+      "Adjust rho to balance the two residuals"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "False paths and clock groups", "section": "False paths and clock groups", "subgoals": ["Remove checks with set_false_path only on paths that never propagate in operation", "Declare unrelated clocks with set_clock_groups -asynchronous", "Declare mutually exclusive clocks with -logically_exclusive"]},
+  {"label": "Multicycle paths and absolute delays", "section": "Multicycle paths and absolute delays", "subgoals": ["Move the setup check to the N-th edge with set_multicycle_path N -setup", "Restore the hold check with set_multicycle_path N-1 -hold", "Rank overlapping exceptions with false paths first, then max and min delay, then multicycle"]},
+  {"label": "Exceptions as claims", "section": "Exceptions as claims", "subgoals": ["State the behavior each exception assumes", "Keep exceptions narrow and specific to a mode", "Prove or review every exception that hides a failing path"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What the fast placer trades away", "section": "What the fast placer trades away", "subgoals": ["List the shortcuts a fast placer takes", "Measure its error band against the accurate flow", "Keep it deterministic and seeded"]},
+  {"label": "Deciding what to run accurately", "section": "Deciding what to run accurately", "subgoals": ["Compute the best candidate's pessimistic value", "Keep every candidate whose optimistic value is not worse", "Send the survivors to the accurate placer"]},
+  {"label": "Pitfalls of the loop", "section": "Pitfalls of the loop", "subgoals": ["Recognise reward hacking of the fast proxy", "Audit chosen candidates with the accurate flow", "State the fast model's trusted range in its manifest"]}
+]

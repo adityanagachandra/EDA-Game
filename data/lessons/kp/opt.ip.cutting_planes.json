@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Cover inequalities",
+    "section": "Cover inequalities",
+    "subgoals": [
+      "Find a set of items whose weights exceed the capacity",
+      "Write the cover inequality with right-hand side one less than its size",
+      "Measure the LP point's violation of the cut"
+    ]
+  },
+  {
+    "label": "Chvatal-Gomory rounding",
+    "section": "Chvatal-Gomory rounding",
+    "subgoals": [
+      "Scale the inequality by a nonnegative multiplier",
+      "Round the left coefficients down using nonnegativity",
+      "Round the right-hand side down using integrality"
+    ]
+  },
+  {
+    "label": "Validity and branch and cut",
+    "section": "Validity and branch and cut",
+    "subgoals": [
+      "Enumerate the feasible integer points of a small instance",
+      "Count the points the proposed cut would remove",
+      "Accept the cut only if it is valid and violated by the LP point"
+    ]
+  }
+]

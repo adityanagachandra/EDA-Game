@@ -1,0 +1,5 @@
+[
+  {"label": "Core versus change surface", "section": "Core versus change surface", "subgoals": ["Place hashconsing, union-find and rebuild in the core", "Place rule sets, schedulers, budgets and cost models on the change surface", "Classify a requested change as Tier 1, 2 or 3"]},
+  {"label": "Golden tests for rules", "section": "Golden tests for rules", "subgoals": ["Prove or exhaustively check each rule at the widths it matches", "Check designs extracted with the rule for equivalence", "Report differential QoR and version the rule set separately"]},
+  {"label": "Seams and the flywheel", "section": "Seams and the flywheel", "subgoals": ["Expose a per-e-node cost seam for customer objectives", "Expose a rule-scheduling seam to manage the budget", "Promote validated rule sets while keeping design data private"]}
+]

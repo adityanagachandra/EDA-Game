@@ -1,0 +1,5 @@
+[
+  {"label": "Effective width of a FinFET", "section": "Effective width of a FinFET", "subgoals": ["Add twice the fin height to the fin width", "Multiply by the number of fins", "Relate fin thinness to full depletion and electrostatic control"]},
+  {"label": "Drive current from effective width", "section": "Drive current from effective width", "subgoals": ["Convert the effective width to microns", "Multiply by the quoted current per unit width", "Account for parasitics that the intrinsic estimate omits"]},
+  {"label": "Width quantization", "section": "Width quantization", "subgoals": ["Divide the required current by the current per fin", "Round up to a whole number of fins", "Relate fin quantization to cell drive strengths and ratios"]}
+]

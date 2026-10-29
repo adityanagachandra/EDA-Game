@@ -1,0 +1,5 @@
+[
+  {"label": "Covergroups, coverpoints and bins", "section": "Covergroups, coverpoints and bins", "subgoals": ["Count one bin for a scalar bin over a range", "Count one bin per value for name[] and N bins for name[N]", "Cap automatic bins at auto_bin_max"]},
+  {"label": "Coverpoint coverage", "section": "Coverpoint coverage", "subgoals": ["Mark a bin covered when its count reaches at_least", "Divide covered bins by total bins", "Choose the sampling event that matches the scenario"]},
+  {"label": "Covergroup coverage and weights", "section": "Covergroup coverage and weights", "subgoals": ["Multiply each item's coverage by its weight", "Divide the sum by the total weight", "Inspect bin-level holes behind a high average"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Block RAM shapes",
+  "section": "Block RAM shapes",
+  "subgoals": [
+   "List the tile's depth and width shapes",
+   "Compute ceil of D over d times ceil of W over w for each",
+   "Take the minimum tile count"
+  ]
+ },
+ {
+  "label": "DSP tiling of wide multipliers",
+  "section": "DSP tiling of wide multipliers",
+  "subgoals": [
+   "Split each operand by the port width it is assigned",
+   "Multiply the chunk counts for each orientation",
+   "Keep the cheaper orientation"
+  ]
+ },
+ {
+  "label": "Distributed RAM in LUTs",
+  "section": "Distributed RAM in LUTs",
+  "subgoals": [
+   "Divide the depth by 64 and round up",
+   "Multiply by the word width",
+   "Compare the LUT count with the block RAM alternative"
+  ]
+ }
+]

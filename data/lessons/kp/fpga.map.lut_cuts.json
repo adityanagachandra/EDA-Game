@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Enumerating k-feasible cuts",
+  "section": "Enumerating k-feasible cuts",
+  "subgoals": [
+   "Start each primary input with its trivial cut",
+   "Merge every cut of one fanin with every cut of the other",
+   "Keep unions with at most k leaves and add the trivial cut"
+  ]
+ },
+ {
+  "label": "Depth-optimal labels",
+  "section": "Depth-optimal labels",
+  "subgoals": [
+   "Set primary input labels to 0",
+   "Take 1 plus the largest leaf label for each non-trivial cut",
+   "Keep the minimum over cuts in topological order"
+  ]
+ },
+ {
+  "label": "Covering and what depth saves",
+  "section": "Covering and what depth saves",
+  "subgoals": [
+   "Trace the label-achieving cut back from each output",
+   "Subtract the label from the gate level to get the saving",
+   "Bound the cut set with priority cuts for scalability"
+  ]
+ }
+]

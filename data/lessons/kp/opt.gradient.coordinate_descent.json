@@ -1,0 +1,29 @@
+[
+  {
+    "label": "A single coordinate update",
+    "section": "A single coordinate update",
+    "subgoals": [
+      "Hold every other variable fixed",
+      "Set the partial derivative in the chosen variable to zero",
+      "Solve for the updated value"
+    ]
+  },
+  {
+    "label": "A full sweep is Gauss-Seidel",
+    "section": "A full sweep is Gauss-Seidel",
+    "subgoals": [
+      "Update the first coordinate from the others' current values",
+      "Update the next coordinate using the value just computed",
+      "Identify the sweep as one Gauss-Seidel iteration"
+    ]
+  },
+  {
+    "label": "Cell-by-cell placement relaxation",
+    "section": "Cell-by-cell placement relaxation",
+    "subgoals": [
+      "Compute each cell's position as the weighted average of its neighbours",
+      "Use the newest neighbour positions within the sweep",
+      "Repeat sweeps and watch information move one cell per sweep"
+    ]
+  }
+]

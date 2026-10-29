@@ -1,0 +1,5 @@
+[
+  {"label": "Nets that a move uncuts", "section": "Nets that a move uncuts", "subgoals": ["Find the nets containing the cell", "Count those where the cell is the only pin on its side", "Record that count as FS"]},
+  {"label": "Nets that a move cuts, and the gain", "section": "Nets that a move cuts, and the gain", "subgoals": ["Count the nets lying wholly on the cell's side as TE", "Subtract TE from FS to get the gain", "Ignore nets that are cut both before and after the move"]},
+  {"label": "Choosing among cells", "section": "Choosing among cells", "subgoals": ["Evaluate FS - TE for every free cell", "Pick the largest gain among moves that keep balance", "Break ties by a fixed rule and keep the pass going"]}
+]

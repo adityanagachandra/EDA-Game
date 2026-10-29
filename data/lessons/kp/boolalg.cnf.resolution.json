@@ -1,0 +1,5 @@
+[
+  {"label": "The resolution rule", "section": "The resolution rule", "subgoals": ["Find the variable that appears positive in one clause and negative in the other", "Union the remaining literals", "Count the literals of the resolvent"]},
+  {"label": "Tautological resolvents", "section": "Tautological resolvents", "subgoals": ["Pair every clause with x with every clause with not x", "Discard resolvents that contain a literal and its negation", "Count the useful resolvents"]},
+  {"label": "Eliminating a variable", "section": "Eliminating a variable", "subgoals": ["Remove every clause that mentions the variable", "Add the useful resolvents", "Count the clauses after elimination"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Self-inductance of a coaxial line", "section": "Self-inductance of a coaxial line", "subgoals": ["Apply Ampere's law to find B between the conductors", "Integrate the flux per unit length from a to b", "Divide by the current to get mu0 over two pi times ln b over a"]},
+  {"label": "Two-wire and wire-over-plane loops", "section": "Two-wire and wire-over-plane loops", "subgoals": ["Identify the loop formed by the current and its return", "Apply the two-wire formula or its image-theory half", "Evaluate the inverse hyperbolic cosine in nH per mm"]},
+  {"label": "Inductance from capacitance", "section": "Inductance from capacitance", "subgoals": ["Write the product of L prime and C prime for a homogeneous dielectric", "Divide epsilon r over c squared by the capacitance", "Express the inductance per unit length in nH per m"]}
+]

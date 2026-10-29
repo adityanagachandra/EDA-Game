@@ -1,0 +1,5 @@
+[
+  {"label": "The DAC trial voltage each cycle", "section": "The DAC trial voltage each cycle", "subgoals": ["Set the next bit and form the DAC trial voltage", "Compare the input with the trial and keep or clear the bit", "Halve the remaining interval each cycle"]},
+  {"label": "Reading out the code", "section": "Reading out the code", "subgoals": ["Collect the kept bits as the binary code", "Cross-check against the input divided by the LSB", "Explain why early wrong decisions need redundancy to correct"]},
+  {"label": "Conversion time and the capacitive DAC", "section": "Conversion time and the capacitive DAC", "subgoals": ["Add sampling cycles to one cycle per bit", "Divide the clock by the cycles per conversion", "Relate the capacitor DAC's unit size to mismatch and kT over C"]}
+]

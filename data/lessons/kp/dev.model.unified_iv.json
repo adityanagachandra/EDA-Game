@@ -1,0 +1,5 @@
+[
+  {"label": "A single-piece interpolation", "section": "A single-piece interpolation", "subgoals": ["Normalize the overdrive by two n kT/q", "Evaluate ln of one plus e to the x", "Square it to get the normalized current"]},
+  {"label": "The strong-inversion limit", "section": "The strong-inversion limit", "subgoals": ["Approximate ln of one plus e to the x by x for large x", "Recover the square law from F approximately x squared", "Measure the ratio F over x squared to see the moderate-inversion gap"]},
+  {"label": "The weak-inversion limit", "section": "The weak-inversion limit", "subgoals": ["Approximate ln of one plus e to the x by e to the x for very negative x", "Recover the exponential subthreshold law", "Measure the ratio F over e to the 2x approaching one"]}
+]

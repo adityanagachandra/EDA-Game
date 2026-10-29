@@ -1,0 +1,5 @@
+[
+  {"label": "From cell function to pattern", "section": "From cell function to pattern", "subgoals": ["Write the cell function with two-input operators", "Decompose it with the subject-graph rules", "Map the pattern's free leaves to the cell's input pins"]},
+  {"label": "Counting pattern nodes", "section": "Counting pattern nodes", "subgoals": ["Count one NAND2 per binary operator", "Count raw inverters as AND plus twice OR plus NOT", "Subtract the cancelled pairs and add the node types"]},
+  {"label": "Multiple shapes and what patterns cannot express", "section": "Multiple shapes and what patterns cannot express", "subgoals": ["Generate alternative shapes for associative cells", "Identify cells that need an input twice", "Explain why Boolean matching removes the shape dependence"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Donors and minority holes", "section": "Donors and minority holes", "subgoals": ["Set the majority electron density equal to the donor density", "Apply np = ni squared", "Divide ni squared by the donor density for the minority holes"]},
+  {"label": "Acceptors and minority electrons", "section": "Acceptors and minority electrons", "subgoals": ["Set the majority hole density equal to the acceptor density", "Divide ni squared by the acceptor density", "Name which side of a junction holds more minority carriers"]},
+  {"label": "Compensated doping", "section": "Compensated doping", "subgoals": ["Subtract the smaller dopant density from the larger to get the net doping", "Assign the region its type and its majority density", "Compute the minority density from ni squared over the net doping"]}
+]

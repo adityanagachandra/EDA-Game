@@ -1,0 +1,5 @@
+[
+  {"label": "Encoding the circuit", "section": "Encoding the circuit", "subgoals": ["Introduce one variable per line", "Write k plus one clauses per k-input AND, NAND, OR or NOR gate", "Sum the clauses over all gates for the fault-free circuit"]},
+  {"label": "The ATPG miter", "section": "The ATPG miter", "subgoals": ["Collect the gates in the fault site's transitive fan-out", "Duplicate only those gates for the faulty copy", "Fix the faulty site variable with a unit clause"]},
+  {"label": "Why it works well", "section": "Why it works well", "subgoals": ["Add an XOR per affected output and an OR over them", "Assert with a unit clause that some output differs", "Read a test from a satisfying assignment or redundancy from UNSAT"]}
+]

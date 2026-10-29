@@ -1,0 +1,29 @@
+[
+  {
+    "label": "A conductance to ground at every node",
+    "section": "A conductance to ground at every node",
+    "subgoals": [
+      "Add gmin to every diagonal of the nodal matrix",
+      "Solve the modified circuit",
+      "Use the solution as the initial guess for a smaller gmin"
+    ]
+  },
+  {
+    "label": "The stepping schedule",
+    "section": "The stepping schedule",
+    "subgoals": [
+      "Write the start and final gmin as powers of ten",
+      "Divide the exponent range by the step factor",
+      "Add one for the first solve to count the total"
+    ]
+  },
+  {
+    "label": "The error left by the final gmin",
+    "section": "The error left by the final gmin",
+    "subgoals": [
+      "Treat the final gmin as a resistor to ground",
+      "Form the divider with the node's driving resistance",
+      "Compute the voltage error it introduces"
+    ]
+  }
+]

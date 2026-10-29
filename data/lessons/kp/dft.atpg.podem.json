@@ -1,0 +1,5 @@
+[
+  {"label": "Objectives", "section": "Objectives", "subgoals": ["Target the fault site at the opposite value until the fault is activated", "Pick a D-frontier gate and set an X input to its non-controlling value", "Backtrack when no X-path links the frontier to an output"]},
+  {"label": "Backtrace", "section": "Backtrace", "subgoals": ["Invert the required value through NAND, NOR and NOT gates", "Follow the easiest input when one controlling input suffices", "Follow the hardest input when every input needs the non-controlling value"]},
+  {"label": "Implication and backtracking", "section": "Implication and backtracking", "subgoals": ["Simulate the circuit after each primary input decision", "Flip the most recent untried decision on failure", "Report a test when an output carries D or D-bar"]}
+]

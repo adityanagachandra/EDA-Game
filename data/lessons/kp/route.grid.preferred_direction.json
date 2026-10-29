@@ -1,0 +1,5 @@
+[
+  {"label": "Directional capacity", "section": "Directional capacity", "subgoals": ["Identify which layers run across a given gcell boundary", "Sum tracks over the layers of that direction", "Exclude the pin layer from routing capacity"]},
+  {"label": "Filling layers bottom-up", "section": "Filling layers bottom-up", "subgoals": ["Order the layers of the needed direction from the bottom", "Accumulate capacity until it covers the demand", "Recognise overflow when total directional capacity is exceeded"]},
+  {"label": "Wrong-way wiring", "section": "Wrong-way wiring", "subgoals": ["Price a wrong-way jog as the factor times its length", "Price the alternative as the length plus two vias", "Solve for the longest jog that is still cheaper"]}
+]

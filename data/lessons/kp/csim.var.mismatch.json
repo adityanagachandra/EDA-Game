@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Mismatch shrinks with area",
+    "section": "Mismatch shrinks with area",
+    "subgoals": [
+      "Compute the gate area",
+      "Take its square root",
+      "Divide the Pelgrom coefficient by it"
+    ]
+  },
+  {
+    "label": "Sizing for a mismatch target",
+    "section": "Sizing for a mismatch target",
+    "subgoals": [
+      "Square the ratio of the coefficient to the target sigma",
+      "Divide by the chosen width for the required length",
+      "Check the area and capacitance cost of the result"
+    ]
+  },
+  {
+    "label": "Per-device sigma in a Monte Carlo model",
+    "section": "Per-device sigma in a Monte Carlo model",
+    "subgoals": [
+      "Divide the pair sigma by root two",
+      "Draw an independent shift for each device instance",
+      "Keep global variation separate from local mismatch"
+    ]
+  }
+]

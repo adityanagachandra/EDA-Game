@@ -1,0 +1,5 @@
+[
+  {"label": "Core versus change surface in a mapper", "section": "Core versus change surface in a mapper", "subgoals": ["Place cut enumeration, matching and covering in the core", "Place weights, penalties and load estimates on the change surface", "Call the cost provider once per node with all legal matches"]},
+  {"label": "What the seam's context must carry", "section": "What the seam's context must carry", "subgoals": ["List the match facts the provider needs: cell, Vt, pins, arrivals, load, slack", "Express a customer policy using only those facts", "Exclude hidden state and nondeterminism from the interface"]},
+  {"label": "Keeping the seam honest", "section": "Keeping the seam honest", "subgoals": ["Use a separate filter seam for legality constraints", "Swap providers by configuration behind a frozen interface", "Prove each provider with equivalence and a targeted differential report"]}
+]

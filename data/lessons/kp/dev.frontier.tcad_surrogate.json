@@ -1,0 +1,5 @@
+[
+  {"label": "Surrogates as the fast engine", "section": "Surrogates as the fast engine", "subgoals": ["Map device design inputs to I-V curves or model parameters", "Explore with the surrogate and confirm candidates in TCAD", "Emit outputs in the format downstream tools consume"]},
+  {"label": "When to recurse to TCAD", "section": "When to recurse to TCAD", "subgoals": ["Recurse to TCAD for points outside the training distribution", "Use reported uncertainty to trigger recursion and active learning", "Version the surrogate with its TCAD deck and validate on held-out runs"]},
+  {"label": "Physics, rewards and sampling", "section": "Physics, rewards and sampling", "subgoals": ["Build physical constraints into the surrogate", "Score optimized candidates periodically in TCAD to prevent reward hacking", "Sample with a space-filling design then refine with active learning"]}
+]

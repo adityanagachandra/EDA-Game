@@ -1,0 +1,29 @@
+[
+ {
+  "label": "One resource type",
+  "section": "One resource type",
+  "subgoals": [
+   "Count one iteration's uses of the resource, times its occupancy",
+   "Divide by the number of copies",
+   "Round up to get the bound from that resource"
+  ]
+ },
+ {
+  "label": "ResMII over all resources",
+  "section": "ResMII over all resources",
+  "subgoals": [
+   "Compute the bound of every resource type",
+   "Take the maximum as ResMII",
+   "Identify the resource that attains it as the binding constraint"
+  ]
+ },
+ {
+  "label": "Memory ports as resources",
+  "section": "Memory ports as resources",
+  "subgoals": [
+   "Count one iteration's reads and writes to each array",
+   "Divide by the ports of the memory holding it",
+   "Compare the memory bound with the arithmetic bounds"
+  ]
+ }
+]

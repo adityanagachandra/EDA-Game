@@ -1,0 +1,5 @@
+[
+  {"label": "Spanning-tree decomposition", "section": "Spanning-tree decomposition", "subgoals": ["Compute Manhattan distances between pins", "Grow the tree with Prim's algorithm", "Route each tree edge as a two-pin connection"]},
+  {"label": "Steiner points save wire", "section": "Steiner points save wire", "subgoals": ["Place the Steiner point at the median x and median y", "Connect each pin to the Steiner point", "Compare the tree length with the MST length"]},
+  {"label": "Why not a star from the driver", "section": "Why not a star from the driver", "subgoals": ["Sum the driver-to-sink distances of the star", "Compare the star length with the MST length", "Reserve source-path-optimal trees for timing-critical nets"]}
+]

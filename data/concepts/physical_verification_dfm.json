@@ -1,0 +1,947 @@
+[
+  {
+    "id": "pv.format.gds_records",
+    "label": "GDSII records and stream structure",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.format",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "place.format.lef_def",
+      "nt.base.convert",
+      "geom.rect.bbox"
+    ],
+    "key_prerequisites": [
+      "nt.base.convert"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.format.gds_oasis",
+    "label": "GDSII and OASIS",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.format",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.format.gds_records",
+      "nt.base.convert"
+    ],
+    "key_prerequisites": [
+      "pv.format.gds_records"
+    ],
+    "encompasses": [
+      "pv.format.gds_records"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.format.units_grid",
+    "label": "Database units and the manufacturing grid",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.format",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.format.gds_records",
+      "fab.pdk.design_rules",
+      "nt.basics.divisibility"
+    ],
+    "key_prerequisites": [
+      "pv.format.gds_records"
+    ],
+    "encompasses": [
+      "pv.format.gds_records"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "pv.format.hierarchy",
+    "label": "Hierarchy with SREF and AREF",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.format",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.format.gds_records",
+      "graphs.tree.rooted_traversal",
+      "graph.dag_paths"
+    ],
+    "key_prerequisites": [
+      "pv.format.gds_records",
+      "graph.dag_paths"
+    ],
+    "encompasses": [
+      "pv.format.gds_records",
+      "graph.dag_paths"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.drc.rule_types",
+    "label": "Design rule types",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "fab.pdk.design_rules",
+      "geom.rect.manhattan",
+      "pv.format.units_grid"
+    ],
+    "key_prerequisites": [
+      "fab.pdk.design_rules"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "pv.drc.width_spacing",
+    "label": "Width and spacing checks",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.drc.rule_types",
+      "geom.rect.bbox",
+      "geom.rect.manhattan"
+    ],
+    "key_prerequisites": [
+      "pv.drc.rule_types",
+      "geom.rect.bbox"
+    ],
+    "encompasses": [
+      "geom.rect.manhattan",
+      "geom.rect.bbox"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.drc.enclosure_extension",
+    "label": "Enclosure and extension rules",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.drc.width_spacing",
+      "geom.poly.sizing",
+      "geom.poly.boolean_ops"
+    ],
+    "key_prerequisites": [
+      "pv.drc.width_spacing"
+    ],
+    "encompasses": [
+      "pv.drc.width_spacing"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 110
+    }
+  },
+  {
+    "id": "pv.drc.notch_eol",
+    "label": "Notch, end-of-line and run-length rules",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.drc.width_spacing",
+      "pv.drc.rule_types"
+    ],
+    "key_prerequisites": [
+      "pv.drc.width_spacing"
+    ],
+    "encompasses": [
+      "pv.drc.width_spacing"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.drc.area_via",
+    "label": "Minimum area and via rules",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.drc.enclosure_extension",
+      "route.layer.via_minimization"
+    ],
+    "key_prerequisites": [
+      "pv.drc.enclosure_extension"
+    ],
+    "encompasses": [
+      "pv.drc.enclosure_extension"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.drc.engine",
+    "label": "How a DRC engine works",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.drc.width_spacing",
+      "geom.poly.sizing",
+      "geom.index.rtree",
+      "geom.poly.boolean_ops"
+    ],
+    "key_prerequisites": [
+      "pv.drc.width_spacing",
+      "geom.poly.boolean_ops"
+    ],
+    "encompasses": [
+      "pv.drc.width_spacing",
+      "geom.poly.sizing"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.drc.plane_sweep",
+    "label": "Sweep-line spacing checks",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.drc.engine",
+      "geom.sweep.plane_sweep",
+      "geom.index.interval_tree"
+    ],
+    "key_prerequisites": [
+      "geom.sweep.plane_sweep"
+    ],
+    "encompasses": [
+      "geom.sweep.plane_sweep",
+      "geom.index.interval_tree"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "pv.drc.hierarchical",
+    "label": "Hierarchical DRC",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.drc.engine",
+      "pv.format.hierarchy",
+      "pv.drc.width_spacing"
+    ],
+    "key_prerequisites": [
+      "pv.format.hierarchy",
+      "pv.drc.engine"
+    ],
+    "encompasses": [
+      "pv.format.hierarchy"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.drc.rule_deck",
+    "label": "Rule decks and derived layers",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.drc",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.drc.engine",
+      "geom.poly.boolean_ops",
+      "geom.poly.sizing"
+    ],
+    "key_prerequisites": [
+      "pv.drc.engine"
+    ],
+    "encompasses": [
+      "geom.poly.boolean_ops",
+      "geom.poly.sizing"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.lvs.device_recognition",
+    "label": "Device recognition from layer Booleans",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.lvs",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.drc.rule_deck",
+      "cmos.gate.static_cmos",
+      "geom.poly.boolean_ops"
+    ],
+    "key_prerequisites": [
+      "pv.drc.rule_deck",
+      "cmos.gate.static_cmos"
+    ],
+    "encompasses": [
+      "geom.poly.boolean_ops"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.lvs.extraction",
+    "label": "Layout netlist extraction",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.lvs",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.lvs.device_recognition",
+      "discrete.graphs.paths",
+      "graph.bridge"
+    ],
+    "key_prerequisites": [
+      "pv.lvs.device_recognition"
+    ],
+    "encompasses": [
+      "discrete.graphs.paths",
+      "pv.lvs.device_recognition"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "pv.lvs.reduction",
+    "label": "Device reduction and property comparison",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.lvs",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.lvs.extraction",
+      "cmos.gate.static_cmos"
+    ],
+    "key_prerequisites": [
+      "pv.lvs.extraction"
+    ],
+    "encompasses": [
+      "pv.lvs.device_recognition"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.lvs.graph_matching",
+    "label": "LVS as graph matching",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.lvs",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.lvs.extraction",
+      "graph.isomorphism",
+      "graphs.model.hypergraph"
+    ],
+    "key_prerequisites": [
+      "graph.isomorphism",
+      "pv.lvs.extraction"
+    ],
+    "encompasses": [
+      "graphs.model.hypergraph"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.lvs.partition_refinement",
+    "label": "Partition refinement in netlist comparison",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.lvs",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.lvs.graph_matching",
+      "discrete.sets.relations"
+    ],
+    "key_prerequisites": [
+      "pv.lvs.graph_matching"
+    ],
+    "encompasses": [
+      "pv.lvs.graph_matching",
+      "discrete.sets.relations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "pv.lvs.ambiguity",
+    "label": "Symmetry and ambiguity in LVS matching",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.lvs",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.lvs.partition_refinement",
+      "graph.isomorphism"
+    ],
+    "key_prerequisites": [
+      "pv.lvs.partition_refinement"
+    ],
+    "encompasses": [
+      "pv.lvs.partition_refinement"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.lvs.errors",
+    "label": "Diagnosing LVS errors",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.lvs",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.lvs.partition_refinement",
+      "pv.lvs.extraction",
+      "pv.lvs.reduction"
+    ],
+    "key_prerequisites": [
+      "pv.lvs.partition_refinement"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "pv.lvs.erc",
+    "label": "Electrical rule checking",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.lvs",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.lvs.extraction",
+      "cmos.gate.static_cmos",
+      "discrete.graphs.paths"
+    ],
+    "key_prerequisites": [
+      "pv.lvs.extraction"
+    ],
+    "encompasses": [
+      "pv.lvs.extraction"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.antenna.rules",
+    "label": "Antenna rules",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.antenna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "fab.process.flow_overview",
+      "fab.beol.interconnect_stack",
+      "pv.lvs.extraction"
+    ],
+    "key_prerequisites": [
+      "fab.beol.interconnect_stack",
+      "pv.lvs.extraction"
+    ],
+    "encompasses": [
+      "pv.lvs.extraction"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "pv.antenna.cumulative",
+    "label": "Partial and cumulative antenna ratios",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.antenna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.antenna.rules",
+      "fab.beol.interconnect_stack"
+    ],
+    "key_prerequisites": [
+      "pv.antenna.rules"
+    ],
+    "encompasses": [
+      "pv.antenna.rules"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "pv.antenna.diode",
+    "label": "Antenna diodes",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.antenna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.antenna.rules",
+      "cmos.gate.static_cmos"
+    ],
+    "key_prerequisites": [
+      "pv.antenna.rules"
+    ],
+    "encompasses": [
+      "pv.antenna.rules"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.antenna.jumper",
+    "label": "Layer jumpers and antenna repair",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.antenna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.antenna.cumulative",
+      "pv.antenna.diode",
+      "route.detail.drc_aware"
+    ],
+    "key_prerequisites": [
+      "pv.antenna.cumulative"
+    ],
+    "encompasses": [
+      "pv.antenna.cumulative",
+      "pv.antenna.rules"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "pv.fill.density",
+    "label": "Metal fill and density",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.fill",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "fab.process.flow_overview",
+      "geom.poly.boolean_ops",
+      "geom.rect.bbox",
+      "pv.drc.rule_types"
+    ],
+    "key_prerequisites": [
+      "geom.poly.boolean_ops"
+    ],
+    "encompasses": [
+      "geom.rect.bbox",
+      "geom.poly.boolean_ops"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.fill.insertion",
+    "label": "Fill insertion to a density target",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.fill",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.fill.density",
+      "geom.poly.sizing"
+    ],
+    "key_prerequisites": [
+      "pv.fill.density"
+    ],
+    "encompasses": [
+      "pv.fill.density"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "pv.fill.windows",
+    "label": "Sliding density windows and gradients",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.fill",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.fill.density",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "pv.fill.density"
+    ],
+    "encompasses": [
+      "pv.fill.density"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "pv.fill.side_effects",
+    "label": "Fill side effects and fill-aware flows",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.fill",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.fill.insertion",
+      "pv.fill.windows",
+      "cmos.delay.rc_model"
+    ],
+    "key_prerequisites": [
+      "pv.fill.insertion"
+    ],
+    "encompasses": [
+      "pv.fill.insertion"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.dfm.hotspots",
+    "label": "Lithography hotspot detection",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.dfm",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "fab.litho.resolution",
+      "fab.litho.opc",
+      "ml.eval.precision",
+      "pv.drc.engine"
+    ],
+    "key_prerequisites": [
+      "fab.litho.resolution"
+    ],
+    "encompasses": [
+      "ml.eval.precision"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.dfm.pattern_matching",
+    "label": "Pattern matching for DFM",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.dfm",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.dfm.hotspots",
+      "geom.poly.boolean_ops"
+    ],
+    "key_prerequisites": [
+      "pv.dfm.hotspots"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.dfm.dp_coloring",
+    "label": "Double-patterning coloring conflicts",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.dfm",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "fab.litho.multiple_patterning",
+      "graphs.color.coloring",
+      "discrete.graphs.bipartite",
+      "pv.drc.width_spacing"
+    ],
+    "key_prerequisites": [
+      "fab.litho.multiple_patterning",
+      "discrete.graphs.bipartite"
+    ],
+    "encompasses": [
+      "pv.drc.width_spacing",
+      "discrete.graphs.bipartite"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "pv.dfm.critical_area",
+    "label": "Critical area of a layout",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.dfm",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "fab.yield.critical_area",
+      "fab.yield.defect_density",
+      "pv.drc.width_spacing"
+    ],
+    "key_prerequisites": [
+      "fab.yield.critical_area"
+    ],
+    "encompasses": [
+      "pv.drc.width_spacing"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "pv.dfm.recommended_rules",
+    "label": "Recommended rules and DFM scoring",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.dfm",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.dfm.critical_area",
+      "pv.drc.rule_types",
+      "pv.dfm.hotspots"
+    ],
+    "key_prerequisites": [
+      "pv.dfm.critical_area"
+    ],
+    "encompasses": [
+      "pv.dfm.critical_area"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.tapeout.handoff",
+    "label": "Tape-out",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.tapeout",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.drc.hierarchical",
+      "pv.lvs.errors",
+      "pv.antenna.rules",
+      "pv.fill.density"
+    ],
+    "key_prerequisites": [
+      "pv.drc.hierarchical",
+      "pv.lvs.errors"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "pv.tapeout.mask_prep",
+    "label": "Mask data preparation and fracturing",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.tapeout",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.tapeout.handoff",
+      "geom.decomp.rectangles",
+      "fab.litho.opc"
+    ],
+    "key_prerequisites": [
+      "geom.decomp.rectangles"
+    ],
+    "encompasses": [
+      "geom.decomp.rectangles"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.tapeout.xor_check",
+    "label": "Layout XOR between versions",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.tapeout",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.tapeout.handoff",
+      "geom.poly.boolean_ops"
+    ],
+    "key_prerequisites": [
+      "geom.poly.boolean_ops"
+    ],
+    "encompasses": [
+      "geom.poly.boolean_ops"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.tapeout.open_tools",
+    "label": "KLayout, Magic and Netgen in practice",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.tapeout",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.drc.rule_deck",
+      "pv.lvs.partition_refinement",
+      "pv.tapeout.handoff"
+    ],
+    "key_prerequisites": [
+      "pv.drc.rule_deck"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "pv.frontier.agentic_fix_loop",
+    "label": "Agentic DRC fix loops",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.drc.rule_types",
+      "route.global.rip_up_reroute",
+      "agentic.signoff.eco_loop"
+    ],
+    "key_prerequisites": [
+      "agentic.signoff.eco_loop"
+    ],
+    "encompasses": [
+      "pv.drc.rule_types"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "pv.frontier.change_tiers",
+    "label": "Change tiers for verification engines",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.drc.rule_deck",
+      "agentic.tiers.change",
+      "agentic.engine.four_layer"
+    ],
+    "key_prerequisites": [
+      "agentic.tiers.change"
+    ],
+    "encompasses": [
+      "pv.drc.rule_deck"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "pv.frontier.golden_clean",
+    "label": "Clean results as golden and differential tests",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.tapeout.xor_check",
+      "pv.lvs.errors",
+      "agentic.verify.golden_differential"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "pv.tapeout.xor_check"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.frontier.fast_hotspot",
+    "label": "Fast hotspot prediction versus signoff",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "pv.dfm.hotspots",
+      "agentic.loop.fast_accurate",
+      "ml.eval.recall"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "ml.eval.recall"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "pv.frontier.ip_boundary",
+    "label": "Rule decks and the IP boundary",
+    "domain": "physical_verification_dfm",
+    "subdomain": "physical_verification_dfm.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "pv.drc.rule_deck",
+      "agentic.safety.sandbox_ip"
+    ],
+    "key_prerequisites": [
+      "agentic.safety.sandbox_ip"
+    ],
+    "encompasses": [
+      "pv.drc.rule_deck"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  }
+]

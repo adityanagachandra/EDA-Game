@@ -1,0 +1,5 @@
+[
+  {"label": "Posterior ranking", "section": "Posterior ranking", "subgoals": ["Take priors from layout and defect statistics", "Take likelihoods from the diagnosis engine's match scores", "Normalize prior times likelihood for the posterior"]},
+  {"label": "Choosing what to send", "section": "Choosing what to send", "subgoals": ["Sort the candidates by posterior", "Accumulate posteriors until the confidence target is reached", "Count the candidates to send to failure analysis"]},
+  {"label": "Likelihoods from mismatches", "section": "Likelihoods from mismatches", "subgoals": ["Count mismatches between prediction and observation", "Set the likelihood to epsilon to the number of mismatches", "Score rankings against failure-analysis results"]}
+]

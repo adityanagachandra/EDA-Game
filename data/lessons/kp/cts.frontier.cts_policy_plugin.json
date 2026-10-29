@@ -1,0 +1,5 @@
+[
+  {"label": "Core and change surface of a CTS engine", "section": "Core and change surface of a CTS engine", "subgoals": ["List what the CTS core must guarantee", "List the policies and parameters on the change surface", "Classify a delay-model change as a core edit"]},
+  {"label": "Classifying requests by tier", "section": "Classifying requests by tier", "subgoals": ["Check whether an existing parameter expresses the request", "Check whether a seam exists for new behaviour", "Escalate to a core edit only when neither applies"]},
+  {"label": "Writing and promoting a policy", "section": "Writing and promoting a policy", "subgoals": ["Define the plug-in's inputs at the seam", "Keep calls coarse and state explicit", "Prove QoR on golden designs before promotion"]}
+]

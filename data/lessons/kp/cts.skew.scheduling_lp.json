@@ -1,0 +1,5 @@
+[
+  {"label": "The formulation", "section": "The formulation", "subgoals": ["Introduce arrival-time variables and a margin", "Subtract the margin from every setup and hold bound", "Sum around a cycle to bound the margin"]},
+  {"label": "A two-flop loop with hold", "section": "A two-flop loop with hold", "subgoals": ["Bound the skew from above by setup one way and hold the other", "Bound it from below the same way", "Add the bounds to get the optimal margin and skew"]},
+  {"label": "From schedule to tree", "section": "From schedule to tree", "subgoals": ["Turn the optimal arrivals into latency targets", "Build the tree to meet the targets", "Bound and iterate the schedule as delays change"]}
+]

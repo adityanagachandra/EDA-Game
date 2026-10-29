@@ -1,0 +1,29 @@
+[
+  {
+    "label": "A schematic-driven flow",
+    "section": "A schematic-driven flow",
+    "subgoals": [
+      "Order schematic, sizing, simulation, layout and post-layout simulation",
+      "Name the analyses run on an analog block",
+      "Name the commercial and open-source analog environments"
+    ]
+  },
+  {
+    "label": "Why analog resists automation",
+    "section": "Why analog resists automation",
+    "subgoals": [
+      "Contrast the gate abstraction with continuous analog metrics",
+      "Name matching and parasitics as layout-sensitive effects",
+      "Explain why simulation is the only reliable evaluator"
+    ]
+  },
+  {
+    "label": "Mixed-signal integration",
+    "section": "Mixed-signal integration",
+    "subgoals": [
+      "Place analog blocks as hard macros with keep-out zones",
+      "Model analog blocks behaviourally for chip-level simulation",
+      "Identify boundary circuits that fall between the two flows"
+    ]
+  }
+]

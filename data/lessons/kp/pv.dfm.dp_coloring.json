@@ -1,0 +1,5 @@
+[
+  {"label": "Building the conflict graph", "section": "Building the conflict graph", "subgoals": ["Compute the distance of each feature pair", "Add a conflict edge for pairs closer than the same-mask spacing", "Count the edges"]},
+  {"label": "Odd cycles", "section": "Odd cycles", "subgoals": ["Search each component while alternating colours", "Flag a component when an edge joins equal colours", "Count the non-bipartite components"]},
+  {"label": "Counting mask assignments", "section": "Counting mask assignments", "subgoals": ["Count the connected components, including isolated features", "Check that every component is bipartite", "Raise 2 to the number of components"]}
+]

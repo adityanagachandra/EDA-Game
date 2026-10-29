@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Eliminating a nodal matrix row by row",
+  "section": "Eliminating a nodal matrix row by row",
+  "subgoals": [
+   "Divide each entry below the pivot by the pivot to get the multipliers",
+   "Subtract multiplier times the pivot row from each lower row",
+   "Store the multipliers in L and the reduced rows in U"
+  ]
+ },
+ {
+  "label": "The Schur complement update",
+  "section": "The Schur complement update",
+  "subgoals": [
+   "Update the trailing block by subtracting multiplier times pivot row",
+   "Compute the next multiplier from the updated column",
+   "Read the last pivot after the final update"
+  ]
+ },
+ {
+  "label": "Symbolic structure before numeric values",
+  "section": "Symbolic structure before numeric values",
+  "subgoals": [
+   "Run ordering and symbolic factorization once per pattern",
+   "Size L and U as nnz(A) plus twice the fill",
+   "Repeat only the numeric refactorization at each Newton iteration"
+  ]
+ }
+]

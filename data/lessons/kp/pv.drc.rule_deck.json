@@ -1,0 +1,5 @@
+[
+  {"label": "Derived layers by Boolean operations", "section": "Derived layers by Boolean operations", "subgoals": ["Write the derived layer as a Boolean expression of drawn layers", "Intersect or subtract the shapes accordingly", "Compute the derived layer's area"]},
+  {"label": "Sizing inside a deck", "section": "Sizing inside a deck", "subgoals": ["Grow each shape by the sizing distance on every side", "Intersect the grown shape with the other layer", "Compute the area of the result"]},
+  {"label": "What a rule deck is", "section": "What a rule deck is", "subgoals": ["List what a deck defines: layers, derived layers, checks and switches", "Explain why each check carries a rule name", "Schedule shared derived layers to be computed once"]}
+]

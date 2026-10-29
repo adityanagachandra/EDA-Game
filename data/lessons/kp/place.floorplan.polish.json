@@ -1,0 +1,5 @@
+[
+  {"label": "From tree to postfix string", "section": "From tree to postfix string", "subgoals": ["Write the left subtree, the right subtree, then the operator", "Check the balloting property on every prefix", "Count n operands and n - 1 operators"]},
+  {"label": "Evaluating with a stack", "section": "Evaluating with a stack", "subgoals": ["Push each operand's shape onto the stack", "Pop two shapes on each operator and push their combination", "Read the floorplan's width and height from the final stack entry"]},
+  {"label": "Normalization makes the encoding unique", "section": "Normalization makes the encoding unique", "subgoals": ["Reject expressions with two identical adjacent operators", "Map a normalized expression to its skewed slicing tree", "Explain why uniqueness shrinks the annealing search space"]}
+]

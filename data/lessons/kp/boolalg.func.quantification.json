@@ -1,0 +1,5 @@
+[
+  {"label": "Existential quantification as an OR of cofactors", "section": "Existential quantification as an OR of cofactors", "subgoals": ["Compute both cofactors in the quantified variable", "OR them to get the exists-function", "Count its ON rows over the remaining variables"]},
+  {"label": "Universal quantification as an AND of cofactors", "section": "Universal quantification as an AND of cofactors", "subgoals": ["Compute both cofactors in the quantified variable", "AND them to get the for-all function", "Count its ON rows over the remaining variables"]},
+  {"label": "Nested quantifiers in hardware properties", "section": "Nested quantifiers in hardware properties", "subgoals": ["Quantify the innermost variable first", "Apply the outer quantifier to the result", "Read the final function as a property of the free variables"]}
+]

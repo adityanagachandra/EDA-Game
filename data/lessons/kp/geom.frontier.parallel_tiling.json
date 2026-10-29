@@ -1,0 +1,5 @@
+[
+  {"label": "Cutting the die into tiles", "section": "Cutting the die into tiles", "subgoals": ["Divide each die dimension by the tile size and round up", "Multiply the column and row counts", "Plan more tiles than workers to balance uneven load"]},
+  {"label": "Halos and ownership", "section": "Halos and ownership", "subgoals": ["Expand each tile by the halo on every side", "Count the expanded tiles a shape overlaps", "Assign each result to exactly one owning tile"]},
+  {"label": "Halo overhead and the fast-accurate loop", "section": "Halo overhead and the fast-accurate loop", "subgoals": ["Compute the processed area of a tile with its halo", "Express the extra area as a percent of the tile", "Choose a tile size that balances load against halo overhead"]}
+]

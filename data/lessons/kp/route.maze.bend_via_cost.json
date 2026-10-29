@@ -1,0 +1,5 @@
+[
+  {"label": "Pricing a route", "section": "Pricing a route", "subgoals": ["Count the steps of the route", "Count the direction changes", "Add the bend penalty times the bend count to the length"]},
+  {"label": "Direction-aware search", "section": "Direction-aware search", "subgoals": ["Expand each cell into one state per incoming direction", "Charge the bend cost on transitions that change direction", "Run Dijkstra or A* on the expanded state graph"]},
+  {"label": "When a longer route wins", "section": "When a longer route wins", "subgoals": ["Write both route costs as length plus vias times the via cost", "Solve the inequality for the via cost", "Pick the smallest integer via cost that flips the choice"]}
+]

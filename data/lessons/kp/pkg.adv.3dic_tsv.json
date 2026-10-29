@@ -1,0 +1,5 @@
+[
+  {"label": "Aspect ratio and die thickness", "section": "Aspect ratio and die thickness", "subgoals": ["Relate depth to diameter through the aspect ratio", "Compute the minimum diameter for a die thickness", "Name the handling cost of thin dies"]},
+  {"label": "TSV resistance", "section": "TSV resistance", "subgoals": ["Convert resistivity to ohm micrometres", "Divide resistivity times length by the cross-section", "Express the resistance in milliohms"]},
+  {"label": "TSV area overhead", "section": "TSV area overhead", "subgoals": ["Compute the area of one landing square", "Multiply by the TSV count", "Divide by the die area for the overhead"]}
+]

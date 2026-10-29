@@ -1,0 +1,5 @@
+[
+  {"label": "Counting paths by dynamic programming", "section": "Counting paths by dynamic programming", "subgoals": ["Set the path count at each source to 1", "Sum the counts of all predecessors at each vertex", "Add the counts at the sinks to get the total"]},
+  {"label": "Paths through one vertex", "section": "Paths through one vertex", "subgoals": ["Count paths from each vertex to the sinks in a backward pass", "Multiply paths in by paths out at the vertex", "Use the product to rank how many paths share a gate"]},
+  {"label": "Exponential path explosion", "section": "Exponential path explosion", "subgoals": ["Multiply stage widths to count paths through reconvergent stages", "Compare the path count with the vertex count", "Choose per-vertex propagation over path enumeration"]}
+]

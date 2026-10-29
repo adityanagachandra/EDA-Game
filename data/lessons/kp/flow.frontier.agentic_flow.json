@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The closure loop as an agent",
+    "section": "The closure loop as an agent",
+    "subgoals": [
+      "List the reports a closure agent reads",
+      "Propose the most local fix before escalating",
+      "Call engines as typed tools"
+    ]
+  },
+  {
+    "label": "Multi-agent orchestration over the flow",
+    "section": "Multi-agent orchestration over the flow",
+    "subgoals": [
+      "Split the flow among specialized agents under a planner",
+      "Identify a silent constraint relaxation between agents",
+      "Keep a shared record of every change"
+    ]
+  },
+  {
+    "label": "Rewards, reward hacking and the human gate",
+    "section": "Rewards, reward hacking and the human gate",
+    "subgoals": [
+      "Name ways a fast-timer reward can be gamed",
+      "Penalize constraint changes and score with the accurate engine",
+      "Require human approval with a differential report"
+    ]
+  }
+]

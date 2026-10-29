@@ -1,0 +1,5 @@
+[
+  {"label": "Degree minus adjacency", "section": "Degree minus adjacency", "subgoals": ["Put each vertex's weighted degree on the diagonal", "Put minus the edge weight in each off-diagonal entry", "Check that every row sums to zero"]},
+  {"label": "Properties that tools rely on", "section": "Properties that tools rely on", "subgoals": ["Read x transpose L x as a sum of squared differences", "Note that eigenvalue 0 has the all-ones eigenvector", "Fix some vertices to make the movable block positive definite"]},
+  {"label": "Laplacians of netlists", "section": "Laplacians of netlists", "subgoals": ["Expand each net under the chosen clique weight", "Add each net's contribution to its cells' diagonal entries", "Rebuild L when position-dependent weights change"]}
+]

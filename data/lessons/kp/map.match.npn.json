@@ -1,0 +1,5 @@
+[
+  {"label": "The NPN transformation group", "section": "The NPN transformation group", "subgoals": ["Count permutations, input negations and output polarities", "Multiply them to get the group order", "Read a transformation as a pin assignment plus inverters"]},
+  {"label": "Orbits and orbit sizes", "section": "Orbits and orbit sizes", "subgoals": ["Apply every transformation in the group and collect distinct results", "Use orbit size times stabilizer size equals the group order", "Relate symmetry to a small orbit"]},
+  {"label": "How many classes, and why it matters", "section": "How many classes, and why it matters", "subgoals": ["Recall the class counts 2, 4, 14 and 222", "Separate degenerate classes from full-support ones", "Explain why small class counts allow a precomputed library table"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Introduced markers", "section": "Introduced markers", "subgoals": ["Represent each marker as its rule and position", "Match each new marker against the baseline", "Count the new markers with no match"]},
+  {"label": "Fixed markers", "section": "Fixed markers", "subgoals": ["Match each baseline marker against the new run", "Count the baseline markers with no match", "Report fixed and introduced counts together"]},
+  {"label": "Matching with tolerance", "section": "Matching with tolerance", "subgoals": ["Compute the distance between same-rule markers", "Match markers within the tolerance", "Count the new markers left unmatched"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Head lines and bound lines", "section": "Head lines and bound lines", "subgoals": ["Mark lines reachable from a fanout stem as bound", "Identify free lines that feed bound lines as head lines", "Stop backtrace at head lines and justify them last"]},
+  {"label": "Unique sensitization and implication", "section": "Unique sensitization and implication", "subgoals": ["Propagate mandatory values forward and backward after each assignment", "Find gates that every path from the D-frontier must pass through", "Set those gates' side inputs to non-controlling values without a decision"]},
+  {"label": "Multiple backtrace", "section": "Multiple backtrace", "subgoals": ["Trace all current objectives together", "Count requests for 0 and 1 at each fanout stem", "Assign each stem the value requested more often"]}
+]

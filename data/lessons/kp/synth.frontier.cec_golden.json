@@ -1,0 +1,5 @@
+[
+  {"label": "A proof, not a sample", "section": "A proof, not a sample", "subgoals": ["Build a miter between each benchmark's input and output networks", "Require UNSAT on every benchmark", "Feed counterexamples back and add them to the regression suite"]},
+  {"label": "Handling failures, timeouts and scope", "section": "Handling failures, timeouts and scope", "subgoals": ["Reject any change with a single counterexample", "Treat a timeout as unproven and strengthen the check", "Choose sequential or constrained checking when the transformation needs it"]},
+  {"label": "Beyond correctness", "section": "Beyond correctness", "subgoals": ["Add a differential QoR check after equivalence passes", "Enforce resource limits and test for determinism", "Keep the checker independent of the optimizer it verifies"]}
+]

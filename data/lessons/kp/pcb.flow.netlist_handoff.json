@@ -1,0 +1,5 @@
+[
+  {"label": "Nets, labels and annotation", "section": "Nets, labels and annotation", "subgoals": ["Resolve wires, labels and power symbols into nets", "Scope local and global labels across sheets", "Assign unique reference designators by annotation"]},
+  {"label": "Forward and back annotation", "section": "Forward and back annotation", "subgoals": ["Push schematic edits into layout without losing placement", "Return equivalent pin and gate swaps to the schematic", "Match parts by stable identifiers across renumbering"]},
+  {"label": "Consistency checks across the boundary", "section": "Consistency checks across the boundary", "subgoals": ["Trace an unexpected ratsnest line to a pin-number mismatch", "Compare copper connectivity against the netlist for opens and shorts", "Hand the bare-board tester an IPC-D-356 netlist"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The general conferences",
+    "section": "The general conferences",
+    "subgoals": [
+      "Name DAC, ICCAD, DATE and ASP-DAC by focus and region",
+      "Name the flagship EDA journals",
+      "Separate research venues from industry exhibitions"
+    ]
+  },
+  {
+    "label": "The specialist communities",
+    "section": "The specialist communities",
+    "subgoals": [
+      "Match ISPD, ITC, CAV, FMCAD and IWLS to their engines",
+      "Name the venue for FPGA architecture and CAD",
+      "Distinguish circuit-design conferences from EDA conferences"
+    ]
+  },
+  {
+    "label": "Benchmarks and contests",
+    "section": "Benchmarks and contests",
+    "subgoals": [
+      "Match benchmark suites to placement, synthesis, formal and test",
+      "Explain how annual contests set new problems",
+      "List what a credible algorithm comparison reports"
+    ]
+  }
+]

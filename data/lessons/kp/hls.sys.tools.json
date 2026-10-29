@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Directives in a commercial flow",
+  "section": "Directives in a commercial flow",
+  "subgoals": [
+   "Map PIPELINE to an II target for modulo scheduling",
+   "Map UNROLL and ARRAY_PARTITION to replication and banking",
+   "Map DATAFLOW and INTERFACE to task pipelines and protocols"
+  ]
+ },
+ {
+  "label": "Open tools and intermediate languages",
+  "section": "Open tools and intermediate languages",
+  "subgoals": [
+   "Place Bambu as a complete C-to-HDL framework",
+   "Place CIRCT dialects at the dataflow, structured and RTL levels",
+   "Read a Calyx component as cells, groups and a control program"
+  ]
+ },
+ {
+  "label": "Static versus dynamic scheduling and MLIR-based HLS",
+  "section": "Static versus dynamic scheduling and MLIR-based HLS",
+  "subgoals": [
+   "Contrast compile-time cycle assignment with token-driven firing",
+   "Weigh the handshake overhead against variable-latency gains",
+   "Apply loop transformations in an affine IR before emitting HLS code"
+  ]
+ }
+]

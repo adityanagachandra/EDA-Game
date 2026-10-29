@@ -1,0 +1,5 @@
+[
+  {"label": "Every nonblocking target is a register", "section": "Every nonblocking target is a register", "subgoals": ["Find every variable assigned with nonblocking assignment in a clocked block", "Keep conditionally assigned registers as flip-flops with enable", "Sum the widths of the inferred registers"]},
+  {"label": "Blocking temporaries written before read", "section": "Blocking temporaries written before read", "subgoals": ["Check whether each temporary is written before any read in the block", "Treat a written-before-read temporary as combinational logic", "Exclude it from the flip-flop count"]},
+  {"label": "Temporaries read before written", "section": "Temporaries read before written", "subgoals": ["Find reads that occur before the variable's write in the block", "Recognize that such a read observes last cycle's value", "Add a flip-flop for every variable live on entry to the block"]}
+]

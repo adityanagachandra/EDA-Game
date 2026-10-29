@@ -1,0 +1,5 @@
+[
+  {"label": "A function as one machine word", "section": "A function as one machine word", "subgoals": ["Store f at minterm i in bit i of the word", "Group the bits into hex digits from the low end", "Write the word in hexadecimal"]},
+  {"label": "Variable masks and word operations", "section": "Variable masks and word operations", "subgoals": ["Write the projection word of each variable", "Combine the words with AND, OR, XOR and NOT", "Mask the result to the table width"]},
+  {"label": "Cofactors by shifting", "section": "Cofactors by shifting", "subgoals": ["Mask the half of the word where the variable is 1", "Shift it by the variable's stride to copy it over the other half", "OR the two halves to get the cofactor word"]}
+]

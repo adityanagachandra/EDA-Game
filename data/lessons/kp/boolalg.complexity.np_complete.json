@@ -1,0 +1,5 @@
+[
+  {"label": "The Cook-Levin theorem", "section": "The Cook-Levin theorem", "subgoals": ["Encode a polynomial-time verifier as a circuit", "Turn the circuit into CNF", "Conclude that SAT is NP-complete"]},
+  {"label": "Proving a new problem NP-complete", "section": "Proving a new problem NP-complete", "subgoals": ["Show the problem is in NP", "Reduce a known NP-complete problem to it", "Check the reduction runs in polynomial time"]},
+  {"label": "NP-hard, NP-complete and the problems a tool meets", "section": "NP-hard, NP-complete and the problems a tool meets", "subgoals": ["Separate NP-hard optimization from NP-complete decision", "Spot the polynomial special cases", "Name the hard core of the tool's problem"]}
+]

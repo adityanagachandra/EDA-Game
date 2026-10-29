@@ -1,0 +1,5 @@
+[
+  {"label": "Tools with typed inputs and outputs", "section": "Tools with typed inputs and outputs", "subgoals": ["Give each tool a name, description and JSON Schema", "Declare types, ranges and required arguments", "Return structured results"]},
+  {"label": "Designing an engine's tool surface", "section": "Designing an engine's tool surface", "subgoals": ["Pass design handles instead of designs", "Start long operations as jobs with status tools", "Return summaries with handles to full data"]},
+  {"label": "Security at the tool boundary", "section": "Security at the tool boundary", "subgoals": ["Validate every argument against schema and policy", "Allowlist servers and tools per task", "Run the engine in its sandbox for every caller"]}
+]

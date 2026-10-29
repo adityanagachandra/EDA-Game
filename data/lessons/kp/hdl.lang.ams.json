@@ -1,0 +1,5 @@
+[
+  {"label": "Disciplines and conservative quantities", "section": "Disciplines and conservative quantities", "subgoals": ["Pair a potential nature with a flow nature in a discipline", "Apply Kirchhoff's laws at every node of a conservative discipline", "Declare across and through quantities between terminals"]},
+  {"label": "Contribution statements and the analog solver", "section": "Contribution statements and the analog solver", "subgoals": ["Write each branch relation as a contribution statement", "Add contributions that target the same branch", "Assemble the contributions into equations the analog solver integrates"]},
+  {"label": "Mixed-signal boundaries", "section": "Mixed-signal boundaries", "subgoals": ["Insert a connect module where disciplines meet", "Add hysteresis to analog-to-digital thresholds", "Count boundary crossings as synchronization points for the solver"]}
+]

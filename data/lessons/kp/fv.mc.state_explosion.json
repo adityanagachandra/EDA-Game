@@ -1,0 +1,5 @@
+[
+  {"label": "Products of components", "section": "Products of components", "subgoals": ["Write the global state as a tuple of local states", "Multiply the local state counts", "Use k to the power n for n identical components"]},
+  {"label": "Counters and FSMs together", "section": "Counters and FSMs together", "subgoals": ["Multiply the FSM state counts", "Multiply by 2 to the power r for an r-bit counter", "Compare the result with what explicit search can store"]},
+  {"label": "Symmetry reduction", "section": "Symmetry reduction", "subgoals": ["Check that the processes are identical and the property is symmetric", "Count multisets of size n over k local states with stars and bars", "Compare with k to the power n"]}
+]

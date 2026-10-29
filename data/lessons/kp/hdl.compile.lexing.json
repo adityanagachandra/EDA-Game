@@ -1,0 +1,5 @@
+[
+  {"label": "Tokens and what produces none", "section": "Tokens and what produces none", "subgoals": ["Split the line into keywords, identifiers, numbers, operators and punctuation", "Discard whitespace without producing tokens", "Preprocess macros and includes before lexing"]},
+  {"label": "Maximal munch", "section": "Maximal munch", "subgoals": ["Take the longest operator that matches at each position", "Count a multi-character operator as one token", "Leave the meaning of an ambiguous operator to the parser"]},
+  {"label": "Comments, selects and literals", "section": "Comments, selects and literals", "subgoals": ["Strip line and block comments wherever they appear", "Count each bracket and index of a bit select", "Select the language version before deciding which words are keywords"]}
+]

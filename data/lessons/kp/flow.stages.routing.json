@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Global routing and overflow",
+    "section": "Global routing and overflow",
+    "subgoals": [
+      "Divide edge length by track pitch for tracks per layer",
+      "Count one unit of demand per crossing net",
+      "Sum demand above capacity over the edges to get overflow"
+    ]
+  },
+  {
+    "label": "Detailed routing and design rules",
+    "section": "Detailed routing and design rules",
+    "subgoals": [
+      "Assign segments to tracks and layers with vias",
+      "Name spacing and via enclosure among the design rules",
+      "Explain why zero overflow can still fail detailed routing"
+    ]
+  },
+  {
+    "label": "Detours and what routing reveals",
+    "section": "Detours and what routing reveals",
+    "subgoals": [
+      "Compare routed length with HPWL as a percentage",
+      "Name the effects that first appear after routing",
+      "Trace severe congestion back to placement or floorplan"
+    ]
+  }
+]

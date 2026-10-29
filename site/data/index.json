@@ -1,0 +1,630 @@
+{
+ "domains": [
+  {
+   "id": "eda_landscape",
+   "name": "The EDA Landscape",
+   "description": "What electronic design automation is, the RTL-to-GDSII flow stage by stage, the representations each stage consumes and produces, PPA, the industry and its history.",
+   "prefix": "flow",
+   "layer": 1,
+   "upstream": [
+    "discrete_math"
+   ],
+   "count": 50
+  },
+  {
+   "id": "boolean_reasoning",
+   "name": "Boolean Reasoning and Complexity",
+   "description": "Boolean functions, cofactors, Shannon expansion, covers and clauses, and the complexity theory that explains why every EDA problem needs heuristics.",
+   "prefix": "boolalg",
+   "layer": 1,
+   "upstream": [
+    "discrete_math",
+    "abstract_algebra"
+   ],
+   "count": 43
+  },
+  {
+   "id": "eda_graph_algorithms",
+   "name": "Graph Algorithms for EDA",
+   "description": "Netlists as hypergraphs, partitioning (KL, FM, multilevel, spectral), shortest paths and A*, flows, Steiner trees and the graph machinery under placement, routing and timing.",
+   "prefix": "graphs",
+   "layer": 1,
+   "upstream": [
+    "discrete_math",
+    "graph_theory",
+    "linear_algebra"
+   ],
+   "count": 52
+  },
+  {
+   "id": "computational_geometry",
+   "name": "Computational Geometry for Layout",
+   "description": "Rectilinear geometry, polygon Booleans, plane sweep and spatial indexes: the kernels under DRC, extraction, fill and routing.",
+   "prefix": "geom",
+   "layer": 1,
+   "upstream": [
+    "discrete_math",
+    "linear_algebra"
+   ],
+   "count": 41
+  },
+  {
+   "id": "optimization_for_eda",
+   "name": "Optimization for EDA",
+   "description": "LP, ILP, convex and nonconvex optimization, Lagrangian relaxation, metaheuristics, dynamic programming and Bayesian optimization, each tied to the EDA problem it solves.",
+   "prefix": "opt",
+   "layer": 1,
+   "upstream": [
+    "calculus",
+    "linear_algebra",
+    "machine_learning",
+    "discrete_math",
+    "probability_theory"
+   ],
+   "count": 55
+  },
+  {
+   "id": "numerical_methods_for_eda",
+   "name": "Numerical Methods for EDA",
+   "description": "Sparse linear algebra, Newton's method, stiff ODE integration, Krylov solvers, PDE discretization and model order reduction for simulators and analyzers.",
+   "prefix": "numer",
+   "layer": 1,
+   "upstream": [
+    "numerical_analysis",
+    "linear_algebra",
+    "differential_equations",
+    "calculus"
+   ],
+   "count": 52
+  },
+  {
+   "id": "variability_statistics",
+   "name": "Variability, Yield and Reliability Statistics",
+   "description": "Monte Carlo and rare-event estimation, process variation, statistical timing mathematics, yield models and lifetime statistics.",
+   "prefix": "stat",
+   "layer": 1,
+   "upstream": [
+    "probability_theory",
+    "statistics",
+    "linear_algebra"
+   ],
+   "count": 41
+  },
+  {
+   "id": "circuits_and_electromagnetics",
+   "name": "Circuits and Electromagnetics",
+   "description": "Circuit laws, RC and RLC dynamics, transfer functions, transmission lines, S-parameters and the field physics behind parasitics and signal integrity.",
+   "prefix": "em",
+   "layer": 1,
+   "upstream": [
+    "calculus",
+    "differential_equations",
+    "complex_numbers",
+    "linear_algebra"
+   ],
+   "count": 53
+  },
+  {
+   "id": "semiconductor_devices",
+   "name": "Semiconductor Devices and Compact Models",
+   "description": "Band theory, carrier transport, junctions, MOSFET physics, FinFETs and nanosheets, reliability and the compact models EDA tools consume.",
+   "prefix": "dev",
+   "layer": 2,
+   "upstream": [
+    "em",
+    "numer",
+    "calculus",
+    "differential_equations",
+    "probability_theory"
+   ],
+   "count": 53
+  },
+  {
+   "id": "digital_logic_design",
+   "name": "Digital Logic Design",
+   "description": "Combinational and sequential logic, flip-flop timing, FSMs, adders and multipliers, pipelines and memories, for a mathematician entering hardware.",
+   "prefix": "logic",
+   "layer": 2,
+   "upstream": [
+    "boolalg",
+    "discrete_math",
+    "number_theory"
+   ],
+   "count": 54
+  },
+  {
+   "id": "fabrication_and_dtco",
+   "name": "Fabrication and Design-Technology Co-optimization",
+   "description": "Process steps, lithography, OPC and multiple patterning, the interconnect stack, PDKs and design rules, DTCO and yield.",
+   "prefix": "fab",
+   "layer": 3,
+   "upstream": [
+    "dev",
+    "em",
+    "stat",
+    "geom"
+   ],
+   "count": 49
+  },
+  {
+   "id": "cmos_circuits_and_cells",
+   "name": "CMOS Circuits and Cell Libraries",
+   "description": "Static CMOS, logical effort, power, standard-cell layout and the Liberty abstraction every digital tool consumes.",
+   "prefix": "cmos",
+   "layer": 3,
+   "upstream": [
+    "dev",
+    "logic",
+    "em",
+    "opt"
+   ],
+   "count": 49
+  },
+  {
+   "id": "hdl_and_compilers",
+   "name": "HDLs and Hardware Compilers",
+   "description": "Verilog, SystemVerilog and VHDL semantics, elaboration, ASTs, IRs, SSA and dataflow analysis, RTLIL, MLIR and CIRCT.",
+   "prefix": "hdl",
+   "layer": 3,
+   "upstream": [
+    "logic",
+    "graphs",
+    "boolalg",
+    "discrete_math"
+   ],
+   "count": 50
+  },
+  {
+   "id": "logic_synthesis",
+   "name": "Logic Synthesis",
+   "description": "Two-level and multi-level minimization, don't cares, AIGs and rewriting, FSM synthesis, retiming, e-graphs, Yosys and ABC.",
+   "prefix": "synth",
+   "layer": 4,
+   "upstream": [
+    "boolalg",
+    "logic",
+    "hdl",
+    "graphs",
+    "opt",
+    "cmos"
+   ],
+   "count": 58
+  },
+  {
+   "id": "formal_verification",
+   "name": "Formal Verification",
+   "description": "SAT and CDCL, BDDs, equivalence checking, model checking, BMC, k-induction, IC3, SMT and assertions.",
+   "prefix": "fv",
+   "layer": 4,
+   "upstream": [
+    "boolalg",
+    "logic",
+    "hdl",
+    "graphs",
+    "discrete_math"
+   ],
+   "count": 58
+  },
+  {
+   "id": "functional_verification",
+   "name": "Functional Verification and Simulation",
+   "description": "Event-driven and compiled simulation, testbenches, constrained random, coverage, UVM, emulation and CDC.",
+   "prefix": "sim",
+   "layer": 4,
+   "upstream": [
+    "hdl",
+    "logic",
+    "graphs",
+    "stat",
+    "boolalg"
+   ],
+   "count": 45
+  },
+  {
+   "id": "circuit_simulation",
+   "name": "Circuit Simulation",
+   "description": "Modified nodal analysis, Newton with companion models, transient integration and step control, AC, PSS, Monte Carlo and model order reduction.",
+   "prefix": "csim",
+   "layer": 4,
+   "upstream": [
+    "numer",
+    "em",
+    "dev",
+    "cmos",
+    "stat",
+    "linear_algebra"
+   ],
+   "count": 54
+  },
+  {
+   "id": "technology_mapping",
+   "name": "Technology Mapping and Sizing",
+   "description": "Tree and DAG covering, cuts, LUT mapping, Boolean matching, gate sizing and buffer insertion.",
+   "prefix": "map",
+   "layer": 5,
+   "upstream": [
+    "synth",
+    "cmos",
+    "graphs",
+    "opt",
+    "boolalg"
+   ],
+   "count": 38
+  },
+  {
+   "id": "high_level_synthesis",
+   "name": "High-Level Synthesis",
+   "description": "CDFGs, scheduling, allocation and binding, pipelining and modulo scheduling, from algorithm to RTL.",
+   "prefix": "hls",
+   "layer": 5,
+   "upstream": [
+    "hdl",
+    "synth",
+    "graphs",
+    "opt",
+    "logic"
+   ],
+   "count": 42
+  },
+  {
+   "id": "timing_analysis",
+   "name": "Static Timing Analysis",
+   "description": "Timing graphs, delay models, clocks and constraints, OCV, AOCV, POCV and SSTA, incremental timing and timing closure.",
+   "prefix": "sta",
+   "layer": 5,
+   "upstream": [
+    "cmos",
+    "graphs",
+    "logic",
+    "stat",
+    "em",
+    "opt"
+   ],
+   "count": 56
+  },
+  {
+   "id": "test_and_dft",
+   "name": "Test and Design for Test",
+   "description": "Fault models, fault simulation, ATPG, scan and compression, BIST, JTAG, diagnosis and yield learning.",
+   "prefix": "dft",
+   "layer": 5,
+   "upstream": [
+    "logic",
+    "synth",
+    "fv",
+    "sim",
+    "stat",
+    "graphs"
+   ],
+   "count": 53
+  },
+  {
+   "id": "floorplanning_and_placement",
+   "name": "Floorplanning and Placement",
+   "description": "Floorplan representations, wirelength models, quadratic and electrostatic placement, legalization, detailed and timing-driven placement.",
+   "prefix": "place",
+   "layer": 6,
+   "upstream": [
+    "graphs",
+    "geom",
+    "opt",
+    "numer",
+    "sta",
+    "map",
+    "cmos",
+    "fab"
+   ],
+   "count": 55
+  },
+  {
+   "id": "analog_mixed_signal_rf",
+   "name": "Analog, Mixed-Signal and RF Design Automation",
+   "description": "Small-signal design, op-amps, data converters and PLLs, sizing as optimization, matching and analog layout, RF and mixed-signal simulation.",
+   "prefix": "analog",
+   "layer": 6,
+   "upstream": [
+    "csim",
+    "cmos",
+    "dev",
+    "em",
+    "opt",
+    "stat"
+   ],
+   "count": 51
+  },
+  {
+   "id": "fpga_eda",
+   "name": "FPGA CAD",
+   "description": "FPGA architecture, packing, annealing placement, PathFinder routing and open FPGA toolchains.",
+   "prefix": "fpga",
+   "layer": 6,
+   "upstream": [
+    "synth",
+    "map",
+    "graphs",
+    "opt",
+    "sta",
+    "logic"
+   ],
+   "count": 37
+  },
+  {
+   "id": "clock_and_power",
+   "name": "Clock Trees and Power Delivery",
+   "description": "Clock tree synthesis, zero-skew and useful skew, clock gating, power grids, IR drop, decap, EM and low-power intent.",
+   "prefix": "cts",
+   "layer": 7,
+   "upstream": [
+    "place",
+    "sta",
+    "em",
+    "cmos",
+    "graphs",
+    "opt",
+    "numer"
+   ],
+   "count": 49
+  },
+  {
+   "id": "routing",
+   "name": "Routing",
+   "description": "Maze and A* routing, pattern and global routing, negotiated congestion, layer assignment, detailed and channel routing.",
+   "prefix": "route",
+   "layer": 7,
+   "upstream": [
+    "graphs",
+    "geom",
+    "place",
+    "opt",
+    "fab",
+    "sta"
+   ],
+   "count": 51
+  },
+  {
+   "id": "extraction_and_signoff",
+   "name": "Extraction, Signal Integrity and Signoff",
+   "description": "Parasitic extraction, SPEF, RC reduction, crosstalk and noise, ECOs and the signoff checklist.",
+   "prefix": "extract",
+   "layer": 8,
+   "upstream": [
+    "route",
+    "em",
+    "numer",
+    "sta",
+    "csim",
+    "cts",
+    "fab"
+   ],
+   "count": 41
+  },
+  {
+   "id": "physical_verification_dfm",
+   "name": "Physical Verification and DFM",
+   "description": "GDSII and OASIS, DRC engines, LVS as graph matching, antenna and fill, hotspots and tape-out.",
+   "prefix": "pv",
+   "layer": 8,
+   "upstream": [
+    "geom",
+    "fab",
+    "route",
+    "graphs",
+    "place",
+    "cmos"
+   ],
+   "count": 43
+  },
+  {
+   "id": "pcb_design",
+   "name": "PCB Design",
+   "description": "Schematic to layout, stackups and controlled impedance, differential pairs, vias, manufacturing outputs and board-level SI.",
+   "prefix": "pcb",
+   "layer": 9,
+   "upstream": [
+    "em",
+    "geom",
+    "route",
+    "graphs",
+    "flow",
+    "pv"
+   ],
+   "count": 40
+  },
+  {
+   "id": "packaging_and_integration",
+   "name": "Packaging, Chiplets and 3D Integration",
+   "description": "Flip chip and BGA, interposers, TSVs, hybrid bonding, UCIe, thermal, mechanical and reliability physics.",
+   "prefix": "pkg",
+   "layer": 10,
+   "upstream": [
+    "pcb",
+    "em",
+    "fab",
+    "cts",
+    "numer",
+    "stat",
+    "pv",
+    "dev"
+   ],
+   "count": 47
+  },
+  {
+   "id": "eda_software_infrastructure",
+   "name": "Building EDA Software",
+   "description": "Design databases, format parsers, incremental computation, deterministic parallelism, regression and QoR, and the open-source RTL-to-GDS flow hands-on.",
+   "prefix": "infra",
+   "layer": 11,
+   "upstream": [
+    "flow",
+    "hdl",
+    "synth",
+    "map",
+    "sta",
+    "place",
+    "route",
+    "cts",
+    "extract",
+    "pv",
+    "graphs",
+    "geom",
+    "fab",
+    "csim",
+    "fv",
+    "sim"
+   ],
+   "count": 56
+  },
+  {
+   "id": "ml_for_eda",
+   "name": "Machine Learning for EDA",
+   "description": "GNNs on netlists, congestion and timing prediction, RL placement and its debate, surrogates and Bayesian optimization, LLMs for RTL.",
+   "prefix": "mleda",
+   "layer": 12,
+   "upstream": [
+    "machine_learning",
+    "graphs",
+    "place",
+    "route",
+    "sta",
+    "opt",
+    "synth",
+    "analog",
+    "fv",
+    "infra",
+    "stat"
+   ],
+   "count": 42
+  },
+  {
+   "id": "agent_first_eda",
+   "name": "Agent-First EDA Architecture",
+   "description": "Engines built for agents: the four-layer model, skills and harness loops, change tiers and seams, golden tests, the skill flywheel, tool-grounded RL and agentic signoff.",
+   "prefix": "agentic",
+   "layer": 13,
+   "upstream": [
+    "infra",
+    "mleda",
+    "flow",
+    "sta",
+    "place",
+    "route",
+    "extract",
+    "pv",
+    "synth",
+    "fv",
+    "sim",
+    "opt"
+   ],
+   "count": 49
+  }
+ ],
+ "tracks": [
+  {
+   "id": "eda-tool-designer",
+   "name": "EDA Tool Designer: the full ramp",
+   "description": "Every EDA domain in dependency order, from the flow and its mathematics to agent-first engine architecture. The aggressive path to designing modern EDA tools.",
+   "courses": [
+    "eda_landscape",
+    "boolean_reasoning",
+    "eda_graph_algorithms",
+    "computational_geometry",
+    "optimization_for_eda",
+    "numerical_methods_for_eda",
+    "variability_statistics",
+    "circuits_and_electromagnetics",
+    "semiconductor_devices",
+    "digital_logic_design",
+    "fabrication_and_dtco",
+    "cmos_circuits_and_cells",
+    "hdl_and_compilers",
+    "logic_synthesis",
+    "formal_verification",
+    "functional_verification",
+    "circuit_simulation",
+    "technology_mapping",
+    "high_level_synthesis",
+    "timing_analysis",
+    "test_and_dft",
+    "floorplanning_and_placement",
+    "analog_mixed_signal_rf",
+    "fpga_eda",
+    "clock_and_power",
+    "routing",
+    "extraction_and_signoff",
+    "physical_verification_dfm",
+    "pcb_design",
+    "packaging_and_integration",
+    "eda_software_infrastructure",
+    "ml_for_eda",
+    "agent_first_eda"
+   ]
+  },
+  {
+   "id": "eda-physical-design",
+   "name": "Physical Design Engines",
+   "description": "Partitioning, placement, clock trees, routing, extraction and physical verification, with the timing and optimization they rest on.",
+   "courses": [
+    "eda_graph_algorithms",
+    "computational_geometry",
+    "optimization_for_eda",
+    "timing_analysis",
+    "floorplanning_and_placement",
+    "clock_and_power",
+    "routing",
+    "extraction_and_signoff",
+    "physical_verification_dfm"
+   ]
+  },
+  {
+   "id": "eda-synthesis-verification",
+   "name": "Synthesis and Verification Engines",
+   "description": "Boolean reasoning, HDL compilers, logic synthesis, technology mapping, HLS, simulation, formal verification and test.",
+   "courses": [
+    "boolean_reasoning",
+    "hdl_and_compilers",
+    "logic_synthesis",
+    "technology_mapping",
+    "high_level_synthesis",
+    "functional_verification",
+    "formal_verification",
+    "test_and_dft"
+   ]
+  },
+  {
+   "id": "eda-circuits-devices",
+   "name": "Circuits, Devices and Simulation",
+   "description": "Electromagnetics, devices, fabrication, CMOS cells, circuit simulation and analog design automation.",
+   "courses": [
+    "circuits_and_electromagnetics",
+    "numerical_methods_for_eda",
+    "semiconductor_devices",
+    "fabrication_and_dtco",
+    "cmos_circuits_and_cells",
+    "circuit_simulation",
+    "analog_mixed_signal_rf"
+   ]
+  },
+  {
+   "id": "eda-agent-first",
+   "name": "Agent-First EDA Architect",
+   "description": "The landscape, the software infrastructure of real tools, machine learning for EDA, and agent-first engine architecture.",
+   "courses": [
+    "eda_landscape",
+    "eda_software_infrastructure",
+    "ml_for_eda",
+    "agent_first_eda"
+   ]
+  },
+  {
+   "id": "eda-systems",
+   "name": "Boards, Packages and FPGAs",
+   "description": "FPGA CAD, PCB design, packaging, chiplets and 3D integration.",
+   "courses": [
+    "fpga_eda",
+    "pcb_design",
+    "packaging_and_integration"
+   ]
+  }
+ ],
+ "concepts": 1607
+}

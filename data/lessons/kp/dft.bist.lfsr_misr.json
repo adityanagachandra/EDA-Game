@@ -1,0 +1,5 @@
+[
+  {"label": "The external-XOR LFSR", "section": "The external-XOR LFSR", "subgoals": ["XOR the tapped stages for the feedback bit", "Load the feedback into the first stage", "Shift every other stage one place along"]},
+  {"label": "The MISR", "section": "The MISR", "subgoals": ["Shift the register with feedback on each clock", "XOR the response word into the stages", "Repeat for every word and read the final signature"]},
+  {"label": "Polynomials over GF(2)", "section": "Polynomials over GF(2)", "subgoals": ["Write the characteristic polynomial from the taps", "Treat states as powers of x modulo the polynomial", "Read a single-input signature as the remainder of polynomial division"]}
+]

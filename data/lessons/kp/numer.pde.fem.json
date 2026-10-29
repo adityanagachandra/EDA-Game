@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The weak form and hat functions",
+  "section": "The weak form and hat functions",
+  "subgoals": [
+   "Multiply the PDE by a test function and integrate by parts",
+   "Expand the solution in hat functions",
+   "Form the stiffness matrix from integrals of their derivatives"
+  ]
+ },
+ {
+  "label": "Element stiffness matrices and assembly",
+  "section": "Element stiffness matrices and assembly",
+  "subgoals": [
+   "Compute the element conductance kA over h",
+   "Write the two-by-two element matrix",
+   "Add each element matrix into the global matrix at its node indices"
+  ]
+ },
+ {
+  "label": "Load vectors and solving a small mesh",
+  "section": "Load vectors and solving a small mesh",
+  "subgoals": [
+   "Add point and element sources to the load vector",
+   "Impose the fixed boundary temperatures",
+   "Solve the reduced system for the free node"
+  ]
+ }
+]

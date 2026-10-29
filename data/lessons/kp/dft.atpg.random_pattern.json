@@ -1,0 +1,5 @@
+[
+  {"label": "Detection probability", "section": "Detection probability", "subgoals": ["Count the vectors that detect the fault exhaustively", "Divide by two to the number of inputs for the detection probability", "Recognize wide AND conditions as random-pattern resistant"]},
+  {"label": "Patterns for a target confidence", "section": "Patterns for a target confidence", "subgoals": ["Write the escape probability as one minus p to the N", "Solve for N with logarithms and round up", "Estimate N as minus ln epsilon over p for small p"]},
+  {"label": "Expected coverage", "section": "Expected coverage", "subgoals": ["Compute each fault's detection probability after N patterns", "Average them for the expected coverage", "Target the low-probability tail with ATPG or test points"]}
+]

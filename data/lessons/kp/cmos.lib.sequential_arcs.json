@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Constraint tables",
+    "section": "Constraint tables",
+    "subgoals": [
+      "Find the constraint group on the data pin with its related clock",
+      "Check the template for which index is data and which is clock transition",
+      "Read the setup or hold value at the grid point"
+    ]
+  },
+  {
+    "label": "Setup slack from a constraint",
+    "section": "Setup slack from a constraint",
+    "subgoals": [
+      "Subtract the setup time from the capture clock arrival for the required time",
+      "Subtract the data arrival from the required time for slack",
+      "Use the clock pin's slew when looking up the constraint"
+    ]
+  },
+  {
+    "label": "Hold slack and other checks",
+    "section": "Hold slack and other checks",
+    "subgoals": [
+      "Add the hold time to the clock arrival and compare with the earliest data",
+      "Preserve negative hold values from the table",
+      "Treat recovery and removal as setup and hold for reset release"
+    ]
+  }
+]

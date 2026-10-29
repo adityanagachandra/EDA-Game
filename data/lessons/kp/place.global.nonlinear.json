@@ -1,0 +1,5 @@
+[
+  {"label": "One step on the penalised objective", "section": "One step on the penalised objective", "subgoals": ["Add the wirelength gradient and lambda times the density gradient", "Step against the combined gradient", "Replace plain descent by conjugate gradient or Nesterov in practice"]},
+  {"label": "Raising the penalty weight", "section": "Raising the penalty weight", "subgoals": ["Start with a small penalty weight", "Multiply lambda by a fixed or adaptive factor each iteration", "Count the iterations to reach a target lambda with logarithms"]},
+  {"label": "Balancing the two forces at the start", "section": "Balancing the two forces at the start", "subgoals": ["Compute the L1 norms of both gradients at the start", "Set lambda zero to their ratio", "Start from a quadratic solution for sensible relative positions"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Profile stages and ramp rates", "section": "Profile stages and ramp rates", "subgoals": ["Name the preheat, soak, reflow and cooling stages", "Compute each segment's ramp rate as a slope", "Check ramp rates against paste and part limits"]},
+  {"label": "Time above liquidus", "section": "Time above liquidus", "subgoals": ["Find the segments that cross the liquidus temperature", "Interpolate each crossing time linearly", "Subtract the crossing times to get the time above liquidus"]},
+  {"label": "Soak, thermal mass and profiling", "section": "Soak, thermal mass and profiling", "subgoals": ["Interpolate the soak interval from 150 C to 200 C", "Place thermocouples on the largest and smallest thermal masses", "Tune zone temperatures until every trace fits the window"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Cosine modes diagonalise the Laplacian", "section": "Cosine modes diagonalise the Laplacian", "subgoals": ["Expand the density in cosine modes with frequencies pi u over m", "Divide each density coefficient by the sum of squared frequencies", "Drop the constant mode to keep the system neutral"]},
+  {"label": "The field from the same coefficients", "section": "The field from the same coefficients", "subgoals": ["Differentiate the potential modes to get field modes", "Scale each mode by its frequency over the eigenvalue", "Recognise that low frequencies give long-range forces"]},
+  {"label": "Why the FFT makes it scale", "section": "Why the FFT makes it scale", "subgoals": ["Count a direct transform as m to the fourth operations", "Count the FFT as m squared log m squared", "List the forward and inverse transforms needed per iteration"]}
+]

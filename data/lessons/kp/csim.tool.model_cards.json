@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Instances and model cards",
+    "section": "Instances and model cards",
+    "subgoals": [
+      "Read the terminal order defined for each instance type",
+      "Separate per-instance geometry from shared model parameters",
+      "Trace which instances reference a given model card"
+    ]
+  },
+  {
+    "label": "Model levels and parameter sets",
+    "section": "Model levels and parameter sets",
+    "subgoals": [
+      "Identify the model equations selected by the level",
+      "Name the effects that force a compact model beyond the square law",
+      "Select the bin whose geometry range contains the instance"
+    ]
+  },
+  {
+    "label": "Libraries, corners and subcircuits",
+    "section": "Libraries, corners and subcircuits",
+    "subgoals": [
+      "Choose the library section that sets the process corner",
+      "Expand each subcircuit instance with renamed internal nodes",
+      "Place random draws per instance for mismatch and per card for global shifts"
+    ]
+  }
+]

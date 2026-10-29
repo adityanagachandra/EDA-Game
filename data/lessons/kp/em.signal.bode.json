@@ -1,0 +1,5 @@
+[
+  {"label": "Magnitude in decibels", "section": "Magnitude in decibels", "subgoals": ["Convert the DC gain to decibels with twenty log ten", "Subtract ten log ten of one plus the squared frequency ratio", "Read the result as the exact magnitude at that frequency"]},
+  {"label": "Asymptotes of minus 20 dB per decade per pole", "section": "Asymptotes of minus 20 dB per decade per pole", "subgoals": ["Start the line at the DC gain in decibels", "Subtract twenty decibels per decade above each pole", "Sum the contributions of all poles below the frequency"]},
+  {"label": "Phase of poles and zeros", "section": "Phase of poles and zeros", "subgoals": ["Compute the arctangent of frequency over each pole frequency", "Subtract the pole contributions and add the zero contributions", "Express the total phase in degrees"]}
+]

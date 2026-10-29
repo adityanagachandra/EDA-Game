@@ -1,0 +1,5 @@
+[
+  {"label": "What a skill folder contains", "section": "What a skill folder contains", "subgoals": ["List source, build, golden tests and manifest", "Build the skill as its own compile unit", "Ship known-good inputs, outputs and a QoR baseline"]},
+  {"label": "What a manifest must say", "section": "What a manifest must say", "subgoals": ["State purpose, inputs and outputs in plain language", "Declare tunable parameters with types and ranges", "State applicability limits and typical runtime"]},
+  {"label": "Manifests that mislead", "section": "Manifests that mislead", "subgoals": ["Tie each claimed capability to a golden test", "Version the manifest together with the code", "Flag stale, overclaiming or limit-free manifests"]}
+]

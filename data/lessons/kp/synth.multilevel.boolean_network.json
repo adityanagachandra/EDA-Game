@@ -1,0 +1,5 @@
+[
+  {"label": "Nodes, edges and local functions", "section": "Nodes, edges and local functions", "subgoals": ["Identify primary inputs, internal nodes and primary outputs", "Write each internal node's local function over its fanins", "Compose local functions to obtain a node's global function"]},
+  {"label": "Cost of a network", "section": "Cost of a network", "subgoals": ["Sum the SOP literals of every node, counting node fanins as literals", "Assign levels in topological order from the primary inputs", "Read the largest output level as the network depth"]},
+  {"label": "Transformations on the network", "section": "Transformations on the network", "subgoals": ["Substitute a node's SOP into its fanouts and multiply out to eliminate it", "Create a new node for a shared divisor to extract it", "Recount literals after each move to judge it"]}
+]

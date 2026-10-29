@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The Markowitz count",
+  "section": "The Markowitz count",
+  "subgoals": [
+   "Count the nonzeros in the candidate's row",
+   "Count the nonzeros in the candidate's column",
+   "Multiply the two counts after subtracting one from each"
+  ]
+ },
+ {
+  "label": "Choosing the pivot with least predicted fill",
+  "section": "Choosing the pivot with least predicted fill",
+  "subgoals": [
+   "Compute the count for every candidate nonzero",
+   "Pick the smallest count, preferring singletons",
+   "Update the row and column counts after each pivot"
+  ]
+ },
+ {
+  "label": "Markowitz count as a bound on actual fill",
+  "section": "Markowitz count as a bound on actual fill",
+  "subgoals": [
+   "List the positions touched by the pivot update",
+   "Mark which of them were already nonzero",
+   "Count the zero positions as the actual fill"
+  ]
+ }
+]

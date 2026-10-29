@@ -1,0 +1,5 @@
+[
+  {"label": "Atomistic sources of mismatch", "section": "Atomistic sources of mismatch", "subgoals": ["Attribute threshold mismatch to dopant count and position statistics", "Trace edge roughness into local gate-length and threshold variation", "Attribute work-function variation to metal grain orientation"]},
+  {"label": "Global, local and systematic variation", "section": "Global, local and systematic variation", "subgoals": ["Classify a variation by whether it is shared, independent or layout-determined", "Map global variation to corners and local variation to mismatch", "Represent layout-dependent effects with extracted instance parameters"]},
+  {"label": "Why classification matters downstream", "section": "Why classification matters downstream", "subgoals": ["Add independent per-gate deviations in quadrature along a path", "Tie SRAM and comparator failures to far-tail local mismatch", "Treat systematic effects as predictable once extracted"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "When both networks conduct",
+    "section": "When both networks conduct",
+    "subgoals": [
+      "Locate the input range where both devices conduct",
+      "Relate the crowbar energy to time spent in that range",
+      "Show the window vanishes when VDD is below the sum of thresholds"
+    ]
+  },
+  {
+    "label": "Input slew versus output slew",
+    "section": "Input slew versus output slew",
+    "subgoals": [
+      "Relate crowbar current to the voltage across the turning-off device",
+      "Compare input transition time with output transition time",
+      "Identify a slow input into a light load as the worst case"
+    ]
+  },
+  {
+    "label": "How tools account for it",
+    "section": "How tools account for it",
+    "subgoals": [
+      "Measure supply energy per transition minus the external load's share",
+      "Store the remainder in internal power tables indexed by slew and load",
+      "Report short-circuit power within the internal power bucket"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Marker penalties", "section": "Marker penalties", "subgoals": ["Place markers at the reported violations", "Grow the marker penalty geometrically across iterations", "Add the penalty to the base cost of marked cells"]},
+  {"label": "When the detour wins", "section": "When the detour wins", "subgoals": ["Write the marker cost of the current route by iteration", "Compare it with the extra length of the clean detour", "Find the first iteration in which the detour is cheaper"]},
+  {"label": "Clip-based repair", "section": "Clip-based repair", "subgoals": ["Map each marker to its clip with the current offset", "Count the distinct clips that contain markers", "Reroute only those clips with their boundaries fixed"]}
+]

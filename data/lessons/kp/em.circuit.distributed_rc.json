@@ -1,0 +1,5 @@
+[
+  {"label": "A wire as a distributed RC line", "section": "A wire as a distributed RC line", "subgoals": ["Multiply per-unit-length resistance and capacitance by the length", "Integrate shared resistance times capacitance along the wire", "Halve the total RC product to get the Elmore delay"]},
+  {"label": "The 0.38 RC and 0.69 RC rules", "section": "The 0.38 RC and 0.69 RC rules", "subgoals": ["Compute the total RC product of the wire", "Multiply by 0.38 for the distributed 50 percent delay", "Contrast it with the 0.69 lumped estimate"]},
+  {"label": "Quadratic growth with length", "section": "Quadratic growth with length", "subgoals": ["Scale the delay with the square of the wire length", "Divide the wire into k segments of RC over k squared each", "Sum the segment delays to get the total over k"]}
+]

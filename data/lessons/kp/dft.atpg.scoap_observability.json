@@ -1,0 +1,5 @@
+[
+  {"label": "Backward propagation", "section": "Backward propagation", "subgoals": ["Assign observability 0 to every primary output", "Add the output observability, the other inputs' non-controlling costs and one", "Process gates in reverse topological order"]},
+  {"label": "Fanout stems", "section": "Fanout stems", "subgoals": ["Compute the observability of each fanout branch separately", "Take the minimum over the branches for the stem", "Recognize the minimum as optimistic under correlation"]},
+  {"label": "Detection difficulty", "section": "Detection difficulty", "subgoals": ["Add the controllability of the opposite value to the observability", "Rank faults by this estimate to predict hard faults", "Place observation points at lines with large observability"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What the loop reads and proposes", "section": "What the loop reads and proposes", "subgoals": ["Read structured package, power and thermal reports", "Map each violation to fixes from a library", "Express proposals as typed database edits"]},
+  {"label": "Seams the loop needs", "section": "Seams the loop needs", "subgoals": ["Expose ball, stackup and power-map interfaces", "Keep loop fixes at configuration and plug-in tiers", "Run engines incrementally after each edit"]},
+  {"label": "Convergence and approval", "section": "Convergence and approval", "subgoals": ["Re-run all affected checks after each fix", "Detect oscillation with a global violation count", "Hand the final diff and reports to a human for approval"]}
+]

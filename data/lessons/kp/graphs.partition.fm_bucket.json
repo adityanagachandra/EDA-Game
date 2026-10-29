@@ -1,0 +1,5 @@
+[
+  {"label": "Sizing the bucket array", "section": "Sizing the bucket array", "subgoals": ["Find the largest cell degree p_max", "Allocate 2 p_max + 1 buckets per side", "Track a pointer to the highest non-empty bucket"]},
+  {"label": "Updating gains after a move", "section": "Updating gains after a move", "subgoals": ["Examine only the nets of the moved cell", "Apply updates only on critical nets", "Recompute FS - TE on both partitions to check the rule"]},
+  {"label": "Why updates touch few cells", "section": "Why updates touch few cells", "subgoals": ["Relink a cell between buckets in constant time", "Bound total update work per pass by the pin count", "Verify incremental gains and cut against a full recount"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The setup required time", "section": "The setup required time", "subgoals": ["Locate the next capturing edge one period after launch", "Add the capture clock latency", "Subtract the setup time"]},
+  {"label": "Setup slack", "section": "Setup slack", "subgoals": ["Sum launch latency, clock-to-Q and the longest logic delay", "Subtract that arrival from the setup required time", "Read a negative result as a setup violation"]},
+  {"label": "Hold slack", "section": "Hold slack", "subgoals": ["Sum launch latency, clock-to-Q and the shortest logic delay", "Subtract the capture latency plus hold time", "Explain why the clock period cancels from the hold check"]}
+]

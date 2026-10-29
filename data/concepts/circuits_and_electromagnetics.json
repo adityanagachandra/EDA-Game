@@ -1,0 +1,1164 @@
+[
+  {
+    "id": "em.circuit.charge_current_voltage",
+    "label": "Charge, current, voltage and power",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "calc.deriv.concept",
+      "calc.integral.definite"
+    ],
+    "key_prerequisites": [
+      "calc.integral.definite"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "em.circuit.kcl_kvl",
+    "label": "Kirchhoff's current and voltage laws",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.charge_current_voltage",
+      "linalg.systems.matrix"
+    ],
+    "key_prerequisites": [
+      "em.circuit.charge_current_voltage"
+    ],
+    "encompasses": [
+      "em.circuit.charge_current_voltage"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "em.circuit.resistor_networks",
+    "label": "Series, parallel and divider networks",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.kcl_kvl",
+      "em.circuit.charge_current_voltage"
+    ],
+    "key_prerequisites": [
+      "em.circuit.kcl_kvl"
+    ],
+    "encompasses": [
+      "em.circuit.kcl_kvl"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "em.circuit.nodal_analysis",
+    "label": "Nodal analysis",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.kcl_kvl",
+      "em.circuit.resistor_networks",
+      "linalg.sys.cramer",
+      "linalg.systems.matrix"
+    ],
+    "key_prerequisites": [
+      "em.circuit.kcl_kvl",
+      "linalg.systems.matrix"
+    ],
+    "encompasses": [
+      "em.circuit.kcl_kvl"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "em.circuit.mna_stamps",
+    "label": "Modified nodal analysis and element stamps",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.nodal_analysis",
+      "graph.laplacian",
+      "linalg.matrix.concept"
+    ],
+    "key_prerequisites": [
+      "em.circuit.nodal_analysis"
+    ],
+    "encompasses": [
+      "em.circuit.nodal_analysis"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.circuit.mesh_analysis",
+    "label": "Mesh analysis",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.kcl_kvl",
+      "em.circuit.resistor_networks",
+      "linalg.sys.cramer"
+    ],
+    "key_prerequisites": [
+      "em.circuit.kcl_kvl"
+    ],
+    "encompasses": [
+      "em.circuit.kcl_kvl"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "em.circuit.thevenin_norton",
+    "label": "Thevenin and Norton equivalents",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.nodal_analysis",
+      "em.circuit.resistor_networks"
+    ],
+    "key_prerequisites": [
+      "em.circuit.nodal_analysis"
+    ],
+    "encompasses": [
+      "em.circuit.resistor_networks",
+      "em.circuit.nodal_analysis"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "em.circuit.capacitor_inductor",
+    "label": "Capacitors and inductors as circuit elements",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.charge_current_voltage",
+      "calc.deriv.concept",
+      "calc.integral.ftc"
+    ],
+    "key_prerequisites": [
+      "em.circuit.charge_current_voltage"
+    ],
+    "encompasses": [
+      "em.circuit.charge_current_voltage"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "em.circuit.rc_time_constant",
+    "label": "RC circuits and time constants",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.capacitor_inductor",
+      "em.circuit.thevenin_norton",
+      "ode.first_order.linear"
+    ],
+    "key_prerequisites": [
+      "ode.first_order.linear",
+      "em.circuit.capacitor_inductor"
+    ],
+    "encompasses": [
+      "em.circuit.capacitor_inductor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.circuit.rise_time",
+    "label": "Rise time and 50 percent delay of an RC stage",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.rc_time_constant",
+      "calc.deriv.exp_log"
+    ],
+    "key_prerequisites": [
+      "em.circuit.rc_time_constant"
+    ],
+    "encompasses": [
+      "em.circuit.rc_time_constant"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.circuit.rlc",
+    "label": "RLC circuits",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.rc_time_constant",
+      "ode.second_order.homogeneous",
+      "ode.characteristic.sum"
+    ],
+    "key_prerequisites": [
+      "ode.second_order.homogeneous",
+      "em.circuit.rc_time_constant"
+    ],
+    "encompasses": [
+      "em.circuit.rc_time_constant",
+      "em.circuit.capacitor_inductor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "em.circuit.distributed_rc",
+    "label": "Distributed RC lines and wire delay",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.circuit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.rise_time",
+      "ode.pde.heat"
+    ],
+    "key_prerequisites": [
+      "em.circuit.rise_time"
+    ],
+    "encompasses": [
+      "em.circuit.rc_time_constant",
+      "em.circuit.rise_time"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.ac.phasors",
+    "label": "Phasors and sinusoidal steady state",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.ac",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.capacitor_inductor",
+      "complex.adv.polar",
+      "complex.adv.exponential"
+    ],
+    "key_prerequisites": [
+      "complex.adv.polar"
+    ],
+    "encompasses": [
+      "em.circuit.capacitor_inductor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.ac.impedance",
+    "label": "Impedance and admittance",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.ac",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.ac.phasors",
+      "complex.ops.divide",
+      "complex.ops.modulus"
+    ],
+    "key_prerequisites": [
+      "em.ac.phasors"
+    ],
+    "encompasses": [
+      "em.ac.phasors"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "em.ac.resonance",
+    "label": "Resonance and quality factor",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.ac",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.ac.impedance",
+      "em.circuit.rlc"
+    ],
+    "key_prerequisites": [
+      "em.ac.impedance"
+    ],
+    "encompasses": [
+      "em.ac.impedance",
+      "em.circuit.rlc"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.signal.lti_convolution",
+    "label": "Linear time-invariant systems and convolution",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.signal",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "ode.transforms.convolution",
+      "em.circuit.rc_time_constant"
+    ],
+    "key_prerequisites": [
+      "ode.transforms.convolution"
+    ],
+    "encompasses": [
+      "em.circuit.rc_time_constant"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.signal.fourier_spectrum",
+    "label": "Fourier spectra of digital signals",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.signal",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "calc.series.fourier",
+      "em.circuit.rise_time",
+      "ode.transforms.fourier"
+    ],
+    "key_prerequisites": [
+      "calc.series.fourier"
+    ],
+    "encompasses": [
+      "em.circuit.rise_time"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.signal.laplace_transfer",
+    "label": "Transfer functions and the Laplace domain",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.signal",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "ode.transforms.laplace",
+      "em.ac.impedance",
+      "ode.laplace.value"
+    ],
+    "key_prerequisites": [
+      "ode.transforms.laplace",
+      "em.ac.impedance"
+    ],
+    "encompasses": [
+      "em.ac.impedance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.signal.poles_zeros",
+    "label": "Poles, zeros and stability",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.signal",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.signal.laplace_transfer",
+      "ode.stability",
+      "complex.adv.conjugate_roots"
+    ],
+    "key_prerequisites": [
+      "em.signal.laplace_transfer"
+    ],
+    "encompasses": [
+      "em.signal.laplace_transfer"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.signal.bode",
+    "label": "Bode magnitude and phase",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.signal",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.signal.poles_zeros",
+      "complex.ops.modulus",
+      "complex.ops.argument"
+    ],
+    "key_prerequisites": [
+      "em.signal.poles_zeros"
+    ],
+    "encompasses": [
+      "em.signal.poles_zeros",
+      "em.signal.laplace_transfer"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.signal.feedback_stability",
+    "label": "Feedback, loop gain and phase margin",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.signal",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.signal.bode",
+      "em.signal.poles_zeros"
+    ],
+    "key_prerequisites": [
+      "em.signal.bode"
+    ],
+    "encompasses": [
+      "em.signal.bode"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "em.signal.z_transform",
+    "label": "The Z transform and discrete-time stability",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.signal",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.signal.poles_zeros",
+      "ode.numerical.euler",
+      "complex.adv.geometric_series"
+    ],
+    "key_prerequisites": [
+      "em.signal.poles_zeros"
+    ],
+    "encompasses": [
+      "em.signal.poles_zeros"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.signal.moment_matching",
+    "label": "Moments, Elmore delay and moment matching",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.signal",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.signal.laplace_transfer",
+      "em.circuit.rise_time",
+      "calc.series.taylor"
+    ],
+    "key_prerequisites": [
+      "em.signal.laplace_transfer"
+    ],
+    "encompasses": [
+      "em.signal.laplace_transfer",
+      "em.circuit.rc_time_constant"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "em.field.maxwell_equations",
+    "label": "Maxwell's equations in integral form",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "calc.vec.divergence_theorem",
+      "calc.vec.stokes",
+      "calc.vec.line_integral"
+    ],
+    "key_prerequisites": [
+      "calc.vec.divergence_theorem"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "em.field.quasi_static",
+    "label": "Quasi-static versus full-wave regimes",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.maxwell_equations",
+      "em.signal.fourier_spectrum"
+    ],
+    "key_prerequisites": [
+      "em.field.maxwell_equations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "em.field.electrostatics_capacitance",
+    "label": "Electrostatics and capacitance",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.maxwell_equations",
+      "em.circuit.capacitor_inductor",
+      "ode.pde.laplace_eq"
+    ],
+    "key_prerequisites": [
+      "em.field.maxwell_equations"
+    ],
+    "encompasses": [
+      "em.circuit.capacitor_inductor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "em.field.fringe_capacitance",
+    "label": "Fringe capacitance of on-chip wires",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.electrostatics_capacitance",
+      "numa.interp.least_squares"
+    ],
+    "key_prerequisites": [
+      "em.field.electrostatics_capacitance"
+    ],
+    "encompasses": [
+      "em.field.electrostatics_capacitance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.field.coupling_capacitance",
+    "label": "Coupling capacitance and the Miller factor",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.fringe_capacitance",
+      "em.circuit.capacitor_inductor"
+    ],
+    "key_prerequisites": [
+      "em.field.fringe_capacitance"
+    ],
+    "encompasses": [
+      "em.field.electrostatics_capacitance",
+      "em.field.fringe_capacitance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.field.wire_resistance",
+    "label": "Sheet resistance and wire resistance",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.resistor_networks",
+      "em.circuit.charge_current_voltage",
+      "calc.integral.definite"
+    ],
+    "key_prerequisites": [
+      "em.circuit.resistor_networks"
+    ],
+    "encompasses": [
+      "em.circuit.resistor_networks"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "em.field.inductance",
+    "label": "Inductance and return paths",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.maxwell_equations",
+      "calc.vec.flux_uniform",
+      "em.circuit.capacitor_inductor"
+    ],
+    "key_prerequisites": [
+      "em.field.maxwell_equations"
+    ],
+    "encompasses": [
+      "em.circuit.capacitor_inductor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.field.skin_effect",
+    "label": "The skin effect",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.wire_resistance",
+      "em.field.inductance",
+      "em.ac.phasors"
+    ],
+    "key_prerequisites": [
+      "em.field.wire_resistance"
+    ],
+    "encompasses": [
+      "em.field.wire_resistance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.field.dielectric_loss",
+    "label": "Dielectric loss and loss tangent",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.field",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.electrostatics_capacitance",
+      "em.ac.impedance"
+    ],
+    "key_prerequisites": [
+      "em.field.electrostatics_capacitance"
+    ],
+    "encompasses": [
+      "em.ac.impedance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.tline.telegrapher",
+    "label": "Transmission lines and the telegrapher's equations",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.tline",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "ode.pde.wave",
+      "em.field.inductance",
+      "em.field.electrostatics_capacitance"
+    ],
+    "key_prerequisites": [
+      "ode.pde.wave"
+    ],
+    "encompasses": [
+      "em.field.inductance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.tline.propagation_delay",
+    "label": "Propagation delay and electrical length",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.tline",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.tline.telegrapher",
+      "em.circuit.rise_time"
+    ],
+    "key_prerequisites": [
+      "em.tline.telegrapher"
+    ],
+    "encompasses": [
+      "em.tline.telegrapher"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.tline.reflection",
+    "label": "Reflections and impedance matching",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.tline",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.tline.telegrapher",
+      "em.ac.impedance",
+      "em.circuit.resistor_networks"
+    ],
+    "key_prerequisites": [
+      "em.tline.telegrapher"
+    ],
+    "encompasses": [
+      "em.tline.telegrapher"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.tline.bounce_diagram",
+    "label": "Bounce diagrams and multiple reflections",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.tline",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.tline.reflection",
+      "em.tline.propagation_delay"
+    ],
+    "key_prerequisites": [
+      "em.tline.reflection"
+    ],
+    "encompasses": [
+      "em.tline.reflection",
+      "em.tline.propagation_delay"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "em.tline.termination",
+    "label": "Series and parallel termination",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.tline",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.tline.reflection",
+      "em.tline.bounce_diagram"
+    ],
+    "key_prerequisites": [
+      "em.tline.reflection"
+    ],
+    "encompasses": [
+      "em.tline.reflection"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.tline.input_impedance",
+    "label": "Input impedance of a terminated line",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.tline",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.tline.reflection",
+      "complex.ops.divide",
+      "complex.adv.trig_exponential"
+    ],
+    "key_prerequisites": [
+      "em.tline.reflection"
+    ],
+    "encompasses": [
+      "em.tline.reflection",
+      "em.ac.impedance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "em.tline.lossy_line",
+    "label": "Attenuation on lossy lines",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.tline",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.tline.telegrapher",
+      "em.field.skin_effect",
+      "em.field.dielectric_loss"
+    ],
+    "key_prerequisites": [
+      "em.tline.telegrapher"
+    ],
+    "encompasses": [
+      "em.field.skin_effect",
+      "em.field.dielectric_loss"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.tline.s_parameters",
+    "label": "Scattering parameters",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.tline",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.tline.reflection",
+      "em.tline.lossy_line",
+      "linalg.matrix.concept"
+    ],
+    "key_prerequisites": [
+      "em.tline.reflection"
+    ],
+    "encompasses": [
+      "em.tline.reflection",
+      "em.tline.lossy_line"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "em.emc.return_path",
+    "label": "Return current and the path of least impedance",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.emc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.inductance",
+      "em.ac.impedance",
+      "em.field.wire_resistance"
+    ],
+    "key_prerequisites": [
+      "em.field.inductance"
+    ],
+    "encompasses": [
+      "em.field.inductance",
+      "em.field.wire_resistance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.emc.ground_bounce",
+    "label": "Ground bounce and simultaneous switching noise",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.emc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.inductance",
+      "em.circuit.capacitor_inductor",
+      "em.circuit.rise_time"
+    ],
+    "key_prerequisites": [
+      "em.field.inductance"
+    ],
+    "encompasses": [
+      "em.circuit.capacitor_inductor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.emc.shielding_grounding",
+    "label": "Grounding, shielding and the proximity effect",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.emc",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "em.emc.return_path",
+      "em.field.skin_effect"
+    ],
+    "key_prerequisites": [
+      "em.emc.return_path"
+    ],
+    "encompasses": [
+      "em.emc.return_path"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "em.solver.finite_difference",
+    "label": "Finite-difference solution of Laplace's equation",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.solver",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "ode.pde.laplace_eq",
+      "numa.linear.jacobi",
+      "em.field.electrostatics_capacitance"
+    ],
+    "key_prerequisites": [
+      "ode.pde.laplace_eq"
+    ],
+    "encompasses": [
+      "em.field.electrostatics_capacitance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.solver.method_of_moments",
+    "label": "The method of moments field solver",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.solver",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.electrostatics_capacitance",
+      "ode.green.function",
+      "linalg.sys.cramer"
+    ],
+    "key_prerequisites": [
+      "em.field.electrostatics_capacitance",
+      "ode.green.function"
+    ],
+    "encompasses": [
+      "em.field.electrostatics_capacitance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "em.solver.capacitance_matrix",
+    "label": "The Maxwell capacitance matrix",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.solver",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.solver.method_of_moments",
+      "em.field.coupling_capacitance",
+      "linalg.symmetric.spectral"
+    ],
+    "key_prerequisites": [
+      "em.solver.method_of_moments"
+    ],
+    "encompasses": [
+      "em.solver.method_of_moments",
+      "em.field.coupling_capacitance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.solver.fdtd",
+    "label": "Finite-difference time-domain and the Courant limit",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.solver",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.solver.finite_difference",
+      "em.field.quasi_static",
+      "ode.pde.wave"
+    ],
+    "key_prerequisites": [
+      "em.solver.finite_difference"
+    ],
+    "encompasses": [
+      "em.solver.finite_difference",
+      "em.field.quasi_static"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "em.solver.method_selection",
+    "label": "Choosing a field solver: MoM, FEM, FDTD and PEEC",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.solver",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "em.solver.method_of_moments",
+      "em.solver.fdtd",
+      "em.field.quasi_static"
+    ],
+    "key_prerequisites": [
+      "em.solver.method_of_moments"
+    ],
+    "encompasses": [
+      "em.solver.method_of_moments",
+      "em.solver.fdtd"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "em.frontier.solver_as_tool",
+    "label": "Field solvers and circuit kernels as agent tools",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "em.solver.method_of_moments",
+      "em.circuit.mna_stamps",
+      "agentic.mcp.tool_interface"
+    ],
+    "key_prerequisites": [
+      "agentic.mcp.tool_interface"
+    ],
+    "encompasses": [
+      "em.solver.method_of_moments"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "em.frontier.fast_accurate_modes",
+    "label": "Fast versus accurate EM modes",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "em.solver.method_selection",
+      "em.field.fringe_capacitance",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "em.field.fringe_capacitance"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "em.frontier.calibration_tier",
+    "label": "Calibration as a Tier 1 change surface",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "em.field.fringe_capacitance",
+      "em.solver.capacitance_matrix",
+      "agentic.tiers.change",
+      "agentic.engine.four_layer"
+    ],
+    "key_prerequisites": [
+      "agentic.tiers.change"
+    ],
+    "encompasses": [
+      "em.field.fringe_capacitance"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "em.frontier.differential_check",
+    "label": "Golden and differential checks for EM engines",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "em.solver.capacitance_matrix",
+      "em.solver.fdtd",
+      "agentic.verify.golden_differential"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "em.solver.capacitance_matrix"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "em.frontier.tool_grounded_reward",
+    "label": "Solver-grounded rewards for matching and termination agents",
+    "domain": "circuits_and_electromagnetics",
+    "subdomain": "circuits_and_electromagnetics.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "em.tline.termination",
+      "em.tline.s_parameters",
+      "agentic.rl.tool_grounded"
+    ],
+    "key_prerequisites": [
+      "agentic.rl.tool_grounded"
+    ],
+    "encompasses": [
+      "em.tline.s_parameters"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  }
+]

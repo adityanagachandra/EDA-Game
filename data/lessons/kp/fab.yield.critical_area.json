@@ -1,0 +1,5 @@
+[
+  {"label": "Shorts between two parallel wires", "section": "Shorts between two parallel wires", "subgoals": ["Model the defect as a disc of diameter x", "Find the band of centres that touches both wires", "Multiply the band width by the parallel run length"]},
+  {"label": "Opens in a single wire", "section": "Opens in a single wire", "subgoals": ["Find the band of centres that spans the wire width", "Compute open critical area for a given defect size", "Explain the width-versus-space trade between opens and shorts"]},
+  {"label": "Critical area of a layout", "section": "Critical area of a layout", "subgoals": ["Sum gap and wire contributions for a bus", "Compute critical area by growing shapes by half the defect size", "Weight critical area by defect size to get expected faults"]}
+]

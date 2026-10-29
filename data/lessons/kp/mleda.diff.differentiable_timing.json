@@ -1,0 +1,5 @@
+[
+  {"label": "Smoothed arrival at a gate", "section": "Smoothed arrival at a gate", "subgoals": ["Add each input's arrival and arc delay", "Apply the soft maximum over the sums", "Propagate in topological order through the graph"]},
+  {"label": "The chain rule through a soft max", "section": "The chain rule through a soft max", "subgoals": ["Compute the softmax weight of the arc's input", "Multiply weights along the path to the endpoint", "Run one reverse topological pass for all gradients"]},
+  {"label": "Gradient of TNS", "section": "Gradient of TNS", "subgoals": ["Compute each endpoint's slack from the smoothed arrival", "Keep only the violating endpoints", "Sum their arrival derivatives for the TNS gradient"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Unrolling a circuit into frames", "section": "Unrolling a circuit into frames", "subgoals": ["Copy the inputs and gates once per frame", "Give only frame 0's latches their own variables", "Compute n + (k + 1)(m + g)"]},
+  {"label": "Counting the clauses", "section": "Counting the clauses", "subgoals": ["Add one unit clause per latch for the reset state", "Add 3 clauses per AND gate per frame", "Add one clause that the bad signal is 1 in some frame"]},
+  {"label": "Growing the bound", "section": "Growing the bound", "subgoals": ["Add one frame of inputs and gates per extra depth", "Count 3g new clauses and no new reset or property clauses", "State what UNSAT at depth k does and does not prove"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Connection density", "section": "Connection density", "subgoals": ["Divide one millimetre by the pitch", "Square it for connections per square millimetre", "Multiply by the bonded area for the total"]},
+  {"label": "Gain over microbumps", "section": "Gain over microbumps", "subgoals": ["Divide the microbump pitch by the hybrid pitch", "Square the ratio for the density gain", "Separate density gain from bandwidth gain"]},
+  {"label": "Overlay and pad overlap", "section": "Overlay and pad overlap", "subgoals": ["Subtract each offset from the pad side", "Multiply and divide by the pad area", "Relate the overlap to resistance and shorting risk"]}
+]

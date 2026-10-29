@@ -1,0 +1,5 @@
+[
+  {"label": "Modules and processes in C++", "section": "Modules and processes in C++", "subgoals": ["Build a module as a C++ class derived from sc_module", "Choose SC_METHOD for run-to-completion processes and SC_THREAD for ones that wait", "Map a clocked method to its Verilog counterpart"]},
+  {"label": "Evaluate-update and delta cycles", "section": "Evaluate-update and delta cycles", "subgoals": ["Defer every signal write to the update phase", "Repeat evaluate and update phases until nothing is runnable", "Advance time only after the deltas settle"]},
+  {"label": "Transaction-level modeling", "section": "Transaction-level modeling", "subgoals": ["Replace pin-level bus activity with one transaction call", "Trade timing accuracy for speed with temporal decoupling", "Link TLM and RTL models through transactors"]}
+]

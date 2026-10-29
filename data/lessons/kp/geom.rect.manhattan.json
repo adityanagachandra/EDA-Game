@@ -1,0 +1,5 @@
+[
+  {"label": "The L1 metric", "section": "The L1 metric", "subgoals": ["Take the absolute difference of the x-coordinates", "Take the absolute difference of the y-coordinates", "Add the two differences to get the L1 distance"]},
+  {"label": "Manhattan versus Euclidean length", "section": "Manhattan versus Euclidean length", "subgoals": ["Compute the L1 distance as the sum of axis differences", "Compute the Euclidean distance from the same differences", "Subtract to find how much longer the rectilinear path is"]},
+  {"label": "Many shortest paths", "section": "Many shortest paths", "subgoals": ["Count the horizontal and vertical unit steps of a shortest path", "Treat a path as an ordering of those steps", "Evaluate the binomial coefficient of total steps choose horizontal steps"]}
+]

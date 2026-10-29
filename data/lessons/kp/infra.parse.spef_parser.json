@@ -1,0 +1,5 @@
+[
+  {"label": "The name map compresses names", "section": "The name map compresses names", "subgoals": ["Multiply the name length by the number of references", "Add the token cost per reference and the one map line", "Subtract to get the bytes saved"]},
+  {"label": "Total capacitance of a D_NET", "section": "Total capacitance of a D_NET", "subgoals": ["Scale every *CAP value by the C unit", "Add ground and coupling entries of the net", "Compare the sum with the total on the *D_NET line"]},
+  {"label": "Resistance along a parasitic path", "section": "Resistance along a parasitic path", "subgoals": ["Scale every *RES value by the R unit", "Build the resistor graph from the node pairs", "Sum the resistances on the unique path from driver to sink"]}
+]

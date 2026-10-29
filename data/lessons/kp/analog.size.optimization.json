@@ -1,0 +1,5 @@
+[
+  {"label": "Variables, objective and constraints", "section": "Variables, objective and constraints", "subgoals": ["List widths, lengths, bias currents and passives as variables", "Turn thresholded specs into inequality constraints", "Put power or area in the objective and region margins in the constraints"]},
+  {"label": "Choosing among candidates", "section": "Choosing among candidates", "subgoals": ["Remove every candidate that violates a constraint", "Rank the feasible candidates by the objective", "Normalize violations and re-check exact feasibility after a penalty method"]},
+  {"label": "Robustness, trade-offs and solution methods", "section": "Robustness, trade-offs and solution methods", "subgoals": ["Constrain the worst corner or a yield target instead of the nominal point", "Report a Pareto front when there are several objectives", "Contrast equation-based global optima with simulation-based black-box search"]}
+]

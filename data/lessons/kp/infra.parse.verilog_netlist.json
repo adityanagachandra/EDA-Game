@@ -1,0 +1,5 @@
+[
+  {"label": "Instances, nets and terminals in the text", "section": "Instances, nets and terminals in the text", "subgoals": ["Create one net for each port and each declared wire", "Count one ITerm per pin of every instance", "Compare the net count with inputs plus single-output instances"]},
+  {"label": "Fanout from named connections", "section": "Fanout from named connections", "subgoals": ["Find every connection that names the net", "Keep only the input pins using the master's pin directions", "Count each pin separately, even two on one instance"]},
+  {"label": "Positional connections need the cell's port order", "section": "Positional connections need the cell's port order", "subgoals": ["Look up the declared port order of the master", "Assign the k-th signal to the k-th declared port", "Count the input pins on the net after the mapping"]}
+]

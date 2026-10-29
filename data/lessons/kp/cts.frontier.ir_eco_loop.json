@@ -1,0 +1,5 @@
+[
+  {"label": "What the agent reads and proposes", "section": "What the agent reads and proposes", "subgoals": ["Read the drop map and its causing instances", "Classify the hot spot as static or dynamic", "Propose a fix through the engines' interfaces"]},
+  {"label": "Choosing among candidates", "section": "Choosing among candidates", "subgoals": ["Compute the gap between drop and budget", "Keep the candidates whose predicted reduction closes it", "Pick the cheapest and confirm it with the accurate solver"]},
+  {"label": "Verifying and recording the ECO", "section": "Verifying and recording the ECO", "subgoals": ["Re-run IR, EM, DRC and timing on the changed area", "Log the trigger, edit, metrics and versions", "Submit the verified ECO for human approval"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Harmonics of a square wave", "section": "Harmonics of a square wave", "subgoals": ["Identify the harmonic index as the frequency over the fundamental", "Return zero for an even harmonic of a symmetric square wave", "Compute an odd harmonic amplitude as two V over n pi"]},
+  {"label": "The knee frequency", "section": "The knee frequency", "subgoals": ["Take the rise time of the edge", "Divide one half by the rise time to get the knee frequency", "Set the model's required bandwidth from the knee frequency"]},
+  {"label": "The trapezoidal spectral envelope", "section": "The trapezoidal spectral envelope", "subgoals": ["Compute the first corner from the pulse width", "Compute the second corner from the rise time", "Apply 20 dB and 40 dB per decade slopes beyond each corner"]}
+]

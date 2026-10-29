@@ -1,0 +1,5 @@
+[
+  {"label": "Off-axis illumination and phase shifting", "section": "Off-axis illumination and phase shifting", "subgoals": ["Explain how tilted illumination captures two diffraction orders", "Relate dipole illumination to unidirectional layout", "Describe what a phase-shift mask changes"]},
+  {"label": "Assist features and source-mask optimization", "section": "Assist features and source-mask optimization", "subgoals": ["Define an SRAF and its printing limit", "Explain how SRAFs reduce iso-dense bias", "Describe what SMO optimizes jointly"]},
+  {"label": "How RET constrains layout", "section": "How RET constrains layout", "subgoals": ["Identify a forbidden pitch", "Map phase assignment to graph two-colouring", "Tie restricted design rules to RET tuning"]}
+]

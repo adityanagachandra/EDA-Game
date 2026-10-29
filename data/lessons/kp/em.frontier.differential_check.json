@@ -1,0 +1,5 @@
+[
+  {"label": "Physical invariants as tests", "section": "Physical invariants as tests", "subgoals": ["Check symmetry and sign structure of every capacitance matrix", "Check passivity and reciprocity of every S-parameter model", "Compare solver output with analytic golden structures"]},
+  {"label": "Convergence under refinement", "section": "Convergence under refinement", "subgoals": ["Refine the mesh or cell size in steps", "Check that successive changes shrink at the expected rate", "Record the convergence sequence as part of the golden"]},
+  {"label": "Differential reports on a reference design", "section": "Differential reports on a reference design", "subgoals": ["Compare per-net values against the promoted baseline", "Confirm only the intended nets moved by the intended amount", "Block promotion on any unexplained change beyond tolerance"]}
+]

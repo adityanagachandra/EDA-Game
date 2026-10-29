@@ -1,0 +1,5 @@
+[
+  {"label": "What the netlist guarantees", "section": "What the netlist guarantees", "subgoals": ["State the guarantee: equal functions at registers and outputs", "List what survives: registers, ports and preserved nets", "Explain why internal signals and X assignments do not survive"]},
+  {"label": "What the netlist adds and what it leaves out", "section": "What the netlist adds and what it leaves out", "subgoals": ["Trace area, capacitance and timing arcs to the bound library cell", "Note that delays come from the timer and coordinates from the placer", "Connect missing wire information to synthesis-placement miscorrelation"]},
+  {"label": "Consequences for verification and debug", "section": "Consequences for verification and debug", "subgoals": ["Require one-to-one register matching for combinational equivalence", "Protect must-survive logic with keep or dont_touch attributes", "Separate functional equivalence from quality of results"]}
+]

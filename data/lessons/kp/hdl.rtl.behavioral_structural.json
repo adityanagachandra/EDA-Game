@@ -1,0 +1,5 @@
+[
+  {"label": "Structural descriptions are netlists", "section": "Structural descriptions are netlists", "subgoals": ["List the instances and the nets that connect them", "Model each net as a hyperedge over the pins it touches", "Read the function from the components rather than from statements"]},
+  {"label": "Behavioral and dataflow descriptions", "section": "Behavioral and dataflow descriptions", "subgoals": ["Classify a fragment as structural, dataflow or behavioral", "Unroll a constant-bound loop into replicated logic", "Separate simulation-only behavior from synthesizable behavior"]},
+  {"label": "What each style costs a tool", "section": "What each style costs a tool", "subgoals": ["Name the inference rule that turns each behavioral construct into a component", "Explain why structural detail slows simulation", "Reduce both sides to logic before an equivalence comparison"]}
+]

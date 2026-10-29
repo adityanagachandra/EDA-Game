@@ -1,0 +1,5 @@
+[
+  {"label": "Half as many partial products", "section": "Half as many partial products", "subgoals": ["Count one radix-2 partial product per multiplier bit", "Group the multiplier into overlapping pairs", "Halve the row count for an even-width signed multiplier"]},
+  {"label": "The recoding rule", "section": "The recoding rule", "subgoals": ["Append a zero below the least significant bit", "Read overlapping triplets from the bottom", "Map each triplet to minus two times the top bit plus the lower two bits"]},
+  {"label": "Selecting and negating multiples", "section": "Selecting and negating multiples", "subgoals": ["Multiply the multiplicand by each recoded digit", "Shift each row left by twice its digit index", "Represent negative multiples as an inversion plus a deferred one"]}
+]

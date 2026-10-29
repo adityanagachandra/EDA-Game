@@ -1,0 +1,5 @@
+[
+  {"label": "Resolution at 13.5 nm", "section": "Resolution at 13.5 nm", "subgoals": ["Explain why EUV optics are reflective and in vacuum", "Compute the EUV half-pitch at a given NA and k1", "Compare it with 193 nm immersion at the same k1"]},
+  {"label": "What a single EUV exposure replaces", "section": "What a single EUV exposure replaces", "subgoals": ["Compute the single-exposure ArF pitch", "Count the ArF exposures needed for a target pitch", "Weigh mask count against EUV exposure cost"]},
+  {"label": "Photon shot noise", "section": "Photon shot noise", "subgoals": ["Compute the photon energy at 13.5 nm", "Convert dose into photons per pixel", "Take the Poisson relative fluctuation as one over root N"]}
+]

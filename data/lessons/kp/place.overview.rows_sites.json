@@ -1,0 +1,5 @@
+[
+  {"label": "Die, core, rows and sites", "section": "Die, core, rows and sites", "subgoals": ["Distinguish the die from the core", "Relate row height to the library cell height", "Express a cell width as an integer number of sites"]},
+  {"label": "Counting rows and sites", "section": "Counting rows and sites", "subgoals": ["Divide the core height by the row height and take the floor", "Multiply rows by sites per row to get total sites", "Compute utilization as occupied sites over total sites"]},
+  {"label": "Rows as the legality grid", "section": "Rows as the legality grid", "subgoals": ["Check the bottom edge, left edge and orientation of a legal cell", "Explain why alternate rows are flipped", "Model a row as a list of usable segments around macros"]}
+]

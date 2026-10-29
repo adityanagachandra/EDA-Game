@@ -1,0 +1,5 @@
+[
+  {"label": "Expected via failures", "section": "Expected via failures", "subgoals": ["Model each via as failing independently with probability p", "Multiply the via count by p to get expected failures", "Read the expected count as a yield risk"]},
+  {"label": "Doubling vias", "section": "Doubling vias", "subgoals": ["Assign probability p squared to a doubled via", "Weight single and doubled vias by their shares", "Sum to get the expected number of opens"]},
+  {"label": "Via-limited yield", "section": "Via-limited yield", "subgoals": ["Raise one minus p to the number of single vias", "Multiply by the doubled vias' survival probability", "Compare the yield with and without doubling"]}
+]

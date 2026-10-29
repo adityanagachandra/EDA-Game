@@ -1,0 +1,5 @@
+[
+  {"label": "Bounded search trees", "section": "Bounded search trees", "subgoals": ["Branch on the endpoints of an uncovered edge", "Decrease the budget by the vertices taken", "Solve the recurrence for the leaf count"]},
+  {"label": "Kernelization: forced vertices", "section": "Kernelization: forced vertices", "subgoals": ["Find a vertex of degree greater than the budget", "Put it in the cover and lower the budget", "Repeat until no vertex qualifies"]},
+  {"label": "The kernel size bound", "section": "The kernel size bound", "subgoals": ["Compute the remaining budget", "Bound the remaining edges by its square", "Reject when the graph has more edges than the bound"]}
+]

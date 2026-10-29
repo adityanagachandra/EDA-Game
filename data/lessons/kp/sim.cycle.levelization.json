@@ -1,0 +1,5 @@
+[
+  {"label": "Levels as longest paths from sources", "section": "Levels as longest paths from sources", "subgoals": ["Cut the design at register boundaries", "Assign level 0 to primary inputs and flip-flop outputs", "Set each gate's level to one plus the maximum level of its inputs"]},
+  {"label": "Computing levels in topological order", "section": "Computing levels in topological order", "subgoals": ["Order the gates topologically", "Propagate levels from inputs to outputs in that order", "Count the gates at each level and the maximum level"]},
+  {"label": "Why level order works and when it fails", "section": "Why level order works and when it fails", "subgoals": ["Show that level order evaluates each gate after all its inputs", "Group gates of one level as independent work", "Detect combinational loops as graphs with no topological order"]}
+]

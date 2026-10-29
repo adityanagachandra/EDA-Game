@@ -1,0 +1,5 @@
+[
+  {"label": "The bounding box of a net", "section": "The bounding box of a net", "subgoals": ["Find the minimum and maximum pin x and y", "Add the x span and the y span", "Notice that interior pins do not change HPWL"]},
+  {"label": "Total and weighted wirelength", "section": "Total and weighted wirelength", "subgoals": ["Compute HPWL for every net", "Multiply each by its net weight", "Sum the weighted values into the placement objective"]},
+  {"label": "How good an estimate it is", "section": "How good an estimate it is", "subgoals": ["State when HPWL equals the Steiner minimum tree", "Explain why HPWL underestimates large nets", "Identify the non-differentiability that analytical placers must smooth"]}
+]

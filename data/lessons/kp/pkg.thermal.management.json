@@ -1,0 +1,5 @@
+[
+  {"label": "Interface materials", "section": "Interface materials", "subgoals": ["Divide bond-line thickness by conductivity times area", "Multiply by power for the drop", "Link warpage to bond-line thickness"]},
+  {"label": "Required heat-sink resistance", "section": "Required heat-sink resistance", "subgoals": ["Divide the junction-to-ambient budget by power", "Subtract the junction-to-case and interface resistances", "Pick a sink at or below the remainder"]},
+  {"label": "Convection and fin area", "section": "Convection and fin area", "subgoals": ["Write the convective resistance as one over h times area", "Solve for the area at the target resistance", "Convert square metres to square centimetres"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The interference graph",
+  "section": "The interference graph",
+  "subgoals": [
+   "Draw one vertex per value",
+   "Join two values whose lifetimes share a step",
+   "Count the edges by testing each pair for overlap"
+  ]
+ },
+ {
+  "label": "Chromatic number equals the largest clique",
+  "section": "Chromatic number equals the largest clique",
+  "subgoals": [
+   "Find the step with the most live values",
+   "Read that count as the largest clique",
+   "Use perfection of interval graphs to equate it with the chromatic number"
+  ]
+ },
+ {
+  "label": "Checking a binding and leaving the interval world",
+  "section": "Checking a binding and leaving the interval world",
+  "subgoals": [
+   "Group the values by assigned register",
+   "Test each same-register pair for overlapping lifetimes",
+   "Flag loop-wrapping lifetimes that turn the graph into circular arcs"
+  ]
+ }
+]

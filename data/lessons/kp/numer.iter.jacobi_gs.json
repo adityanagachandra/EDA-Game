@@ -1,0 +1,29 @@
+[
+ {
+  "label": "A node update averages its neighbours",
+  "section": "A node update averages its neighbours",
+  "subgoals": [
+   "Write KCL at the node with neighbours fixed",
+   "Form the conductance-weighted sum of neighbour voltages minus the load",
+   "Divide by the total conductance at the node"
+  ]
+ },
+ {
+  "label": "One sweep on a resistive grid",
+  "section": "One sweep on a resistive grid",
+  "subgoals": [
+   "Apply the node update to each node in the sweep",
+   "Use old values for Jacobi and new values for Gauss-Seidel",
+   "Record the voltages after the sweep"
+  ]
+ },
+ {
+  "label": "Convergence rate and diagonal dominance",
+  "section": "Convergence rate and diagonal dominance",
+  "subgoals": [
+   "Compute the spectral radius for the chain length",
+   "Divide the target digits times ln 10 by minus ln rho",
+   "Halve the count for Gauss-Seidel"
+  ]
+ }
+]

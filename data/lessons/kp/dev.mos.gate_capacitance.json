@@ -1,0 +1,5 @@
+[
+  {"label": "Gate capacitance in the linear region", "section": "Gate capacitance in the linear region", "subgoals": ["Compute the intrinsic gate-channel capacitance W L C_ox", "Split it evenly between source and drain", "Add the overlap capacitance per edge"]},
+  {"label": "Gate capacitance in saturation", "section": "Gate capacitance in saturation", "subgoals": ["Assign two thirds of W L C_ox to the source in saturation", "Leave only the overlap term on the drain", "Contrast Meyer capacitances with charge-based models"]},
+  {"label": "The Miller effect", "section": "The Miller effect", "subgoals": ["Compute C_gs and C_gd for the operating region", "Multiply C_gd by one plus the gain magnitude", "Sum to get the effective input capacitance"]}
+]

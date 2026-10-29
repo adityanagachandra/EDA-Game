@@ -1,0 +1,5 @@
+[
+  {"label": "Reset synchronizers", "section": "Reset synchronizers", "subgoals": ["Name recovery and removal as reset-pin timing checks", "Tie the first flop's input to the inactive level", "Assert asynchronously and release synchronously in each clock domain"]},
+  {"label": "Reset-domain crossings", "section": "Reset-domain crossings", "subgoals": ["Identify flops whose reset differs from their source's reset", "Explain how an asynchronous source reset can corrupt a running destination", "Isolate the destination or order the resets"]},
+  {"label": "Verifying reset behavior", "section": "Verifying reset behavior", "subgoals": ["Run reset sequences in four-state simulation to expose uninitialized flops", "Assert the required order of reset releases between domains", "Test soft resets of one block while other traffic runs"]}
+]

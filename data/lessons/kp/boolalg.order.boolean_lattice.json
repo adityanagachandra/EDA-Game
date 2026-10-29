@@ -1,0 +1,5 @@
+[
+  {"label": "Bit vectors ordered componentwise", "section": "Bit vectors ordered componentwise", "subgoals": ["Compare two vectors bit by bit", "Read the interval between them as the bits that may change", "Raise 2 to the number of free bits"]},
+  {"label": "Functions ordered by implication", "section": "Functions ordered by implication", "subgoals": ["Check that the ON-set of f lies inside the ON-set of g", "Count the rows in g but not in f", "Count the functions between f and g as 2 to that number"]},
+  {"label": "Join and meet of functions", "section": "Join and meet of functions", "subgoals": ["Take the OR of two functions as their join", "Take the AND as their meet", "Count the ON rows of each"]}
+]

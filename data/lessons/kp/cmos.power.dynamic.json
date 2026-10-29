@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Energy per transition",
+    "section": "Energy per transition",
+    "subgoals": [
+      "Compute the charge drawn from the supply as C times VDD",
+      "Split the delivered energy between the capacitor and the pull-up",
+      "Charge a full rise-and-fall cycle at C times VDD squared"
+    ]
+  },
+  {
+    "label": "The alpha C V squared f formula",
+    "section": "The alpha C V squared f formula",
+    "subgoals": [
+      "Define alpha as the 0-to-1 transition probability per cycle",
+      "Multiply alpha, capacitance, supply squared and frequency",
+      "Reconcile the toggle-count convention with its factor of one half"
+    ]
+  },
+  {
+    "label": "Scaling levers",
+    "section": "Scaling levers",
+    "subgoals": [
+      "Compute the power ratio from the squared voltage change",
+      "Combine voltage and frequency scaling into a cubic dependence",
+      "Name the technique that targets each factor of the formula"
+    ]
+  }
+]

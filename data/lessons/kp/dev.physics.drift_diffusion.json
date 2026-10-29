@@ -1,0 +1,5 @@
+[
+  {"label": "Poisson plus continuity", "section": "Poisson plus continuity", "subgoals": ["Name the three unknown fields: potential, electron and hole density", "Write Poisson's equation with the four charge terms", "Close the system with continuity and drift-plus-diffusion currents"]},
+  {"label": "Discretization and solution", "section": "Discretization and solution", "subgoals": ["Discretize with box integration on the mesh", "Use Scharfetter-Gummel fluxes along mesh edges", "Choose decoupled Gummel iteration or a coupled Newton solve by bias"]},
+  {"label": "Where drift-diffusion stops", "section": "Where drift-diffusion stops", "subgoals": ["Identify the local-equilibrium and lattice-temperature assumptions", "Recognize velocity overshoot and hot carriers as failures of those assumptions", "Add quantum corrections such as density gradient for thin-body confinement"]}
+]

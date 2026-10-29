@@ -1,0 +1,5 @@
+[
+  {"label": "The new arrival at the changed node", "section": "The new arrival at the changed node", "subgoals": ["Recompute the changed arc's contribution with the new delay", "Take the maximum with the unchanged fanins", "Compare the new arrival with the old one"]},
+  {"label": "Counting the nodes that actually change", "section": "Counting the nodes that actually change", "subgoals": ["Visit the cone in level order", "Recompute each node's arrival from its fanins", "Schedule a node's fanouts only when its arrival changed"]},
+  {"label": "Arrivals at downstream endpoints", "section": "Arrivals at downstream endpoints", "subgoals": ["Follow the change to the endpoint through each merge", "Check whether a merge masks the change", "Report the endpoint arrival after propagation stops"]}
+]

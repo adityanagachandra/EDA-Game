@@ -1,0 +1,5 @@
+[
+  {"label": "Variables, objective and constraint", "section": "Variables, objective and constraint", "subgoals": ["Name the cell coordinates as the decision variables", "Write the objective as weighted wirelength", "State the bin density constraint with a target fraction"]},
+  {"label": "Three families of relaxation", "section": "Three families of relaxation", "subgoals": ["Describe min-cut placement as recursive partitioning", "Describe quadratic placement as a linear system plus spreading", "Describe nonlinear placement as smooth wirelength plus a density penalty"]},
+  {"label": "Stopping and handing off", "section": "Stopping and handing off", "subgoals": ["Stop at a small target overflow rather than zero", "Detect hot spots hidden by a low average overflow", "Add timing and routability through weights, targets and inflation"]}
+]

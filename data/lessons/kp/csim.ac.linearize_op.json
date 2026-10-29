@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Transconductance at the bias point",
+    "section": "Transconductance at the bias point",
+    "subgoals": [
+      "Read the bias current and overdrive from the operating point",
+      "Compute gm as twice the current over the overdrive",
+      "Use the model derivative in place of the formula for short-channel devices"
+    ]
+  },
+  {
+    "label": "Output resistance",
+    "section": "Output resistance",
+    "subgoals": [
+      "Read lambda and the bias current",
+      "Compute the output resistance as one over lambda times the current",
+      "Stamp gm, gds and the capacitances at the frozen operating point"
+    ]
+  },
+  {
+    "label": "Intrinsic gain",
+    "section": "Intrinsic gain",
+    "subgoals": [
+      "Multiply gm by ro",
+      "Simplify to two over lambda times the overdrive",
+      "Use the intrinsic gain to sanity-check simulated stage gains"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Constraints as a graph", "section": "Constraints as a graph", "subgoals": ["Turn each setup and hold check into a difference constraint", "Draw each constraint as a weighted edge", "Sum the weights around a cycle to test feasibility"]},
+  {"label": "Shortest paths give a schedule", "section": "Shortest paths give a schedule", "subgoals": ["Add a virtual source with zero-weight edges", "Relax every edge until nothing changes", "Read the distances as clock arrival times"]},
+  {"label": "The minimum period", "section": "The minimum period", "subgoals": ["Sum the stage requirements around each cycle", "Divide by the number of stages", "Take the worst cycle as the period bound"]}
+]

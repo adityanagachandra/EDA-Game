@@ -1,0 +1,5 @@
+[
+  {"label": "Phase noise and its slope", "section": "Phase noise and its slope", "subgoals": ["Define phase noise in dBc per hertz at an offset", "Scale by 20 dB per decade in the one over f squared region", "Recognize the flicker and floor regions"]},
+  {"label": "Multiplication by N", "section": "Multiplication by N", "subgoals": ["Multiply phase deviations by N", "Add twenty log ten N to the reference phase noise", "Subtract the same amount when dividing"]},
+  {"label": "From phase noise to jitter", "section": "From phase noise to jitter", "subgoals": ["Integrate the phase noise over offset, doubling for both sidebands", "Take the square root for RMS phase", "Divide by two pi f0 to get RMS jitter"]}
+]

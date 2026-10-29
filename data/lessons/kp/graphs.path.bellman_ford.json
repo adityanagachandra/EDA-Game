@@ -1,0 +1,5 @@
+[
+  {"label": "Relaxing every arc in rounds", "section": "Relaxing every arc in rounds", "subgoals": ["Initialize the source to 0 and every other vertex to infinity", "Relax every arc once per round", "Run n - 1 rounds to reach the final distances"]},
+  {"label": "Arc order and early termination", "section": "Arc order and early termination", "subgoals": ["Note that a relaxation can use a value lowered in the same round", "Stop when a full round changes nothing", "Relax only arcs out of vertices whose distance changed"]},
+  {"label": "Negative cycles", "section": "Negative cycles", "subgoals": ["Test whether any arc still relaxes after n - 1 rounds", "Follow predecessor pointers to recover the negative cycle", "Report the cycle's constraints as the conflicting set"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Resistivity and sheet resistance", "section": "Resistivity and sheet resistance", "subgoals": ["Convert the resistivity to ohm metres", "Divide by the layer thickness to get sheet resistance", "Report the result in ohm per square"]},
+  {"label": "Counting squares", "section": "Counting squares", "subgoals": ["Divide the wire length by its width to count squares", "Multiply the square count by the sheet resistance", "Scale the result inversely with any change of width"]},
+  {"label": "Vias and parallel paths", "section": "Vias and parallel paths", "subgoals": ["Compute each layer segment's resistance from its squares", "Divide the via resistance by the number of parallel cuts", "Add the series segments and via arrays for the total"]}
+]

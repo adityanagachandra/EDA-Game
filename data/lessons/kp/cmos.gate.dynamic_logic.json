@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Precharge and evaluate",
+    "section": "Precharge and evaluate",
+    "subgoals": [
+      "Precharge the output high while the clock is low",
+      "Evaluate through the nMOS network when the clock rises",
+      "Count transistors as the pull-down network plus precharge and foot"
+    ]
+  },
+  {
+    "label": "Charge sharing",
+    "section": "Charge sharing",
+    "subgoals": [
+      "Identify the internal nodes the output can connect to during evaluation",
+      "Conserve charge to find the shared voltage",
+      "Compare the shared voltage with the next stage's switching threshold"
+    ]
+  },
+  {
+    "label": "Monotonicity, domino and keepers",
+    "section": "Monotonicity, domino and keepers",
+    "subgoals": [
+      "Require inputs to rise monotonically during evaluation",
+      "Insert a static inverter so domino stages can cascade",
+      "Size a weak keeper to hold the node against leakage"
+    ]
+  }
+]

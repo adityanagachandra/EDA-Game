@@ -1,0 +1,5 @@
+[
+  {"label": "Fan-in capacity", "section": "Fan-in capacity", "subgoals": ["Divide each die side by the ball pitch", "Floor and multiply to get the ball count", "Compare with the I/O the die needs"]},
+  {"label": "Fan-out area expansion", "section": "Fan-out area expansion", "subgoals": ["Round the square root of the ball count up", "Multiply by the pitch for the package side", "Divide package area by die area"]},
+  {"label": "Reconstituted wafers and panels", "section": "Reconstituted wafers and panels", "subgoals": ["Add the saw street to the package size", "Count units along each panel side and multiply", "Name die shift and warpage as the process limits"]}
+]

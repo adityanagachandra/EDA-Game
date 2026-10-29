@@ -1,0 +1,5 @@
+[
+  {"label": "Variance of a sum", "section": "Variance of a sum", "subgoals": ["Add the means of the two delays", "Add the variances plus twice rho times the sigmas", "Generalize to a transpose Sigma a for a weighted sum"]},
+  {"label": "A path of n correlated stages", "section": "A path of n correlated stages", "subgoals": ["Count the n diagonal and n times n minus one off-diagonal terms", "Weight the off-diagonal terms by rho sigma squared", "Take the square root for the path sigma"]},
+  {"label": "Relative spread and logic depth", "section": "Relative spread and logic depth", "subgoals": ["Scale the mean with n and the independent sigma with the square root of n", "Compute three sigma over the mean for the path", "Explain depth-dependent derating from the shrinking ratio"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "One stage at a time", "section": "One stage at a time", "subgoals": ["Track the rising and falling edges through one buffer", "Take the difference of the two delays as the per-stage change", "Multiply by the number of stages"]},
+  {"label": "Duty cycle at the output", "section": "Duty cycle at the output", "subgoals": ["Compute the output high pulse", "Divide by the period", "Identify the half-cycle paths that lose time"]},
+  {"label": "Why inverters cancel", "section": "Why inverters cancel", "subgoals": ["Track a pulse through two inverters", "Show that identical pairs cancel", "Add the leftover stage for an odd count"]}
+]

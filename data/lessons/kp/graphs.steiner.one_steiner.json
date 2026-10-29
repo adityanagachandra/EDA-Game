@@ -1,0 +1,5 @@
+[
+  {"label": "The gain of one Steiner point", "section": "The gain of one Steiner point", "subgoals": ["Compute the MST of the pins", "Compute the MST with the candidate point added", "Subtract to get the candidate's gain"]},
+  {"label": "Choosing the best point", "section": "Choosing the best point", "subgoals": ["Evaluate the gain of every non-pin Hanan point", "Pick the point with the largest gain", "Use incremental MST updates to cut the cost of a round"]},
+  {"label": "Iterating to a fixed point", "section": "Iterating to a fixed point", "subgoals": ["Add the best point while its gain is positive", "Drop Steiner points whose degree falls to 2 or less", "Stop when no candidate gives a positive gain"]}
+]

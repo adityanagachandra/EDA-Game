@@ -1,0 +1,5 @@
+[
+  {"label": "Time between launch and capture edges", "section": "Time between launch and capture edges", "subgoals": ["Read the rising and falling edge times from the waveform", "Find the first opposite edge after the launch edge", "Subtract to get the time available for setup"]},
+  {"label": "Setup slack of a half-cycle path", "section": "Setup slack of a half-cycle path", "subgoals": ["Use the half-cycle window as the available time", "Subtract setup and the launch-side delays", "Report the setup slack"]},
+  {"label": "Hold is easy for half-cycle paths", "section": "Hold is easy for half-cycle paths", "subgoals": ["Find the capture edge before the setup capture edge", "Measure it relative to the launch edge", "Compute the hold slack with that negative offset"]}
+]

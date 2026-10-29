@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Conductance at the iterate",
+    "section": "Conductance at the iterate",
+    "subgoals": [
+      "Evaluate the exponential at the iterate voltage",
+      "Multiply by the saturation current over the thermal voltage",
+      "Compare with the diode current divided by the thermal voltage"
+    ]
+  },
+  {
+    "label": "The equivalent current source",
+    "section": "The equivalent current source",
+    "subgoals": [
+      "Write the tangent line at the iterate",
+      "Compute the intercept current from the diode current and conductance",
+      "Stamp the conductance and the intercept current source"
+    ]
+  },
+  {
+    "label": "What the linear model predicts",
+    "section": "What the linear model predicts",
+    "subgoals": [
+      "Evaluate the companion model at the new voltage",
+      "Evaluate the true exponential at the same voltage",
+      "Compare the two to bound the linearization's trust region"
+    ]
+  }
+]

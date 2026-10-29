@@ -1,0 +1,5 @@
+[
+  {"label": "The worst-case carry chain", "section": "The worst-case carry chain", "subgoals": ["Charge one carry delay per column the carry passes", "Add the sum delay of the top column", "Multiply by the gate delay to get absolute time"]},
+  {"label": "Converting to time and sizing to a budget", "section": "Converting to time and sizing to a budget", "subgoals": ["Multiply the gate-delay count by the delay of one gate", "Solve the delay formula for the largest width under a budget", "Round down to a whole number of bits"]},
+  {"label": "Average versus worst case", "section": "Average versus worst case", "subgoals": ["Identify a carry chain as a generate followed by propagate columns", "Compare the typical longest chain with the worst case", "Explain why a synchronous clock must cover the worst case"]}
+]

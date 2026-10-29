@@ -1,0 +1,5 @@
+[
+  {"label": "The lambda model", "section": "The lambda model", "subgoals": ["Identify the shortening of the effective channel past pinch-off", "Multiply the saturation current by one plus lambda times V_DS", "Note that lambda grows as the channel shortens"]},
+  {"label": "Output resistance", "section": "Output resistance", "subgoals": ["Differentiate the lambda model with respect to V_DS", "Invert lambda times the drain current", "Convert to kilohms"]},
+  {"label": "Intrinsic gain", "section": "Intrinsic gain", "subgoals": ["Write gm as two I_D over the overdrive", "Multiply by r_o equal to one over lambda I_D", "Simplify to two over lambda times the overdrive"]}
+]

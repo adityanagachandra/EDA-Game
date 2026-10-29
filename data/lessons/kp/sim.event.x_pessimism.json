@@ -1,0 +1,5 @@
+[
+  {"label": "X-pessimism at gate level", "section": "X-pessimism at gate level", "subgoals": ["Evaluate a gate-level mux with an X select", "Compare the simulated X with the known hardware output", "Name the lost correlation between s and not s"]},
+  {"label": "X-optimism in RTL control flow", "section": "X-optimism in RTL control flow", "subgoals": ["Trace an if statement with an X condition into its else branch", "Apply case equality so X matches no 0 or 1 item", "Merge both data inputs bitwise for the conditional operator"]},
+  {"label": "Consequences and mitigations", "section": "Consequences and mitigations", "subgoals": ["Explain why X-optimism can hide a missing reset", "Describe X-propagation modes that merge both branches", "Contrast four-state X with randomized initial values in two-state simulation"]}
+]

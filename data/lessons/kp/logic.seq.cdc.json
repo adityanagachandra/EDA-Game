@@ -1,0 +1,5 @@
+[
+  {"label": "Single-bit crossings", "section": "Single-bit crossings", "subgoals": ["Drive the crossing signal directly from a source-domain flip-flop", "Pass it through a chain of at least two destination flip-flops", "Convert short pulses to levels so the slow side cannot miss them"]},
+  {"label": "Multi-bit crossings and reconvergence", "section": "Multi-bit crossings and reconvergence", "subgoals": ["Explain why independently synchronized bits can skew by a cycle", "Gray-code values that only step by one", "Qualify a stable data bus with one synchronized control signal"]},
+  {"label": "The asynchronous FIFO", "section": "The asynchronous FIFO", "subgoals": ["Gray-code the read and write pointers", "Synchronize each pointer into the opposite domain for the flags", "Size the depth from burst length and the rate mismatch"]}
+]

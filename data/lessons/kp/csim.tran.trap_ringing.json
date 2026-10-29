@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The trapezoidal amplification factor",
+    "section": "The trapezoidal amplification factor",
+    "subgoals": [
+      "Form the ratio of step to time constant",
+      "Evaluate the trapezoidal factor",
+      "Read a negative factor as sign-alternating ringing"
+    ]
+  },
+  {
+    "label": "Ringing over several steps",
+    "section": "Ringing over several steps",
+    "subgoals": [
+      "Raise the factor to the number of steps",
+      "Multiply by the starting value",
+      "Compare with the true decayed value"
+    ]
+  },
+  {
+    "label": "Damping with a backward Euler step",
+    "section": "Damping with a backward Euler step",
+    "subgoals": [
+      "Apply the backward-Euler factor for the first step",
+      "Apply the trapezoidal factor for each later step",
+      "Weigh damping of stiff modes against damping of real oscillations"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The ideal SQNR", "section": "The ideal SQNR", "subgoals": ["Compute the full-scale sine power as VFS squared over 8", "Divide by the quantization noise power delta squared over 12", "Convert the ratio to dB to get 6.02N plus 1.76"]},
+  {"label": "The uniform-noise model", "section": "The uniform-noise model", "subgoals": ["Model the error as uniform over one step", "Integrate to get the variance delta squared over 12", "Recognize the correlated-input regime where the model fails"]},
+  {"label": "Oversampling", "section": "Oversampling", "subgoals": ["Spread the noise power uniformly up to half the sampling rate", "Divide the in-band noise by the oversampling ratio", "Add ten log ten OSR, about half a bit per doubling without shaping"]}
+]

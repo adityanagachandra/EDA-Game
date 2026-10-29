@@ -1,0 +1,5 @@
+[
+  {"label": "Vertices of a layered grid", "section": "Vertices of a layered grid", "subgoals": ["Place one vertex per track intersection per layer", "Multiply columns, rows and layers to count vertices", "Remove or penalize vertices on blockages"]},
+  {"label": "Preferred directions and wire edges", "section": "Preferred directions and wire edges", "subgoals": ["Alternate horizontal and vertical directions by layer", "Count wire edges along each layer's preferred direction", "Sum the horizontal and vertical layer counts"]},
+  {"label": "Vias and edge costs", "section": "Vias and edge costs", "subgoals": ["Add one via edge per point between each pair of adjacent layers", "Sum wire and via edges for the total", "Encode wirelength, via, congestion and history costs on the edges"]}
+]

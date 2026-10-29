@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Instances, pins and nets",
+    "section": "Instances, pins and nets",
+    "subgoals": [
+      "Name the master cell an instance references",
+      "Separate the driver of a net from its sinks",
+      "Count a net's fanout as its sink pins"
+    ]
+  },
+  {
+    "label": "The netlist as a hypergraph",
+    "section": "The netlist as a hypergraph",
+    "subgoals": [
+      "Represent each net as a hyperedge on instances",
+      "Sum hyperedge sizes to get the pin count",
+      "Count hyperedges cut by a partition"
+    ]
+  },
+  {
+    "label": "Graph models of a hypergraph",
+    "section": "Graph models of a hypergraph",
+    "subgoals": [
+      "Replace a p-pin net with p times p minus 1 over 2 clique edges",
+      "Replace a p-pin net with a star of p edges",
+      "Explain why large nets get star models"
+    ]
+  }
+]

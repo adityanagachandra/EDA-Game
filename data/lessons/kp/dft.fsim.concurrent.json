@@ -1,0 +1,5 @@
+[
+  {"label": "Faulty gate records", "section": "Faulty gate records", "subgoals": ["Store the good gate's input and output values", "Keep a record only for faults whose values differ at the gate", "Delete records that converge back to the good values"]},
+  {"label": "Divergence and scheduling", "section": "Divergence and scheduling", "subgoals": ["Evaluate each faulty copy's output from its input values", "Compare it with the good gate's output", "Schedule only the diverging copies at the fanout gates"]},
+  {"label": "Where it fits", "section": "Where it fits", "subgoals": ["Carry diverged state records into the next clock cycle", "Mark a fault detected when its record differs at an output", "Prefer bit-parallel PPSFP for full-scan combinational problems"]}
+]

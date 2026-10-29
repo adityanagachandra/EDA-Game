@@ -1,0 +1,5 @@
+[
+  {"label": "The four layers of a router", "section": "The four layers of a router", "subgoals": ["Place legality checks and the path model in the core", "Place costs, rip-up policy and ordering in the strategy layer", "Place numeric settings in parameters and live state in hooks"]},
+  {"label": "Why legality stays in the core", "section": "Why legality stays in the core", "subgoals": ["Enforce legality in the core for every strategy", "Check plug-in outputs against the seam contract", "Expose typed context sufficient for the expected policies"]},
+  {"label": "Performance and determinism at the seam", "section": "Performance and determinism at the seam", "subgoals": ["Batch plug-in calls per region or iteration", "Forbid hidden global state in plug-ins", "Classify each request as core, strategy, parameter or hook"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Uncertain endpoints", "section": "Uncertain endpoints", "subgoals": ["Bound the true slack by the prediction plus or minus the error bound", "Classify endpoints as sure-pass, sure-fail or uncertain", "Send only the uncertain endpoints to the accurate timer"]},
+  {"label": "Bounding the true WNS", "section": "Bounding the true WNS", "subgoals": ["Take the smallest predicted slack", "Subtract the error bound", "Use the result as a guaranteed lower bound for pruning"]},
+  {"label": "Choosing the error bound", "section": "Choosing the error bound", "subgoals": ["Multiply the validation error sigma by the chosen multiple", "Count the endpoints whose predicted slack lies within that bound", "Confirm every accepted change with the accurate timer"]}
+]

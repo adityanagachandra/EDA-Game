@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Transconductance from the square law",
+    "section": "Transconductance from the square law",
+    "subgoals": [
+      "Compute the overdrive at the iterate",
+      "Differentiate the drain current with respect to the gate-source voltage",
+      "Stamp the result as a voltage-controlled current source"
+    ]
+  },
+  {
+    "label": "Output conductance",
+    "section": "Output conductance",
+    "subgoals": [
+      "Differentiate the drain current with respect to the drain-source voltage",
+      "Evaluate the derivative at the iterate",
+      "Stamp the conductance between drain and source"
+    ]
+  },
+  {
+    "label": "The MOSFET equivalent current",
+    "section": "The MOSFET equivalent current",
+    "subgoals": [
+      "Evaluate the drain current at the iterate",
+      "Subtract the gm and gds terms at the iterate voltages",
+      "Stamp the remaining intercept as a drain-to-source current source"
+    ]
+  }
+]

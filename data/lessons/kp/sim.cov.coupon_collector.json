@@ -1,0 +1,5 @@
+[
+  {"label": "Waiting for one bin", "section": "Waiting for one bin", "subgoals": ["Identify the wait for one bin as geometric with parameter p", "Compute the expected wait as 1 over p", "Read the long tail from the probability (1 - p)^k of still missing"]},
+  {"label": "All n bins: n times the harmonic number", "section": "All n bins: n times the harmonic number", "subgoals": ["Write the wait for the next new bin as n over j", "Sum the waits to get n H_n", "Evaluate the harmonic number for the given n"]},
+  {"label": "The last bins dominate", "section": "The last bins dominate", "subgoals": ["Count the missing bins as n minus k", "Compute the remaining expected tests as n H_(n-k)", "Compare the cost of the last bins with the first ones"]}
+]

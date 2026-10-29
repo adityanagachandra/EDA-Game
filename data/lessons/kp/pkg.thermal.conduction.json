@@ -1,0 +1,5 @@
+[
+  {"label": "Fourier's law", "section": "Fourier's law", "subgoals": ["Write heat flux as conductivity times gradient", "Integrate across a slab for the heat flow", "Rank package materials by conductivity"]},
+  {"label": "Resistance of a layer", "section": "Resistance of a layer", "subgoals": ["Write resistance as thickness over conductivity times area", "Use micrometres and square millimetres to cancel units", "Multiply resistance by power for the drop"]},
+  {"label": "Sizing a material for a budget", "section": "Sizing a material for a budget", "subgoals": ["Rearrange the resistance formula for conductivity", "Substitute power, thickness, area and budget", "Note spreading and temperature dependence"]}
+]

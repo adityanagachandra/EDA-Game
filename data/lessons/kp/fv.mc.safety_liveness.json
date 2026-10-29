@@ -1,0 +1,5 @@
+[
+  {"label": "Safety: nothing bad happens", "section": "Safety: nothing bad happens", "subgoals": ["Ask whether a violation is visible after a finite prefix", "Classify bounded-response and invariant properties as safety", "Expect a finite counterexample trace"]},
+  {"label": "Liveness: something good eventually happens", "section": "Liveness: something good eventually happens", "subgoals": ["Ask whether any finite prefix could still be completed into a good run", "Classify eventually and infinitely-often properties as liveness", "Expect a lasso counterexample: prefix plus a loop without the good event"]},
+  {"label": "Fairness and checking liveness", "section": "Fairness and checking liveness", "subgoals": ["Add fairness constraints that exclude unrealistic environment runs", "Check liveness with a fair-cycle search, loop-detecting BMC or liveness-to-safety", "Weigh the trade-off of replacing liveness by bounded response"]}
+]

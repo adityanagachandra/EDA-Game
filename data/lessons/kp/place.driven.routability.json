@@ -1,0 +1,5 @@
+[
+  {"label": "RUDY wire density", "section": "RUDY wire density", "subgoals": ["Take the net's bounding box width and height", "Divide the HPWL by the box area for the density", "Clamp degenerate boxes to a minimum size"]},
+  {"label": "Demand per bin", "section": "Demand per bin", "subgoals": ["Clip each net's box to the bin", "Multiply the overlap area by the net's density", "Sum over nets for the bin's demand"]},
+  {"label": "From demand to congestion and action", "section": "From demand to congestion and action", "subgoals": ["Compute bin capacity from layers, area and track pitch", "Divide demand by capacity for the congestion ratio", "Act on bins above 1 by inflation or lower target density"]}
+]

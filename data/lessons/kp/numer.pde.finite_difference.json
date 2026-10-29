@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The second-difference stencil",
+  "section": "The second-difference stencil",
+  "subgoals": [
+   "Expand the neighbouring values in Taylor series",
+   "Combine them so the first derivative cancels",
+   "Divide the second difference by h squared"
+  ]
+ },
+ {
+  "label": "The five-point Laplacian on a thermal grid",
+  "section": "The five-point Laplacian on a thermal grid",
+  "subgoals": [
+   "Write steady conduction with a heat source",
+   "Discretize the Laplacian with the five-point stencil",
+   "Solve the node equation for the centre temperature"
+  ]
+ },
+ {
+  "label": "Truncation error and mesh refinement",
+  "section": "Truncation error and mesh refinement",
+  "subgoals": [
+   "State the second-order error rate",
+   "Divide the error by the square of the refinement factor",
+   "Use the observed rate to check the discretization"
+  ]
+ }
+]

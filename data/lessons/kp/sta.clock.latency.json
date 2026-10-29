@@ -1,0 +1,5 @@
+[
+  {"label": "Clock arrival at a sink", "section": "Clock arrival at a sink", "subgoals": ["Start from the source latency", "Add each buffer delay along the tree path to the sink", "Sum them as the clock arrival at the sink"]},
+  {"label": "Skew between two sinks", "section": "Skew between two sinks", "subgoals": ["Compute the clock arrival at the launch and capture flops", "Subtract launch arrival from capture arrival", "Note that the source latency and shared trunk cancel"]},
+  {"label": "Propagated clocks in the setup check", "section": "Propagated clocks in the setup check", "subgoals": ["Use each flop's propagated clock arrival in the check", "Compute the setup slack with launch and capture arrivals", "Switch from ideal to propagated clocks after the tree is built"]}
+]

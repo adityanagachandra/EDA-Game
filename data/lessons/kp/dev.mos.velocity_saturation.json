@@ -1,0 +1,5 @@
+[
+  {"label": "The critical field", "section": "The critical field", "subgoals": ["Divide saturation velocity by mobility for the critical field", "Convert the field to volts per micron", "Multiply by channel length to compare with the drain voltage"]},
+  {"label": "Current in the saturated-velocity limit", "section": "Current in the saturated-velocity limit", "subgoals": ["Compute the oxide capacitance from EOT", "Multiply by saturation velocity and overdrive", "Convert amperes per centimetre to microamperes per micron"]},
+  {"label": "The alpha-power law", "section": "The alpha-power law", "subgoals": ["Raise the overdrive to the power alpha", "Form the delay ratio of V_DD over overdrive to the alpha at two supplies", "Recognize where the law fails near threshold"]}
+]

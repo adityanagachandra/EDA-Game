@@ -1,0 +1,5 @@
+[
+  {"label": "Arrival through a match", "section": "Arrival through a match", "subgoals": ["Sum fanout pin capacitances and wire capacitance into the load", "Take the latest input arrival plus its pin delay", "Add drive resistance times load"]},
+  {"label": "Reading an NLDM table", "section": "Reading an NLDM table", "subgoals": ["Locate the query between two slew rows and two load columns", "Compute the fractional positions along each axis", "Weight the four corner entries bilinearly"]},
+  {"label": "Load couples neighbouring choices", "section": "Load couples neighbouring choices", "subgoals": ["Compute the driver's extra delay from the larger input capacitance", "Compute the gate's own change from its lower resistance", "Add both to get the path effect of the swap"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "From nanoseconds to cycles",
+  "section": "From nanoseconds to cycles",
+  "subgoals": [
+   "Look up the operator delay for the type and width",
+   "Divide by the usable clock period",
+   "Round up to whole cycles"
+  ]
+ },
+ {
+  "label": "Latency of a registered chain",
+  "section": "Latency of a registered chain",
+  "subgoals": [
+   "Convert each operation's delay to cycles",
+   "Sum the cycle counts along the chain",
+   "Compare cycles times period with the raw delay to see the quantization loss"
+  ]
+ },
+ {
+  "label": "Choosing the clock period",
+  "section": "Choosing the clock period",
+  "subgoals": [
+   "Compute the cycle count of the chain at each candidate period",
+   "Multiply by the period to get total time",
+   "Weigh time against the extra registers of a faster clock"
+  ]
+ }
+]

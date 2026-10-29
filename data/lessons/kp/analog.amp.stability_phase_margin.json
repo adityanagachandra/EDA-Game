@@ -1,0 +1,5 @@
+[
+  {"label": "Phase margin from the loop gain", "section": "Phase margin from the loop gain", "subgoals": ["Define phase margin as 180 degrees plus the loop phase at crossover", "Sum the arctangent of crossover over each pole", "Subtract the pole phases from 180 degrees"]},
+  {"label": "Zeros and the right-half plane", "section": "Zeros and the right-half plane", "subgoals": ["Add phase for a left-half-plane zero", "Subtract phase for a right-half-plane zero", "Recompute the margin with the zero included"]},
+  {"label": "Designing for a target margin", "section": "Designing for a target margin", "subgoals": ["Approximate the dominant pole as contributing minus 90 degrees", "Solve for the non-dominant pole from the target margin", "Translate the pole condition into a ratio of gm and capacitances"]}
+]

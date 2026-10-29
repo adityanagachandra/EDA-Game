@@ -1,0 +1,5 @@
+[
+  {"label": "Reading live state", "section": "Reading live state", "subgoals": ["Choose consistent points between phases for snapshots", "Expose metrics and identifiers rather than prose", "Default every hook to read-only access"]},
+  {"label": "The cost of a hook", "section": "The cost of a hook", "subgoals": ["Divide snapshot cost by the iterations between snapshots", "Express the hook overhead as a fraction of runtime", "Request detailed snapshots only when cheap metrics change"]},
+  {"label": "Injecting behavior safely", "section": "Injecting behavior safely", "subgoals": ["Restrict injection to defined points between phases", "Classify each injected change by its tier", "Re-check engine invariants after every injection"]}
+]

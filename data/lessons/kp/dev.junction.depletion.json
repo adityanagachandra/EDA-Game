@@ -1,0 +1,5 @@
+[
+  {"label": "Width of the depletion region", "section": "Width of the depletion region", "subgoals": ["Write charge neutrality across the two depleted sides", "Integrate Poisson's equation to relate width to total potential drop", "Evaluate the width with built-in plus reverse voltage"]},
+  {"label": "Capacitance per unit area", "section": "Capacitance per unit area", "subgoals": ["Approximate a one-sided junction by the lightly doped side", "Divide silicon permittivity by the width", "Convert F per square centimetre to fF per square micron"]},
+  {"label": "Capacitance versus bias", "section": "Capacitance versus bias", "subgoals": ["Write the capacitance as a power of one plus V_R over V_bi", "Take the square-root ratio for an abrupt junction", "Use one over C squared versus bias to extract doping"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Process, voltage and temperature",
+    "section": "Process, voltage and temperature",
+    "subgoals": [
+      "List the process corners including skewed ones",
+      "Combine process, voltage and temperature into one library per corner",
+      "Combine device corners with separate interconnect extraction corners"
+    ]
+  },
+  {
+    "label": "Which corner stresses which check",
+    "section": "Which corner stresses which check",
+    "subgoals": [
+      "Assign slow, low-voltage, hot conditions to setup traditionally",
+      "Assign fast, high-voltage, cold conditions to hold traditionally",
+      "Check both temperature extremes when temperature inversion applies"
+    ]
+  },
+  {
+    "label": "Choosing an affordable corner set",
+    "section": "Choosing an affordable corner set",
+    "subgoals": [
+      "Select dominant corner combinations for each check",
+      "Evaluate every fix at all active corners together",
+      "Weigh each added corner against its characterization and run cost"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Engines as the reward function", "section": "Engines as the reward function", "subgoals": ["Define the action as a model output", "Compute the reward by running engines on it", "Raise the probability of above-average actions"]},
+  {"label": "What can be rewarded", "section": "What can be rewarded", "subgoals": ["Distinguish binary verdicts from continuous metrics", "Gate on verdicts before scoring metrics", "Prefer rewards a checker can establish exactly"]},
+  {"label": "Where the reward is computed", "section": "Where the reward is computed", "subgoals": ["Use fast engines for most rewards", "Compute customer-data rewards on-site in the sandbox", "Version reward engines and keep them deterministic"]}
+]

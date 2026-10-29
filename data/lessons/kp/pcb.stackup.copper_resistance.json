@@ -1,0 +1,5 @@
+[
+  {"label": "Resistance from geometry", "section": "Resistance from geometry", "subgoals": ["Compute the cross-section from width and copper weight", "Apply R equals rho L over A in consistent units", "Estimate resistance from squares times sheet resistance"]},
+  {"label": "Voltage drop on power traces", "section": "Voltage drop on power traces", "subgoals": ["Multiply current by trace resistance to get the drop", "Compare the drop with the rail's tolerance", "Replace a trace with a plane or remote sense when the drop is too large"]},
+  {"label": "Temperature and frequency effects", "section": "Temperature and frequency effects", "subgoals": ["Scale resistance to the operating temperature", "Check a voltage-drop budget at the hot corner", "Recognize when skin effect makes DC resistance a lower bound"]}
+]

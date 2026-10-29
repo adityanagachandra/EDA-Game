@@ -1,0 +1,5 @@
+[
+  {"label": "The recovery required time", "section": "The recovery required time", "subgoals": ["Locate the next active clock edge at the flop", "Add the capture clock latency", "Subtract the recovery time"]},
+  {"label": "Recovery slack", "section": "Recovery slack", "subgoals": ["Sum launch latency, clock-to-Q and the longest reset-path delay", "Subtract the arrival from the recovery required time", "Explain the failure mode when flops leave reset on different cycles"]},
+  {"label": "Removal slack", "section": "Removal slack", "subgoals": ["Sum launch latency, clock-to-Q and the shortest reset-path delay", "Subtract the capture latency plus removal time", "Explain why only the deasserting edge is checked"]}
+]

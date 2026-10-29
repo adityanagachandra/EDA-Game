@@ -1,0 +1,5 @@
+[
+  {"label": "STUMPS and test time", "section": "STUMPS and test time", "subgoals": ["Feed the chains from an LFSR through a phase shifter", "Compact the chain outputs in a MISR", "Multiply patterns by chain length plus one for the session cycles"]},
+  {"label": "Test points", "section": "Test points", "subgoals": ["Multiply excitation and propagation probabilities for detection", "Set propagation to one with an observation point", "Compare the pattern counts for 95 percent confidence before and after"]},
+  {"label": "Weighted random patterns", "section": "Weighted random patterns", "subgoals": ["Drive each input to 1 with the weight probability", "Raise the weight to the k for the all-ones probability", "Block every X source so the signature is predictable"]}
+]

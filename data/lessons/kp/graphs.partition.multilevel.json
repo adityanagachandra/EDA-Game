@@ -1,0 +1,5 @@
+[
+  {"label": "Coarsen, partition, uncoarsen", "section": "Coarsen, partition, uncoarsen", "subgoals": ["Contract the netlist level by level to a small hypergraph", "Partition the coarsest hypergraph with many cheap tries", "Project down level by level and refine with FM at each level"]},
+  {"label": "Depth of the hierarchy", "section": "Depth of the hierarchy", "subgoals": ["Solve N / r to the L at most T for the number of levels", "Sum the geometric series of level sizes for the total work", "Choose r to balance work against cluster quality"]},
+  {"label": "Why it works, and variants", "section": "Why it works, and variants", "subgoals": ["Recognize that coarse moves relocate whole clusters", "Use V-cycles to refine an existing partition again", "Prefer direct k-way refinement when recursive bisection's early cuts hurt"]}
+]

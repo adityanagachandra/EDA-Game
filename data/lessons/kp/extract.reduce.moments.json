@@ -1,0 +1,5 @@
+[
+  {"label": "The first moment", "section": "The first moment", "subgoals": ["Find the shared path resistance between the target and each capacitor", "Multiply each shared resistance by that capacitance", "Sum the products to get the first moment"]},
+  {"label": "The second moment", "section": "The second moment", "subgoals": ["Compute the first moment at every node", "Weight each capacitor by its first moment", "Sum shared resistance times weighted capacitance"]},
+  {"label": "Why lumping fails", "section": "Why lumping fails", "subgoals": ["Compute the exact first moment at the far end", "Compute the lumped product of total resistance and total capacitance", "Express the lump's error as a percentage of the exact value"]}
+]

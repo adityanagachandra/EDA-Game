@@ -1,0 +1,5 @@
+[
+  {"label": "Power in a conductor", "section": "Power in a conductor", "subgoals": ["Square the current", "Multiply by the resistance", "Express the power in milliwatts"]},
+  {"label": "Temperature rise of a wire", "section": "Temperature rise of a wire", "subgoals": ["Compute the wire's dissipated power", "Multiply by its thermal resistance to the substrate", "Add the rise to the substrate temperature"]},
+  {"label": "Transistor self-heating", "section": "Transistor self-heating", "subgoals": ["Multiply drain current by drain voltage for power", "Convert microwatts to milliwatts", "Multiply by the device thermal resistance"]}
+]

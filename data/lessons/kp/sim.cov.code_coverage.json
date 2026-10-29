@@ -1,0 +1,5 @@
+[
+  {"label": "Statement coverage", "section": "Statement coverage", "subgoals": ["Count executed statements and total statements per module", "Pool the counts across modules before dividing", "Report executed over total as a percentage"]},
+  {"label": "Branch coverage", "section": "Branch coverage", "subgoals": ["Count m plus 1 outcomes for an if chain with no final else", "Count one outcome per case item plus the default", "Divide the reached outcomes by the total outcomes"]},
+  {"label": "Toggle and FSM coverage, and the limits", "section": "Toggle and FSM coverage, and the limits", "subgoals": ["List each bit's rising and falling transitions as separate items", "Compare consecutive values bit by bit to find observed transitions", "Explain why full code coverage does not prove correctness"]}
+]

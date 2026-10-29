@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Standard form and basic solutions",
+    "section": "Standard form and basic solutions",
+    "subgoals": [
+      "Add one slack variable per inequality",
+      "Count the variables and the equality rows",
+      "Bound the number of bases by n plus m choose m"
+    ]
+  },
+  {
+    "label": "The minimum-ratio test",
+    "section": "The minimum-ratio test",
+    "subgoals": [
+      "Keep only rows whose entering-column coefficient is positive",
+      "Divide each such right-hand side by its coefficient",
+      "Take the smallest ratio as the step and that row as the leaving row"
+    ]
+  },
+  {
+    "label": "Reduced costs and the objective step",
+    "section": "Reduced costs and the objective step",
+    "subgoals": [
+      "Read the entering variable's reduced cost",
+      "Find the step length from the ratio test",
+      "Add reduced cost times step to the objective"
+    ]
+  }
+]

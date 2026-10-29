@@ -1,0 +1,5 @@
+[
+  {"label": "Coupling added by fill", "section": "Coupling added by fill", "subgoals": ["Write each side's coupling as proportional to one over the spacing", "Add the fill's term to the existing terms", "Express the increase relative to the original"]},
+  {"label": "Timing-aware and grounded fill", "section": "Timing-aware and grounded fill", "subgoals": ["Increase the fill spacing near timing-critical nets", "Choose floating or tied fill and account for it in extraction", "Re-extract and re-time after fill"]},
+  {"label": "Where fill lives in the flow", "section": "Where fill lives in the flow", "subgoals": ["Insert fill after routing and before signoff extraction", "Strip and regenerate fill around ECO changes", "Slot wide metal that exceeds the maximum density"]}
+]

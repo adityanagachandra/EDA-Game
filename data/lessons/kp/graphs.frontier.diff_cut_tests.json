@@ -1,0 +1,5 @@
+[
+  {"label": "Recompute, never trust the counter", "section": "Recompute, never trust the counter", "subgoals": ["Recount cut nets from the returned partition", "Fail on any mismatch with the engine's counter", "Check that every cell is assigned once and balance holds"]},
+  {"label": "Golden and differential checks", "section": "Golden and differential checks", "subgoals": ["Pin exact results on small and edge-case netlists", "Run baseline and candidate with identical seeds and settings", "Report per-design changes in cut, runtime and memory"]},
+  {"label": "Gates that fit heuristics", "section": "Gates that fit heuristics", "subgoals": ["Gate on bounded per-design regressions rather than strict inequality", "Flag outliers for human review", "Pin seed, threads and build so results are reproducible"]}
+]

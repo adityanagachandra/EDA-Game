@@ -1,0 +1,5 @@
+[
+  {"label": "Precision and recall of a detector", "section": "Precision and recall of a detector", "subgoals": ["Count true positives, false positives and false negatives", "Divide true positives by all real hotspots for recall", "Divide true positives by all flags for precision"]},
+  {"label": "What makes a hotspot", "section": "What makes a hotspot", "subgoals": ["Define the process window by focus and dose", "Name the failure: pinching, bridging or line-end shortening", "Include the surrounding geometry in the pattern"]},
+  {"label": "Detection methods", "section": "Detection methods", "subgoals": ["Compare simulation, pattern matching and learned detectors on accuracy and speed", "Confirm fast flags with simulation", "Choose a geometric fix for each confirmed hotspot"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The buck converter", "section": "The buck converter", "subgoals": ["Apply volt-second balance to the inductor", "Solve for the duty cycle as Vout over Vin", "Extend the balance argument to the boost converter"]},
+  {"label": "Inductor ripple", "section": "Inductor ripple", "subgoals": ["Compute the current slope during the on-time", "Multiply by the on-time to get the peak-to-peak ripple", "Relate ripple to peak current and the conduction-mode boundary"]},
+  {"label": "Losses in the switch and wide-bandgap devices", "section": "Losses in the switch and wide-bandgap devices", "subgoals": ["Compute the conduction loss as I squared Ron D", "Estimate the switching loss from voltage, current, transition times and frequency", "Explain how wide-bandgap devices reduce switching loss"]}
+]

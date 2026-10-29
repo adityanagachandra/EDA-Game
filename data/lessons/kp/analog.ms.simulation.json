@@ -1,0 +1,5 @@
+[
+  {"label": "Two engines and their boundary", "section": "Two engines and their boundary", "subgoals": ["Contrast Newton-based timestepping with event-driven scheduling", "Partition the design and find the boundary nets", "Insert connect modules that convert voltages and logic values"]},
+  {"label": "Synchronizing the engines", "section": "Synchronizing the engines", "subgoals": ["Place analog timepoints at incoming digital events", "Locate threshold crossings and post them as digital events", "Reduce boundary events to keep synchronization cheap"]},
+  {"label": "Choosing abstraction levels", "section": "Choosing abstraction levels", "subgoals": ["Keep the block under test at transistor level", "Replace the rest with validated behavioral or real-number models", "Compare model and schematic on the same testbench"]}
+]

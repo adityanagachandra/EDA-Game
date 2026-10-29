@@ -1,0 +1,5 @@
+[
+  {"label": "Area-array bump count", "section": "Area-array bump count", "subgoals": ["Divide each die dimension by the bump pitch", "Floor each quotient and multiply them", "Reserve the power and ground share of the bumps"]},
+  {"label": "Area array against perimeter", "section": "Area array against perimeter", "subgoals": ["Count the full array as n squared", "Count the outer ring as four times n minus one", "Divide to get the area-array advantage"]},
+  {"label": "BGA ball maps", "section": "BGA ball maps", "subgoals": ["Divide the package side by the ball pitch", "Square the grid and subtract the depopulated block", "Assign outer rows to signals that must escape"]}
+]

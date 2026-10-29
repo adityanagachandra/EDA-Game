@@ -1,0 +1,5 @@
+[
+  {"label": "External don't cares", "section": "External don't cares", "subgoals": ["Find input combinations the environment never produces", "Find outputs whose values are ignored under some condition", "Weigh the risk if the impossible condition does occur"]},
+  {"label": "Don't cares inside a network", "section": "Don't cares inside a network", "subgoals": ["Write the satisfiability don't care of a node as y XOR f", "Compute the Boolean difference of an output with respect to y", "Take its complement as the observability don't care"]},
+  {"label": "Using don't cares safely", "section": "Using don't cares safely", "subgoals": ["Keep the node equal to its old function on the care set", "Compute don't cares over a window around the node", "Recompute or restrict don't cares before changing a second node"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The smallest period one path meets", "section": "The smallest period one path meets", "subgoals": ["Set the setup slack to zero", "Sum clock-to-Q, the longest logic delay and setup", "Subtract the skew to get the minimum period"]},
+  {"label": "The design's minimum period", "section": "The design's minimum period", "subgoals": ["Compute each path's minimum period", "Take the largest of them", "Identify that path as the one limiting the clock"]},
+  {"label": "Converting to frequency", "section": "Converting to frequency", "subgoals": ["Find the design's minimum period in ps", "Divide one million by that period to get MHz", "Compare frequency gains in terms of the period change they need"]}
+]

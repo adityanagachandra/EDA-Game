@@ -1,0 +1,5 @@
+[
+  {"label": "Typed tools over an engine", "section": "Typed tools over an engine", "subgoals": ["Declare each tool's inputs and outputs as a schema", "Return structured fields instead of raw logs", "Describe preconditions in the tool description"]},
+  {"label": "Choosing tool granularity", "section": "Choosing tool granularity", "subgoals": ["Expose coarse actions such as run a stage or report timing", "Batch per-object operations into one call", "Run long jobs asynchronously with a job id and a status tool"]},
+  {"label": "Sessions, sandboxing and structured results", "section": "Sessions, sandboxing and structured results", "subgoals": ["Hold the loaded database in a session between calls", "Run the server on-site in a sandbox without outbound network", "Make tools idempotent and log every call for replay"]}
+]

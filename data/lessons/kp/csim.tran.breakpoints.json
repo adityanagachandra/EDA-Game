@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Breakpoints at source corners",
+    "section": "Breakpoints at source corners",
+    "subgoals": [
+      "List the slope discontinuities of every source",
+      "Shorten any step that would cross a breakpoint",
+      "Estimate how breakpoint density limits the step"
+    ]
+  },
+  {
+    "label": "Restarting after a discontinuity",
+    "section": "Restarting after a discontinuity",
+    "subgoals": [
+      "Reset the step and integration order at each breakpoint",
+      "Locate unexpected threshold crossings and add breakpoints",
+      "Shrink and retry steps whose Newton solve fails"
+    ]
+  },
+  {
+    "label": "Initial conditions and UIC",
+    "section": "Initial conditions and UIC",
+    "subgoals": [
+      "Start from the operating point unless uic is given",
+      "Distinguish held initial conditions from nodeset guesses",
+      "Kick unstable equilibria with an initial condition"
+    ]
+  }
+]

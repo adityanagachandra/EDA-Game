@@ -1,0 +1,29 @@
+[
+  {
+    "label": "LUTs as truth tables",
+    "section": "LUTs as truth tables",
+    "subgoals": [
+      "Count 2 to the k configuration bits in a k-input LUT",
+      "Cover the network with k-feasible cones",
+      "Name hard blocks inferred from RTL"
+    ]
+  },
+  {
+    "label": "Placement and routing on a fixed fabric",
+    "section": "Placement and routing on a fixed fabric",
+    "subgoals": [
+      "Assign packed blocks to legal sites of matching type",
+      "Select paths through a routing-resource graph",
+      "Explain how negotiated congestion removes overuse"
+    ]
+  },
+  {
+    "label": "Vendor tools, open tools and trade-offs",
+    "section": "Vendor tools, open tools and trade-offs",
+    "subgoals": [
+      "Name the vendor and open-source FPGA tool chains",
+      "Explain why FPGA designs run out of resources rather than area",
+      "Relate short run times to frequent iteration"
+    ]
+  }
+]

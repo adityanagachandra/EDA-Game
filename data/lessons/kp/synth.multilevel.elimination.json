@@ -1,0 +1,5 @@
+[
+  {"label": "The value of a node", "section": "The value of a node", "subgoals": ["Count the factored-form literals l of the node and its n uses", "Compute the change n times l minus n minus l", "Read a negative value as a saving"]},
+  {"label": "Threshold elimination", "section": "Threshold elimination", "subgoals": ["Compute the value of each candidate node", "Collapse every node whose value is at most the threshold", "Recompute the values of neighbors after each collapse"]},
+  {"label": "Exact change in SOP literals", "section": "Exact change in SOP literals", "subgoals": ["Multiply the node's SOP into each fanout cube that uses it", "Count l_q times c plus L literals for each expanded use", "Subtract the literals before elimination to get the change"]}
+]

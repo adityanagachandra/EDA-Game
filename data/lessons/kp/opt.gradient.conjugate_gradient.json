@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The first step length",
+    "section": "The first step length",
+    "subgoals": [
+      "Set the first residual and direction to b",
+      "Compute the residual norm squared and the curvature along the direction",
+      "Divide them for the exact step length"
+    ]
+  },
+  {
+    "label": "The first iterate and the next direction",
+    "section": "The first iterate and the next direction",
+    "subgoals": [
+      "Move from the start along the direction by the step length",
+      "Update the residual with the matrix-vector product",
+      "Mix the new residual with the old direction to keep conjugacy"
+    ]
+  },
+  {
+    "label": "Finite termination and preconditioning",
+    "section": "Finite termination and preconditioning",
+    "subgoals": [
+      "State the at-most-n-steps termination for an n by n system",
+      "Compute the exact solution as the second iterate of a 2 by 2 system",
+      "Choose a preconditioner to reduce the effective condition number"
+    ]
+  }
+]

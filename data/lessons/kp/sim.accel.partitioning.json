@@ -1,0 +1,5 @@
+[
+  {"label": "Cut nets become inter-FPGA signals", "section": "Cut nets become inter-FPGA signals", "subgoals": ["Model blocks as vertices and nets as hyperedges", "Mark a net as cut when its blocks span two FPGAs", "Count the cut nets as required inter-FPGA signals"]},
+  {"label": "Time-division multiplexing", "section": "Time-division multiplexing", "subgoals": ["Divide the cut signals by the available pins", "Round up to a whole multiplexing ratio", "Find the link with the worst ratio"]},
+  {"label": "The system clock and why the cut matters", "section": "The system clock and why the cut matters", "subgoals": ["Count the link cycles per system cycle as r plus the overhead", "Divide the link frequency by that count", "Relate a smaller cut to a higher system clock"]}
+]

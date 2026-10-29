@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The main formats and what they keep",
+    "section": "The main formats and what they keep",
+    "subgoals": [
+      "Name what each format keeps and what it drops",
+      "Separate behavioural, structural and geometric formats",
+      "Match Liberty, LEF and SPEF to what they abstract"
+    ]
+  },
+  {
+    "label": "Who writes and who reads each format",
+    "section": "Who writes and who reads each format",
+    "subgoals": [
+      "Name the stage that writes each format",
+      "Name the stages that read each format",
+      "Locate the producer of a corrupt file"
+    ]
+  },
+  {
+    "label": "Choosing the format for a computation",
+    "section": "Choosing the format for a computation",
+    "subgoals": [
+      "List the formats static timing analysis reads",
+      "List the formats design-rule checking reads",
+      "Infer the required format from the computation requested"
+    ]
+  }
+]

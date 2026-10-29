@@ -1,0 +1,5 @@
+[
+  {"label": "The binary counter", "section": "The binary counter", "subgoals": ["Count the bits flipped by each increment", "Sum the flips over the whole sequence", "Compare the total with 2 times the number of increments"]},
+  {"label": "Doubling hash tables", "section": "Doubling hash tables", "subgoals": ["Find the sizes at which the table grows", "Sum the copies made at each growth", "Bound the total by a constant times the inserts"]},
+  {"label": "Cost per operation", "section": "Cost per operation", "subgoals": ["Add the direct cost and the copy cost", "Divide by the number of operations", "Read the quotient as the amortized cost"]}
+]

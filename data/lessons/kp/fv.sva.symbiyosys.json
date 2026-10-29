@@ -1,0 +1,5 @@
+[
+  {"label": "The .sby file", "section": "The .sby file", "subgoals": ["Set the mode and depth in the options section", "Write read -formal and prep -top in the script section", "List the sources in the files section and engines in the engines section"]},
+  {"label": "Modes and engines", "section": "Modes and engines", "subgoals": ["Pick bmc, prove, cover or live for the question asked", "Pick smtbmc with a solver, abc pdr or abc bmc3 as the algorithm", "List several engines to run them as a portfolio"]},
+  {"label": "Reading the results", "section": "Reading the results", "subgoals": ["Read PASS in bmc mode as bounded evidence only", "Separate base-case failures from induction-step failures", "Use witness traces and add assumptions for illegal environment behavior"]}
+]

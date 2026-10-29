@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The first moment at the far end",
+    "section": "The first moment at the far end",
+    "subgoals": [
+      "Find the resistance each capacitor shares with the path to the node",
+      "Sum shared resistance times capacitance",
+      "Negate the sum and convert ohm femtofarads to picoseconds"
+    ]
+  },
+  {
+    "label": "The first moment at an inner node",
+    "section": "The first moment at an inner node",
+    "subgoals": [
+      "Identify which capacitors lie beyond the node",
+      "Charge every capacitor's contribution through the resistance shared with the node",
+      "Sum and negate for the inner-node moment"
+    ]
+  },
+  {
+    "label": "The second moment",
+    "section": "The second moment",
+    "subgoals": [
+      "Take the first moments at every capacitor's node",
+      "Weight each capacitor by its shared resistance and its node's first moment",
+      "Sum and negate for the second moment"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "LUTs are cuts", "section": "LUTs are cuts", "subgoals": ["Implement each LUT as a K-feasible cut of a node", "Require the leaves of every chosen cut to be mapped or primary inputs", "Measure area as the LUT count and depth as the longest LUT chain"]},
+  {"label": "Labeling for minimum depth", "section": "Labeling for minimum depth", "subgoals": ["Label primary inputs 0", "Label each AND node by its best cut: 1 plus the largest leaf label", "Read the largest output label as the mapping depth"]},
+  {"label": "Depth gains and area recovery", "section": "Depth gains and area recovery", "subgoals": ["Compare the LUT depth with the AIG depth", "Propagate required depths back from the outputs", "Choose cheaper cuts on nodes with slack to recover area"]}
+]

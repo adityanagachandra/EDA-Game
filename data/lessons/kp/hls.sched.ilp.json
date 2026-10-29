@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The time-indexed formulation",
+  "section": "The time-indexed formulation",
+  "subgoals": [
+   "Create one binary variable per operation per step of its frame",
+   "Sum the frame widths to count the variables",
+   "Write each start time as the step-weighted sum of its variables"
+  ]
+ },
+ {
+  "label": "Constraints and objective",
+  "section": "Constraints and objective",
+  "subgoals": [
+   "Add one unique-start constraint per operation",
+   "Add one precedence constraint per dependence edge",
+   "Add one resource constraint per step per unit type"
+  ]
+ },
+ {
+  "label": "The SDC formulation",
+  "section": "The SDC formulation",
+  "subgoals": [
+   "Use one integer start variable per operation",
+   "Write dependences, latency and chaining limits as difference constraints",
+   "Solve the LP and rely on total unimodularity for an integer schedule"
+  ]
+ }
+]

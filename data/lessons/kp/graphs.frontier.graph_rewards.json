@@ -1,0 +1,5 @@
+[
+  {"label": "Rewards from exact graph metrics", "section": "Rewards from exact graph metrics", "subgoals": ["Score outputs with an exact, independently computed metric", "Gate on legality before any continuous credit", "Give zero reward to any output that fails a gate"]},
+  {"label": "How fast proxies get gamed", "section": "How fast proxies get gamed", "subgoals": ["Name the property each proxy ignores", "Pair the proxy with an independent check of that property", "Evaluate periodically with the accurate engine"]},
+  {"label": "From proxy to signoff quality", "section": "From proxy to signoff quality", "subgoals": ["Validate graph-metric rewards against downstream QoR", "Normalize rewards as improvement over a per-design baseline", "Run reward computation on-site inside the IP boundary"]}
+]

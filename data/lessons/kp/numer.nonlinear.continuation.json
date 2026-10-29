@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Embedding the problem in a parameter family",
+  "section": "Embedding the problem in a parameter family",
+  "subgoals": [
+   "Define a family that is easy at s equal to zero and equals F at one",
+   "Solve each step by Newton from the previous solution",
+   "Shrink the parameter step after a failure and grow it after quick success"
+  ]
+ },
+ {
+  "label": "Source stepping and gmin stepping as homotopies",
+  "section": "Source stepping and gmin stepping as homotopies",
+  "subgoals": [
+   "Scale every independent source by the parameter",
+   "Add a large conductance to ground and reduce it in steps",
+   "Run a pseudo-transient with artificial capacitors to steady state"
+  ]
+ },
+ {
+  "label": "Step size along the path and turning points",
+  "section": "Step size along the path and turning points",
+  "subgoals": [
+   "Detect a turning point from a singular Jacobian",
+   "Switch to pseudo-arclength parameterization",
+   "Use nodesets to steer toward the intended solution of a multistable circuit"
+  ]
+ }
+]

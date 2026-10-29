@@ -1,0 +1,5 @@
+[
+  {"label": "Series systems", "section": "Series systems", "subgoals": ["Multiply the reliabilities of parts in series", "Combine identical Weibull parts into one with scale eta times n to the minus 1 over beta", "Explain the weakest-link shortening of chip life"]},
+  {"label": "Triple modular redundancy", "section": "Triple modular redundancy", "subgoals": ["Count the cases where at least two of three modules work", "Simplify to 3R squared minus 2R cubed", "Check that the module reliability exceeds one half"]},
+  {"label": "Parallel and k-of-n redundancy", "section": "Parallel and k-of-n redundancy", "subgoals": ["Compute the probability that all parallel paths fail", "Subtract it from one for the parallel reliability", "Identify common-cause failures as the limit of redundancy"]}
+]

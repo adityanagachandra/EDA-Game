@@ -1,0 +1,5 @@
+[
+  {"label": "Split, propagate, backtrack", "section": "Split, propagate, backtrack", "subgoals": ["Branch on the lowest-index unassigned variable with value 0", "Run unit propagation and detect a conflict or full satisfaction", "Backtrack to the latest decision and try its other value"]},
+  {"label": "Counting decisions on a satisfiable formula", "section": "Counting decisions on a satisfiable formula", "subgoals": ["Trace propagation after each decision", "Record each conflict and the backtrack it triggers", "Count every branching assignment until all clauses are satisfied"]},
+  {"label": "Proving unsatisfiability", "section": "Proving unsatisfiability", "subgoals": ["Refute both values of every branching variable", "Recognize UNSAT when the first decision's second value also conflicts", "Count the decisions across the whole search tree"]}
+]

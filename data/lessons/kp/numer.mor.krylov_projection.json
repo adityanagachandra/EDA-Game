@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Projecting onto a Krylov subspace",
+  "section": "Projecting onto a Krylov subspace",
+  "subgoals": [
+   "Form the Krylov vectors by repeated solves with G",
+   "Orthonormalize them into a basis V",
+   "Project G, C, b and l with V"
+  ]
+ },
+ {
+  "label": "How many moments a projection matches",
+  "section": "How many moments a projection matches",
+  "subgoals": [
+   "Count the basis vectors at each expansion point",
+   "Match q moments for one-sided and 2q for two-sided projection",
+   "Add expansion points for broadband accuracy"
+  ]
+ },
+ {
+  "label": "Arnoldi orthogonalization and passivity",
+  "section": "Arnoldi orthogonalization and passivity",
+  "subgoals": [
+   "Orthogonalize each new Krylov vector against the basis",
+   "Project by congruence to preserve semidefinite G and C",
+   "Use the passive reduced model inside the larger simulation"
+  ]
+ }
+]

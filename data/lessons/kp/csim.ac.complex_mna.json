@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Admittance entries",
+    "section": "Admittance entries",
+    "subgoals": [
+      "Convert the capacitance and frequency to an admittance",
+      "Stamp it as an imaginary conductance pattern",
+      "Keep resistive and controlled-source entries real"
+    ]
+  },
+  {
+    "label": "Solving one complex node",
+    "section": "Solving one complex node",
+    "subgoals": [
+      "Form the complex admittance of the node",
+      "Take its magnitude",
+      "Divide the source amplitude by the magnitude"
+    ]
+  },
+  {
+    "label": "Phase of the response",
+    "section": "Phase of the response",
+    "subgoals": [
+      "Compute the ratio of susceptance to conductance",
+      "Take minus the arctangent of the ratio",
+      "Convert the phase to degrees"
+    ]
+  }
+]

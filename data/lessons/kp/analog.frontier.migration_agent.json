@@ -1,0 +1,5 @@
+[
+  {"label": "Holding gm/Id across processes", "section": "Holding gm/Id across processes", "subgoals": ["Hold each device's gm and gm over Id", "Keep the drain current fixed", "Divide the current by the new process's density to get the width"]},
+  {"label": "What does not carry over", "section": "What does not carry over", "subgoals": ["Read the new intrinsic gain from the same table row", "Compute the gain change in dB from the ratio of intrinsic gains", "Choose longer channels or a reviewed cascode to recover it"]},
+  {"label": "Headroom at a lower supply", "section": "Headroom at a lower supply", "subgoals": ["Sum the stacked saturation voltages and the required swing", "Solve for the minimum gm over Id that fits the supply", "Flag branches that cannot fit before running SPICE"]}
+]

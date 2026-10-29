@@ -1,0 +1,5 @@
+[
+  {"label": "The attenuation constant", "section": "The attenuation constant", "subgoals": ["Check that R prime and G prime are small against the reactive terms", "Add R prime over two Z0 and G prime Z0 over two", "Multiply by length and by 8.686 to get decibels"]},
+  {"label": "Nepers and decibels", "section": "Nepers and decibels", "subgoals": ["Multiply the attenuation constant by the length in nepers", "Scale the input amplitude by e to the minus that loss", "Convert nepers to decibels with the factor 8.686"]},
+  {"label": "Scaling loss with frequency", "section": "Scaling loss with frequency", "subgoals": ["Scale the conductor loss by the square root of the frequency ratio", "Scale the dielectric loss linearly with the frequency ratio", "Add the two scaled parts for the total loss"]}
+]

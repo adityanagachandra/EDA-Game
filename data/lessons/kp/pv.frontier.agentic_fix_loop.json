@@ -1,0 +1,5 @@
+[
+  {"label": "Routing violations to the right fixer", "section": "Routing violations to the right fixer", "subgoals": ["Separate violations on routed metal from those inside cells", "Map each violation class to its owning engine", "Sum the violations routed to each engine"]},
+  {"label": "Classifying violations", "section": "Classifying violations", "subgoals": ["Group markers by rule, layer and cell context", "Look for one cause behind many markers", "Assign each group to a fix, an escalation or a deck check"]},
+  {"label": "Closing the loop safely", "section": "Closing the loop safely", "subgoals": ["Accept a fix only when full DRC and LVS pass with no new markers", "Rerun extraction and timing after routing changes", "Stop the loop when progress stalls and escalate"]}
+]

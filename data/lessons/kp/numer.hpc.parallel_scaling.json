@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Amdahl's law for a fixed problem",
+  "section": "Amdahl's law for a fixed problem",
+  "subgoals": [
+   "Identify the parallel fraction of the run time",
+   "Divide it by the processor count and add the serial fraction",
+   "Take the reciprocal and its limit for infinite processors"
+  ]
+ },
+ {
+  "label": "Gustafson scaling for growing problems",
+  "section": "Gustafson scaling for growing problems",
+  "subgoals": [
+   "Measure the parallel fraction in the parallel run",
+   "Multiply it by N and add the serial fraction",
+   "Distinguish weak scaling from strong scaling"
+  ]
+ },
+ {
+  "label": "Parallelism in the elimination tree",
+  "section": "Parallelism in the elimination tree",
+  "subgoals": [
+   "Read each column's parent from the factor pattern",
+   "Find the longest leaf-to-root chain",
+   "Divide the column count by the height to bound the speedup"
+  ]
+ }
+]

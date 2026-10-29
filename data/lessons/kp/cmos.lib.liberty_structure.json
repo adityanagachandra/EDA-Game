@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Cells, pins and timing arcs",
+    "section": "Cells, pins and timing arcs",
+    "subgoals": [
+      "Read the header for units, thresholds and table templates",
+      "Read each output pin's function and its timing groups",
+      "Build one timing-graph edge per timing group from related pin to pin"
+    ]
+  },
+  {
+    "label": "Timing sense and timing type",
+    "section": "Timing sense and timing type",
+    "subgoals": [
+      "Classify each arc as positive, negative or non-unate from the function",
+      "Read timing_type to separate delay arcs from constraint arcs",
+      "Propagate both output edges for non-unate arcs"
+    ]
+  },
+  {
+    "label": "What the structure hides and assumes",
+    "section": "What the structure hides and assumes",
+    "subgoals": [
+      "Treat every missing arc as a missing timing-graph edge",
+      "Select or bound state-dependent arcs given by when conditions",
+      "Apply the header's units and thresholds to every table"
+    ]
+  }
+]

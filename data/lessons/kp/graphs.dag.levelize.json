@@ -1,0 +1,5 @@
+[
+  {"label": "Levels from fanins", "section": "Levels from fanins", "subgoals": ["Put vertices with no fanin at level 0", "Set each other level to one more than its deepest fanin", "Compute the levels in one pass over a topological order"]},
+  {"label": "Depth and width", "section": "Depth and width", "subgoals": ["Count the levels to get logic depth plus one", "Count the vertices at a level to get its width", "Use narrow levels to locate serial bottlenecks"]},
+  {"label": "Levels in incremental analysis", "section": "Levels in incremental analysis", "subgoals": ["Key dirty vertices by level in a priority structure", "Pop the lowest level first so fanins are always done", "Keep levels topologically consistent after edits"]}
+]

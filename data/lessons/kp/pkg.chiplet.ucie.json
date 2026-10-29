@@ -1,0 +1,5 @@
+[
+  {"label": "Lanes, rate and module bandwidth", "section": "Lanes, rate and module bandwidth", "subgoals": ["Identify the lane count for the package type", "Multiply lanes by the per-lane data rate", "State the result per direction before overhead"]},
+  {"label": "Shoreline bandwidth", "section": "Shoreline bandwidth", "subgoals": ["Count modules that fit along the edge", "Multiply by the module bandwidth", "Divide by edge length for shoreline density"]},
+  {"label": "Sizing for a target", "section": "Sizing for a target", "subgoals": ["Convert terabytes to gigabits", "Divide by the module bandwidth", "Round up to whole modules and add overhead"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Dominance between two designs",
+    "section": "Dominance between two designs",
+    "subgoals": [
+      "Compare the two designs objective by objective",
+      "Require no worse in every objective",
+      "Require strictly better in at least one objective"
+    ]
+  },
+  {
+    "label": "Finding the Pareto front",
+    "section": "Finding the Pareto front",
+    "subgoals": [
+      "Sort the designs by the first objective",
+      "Sweep and keep a design only if it beats the best second objective so far",
+      "Handle ties so that equal designs are not counted as dominated"
+    ]
+  },
+  {
+    "label": "More objectives, larger fronts",
+    "section": "More objectives, larger fronts",
+    "subgoals": [
+      "Test domination across all objectives at once",
+      "Remove each design dominated by any other",
+      "Turn objectives into constraints when the front grows too large to use"
+    ]
+  }
+]

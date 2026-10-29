@@ -1,0 +1,5 @@
+[
+  {"label": "Equivalence before quality", "section": "Equivalence before quality", "subgoals": ["Run equivalence checking on every design in the suite", "Treat counterexamples as rejections and timeouts as holds", "Apply the QoR rule only to proved results"]},
+  {"label": "Computing and reporting deltas", "section": "Computing and reporting deltas", "subgoals": ["Compute each design's percentage change against the baseline", "Summarize with the mean of percentages beside the per-design list", "Measure delay with the reference timer"]},
+  {"label": "What makes a golden suite trustworthy", "section": "What makes a golden suite trustworthy", "subgoals": ["Fix the baseline to the promoted recipe with identical inputs", "Require deterministic, seeded runs", "Track run time and check that a targeted change moves only its targets"]}
+]

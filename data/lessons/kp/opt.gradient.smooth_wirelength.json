@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The log-sum-exp maximum",
+    "section": "The log-sum-exp maximum",
+    "subgoals": [
+      "Divide each coordinate by gamma and exponentiate",
+      "Sum the exponentials and take the logarithm",
+      "Multiply by gamma for the smooth maximum"
+    ]
+  },
+  {
+    "label": "LSE wirelength against HPWL",
+    "section": "LSE wirelength against HPWL",
+    "subgoals": [
+      "Compute the smooth maximum of the coordinates",
+      "Compute the smooth maximum of the negated coordinates",
+      "Add the two for the smooth wirelength and compare with HPWL"
+    ]
+  },
+  {
+    "label": "Error bounds and the gamma schedule",
+    "section": "Error bounds and the gamma schedule",
+    "subgoals": [
+      "Bound the smoothing error by two gamma times the log of the pin count",
+      "Solve the bound for the largest gamma meeting an error target",
+      "Schedule gamma to shrink as the placement converges"
+    ]
+  }
+]

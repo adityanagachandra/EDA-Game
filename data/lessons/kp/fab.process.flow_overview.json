@@ -1,0 +1,5 @@
+[
+  {"label": "Modules repeated in a fixed order", "section": "Modules repeated in a fixed order", "subgoals": ["Name the steps of one patterning module", "Order the FEOL, MOL and BEOL phases", "Tie the order to the thermal budget of each phase"]},
+  {"label": "From drawn layers to process steps", "section": "From drawn layers to process steps", "subgoals": ["Map the active layer to isolation and device regions", "Map implant layers to doping selections", "Connect each layer's rules to its module's limits"]},
+  {"label": "What the flow hides from the layout", "section": "What the flow hides from the layout", "subgoals": ["List process steps that have no drawn layer", "Trace an undrawn step to the rule or model it changes", "Explain a 2D rule by its 3D cause"]}
+]

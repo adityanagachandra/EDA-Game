@@ -1,0 +1,5 @@
+[
+  {"label": "Mismatch scales with area", "section": "Mismatch scales with area", "subgoals": ["Form the gate area W times L", "Divide the Pelgrom coefficient by the square root of the area", "Interpret the result as the sigma of the pair difference"]},
+  {"label": "Area needed for a matching target", "section": "Area needed for a matching target", "subgoals": ["Divide the Pelgrom coefficient by the target sigma", "Square the ratio to get the required gate area", "Account for the capacitance and speed cost of the larger device"]},
+  {"label": "From pair mismatch to single-device sigma", "section": "From pair mismatch to single-device sigma", "subgoals": ["Compute the pair-difference sigma from the Pelgrom law", "Divide by the square root of two for a single device", "Multiply by the required sigma count for the tail"]}
+]

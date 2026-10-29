@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Derivatives from divided differences",
+    "section": "Derivatives from divided differences",
+    "subgoals": [
+      "Take the second difference of three consecutive samples",
+      "Divide by the step squared",
+      "Use four samples and the step cubed for the third derivative"
+    ]
+  },
+  {
+    "label": "Backward Euler error estimate",
+    "section": "Backward Euler error estimate",
+    "subgoals": [
+      "Form the second difference of the samples",
+      "Halve it to estimate the backward-Euler error",
+      "Express the magnitude in millivolts"
+    ]
+  },
+  {
+    "label": "Trapezoidal error estimate",
+    "section": "Trapezoidal error estimate",
+    "subgoals": [
+      "Form the third difference of four samples",
+      "Divide it by twelve",
+      "Compare the estimate with the error tolerance"
+    ]
+  }
+]

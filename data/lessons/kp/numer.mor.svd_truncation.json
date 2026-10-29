@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Singular values rank the important directions",
+  "section": "Singular values rank the important directions",
+  "subgoals": [
+   "Arrange snapshots as columns of a matrix",
+   "Compute its singular values",
+   "Sum squared singular values to get the captured energy fraction"
+  ]
+ },
+ {
+  "label": "The Eckart-Young error of a truncation",
+  "section": "The Eckart-Young error of a truncation",
+  "subgoals": [
+   "Keep the first k singular triplets",
+   "Read the 2-norm error as the next singular value",
+   "Take the root of the summed squared tail for the Frobenius error"
+  ]
+ },
+ {
+  "label": "Choosing the reduced order for a tolerance",
+  "section": "Choosing the reduced order for a tolerance",
+  "subgoals": [
+   "Sum the tail of the Hankel singular values beyond k",
+   "Double it to get the error bound",
+   "Choose the smallest k whose bound meets the tolerance"
+  ]
+ }
+]

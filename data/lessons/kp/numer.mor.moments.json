@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Expanding H(s) in powers of s",
+  "section": "Expanding H(s) in powers of s",
+  "subgoals": [
+   "Write the transfer function of the network",
+   "Expand it in a power series around s equal to zero",
+   "Read the moments as the series coefficients"
+  ]
+ },
+ {
+  "label": "Computing moments by repeated solves",
+  "section": "Computing moments by repeated solves",
+  "subgoals": [
+   "Solve G m0 equals b for the DC response",
+   "Solve G m_k equals minus C times the previous moment",
+   "Reuse the factorization of G for every moment"
+  ]
+ },
+ {
+  "label": "Moments, Elmore delay and a one-pole fit",
+  "section": "Moments, Elmore delay and a one-pole fit",
+  "subgoals": [
+   "Write the moments of a one-pole model",
+   "Equate the ratio of m2 to m1 with minus tau",
+   "Compare the fitted time constant with the Elmore delay"
+  ]
+ }
+]

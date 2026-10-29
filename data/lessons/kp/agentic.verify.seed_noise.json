@@ -1,0 +1,5 @@
+[
+  {"label": "Standard error of a mean QoR", "section": "Standard error of a mean QoR", "subgoals": ["Divide the seed standard deviation by the root of the run count", "Compute the spread of a single-run difference", "Compare the claimed gain with that spread"]},
+  {"label": "Runs needed to resolve a change", "section": "Runs needed to resolve a change", "subgoals": ["Square z times sigma over the effect", "Double it for two independent samples", "Round up to whole runs"]},
+  {"label": "Paired runs on the same seeds", "section": "Paired runs on the same seeds", "subgoals": ["Measure the spread of per-seed differences", "Square z times that spread over the effect", "Round up to whole paired runs"]}
+]

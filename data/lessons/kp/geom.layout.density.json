@@ -1,0 +1,5 @@
+[
+  {"label": "Density of one window", "section": "Density of one window", "subgoals": ["Clip every shape to the window", "Compute the union area of the clipped shapes", "Divide by the window area and express as a percent"]},
+  {"label": "Fill to reach a minimum", "section": "Fill to reach a minimum", "subgoals": ["Compute the area deficit below the target density", "Divide by the area of one fill square", "Round up to a whole number of squares"]},
+  {"label": "Sliding windows", "section": "Sliding windows", "subgoals": ["Compute the window positions per axis from size and step", "Square the per-axis count for the total", "Sum precomputed tile areas for each window"]}
+]

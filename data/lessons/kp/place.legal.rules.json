@@ -1,0 +1,5 @@
+[
+  {"label": "Rows, sites and rail alignment", "section": "Rows, sites and rail alignment", "subgoals": ["Snap cells to site boundaries in the row orientation", "Flip cells moved to a row of the other parity", "Restrict multi-row cells to rows with matching rails"]},
+  {"label": "Regions and blockages", "section": "Regions and blockages", "subgoals": ["Keep fence members inside and non-members outside", "Model hard and partial blockages differently", "Split rows into owned segments for the legalizer"]},
+  {"label": "Neighbour rules and why legality is core", "section": "Neighbour rules and why legality is core", "subgoals": ["Check left and right neighbours for edge-spacing rules", "Treat pin-access conflicts as neighbour-dependent legality", "Keep the rule checker in the immutable core"]}
+]

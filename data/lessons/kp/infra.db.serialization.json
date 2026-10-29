@@ -1,0 +1,5 @@
+[
+  {"label": "Variable-length integers", "section": "Variable-length integers", "subgoals": ["Split a value into 7-bit groups", "Count one byte per group with a continuation bit", "Sum the bytes over all values"]},
+  {"label": "Delta encoding sorted coordinates", "section": "Delta encoding sorted coordinates", "subgoals": ["Sort the coordinates and keep the first value", "Replace each later value by its difference from the previous", "Compare the varint bytes of the deltas with fixed width"]},
+  {"label": "Zigzag encoding signed deltas", "section": "Zigzag encoding signed deltas", "subgoals": ["Map nonnegative n to 2n and negative n to -2n - 1", "Encode each mapped value as a varint", "Sum the bytes, watching the 64 and 8192 boundaries"]}
+]

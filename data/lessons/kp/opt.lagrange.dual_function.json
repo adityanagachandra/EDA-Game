@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Evaluating the dual function",
+    "section": "Evaluating the dual function",
+    "subgoals": [
+      "Add the constraint times the multiplier to the objective",
+      "Minimize the Lagrangian over the primal variables for fixed multiplier",
+      "Substitute back to get the dual function value"
+    ]
+  },
+  {
+    "label": "Maximizing the dual",
+    "section": "Maximizing the dual",
+    "subgoals": [
+      "Differentiate the dual function and set it to zero",
+      "Solve for the optimal multiplier",
+      "Evaluate the dual optimum and compare it with the primal"
+    ]
+  },
+  {
+    "label": "Bounding a heuristic solution",
+    "section": "Bounding a heuristic solution",
+    "subgoals": [
+      "Evaluate the cost of the feasible heuristic point",
+      "Evaluate the dual function at some multiplier",
+      "Subtract to bound the heuristic's distance from optimal"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Condition coverage", "section": "Condition coverage", "subgoals": ["Identify the atomic conditions of the decision", "Check each condition's column for both a 0 and a 1", "Divide observed condition-value pairs by 2n"]},
+  {"label": "Computing coverage from test vectors", "section": "Computing coverage from test vectors", "subgoals": ["Fix the evaluation convention for short-circuit operators", "Tabulate the observed values of each condition", "Compute the percentage of the 2n pairs observed"]},
+  {"label": "MC/DC and its minimum test count", "section": "MC/DC and its minimum test count", "subgoals": ["Find two vectors that differ only in one condition", "Check that the decision outcome differs between them", "Count the conditions demonstrated and the n plus 1 minimum"]}
+]

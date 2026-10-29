@@ -1,0 +1,5 @@
+[
+  {"label": "Splitting a function on one variable", "section": "Splitting a function on one variable", "subgoals": ["Write f as x times the positive cofactor plus x-bar times the negative cofactor", "Note that the two terms are disjoint", "Add the ON counts of the two cofactors"]},
+  {"label": "Rebuilding a function from its cofactors", "section": "Rebuilding a function from its cofactors", "subgoals": ["Choose the cofactor selected by the value of the splitting variable", "Evaluate that cofactor on the remaining inputs", "Assemble the ON-set of f from both halves"]},
+  {"label": "Recursive expansion and distinct subfunctions", "section": "Recursive expansion and distinct subfunctions", "subgoals": ["Expand on the variables in a fixed order", "List the subfunctions reached at a given depth", "Count the distinct subfunctions to size the shared structure"]}
+]

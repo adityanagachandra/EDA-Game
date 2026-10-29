@@ -1,0 +1,5 @@
+[
+  {"label": "Counting ray crossings", "section": "Counting ray crossings", "subgoals": ["Cast a horizontal ray from the query point", "Count the vertical edges it crosses to the right", "Classify the point by the parity of the count"]},
+  {"label": "Testing many points", "section": "Testing many points", "subgoals": ["Reject points outside the bounding box first", "Count crossings for each remaining point", "Total the points with odd crossing counts"]},
+  {"label": "Even-odd versus nonzero winding", "section": "Even-odd versus nonzero winding", "subgoals": ["Compute the winding number as the count of covering counter-clockwise rings", "Apply the nonzero rule and the even-odd rule", "Find the points where coverage is even and positive"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What the solver computes", "section": "What the solver computes", "subgoals": ["Sum the currents of all taps beyond each segment", "Multiply each segment current by its resistance", "Add the segment drops from the pad to the tap"]},
+  {"label": "Errors in the worst drop", "section": "Errors in the worst drop", "subgoals": ["Find the true worst drop and the predicted worst drop", "Divide their absolute difference by the true worst", "Check whether both maxima occur on the same tile"]},
+  {"label": "Hotspot recall", "section": "Hotspot recall", "subgoals": ["Mark the tiles whose true drop exceeds the threshold", "Count how many of them the prediction also places above it", "Divide by the number of true hotspots"]}
+]

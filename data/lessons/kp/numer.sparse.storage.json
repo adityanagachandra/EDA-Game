@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Coordinate and compressed sparse row formats",
+  "section": "Coordinate and compressed sparse row formats",
+  "subgoals": [
+   "Count one triple per nonzero for COO",
+   "Size val and col_idx at nnz and row_ptr at n + 1",
+   "Choose CSC for column-oriented factorization and CSR for row products"
+  ]
+ },
+ {
+  "label": "Reading the row pointer",
+  "section": "Reading the row pointer",
+  "subgoals": [
+   "Count the nonzeros in each row",
+   "Take the prefix sum starting from zero",
+   "Read row i as the half-open range from row_ptr[i] to row_ptr[i+1]"
+  ]
+ },
+ {
+  "label": "Memory cost against dense storage",
+  "section": "Memory cost against dense storage",
+  "subgoals": [
+   "Charge 12 bytes per nonzero plus 4 bytes per row pointer",
+   "Compare with 8 n squared bytes for dense storage",
+   "Switch to 64-bit indices once nnz exceeds the 32-bit range"
+  ]
+ }
+]

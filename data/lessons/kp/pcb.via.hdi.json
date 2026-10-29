@@ -1,0 +1,5 @@
+[
+  {"label": "The i plus N plus i notation", "section": "The i plus N plus i notation", "subgoals": ["Compute the total layer count from i and N", "Locate the build-up and core layers in the stack", "List the via spans each construction offers"]},
+  {"label": "Sequential lamination and drilling", "section": "Sequential lamination and drilling", "subgoals": ["Count lamination cycles as one plus i", "Count drilling operations for buried, micro and through vias", "Relate each extra build-up to cost and registration error"]},
+  {"label": "Stacked connections and reliability", "section": "Stacked connections and reliability", "subgoals": ["Trace a connection's microvias and buried via layer by layer", "Count via structures in a stacked connection", "Penalize deep stacks as a reliability risk"]}
+]

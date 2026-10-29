@@ -1,0 +1,5 @@
+[
+  {"label": "Single-crystal growth on a template", "section": "Single-crystal growth on a template", "subgoals": ["Contrast epitaxial growth with ordinary deposition", "Explain how selective growth fills only open silicon", "Name the epitaxial steps of FinFET and nanosheet flows"]},
+  {"label": "Lattice mismatch and strain", "section": "Lattice mismatch and strain", "subgoals": ["Interpolate the alloy lattice constant by Vegard's law", "Divide the lattice difference by the substrate constant", "Assign compressive or tensile strain to each device type"]},
+  {"label": "Critical thickness and layout consequences", "section": "Critical thickness and layout consequences", "subgoals": ["Explain why films relax beyond a critical thickness", "Link stress relaxation to layout-dependent model parameters", "Predict when neighbouring fin epitaxy merges"]}
+]

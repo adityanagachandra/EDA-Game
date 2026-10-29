@@ -1,0 +1,5 @@
+[
+  {"label": "Expected improvement", "section": "Expected improvement", "subgoals": ["Standardize the gap between incumbent and posterior mean", "Evaluate the normal distribution function and density there", "Combine the mean term and the uncertainty term"]},
+  {"label": "Confidence bounds", "section": "Confidence bounds", "subgoals": ["Multiply the posterior standard deviation by kappa", "Subtract from the mean for a minimization problem", "Run the candidate with the smallest bound"]},
+  {"label": "Comparing candidates", "section": "Comparing candidates", "subgoals": ["Compute EI for each candidate against the same incumbent", "Choose the candidate with the largest EI", "Watch for small EI caused by an overconfident model"]}
+]

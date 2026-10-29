@@ -1,0 +1,29 @@
+[
+ {
+  "label": "From a schedule to lifetimes",
+  "section": "From a schedule to lifetimes",
+  "subgoals": [
+   "Find the step in which each value is written",
+   "Find the step of its last read",
+   "Take the interval from the step after the write to the last read"
+  ]
+ },
+ {
+  "label": "Counting live values",
+  "section": "Counting live values",
+  "subgoals": [
+   "Count the lifetimes that contain each step",
+   "Take the maximum count over all steps",
+   "Report it as the minimum register count"
+  ]
+ },
+ {
+  "label": "Values with several readers",
+  "section": "Values with several readers",
+  "subgoals": [
+   "Find every read step of each value",
+   "Extend the lifetime to the latest read",
+   "Recount the live values per step with the extended lifetimes"
+  ]
+ }
+]

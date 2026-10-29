@@ -1,0 +1,5 @@
+[
+  {"label": "Evaluating a plug-in cost", "section": "Evaluating a plug-in cost", "subgoals": ["Compute the overflow term from demand plus one minus capacity", "Add history and the via penalty for critical nets", "Sum along each path and pick the cheapest"]},
+  {"label": "The seam contract", "section": "The seam contract", "subgoals": ["Require finite, non-negative, deterministic costs", "Precompute costs per iteration instead of per edge", "Expose edge type and net criticality in the context"]},
+  {"label": "Proving a plug-in correct", "section": "Proving a plug-in correct", "subgoals": ["Run the reference designs with and without the plug-in", "Check that only the intended nets changed and DRC stayed clean", "Promote recurring variations into parameters"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The negative binomial model", "section": "The negative binomial model", "subgoals": ["Model the die defect density as gamma distributed", "Write the zero-defect probability of the negative binomial", "Recover the Poisson yield as alpha grows"]},
+  {"label": "Comparing with Poisson", "section": "Comparing with Poisson", "subgoals": ["Evaluate the Poisson and negative binomial yields at the same density", "Subtract to get the clustering gain", "Explain why concentrated defects leave more dies clean"]},
+  {"label": "Scaling the die", "section": "Scaling the die", "subgoals": ["Multiply the area by the scale factor inside the formula", "Evaluate the negative binomial yield of the larger die", "Compare with the Poisson prediction for the same scaling"]}
+]

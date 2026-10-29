@@ -1,0 +1,5 @@
+[
+  {"label": "One definition block: the dominance frontier", "section": "One definition block: the dominance frontier", "subgoals": ["Compute the dominance frontier of each block that assigns the variable", "Place a phi in every block of those frontiers", "Ignore the entry, whose frontier is empty"]},
+  {"label": "Iterating the frontier", "section": "Iterating the frontier", "subgoals": ["Treat every placed phi as a new definition", "Add each new phi block to the worklist", "Stop when no frontier adds a new block"]},
+  {"label": "Several variables and pruning", "section": "Several variables and pruning", "subgoals": ["Compute the phi set for each variable from its own definition blocks", "Sum the phi counts over the variables", "Filter the phi blocks by liveness for pruned SSA"]}
+]

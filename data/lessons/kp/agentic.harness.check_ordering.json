@@ -1,0 +1,5 @@
+[
+  {"label": "Expected cost of a staged pipeline", "section": "Expected cost of a staged pipeline", "subgoals": ["Multiply each stage cost by the probability all earlier stages pass", "Sum the weighted stage costs", "Compare with running the most expensive check first"]},
+  {"label": "The best order", "section": "The best order", "subgoals": ["Compute each stage's cost divided by its failure probability", "Sort stages by that ratio in increasing order", "Respect forced orders such as build before tests"]},
+  {"label": "How much reordering saves", "section": "How much reordering saves", "subgoals": ["Compute expected cost in the given order", "Compute expected cost in the optimal order", "Subtract to find the saving per candidate"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The data path from tapeout to mask", "section": "The data path from tapeout to mask", "subgoals": ["Order derivation, OPC, verification, MRC, fracturing and writing", "Distinguish mask rules from wafer design rules", "Separate MPC from wafer-level OPC"]},
+  {"label": "Fracturing and shot count", "section": "Fracturing and shot count", "subgoals": ["Decompose a polygon into rectangles for the writer", "Count shots per rectangle with ceilings", "Sum shots and relate them to write time"]},
+  {"label": "Data volume, hierarchy and multi-beam writing", "section": "Data volume, hierarchy and multi-beam writing", "subgoals": ["Explain why OPC breaks layout hierarchy", "Contrast VSB and multi-beam write-time scaling", "Connect writer technology to the adoption of curvilinear masks"]}
+]

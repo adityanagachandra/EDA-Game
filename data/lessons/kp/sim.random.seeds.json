@@ -1,0 +1,5 @@
+[
+  {"label": "Seeds make runs reproducible", "section": "Seeds make runs reproducible", "subgoals": ["Record the seed, command line and tool version of every run", "Rerun the same build with the same seed to reproduce", "Treat seeds as meaningless across tools and code versions"]},
+  {"label": "Random stability in SystemVerilog", "section": "Random stability in SystemVerilog", "subgoals": ["Seed each thread and object from its parent at creation", "Predict that a local randomization change stays local", "Identify creation-order changes as the way stability breaks"]},
+  {"label": "Managing seeds in regression", "section": "Managing seeds in regression", "subgoals": ["Keep a fixed seed set as a stable baseline", "Add fresh seeds each run for exploration", "Confirm a fix with coverage of the failing scenario, not just a passing seed"]}
+]

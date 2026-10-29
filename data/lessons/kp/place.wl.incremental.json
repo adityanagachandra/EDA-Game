@@ -1,0 +1,5 @@
+[
+  {"label": "Only incident nets change", "section": "Only incident nets change", "subgoals": ["Look up the nets incident to the moved cell", "Recompute HPWL of those nets at the new position", "Sum weighted differences, new minus old"]},
+  {"label": "Recomputing a box after a move", "section": "Recomputing a box after a move", "subgoals": ["Grow the box when the cell moves outward", "Rescan the other pins when the unique extreme pin moves inward", "Track the count of pins at each extreme to avoid rescans"]},
+  {"label": "Cost and correctness in practice", "section": "Cost and correctness in practice", "subgoals": ["Bound the cost of a move by the pins on the cell's nets", "Handle nets that contain two pins of the moved cells", "Test incremental deltas against full recomputation"]}
+]

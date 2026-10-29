@@ -1,0 +1,5 @@
+[
+  {"label": "Nine values and their strengths", "section": "Nine values and their strengths", "subgoals": ["Classify each driver value as forcing, weak or high impedance", "Let the stronger driver determine the result", "Return the other value when one driver is 'Z'"]},
+  {"label": "Conflicts between drivers", "section": "Conflicts between drivers", "subgoals": ["Give the strength's unknown when equal-strength values differ", "Let 'X' dominate all values except 'U'", "Model open-drain buses with a weak pull-up and forcing zeros"]},
+  {"label": "Resolving many drivers", "section": "Resolving many drivers", "subgoals": ["Fold the resolution table over all drivers in any order", "Use std_ulogic to make multiple drivers a compile error", "Map multiply driven signals to tristate or multiplexer logic"]}
+]

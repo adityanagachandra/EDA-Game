@@ -1,0 +1,5 @@
+[
+  {"label": "Density equals the chromatic number", "section": "Density equals the chromatic number", "subgoals": ["Represent each net by its closed column interval", "Find the column covered by the most intervals", "Read that count as the minimum number of tracks"]},
+  {"label": "The left-edge algorithm", "section": "The left-edge algorithm", "subgoals": ["Sort intervals by their left ends", "Place each on the lowest track whose last interval ends before it starts", "Open a new track only when none fits"]},
+  {"label": "Where the model breaks", "section": "Where the model breaks", "subgoals": ["Add vertical constraints from pins at the same column", "Recognize that vertical constraints make the problem NP-hard", "Reuse the sweep to assign registers to value lifetimes"]}
+]

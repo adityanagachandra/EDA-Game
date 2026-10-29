@@ -1,0 +1,5 @@
+[
+  {"label": "Thermal capacitance", "section": "Thermal capacitance", "subgoals": ["Compute the volume in cubic centimetres", "Multiply by density and specific heat", "Express the capacitance in millijoules per kelvin"]},
+  {"label": "The thermal time constant", "section": "The thermal time constant", "subgoals": ["Multiply thermal resistance by thermal capacitance", "Express the time constant in milliseconds", "Place it among the package time scales"]},
+  {"label": "Response to a power step", "section": "Response to a power step", "subgoals": ["Compute the steady-state rise as power times resistance", "Evaluate one minus the exponential of minus t over tau", "Multiply to get the rise at time t"]}
+]

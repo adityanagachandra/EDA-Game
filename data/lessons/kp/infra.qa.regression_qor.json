@@ -1,0 +1,5 @@
+[
+  {"label": "Geometric mean of QoR ratios", "section": "Geometric mean of QoR ratios", "subgoals": ["Divide each candidate metric by its baseline", "Average the logarithms of the ratios", "Exponentiate the average to get the geometric mean"]},
+  {"label": "Reporting a percent change", "section": "Reporting a percent change", "subgoals": ["Subtract one from the geometric mean ratio", "Multiply by 100 to get a signed percentage", "Flag designs whose own ratio exceeds the tolerance"]},
+  {"label": "Why the geometric mean is symmetric", "section": "Why the geometric mean is symmetric", "subgoals": ["Invert each ratio to compare in the other direction", "Take the reciprocal of the geometric mean", "Contrast with the arithmetic mean, which is not symmetric"]}
+]

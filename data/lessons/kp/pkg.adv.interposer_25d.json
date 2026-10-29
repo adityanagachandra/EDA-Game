@@ -1,0 +1,5 @@
+[
+  {"label": "Interposer area and the reticle", "section": "Interposer area and the reticle", "subgoals": ["Add die widths, gaps and margins", "Multiply by the height with margins", "Divide by the reticle area and round up"]},
+  {"label": "Wires across the die edge", "section": "Wires across the die edge", "subgoals": ["Convert the edge length to micrometres", "Divide by the wiring pitch and floor it", "Multiply by the routing layer count"]},
+  {"label": "The bump bottleneck", "section": "The bump bottleneck", "subgoals": ["Count bumps along the edge and into the band", "Multiply to get the bump capacity", "Take the minimum of wires and bumps"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "IEEE 1500 wrappers", "section": "IEEE 1500 wrappers", "subgoals": ["Wrap the core terminals with a wrapper boundary register", "Drive the wrapper through its serial port from on-chip control", "Choose internal test for the core and external test for the interconnect"]},
+  {"label": "IEEE 1687 networks", "section": "IEEE 1687 networks", "subgoals": ["Count one bit for each SIB on the active path", "Add each open SIB's segment length recursively", "Count one scan per closed SIB level to reach a nested instrument"]},
+  {"label": "Description and retargeting", "section": "Description and retargeting", "subgoals": ["Describe the network and interfaces in ICL", "Describe instrument operations in PDL", "Retarget PDL operations to scan sequences at the chip TAP"]}
+]

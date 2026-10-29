@@ -1,0 +1,5 @@
+[
+  {"label": "Point tools that exchange files", "section": "Point tools that exchange files", "subgoals": ["Trace which files each tool writes and reads", "Estimate the parse and write cost of each hand-off", "Identify data the format cannot carry across the boundary"]},
+  {"label": "Engines on one in-memory database", "section": "Engines on one in-memory database", "subgoals": ["Place all engines on one in-memory database", "Keep each engine's derived structures inside the engine", "Notify engines of edits so their derived data stays consistent"]},
+  {"label": "Consistency when engines share state", "section": "Consistency when engines share state", "subgoals": ["Serialize or partition concurrent edits", "Reference objects by ids and drop them on deletion callbacks", "Route every edit, including script edits, through the notifying API"]}
+]

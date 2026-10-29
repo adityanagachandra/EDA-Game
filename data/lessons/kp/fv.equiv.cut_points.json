@@ -1,0 +1,5 @@
+[
+  {"label": "Cutting at proved equivalences", "section": "Cutting at proved equivalences", "subgoals": ["Pick an internal pair already proved equivalent", "Replace both nodes by one shared free variable", "Check the downstream logic with the cut in place"]},
+  {"label": "False negatives", "section": "False negatives", "subgoals": ["Identify two cut variables that the real logic correlates", "Construct a cut assignment the real logic cannot produce", "Show how that assignment yields an output difference"]},
+  {"label": "Resolving false negatives", "section": "Resolving false negatives", "subgoals": ["Simulate the counterexample's inputs on the uncut designs", "Report a real difference or classify the counterexample as spurious", "Remove or move the cuts the spurious counterexample used and re-solve"]}
+]

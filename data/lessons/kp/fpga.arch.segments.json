@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Counting segments",
+  "section": "Counting segments",
+  "subgoals": [
+   "Divide the channel length by L to get segments per track",
+   "Multiply by W tracks",
+   "Note that staggering moves start points but not the count"
+  ]
+ },
+ {
+  "label": "Delay of a connection on buffered segments",
+  "section": "Delay of a connection on buffered segments",
+  "subgoals": [
+   "Count ceil of d over L segments",
+   "Compute t_b plus half r c L squared per segment",
+   "Multiply the per-segment delay by the segment count"
+  ]
+ },
+ {
+  "label": "Choosing the segment length",
+  "section": "Choosing the segment length",
+  "subgoals": [
+   "Evaluate the delay formula for each candidate L",
+   "Pick the length with the smallest delay",
+   "Account for wasted track when d is not a multiple of L"
+  ]
+ }
+]

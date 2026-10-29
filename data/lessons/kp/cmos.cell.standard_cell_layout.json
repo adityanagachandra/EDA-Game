@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The template: rails, wells and devices",
+    "section": "The template: rails, wells and devices",
+    "subgoals": [
+      "Run VDD and VSS rails along the cell's top and bottom edges",
+      "Place pMOS in the n-well near VDD and nMOS near VSS on shared poly",
+      "Order transistors to share diffusion between neighbours"
+    ]
+  },
+  {
+    "label": "Height in tracks, width in poly pitches",
+    "section": "Height in tracks, width in poly pitches",
+    "subgoals": [
+      "Multiply the track count by the metal pitch to get cell height",
+      "Multiply the CPP count by the poly pitch to get cell width",
+      "Multiply width by height for the cell area"
+    ]
+  },
+  {
+    "label": "What the template buys the tools",
+    "section": "What the template buys the tools",
+    "subgoals": [
+      "Model the core as rows of sites and cells as integer-width rectangles",
+      "Join row rails by abutment and connect them to the power grid",
+      "Handle double-height cells as a special placement case"
+    ]
+  }
+]

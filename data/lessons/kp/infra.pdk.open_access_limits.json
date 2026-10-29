@@ -1,0 +1,5 @@
+[
+  {"label": "What the open PDK files do not include", "section": "What the open PDK files do not include", "subgoals": ["Separate the released views from the foundry's retained data", "Name complex IP that is often missing or immature", "Treat an open deck's clean result as evidence, not proof"]},
+  {"label": "From open files to fabricated silicon", "section": "From open files to fabricated silicon", "subgoals": ["Identify fab access as a separate agreement from PDK access", "Explain how a shuttle shares mask cost across designs", "List what production adds beyond working prototypes"]},
+  {"label": "Engineering around the gaps", "section": "Engineering around the gaps", "subgoals": ["Reuse provided IO and ESD cells instead of drawing new ones", "Add guard band where models lack silicon correlation", "Transfer relative trends rather than absolute numbers"]}
+]

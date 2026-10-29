@@ -1,0 +1,5 @@
+[
+  {"label": "Local density", "section": "Local density", "subgoals": ["Find each net's leftmost and rightmost pin columns", "Mark the span between them as the net's trunk", "Count the spans that include the given column"]},
+  {"label": "Channel density as a lower bound", "section": "Channel density as a lower bound", "subgoals": ["Sweep the columns while counting active spans", "Record the maximum count as the channel density", "Use it as the minimum number of tracks"]},
+  {"label": "Bottleneck columns", "section": "Bottleneck columns", "subgoals": ["Compute the local density at every column", "Compare each with the channel density", "Count the columns that attain it"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The bottom-up phase", "section": "The bottom-up phase", "subgoals": ["Visit the topology in post-order", "Compute the edge lengths from the zero-skew condition", "Intersect the tilted regions to get the merging segment"]},
+  {"label": "The top-down phase", "section": "The top-down phase", "subgoals": ["Place the root on its merging segment", "Place each child at the nearest point of its segment to the parent", "Route each edge with its planned length"]},
+  {"label": "What deferral buys", "section": "What deferral buys", "subgoals": ["Contrast deferred and immediate tap selection", "State the optimality result and its assumptions", "Name the extensions to Elmore delay and bounded skew"]}
+]

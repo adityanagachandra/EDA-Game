@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Elimination as a graph game",
+  "section": "Elimination as a graph game",
+  "subgoals": [
+   "Draw the graph of the matrix pattern",
+   "Join the remaining neighbours of the eliminated vertex into a clique",
+   "Count the new edges as fill"
+  ]
+ },
+ {
+  "label": "Counting fill for an elimination order",
+  "section": "Counting fill for an elimination order",
+  "subgoals": [
+   "Eliminate the vertices in the given order on the updated graph",
+   "Add earlier fill edges before each later step",
+   "Sum the new edges over all steps"
+  ]
+ },
+ {
+  "label": "Why order changes fill: the arrow matrix",
+  "section": "Why order changes fill: the arrow matrix",
+  "subgoals": [
+   "Count the fill when a hub is eliminated first",
+   "Show that eliminating the hub last creates none",
+   "Choose a fill-reducing heuristic because exact minimization is NP-hard"
+  ]
+ }
+]

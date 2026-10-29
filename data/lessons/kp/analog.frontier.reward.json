@@ -1,0 +1,5 @@
+[
+  {"label": "Shaping the infeasible region", "section": "Shaping the infeasible region", "subgoals": ["Normalize each failing spec's shortfall by its spec value", "Sum the shortfalls and negate them", "Ignore the objective while any spec fails"]},
+  {"label": "Rewarding the objective once feasible", "section": "Rewarding the objective once feasible", "subgoals": ["Check that every spec passes", "Compute one minus power over the reference power", "Fix reward constants in configuration before training"]},
+  {"label": "Reward hacking and the surrogate gap", "section": "Reward hacking and the surrogate gap", "subgoals": ["Compute the reward from both the surrogate and SPICE", "Take their difference as reward earned from model error", "Score non-convergence as worst and audit rewards against SPICE during training"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The parabolic rail profile", "section": "The parabolic rail profile", "subgoals": ["Write the second-order equation for the rail drop", "Apply zero drop at both straps", "Evaluate the parabola at the midpoint"]},
+  {"label": "The largest pitch for a budget", "section": "The largest pitch for a budget", "subgoals": ["Set the midpoint drop equal to the budget", "Solve for the pitch", "Relate pitch changes to drop and track usage"]},
+  {"label": "The drop anywhere along the rail", "section": "The drop anywhere along the rail", "subgoals": ["Evaluate the parabola at the given position", "Note where along the rail the drop is small", "Name the assumption that the full solve removes"]}
+]

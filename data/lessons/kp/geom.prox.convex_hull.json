@@ -1,0 +1,5 @@
+[
+  {"label": "Hull vertices", "section": "Hull vertices", "subgoals": ["Identify the extreme points of the set", "Exclude interior points", "Exclude points lying on an edge between two corners"]},
+  {"label": "Andrew's monotone chain", "section": "Andrew's monotone chain", "subgoals": ["Sort the points by x and then by y", "Pop the last point while the turn is not strictly left", "Join the lower and upper chains into the hull"]},
+  {"label": "Area and the lower bound", "section": "Area and the lower bound", "subgoals": ["Order the hull vertices counter-clockwise", "Apply the shoelace formula to the hull ring", "Relate the sorting cost to the n log n lower bound"]}
+]

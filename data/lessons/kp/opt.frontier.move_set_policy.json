@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Where the policy seam goes",
+    "section": "Where the policy seam goes",
+    "subgoals": [
+      "Place the seam at the move generator, outside the acceptance and legality core",
+      "Expose read access to state and a typed channel for proposals",
+      "Batch plug-in calls so the inner loop stays fast"
+    ]
+  },
+  {
+    "label": "What the core still guarantees",
+    "section": "What the core still guarantees",
+    "subgoals": [
+      "Keep legality and cost bookkeeping inside the core",
+      "Require golden-design legality and QoR comparison for every new policy",
+      "Reject plug-ins whose hidden state breaks determinism"
+    ]
+  },
+  {
+    "label": "Selecting and promoting policies",
+    "section": "Selecting and promoting policies",
+    "subgoals": [
+      "Choose a policy by matching manifests to the design's characteristics",
+      "Validate a new policy and record where it helps before promotion",
+      "Keep each request at the lowest tier that can serve it"
+    ]
+  }
+]

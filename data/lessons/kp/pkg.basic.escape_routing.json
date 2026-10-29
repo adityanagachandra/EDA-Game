@@ -1,0 +1,5 @@
+[
+  {"label": "Traces through one channel", "section": "Traces through one channel", "subgoals": ["Subtract the pad diameter from the pitch", "Subtract one space and divide by width plus space", "Floor the quotient to get traces per channel"]},
+  {"label": "Rows per layer and layer count", "section": "Rows per layer and layer count", "subgoals": ["Add one to the traces per channel", "Divide the rows to escape by rows per layer", "Round up to a whole number of layers"]},
+  {"label": "Balls escaped on the first layer", "section": "Balls escaped on the first layer", "subgoals": ["Compute the escaped ring depth k", "Subtract the inner square from the full array", "Assign power and ground to the centre rings"]}
+]

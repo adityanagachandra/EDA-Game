@@ -1,0 +1,5 @@
+[
+  {"label": "Diffraction and the Rayleigh relation", "section": "Diffraction and the Rayleigh relation", "subgoals": ["Describe the lens as a filter on diffraction orders", "Write the Rayleigh relation for half-pitch", "Compute the half-pitch for a given scanner and k1"]},
+  {"label": "The k1 a pitch demands", "section": "The k1 a pitch demands", "subgoals": ["Convert a line pitch to its half-pitch", "Solve the relation for k1", "Compare the result with the 0.25 single-exposure floor"]},
+  {"label": "Wavelength and numerical aperture as levers", "section": "Wavelength and numerical aperture as levers", "subgoals": ["List the wavelength and NA steps of lithography history", "Solve the relation for the needed NA", "Explain why immersion stopped near NA 1.35"]}
+]

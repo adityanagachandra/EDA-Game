@@ -1,0 +1,5 @@
+[
+  {"label": "Field between parallel plates", "section": "Field between parallel plates", "subgoals": ["Divide the voltage by the plate spacing", "Express the field in megavolts per metre", "Multiply by epsilon to get the surface charge density"]},
+  {"label": "Parallel-plate capacitance", "section": "Parallel-plate capacitance", "subgoals": ["Multiply eps0 by epsilon r and the plate area", "Divide by the plate separation", "Express the result in femtofarads with eps0 in fF per um"]},
+  {"label": "Layered dielectrics", "section": "Layered dielectrics", "subgoals": ["Divide each layer thickness by its relative permittivity", "Add the ratios as series contributions", "Divide eps0 times area by the sum"]}
+]

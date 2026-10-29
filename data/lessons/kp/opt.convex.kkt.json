@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Stationarity and the constrained point",
+    "section": "Stationarity and the constrained point",
+    "subgoals": [
+      "Write the gradient of the Lagrangian and set it to zero",
+      "Express each variable in terms of the multiplier",
+      "Substitute into the active constraint and solve for the point"
+    ]
+  },
+  {
+    "label": "The multiplier as a price",
+    "section": "The multiplier as a price",
+    "subgoals": [
+      "Solve the active constraint for the multiplier",
+      "Divide the violation by the combined sensitivity",
+      "Interpret the multiplier as the cost of tightening the constraint"
+    ]
+  },
+  {
+    "label": "Complementary slackness and inactive constraints",
+    "section": "Complementary slackness and inactive constraints",
+    "subgoals": [
+      "Test the unconstrained minimizer for feasibility first",
+      "Set the multiplier to zero when the constraint is not binding",
+      "Assume the constraint active otherwise and confirm a nonnegative multiplier"
+    ]
+  }
+]

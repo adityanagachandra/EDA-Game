@@ -1,0 +1,5 @@
+[
+  {"label": "AIG size of a factored form", "section": "AIG size of a factored form", "subgoals": ["Count the literals of the factored form", "Charge one AND node per binary AND or OR", "Use L minus one as the AIG node cost before sharing"]},
+  {"label": "Factoring versus SOP inside the window", "section": "Factoring versus SOP inside the window", "subgoals": ["Collapse the cone over the large cut into a truth table", "Compute an irredundant SOP and factor it", "Compare the AND counts of the SOP and the factored form"]},
+  {"label": "Accepting a refactoring", "section": "Accepting a refactoring", "subgoals": ["Compute the gain as MFFC size minus the new structure's nodes", "Accept positive gains, or zero gains in the zero-cost variant", "Interleave refactoring with rewriting to cover its blind spots"]}
+]

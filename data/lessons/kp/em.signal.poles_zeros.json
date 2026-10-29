@@ -1,0 +1,5 @@
+[
+  {"label": "Poles as roots of the denominator", "section": "Poles as roots of the denominator", "subgoals": ["Factor or solve the denominator polynomial", "Take the root nearest the origin as the dominant pole", "Read the real part as decay and the imaginary part as ringing"]},
+  {"label": "Stability from pole locations", "section": "Stability from pole locations", "subgoals": ["Locate each pole's real part", "Count poles with a positive real part", "Declare the system unstable if any pole lies in the right half-plane"]},
+  {"label": "Damping from pole positions", "section": "Damping from pole positions", "subgoals": ["Compute the natural frequency as the pole's distance from the origin", "Divide the pole's decay rate by the natural frequency to get zeta", "Relate a smaller zeta to more overshoot"]}
+]

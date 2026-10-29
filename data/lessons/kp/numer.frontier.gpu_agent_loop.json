@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Batching many small solves",
+  "section": "Batching many small solves",
+  "subgoals": [
+   "Separate the shared setup from per-candidate work",
+   "Charge the setup once for the batch",
+   "Warm-start each solve from the previous candidate's solution"
+  ]
+ },
+ {
+  "label": "Budgeting candidate evaluations",
+  "section": "Budgeting candidate evaluations",
+  "subgoals": [
+   "Subtract the fixed overhead from the budget",
+   "Reserve time for the accurate re-runs of the best candidates",
+   "Divide the remainder by the fast-mode cost and round down"
+  ]
+ },
+ {
+  "label": "When to recurse to the accurate solver",
+  "section": "When to recurse to the accurate solver",
+  "subgoals": [
+   "Compare candidate gaps with twice the error band",
+   "Recurse when a result lies within the band of a limit",
+   "Confirm every promoted result with the accurate engine"
+  ]
+ }
+]

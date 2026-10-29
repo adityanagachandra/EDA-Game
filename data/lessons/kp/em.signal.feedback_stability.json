@@ -1,0 +1,5 @@
+[
+  {"label": "Closed-loop gain", "section": "Closed-loop gain", "subgoals": ["Multiply the forward gain by the feedback factor to get the loop gain", "Divide the forward gain by one plus the loop gain", "Compare the result with one over beta"]},
+  {"label": "Crossover of a one-pole loop", "section": "Crossover of a one-pole loop", "subgoals": ["Set the magnitude of the loop gain to one", "Solve for the crossover frequency of the single pole", "Approximate it as the DC loop gain times the pole frequency"]},
+  {"label": "Phase margin of a two-pole loop", "section": "Phase margin of a two-pole loop", "subgoals": ["Solve the magnitude of the loop gain equal to one for the crossover", "Sum the phase contributions of both poles at the crossover", "Subtract that sum from 180 degrees to get the margin"]}
+]

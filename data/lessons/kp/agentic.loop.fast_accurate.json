@@ -1,0 +1,5 @@
+[
+  {"label": "Fast and accurate versions of each engine", "section": "Fast and accurate versions of each engine", "subgoals": ["Name the fast version of each engine", "State what each fast version ignores", "Confine trust to the calibrated regime"]},
+  {"label": "The cost of a modeling loop", "section": "The cost of a modeling loop", "subgoals": ["Add fast iterations and accurate confirmations", "Find the largest iteration count within budget", "Compare with an all-accurate loop"]},
+  {"label": "Watching metrics and variance", "section": "Watching metrics and variance", "subgoals": ["Continue while metrics improve with low variance", "Switch or customize skills when a metric plateaus", "Recurse when variance grows or the regime changes"]}
+]

@@ -1,0 +1,15 @@
+# Simulation as a differential test for agent edits
+
+When an agent edits RTL, a testbench or the simulator itself, the change must be shown to do what was intended and nothing else. Simulation provides golden and differential tests: run fixed stimulus with fixed seeds on the old and the new version and compare. The comparison is only as good as its determinism and its stimulus, and the right level of comparison depends on whether timing was supposed to change.
+
+## Golden and differential runs
+
+A **golden test** has fixed inputs, fixed seeds, a recorded simulator version and command line, and recorded expected outputs; it passes only if the outputs are reproduced exactly. A **differential run** applies the same stimulus to two versions, for example the RTL before and after an agent's refactoring, and compares every output cycle by cycle. For a change meant to preserve behavior, any difference is a bug. Determinism is the precondition: a race in the design or testbench makes outputs depend on process order, so differences appear without any real change and drown out true regressions. Races and other nondeterminism must be removed first. Passing a differential run on 50 seeds proves equivalence only on what those seeds exercised; formal equivalence checking covers all inputs.
+
+## What the diff must prove
+
+For an intended change, the proof is the absence of unintended ones: the report must show that only the targeted signals or transactions changed, and everything else matched. When timing is meant to change, such as an added pipeline stage, cycle-by-cycle comparison fails everywhere; compare at transaction level instead, checking content and order. The value system matters. In a four-state simulator, an output that was X after reset in the old version and 0 in the new one is a real difference in initialization, to be explained. A two-state simulator maps X to concrete values, so such differences can vanish, which makes it a weaker oracle for reset and initialization changes. Finally, the differential is only as strong as the stimulus: if the changed module's code coverage is 20%, most of the change was never compared.
+
+## Differential testing across simulators
+
+The same idea applies to the tools. Running one design and testbench on two simulators, such as Icarus Verilog and Verilator, and comparing outputs exposes three kinds of problem: races, where both simulators are compliant but choose different process orders; X-dependent behavior, where four-state and two-state semantics diverge; and genuine simulator bugs. When an agent modifies a simulator, for instance its scheduler for speed, the regression suite must stress exactly the semantics that such changes break: delta-cycle ordering, nonblocking assignments, X propagation, and event controls, compared against the unmodified simulator. Each golden test records the exact simulator version and options, because a legitimate tool change can alter results and would otherwise look like a design regression.

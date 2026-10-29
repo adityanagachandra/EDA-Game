@@ -1,0 +1,5 @@
+[
+  {"label": "LUT count for associative functions", "section": "LUT count for associative functions", "subgoals": ["Count the signals each LUT removes as k minus one", "Divide m minus one by k minus one and round up", "Build a LUT tree that meets the bound"]},
+  {"label": "Minimum depth", "section": "Minimum depth", "subgoals": ["Bound the inputs reachable at depth d by k to the d", "Find the smallest d with k to the d at least m", "Compare the depth-optimal tree with the count-optimal tree"]},
+  {"label": "Generic functions by Shannon expansion", "section": "Generic functions by Shannon expansion", "subgoals": ["Expand on one variable into two cofactors and a multiplexer", "Solve the recurrence N(j) equals 2 N(j minus 1) plus 1", "Read the result as an upper bound, not the minimum for a given function"]}
+]

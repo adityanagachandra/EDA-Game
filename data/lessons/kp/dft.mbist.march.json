@@ -1,0 +1,5 @@
+[
+  {"label": "March notation", "section": "March notation", "subgoals": ["Read each element's address order from its arrow", "Count the operations in each element", "Sum the operations over the elements for the complexity"]},
+  {"label": "Test time", "section": "Test time", "subgoals": ["Multiply the complexity by the number of words", "Multiply the operation count by the cycle time", "Compare linear March tests with quadratic tests for large arrays"]},
+  {"label": "What each element buys", "section": "What each element buys", "subgoals": ["Start with a write sweep for a known background", "Sweep read-then-write in both orders to catch coupling and decoder faults", "Repeat the test once per data background for word-oriented memories"]}
+]

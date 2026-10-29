@@ -1,0 +1,5 @@
+[
+  {"label": "Cut nets in a bipartition", "section": "Cut nets in a bipartition", "subgoals": ["Assign every cell to one side", "Mark a net cut when its pins fall on both sides", "Count each cut net once regardless of how many pins cross"]},
+  {"label": "Weighted cuts", "section": "Weighted cuts", "subgoals": ["Attach a weight to each net", "Sum the weights of the cut nets", "Merge identical nets by summing weights to keep cuts exact"]},
+  {"label": "Cut metrics for k-way partitions", "section": "Cut metrics for k-way partitions", "subgoals": ["Count the blocks each net touches", "Charge lambda minus 1 per net for the connectivity metric", "Compare with the cut-net count, which charges 1 per cut net"]}
+]

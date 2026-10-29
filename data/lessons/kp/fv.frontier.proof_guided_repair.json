@@ -1,0 +1,5 @@
+[
+  {"label": "Reading the counterexample", "section": "Reading the counterexample", "subgoals": ["Extract the failing cycle and the assertion's cone of influence", "Classify the trace as base case, illegal environment or induction step", "Check reachability of the start state before blaming the RTL"]},
+  {"label": "Proposing and checking a fix", "section": "Proposing and checking a fix", "subgoals": ["Re-run the target assertion and the whole property suite after each edit", "Require the reference covers to stay reachable", "Finish with an unbounded proof or report the bounded evidence honestly"]},
+  {"label": "Guardrails on the repair loop", "section": "Guardrails on the repair loop", "subgoals": ["Reject edits that weaken, delete or bypass a property", "Keep properties, covers and assumptions outside the agent's edit scope", "Require human approval of RTL diffs after the proofs pass"]}
+]

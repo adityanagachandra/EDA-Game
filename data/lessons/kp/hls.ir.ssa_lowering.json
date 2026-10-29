@@ -1,0 +1,29 @@
+[
+ {
+  "label": "SSA form and phi nodes",
+  "section": "SSA form and phi nodes",
+  "subgoals": [
+   "Rename each assignment to a fresh version",
+   "Insert a phi at each join where versions merge",
+   "Map a join phi to a multiplexer and a header phi to a loop-carried register"
+  ]
+ },
+ {
+  "label": "Arrays, pointers, calls and widths",
+  "section": "Arrays, pointers, calls and widths",
+  "subgoals": [
+   "Map large arrays to RAMs with limited ports",
+   "Keep possibly aliasing accesses in program order",
+   "Narrow every type to the width the algorithm needs"
+  ]
+ },
+ {
+  "label": "Optimizations that reshape the graph",
+  "section": "Optimizations that reshape the graph",
+  "subgoals": [
+   "Replace constant multiplies by shifts and adds",
+   "Rebalance associative integer chains to cut depth",
+   "Shrink registers to the proven value range"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Scoring a proposed transform", "section": "Scoring a proposed transform", "subgoals": ["Gate the reward on a proven equivalence", "Measure the node count after structural hashing", "Reward the reduction against the baseline"]},
+  {"label": "How a reward gets gamed", "section": "How a reward gets gamed", "subgoals": ["Spot rewards that trust simulation alone", "Spot rewards that count nodes before hashing", "Spot rewards that ignore don't-care misuse"]},
+  {"label": "From proxy to signoff", "section": "From proxy to signoff", "subgoals": ["Compare the fast proxy with downstream QoR", "Penalize timeouts instead of rewarding them", "Keep the golden check in the loop"]}
+]

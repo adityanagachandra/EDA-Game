@@ -1,0 +1,5 @@
+[
+  {"label": "Connectivity by union-find", "section": "Connectivity by union-find", "subgoals": ["Union same-layer shapes that overlap or touch", "Union the two shapes joined by each via", "Count the remaining disjoint sets as nets"]},
+  {"label": "Labels, shorts and net names", "section": "Labels, shorts and net names", "subgoals": ["Extract the nets before reading labels", "Collect the distinct label names on each net", "Report nets with more than one distinct name as shorts"]},
+  {"label": "Critical vias and opens", "section": "Critical vias and opens", "subgoals": ["Count the nets with every via present", "Remove one via at a time and recount", "Count the vias whose removal increases the net count"]}
+]

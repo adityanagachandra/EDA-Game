@@ -1,0 +1,5 @@
+[
+  {"label": "Control limits for a mean", "section": "Control limits for a mean", "subgoals": ["Compute the standard error of the sample mean", "Place the limits three standard errors from the centre line", "Distinguish control limits from spec limits"]},
+  {"label": "Capability indices", "section": "Capability indices", "subgoals": ["Compute Cp from the spec width and six sigma", "Compute Cpk from the nearer spec limit and three sigma", "Convert Cpk to a sigma distance and a tail fraction"]},
+  {"label": "How fast a chart detects a shift", "section": "How fast a chart detects a shift", "subgoals": ["Compute the signal probability of a point outside the limits", "Shift the plotted mean by delta times the square root of n", "Invert the signal probability to get the average run length"]}
+]

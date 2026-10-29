@@ -1,0 +1,5 @@
+[
+  {"label": "Reaching definitions", "section": "Reaching definitions", "subgoals": ["Build GEN and KILL for every block", "Union OUT over predecessors to get IN", "Iterate the transfer equations to a fixed point"]},
+  {"label": "Liveness", "section": "Liveness", "subgoals": ["Gather each block's upward-exposed uses and its definitions", "Union IN over successors to get OUT", "Propagate backward until the sets stop changing"]},
+  {"label": "Lattices and termination", "section": "Lattices and termination", "subgoals": ["Order the facts in a lattice with a merge operation", "Check that each transfer function is monotone", "Visit blocks in reverse postorder with a worklist until stable"]}
+]

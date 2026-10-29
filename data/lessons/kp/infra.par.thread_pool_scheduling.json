@@ -1,0 +1,5 @@
+[
+  {"label": "Greedy list scheduling", "section": "Greedy list scheduling", "subgoals": ["Hand each task in order to the earliest-free worker", "Break ties toward the lowest-numbered worker", "Take the largest worker load as the makespan"]},
+  {"label": "Longest task first", "section": "Longest task first", "subgoals": ["Sort tasks from longest to shortest", "Schedule the sorted list greedily", "Compare the new makespan with the unsorted one"]},
+  {"label": "Lower bounds on makespan", "section": "Lower bounds on makespan", "subgoals": ["Divide the total work by the worker count", "Find the longest single task", "Take the larger value as the lower bound"]}
+]

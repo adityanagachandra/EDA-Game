@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Dynamic and static power",
+    "section": "Dynamic and static power",
+    "subgoals": [
+      "Name activity, capacitance, voltage and frequency in the dynamic power formula",
+      "Multiply the four terms with consistent units",
+      "Separate dynamic from leakage power"
+    ]
+  },
+  {
+    "label": "Voltage, frequency and the quadratic lever",
+    "section": "Voltage, frequency and the quadratic lever",
+    "subgoals": [
+      "Square the voltage ratio to scale dynamic power",
+      "Explain why lower voltage also lowers maximum frequency",
+      "Relate recovered timing margin to voltage reduction"
+    ]
+  },
+  {
+    "label": "Performance from the critical path",
+    "section": "Performance from the critical path",
+    "subgoals": [
+      "Add clock-to-output, logic and setup delays for the minimum period",
+      "Invert the minimum period to get maximum frequency",
+      "Name a change that trades area or power for performance"
+    ]
+  }
+]

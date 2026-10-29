@@ -1,0 +1,5 @@
+[
+  {"label": "The two-stage trade-off", "section": "The two-stage trade-off", "subgoals": ["Write the driver delay and the gate delay as functions of size", "Differentiate and solve for the stationary size", "Use convexity to confirm it is the minimum"]},
+  {"label": "Discrete sizes", "section": "Discrete sizes", "subgoals": ["Evaluate the delay at each available size", "Check only the two sizes that bracket the continuous optimum", "Keep the size with the smallest delay"]},
+  {"label": "Continuous versus discrete sizing", "section": "Continuous versus discrete sizing", "subgoals": ["Solve the continuous problem with a convex method", "Round to library sizes and repair violations", "Estimate the rounding loss from the flatness of D near the optimum"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The trapezoidal step equation",
+    "section": "The trapezoidal step equation",
+    "subgoals": [
+      "Compute the capacitor current at the start of the step",
+      "Stamp the trapezoidal companion and move history to the right",
+      "Solve for the new node voltage"
+    ]
+  },
+  {
+    "label": "Updating the capacitor current",
+    "section": "Updating the capacitor current",
+    "subgoals": [
+      "Apply the companion formula for the new current",
+      "Check it against the resistor current by KCL",
+      "Store it as history for the next step"
+    ]
+  },
+  {
+    "label": "Two trapezoidal steps",
+    "section": "Two trapezoidal steps",
+    "subgoals": [
+      "Use the new voltage and current as history",
+      "Solve the step equation again",
+      "Compare the trapezoidal per-step factor with the exponential"
+    ]
+  }
+]

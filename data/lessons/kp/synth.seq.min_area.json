@@ -1,0 +1,5 @@
+[
+  {"label": "The objective in terms of lags", "section": "The objective in terms of lags", "subgoals": ["Write the register count as a constant plus a linear function of the lags", "Weight each lag by fanin edges minus fanout edges", "Evaluate the change for a proposed move across a gate"]},
+  {"label": "A linear program dual to min-cost flow", "section": "A linear program dual to min-cost flow", "subgoals": ["State the objective and both families of difference constraints", "Use total unimodularity to get integral optimal lags", "Solve the dual as a minimum-cost flow problem"]},
+  {"label": "Practical limits", "section": "Practical limits", "subgoals": ["Compute initial states for moved registers, which may fail for backward moves", "Respect enables, resets and scan when moving registers", "Verify the result with sequential equivalence checking"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Linear interpolation along one axis", "section": "Linear interpolation along one axis", "subgoals": ["Locate the two index points that bracket the query", "Compute the fractional position t between them", "Interpolate the value as v1 plus t times the difference"]},
+  {"label": "Bilinear interpolation in a window", "section": "Bilinear interpolation in a window", "subgoals": ["Compute the fractional positions along slew and along load", "Weight each corner value by its two fractions", "Sum the four weighted corners"]},
+  {"label": "Extrapolation beyond the table", "section": "Extrapolation beyond the table", "subgoals": ["Detect a query outside the table's index range", "Extend the edge window's bilinear formula with a fraction outside 0 to 1", "Flag far extrapolations as unreliable and keep pins within the design-rule limits"]}
+]

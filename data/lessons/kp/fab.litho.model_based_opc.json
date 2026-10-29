@@ -1,0 +1,5 @@
+[
+  {"label": "Measuring edge placement error", "section": "Measuring edge placement error", "subgoals": ["Define EPE as printed minus target position", "Compute RMS EPE over a polygon's fragments", "Report the maximum EPE alongside the RMS"]},
+  {"label": "A feedback update for each fragment", "section": "A feedback update for each fragment", "subgoals": ["Model the printed edge as gain times fragment move", "Apply the update minus f times EPE", "Multiply the error by one minus f times g"]},
+  {"label": "Convergence and stopping", "section": "Convergence and stopping", "subgoals": ["Identify the contraction factor of the iteration", "Count iterations until the error meets tolerance", "Explain why neighbour coupling forces conservative damping"]}
+]

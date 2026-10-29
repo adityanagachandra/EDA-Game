@@ -1,0 +1,904 @@
+[
+ {
+  "id": "extract.res.sheet_resistance",
+  "label": "Sheet resistance and counting squares",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.resistance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "fab.beol.interconnect_stack",
+   "em.circuit.kcl_kvl"
+  ],
+  "key_prerequisites": [
+   "fab.beol.interconnect_stack"
+  ],
+  "encompasses": [
+   "em.circuit.kcl_kvl"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.res.wire_resistance",
+  "label": "Wire and via resistance",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.resistance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.res.sheet_resistance",
+   "route.layer.via_minimization",
+   "fab.beol.interconnect_stack"
+  ],
+  "key_prerequisites": [
+   "extract.res.sheet_resistance"
+  ],
+  "encompasses": [
+   "extract.res.sheet_resistance"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.res.temperature",
+  "label": "Temperature dependence of wire resistance",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.resistance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.res.wire_resistance",
+   "sta.delay.elmore"
+  ],
+  "key_prerequisites": [
+   "extract.res.wire_resistance"
+  ],
+  "encompasses": [
+   "extract.res.wire_resistance"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.res.barrier_scattering",
+  "label": "Barrier layers and size effects in copper",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.resistance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.res.wire_resistance",
+   "fab.beol.interconnect_stack"
+  ],
+  "key_prerequisites": [
+   "extract.res.wire_resistance"
+  ],
+  "encompasses": [
+   "extract.res.wire_resistance"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.cap.parallel_plate",
+  "label": "Area capacitance to the layer below",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.capacitance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "em.field.electrostatics_capacitance",
+   "fab.beol.interconnect_stack"
+  ],
+  "key_prerequisites": [
+   "em.field.electrostatics_capacitance"
+  ],
+  "encompasses": [
+   "em.field.electrostatics_capacitance"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.cap.fringe",
+  "label": "Fringe capacitance",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.capacitance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.parallel_plate",
+   "em.field.electrostatics_capacitance"
+  ],
+  "key_prerequisites": [
+   "extract.cap.parallel_plate"
+  ],
+  "encompasses": [
+   "extract.cap.parallel_plate"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.cap.coupling",
+  "label": "Coupling capacitance",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.capacitance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.fringe",
+   "extract.cap.parallel_plate",
+   "fab.pdk.design_rules"
+  ],
+  "key_prerequisites": [
+   "extract.cap.parallel_plate"
+  ],
+  "encompasses": [
+   "extract.cap.parallel_plate"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.cap.cap_matrix",
+  "label": "The Maxwell capacitance matrix",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.capacitance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.coupling",
+   "em.circuit.nodal_analysis",
+   "linalg.matrix.concept"
+  ],
+  "key_prerequisites": [
+   "extract.cap.coupling"
+  ],
+  "encompasses": [
+   "extract.cap.coupling"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.cap.total_net",
+  "label": "Total capacitance of a net",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.capacitance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.coupling",
+   "extract.cap.fringe",
+   "extract.cap.cap_matrix"
+  ],
+  "key_prerequisites": [
+   "extract.cap.coupling"
+  ],
+  "encompasses": [
+   "extract.cap.coupling",
+   "extract.cap.fringe"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.cap.field_solver",
+  "label": "Field-solver capacitance extraction",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.capacitance",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "extract.cap.cap_matrix",
+   "ode.pde.laplace_eq",
+   "em.solver.method_of_moments"
+  ],
+  "key_prerequisites": [
+   "extract.cap.cap_matrix",
+   "ode.pde.laplace_eq"
+  ],
+  "encompasses": [
+   "extract.cap.cap_matrix"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 75
+  }
+ },
+ {
+  "id": "extract.method.pattern_matching",
+  "label": "Rule-based extraction by pattern matching",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.methods",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.field_solver",
+   "extract.cap.total_net",
+   "sta.delay.nldm_interpolation"
+  ],
+  "key_prerequisites": [
+   "extract.cap.field_solver"
+  ],
+  "encompasses": [
+   "sta.delay.nldm_interpolation",
+   "extract.cap.total_net"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.method.random_walk",
+  "label": "Floating random-walk capacitance solvers",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.methods",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.field_solver",
+   "prob.process.random_walk",
+   "stat.sampling.se"
+  ],
+  "key_prerequisites": [
+   "extract.cap.field_solver",
+   "prob.process.random_walk"
+  ],
+  "encompasses": [
+   "stat.sampling.se"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.method.bem_fem",
+  "label": "Boundary-element versus finite-element solvers",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.methods",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.field_solver",
+   "em.solver.method_of_moments",
+   "numer.pde.fem"
+  ],
+  "key_prerequisites": [
+   "extract.cap.field_solver"
+  ],
+  "encompasses": [
+   "em.solver.method_of_moments"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.method.calibration",
+  "label": "Calibrating extraction to a golden solver",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.methods",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.method.pattern_matching",
+   "extract.cap.field_solver",
+   "numa.interp.least_squares"
+  ],
+  "key_prerequisites": [
+   "extract.method.pattern_matching"
+  ],
+  "encompasses": [
+   "extract.method.pattern_matching",
+   "numa.interp.least_squares"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.ind.partial_inductance",
+  "label": "Loop and partial inductance",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.inductance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "em.field.inductance",
+   "extract.res.wire_resistance"
+  ],
+  "key_prerequisites": [
+   "em.field.inductance"
+  ],
+  "encompasses": [
+   "em.field.inductance"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.ind.significance",
+  "label": "When on-chip inductance matters",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.inductance",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.ind.partial_inductance",
+   "em.tline.telegrapher",
+   "extract.res.wire_resistance"
+  ],
+  "key_prerequisites": [
+   "extract.ind.partial_inductance"
+  ],
+  "encompasses": [
+   "extract.ind.partial_inductance",
+   "extract.res.wire_resistance"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.format.spef",
+  "label": "SPEF",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.format",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "extract.cap.total_net",
+   "extract.res.wire_resistance",
+   "csim.tool.spice_netlist"
+  ],
+  "key_prerequisites": [
+   "extract.cap.total_net"
+  ],
+  "encompasses": [
+   "extract.cap.total_net"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 75
+  }
+ },
+ {
+  "id": "extract.format.spef_counts",
+  "label": "Reading a SPEF net section",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.format",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.format.spef",
+   "sta.delay.elmore"
+  ],
+  "key_prerequisites": [
+   "extract.format.spef"
+  ],
+  "encompasses": [
+   "extract.format.spef",
+   "sta.delay.elmore"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.format.name_map",
+  "label": "SPEF name maps and file size",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.format",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.format.spef",
+   "extract.format.spef_counts"
+  ],
+  "key_prerequisites": [
+   "extract.format.spef"
+  ],
+  "encompasses": [
+   "extract.format.spef"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.reduce.rc_reduction",
+  "label": "RC network reduction",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.reduction",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "extract.format.spef",
+   "sta.delay.elmore",
+   "numer.mor.krylov_projection"
+  ],
+  "key_prerequisites": [
+   "sta.delay.elmore"
+  ],
+  "encompasses": [
+   "sta.delay.elmore"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 75
+  }
+ },
+ {
+  "id": "extract.reduce.moments",
+  "label": "Moments of an RC tree",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.reduction",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.reduce.rc_reduction",
+   "sta.delay.elmore",
+   "em.signal.laplace_transfer"
+  ],
+  "key_prerequisites": [
+   "sta.delay.elmore"
+  ],
+  "encompasses": [
+   "sta.delay.elmore"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.reduce.node_elimination",
+  "label": "Node elimination by star-mesh transform",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.reduction",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.reduce.rc_reduction",
+   "em.circuit.nodal_analysis",
+   "numa.linear.elimination"
+  ],
+  "key_prerequisites": [
+   "extract.reduce.rc_reduction",
+   "numa.linear.elimination"
+  ],
+  "encompasses": [
+   "em.circuit.nodal_analysis"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.reduce.elmore_preserving",
+  "label": "Elmore-preserving elimination in an RC chain",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.reduction",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.reduce.node_elimination",
+   "extract.reduce.moments"
+  ],
+  "key_prerequisites": [
+   "extract.reduce.node_elimination"
+  ],
+  "encompasses": [
+   "extract.reduce.node_elimination",
+   "extract.reduce.moments"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.reduce.pi_model",
+  "label": "The moment-matched pi model",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.reduction",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.reduce.moments",
+   "calc.series.taylor",
+   "csim.mor.prima"
+  ],
+  "key_prerequisites": [
+   "extract.reduce.moments"
+  ],
+  "encompasses": [
+   "extract.reduce.moments"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 180
+  }
+ },
+ {
+  "id": "extract.si.miller_factor",
+  "label": "The Miller factor of a coupling capacitor",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.coupling",
+   "em.circuit.rc_time_constant"
+  ],
+  "key_prerequisites": [
+   "extract.cap.coupling"
+  ],
+  "encompasses": [
+   "extract.cap.coupling"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.si.effective_cap",
+  "label": "Switching-dependent effective capacitance",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.si.miller_factor",
+   "extract.cap.total_net"
+  ],
+  "key_prerequisites": [
+   "extract.si.miller_factor"
+  ],
+  "encompasses": [
+   "extract.si.miller_factor",
+   "extract.cap.total_net"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.si.crosstalk_delay",
+  "label": "Crosstalk-induced delay",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.si.effective_cap",
+   "sta.delay.elmore",
+   "sta.check.setup_hold"
+  ],
+  "key_prerequisites": [
+   "extract.si.effective_cap"
+  ],
+  "encompasses": [
+   "extract.si.effective_cap",
+   "extract.si.miller_factor"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.si.glitch",
+  "label": "Crosstalk glitches",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.cap.coupling",
+   "extract.cap.total_net",
+   "em.circuit.rc_time_constant"
+  ],
+  "key_prerequisites": [
+   "extract.cap.coupling"
+  ],
+  "encompasses": [
+   "extract.cap.coupling"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "extract.si.noise_immunity",
+  "label": "Glitch peak with a holding driver and noise immunity",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.si.glitch",
+   "ode.first_order.linear",
+   "em.circuit.rc_time_constant"
+  ],
+  "key_prerequisites": [
+   "extract.si.glitch"
+  ],
+  "encompasses": [
+   "extract.si.glitch"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.si.timing_windows",
+  "label": "Timing windows and aggressor filtering",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.si",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.si.crosstalk_delay",
+   "sta.graph.arrival_required"
+  ],
+  "key_prerequisites": [
+   "extract.si.crosstalk_delay"
+  ],
+  "encompasses": [
+   "extract.si.crosstalk_delay",
+   "extract.si.effective_cap"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.signoff.rc_corners",
+  "label": "RC corners and signoff scenarios",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.signoff",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.res.wire_resistance",
+   "extract.cap.total_net",
+   "csim.var.monte_carlo_corners"
+  ],
+  "key_prerequisites": [
+   "extract.res.wire_resistance",
+   "extract.cap.total_net"
+  ],
+  "encompasses": [
+   "extract.res.wire_resistance",
+   "extract.cap.total_net"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.signoff.em_ir",
+  "label": "Electromigration and IR-drop signoff",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.signoff",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.res.wire_resistance",
+   "cts.pdn.ir_drop",
+   "cts.pdn.electromigration"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.electromigration"
+  ],
+  "encompasses": [
+   "extract.res.wire_resistance",
+   "cts.pdn.ir_drop"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.signoff.checklist",
+  "label": "The signoff checklist",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.signoff",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "extract.si.crosstalk_delay",
+   "extract.signoff.em_ir",
+   "extract.signoff.rc_corners",
+   "fab.pdk.design_rules"
+  ],
+  "key_prerequisites": [
+   "extract.si.crosstalk_delay"
+  ],
+  "encompasses": [
+   "extract.signoff.rc_corners"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "extract.signoff.eco",
+  "label": "Engineering change orders",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.signoff",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "extract.signoff.checklist",
+   "sta.closure.timing_closure"
+  ],
+  "key_prerequisites": [
+   "extract.signoff.checklist"
+  ],
+  "encompasses": [],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "extract.signoff.spare_cells",
+  "label": "Metal-only ECOs with spare cells",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.signoff",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.signoff.eco",
+   "route.detail.drc_aware",
+   "fab.litho.multiple_patterning"
+  ],
+  "key_prerequisites": [
+   "extract.signoff.eco"
+  ],
+  "encompasses": [
+   "extract.signoff.eco"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.signoff.ppa_closure",
+  "label": "PPA closure",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.signoff",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "extract.signoff.eco",
+   "extract.si.crosstalk_delay",
+   "extract.signoff.em_ir"
+  ],
+  "key_prerequisites": [
+   "extract.signoff.eco"
+  ],
+  "encompasses": [
+   "extract.signoff.eco"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 75
+  }
+ },
+ {
+  "id": "extract.frontier.core_vs_surface",
+  "label": "The extractor's core and change surface",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "extract.method.pattern_matching",
+   "extract.cap.field_solver",
+   "agentic.engine.core_vs_surface"
+  ],
+  "key_prerequisites": [
+   "agentic.engine.core_vs_surface"
+  ],
+  "encompasses": [
+   "extract.method.pattern_matching"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "extract.frontier.calibration_tier1",
+  "label": "Calibration as a Tier 1 change",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.frontier",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.method.calibration",
+   "agentic.tiers.change"
+  ],
+  "key_prerequisites": [
+   "extract.method.calibration"
+  ],
+  "encompasses": [
+   "extract.method.calibration"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.frontier.fast_accurate",
+  "label": "Fast and accurate extraction in an agent loop",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.frontier",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.method.pattern_matching",
+   "extract.si.crosstalk_delay",
+   "agentic.loop.fast_accurate"
+  ],
+  "key_prerequisites": [
+   "agentic.loop.fast_accurate"
+  ],
+  "encompasses": [
+   "extract.si.crosstalk_delay"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "extract.frontier.differential_eco_check",
+  "label": "Differential parasitic checks for ECOs",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.frontier",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "extract.format.spef_counts",
+   "extract.signoff.eco",
+   "agentic.verify.golden_differential"
+  ],
+  "key_prerequisites": [
+   "agentic.verify.golden_differential"
+  ],
+  "encompasses": [
+   "extract.format.spef_counts"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "extract.frontier.agentic_signoff",
+  "label": "Agentic signoff and ECO loops",
+  "domain": "extraction_and_signoff",
+  "subdomain": "extraction_and_signoff.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "extract.signoff.checklist",
+   "extract.signoff.eco",
+   "agentic.signoff.eco_loop"
+  ],
+  "key_prerequisites": [
+   "agentic.signoff.eco_loop"
+  ],
+  "encompasses": [
+   "extract.signoff.eco"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ }
+]

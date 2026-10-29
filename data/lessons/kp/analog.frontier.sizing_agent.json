@@ -1,0 +1,5 @@
+[
+  {"label": "The harness loop for sizing", "section": "The harness loop for sizing", "subgoals": ["Restrict the agent's edits to parameter values in a fixed topology", "Return failing specs, margins, corners and operating-point warnings", "Re-run golden sizing regressions when the harness changes"]},
+  {"label": "Acceptance by the golden judge", "section": "Acceptance by the golden judge", "subgoals": ["Evaluate every spec at every required corner in SPICE", "Accept the first iteration whose worst corner passes", "Freeze the testbench and treat non-converged corners as failures"]},
+  {"label": "Failure modes and what the loop must still check", "section": "Failure modes and what the loop must still check", "subgoals": ["Put power and every relevant cost into the measured objective", "Add Monte Carlo mismatch to acceptance for matching-sensitive blocks", "Escalate topology changes to stronger review and keep data in the sandbox"]}
+]

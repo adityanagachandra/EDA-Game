@@ -1,0 +1,5 @@
+[
+  {"label": "HW, Comb and Seq", "section": "HW, Comb and Seq", "subgoals": ["Put structure in hw, logic in comb and state in seq", "Use signless integer types for every value", "Express signedness through operation predicates"]},
+  {"label": "SV, ExportVerilog and the lowering path", "section": "SV, ExportVerilog and the lowering path", "subgoals": ["Use sv operations to shape the emitted SystemVerilog", "Print the design with ExportVerilog", "Lower registers to always blocks only at the end"]},
+  {"label": "Higher-level and simulation dialects", "section": "Higher-level and simulation dialects", "subgoals": ["Match each higher-level dialect to the model it captures", "Lower SystemVerilog from moore and FIRRTL from firrtl into the core dialects", "Place a transformation at the dialect that holds the information it needs"]}
+]

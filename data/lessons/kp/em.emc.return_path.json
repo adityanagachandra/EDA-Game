@@ -1,0 +1,5 @@
+[
+  {"label": "Low frequency: the path of least resistance", "section": "Low frequency: the path of least resistance", "subgoals": ["Treat the return paths as parallel resistors", "Compute the current share with the current-divider rule", "Note that the low-resistance path need not follow the trace"]},
+  {"label": "High frequency: the path of least inductance", "section": "High frequency: the path of least inductance", "subgoals": ["Treat the return paths as parallel inductances", "Compute the current share inversely to inductance", "Identify the path that minimizes the loop area"]},
+  {"label": "The crossover frequency", "section": "The crossover frequency", "subgoals": ["Set the path's reactance equal to its resistance", "Solve for the frequency as R over two pi L", "Classify the signal's frequency content against the crossover"]}
+]

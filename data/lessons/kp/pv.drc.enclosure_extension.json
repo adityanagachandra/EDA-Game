@@ -1,0 +1,5 @@
+[
+  {"label": "Enclosure", "section": "Enclosure", "subgoals": ["Subtract via edges from the corresponding metal edges", "Take the minimum of the four margins", "Compare it with the required enclosure"]},
+  {"label": "Two-sided enclosure rules", "section": "Two-sided enclosure rules", "subgoals": ["Take the minimum of each opposite pair of margins", "Test the pairs against b and a in one orientation", "Test the other orientation and pass if either holds"]},
+  {"label": "Extension and endcaps", "section": "Extension and endcaps", "subgoals": ["Compute each end's extension as poly end minus diffusion edge", "Take the shortfall max(0, E - extension) per end", "Sum the shortfalls over all gates"]}
+]

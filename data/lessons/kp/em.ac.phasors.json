@@ -1,0 +1,5 @@
+[
+  {"label": "Sinusoids as rotating complex numbers", "section": "Sinusoids as rotating complex numbers", "subgoals": ["Convert each sinusoid to a magnitude and angle", "Add the phasors as complex numbers in rectangular form", "Take the magnitude of the sum as the resulting amplitude"]},
+  {"label": "Element impedances", "section": "Element impedances", "subgoals": ["Write the impedance of each element with omega equal to two pi f", "Evaluate the capacitor reactance as one over omega C", "Evaluate the inductor reactance as omega L"]},
+  {"label": "Phase between voltage and current", "section": "Phase between voltage and current", "subgoals": ["Compute the impedance angle from the reactance and resistance", "Subtract the impedance angle from the voltage phase", "Read a positive result as current leading the voltage"]}
+]

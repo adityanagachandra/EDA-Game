@@ -1,0 +1,5 @@
+[
+  {"label": "Splitting one long clause", "section": "Splitting one long clause", "subgoals": ["Chain the literals with fresh linking variables", "Write k minus 2 three-literal clauses", "Use k minus 3 new variables"]},
+  {"label": "Fresh variables for a whole formula", "section": "Fresh variables for a whole formula", "subgoals": ["Split every clause longer than three", "Add the new variables clause by clause", "Total the new variables"]},
+  {"label": "Size of the 3-CNF", "section": "Size of the 3-CNF", "subgoals": ["Keep the clauses that already have three literals", "Replace each longer clause by its chain", "Total the clauses"]}
+]

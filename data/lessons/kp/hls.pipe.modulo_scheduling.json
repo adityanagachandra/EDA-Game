@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The modulo reservation table",
+  "section": "The modulo reservation table",
+  "subgoals": [
+   "Reduce each operation's start time modulo the II",
+   "Place its resource use in that row of the table",
+   "Require every row to stay within the number of copies"
+  ]
+ },
+ {
+  "label": "Iterative modulo scheduling",
+  "section": "Iterative modulo scheduling",
+  "subgoals": [
+   "Start from the larger of ResMII and RecMII",
+   "Try start times from the earliest legal one until a free row appears",
+   "Evict and retry, or raise the II when the budget runs out"
+  ]
+ },
+ {
+  "label": "Stages, prologue and epilogue",
+  "section": "Stages, prologue and epilogue",
+  "subgoals": [
+   "Divide the single-iteration length by the II and round up for the stage count",
+   "Compute the prologue as stages minus one times the II",
+   "Realize fill and drain with stage-valid bits"
+  ]
+ }
+]

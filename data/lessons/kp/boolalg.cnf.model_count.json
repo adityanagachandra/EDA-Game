@@ -1,0 +1,5 @@
+[
+  {"label": "Model counting by enumeration", "section": "Model counting by enumeration", "subgoals": ["Enumerate all assignments", "Test each against every clause", "Count the satisfying ones"]},
+  {"label": "Counting by inclusion and exclusion", "section": "Counting by inclusion and exclusion", "subgoals": ["Count the assignments falsifying each clause", "Correct for assignments falsifying several clauses at once", "Subtract the union from 2 to the n"]},
+  {"label": "Independent components multiply", "section": "Independent components multiply", "subgoals": ["Split the clauses into groups with no shared variable", "Count each group over its own variables", "Multiply the counts and the free variables"]}
+]

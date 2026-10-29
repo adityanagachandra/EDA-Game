@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The static latch",
+    "section": "The static latch",
+    "subgoals": [
+      "Pass the input through a transmission gate while transparent",
+      "Close a cross-coupled inverter loop while opaque",
+      "Distinguish static feedback storage from dynamic charge storage"
+    ]
+  },
+  {
+    "label": "Master-slave flip-flops",
+    "section": "Master-slave flip-flops",
+    "subgoals": [
+      "Chain a negative-level master and a positive-level slave",
+      "Trace D into the master before the edge and to Q after it",
+      "Buffer the clock and output so pins have fixed load and drive"
+    ]
+  },
+  {
+    "label": "Where setup, hold and clock-to-q come from",
+    "section": "Where setup, hold and clock-to-q come from",
+    "subgoals": [
+      "Trace setup to the master settling before its input switch closes",
+      "Trace hold to the delayed internal clock at the master's input",
+      "Trace clock-to-q through the slave latch and output buffer"
+    ]
+  }
+]

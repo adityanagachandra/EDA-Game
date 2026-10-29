@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Propagating a candidate through a wire",
+    "section": "Propagating a candidate through a wire",
+    "subgoals": [
+      "Compute the wire's Elmore delay from its resistance and the downstream load",
+      "Subtract the delay from the required time",
+      "Add the wire capacitance to the load"
+    ]
+  },
+  {
+    "label": "Inserting a buffer",
+    "section": "Inserting a buffer",
+    "subgoals": [
+      "Charge the buffer's intrinsic delay plus its drive resistance times the load",
+      "Replace the load by the buffer's input capacitance",
+      "Keep only the best buffered candidate since they share a load"
+    ]
+  },
+  {
+    "label": "Pruning and choosing at the driver",
+    "section": "Pruning and choosing at the driver",
+    "subgoals": [
+      "Sort the candidates by load",
+      "Discard any candidate beaten in both load and required time",
+      "Subtract the driver delay at the source and keep the best slack"
+    ]
+  }
+]

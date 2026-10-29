@@ -1,0 +1,5 @@
+[
+  {"label": "Opening removes narrow shapes", "section": "Opening removes narrow shapes", "subgoals": ["Shrink each shape by d and drop those that collapse", "Grow the survivors back by d", "Total the area of the shapes that did not return"]},
+  {"label": "Narrow arms of one polygon", "section": "Narrow arms of one polygon", "subgoals": ["Merge the drawn shapes into one polygon", "Compare each arm's width with 2d", "Keep the parts that can hold a 2d by 2d square"]},
+  {"label": "Spacing by growing and AND", "section": "Spacing by growing and AND", "subgoals": ["Grow each shape by half the spacing rule", "Compute the overlap of the grown shapes in x and in y", "Multiply the overlaps to get the area of the AND"]}
+]

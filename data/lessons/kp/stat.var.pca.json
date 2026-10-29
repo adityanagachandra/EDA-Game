@@ -1,0 +1,5 @@
+[
+  {"label": "Diagonalizing the covariance", "section": "Diagonalizing the covariance", "subgoals": ["Write the covariance as V Lambda V transpose", "Express each cell as a weighted sum of independent standard normals", "Compute the two eigenvalues of a symmetric 2x2 covariance"]},
+  {"label": "Variance explained and truncation", "section": "Variance explained and truncation", "subgoals": ["Sum the eigenvalues to get the trace", "Divide the leading eigenvalues by the trace", "Fold dropped components into the independent term to preserve variance"]},
+  {"label": "The equicorrelated case", "section": "The equicorrelated case", "subgoals": ["Write the equicorrelated matrix as identity plus a rank-one term", "Read the all-ones eigenvalue as the die-wide shift", "Divide one plus n minus one times rho by n for its share"]}
+]

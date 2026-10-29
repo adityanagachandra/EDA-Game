@@ -1,0 +1,5 @@
+[
+  {"label": "A baseline with spread", "section": "A baseline with spread", "subgoals": ["Record mean and spread of each metric across seeds", "Compute the z-score of the new result", "Separate real regressions from seed noise"]},
+  {"label": "Delta thresholds", "section": "Delta thresholds", "subgoals": ["Compute the relative delta against the baseline", "Compare each delta with the threshold", "Count the designs that exceed it"]},
+  {"label": "Direction matters", "section": "Direction matters", "subgoals": ["Assign each metric its better direction", "Flag moves in the bad direction beyond threshold", "State slack thresholds in absolute picoseconds"]}
+]

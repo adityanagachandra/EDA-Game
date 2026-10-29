@@ -1,0 +1,5 @@
+[
+  {"label": "The crossover load", "section": "The crossover load", "subgoals": ["Write each match's delay as a line in the load", "Solve for the load where the two lines meet", "Assign each cell the load interval where it is fastest"]},
+  {"label": "Best arrival at a known load", "section": "Best arrival at a known load", "subgoals": ["Evaluate every match at the given load", "Keep the minimum arrival", "Store one best match per load bin when the load is unknown"]},
+  {"label": "The cost of a wrong guess", "section": "The cost of a wrong guess", "subgoals": ["Pick the match for the assumed load", "Evaluate that match and the best one at the real load", "Report the difference as the penalty and name the remedies"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "How contamination happens", "section": "How contamination happens", "subgoals": ["Trace where the benchmark's problems and solutions are posted", "Compare scores on the public set and on fresh equivalent problems", "Check whether test designs appear in training under other settings"]},
+  {"label": "Detecting memorization", "section": "Detecting memorization", "subgoals": ["Test verbatim completion of reference solutions from a prefix", "Score the model on semantically equivalent rewrites", "Treat overlap statistics as a screen rather than a verdict"]},
+  {"label": "Contamination-resistant practice", "section": "Contamination-resistant practice", "subgoals": ["Keep evaluation problems private and refresh them", "Hold out a test set that tuning never touches", "Evaluate on internal tasks before deployment"]}
+]

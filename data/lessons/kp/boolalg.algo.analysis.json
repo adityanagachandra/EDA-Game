@@ -1,0 +1,5 @@
+[
+  {"label": "Memory of an explicit truth table", "section": "Memory of an explicit truth table", "subgoals": ["Count 2 to the n bits for n variables", "Divide by the word width", "Report the number of machine words"]},
+  {"label": "Recurrences of recursive Boolean algorithms", "section": "Recurrences of recursive Boolean algorithms", "subgoals": ["Write the recurrence of the recursion", "Unroll it to the base case", "Sum the calls"]},
+  {"label": "Extrapolating exponential running time", "section": "Extrapolating exponential running time", "subgoals": ["Identify the growth rate of the algorithm", "Compute the growth factor for the added size", "Scale the measured time"]}
+]

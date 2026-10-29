@@ -1,0 +1,5 @@
+[
+  {"label": "The verification gap", "section": "The verification gap", "subgoals": ["Contrast the growth of design capacity with verification productivity", "Name methodology responses to the gap", "Frame each method as a way to choose which behaviors to check"]},
+  {"label": "Counting input and state spaces", "section": "Counting input and state spaces", "subgoals": ["Add the input field widths and raise 2 to the total", "Count up to 2^n states for n flip-flops", "Explain why sequential designs need input sequences, not just vectors"]},
+  {"label": "Exhaustive simulation time and sampled coverage", "section": "Exhaustive simulation time and sampled coverage", "subgoals": ["Divide 2^k by the vector rate to get the exhaustive time", "Convert seconds into hours", "Compute the covered fraction as 100 N / 2^k percent"]}
+]

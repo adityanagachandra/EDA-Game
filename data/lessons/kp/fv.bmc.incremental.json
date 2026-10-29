@@ -1,0 +1,5 @@
+[
+  {"label": "Reusing the solver across depths", "section": "Reusing the solver across depths", "subgoals": ["Keep one solver instance for the whole run", "Add only the new frame's clauses at each depth", "Keep learned clauses that were derived from clauses still present"]},
+  {"label": "Assumptions and activation literals", "section": "Assumptions and activation literals", "subgoals": ["Pass the per-depth property literal as an assumption", "Guard removable clauses with activation literals", "Read the unsat core over the assumptions after an UNSAT answer"]},
+  {"label": "What carries over between depths", "section": "What carries over between depths", "subgoals": ["Check that incrementality cannot change any SAT or UNSAT answer", "Keep transition-relation lemmas and drop or guard query-specific ones", "Name engines that keep one solver session across depths"]}
+]

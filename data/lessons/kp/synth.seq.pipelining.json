@@ -1,0 +1,5 @@
+[
+  {"label": "Pipelining versus retiming", "section": "Pipelining versus retiming", "subgoals": ["Distinguish behavior-preserving retiming from latency-changing pipelining", "Add k registers to every input-to-output path", "Retime to distribute the added registers through the logic"]},
+  {"label": "Loops limit pipelining", "section": "Loops limit pipelining", "subgoals": ["Keep each loop's register count fixed", "Bound the period by loop delay divided by loop registers", "Restrict pure pipelining to feed-forward logic"]},
+  {"label": "Diminishing returns", "section": "Diminishing returns", "subgoals": ["Account for clock-to-q, setup and skew in every stage", "Expect uneven stages because node delays cannot be split", "Weigh throughput against clock power, area and latency"]}
+]

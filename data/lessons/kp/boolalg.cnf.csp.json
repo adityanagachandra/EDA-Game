@@ -1,0 +1,5 @@
+[
+  {"label": "One-hot encoding of a finite domain", "section": "One-hot encoding of a finite domain", "subgoals": ["Introduce one Boolean per value", "Write one at-least-one clause", "Write one at-most-one clause per pair of values"]},
+  {"label": "Graph coloring as a CSP", "section": "Graph coloring as a CSP", "subgoals": ["Encode each vertex as a one-hot color variable", "Forbid equal colors on each edge, one clause per color", "Sum the vertex and edge clauses"]},
+  {"label": "Binary encoding of a domain", "section": "Binary encoding of a domain", "subgoals": ["Use the ceiling of log base 2 of the domain size as the bit count", "Forbid each unused code with one clause", "Count the exclusion clauses"]}
+]

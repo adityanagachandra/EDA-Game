@@ -1,0 +1,5 @@
+[
+  {"label": "The integrated clock gate", "section": "The integrated clock gate", "subgoals": ["Trace the latch transparency against the clock phase", "Show that the AND passes a full pulse or none", "Flip the latch and gate polarity for falling-edge flops"]},
+  {"label": "Why a bare AND gate glitches", "section": "Why a bare AND gate glitches", "subgoals": ["Overlay the enable change on the clock's high phase", "Measure the truncated or runt pulse", "Explain how the latch removes the glitch"]},
+  {"label": "Gating in the flow", "section": "Gating in the flow", "subgoals": ["Recognise the feedback multiplexer pattern", "Treat the gate as a clock-tree node for balancing", "Weigh gate placement against enable timing and peak current"]}
+]

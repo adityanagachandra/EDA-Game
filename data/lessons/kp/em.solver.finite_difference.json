@@ -1,0 +1,5 @@
+[
+  {"label": "The five-point stencil", "section": "The five-point stencil", "subgoals": ["Replace the Laplacian by the five-point difference", "Set the interior node to the average of its four neighbours", "Hold conductor nodes at their fixed potentials"]},
+  {"label": "Iterating to convergence", "section": "Iterating to convergence", "subgoals": ["Choose Jacobi or Gauss-Seidel update order", "Average each node's neighbours using old or new values", "Repeat sweeps until the change falls below tolerance"]},
+  {"label": "From potential to capacitance", "section": "From potential to capacitance", "subgoals": ["Draw a closed contour around the conductor through the grid", "Sum the potential drops across the crossed cell edges", "Multiply by epsilon and divide by the voltage"]}
+]

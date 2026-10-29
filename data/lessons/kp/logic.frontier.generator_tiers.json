@@ -1,0 +1,5 @@
+[
+  {"label": "Tier 1: parameters", "section": "Tier 1: parameters", "subgoals": ["Map widths, depths, stage counts and port counts to parameters", "Re-run the generator and its parameterized golden tests", "Validate parameter values before elaboration"]},
+  {"label": "Tier 2: a new policy at a seam", "section": "Tier 2: a new policy at a seam", "subgoals": ["Define the seam as the narrow interface the policy implements", "Implement only the new policy behind it", "Prove the new policy equivalent to the existing ones"]},
+  {"label": "Tier 3: the core", "section": "Tier 3: the core", "subgoals": ["Identify changes to emitted clocks, resets, naming or semantics as core", "Require a human-approved diff and full regression", "Judge the tier by the reach of the change, not its size"]}
+]

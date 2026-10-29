@@ -1,0 +1,5 @@
+[
+  {"label": "Mapping code to the four layers", "section": "Mapping code to the four layers", "subgoals": ["Put legality and the numerical kernel in the core", "Put selectable heuristics behind policy interfaces", "Put weights in configuration and live state behind hooks"]},
+  {"label": "Narrow interfaces at the seams", "section": "Narrow interfaces at the seams", "subgoals": ["Define each seam as an abstract base plus a factory", "Pass only the context the plug-in needs as plain data", "Keep the hot kernel in the core and call plug-ins in batches"]},
+  {"label": "Placing a change request", "section": "Placing a change request", "subgoals": ["Classify a request as value, new behavior at a seam, or invariant change", "Route value changes to parameters and new behavior to a plug-in", "Escalate invariant changes to a reviewed core edit"]}
+]

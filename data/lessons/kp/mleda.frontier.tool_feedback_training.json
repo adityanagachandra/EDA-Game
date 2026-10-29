@@ -1,0 +1,5 @@
+[
+  {"label": "Tools as reward", "section": "Tools as reward", "subgoals": ["List the tool checks that can score the output", "Combine them into a reward without human judgment", "Account for the tool time each rollout needs"]},
+  {"label": "Composing a reward", "section": "Composing a reward", "subgoals": ["Gate the reward on compilation", "Score the fraction of hidden tests passed", "Subtract the weighted area overshoot only when area exceeds the reference"]},
+  {"label": "Reward hacking and the signoff gap", "section": "Reward hacking and the signoff gap", "subgoals": ["Remove checkers and constraints from the model's action space", "Recalibrate fast rewards against signoff results", "Evaluate on held-out tasks with stronger checks than the reward"]}
+]

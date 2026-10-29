@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Time frames as probabilities",
+  "section": "Time frames as probabilities",
+  "subgoals": [
+   "Compute each operation's time frame under the latency bound",
+   "Assign probability one over the frame width inside the frame",
+   "Assign probability zero outside the frame"
+  ]
+ },
+ {
+  "label": "Distribution graphs",
+  "section": "Distribution graphs",
+  "subgoals": [
+   "Group the operations by unit type",
+   "Sum their probabilities at each step",
+   "Read peaks as steps that will demand extra units"
+  ]
+ },
+ {
+  "label": "Self-force and the iteration",
+  "section": "Self-force and the iteration",
+  "subgoals": [
+   "Compute the distribution value at the candidate step",
+   "Subtract the frame average of the distribution graph",
+   "Fix the lowest-force operation and recompute the frames"
+  ]
+ }
+]

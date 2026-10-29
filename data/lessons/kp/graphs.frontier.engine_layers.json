@@ -1,0 +1,5 @@
+[
+  {"label": "Four layers of a partitioner", "section": "Four layers of a partitioner", "subgoals": ["Put exact cut and balance bookkeeping in the core", "Put matching, tie-breaking and refinement schedules in strategy", "Put tolerances, stop sizes and cycle counts in parameters"]},
+  {"label": "Which tier a request lands in", "section": "Which tier a request lands in", "subgoals": ["Classify value-only changes as Tier 1", "Classify new behaviour at an existing extension point as Tier 2", "Classify changes to bookkeeping or the move kernel as Tier 3"]},
+  {"label": "Keeping the core small and fast", "section": "Keeping the core small and fast", "subgoals": ["Call plug-ins once per batch, not once per pin", "Pass plain arrays across the seam", "Forbid hidden state so results stay deterministic under a seed"]}
+]

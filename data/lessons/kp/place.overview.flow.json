@@ -1,0 +1,5 @@
+[
+  {"label": "Floorplan, place, clock, route", "section": "Floorplan, place, clock, route", "subgoals": ["Order the stages as floorplan, placement, clock tree synthesis and routing", "Name what each stage reads from the one before", "Name the OpenROAD engine for each placement step"]},
+  {"label": "Global, legal, detailed", "section": "Global, legal, detailed", "subgoals": ["Separate global placement, legalization and detailed placement by what each guarantees", "Explain why global placement may tolerate overlap", "Justify wirelength as a proxy for delay, power and routing demand"]},
+  {"label": "Why placement mistakes propagate", "section": "Why placement mistakes propagate", "subgoals": ["Name the routing and timing failures a dense or wirelength-only placement causes", "Trace a floorplan defect to its placement consequence", "List the feedback signals a placer uses to anticipate later stages"]}
+]

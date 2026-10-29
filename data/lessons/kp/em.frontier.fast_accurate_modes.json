@@ -1,0 +1,5 @@
+[
+  {"label": "Closed forms, pattern libraries and full solvers", "section": "Closed forms, pattern libraries and full solvers", "subgoals": ["List the fast modes and the solver each was calibrated against", "Name the physics each fast mode ignores", "Map each accurate mode to the cases it covers"]},
+  {"label": "Validity ranges and when to recurse", "section": "Validity ranges and when to recurse", "subgoals": ["Check the inputs against the fast mode's calibrated domain", "Compare the fast mode's error band with the decision threshold", "Call the accurate solver when the error could flip the decision"]},
+  {"label": "Error budgets in a modeling loop", "section": "Error budgets in a modeling loop", "subgoals": ["Set an error budget for each class of nets", "Measure the fast mode's error against that budget", "Confirm budget-critical nets with the accurate engine"]}
+]

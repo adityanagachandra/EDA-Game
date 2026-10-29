@@ -1,0 +1,5 @@
+[
+  {"label": "Precision and recall", "section": "Precision and recall", "subgoals": ["Count true positives, false positives and false negatives", "Divide true positives by all flags for precision", "Divide true positives by all real hotspots for recall"]},
+  {"label": "The F1 score", "section": "The F1 score", "subgoals": ["Double the true positives", "Divide by twice the true positives plus false positives and false negatives", "Decide whether misses or false alarms cost more for this use"]},
+  {"label": "Precision depends on prevalence", "section": "Precision depends on prevalence", "subgoals": ["Multiply recall by prevalence for true flags per gcell", "Multiply the false-positive rate by one minus prevalence", "Divide true flags by all flags"]}
+]

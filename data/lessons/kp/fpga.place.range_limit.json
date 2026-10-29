@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The range-limit update",
+  "section": "The range-limit update",
+  "subgoals": [
+   "Compute 1 minus 0.44 plus the acceptance rate",
+   "Multiply the old range limit by that factor",
+   "Clamp the result between 1 and the grid dimension"
+  ]
+ },
+ {
+  "label": "Successive updates",
+  "section": "Successive updates",
+  "subgoals": [
+   "Apply the first update with its acceptance rate",
+   "Apply the second update to the clamped result",
+   "Keep the clamping bounds at every step"
+  ]
+ },
+ {
+  "label": "Counting candidate targets",
+  "section": "Counting candidate targets",
+  "subgoals": [
+   "Floor the range limit to an integer r",
+   "Clip the window x minus r to x plus r and y likewise to the grid",
+   "Multiply the window's columns by rows and subtract the block's own site"
+  ]
+ }
+]

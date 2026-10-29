@@ -1,0 +1,5 @@
+[
+  {"label": "Rails that consume tracks", "section": "Rails that consume tracks", "subgoals": ["Count the tracks spent on front-side rails", "Remove them from the cell height", "Compute the new height and the percentage reduction"]},
+  {"label": "Lower rail resistance", "section": "Lower rail resistance", "subgoals": ["Compute the cross-sections of front-side and buried rails", "Take the ratio of their resistance per length", "Explain why the buried rail's metal is constrained"]},
+  {"label": "What buried rails change in the flow", "section": "What buried rails change in the flow", "subgoals": ["Describe the front-side and backside ways to feed a buried rail", "List the tool models that change with BPR", "Weigh area and IR gains against process cost"]}
+]

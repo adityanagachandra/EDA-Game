@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Initial temperature",
+  "section": "Initial temperature",
+  "subgoals": [
+   "Record the costs of N random accepted moves",
+   "Compute the standard deviation of those costs",
+   "Multiply by 20 to get the initial temperature"
+  ]
+ },
+ {
+  "label": "Adaptive cooling",
+  "section": "Adaptive cooling",
+  "subgoals": [
+   "Read the acceptance rate of the finished temperature",
+   "Pick alpha from the four acceptance-rate bands",
+   "Multiply the temperature by alpha for each step"
+  ]
+ },
+ {
+  "label": "Effort and exit",
+  "section": "Effort and exit",
+  "subgoals": [
+   "Compute InnerNum times N to the 4/3 moves per temperature",
+   "Compute the exit threshold from cost per net",
+   "Count the cooling steps until the temperature falls below it"
+  ]
+ }
+]

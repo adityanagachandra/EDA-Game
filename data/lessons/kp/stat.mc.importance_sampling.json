@@ -1,0 +1,5 @@
+[
+  {"label": "The likelihood-ratio weight", "section": "The likelihood-ratio weight", "subgoals": ["Rewrite the failure probability as an expectation under the proposal", "Divide the true density by the proposal density for the weight", "Simplify the weight of a unit-variance mean shift to an exponential"]},
+  {"label": "Computing an estimate", "section": "Computing an estimate", "subgoals": ["Draw samples from the shifted proposal", "Sum the weights of the failing samples", "Divide by the total number of samples drawn"]},
+  {"label": "Several dimensions and the choice of shift", "section": "Several dimensions and the choice of shift", "subgoals": ["Write the multivariate weight with a dot product and a squared norm", "Center the proposal on the most probable failure point", "Recognize weight degeneracy from a misplaced or high-dimensional shift"]}
+]

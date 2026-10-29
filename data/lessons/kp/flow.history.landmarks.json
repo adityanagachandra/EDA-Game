@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Mead and Conway",
+    "section": "Mead and Conway",
+    "subgoals": [
+      "Name Mead and Conway's book and institutions",
+      "Explain lambda-based scalable design rules",
+      "Trace the multi-project wafer to MOSIS"
+    ]
+  },
+  {
+    "label": "SPICE at Berkeley",
+    "section": "SPICE at Berkeley",
+    "subgoals": [
+      "Name the developers of SPICE at Berkeley",
+      "List the algorithms SPICE established",
+      "Name the open simulators that descend from it"
+    ]
+  },
+  {
+    "label": "Berkeley logic synthesis and layout tools",
+    "section": "Berkeley logic synthesis and layout tools",
+    "subgoals": [
+      "Order Espresso, MIS, SIS and ABC",
+      "Name Magic and its author",
+      "Trace Berkeley CAD research to commercial companies"
+    ]
+  }
+]

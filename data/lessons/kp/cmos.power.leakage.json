@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Subthreshold current is exponential in Vt",
+    "section": "Subthreshold current is exponential in Vt",
+    "subgoals": [
+      "Write subthreshold current as exponential in gate overdrive",
+      "Read the subthreshold swing as millivolts per decade of current",
+      "Note the steep rise of leakage with temperature"
+    ]
+  },
+  {
+    "label": "Leakage ratios between Vt flavours",
+    "section": "Leakage ratios between Vt flavours",
+    "subgoals": [
+      "Divide the threshold difference by the subthreshold swing",
+      "Raise ten to that power to get the leakage ratio",
+      "Multiply cell currents by VDD and sum to get block leakage"
+    ]
+  },
+  {
+    "label": "DIBL and the cost of speed",
+    "section": "DIBL and the cost of speed",
+    "subgoals": [
+      "Lower the threshold by eta times the drain-source voltage",
+      "Compute the leakage change from the resulting threshold shift",
+      "Weigh lower leakage against reduced overdrive and speed"
+    ]
+  }
+]

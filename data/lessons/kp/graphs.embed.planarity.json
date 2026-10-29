@@ -1,0 +1,5 @@
+[
+  {"label": "Euler's bound as a quick test", "section": "Euler's bound as a quick test", "subgoals": ["Check e against 3v - 6 for a simple graph", "Use 2v - 4 for triangle-free or bipartite graphs", "Conclude non-planar only when the bound is exceeded"]},
+  {"label": "Kuratowski and linear-time testing", "section": "Kuratowski and linear-time testing", "subgoals": ["Search for a subdivision of K5 or K3,3 as the certificate", "Run a linear-time test that outputs an embedding or the certificate", "Check that river-routed nets keep the same order on both sides"]},
+  {"label": "Drawing graphs and placing cells", "section": "Drawing graphs and placing cells", "subgoals": ["Assign wires to layers so that each layer's drawing is planar", "Limit point vertices to degree 4 in orthogonal drawings", "Recognize the barycentric drawing as a Laplacian solve with fixed vertices"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Partial ratios", "section": "Partial ratios", "subgoals": ["Truncate the stack at the layer being etched", "Keep that layer's metal connected to the gate through lower layers", "Divide its area by the gate area"]},
+  {"label": "Cumulative ratios", "section": "Cumulative ratios", "subgoals": ["Compute every layer's partial ratio up to the target layer", "Add the partial ratios", "Exclude metal that was floating when its own layer was etched"]},
+  {"label": "The worst layer", "section": "The worst layer", "subgoals": ["Compute the partial ratio of every layer", "Compare each with its own layer limit", "Report the layer with the largest ratio"]}
+]

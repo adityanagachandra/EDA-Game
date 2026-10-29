@@ -1,0 +1,5 @@
+[
+  {"label": "Shape-based routing on few layers", "section": "Shape-based routing on few layers", "subgoals": ["Contrast shape-based board routing with gridded chip routing", "Explain why board layers route in any direction", "Describe push-and-shove interactive routing"]},
+  {"label": "Shared algorithms", "section": "Shared algorithms", "subgoals": ["Price vias as layer-change edges in a maze search", "Map batch autorouting onto rip-up and negotiated congestion", "Separate topology from geometry in a topological router"]},
+  {"label": "Completion is not correctness", "section": "Completion is not correctness", "subgoals": ["Separate completion from electrical correctness", "Lock critical routes before autorouting the remainder", "Attach net-class rules that the router and DRC both read"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Resistive and reactive parts",
+    "section": "Resistive and reactive parts",
+    "subgoals": [
+      "Assign each stamp to the memoryless part or the derivative part",
+      "Write the inductor branch equation with its derivative term",
+      "Express nonlinear devices through charges and fluxes"
+    ]
+  },
+  {
+    "label": "Algebraic constraints and singular C",
+    "section": "Algebraic constraints and singular C",
+    "subgoals": [
+      "Locate the zero rows of the capacitance matrix",
+      "Require the algebraic equations to hold at the initial time",
+      "Flag capacitor-source loops and inductor-source cutsets"
+    ]
+  },
+  {
+    "label": "Stiffness and why SPICE is implicit",
+    "section": "Stiffness and why SPICE is implicit",
+    "subgoals": [
+      "Compare the smallest and largest time constants of the circuit",
+      "Estimate the step count an explicit method would need",
+      "Use an A-stable implicit method and solve each step by Newton"
+    ]
+  }
+]

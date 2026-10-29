@@ -1,0 +1,5 @@
+[
+  {"label": "From processes to cells", "section": "From processes to cells", "subgoals": ["Turn each signal's decision tree into a multiplexer tree", "Turn each clock-edge sync rule into a flip-flop", "Run proc before any netlist optimization"]},
+  {"label": "The sub-passes", "section": "The sub-passes", "subgoals": ["Clean dead branches before building multiplexers", "Detect asynchronous resets before creating flip-flops", "Create latches and flip-flops after the multiplexer trees exist"]},
+  {"label": "Reading what proc produced", "section": "Reading what proc produced", "subgoals": ["Trace an unexpected latch to an output missing on some path", "Suspect reset recognition when a flip-flop lacks its reset pin", "Expect the optimizer to shrink proc's multiplexer trees"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Relatively essential cubes", "section": "Relatively essential cubes", "subgoals": ["Remove one cube and form the union of the rest with the don't cares", "Test whether the removed cube is contained in that union", "Mark the cube relatively essential if it is not contained"]},
+  {"label": "Redundant cubes and why they interact", "section": "Redundant cubes and why they interact", "subgoals": ["Count the cubes contained in the union of all the others", "Separate totally redundant cubes from partially redundant ones", "Drop the totally redundant cubes first"]},
+  {"label": "Minimum irredundant subcover", "section": "Minimum irredundant subcover", "subgoals": ["Collect the minterms covered only by partially redundant cubes", "Choose the fewest partially redundant cubes that cover them", "Report the resulting prime and irredundant cover"]}
+]

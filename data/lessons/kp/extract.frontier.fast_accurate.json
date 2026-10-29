@@ -1,0 +1,5 @@
+[
+  {"label": "Error bounds on fast results", "section": "Error bounds on fast results", "subgoals": ["Take the fast mode's validated relative error", "Multiply it by the net's capacitance-driven delay", "Attach the bound to the net's fast-mode slack"]},
+  {"label": "Which nets to recurse on", "section": "Which nets to recurse on", "subgoals": ["Compute each net's delay error bound", "Compare the magnitude of its slack with the bound", "Send ambiguous nets to accurate extraction"]},
+  {"label": "What the loop saves", "section": "What the loop saves", "subgoals": ["Compute the all-accurate runtime", "Compute fast-on-all plus accurate-on-the-fraction", "Divide to get the speed-up"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Configuration bits and the multiplexer tree",
+  "section": "Configuration bits and the multiplexer tree",
+  "subgoals": [
+   "Count 2 to the k configuration bits per k-input LUT",
+   "Form the address from the inputs with the stated bit order",
+   "Read the stored bit at that address as the output"
+  ]
+ },
+ {
+  "label": "How many functions a LUT implements",
+  "section": "How many functions a LUT implements",
+  "subgoals": [
+   "Count every assignment of the bits as a distinct function",
+   "Compute 2 to the power 2 to the k for a k-LUT",
+   "Count the 2 to the j bits a j-input function actually reads"
+  ]
+ },
+ {
+  "label": "Fracturable LUTs",
+  "section": "Fracturable LUTs",
+  "subgoals": [
+   "Take the union of the two functions' input sets",
+   "Pair them only when the union has at most 5 signals",
+   "Count physical LUTs after the pairing pass"
+  ]
+ }
+]

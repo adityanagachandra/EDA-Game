@@ -1,0 +1,5 @@
+[
+  {"label": "Slack at one corner", "section": "Slack at one corner", "subgoals": ["Read the process, voltage and temperature from the corner name", "Take that corner's path delay and setup time", "Compute the setup slack at that corner"]},
+  {"label": "The worst setup corner", "section": "The worst setup corner", "subgoals": ["Compute the setup slack at every corner", "Take the minimum over the corners", "Explain why a cold corner can limit setup at low voltage"]},
+  {"label": "The worst hold corner", "section": "The worst hold corner", "subgoals": ["Compute the hold slack at every corner with that corner's minimum delays", "Take the minimum over the corners", "Check each hold fix against setup at the slow corners"]}
+]

@@ -1,0 +1,966 @@
+[
+  {
+    "id": "boolalg.func.truth_table",
+    "label": "Boolean functions and truth tables",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.func",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.logic.truth_tables",
+      "discrete.logic.connectives",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "discrete.logic.truth_tables"
+    ],
+    "encompasses": [
+      "discrete.logic.truth_tables",
+      "discrete.logic.connectives"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "boolalg.func.cofactor",
+    "label": "Cofactors of a Boolean function",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.func",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.truth_table",
+      "discrete.logic.equivalence"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.truth_table"
+    ],
+    "encompasses": [
+      "boolalg.func.truth_table"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.func.shannon",
+    "label": "Shannon expansion",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.func",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.cofactor",
+      "discrete.proof.induction"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.cofactor"
+    ],
+    "encompasses": [
+      "boolalg.func.cofactor",
+      "boolalg.func.truth_table"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.func.boolean_difference",
+    "label": "Boolean difference and sensitivity",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.func",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.cofactor",
+      "discrete.logic.connectives"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.cofactor"
+    ],
+    "encompasses": [
+      "boolalg.func.cofactor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.func.unateness",
+    "label": "Unate and binate functions",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.func",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.func.cofactor",
+      "discrete.sets.partial_order"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.cofactor"
+    ],
+    "encompasses": [
+      "boolalg.func.cofactor"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "boolalg.func.symmetry",
+    "label": "Symmetric functions",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.func",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.cofactor",
+      "discrete.combinatorics.combinations"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.cofactor"
+    ],
+    "encompasses": [
+      "boolalg.func.cofactor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.func.quantification",
+    "label": "Existential and universal quantification",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.func",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.cofactor",
+      "discrete.logic.quantifiers",
+      "discrete.logic.predicates"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.cofactor",
+      "discrete.logic.quantifiers"
+    ],
+    "encompasses": [
+      "boolalg.func.cofactor",
+      "discrete.logic.quantifiers"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.decomp.support",
+    "label": "Support and functional dependence",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.decomp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.boolean_difference",
+      "discrete.sets.relations"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.boolean_difference"
+    ],
+    "encompasses": [
+      "boolalg.func.boolean_difference",
+      "boolalg.func.cofactor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.decomp.disjoint",
+    "label": "Simple disjoint decomposition",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.decomp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.cofactor",
+      "boolalg.decomp.support",
+      "discrete.sets.relations"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.cofactor"
+    ],
+    "encompasses": [
+      "boolalg.func.cofactor",
+      "boolalg.decomp.support"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.cover.cubes",
+    "label": "Cubes and their minterms",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cover",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.truth_table",
+      "discrete.sets.operations",
+      "discrete.sets.inclusion_exclusion"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.truth_table"
+    ],
+    "encompasses": [
+      "boolalg.func.truth_table",
+      "discrete.sets.inclusion_exclusion"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "boolalg.cover.sop_pos",
+    "label": "Sum-of-products and product-of-sums forms",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cover",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.truth_table",
+      "boolalg.cover.cubes",
+      "discrete.logic.equivalence"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.truth_table"
+    ],
+    "encompasses": [
+      "boolalg.func.truth_table",
+      "boolalg.cover.cubes"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.cover.implicants",
+    "label": "Cubes, implicants and prime implicants",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cover",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.cover.cubes",
+      "boolalg.cover.sop_pos",
+      "discrete.sets.partial_order"
+    ],
+    "key_prerequisites": [
+      "boolalg.cover.cubes"
+    ],
+    "encompasses": [
+      "boolalg.cover.cubes"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "boolalg.cover.essential_primes",
+    "label": "Essential prime implicants",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cover",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cover.implicants",
+      "discrete.sets.operations"
+    ],
+    "key_prerequisites": [
+      "boolalg.cover.implicants"
+    ],
+    "encompasses": [
+      "boolalg.cover.implicants",
+      "boolalg.cover.cubes"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.cover.min_cover",
+    "label": "Minimum covers and the covering problem",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cover",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cover.essential_primes",
+      "discrete.sets.operations",
+      "discrete.combinatorics.combinations"
+    ],
+    "key_prerequisites": [
+      "boolalg.cover.essential_primes"
+    ],
+    "encompasses": [
+      "boolalg.cover.essential_primes",
+      "boolalg.cover.implicants"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "boolalg.cover.dont_cares",
+    "label": "Incompletely specified functions",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cover",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cover.min_cover",
+      "boolalg.func.truth_table"
+    ],
+    "key_prerequisites": [
+      "boolalg.cover.min_cover"
+    ],
+    "encompasses": [
+      "boolalg.cover.min_cover",
+      "boolalg.cover.essential_primes"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.cover.tautology",
+    "label": "Tautology checking of a cover",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cover",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cover.cubes",
+      "boolalg.func.cofactor",
+      "boolalg.func.unateness"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.cofactor",
+      "boolalg.cover.cubes"
+    ],
+    "encompasses": [
+      "boolalg.func.cofactor",
+      "boolalg.cover.cubes"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.repr.bitparallel",
+    "label": "Bit-parallel truth tables",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.repr",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.func.truth_table",
+      "boolalg.func.cofactor",
+      "nt.base.convert"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.truth_table"
+    ],
+    "encompasses": [
+      "boolalg.func.truth_table",
+      "boolalg.func.cofactor"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "boolalg.repr.hash_consing",
+    "label": "Hash-consing and structural hashing",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.truth_table",
+      "discrete.graphs.basics",
+      "discrete.sets.relations"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.basics"
+    ],
+    "encompasses": [
+      "boolalg.func.truth_table"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.repr.decision_diagram",
+    "label": "Decision diagrams overview",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.func.shannon",
+      "boolalg.repr.hash_consing"
+    ],
+    "key_prerequisites": [
+      "boolalg.func.shannon"
+    ],
+    "encompasses": [
+      "boolalg.func.shannon",
+      "boolalg.func.cofactor",
+      "boolalg.repr.hash_consing"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "boolalg.order.boolean_lattice",
+    "label": "The Boolean lattice and implication order",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.order",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.sets.partial_order",
+      "discrete.sets.powerset",
+      "boolalg.func.truth_table"
+    ],
+    "key_prerequisites": [
+      "discrete.sets.partial_order"
+    ],
+    "encompasses": [
+      "discrete.sets.partial_order",
+      "boolalg.func.truth_table"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "boolalg.order.monotone",
+    "label": "Monotone functions",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.order",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.order.boolean_lattice",
+      "boolalg.func.unateness",
+      "boolalg.cover.implicants"
+    ],
+    "key_prerequisites": [
+      "boolalg.order.boolean_lattice",
+      "boolalg.func.unateness"
+    ],
+    "encompasses": [
+      "boolalg.order.boolean_lattice",
+      "boolalg.func.unateness"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.order.fixpoint",
+    "label": "Fixpoints on the subset lattice",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.order",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.order.boolean_lattice",
+      "discrete.graphs.paths",
+      "discrete.proof.induction"
+    ],
+    "key_prerequisites": [
+      "boolalg.order.boolean_lattice"
+    ],
+    "encompasses": [
+      "boolalg.order.boolean_lattice"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.cnf.clauses",
+    "label": "Conjunctive normal form and clauses",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cnf",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cover.sop_pos",
+      "discrete.logic.satisfiability"
+    ],
+    "key_prerequisites": [
+      "boolalg.cover.sop_pos"
+    ],
+    "encompasses": [
+      "boolalg.cover.sop_pos"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "boolalg.cnf.tseitin",
+    "label": "Tseitin encoding of a circuit",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cnf",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cnf.clauses",
+      "discrete.logic.equivalence"
+    ],
+    "key_prerequisites": [
+      "boolalg.cnf.clauses"
+    ],
+    "encompasses": [
+      "boolalg.cnf.clauses"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.cnf.model_count",
+    "label": "Counting satisfying assignments",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cnf",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cnf.clauses",
+      "discrete.sets.inclusion_exclusion"
+    ],
+    "key_prerequisites": [
+      "boolalg.cnf.clauses"
+    ],
+    "encompasses": [
+      "boolalg.cnf.clauses",
+      "discrete.sets.inclusion_exclusion"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.cnf.resolution",
+    "label": "Resolution and variable elimination",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cnf",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cnf.clauses",
+      "discrete.logic.inference"
+    ],
+    "key_prerequisites": [
+      "boolalg.cnf.clauses"
+    ],
+    "encompasses": [
+      "boolalg.cnf.clauses"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.cnf.csp",
+    "label": "Constraint satisfaction problems in CNF",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cnf",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cnf.clauses",
+      "discrete.combinatorics.combinations",
+      "discrete.graphs.coloring"
+    ],
+    "key_prerequisites": [
+      "boolalg.cnf.clauses"
+    ],
+    "encompasses": [
+      "boolalg.cnf.clauses",
+      "discrete.combinatorics.combinations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.cnf.tractable",
+    "label": "Tractable classes of SAT",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.cnf",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.cnf.clauses",
+      "boolalg.cnf.resolution",
+      "discrete.graphs.paths"
+    ],
+    "key_prerequisites": [
+      "boolalg.cnf.clauses"
+    ],
+    "encompasses": [
+      "boolalg.cnf.clauses",
+      "boolalg.cnf.resolution"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "boolalg.algo.analysis",
+    "label": "Algorithm analysis for Boolean tools",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.algo",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.sequences.recurrence",
+      "discrete.sequences.growth_rates"
+    ],
+    "key_prerequisites": [
+      "discrete.sequences.growth_rates"
+    ],
+    "encompasses": [
+      "discrete.sequences.recurrence",
+      "discrete.sequences.growth_rates"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "boolalg.algo.amortized",
+    "label": "Amortized analysis",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.algo",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.algo.analysis",
+      "discrete.sequences.recurrence"
+    ],
+    "key_prerequisites": [
+      "boolalg.algo.analysis"
+    ],
+    "encompasses": [
+      "boolalg.algo.analysis"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.algo.randomized",
+    "label": "Randomized algorithms and random simulation",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.algo",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.algo.analysis",
+      "boolalg.func.truth_table",
+      "prob.independence.pairwise",
+      "prob.rv.expectation"
+    ],
+    "key_prerequisites": [
+      "prob.independence.pairwise"
+    ],
+    "encompasses": [
+      "boolalg.func.truth_table",
+      "prob.independence.pairwise"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.complexity.p_np",
+    "label": "P, NP and coNP",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.complexity",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.algo.analysis",
+      "discrete.logic.satisfiability",
+      "boolalg.cnf.clauses"
+    ],
+    "key_prerequisites": [
+      "boolalg.algo.analysis"
+    ],
+    "encompasses": [
+      "boolalg.algo.analysis",
+      "boolalg.cnf.clauses"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "boolalg.complexity.reduction",
+    "label": "Polynomial-time reductions",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.complexity",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.complexity.p_np",
+      "boolalg.cnf.clauses",
+      "discrete.graphs.basics"
+    ],
+    "key_prerequisites": [
+      "boolalg.complexity.p_np"
+    ],
+    "encompasses": [
+      "boolalg.complexity.p_np",
+      "boolalg.cnf.clauses"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "boolalg.complexity.np_complete",
+    "label": "NP-completeness",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.complexity",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.complexity.reduction",
+      "boolalg.complexity.p_np",
+      "boolalg.cnf.tseitin"
+    ],
+    "key_prerequisites": [
+      "boolalg.complexity.reduction"
+    ],
+    "encompasses": [
+      "boolalg.complexity.reduction",
+      "boolalg.complexity.p_np"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "boolalg.complexity.sat_to_3sat",
+    "label": "From SAT to 3-SAT",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.complexity",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.complexity.reduction",
+      "boolalg.cnf.clauses"
+    ],
+    "key_prerequisites": [
+      "boolalg.complexity.reduction"
+    ],
+    "encompasses": [
+      "boolalg.complexity.reduction",
+      "boolalg.cnf.clauses"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "boolalg.complexity.graph_reductions",
+    "label": "Vertex cover, independent set and clique",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.complexity",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.complexity.reduction",
+      "graph.vertex_cover",
+      "graph.independent_set"
+    ],
+    "key_prerequisites": [
+      "boolalg.complexity.reduction"
+    ],
+    "encompasses": [
+      "boolalg.complexity.reduction"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "boolalg.complexity.approximation",
+    "label": "Approximation algorithms and heuristics",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.complexity",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.complexity.np_complete",
+      "boolalg.complexity.graph_reductions",
+      "graph.matching"
+    ],
+    "key_prerequisites": [
+      "boolalg.complexity.np_complete"
+    ],
+    "encompasses": [
+      "boolalg.complexity.graph_reductions"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.complexity.parameterized",
+    "label": "Parameterized complexity",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.complexity",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.complexity.np_complete",
+      "graph.vertex_cover",
+      "boolalg.algo.analysis"
+    ],
+    "key_prerequisites": [
+      "boolalg.complexity.np_complete"
+    ],
+    "encompasses": [
+      "boolalg.algo.analysis"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.frontier.reasoning_tools",
+    "label": "SAT and BDD engines as agent tools",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.cnf.clauses",
+      "boolalg.repr.decision_diagram",
+      "agentic.mcp.tool_interface",
+      "agentic.skill.manifest"
+    ],
+    "key_prerequisites": [
+      "agentic.mcp.tool_interface"
+    ],
+    "encompasses": [
+      "boolalg.cnf.clauses",
+      "boolalg.repr.decision_diagram"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "boolalg.frontier.fast_exact_modes",
+    "label": "Fast and exact Boolean reasoning modes",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.algo.randomized",
+      "boolalg.complexity.p_np",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "boolalg.algo.randomized"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "boolalg.frontier.equivalence_golden",
+    "label": "Equivalence checking as the golden test",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "boolalg.cnf.tseitin",
+      "boolalg.cover.dont_cares",
+      "agentic.verify.golden_differential"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential",
+      "boolalg.cnf.tseitin"
+    ],
+    "encompasses": [
+      "boolalg.cnf.tseitin",
+      "boolalg.func.truth_table"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "boolalg.frontier.change_tiers",
+    "label": "Change tiers in a Boolean reasoning engine",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.repr.hash_consing",
+      "boolalg.cnf.resolution",
+      "agentic.tiers.change",
+      "agentic.engine.four_layer"
+    ],
+    "key_prerequisites": [
+      "agentic.tiers.change"
+    ],
+    "encompasses": [
+      "boolalg.repr.hash_consing"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "boolalg.frontier.tool_grounded_reward",
+    "label": "Tool-grounded rewards for logic transforms",
+    "domain": "boolean_reasoning",
+    "subdomain": "boolean_reasoning.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "boolalg.frontier.equivalence_golden",
+      "boolalg.repr.hash_consing",
+      "agentic.rl.tool_grounded"
+    ],
+    "key_prerequisites": [
+      "agentic.rl.tool_grounded"
+    ],
+    "encompasses": [
+      "boolalg.frontier.equivalence_golden"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Incomplete if statements", "section": "Incomplete if statements", "subgoals": ["Trace each path through the block for every output", "Mark an output latched when some path leaves it unassigned", "Clear the latch with a default assignment at the top of the block"]},
+  {"label": "If/else with uneven assignments", "section": "If/else with uneven assignments", "subgoals": ["Check each variable against both arms of the if/else", "Count a variable as complete only if it is defaulted or assigned in every arm", "Add the widths of the incomplete variables"]},
+  {"label": "Case statements and full coverage", "section": "Case statements and full coverage", "subgoals": ["Check whether the case items cover every selector value", "Check that each variable is assigned in every item or by a default", "Avoid full_case pragmas that hide the mismatch from simulation"]}
+]

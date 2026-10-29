@@ -1,0 +1,5 @@
+[
+  {"label": "What a reduction must preserve", "section": "What a reduction must preserve", "subgoals": ["Map every instance of A to an instance of B", "Preserve yes answers and no answers", "Keep the mapping polynomial in time"]},
+  {"label": "3-SAT to independent set", "section": "3-SAT to independent set", "subgoals": ["Make one vertex per literal occurrence", "Join the literals of a clause and every complementary pair", "Ask for an independent set as large as the clause count"]},
+  {"label": "Choosing the direction", "section": "Choosing the direction", "subgoals": ["Reduce the known hard problem to the new one to show hardness", "Reduce the new problem to a solved one to get an algorithm", "Reject arguments that run the arrow backwards"]}
+]

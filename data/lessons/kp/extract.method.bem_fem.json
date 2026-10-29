@@ -1,0 +1,5 @@
+[
+  {"label": "Surface panels", "section": "Surface panels", "subgoals": ["Compute the surface area of each conductor", "Divide by the area of one panel", "Total the panels over all conductors as the unknown count"]},
+  {"label": "Dense matrices", "section": "Dense matrices", "subgoals": ["Square the panel count to get the matrix entry count", "Multiply by eight bytes per double", "Compare dense storage with an accelerated iterative solve"]},
+  {"label": "Volume meshes and sparsity", "section": "Volume meshes and sparsity", "subgoals": ["Multiply the FEM unknown count by the nonzeros per row", "Compare with the dense BEM entry count", "Match each method to the dielectric complexity of the structure"]}
+]

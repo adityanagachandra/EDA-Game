@@ -1,0 +1,5 @@
+[
+  {"label": "From intent to SVA", "section": "From intent to SVA", "subgoals": ["Identify the trigger and the required consequence in the sentence", "Choose the implication and delay operators that express the timing", "Choose assert, assume or cover by the property's role"]},
+  {"label": "Checking a generated assertion", "section": "Checking a generated assertion", "subgoals": ["Prove or simulate the assertion against the design", "Cover the antecedent to rule out vacuity", "Count the injected mutants the assertions detect"]},
+  {"label": "Failure modes", "section": "Failure modes", "subgoals": ["Compare overlapping and non-overlapping implication timing", "Reject properties that restate an RTL expression", "Score generators by bugs caught, not assertions compiled"]}
+]

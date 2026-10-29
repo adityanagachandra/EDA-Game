@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Total cycles of a pipelined loop",
+  "section": "Total cycles of a pipelined loop",
+  "subgoals": [
+   "Multiply the number of iterations minus one by the II",
+   "Add one iteration latency",
+   "Compare with N times the latency for the unpipelined loop"
+  ]
+ },
+ {
+  "label": "Iterations in flight and pipeline depth",
+  "section": "Iterations in flight and pipeline depth",
+  "subgoals": [
+   "Divide the iteration latency by the II and round up",
+   "Read the result as the number of stages in flight",
+   "Multiply each long-lived value by the iterations that hold it"
+  ]
+ },
+ {
+  "label": "Speedup and its limit",
+  "section": "Speedup and its limit",
+  "subgoals": [
+   "Divide N times L by the pipelined cycle count",
+   "Compare with the limit L over II",
+   "Check whether a short trip count wastes the gain on fill and drain"
+  ]
+ }
+]

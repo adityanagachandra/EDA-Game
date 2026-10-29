@@ -1,0 +1,5 @@
+[
+  {"label": "Weights through the seam, cut in the core", "section": "Weights through the seam, cut in the core", "subgoals": ["Return one non-negative weight per net from the provider", "Feed the weights into the core's unchanged weighted cut", "Compute the cut by summing provider weights over cut nets"]},
+  {"label": "What the seam must expose and guarantee", "section": "What the seam must expose and guarantee", "subgoals": ["Pass the net, its pins, its role and its timing context", "Guarantee non-negative, deterministic, pass-stable weights", "Specify integer quantization so gain buckets stay valid"]},
+  {"label": "Proving a provider plug-in", "section": "Proving a provider plug-in", "subgoals": ["Require bit-identical output under the neutral setting", "Report the intended shift of cut nets on a reference design", "Retune the weight scale as Tier 1 when the objective is dominated"]}
+]

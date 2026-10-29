@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Priority by distance to the sink",
+  "section": "Priority by distance to the sink",
+  "subgoals": [
+   "Give every sink height 1",
+   "Set each other height to one plus the largest consumer height",
+   "Sort ready operations by decreasing height"
+  ]
+ },
+ {
+  "label": "Stepping through the schedule",
+  "section": "Stepping through the schedule",
+  "subgoals": [
+   "Build the ready list of operations whose predecessors have finished",
+   "Fill free units of each type in priority order",
+   "Advance one step and repeat until every operation is placed"
+  ]
+ },
+ {
+  "label": "Multicycle units and the quality of the result",
+  "section": "Multicycle units and the quality of the result",
+  "subgoals": [
+   "Mark a unit busy for the full latency of a non-pipelined operation",
+   "Release consumers only when the producer's result is available",
+   "Compare the final length against the lower bound to judge optimality"
+  ]
+ }
+]

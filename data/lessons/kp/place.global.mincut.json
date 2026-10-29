@@ -1,0 +1,5 @@
+[
+  {"label": "Bisecting the netlist and the region", "section": "Bisecting the netlist and the region", "subgoals": ["Split the region and the cells into two balanced halves", "Count a net as cut when it has cells on both sides", "Minimise the cut with FM or a multilevel partitioner"]},
+  {"label": "Levels of recursion", "section": "Levels of recursion", "subgoals": ["Halve the cells per region at each level", "Take the ceiling of the logarithm of n over k", "Alternate or choose cut directions to keep regions square"]},
+  {"label": "Terminal propagation", "section": "Terminal propagation", "subgoals": ["Replace each external connection by a terminal on the nearer side", "Lock propagated terminals during partitioning", "Count cut nets including propagated terminals"]}
+]

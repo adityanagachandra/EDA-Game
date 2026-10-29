@@ -1,0 +1,5 @@
+[
+  {"label": "The D-frontier", "section": "The D-frontier", "subgoals": ["Place the primitive D-cube of failure at the fault site", "List gates with an X output and a D or D-bar input as the D-frontier", "Backtrack when the D-frontier empties before an output carries the error"]},
+  {"label": "The J-frontier", "section": "The J-frontier", "subgoals": ["Mark assigned lines whose gates do not yet imply them", "Collect those gates as the J-frontier", "Imply forced values forward and backward after each assignment"]},
+  {"label": "Search and completeness", "section": "Search and completeness", "subgoals": ["Stop when an output carries the error and the J-frontier is empty", "Backtrack to the last decision with an untried alternative on a conflict", "Prove untestability by exhausting every alternative"]}
+]

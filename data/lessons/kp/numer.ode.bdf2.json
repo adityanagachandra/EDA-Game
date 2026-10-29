@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Differentiating an interpolant through past points",
+  "section": "Differentiating an interpolant through past points",
+  "subgoals": [
+   "Fit a quadratic through the newest three samples",
+   "Differentiate it at the new time point",
+   "Set the derivative equal to f at the new point"
+  ]
+ },
+ {
+  "label": "One BDF2 step on a linear test equation",
+  "section": "One BDF2 step on a linear test equation",
+  "subgoals": [
+   "Substitute the right-hand side at the new point",
+   "Collect the new value on the left",
+   "Divide by three plus two a h"
+  ]
+ },
+ {
+  "label": "Starting the method and its order limits",
+  "section": "Starting the method and its order limits",
+  "subgoals": [
+   "Take the first step with backward Euler",
+   "Apply BDF2 with the two stored values",
+   "Cap the order at six, and at two when A-stability is needed"
+  ]
+ }
+]

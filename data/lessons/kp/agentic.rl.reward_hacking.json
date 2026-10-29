@@ -1,0 +1,5 @@
+[
+  {"label": "How a proxy gets gamed", "section": "How a proxy gets gamed", "subgoals": ["Name what the proxy ignores", "Find outputs that score well and ignore it", "Recognize hacks that silence the checker"]},
+  {"label": "Predicting the hack", "section": "Predicting the hack", "subgoals": ["List what the policy can change that the reward does not see", "Predict the cheapest way to raise the reward", "Check whether the policy can influence the reward computation"]},
+  {"label": "Defenses", "section": "Defenses", "subgoals": ["Gate on independent legality checkers", "Pair each proxy with a check of what it ignores", "Stop when proxy reward rises while accurate scores stall"]}
+]

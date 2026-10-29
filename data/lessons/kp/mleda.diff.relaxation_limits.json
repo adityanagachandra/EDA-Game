@@ -1,0 +1,5 @@
+[
+  {"label": "What gradients cannot express", "section": "What gradients cannot express", "subgoals": ["Identify which decisions are categorical or discrete", "Name the smooth model that replaces each non-smooth quantity", "Assign the discrete decisions to an exact step"]},
+  {"label": "What smoothing changes", "section": "What smoothing changes", "subgoals": ["Name the direction each smooth model is biased", "Anneal smoothing toward the exact metric", "Evaluate the true metric at checkpoints"]},
+  {"label": "Recovering a discrete solution", "section": "Recovering a discrete solution", "subgoals": ["Legalize the continuous solution onto rows and sites", "Improve it with discrete detailed-placement moves", "Check displacement to tune the density schedule"]}
+]

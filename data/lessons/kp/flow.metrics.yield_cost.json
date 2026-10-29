@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The Poisson yield model",
+    "section": "The Poisson yield model",
+    "subgoals": [
+      "Model defects per die as Poisson with mean D0 times A",
+      "Compute yield as e to the minus D0 A",
+      "Explain why clustered-defect models give higher large-die yield"
+    ]
+  },
+  {
+    "label": "Good dies per wafer",
+    "section": "Good dies per wafer",
+    "subgoals": [
+      "Convert die area to the units of defect density",
+      "Multiply dies per wafer by yield",
+      "Round down to whole good dies"
+    ]
+  },
+  {
+    "label": "Cost per good die",
+    "section": "Cost per good die",
+    "subgoals": [
+      "Divide wafer cost by good dies",
+      "Explain why cost per good die grows faster than area",
+      "Name redundancy and chiplets as responses to low yield"
+    ]
+  }
+]

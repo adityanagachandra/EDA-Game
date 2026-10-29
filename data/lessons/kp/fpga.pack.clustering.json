@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Counting cluster inputs",
+  "section": "Counting cluster inputs",
+  "subgoals": [
+   "Take the union of all inputs read by the cluster's BLEs",
+   "Remove the nets produced inside the cluster",
+   "Count the remaining nets as required input pins"
+  ]
+ },
+ {
+  "label": "Legality of adding a BLE",
+  "section": "Legality of adding a BLE",
+  "subgoals": [
+   "Add the candidate's external inputs to the imported set",
+   "Remove any imported net the candidate itself produces",
+   "Accept the candidate only if the count stays within I"
+  ]
+ },
+ {
+  "label": "Absorbed nets",
+  "section": "Absorbed nets",
+  "subgoals": [
+   "Find outputs whose every sink is inside the cluster",
+   "Confirm some BLE in the cluster actually reads them",
+   "Count those nets as removed from global routing"
+  ]
+ }
+]

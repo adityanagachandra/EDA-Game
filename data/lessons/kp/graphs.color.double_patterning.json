@@ -1,0 +1,5 @@
+[
+  {"label": "The conflict graph and its components", "section": "The conflict graph and its components", "subgoals": ["Join features closer than the same-mask spacing", "Find the connected components of the conflict graph", "Color each component independently"]},
+  {"label": "Bipartite means decomposable", "section": "Bipartite means decomposable", "subgoals": ["Run breadth-first search alternating A and B", "Report an odd cycle when an edge joins equal colors", "Count 2 to the number of components when all are bipartite"]},
+  {"label": "Odd cycles and their repair", "section": "Odd cycles and their repair", "subgoals": ["Find the odd cycles that block a 2-coloring", "Minimize the violated edges over all assignments", "Fix each violation with a stitch, a layout change or a third mask"]}
+]

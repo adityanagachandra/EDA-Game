@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Half-perimeter wirelength",
+    "section": "Half-perimeter wirelength",
+    "subgoals": [
+      "Find the bounding box of a net's pins",
+      "Add the box width and height to get HPWL",
+      "State when HPWL equals the Steiner length"
+    ]
+  },
+  {
+    "label": "Total wirelength and incremental moves",
+    "section": "Total wirelength and incremental moves",
+    "subgoals": [
+      "Sum HPWL over every net",
+      "Recompute only the nets a moved cell touches",
+      "Subtract old from new HPWL to score the move"
+    ]
+  },
+  {
+    "label": "Density, legality and what goes wrong",
+    "section": "Density, legality and what goes wrong",
+    "subgoals": [
+      "Explain why density constraints spread cells",
+      "Describe legalization into rows and sites",
+      "Trace congestion and timing failures back to placement"
+    ]
+  }
+]

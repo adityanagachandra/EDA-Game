@@ -1,0 +1,5 @@
+[
+  {"label": "Rings, stripes and rails", "section": "Rings, stripes and rails", "subgoals": ["Name the ring, stripe and rail levels of the grid", "Count stripe pairs from the offset and pitch", "Connect rails to stripes through vias"]},
+  {"label": "The routing cost of the grid", "section": "The routing cost of the grid", "subgoals": ["Compute the fraction of a layer the stripes consume", "Weigh IR drop against routing capacity", "Feed the grid into the placer's congestion estimate"]},
+  {"label": "IR drop along a rail", "section": "IR drop along a rail", "subgoals": ["Model the rail as a uniformly loaded line fed at both ends", "Compute the midpoint drop as I times R over 8", "Scale the drop with the square of the stripe pitch"]}
+]

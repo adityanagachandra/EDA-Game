@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Dirichlet: fixed temperatures",
+  "section": "Dirichlet: fixed temperatures",
+  "subgoals": [
+   "Move known boundary temperatures to the right-hand side",
+   "Write the exact quadratic solution of the rod",
+   "Evaluate it at the node position"
+  ]
+ },
+ {
+  "label": "Neumann: insulated edges and ghost nodes",
+  "section": "Neumann: insulated edges and ghost nodes",
+  "subgoals": [
+   "Add a ghost node mirrored across the boundary",
+   "Write the stencil at the boundary node with the mirrored value",
+   "Solve for the boundary temperature"
+  ]
+ },
+ {
+  "label": "Robin: convection to a heat sink",
+  "section": "Robin: convection to a heat sink",
+  "subgoals": [
+   "Equate conduction from the interior node with convective loss",
+   "Combine the two conductances in series",
+   "Solve for the surface temperature"
+  ]
+ }
+]

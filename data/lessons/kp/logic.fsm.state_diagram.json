@@ -1,0 +1,5 @@
+[
+  {"label": "How many states", "section": "How many states", "subgoals": ["Let state i record the matched prefix length", "Count k plus one states for Moore and k for Mealy", "Argue minimality from the distinct distances to an output"]},
+  {"label": "Where a mismatch goes", "section": "Where a mismatch goes", "subgoals": ["Append the input to the matched prefix", "Find the longest suffix of that string which is a prefix of the pattern", "Move to the state numbered by its length"]},
+  {"label": "After a detection", "section": "After a detection", "subgoals": ["Choose overlapping or non-overlapping semantics", "Apply the suffix rule from the full pattern for overlap", "Restart at state zero or one for non-overlap"]}
+]

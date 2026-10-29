@@ -1,0 +1,5 @@
+[
+  {"label": "Building the Maxwell matrix", "section": "Building the Maxwell matrix", "subgoals": ["Put ground plus all couplings on the diagonal", "Put minus each coupling off the diagonal", "Mirror the entries to keep the matrix symmetric"]},
+  {"label": "Ground capacitance from row sums", "section": "Ground capacitance from row sums", "subgoals": ["Sum each row of the Maxwell matrix", "Read the row sum as the ground capacitance", "Negate the off-diagonal entries to read the couplings"]},
+  {"label": "Charge from the matrix", "section": "Charge from the matrix", "subgoals": ["Multiply each matrix entry in the row by its conductor voltage", "Sum the products to get the charge", "Cross-check with ground and coupling charges separately"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Solving the relaxed knapsack",
+    "section": "Solving the relaxed knapsack",
+    "subgoals": [
+      "Sort the items by value per unit of weight",
+      "Take whole items in that order while they fit",
+      "Fill the remaining budget with a fraction of the next item"
+    ]
+  },
+  {
+    "label": "The integer optimum",
+    "section": "The integer optimum",
+    "subgoals": [
+      "List the subsets that fit within the budget",
+      "Pick the most valuable feasible subset",
+      "Confirm the integer value does not exceed the relaxed bound"
+    ]
+  },
+  {
+    "label": "Integrality gap and formulation strength",
+    "section": "Integrality gap and formulation strength",
+    "subgoals": [
+      "Subtract the integer optimum from the relaxed optimum",
+      "Predict branch-and-bound effort from the size of the gap",
+      "Tighten the formulation when the gap is large"
+    ]
+  }
+]

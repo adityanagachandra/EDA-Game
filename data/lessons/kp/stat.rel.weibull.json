@@ -1,0 +1,5 @@
+[
+  {"label": "Survival and failure fraction", "section": "Survival and failure fraction", "subgoals": ["Write the survival function with scale and shape", "Evaluate the survival at the given time", "Read eta as the time at which 63.2 percent have failed"]},
+  {"label": "Time to a failure fraction", "section": "Time to a failure fraction", "subgoals": ["Set the CDF equal to the target fraction", "Solve for t with the log and the 1 over beta power", "Note how strongly the low tail depends on beta"]},
+  {"label": "Mean time to failure", "section": "Mean time to failure", "subgoals": ["Compute one plus one over beta", "Evaluate the gamma function at that value", "Multiply by eta for the mean time to failure"]}
+]

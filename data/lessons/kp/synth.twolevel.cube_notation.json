@@ -1,0 +1,5 @@
+[
+  {"label": "Cubes as strings of 0, 1 and dash", "section": "Cubes as strings of 0, 1 and dash", "subgoals": ["Write each variable as 1, 0 or a dash in its position", "Count 2 to the number of dashes for the cube size", "Intersect position by position, with a 0 against a 1 emptying the result"]},
+  {"label": "Distance between cubes", "section": "Distance between cubes", "subgoals": ["Compare the two cubes position by position", "Count positions with 0 in one cube and 1 in the other", "Read distance 0 as intersecting and distance 1 as mergeable or consensus"]},
+  {"label": "Consensus of distance-one cubes", "section": "Consensus of distance-one cubes", "subgoals": ["Find the single variable in which the two cubes conflict", "Drop that variable and intersect the remaining positions", "Count the literals of the resulting consensus cube"]}
+]

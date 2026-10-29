@@ -1,0 +1,5 @@
+[
+  {"label": "Shifting slack between two stages", "section": "Shifting slack between two stages", "subgoals": ["Add delta to the setup slack of the stage into the shifted flop", "Subtract delta from the setup slack of the stage out of it", "Take the worse of the two as the result"]},
+  {"label": "The balancing shift", "section": "The balancing shift", "subgoals": ["Set the two shifted slacks equal", "Solve for delta as half the difference of the slacks", "Check that the balanced slack, the average of the two, is non-negative"]},
+  {"label": "The hold limit", "section": "The hold limit", "subgoals": ["Read the hold slack of the stage into the shifted flop", "Cap delta at that hold slack", "Recompute the worse setup slack with the capped shift"]}
+]

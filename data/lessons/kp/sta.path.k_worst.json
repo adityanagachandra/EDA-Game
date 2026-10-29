@@ -1,0 +1,5 @@
+[
+  {"label": "The worst path to an endpoint", "section": "The worst path to an endpoint", "subgoals": ["Propagate latest arrivals forward to the endpoint", "Read the endpoint arrival as the worst path delay", "Backtrace through the fanins that produced each maximum"]},
+  {"label": "The second-worst path", "section": "The second-worst path", "subgoals": ["Compute the deviation cost of each non-winning fanin along the worst path", "Pick the cheapest deviation", "Subtract its cost from the worst delay to get the next path's delay"]},
+  {"label": "Priority-queue enumeration and reporting", "section": "Priority-queue enumeration and reporting", "subgoals": ["Seed a priority queue with the worst path's deviations", "Pop the best candidate and push its own deviations", "Stop after k paths or at a delay threshold"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Assembling the step equation",
+    "section": "Assembling the step equation",
+    "subgoals": [
+      "Stamp the resistor and the capacitor companion at the node",
+      "Move the source and history terms to the right-hand side",
+      "Solve the single node equation for the new voltage"
+    ]
+  },
+  {
+    "label": "Marching two steps",
+    "section": "Marching two steps",
+    "subgoals": [
+      "Use the accepted voltage as the next history value",
+      "Repeat the step equation once more",
+      "Compare the per-step factor with the exact exponential"
+    ]
+  },
+  {
+    "label": "Error against the exact exponential",
+    "section": "Error against the exact exponential",
+    "subgoals": [
+      "Compute the backward-Euler value after one step",
+      "Compute the exact exponential at the same time",
+      "Subtract to find the local error"
+    ]
+  }
+]

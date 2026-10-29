@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Connection criticality",
+  "section": "Connection criticality",
+  "subgoals": [
+   "Divide the connection's slack by the critical-path delay",
+   "Subtract from 1 to get the criticality",
+   "Raise it to the criticality exponent theta"
+  ]
+ },
+ {
+  "label": "Timing cost",
+  "section": "Timing cost",
+  "subgoals": [
+   "Look up each connection's placement-based delay",
+   "Weight each delay by its criticality to the theta",
+   "Sum over connections"
+  ]
+ },
+ {
+  "label": "Blending timing and wirelength",
+  "section": "Blending timing and wirelength",
+  "subgoals": [
+   "Normalize each cost change by its previous total",
+   "Weight timing by lambda and wirelength by 1 minus lambda",
+   "Sum to get the move's delta C"
+  ]
+ }
+]

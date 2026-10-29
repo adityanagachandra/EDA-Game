@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Crossing the analog-digital boundary",
+    "section": "Crossing the analog-digital boundary",
+    "subgoals": [
+      "Place an A-to-D module with hysteresis where analog drives digital",
+      "Place a D-to-A source with finite slope and impedance where digital drives analog",
+      "Treat interface parameters as part of the model"
+    ]
+  },
+  {
+    "label": "Synchronizing two engines",
+    "section": "Synchronizing two engines",
+    "subgoals": [
+      "Turn digital events into analog breakpoints",
+      "Locate analog threshold crossings and notify the digital side at that time",
+      "Choose lockstep for strong coupling and relaxation for weak coupling"
+    ]
+  },
+  {
+    "label": "Co-simulation architectures",
+    "section": "Co-simulation architectures",
+    "subgoals": [
+      "Locate the dominant runtime between the two engines",
+      "Replace slow analog blocks by real-number models where fidelity allows",
+      "Compare interface thresholds first when event timing disagrees"
+    ]
+  }
+]

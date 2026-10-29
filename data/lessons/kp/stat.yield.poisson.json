@@ -1,0 +1,5 @@
+[
+  {"label": "The basic formula", "section": "The basic formula", "subgoals": ["Convert the die area to the units of the defect density", "Multiply area by density for the expected defect count", "Exponentiate the negative count for the yield"]},
+  {"label": "Inferring defect density", "section": "Inferring defect density", "subgoals": ["Take the negative log of the observed yield", "Divide by the die area in square centimetres", "Separate parametric losses before quoting a defect density"]},
+  {"label": "Critical area", "section": "Critical area", "subgoals": ["Compute expected faults per mechanism as critical area times density", "Add the expected faults across mechanisms", "Exponentiate the negative total for the yield"]}
+]

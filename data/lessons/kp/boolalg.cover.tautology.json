@@ -1,0 +1,5 @@
+[
+  {"label": "A cover is a tautology when nothing is missed", "section": "A cover is a tautology when nothing is missed", "subgoals": ["Union the minterms of every cube", "Compare the union with all 2 to the n rows", "Count the rows the cover misses"]},
+  {"label": "Cofactoring a cover", "section": "Cofactoring a cover", "subgoals": ["Drop the cubes that conflict with the literal", "Erase the literal from the cubes that contain it", "Count the cubes of the cofactor cover"]},
+  {"label": "Cube containment as a tautology question", "section": "Cube containment as a tautology question", "subgoals": ["Cofactor the cover with respect to the cube", "Ask whether the cofactor is a tautology", "Count the minterms of the cube that the cover misses"]}
+]

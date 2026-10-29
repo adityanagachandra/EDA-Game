@@ -1,0 +1,5 @@
+[
+  {"label": "The linear temperature coefficient", "section": "The linear temperature coefficient", "subgoals": ["Identify the reference temperature and the coefficient", "Multiply the coefficient by the temperature difference", "Scale the reference resistance by one plus that product"]},
+  {"label": "Moving between corners", "section": "Moving between corners", "subgoals": ["Divide the reported value by its bracket to recover the reference resistance", "Apply the bracket for the target temperature", "Carry the reference temperature with every stored resistance"]},
+  {"label": "What scales and what does not", "section": "What scales and what does not", "subgoals": ["Separate the delay into driver and wire terms", "Scale only the wire term with the temperature bracket", "Add the unchanged driver term back to get the corner delay"]}
+]

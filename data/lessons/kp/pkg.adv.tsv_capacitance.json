@@ -1,0 +1,5 @@
+[
+  {"label": "The coaxial capacitance", "section": "The coaxial capacitance", "subgoals": ["Compute the ratio of outer to inner radius", "Take its natural logarithm", "Multiply out the coaxial formula in femtofarads"]},
+  {"label": "TSV RC delay", "section": "TSV RC delay", "subgoals": ["Add the TSV and load capacitance", "Multiply by the driver resistance", "Scale by 0.69 for the 50% delay in picoseconds"]},
+  {"label": "Liner thickness as a design lever", "section": "Liner thickness as a design lever", "subgoals": ["Compute the logarithm for each liner thickness", "Take the ratio of capacitances as the inverse ratio of logarithms", "Weigh the delay gain against the copper core"]}
+]

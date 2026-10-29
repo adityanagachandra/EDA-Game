@@ -1,0 +1,5 @@
+[
+  {"label": "Binary to Gray", "section": "Binary to Gray", "subgoals": ["Shift the binary word right by one", "XOR the word with its shifted copy", "Read the Gray pattern as an unsigned integer"]},
+  {"label": "Gray back to binary", "section": "Gray back to binary", "subgoals": ["Copy the top Gray bit as the top binary bit", "XOR each lower Gray bit with the binary bit above it", "Convert the binary pattern to its integer value"]},
+  {"label": "Why one bit at a time matters", "section": "Why one bit at a time matters", "subgoals": ["Count bit toggles of each binary increment by popcount of the XOR", "Count one toggle per Gray step", "Explain why a one-bit change keeps a sampled value coherent"]}
+]

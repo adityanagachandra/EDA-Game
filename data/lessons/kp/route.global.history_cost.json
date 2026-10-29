@@ -1,0 +1,5 @@
+[
+  {"label": "Accumulating history", "section": "Accumulating history", "subgoals": ["Compute each iteration's end-of-iteration overuse", "Add the history factor times the overuse to the history", "Keep history monotone across iterations"]},
+  {"label": "History moves stubborn nets", "section": "History moves stubborn nets", "subgoals": ["Write the history of the hot edge as a function of the iteration", "Compare the short path plus history with the alternative", "Solve for the first iteration in which the alternative wins"]},
+  {"label": "History and present cost together", "section": "History and present cost together", "subgoals": ["Compute the history from past end-of-iteration overuse", "Compute the present factor from the current occupancy", "Multiply base plus history by the present factor"]}
+]

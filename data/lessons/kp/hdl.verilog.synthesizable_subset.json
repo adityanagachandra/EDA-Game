@@ -1,0 +1,5 @@
+[
+  {"label": "Constructs synthesis ignores or rejects", "section": "Constructs synthesis ignores or rejects", "subgoals": ["Drop delays and print tasks from the synthesized model", "Reject event waits and fork-join in synthesizable code", "Treat initial values as FPGA-only and use reset for ASICs"]},
+  {"label": "Static loops, functions and memories", "section": "Static loops, functions and memories", "subgoals": ["Unroll loops whose bounds are compile-time constants", "Inline timing-free functions as combinational logic", "Match array access patterns to the RAM the target provides"]},
+  {"label": "Simulation-synthesis mismatches", "section": "Simulation-synthesis mismatches", "subgoals": ["Spot constructs whose simulation meaning differs from their hardware", "Replace pragmas and partial sensitivity lists with checked constructs", "Confirm the netlist against the RTL with equivalence checking"]}
+]

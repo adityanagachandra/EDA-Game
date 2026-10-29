@@ -1,0 +1,5 @@
+[
+  {"label": "Covers and independent sets are complements", "section": "Covers and independent sets are complements", "subgoals": ["Note that a set is a vertex cover exactly when its complement is independent", "Subtract the minimum cover from the vertex count", "Report the maximum independent set"]},
+  {"label": "3-SAT to vertex cover", "section": "3-SAT to vertex cover", "subgoals": ["Build one edge gadget per variable", "Build one triangle gadget per clause with three links", "Set the target to n plus 2m"]},
+  {"label": "Clique through the complement graph", "section": "Clique through the complement graph", "subgoals": ["Take the complement of the edge set", "Count its edges", "Match cliques of G to independent sets of the complement"]}
+]

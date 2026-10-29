@@ -1,0 +1,5 @@
+[
+  {"label": "Input paths", "section": "Input paths", "subgoals": ["Read the input delay as the port's arrival after the clock edge", "Add the internal logic delay to the capture flop", "Subtract the arrival from the period minus setup"]},
+  {"label": "Output paths", "section": "Output paths", "subgoals": ["Subtract the output delay from the capture edge to get the port's required time", "Sum clock-to-Q and the logic delay to the port", "Subtract the arrival from the required time"]},
+  {"label": "Budgeting a feedthrough", "section": "Budgeting a feedthrough", "subgoals": ["Subtract the input delay and the output delay from the period", "Read the remainder as the feedthrough's delay budget", "Split chip-level paths into block budgets that sum to the cycle"]}
+]

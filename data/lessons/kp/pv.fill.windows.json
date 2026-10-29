@@ -1,0 +1,5 @@
+[
+  {"label": "Counting window positions", "section": "Counting window positions", "subgoals": ["Subtract the window size from the die size", "Divide by the step and add one, per axis", "Multiply the two counts"]},
+  {"label": "The minimum window by tile sums", "section": "The minimum window by tile sums", "subgoals": ["Compute each tile's metal density once", "Sum the tiles of each window, by prefix sums for speed", "Take the minimum over all window positions"]},
+  {"label": "Density gradients", "section": "Density gradients", "subgoals": ["Compute the density of every window position", "Take the absolute difference of each adjacent pair", "Report the largest difference"]}
+]

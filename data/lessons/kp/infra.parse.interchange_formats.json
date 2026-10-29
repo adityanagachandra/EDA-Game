@@ -1,0 +1,5 @@
+[
+  {"label": "EDIF netlist interchange", "section": "EDIF netlist interchange", "subgoals": ["Parse each parenthesized form with one recursive reader", "Map cells, interfaces and contents onto masters, ports and instances", "Compare connectivity with the Verilog import of the same design"]},
+  {"label": "IP-XACT component metadata", "section": "IP-XACT component metadata", "subgoals": ["Parse the XML and validate it against the IP-XACT schema", "Extract bus interfaces, memory maps and register fields", "Generate RTL, headers and documentation from the one description"]},
+  {"label": "UPF power intent and the Si2 coalitions", "section": "UPF power intent and the Si2 coalitions", "subgoals": ["Evaluate UPF commands in a Tcl interpreter", "Build power domains, supplies, isolation and retention from the commands", "Reuse reference parsers so tools interpret a format identically"]}
+]

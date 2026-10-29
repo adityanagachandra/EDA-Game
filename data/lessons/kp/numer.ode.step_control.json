@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Accepting or rejecting a step",
+  "section": "Accepting or rejecting a step",
+  "subgoals": [
+   "Scale each error estimate by its tolerance",
+   "Accept the step when the worst ratio is at most one",
+   "Retry rejected steps from the last accepted point with a smaller step"
+  ]
+ },
+ {
+  "label": "The step-size update formula",
+  "section": "The step-size update formula",
+  "subgoals": [
+   "Take the ratio of tolerance to error",
+   "Raise it to one over p plus one",
+   "Multiply by the step and the safety factor"
+  ]
+ },
+ {
+  "label": "Breakpoints and step growth limits",
+  "section": "Breakpoints and step growth limits",
+  "subgoals": [
+   "Compute the formula step",
+   "Cap it at twice the previous step",
+   "Cut it to land exactly on the next breakpoint"
+  ]
+ }
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Partial bitstream size",
+  "section": "Partial bitstream size",
+  "subgoals": [
+   "Multiply columns by rows by frames per column-row",
+   "Multiply by words per frame and 4 bytes per word",
+   "Convert bytes to KB with 1024 bytes per KB"
+  ]
+ },
+ {
+  "label": "Reconfiguration time",
+  "section": "Reconfiguration time",
+  "subgoals": [
+   "Compute the port throughput from word width and clock",
+   "Divide the bitstream size by the throughput",
+   "Decouple the region's interface for the duration"
+  ]
+ },
+ {
+  "label": "When it pays",
+  "section": "When it pays",
+  "subgoals": [
+   "Compute task time over task plus swap time",
+   "Compare the utilization across task lengths",
+   "Account for reserved region resources and partition pins"
+  ]
+ }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Two-node nodal equations",
+    "section": "Two-node nodal equations",
+    "subgoals": [
+      "Stamp the two-node conductance matrix",
+      "Compute its determinant",
+      "Replace the first column by b and divide by the determinant"
+    ]
+  },
+  {
+    "label": "Solving for the second node",
+    "section": "Solving for the second node",
+    "subgoals": [
+      "Replace the second column by b and divide by the determinant",
+      "Check the result with KCL at the second node",
+      "Reuse the factorization for a new right-hand side"
+    ]
+  },
+  {
+    "label": "A system with a voltage source row",
+    "section": "A system with a voltage source row",
+    "subgoals": [
+      "Use the branch row to fix the source node voltage",
+      "Substitute it into the remaining node equations",
+      "Solve the reduced system and recover the branch current"
+    ]
+  }
+]

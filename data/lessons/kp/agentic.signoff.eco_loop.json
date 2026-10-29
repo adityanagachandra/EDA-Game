@@ -1,0 +1,5 @@
+[
+  {"label": "What the loop reads", "section": "What the loop reads", "subgoals": ["Read violations by endpoint, corner and type", "Group violations by likely cause", "Read spare cells, sites and routing limits"]},
+  {"label": "Proposing and verifying fixes", "section": "Proposing and verifying fixes", "subgoals": ["Choose ECO moves for each violation group", "Apply the batch and rerun incremental analysis", "Accept only if totals fall with no new violation class"]},
+  {"label": "The human-approved ECO", "section": "The human-approved ECO", "subgoals": ["Assemble before and after reports per corner", "List changed instances and nets", "Leave waivers and final approval to a human"]}
+]

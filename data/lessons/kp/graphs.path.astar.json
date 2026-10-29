@@ -1,0 +1,5 @@
+[
+  {"label": "Priority f = g + h", "section": "Priority f = g + h", "subgoals": ["Track the cost so far g at each vertex", "Add the Manhattan distance to the target as h", "Order the open list by f = g + h"]},
+  {"label": "Which vertex is expanded next", "section": "Which vertex is expanded next", "subgoals": ["Compute f for every open vertex", "Expand the vertex with the smallest f", "Break ties toward larger g to reduce expansions"]},
+  {"label": "Admissibility and weighted A*", "section": "Admissibility and weighted A*", "subgoals": ["Check that h never exceeds the true remaining cost", "Check consistency edge by edge to avoid re-expansions", "Divide a weighted-A* cost by w to bound the optimum"]}
+]

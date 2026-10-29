@@ -1,0 +1,5 @@
+[
+  {"label": "Edge lengths from the zero-skew condition", "section": "Edge lengths from the zero-skew condition", "subgoals": ["Compute the Manhattan distance between the sinks", "Impose equal delay from the merge point to both sinks", "Solve for the edge length to sink a"]},
+  {"label": "The shape of the segment", "section": "The shape of the segment", "subgoals": ["Restrict candidate points to the bounding box", "Intersect the box with the diagonal at distance e_a from a", "Read off the segment's endpoints and extent"]},
+  {"label": "Distance from a point to a segment", "section": "Distance from a point to a segment", "subgoals": ["List the endpoints and the points level with the parent", "Evaluate the Manhattan distance at each candidate", "Take the minimum as the edge length"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What the SKY130 kit contains", "section": "What the SKY130 kit contains", "subgoals": ["Name the device models used for transistor simulation", "Name the rule decks used for DRC and LVS", "Separate PDK-supplied views from design-supplied inputs"]},
+  {"label": "The SKY130 layer stack and libraries", "section": "The SKY130 layer stack and libraries", "subgoals": ["Place li1 below the five metal layers met1 to met5", "Match a library suffix such as hd or hs to its trade-off", "Pick a library for an area, speed or power goal"]},
+  {"label": "How a flow consumes SKY130", "section": "How a flow consumes SKY130", "subgoals": ["Feed LEF abstracts to placement and routing", "Feed Liberty corners to synthesis and timing", "Merge cell GDS and run the rule decks at the end"]}
+]

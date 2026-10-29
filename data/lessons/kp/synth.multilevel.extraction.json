@@ -1,0 +1,5 @@
+[
+  {"label": "Literals before extraction", "section": "Literals before extraction", "subgoals": ["Write every function as an SOP", "Find a multi-cube divisor common to their kernels", "Sum the literals of every cube before any change"]},
+  {"label": "Literals after extraction", "section": "Literals after extraction", "subgoals": ["Create a node X for the divisor and count its literals once", "Charge each quotient cube its literals plus one for X", "Add the remainder literals of every function"]},
+  {"label": "Value, greed and the extraction loop", "section": "Value, greed and the extraction loop", "subgoals": ["Compute the value as literals before minus literals after", "Extract the highest-value divisor and update the network", "Repeat until no candidate divisor saves literals"]}
+]

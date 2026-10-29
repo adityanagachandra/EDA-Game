@@ -1,0 +1,5 @@
+[
+  {"label": "Time units scale delay tables", "section": "Time units scale delay tables", "subgoals": ["Read the time_unit attribute from the library header", "Convert the unit to a factor in the internal unit", "Multiply each table value by the factor"]},
+  {"label": "Capacitive load units scale pins and indices", "section": "Capacitive load units scale pins and indices", "subgoals": ["Read the value and unit of capacitive_load_unit", "Scale pin capacitances and load indices into fF", "Divide an internal load by the unit before a table lookup"]},
+  {"label": "Units belong to each library", "section": "Units belong to each library", "subgoals": ["Scale every arc value by its own library's unit", "Sum the scaled delays along the path", "Reject sums of raw values from libraries with different units"]}
+]

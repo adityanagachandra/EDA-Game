@@ -1,0 +1,5 @@
+[
+  {"label": "Shorts and opens", "section": "Shorts and opens", "subgoals": ["Look for nets carrying two different names", "Look for one schematic net split across several layout nets", "Check that labels sit on the text layer attached to their metal"]},
+  {"label": "Device and property errors", "section": "Device and property errors", "subgoals": ["Compare matched devices' properties with their tolerances", "Check recognition layers when a device type differs", "Check reduction settings when device counts differ"]},
+  {"label": "Debugging order", "section": "Debugging order", "subgoals": ["Fix shorts before any other error", "Locate a short by a path between its two labels", "Rerun LVS after each fix and read the remaining errors"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Eager recomputation after every edit", "section": "Eager recomputation after every edit", "subgoals": ["Find the downstream set of each edit separately", "Recompute every result in each set as the edit lands", "Sum the set sizes to get the eager evaluation count"]},
+  {"label": "Mark dirty, recompute on demand", "section": "Mark dirty, recompute on demand", "subgoals": ["Flag every downstream result dirty at each edit", "Take the union of the flagged sets", "Recompute each dirty result once at query time"]},
+  {"label": "Early cutoff on unchanged values", "section": "Early cutoff on unchanged values", "subgoals": ["Re-evaluate the direct dependents of the edited node", "Stop propagating at a result whose value comes out unchanged", "Count only results reached along paths of changed values"]}
+]

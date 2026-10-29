@@ -1,0 +1,5 @@
+[
+  {"label": "Table lookup along one index", "section": "Table lookup along one index", "subgoals": ["Locate the two table points that bracket the query", "Compute the fractional position between them", "Interpolate linearly between the bracketing values"]},
+  {"label": "Two indices and a run length", "section": "Two indices and a run length", "subgoals": ["Interpolate along width at both bracketing spacings", "Interpolate the two results along spacing", "Multiply the per-length value by the run length"]},
+  {"label": "Fracturing a varying net", "section": "Fracturing a varying net", "subgoals": ["Split the wire where its cross-section changes", "Look up each segment in its own pattern", "Sum the segment contributions for the net total"]}
+]

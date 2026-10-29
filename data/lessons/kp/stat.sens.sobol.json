@@ -1,0 +1,5 @@
+[
+  {"label": "First-order indices", "section": "First-order indices", "subgoals": ["Condition the output on one input and take the variance of that mean", "Divide by the total output variance", "Recover a squared coefficient times sigma squared for a linear model"]},
+  {"label": "Interactions", "section": "Interactions", "subgoals": ["Write the variance of the product term as c squared sigma1 squared sigma2 squared", "Average the other input to zero when conditioning", "Attribute the unexplained remainder to interactions"]},
+  {"label": "Total indices and estimation cost", "section": "Total indices and estimation cost", "subgoals": ["Add the first-order and interaction terms of an input for its total index", "Fix inputs with near-zero total index at nominal", "Compute indices on a surrogate when direct sampling is too expensive"]}
+]

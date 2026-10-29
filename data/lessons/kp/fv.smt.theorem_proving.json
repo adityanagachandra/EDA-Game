@@ -1,0 +1,5 @@
+[
+  {"label": "Interactive and automated provers", "section": "Interactive and automated provers", "subgoals": ["Structure the proof as definitions, lemmas and tactics", "Route every theorem through the small trusted kernel", "Discharge routine subgoals with automated provers"]},
+  {"label": "Proofs for every width", "section": "Proofs for every width", "subgoals": ["State the property for an arbitrary width n", "Prove the base case and the inductive step", "Use refinement or structural induction for processors and passes"]},
+  {"label": "When to use a theorem prover", "section": "When to use a theorem prover", "subgoals": ["Reserve theorem proving for parameterized, deeply arithmetic or very large problems", "Split the work between the prover and automatic engines", "Track the specification and every assumed lemma as part of the trusted base"]}
+]

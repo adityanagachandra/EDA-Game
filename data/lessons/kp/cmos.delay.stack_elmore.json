@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The stack as an RC ladder",
+    "section": "The stack as an RC ladder",
+    "subgoals": [
+      "Model each on transistor in the stack as a resistance",
+      "Place a diffusion capacitance at every internal node and the output",
+      "Root the RC chain at ground for a falling transition"
+    ]
+  },
+  {
+    "label": "Elmore delay of the falling output",
+    "section": "Elmore delay of the falling output",
+    "subgoals": [
+      "Weight each internal node's capacitance by its resistance to ground",
+      "Weight the output capacitance by the full stack resistance",
+      "Sum the terms to get the worst-case falling delay"
+    ]
+  },
+  {
+    "label": "Input ordering and pin-dependent delay",
+    "section": "Input ordering and pin-dependent delay",
+    "subgoals": [
+      "Identify which internal nodes are already discharged when the last input arrives",
+      "Remove their terms when the latest input drives the top transistor",
+      "Connect the asymmetry to per-pin arcs and pin swapping"
+    ]
+  }
+]

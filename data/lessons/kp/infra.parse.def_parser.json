@@ -1,0 +1,5 @@
+[
+  {"label": "Technology LEF and cell LEF", "section": "Technology LEF and cell LEF", "subgoals": ["Separate technology content (layers, vias, sites) from MACRO content", "Store each MACRO's size, site, pins and obstructions", "Take electrical data from Liberty instead of LEF"]},
+  {"label": "DEF sections and what they build", "section": "DEF sections and what they build", "subgoals": ["Map each DEF section to the database objects it creates", "Read each component's master, status and orientation", "Attach NETS entries to instance pins and SPECIALNETS to the power grid"]},
+  {"label": "Reading order and cross-references", "section": "Reading order and cross-references", "subgoals": ["Read the LEF before the DEF", "Resolve every master, site, layer and pin name and report failures", "Hand large sections to the database entry by entry through callbacks"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What the solver computes", "section": "What the solver computes", "subgoals": ["State Laplace's equation with conductor potentials as boundary conditions", "Integrate surface charge on each conductor", "Excite one conductor at a time to fill one column per solve"]},
+  {"label": "Reading a solve", "section": "Reading a solve", "subgoals": ["Read the driven conductor's charge as its total capacitance", "Negate each grounded conductor's charge to get a coupling", "Subtract the couplings from the total to get ground capacitance"]},
+  {"label": "When the reference is golden", "section": "When the reference is golden", "subgoals": ["Match the solver's dielectric stack to the process", "Refine the mesh until the result converges", "Reserve 3D solves for critical nets and calibration"]}
+]

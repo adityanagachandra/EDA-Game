@@ -1,0 +1,5 @@
+[
+  {"label": "The question the core asks", "section": "The question the core asks", "subgoals": ["Locate the single point where the core requests a derate", "List the context fields the provider receives", "Distinguish providers that return factors from providers that return a mean and sigma"]},
+  {"label": "Computing with a custom provider", "section": "Computing with a custom provider", "subgoals": ["Check each arc against the provider's conditions", "Assign each arc its derate factor", "Sum each arc's delay times its factor"]},
+  {"label": "Keeping the seam fast and safe", "section": "Keeping the seam fast and safe", "subgoals": ["Batch provider calls so the core kernel stays inlined", "Keep providers deterministic with no hidden state", "Accept a new provider only after a differential timing report"]}
+]

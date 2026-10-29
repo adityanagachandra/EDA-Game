@@ -1,0 +1,5 @@
+[
+  {"label": "Levels of 3:2 reduction", "section": "Levels of 3:2 reduction", "subgoals": ["Reduce each group of three rows to two per level", "List the Dadda heights two, three, four, six, nine and onward", "Count the Dadda heights below the starting height"]},
+  {"label": "Counting Dadda's adders", "section": "Counting Dadda's adders", "subgoals": ["Remove one bit per full adder and none per half adder", "Evaluate n squared minus four n plus three full adders", "Evaluate n minus one half adders"]},
+  {"label": "Booth recoding meets the tree", "section": "Booth recoding meets the tree", "subgoals": ["Halve the starting row count with radix-4 Booth recoding", "Recount the Dadda levels for the reduced height", "Convert the saved levels into gate delays"]}
+]

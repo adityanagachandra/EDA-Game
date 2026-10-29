@@ -1,0 +1,5 @@
+[
+  {"label": "Records and element sizes", "section": "Records and element sizes", "subgoals": ["Add the 4-byte header to each record's payload", "Count n + 1 points in a closed boundary's XY record", "Sum BOUNDARY, LAYER, DATATYPE, XY and ENDEL"]},
+  {"label": "Counting records in a structure", "section": "Counting records in a structure", "subgoals": ["Count the three framing records of the structure", "Multiply each element kind by its record count", "Add optional records only where the stem lists them"]},
+  {"label": "The byte size of a structure", "section": "The byte size of a structure", "subgoals": ["Pad every name to an even number of bytes", "Price each SREF as SREF, SNAME, XY and ENDEL", "Add BGNSTR, STRNAME and ENDSTR to the element bytes"]}
+]

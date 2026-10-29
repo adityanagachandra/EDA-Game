@@ -1,0 +1,5 @@
+[
+  {"label": "Capacitance scales with k", "section": "Capacitance scales with k", "subgoals": ["State that capacitance is proportional to k at fixed geometry", "Compute the new capacitance after a dielectric change", "Explain how carbon doping and porosity lower k"]},
+  {"label": "Effective k of a real stack", "section": "Effective k of a real stack", "subgoals": ["Write the series formula for a layered dielectric", "Compute the effective k of a cap and bulk film", "Separate vertical from lateral coupling paths"]},
+  {"label": "Air gaps and the limits of low-k", "section": "Air gaps and the limits of low-k", "subgoals": ["Identify the lateral fraction of a wire's capacitance", "Compute the capacitance saving from an air gap", "List the mechanical and reliability costs of low-k"]}
+]

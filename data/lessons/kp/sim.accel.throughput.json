@@ -1,0 +1,5 @@
+[
+  {"label": "Simulation speed in cycles per second", "section": "Simulation speed in cycles per second", "subgoals": ["Measure simulator speed in cycles per second", "Divide cycles by speed to get wall time", "Convert seconds into hours or days"]},
+  {"label": "Emulation time including compile", "section": "Emulation time including compile", "subgoals": ["Divide cycles by emulation speed to get run time", "Add the compile time to get total time", "Share one compile across many tests on the same snapshot"]},
+  {"label": "The break-even test length", "section": "The break-even test length", "subgoals": ["Equate simulation time with compile plus emulation time", "Solve N* = C / (1/f_s - 1/f_e)", "Approximate N* by C f_s when the emulator is much faster"]}
+]

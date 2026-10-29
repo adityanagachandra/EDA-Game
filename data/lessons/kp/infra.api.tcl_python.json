@@ -1,0 +1,5 @@
+[
+  {"label": "Scripting shells over compiled engines", "section": "Scripting shells over compiled engines", "subgoals": ["Trace a Tcl command to the C++ engine call it wraps", "Expose the same engine through generated Python bindings", "Keep algorithm arithmetic out of the script layer"]},
+  {"label": "What to script and what to compile", "section": "What to script and what to compile", "subgoals": ["Estimate the per-call crossing overhead of a script loop", "Classify a task as script-level or compiled", "Replace per-object calls with bulk operations"]},
+  {"label": "Designing a script API", "section": "Designing a script API", "subgoals": ["Pass handles and collections instead of names", "Validate handles and convert exceptions to script errors", "Return structured results with explicit options"]}
+]

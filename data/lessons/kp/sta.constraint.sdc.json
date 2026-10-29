@@ -1,0 +1,5 @@
+[
+  {"label": "Defining clocks", "section": "Defining clocks", "subgoals": ["Define each primary clock with create_clock", "Derive divided or multiplied clocks with create_generated_clock", "Add latency and uncertainty appropriate to the stage of the flow"]},
+  {"label": "Constraining the block boundary", "section": "Constraining the block boundary", "subgoals": ["Give each input port an arrival with set_input_delay", "Give each output port a budget with set_output_delay", "Model the drivers and loads at the ports with set_driving_cell and set_load"]},
+  {"label": "Object queries and units", "section": "Object queries and units", "subgoals": ["Select every constrained object with an explicit object query", "Interpret every number in the library's time unit", "Run constraint checks for unmatched objects and unconstrained ports"]}
+]

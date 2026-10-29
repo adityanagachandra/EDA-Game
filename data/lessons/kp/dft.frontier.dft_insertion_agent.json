@@ -1,0 +1,5 @@
+[
+  {"label": "What the agent must prove", "section": "What the agent must prove", "subgoals": ["Prove functional equivalence with test modes tied off", "Shift a known pattern through each chain for integrity", "Check coverage and pattern count against the baseline"]},
+  {"label": "The harness loop", "section": "The harness loop", "subgoals": ["Propose a configuration for insertion", "Run insertion, design rules, equivalence and ATPG in the harness", "Show the diff with its evidence to a human reviewer"]},
+  {"label": "Invariants versus proxies", "section": "Invariants versus proxies", "subgoals": ["Pair every proxy reward with the invariants it could violate", "Treat a coverage drop as a regression even when equivalence passes", "Promote the recipe to the library and keep the netlist on site"]}
+]

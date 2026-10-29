@@ -1,0 +1,5 @@
+[
+  {"label": "One-time flow setup", "section": "One-time flow setup", "subgoals": ["Multiply setup iterations by their cost", "Divide by the number of production runs", "Compare the per-run setup cost with run length"]},
+  {"label": "Fraction of compute on skill updates", "section": "Fraction of compute on skill updates", "subgoals": ["Multiply update count by update cost", "Divide by update cost plus loop compute", "Express the result as a percentage"]},
+  {"label": "Break-even for a customization", "section": "Break-even for a customization", "subgoals": ["Divide the update cost by the saving per run", "Round up to whole runs", "Compare with the runs remaining in the flow"]}
+]

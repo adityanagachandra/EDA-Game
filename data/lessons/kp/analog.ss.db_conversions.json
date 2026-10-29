@@ -1,0 +1,5 @@
+[
+  {"label": "Power ratios and voltage ratios", "section": "Power ratios and voltage ratios", "subgoals": ["Use ten log ten for power ratios", "Use twenty log ten for voltage and current ratios", "Recall the anchors 3 dB per power doubling and 6 dB per voltage doubling"]},
+  {"label": "Absolute levels in dBm", "section": "Absolute levels in dBm", "subgoals": ["Convert milliwatts to dBm with ten log ten", "Convert dBm back to milliwatts with ten to the power over ten", "Add gains to levels, but sum powers in linear units"]},
+  {"label": "Cascades add in dB", "section": "Cascades add in dB", "subgoals": ["Convert every stage gain to dB", "Sum the stage gains and losses along the chain", "Switch to linear units for noise and intercept combinations"]}
+]

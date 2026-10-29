@@ -1,0 +1,5 @@
+[
+  {"label": "The forced cut and its cost", "section": "The forced cut and its cost", "subgoals": ["Root a tree at the multi-fanout node", "Cover each consumer with the shared node as a leaf", "Sum the shared gate and the consumer covers"]},
+  {"label": "Duplication and its accounting", "section": "Duplication and its accounting", "subgoals": ["Let each consumer match a cell that absorbs the shared node", "Compute the area with every consumer duplicating", "Compare with keeping the shared gate and choose the cheaper"]},
+  {"label": "Delay is where duplication shines", "section": "Delay is where duplication shines", "subgoals": ["Compare the path delays of the tree cover and the duplicated cover", "Compute each node's best arrival over its whole fanin cone", "Recover area afterwards on nodes with slack"]}
+]

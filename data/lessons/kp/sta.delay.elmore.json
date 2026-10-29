@@ -1,0 +1,8 @@
+[
+  {"label": "The first moment of the impulse response", "section": "The first moment of the impulse response",
+   "subgoals": ["Model the wire as a tree of resistors with grounded capacitors", "Read the delay at a node as the first moment of its impulse response", "Name the bound: Elmore overestimates the 50% delay of a step input"]},
+  {"label": "Shared resistance times downstream capacitance", "section": "Shared resistance times downstream capacitance",
+   "subgoals": ["Trace the path from the driver to the sink node", "Pair every capacitor with the resistance its path shares with the sink path", "Sum the products of shared resistance and capacitance"]},
+  {"label": "Computing it in one tree traversal", "section": "Computing it in one tree traversal",
+   "subgoals": ["Accumulate downstream capacitance in a post-order pass", "Accumulate delay as resistance times downstream capacitance in a pre-order pass", "Convert ohms times femtofarads into picoseconds"]}
+]

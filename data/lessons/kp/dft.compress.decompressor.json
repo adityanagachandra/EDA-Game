@@ -1,0 +1,5 @@
+[
+  {"label": "Cells as XORs of variables", "section": "Cells as XORs of variables", "subgoals": ["Write each scan cell as an XOR of injected variables", "Compute each cell as the parity of its variables' values", "Read the cell values in order"]},
+  {"label": "Encoding a test cube", "section": "Encoding a test cube", "subgoals": ["Turn each care bit into one GF(2) equation", "Eliminate over GF(2) and check for a contradiction", "Count the solutions as two to the variables minus the rank"]},
+  {"label": "Capacity", "section": "Capacity", "subgoals": ["Require linearly independent equations for guaranteed encodability", "Multiply the probabilities that each new equation stays independent", "Keep the care bits a margin below the variable count"]}
+]

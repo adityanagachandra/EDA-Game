@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Replacing compact models with tables",
+    "section": "Replacing compact models with tables",
+    "subgoals": [
+      "Precompute currents and charges on a voltage grid",
+      "Interpolate with continuous derivatives",
+      "Build separate tables for each temperature and corner"
+    ]
+  },
+  {
+    "label": "Relaxed tolerances and reuse",
+    "section": "Relaxed tolerances and reuse",
+    "subgoals": [
+      "Relax tolerances on partitions with large signal swings",
+      "Reuse solutions of identical subcircuits with identical inputs",
+      "Reduce parasitic networks before simulation"
+    ]
+  },
+  {
+    "label": "When fast SPICE is not enough",
+    "section": "When fast SPICE is not enough",
+    "subgoals": [
+      "Identify metrics that depend on small current differences",
+      "Keep tightly coupled feedback loops inside one partition",
+      "Re-run decision-critical blocks in accurate SPICE"
+    ]
+  }
+]

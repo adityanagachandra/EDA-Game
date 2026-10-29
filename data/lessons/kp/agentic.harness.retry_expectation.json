@@ -1,0 +1,5 @@
+[
+  {"label": "Success within a try budget", "section": "Success within a try budget", "subgoals": ["Compute the chance that all k attempts fail", "Subtract it from one", "Solve for the budget that reaches a target success rate"]},
+  {"label": "Expected number of attempts", "section": "Expected number of attempts", "subgoals": ["Sum the geometric series of survival probabilities", "Evaluate the closed form for the given budget", "Multiply expected attempts by the time per attempt"]},
+  {"label": "When attempts are not independent", "section": "When attempts are not independent", "subgoals": ["Multiply the per-attempt failure probabilities", "Subtract the product from one", "Stop early when failures repeat identically"]}
+]

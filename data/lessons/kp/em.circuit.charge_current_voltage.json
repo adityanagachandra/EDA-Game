@@ -1,0 +1,5 @@
+[
+  {"label": "Current as the rate of charge flow", "section": "Current as the rate of charge flow", "subgoals": ["Write current as the time derivative of charge", "Integrate the current waveform to get the delivered charge", "Convert milliamperes times nanoseconds into picocoulombs"]},
+  {"label": "Voltage, energy and power", "section": "Voltage, energy and power", "subgoals": ["Define voltage as energy per unit charge", "Multiply voltage by current to get instantaneous power", "Multiply power by duration to get energy in picojoules"]},
+  {"label": "Power dissipated in a resistor", "section": "Power dissipated in a resistor", "subgoals": ["Substitute Ohm's law into the product of voltage and current", "Choose the squared-current form when current is fixed", "Choose the squared-voltage form when voltage is fixed"]}
+]

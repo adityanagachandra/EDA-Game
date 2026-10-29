@@ -1,0 +1,5 @@
+[
+  {"label": "The model", "section": "The model", "subgoals": ["Raise the yield to the power one minus the coverage", "Subtract the result from one for the defect level", "Multiply by one million for DPPM"]},
+  {"label": "Coverage for a target", "section": "Coverage for a target", "subgoals": ["Convert the DPPM target to a fraction", "Divide the log of one minus the defect level by the log of the yield", "Subtract from one for the required coverage"]},
+  {"label": "Connecting to defect density", "section": "Connecting to defect density", "subgoals": ["Compute the yield as e to the minus area times defect density", "Scale the exponent by the untested fraction", "Question the model when defects do not behave like modeled faults"]}
+]

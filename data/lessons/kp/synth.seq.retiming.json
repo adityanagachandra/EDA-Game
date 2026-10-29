@@ -1,0 +1,5 @@
+[
+  {"label": "The retiming graph and lags", "section": "The retiming graph and lags", "subgoals": ["Give each node a delay and each edge its register count", "Apply w_r = w + r(v) - r(u) on each edge u to v", "Check that every retimed weight is nonnegative"]},
+  {"label": "Register count after retiming", "section": "Register count after retiming", "subgoals": ["Sum the retimed weights over all edges", "Express the change as the sum of r(v) times fanin minus fanout edges", "Note that register sharing at fanouts makes the edge sum an overcount"]},
+  {"label": "Clock period of a retimed circuit", "section": "Clock period of a retimed circuit", "subgoals": ["Keep only the edges with zero registers", "Find the longest path in that subgraph, summing node delays", "Compare the period before and after retiming"]}
+]

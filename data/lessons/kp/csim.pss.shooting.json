@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The periodic boundary condition",
+    "section": "The periodic boundary condition",
+    "subgoals": [
+      "Write the one-period map from the initial state",
+      "Set the map equal to the initial state",
+      "Solve the fixed-point equation for the initial state"
+    ]
+  },
+  {
+    "label": "One shooting Newton step",
+    "section": "One shooting Newton step",
+    "subgoals": [
+      "Integrate one period from the guess",
+      "Form the residual and the sensitivity minus one",
+      "Take the Newton step on the initial state"
+    ]
+  },
+  {
+    "label": "Why brute-force transient is slow",
+    "section": "Why brute-force transient is slow",
+    "subgoals": [
+      "Write the error after N periods as the decay factor to the power N",
+      "Solve for the number of periods to reach the tolerance",
+      "Compare it with the few Newton iterations shooting needs"
+    ]
+  }
+]

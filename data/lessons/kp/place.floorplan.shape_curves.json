@@ -1,0 +1,5 @@
+[
+  {"label": "Shapes of one block", "section": "Shapes of one block", "subgoals": ["List the allowed width and height pairs of a block", "Drop pairs that another pair dominates", "Sort the survivors into a staircase of falling height"]},
+  {"label": "Combining two blocks under a cut", "section": "Combining two blocks under a cut", "subgoals": ["Add widths and take the maximum height for every shape pair under a V cut", "Compute the area of each combined shape", "Prune dominated combinations before combining further"]},
+  {"label": "Orientation optimisation on a slicing tree", "section": "Orientation optimisation on a slicing tree", "subgoals": ["Combine shape functions bottom-up through the slicing tree", "Choose the root shape with the smallest area or one that fits the outline", "Trace the choice back down to each block's orientation"]}
+]

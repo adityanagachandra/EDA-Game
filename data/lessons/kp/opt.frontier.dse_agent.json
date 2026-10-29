@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Budgeting with successive halving",
+    "section": "Budgeting with successive halving",
+    "subgoals": [
+      "Compute each round's cost as configurations times per-configuration budget",
+      "Sum the rounds until one configuration remains",
+      "Check that early QoR predicts final QoR before trusting the halving"
+    ]
+  },
+  {
+    "label": "Choosing the next experiment",
+    "section": "Choosing the next experiment",
+    "subgoals": [
+      "Fit a surrogate and pick a batch by acquisition",
+      "Screen with the fast engine and confirm with the accurate one",
+      "Record failures as infeasible and report the Pareto set"
+    ]
+  },
+  {
+    "label": "Trustworthy recommendations",
+    "section": "Trustworthy recommendations",
+    "subgoals": [
+      "Replicate close comparisons across seeds before ranking",
+      "Record configuration, versions and seed for every run inside the IP boundary",
+      "Summarize runs, front and evidence for human approval"
+    ]
+  }
+]

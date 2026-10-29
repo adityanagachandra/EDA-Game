@@ -1,0 +1,5 @@
+[
+  {"label": "Cofactors of a cover", "section": "Cofactors of a cover", "subgoals": ["Delete the cubes that contain the opposite literal", "Raise the cofactoring variable to a dash in the surviving cubes", "Use Shannon expansion: F is a tautology iff both cofactors are"]},
+  {"label": "Recursive tautology checking", "section": "Recursive tautology checking", "subgoals": ["Split on the most binate variable", "Stop when a cover contains the all-dash cube or is empty", "Report a missed minterm from any failing branch"]},
+  {"label": "Unate covers end the recursion", "section": "Unate covers end the recursion", "subgoals": ["Mark each variable as unate or binate in the cover", "Decide a fully unate cover by looking for the all-dash cube", "Split on binate variables to drive cofactors toward unateness"]}
+]

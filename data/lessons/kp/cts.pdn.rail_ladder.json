@@ -1,0 +1,5 @@
+[
+  {"label": "Current through each segment", "section": "Current through each segment", "subgoals": ["Apply KCL to find the current in each segment", "Sum the segment drops from the supply", "Recognise the quadratic growth with rail length"]},
+  {"label": "The drop at an intermediate tap", "section": "The drop at an intermediate tap", "subgoals": ["Identify the segments between the supply and the tap", "Sum the tap currents each of them carries", "Multiply by the segment resistance"]},
+  {"label": "Feeding from both ends", "section": "Feeding from both ends", "subgoals": ["Write the tridiagonal conductance system", "Solve it for the drops", "Compare the worst drop with the single-feed case"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Resistance from dimensions", "section": "Resistance from dimensions", "subgoals": ["Read width and length from the fractured geometry", "Take thickness and resistivity from the layer stack", "Evaluate resistivity times length over width times thickness"]},
+  {"label": "Vias in series and in parallel", "section": "Vias in series and in parallel", "subgoals": ["Divide a cut's resistance by the number of parallel cuts", "Count every via level crossed going up and coming down", "Sum wire and via resistances along the current path"]},
+  {"label": "When vias dominate", "section": "When vias dominate", "subgoals": ["Total the wire resistance and the via resistance separately", "Express the via share as a percentage of the total", "Weigh layer changes against wirelength in routing cost"]}
+]

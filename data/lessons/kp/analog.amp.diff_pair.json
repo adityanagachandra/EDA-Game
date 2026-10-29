@@ -1,0 +1,5 @@
+[
+  {"label": "Splitting the tail current", "section": "Splitting the tail current", "subgoals": ["Bias each side at half the tail current", "Compute one device's gm from gm over Id and half the tail", "Separate differential steering from rejected common-mode motion"]},
+  {"label": "The five-transistor OTA", "section": "The five-transistor OTA", "subgoals": ["Load the pair with a mirror that folds both half-currents to the output", "Combine ro of the input device and the mirror device in parallel", "Multiply gm1 by that resistance to get the differential gain"]},
+  {"label": "Large-signal range", "section": "Large-signal range", "subgoals": ["Compute the full-steering input as root two times the overdrive", "Trade gm per unit current against linear input range", "Add large-signal specs to the sizing formulation"]}
+]

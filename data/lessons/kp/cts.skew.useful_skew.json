@@ -1,0 +1,5 @@
+[
+  {"label": "Lending time to a failing path", "section": "Lending time to a failing path", "subgoals": ["Write the setup inequality into F with F's clock at s", "Solve for the smallest s", "Interpret the result as time lent by the next stage"]},
+  {"label": "The upper bounds", "section": "The upper bounds", "subgoals": ["Bound s from setup on the outgoing path", "Bound s from hold on the incoming path", "Keep the tighter upper bound"]},
+  {"label": "The feasible window", "section": "The feasible window", "subgoals": ["Add the hold lower bound from the outgoing path", "Intersect all four bounds", "Read an empty window as a logic problem"]}
+]

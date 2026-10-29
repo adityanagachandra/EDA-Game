@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Weak duality gives bounds",
+    "section": "Weak duality gives bounds",
+    "subgoals": [
+      "Write one dual variable per primal constraint",
+      "Check that a candidate dual point satisfies every dual constraint",
+      "Evaluate the dual objective as an upper bound on the primal"
+    ]
+  },
+  {
+    "label": "Strong duality",
+    "section": "Strong duality",
+    "subgoals": [
+      "Solve the primal to its optimal value",
+      "Equate the dual optimum to the primal optimum",
+      "Use equal primal and dual objectives as an optimality proof"
+    ]
+  },
+  {
+    "label": "Optimal dual values at a vertex",
+    "section": "Optimal dual values at a vertex",
+    "subgoals": [
+      "Collect the rows of the constraints tight at the vertex",
+      "Solve the transposed system for the dual values",
+      "Confirm optimality from nonnegative dual values"
+    ]
+  }
+]

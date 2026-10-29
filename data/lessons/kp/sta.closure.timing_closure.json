@@ -1,0 +1,5 @@
+[
+  {"label": "Reading the shape of the problem", "section": "Reading the shape of the problem", "subgoals": ["Compare WNS, TNS and the failing-endpoint count", "Distinguish a systematic cause from a local one", "Carry margin from early stages to cover later wire effects"]},
+  {"label": "Choosing the fix", "section": "Choosing the fix", "subgoals": ["Match the fix to the dominant delay component", "Evaluate each change in every active scenario", "Fix setup before hold"]},
+  {"label": "Late-stage closure", "section": "Late-stage closure", "subgoals": ["Switch to propagated clocks and drop the skew estimate after CTS", "Close on the signoff timer with a correlation margin", "Apply late fixes as incremental ECOs, using spare cells for metal-only changes"]}
+]

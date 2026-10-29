@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The threshold test",
+  "section": "The threshold test",
+  "subgoals": [
+   "Find the largest magnitude in the active column",
+   "Multiply it by the threshold to get the cutoff",
+   "Mark every entry at or above the cutoff as eligible"
+  ]
+ },
+ {
+  "label": "Choosing among eligible pivots by Markowitz count",
+  "section": "Choosing among eligible pivots by Markowitz count",
+  "subgoals": [
+   "Restrict the candidates to eligible entries",
+   "Pick the eligible entry with the least Markowitz count",
+   "Break ties by the larger magnitude"
+  ]
+ },
+ {
+  "label": "Tuning the threshold",
+  "section": "Tuning the threshold",
+  "subgoals": [
+   "Bound one step's growth by one plus the reciprocal of the threshold",
+   "Raise the bound to the number of steps",
+   "Re-pivot when a reused pivot fails the threshold"
+  ]
+ }
+]

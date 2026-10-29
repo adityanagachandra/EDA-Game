@@ -1,0 +1,5 @@
+[
+  {"label": "The loop for RTL", "section": "The loop for RTL", "subgoals": ["Order the checks from cheap to expensive", "Feed each failing check back as specific feedback", "End with a diff plus its passing evidence"]},
+  {"label": "Golden references for small circuits", "section": "Golden references for small circuits", "subgoals": ["Check small combinational blocks exhaustively", "Prove arithmetic blocks equivalent to a reference operator", "Check FSMs by equivalence from reset or temporal properties"]},
+  {"label": "Where the loop fails", "section": "Where the loop fails", "subgoals": ["Surface specification ambiguities to the human", "Keep the golden reference independent of the generated RTL", "Record confirmed decisions for later requests"]}
+]

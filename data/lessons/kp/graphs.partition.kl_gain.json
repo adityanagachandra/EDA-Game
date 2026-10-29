@@ -1,0 +1,5 @@
+[
+  {"label": "External and internal cost", "section": "External and internal cost", "subgoals": ["Sum the weights of edges to the other side as E(v)", "Sum the weights of edges to the same side as I(v)", "Subtract to get D(v), the gain of moving v alone"]},
+  {"label": "The swap gain", "section": "The swap gain", "subgoals": ["Compute D for both vertices", "Add the two D values", "Subtract twice the weight of the edge between them"]},
+  {"label": "A KL pass", "section": "A KL pass", "subgoals": ["Swap the best unlocked pair and lock both vertices", "Update the D values of the remaining vertices", "Keep the prefix of swaps with the largest cumulative gain"]}
+]

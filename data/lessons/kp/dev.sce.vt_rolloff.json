@@ -1,0 +1,5 @@
+[
+  {"label": "The exponential roll-off model", "section": "The exponential roll-off model", "subgoals": ["Write the roll-off as A times e to the minus L over two lambda", "Evaluate the exponent at the given gate length", "Compare shifts at two lengths to see the steepness"]},
+  {"label": "The natural length of a device", "section": "The natural length of a device", "subgoals": ["Pick the natural-length formula for the gate geometry", "Substitute body thickness, oxide thickness and the permittivity ratio", "Take the square root to get lambda"]},
+  {"label": "Minimum gate length for a roll-off budget", "section": "Minimum gate length for a roll-off budget", "subgoals": ["Set the roll-off model equal to the budget", "Solve for L as two lambda times the log of A over the budget", "Relate the result to gate-length biasing in libraries"]}
+]

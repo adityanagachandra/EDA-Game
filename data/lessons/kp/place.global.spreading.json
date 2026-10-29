@@ -1,0 +1,5 @@
+[
+  {"label": "Anchors as extra fixed pins", "section": "Anchors as extra fixed pins", "subgoals": ["Add the anchor weight to the cell's diagonal entry", "Add the anchor weight times the target to the right-hand side", "Solve for the balance between connections and target"]},
+  {"label": "Where the targets come from", "section": "Where the targets come from", "subgoals": ["Find over-full regions and expand them to sufficient capacity", "Spread their cells while preserving relative order", "Increase the anchor weight with the iteration count"]},
+  {"label": "Choosing the anchor weight", "section": "Choosing the anchor weight", "subgoals": ["Solve the landing equation for the anchor weight", "Express the weight for a landing fraction f as W f over 1 - f", "Schedule the weight to grow from weak to strong"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The recurrence", "section": "The recurrence", "subgoals": ["Initialise the first segment with its pin stack", "Add the cheapest predecessor plus the layer difference for each later segment", "Close with the second pin's stack and take the minimum"]},
+  {"label": "Reading one table entry", "section": "Reading one table entry", "subgoals": ["Compute the first-segment entries from the pin stack", "Take the cheapest predecessor for the requested entry", "Store the winning predecessor to recover the assignment"]},
+  {"label": "Ties and real objectives", "section": "Ties and real objectives", "subgoals": ["Carry a count of optimal predecessors with each entry", "Add the counts when predecessors tie", "Break ties with capacity balance or timing"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Cell height as tracks times pitch", "section": "Cell height as tracks times pitch", "subgoals": ["Multiply track height by metal pitch", "Read the track height back from a cell height", "Explain fractional track heights"]},
+  {"label": "Why track height is a DTCO variable", "section": "Why track height is a DTCO variable", "subgoals": ["List what each track in a cell is used for", "Name the constraints that resist fewer tracks", "Explain why block-level evaluation is needed"]},
+  {"label": "Area arithmetic of a track reduction", "section": "Area arithmetic of a track reduction", "subgoals": ["Compute the area change of a track reduction", "Compare cell-level and block-level area gains", "Diagnose a gap between them"]}
+]

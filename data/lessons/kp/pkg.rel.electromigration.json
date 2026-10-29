@@ -1,0 +1,5 @@
+[
+  {"label": "Current density", "section": "Current density", "subgoals": ["Compute the conductor cross-section", "Convert square micrometres to square centimetres", "Divide current by area for the density"]},
+  {"label": "Black's equation", "section": "Black's equation", "subgoals": ["Take the ratio of the two current densities", "Raise it to the current exponent", "Scale the known lifetime by the result"]},
+  {"label": "Allowed current for a lifetime", "section": "Allowed current for a lifetime", "subgoals": ["Take the ratio of the lifetimes", "Raise it to one over the current exponent", "Multiply the known density by the factor"]}
+]

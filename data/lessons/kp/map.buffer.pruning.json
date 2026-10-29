@@ -1,0 +1,5 @@
+[
+  {"label": "Dominance", "section": "Dominance", "subgoals": ["Compare two candidates in load and required time", "Discard any candidate beaten in both", "Check that the survivors' required times rise with load"]},
+  {"label": "Choosing at the driver", "section": "Choosing at the driver", "subgoals": ["Compute q minus driver resistance times load for each candidate", "Keep the largest value", "Trace back the stored decisions to recover the buffers"]},
+  {"label": "Pruning after a buffer site", "section": "Pruning after a buffer site", "subgoals": ["Note that every buffered candidate has the same load", "Keep only the buffered candidate with the largest required time", "Bound the list growth to one entry per site per buffer type"]}
+]

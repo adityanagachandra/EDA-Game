@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Counting configuration bits",
+  "section": "Counting configuration bits",
+  "subgoals": [
+   "Count LUT and select bits per cluster",
+   "Add the tile's routing-switch bits",
+   "Multiply by the number of tiles"
+  ]
+ },
+ {
+  "label": "Frames and load time",
+  "section": "Frames and load time",
+  "subgoals": [
+   "Divide the bit count by the frame size and round up",
+   "Divide the bit count by port width times port clock",
+   "Convert the time to the requested unit"
+  ]
+ },
+ {
+  "label": "Encoding multiplexer selects",
+  "section": "Encoding multiplexer selects",
+  "subgoals": [
+   "Count one-hot bits as muxes times inputs",
+   "Count encoded bits as muxes times ceil of log2 of inputs",
+   "Weigh bit savings against decoder cost"
+  ]
+ }
+]

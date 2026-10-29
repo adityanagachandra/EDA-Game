@@ -1,0 +1,5 @@
+[
+  {"label": "Priority f equals g plus h", "section": "Priority f equals g plus h", "subgoals": ["Take g as the shortest-route cost from the source", "Take h as the Manhattan distance to the target", "Order the open list by f = g + h"]},
+  {"label": "Cells A* must expand", "section": "Cells A* must expand", "subgoals": ["Compute f for each reachable cell from its shortest distance and its heuristic", "Count the cells with f strictly below the best cost", "Compare with the Lee count of cells with g below the best cost"]},
+  {"label": "Heuristics with real costs", "section": "Heuristics with real costs", "subgoals": ["Scale the heuristic by the cheapest step cost and add unavoidable via costs", "Keep the heuristic admissible to preserve optimality", "Seed several sources and use the nearest target for multi-terminal search"]}
+]

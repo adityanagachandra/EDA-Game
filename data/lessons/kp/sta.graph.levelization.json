@@ -1,0 +1,5 @@
+[
+  {"label": "The level of a node", "section": "The level of a node", "subgoals": ["Put every source at level 0", "Take the largest level among a node's fanins", "Add one to that maximum to get the node's level"]},
+  {"label": "Depth is the longest path in arcs", "section": "Depth is the longest path in arcs", "subgoals": ["Compute every node's level in topological order", "Take the maximum level over all nodes", "Read that maximum as the longest path measured in arcs"]},
+  {"label": "Levels as batches of independent work", "section": "Levels as batches of independent work", "subgoals": ["Group the nodes that share a level", "Evaluate each group in parallel after the previous level finishes", "Queue incremental updates by level so each node is evaluated once"]}
+]

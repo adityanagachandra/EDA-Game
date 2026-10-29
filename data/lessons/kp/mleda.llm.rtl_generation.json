@@ -1,0 +1,5 @@
+[
+  {"label": "From specification to Verilog", "section": "From specification to Verilog", "subgoals": ["Write the specification with interfaces and conventions stated", "Sample several candidate modules from the model", "Send every candidate to an independent checker"]},
+  {"label": "Grounding in tools", "section": "Grounding in tools", "subgoals": ["Feed compiler errors back for syntax repair", "Check function with a testbench or equivalence check", "Synthesize the module and compare its PPA"]},
+  {"label": "Where generated RTL fails", "section": "Where generated RTL fails", "subgoals": ["Lint for blocking assignments in sequential logic and inferred latches", "Test across the parameter values that will be used", "Require a human code review before merging generated RTL"]}
+]

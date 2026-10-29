@@ -1,0 +1,5 @@
+[
+  {"label": "Self-determined widths", "section": "Self-determined widths", "subgoals": ["Assign each leaf its declared width", "Combine widths at each operator with max, sum or product as the rule says", "Work bottom up to the root of the expression"]},
+  {"label": "Comparisons, reductions, shifts and conditionals", "section": "Comparisons, reductions, shifts and conditionals", "subgoals": ["Give comparisons and reductions a width of 1 bit", "Keep the left operand's width for shifts", "Take the wider arm for a conditional and ignore its condition"]},
+  {"label": "Context-determined evaluation", "section": "Context-determined evaluation", "subgoals": ["Find the widest of the operands and the assignment target", "Evaluate context-determined operands at that width", "Stop propagation at concatenations, which are self-determined"]}
+]

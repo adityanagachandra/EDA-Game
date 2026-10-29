@@ -1,0 +1,5 @@
+[
+  {"label": "Paths through a program", "section": "Paths through a program", "subgoals": ["Count the independent two-way branches", "Use 2^k for sequential ifs and k + 1 for an if / else-if chain", "Multiply by unrolled iterations or cycles where they apply"]},
+  {"label": "Path conditions and feasibility", "section": "Path conditions and feasibility", "subgoals": ["Write the path condition as the conjunction of taken branch conditions", "Ask the solver whether each path condition is satisfiable", "Count the feasible paths"]},
+  {"label": "Counting the inputs on a path", "section": "Counting the inputs on a path", "subgoals": ["Write the path condition for the chosen path", "Intersect the input sets allowed by each conjunct", "Count the remaining inputs"]}
+]

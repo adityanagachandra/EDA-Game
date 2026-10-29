@@ -1,0 +1,5 @@
+[
+  {"label": "Flex materials and construction", "section": "Flex materials and construction", "subgoals": ["Name the base dielectric and copper type of flex", "Replace solder mask with coverlay in flex regions", "Describe how flex layers run through a rigid-flex stack"]},
+  {"label": "Bend radius rules", "section": "Bend radius rules", "subgoals": ["Identify whether a bend is static or dynamic", "Pick the thickness multiplier for the copper layer count", "Multiply the flex thickness to get the minimum radius"]},
+  {"label": "Routing and features in flex regions", "section": "Routing and features in flex regions", "subgoals": ["Route traces perpendicular to bends and staggered between layers", "Keep vias and pads out of bend areas", "Model hatched reference planes in impedance calculations"]}
+]

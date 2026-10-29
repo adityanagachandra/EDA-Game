@@ -1,0 +1,5 @@
+[
+  {"label": "EF as a least fixpoint", "section": "EF as a least fixpoint", "subgoals": ["Start from the set of q-states", "Add every state with a successor in the current set", "Stop at the first i where the set repeats"]},
+  {"label": "EG as a greatest fixpoint", "section": "EG as a greatest fixpoint", "subgoals": ["Start from the set of p-states", "Remove the states with no successor in the current set", "Stop at the first i where the set repeats"]},
+  {"label": "Until and the lattice argument", "section": "Until and the lattice argument", "subgoals": ["Start from the set of q-states", "Add the p-states with a successor in the current set", "Stop at the first i where the set repeats, at most the number of states"]}
+]

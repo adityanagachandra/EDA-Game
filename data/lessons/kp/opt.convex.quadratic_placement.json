@@ -1,0 +1,29 @@
+[
+  {
+    "label": "One movable cell between fixed pins",
+    "section": "One movable cell between fixed pins",
+    "subgoals": [
+      "Write the weighted sum of squared distances to the fixed pins",
+      "Set its derivative to zero",
+      "Compute the weighted mean of the pin positions"
+    ]
+  },
+  {
+    "label": "Coupled cells and the linear system",
+    "section": "Coupled cells and the linear system",
+    "subgoals": [
+      "Set each movable cell's partial derivative to zero",
+      "Collect the coupling weights into a symmetric system",
+      "Solve the system for the cell positions"
+    ]
+  },
+  {
+    "label": "Building A and b for a netlist",
+    "section": "Building A and b for a netlist",
+    "subgoals": [
+      "Sum every net weight at a cell, pads included, for the diagonal entry",
+      "Write minus the cell-to-cell weight off the diagonal",
+      "Move pad weight times pad position to the right-hand side"
+    ]
+  }
+]

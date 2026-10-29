@@ -1,0 +1,5 @@
+[
+  {"label": "Three pins: HPWL is exact", "section": "Three pins: HPWL is exact", "subgoals": ["Find the median x and median y of three pins", "Connect each pin to the median point", "Confirm the tree length equals the HPWL"]},
+  {"label": "Spanning trees as an upper estimate", "section": "Spanning trees as an upper estimate", "subgoals": ["Run Prim's algorithm with Manhattan distances", "Bound the spanning tree by 3/2 of the Steiner tree", "Use the spanning tree as a topology for delay estimates"]},
+  {"label": "Steiner points on the Hanan grid", "section": "Steiner points on the Hanan grid", "subgoals": ["Draw the Hanan grid through the pins", "Add up to n - 2 Steiner points from the grid", "Compare the Steiner length with the spanning tree and HPWL"]}
+]

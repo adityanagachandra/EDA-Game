@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The Bellman recurrence",
+    "section": "The Bellman recurrence",
+    "subgoals": [
+      "Define the cost-to-go of a state as the best completion from it",
+      "Add the state's own cost to the best transition plus next cost-to-go",
+      "Record the minimizing choice for the traceback"
+    ]
+  },
+  {
+    "label": "Solving the whole chain",
+    "section": "Solving the whole chain",
+    "subgoals": [
+      "Initialize the last stage's cost-to-go with its own costs",
+      "Fill each earlier stage from the next one by the recurrence",
+      "Take the minimum at the first stage and trace back the choices"
+    ]
+  },
+  {
+    "label": "Counting the work",
+    "section": "Counting the work",
+    "subgoals": [
+      "Count the brute-force assignments as k to the s",
+      "Count the DP transitions as stages minus one times k squared",
+      "Check that the state captures everything future costs depend on"
+    ]
+  }
+]

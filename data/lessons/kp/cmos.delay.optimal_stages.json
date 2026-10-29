@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The trade-off in one function",
+    "section": "The trade-off in one function",
+    "subgoals": [
+      "Write path delay as N times F to the one over N plus N p_inv",
+      "Evaluate the delay at several values of N",
+      "Respect polarity when the number of added inverters must be even"
+    ]
+  },
+  {
+    "label": "The optimal stage effort",
+    "section": "The optimal stage effort",
+    "subgoals": [
+      "Differentiate the delay with respect to N and set it to zero",
+      "Solve for the optimal stage effort given p_inv",
+      "Estimate the stage count as the log of F in base four"
+    ]
+  },
+  {
+    "label": "Choosing the integer and its uses",
+    "section": "Choosing the integer and its uses",
+    "subgoals": [
+      "Evaluate the delay at the integers around the estimate",
+      "Keep the integer with the smallest delay",
+      "Recognize over-buffered paths from very small stage efforts"
+    ]
+  }
+]

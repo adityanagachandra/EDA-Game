@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The views and their readers",
+    "section": "The views and their readers",
+    "subgoals": [
+      "Assign GDSII to manufacturing, DRC and LVS",
+      "Assign LEF to placement and routing",
+      "Assign Liberty to synthesis, timing and power analysis"
+    ]
+  },
+  {
+    "label": "What each abstraction drops",
+    "section": "What each abstraction drops",
+    "subgoals": [
+      "Keep pins and obstructions in LEF and hide the interior",
+      "Reduce each cell to arcs and tables in Liberty",
+      "Recognize that each view is lossy in a different way"
+    ]
+  },
+  {
+    "label": "Consistency across views",
+    "section": "Consistency across views",
+    "subgoals": [
+      "Compare Liberty pin capacitances with extracted layout",
+      "Compare LEF pin shapes with the GDS metal",
+      "Compare Liberty functions with the transistor netlist"
+    ]
+  }
+]

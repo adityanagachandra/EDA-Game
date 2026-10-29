@@ -1,0 +1,5 @@
+[
+  {"label": "Rules the machines need", "section": "Rules the machines need", "subgoals": ["Place global and local fiducials for the placement camera", "Keep handling edges clear or add breakaway rails", "Add thermal reliefs and polarity marks"]},
+  {"label": "Spacing, panels and joints", "section": "Spacing, panels and joints", "subgoals": ["Scale part-to-part spacing with component height", "Lay out a panel with breakaway features and keep-outs", "Keep unfilled vias out of SMT lands"]},
+  {"label": "Cost and yield trade-offs", "section": "Cost and yield trade-offs", "subgoals": ["Consolidate BOM lines to cut feeder setups", "Weigh double-sided assembly against board area", "Run DFA checks during placement rather than after routing"]}
+]

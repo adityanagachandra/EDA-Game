@@ -1,0 +1,5 @@
+[
+  {"label": "Counting triangles and edges", "section": "Counting triangles and edges", "subgoals": ["Count the points and the hull points", "Apply 2n minus 2 minus h for the triangles", "Apply 3n minus 3 minus h for the edges"]},
+  {"label": "The incircle test", "section": "The incircle test", "subgoals": ["Translate the three triangle vertices by the query point", "Fill each row with the coordinates and the squared distance", "Read the sign of the determinant as inside or outside"]},
+  {"label": "Refining a mesh", "section": "Refining a mesh", "subgoals": ["Confirm the inserted points are strictly inside the hull", "Add two triangles and three edges per interior point", "Recompute the totals from the new point count"]}
+]

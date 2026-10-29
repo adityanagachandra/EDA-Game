@@ -1,0 +1,5 @@
+[
+  {"label": "Parallel and serial interfaces", "section": "Parallel and serial interfaces", "subgoals": ["Contrast wire count, rate and reach of each style", "Name the circuits a serial link needs and a parallel one avoids", "Match each style to the package technology"]},
+  {"label": "Shoreline and reach", "section": "Shoreline and reach", "subgoals": ["Define shoreline bandwidth density", "Relate reach to loss and termination", "Place communicating edges face to face"]},
+  {"label": "Protocol, latency and test", "section": "Protocol, latency and test", "subgoals": ["Distinguish standard protocols from raw streaming", "Locate the sources of interface latency", "Explain why spare lanes and remapping exist"]}
+]

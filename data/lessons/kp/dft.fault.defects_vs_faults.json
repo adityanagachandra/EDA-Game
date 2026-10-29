@@ -1,0 +1,5 @@
+[
+  {"label": "The causal chain", "section": "The causal chain", "subgoals": ["Name the physical imperfection as the defect", "Trace activation of the fault into an internal error", "Require propagation of the error to an observed output for a failure"]},
+  {"label": "Why tools need fault models", "section": "Why tools need fault models", "subgoals": ["Replace the unbounded defect space with a finite fault list", "Measure coverage against the chosen fault model", "Add fault models for defects that stuck-at misses"]},
+  {"label": "Yield, quality and reliability", "section": "Yield, quality and reliability", "subgoals": ["Separate yield, which test measures, from quality, which test controls", "Quote shipped quality as defective parts per million", "Distinguish systematic failures from random defects"]}
+]

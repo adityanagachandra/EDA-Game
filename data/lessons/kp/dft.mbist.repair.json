@@ -1,0 +1,5 @@
+[
+  {"label": "Must-repair analysis", "section": "Must-repair analysis", "subgoals": ["Count the faulty cells in each row and each column", "Mark rows with more faults than spare columns as must-repair rows", "Mark columns with more faults than spare rows as must-repair columns"]},
+  {"label": "Minimum cover", "section": "Minimum cover", "subgoals": ["Build the bipartite graph of rows, columns and faulty cells", "Find a maximum matching of the graph", "Read the minimum number of lines from K\u00f6nig's theorem"]},
+  {"label": "Repair with limited rows", "section": "Repair with limited rows", "subgoals": ["Try each choice of at most R rows to replace", "Count the distinct columns among the remaining faults", "Take the minimum over the choices"]}
+]

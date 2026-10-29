@@ -1,0 +1,5 @@
+[
+  {"label": "The max-plus recurrence", "section": "The max-plus recurrence", "subgoals": ["Initialize source arrival times", "Take the maximum over incoming arcs of arrival plus delay", "Process vertices in topological order so inputs are final"]},
+  {"label": "Why acyclicity makes it easy", "section": "Why acyclicity makes it easy", "subgoals": ["Note that longest simple path is NP-hard on general graphs", "Solve it on a DAG by dynamic programming in linear time", "Start offset sources from their given arrival times"]},
+  {"label": "Paths versus blocks", "section": "Paths versus blocks", "subgoals": ["Keep one arrival per vertex for block-based analysis", "Store back-pointers to recover the critical path", "Enumerate only the worst paths when path-specific effects matter"]}
+]

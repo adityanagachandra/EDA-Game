@@ -1,0 +1,5 @@
+[
+  {"label": "Matching the query to the structure", "section": "Matching the query to the structure", "subgoals": ["Classify the query as stabbing, window, nearest neighbour or aggregate", "Match it to the structure designed for that query", "Convert distance queries into window queries by growing"]},
+  {"label": "Static versus dynamic data", "section": "Static versus dynamic data", "subgoals": ["Decide whether the data is loaded once or edited continually", "Prefer bulk-loaded structures for static data", "Prefer grids or R-trees for frequent insertions and deletions"]},
+  {"label": "Hierarchy and why DRC stays tractable", "section": "Hierarchy and why DRC stays tractable", "subgoals": ["Bound each check to the rule's interaction distance", "Reuse a cell's result wherever its context is unchanged", "Flatten where instances interact heavily"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What elaboration builds", "section": "What elaboration builds", "subgoals": ["Start from the named top module", "Bind every instance to its module definition", "Evaluate parameters, widths and generate constructs per instance"]},
+  {"label": "Parameters resolve top down", "section": "Parameters resolve top down", "subgoals": ["Resolve parameters from the top of the hierarchy down", "Create one specialization per distinct parameter set", "Prefer local overrides to hierarchical defparam"]},
+  {"label": "Errors that only elaboration can see", "section": "Errors that only elaboration can see", "subgoals": ["Report missing module definitions after linking instances", "Check port widths once parameters are bound", "Share one elaborated model across downstream tools"]}
+]

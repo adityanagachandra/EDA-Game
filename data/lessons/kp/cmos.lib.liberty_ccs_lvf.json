@@ -1,0 +1,29 @@
+[
+  {
+    "label": "CCS: the driver as a current waveform",
+    "section": "CCS: the driver as a current waveform",
+    "subgoals": [
+      "Store the output current as a sampled waveform per grid point",
+      "Integrate current over time and divide by capacitance for voltage",
+      "Use the current to drive RC loads without a lumped Ceff guess"
+    ]
+  },
+  {
+    "label": "LVF: a sigma for every table entry",
+    "section": "LVF: a sigma for every table entry",
+    "subgoals": [
+      "Read the sigma table on the same grid as the mean table",
+      "Compute late delay as mean plus n sigma",
+      "Combine independent sigmas along a path by root-sum-square"
+    ]
+  },
+  {
+    "label": "Asymmetric sigmas and what LVF assumes",
+    "section": "Asymmetric sigmas and what LVF assumes",
+    "subgoals": [
+      "Use the early sigma for early delays and the late sigma for late delays",
+      "Compute the early-to-late spread as n times the sum of the sigmas",
+      "Recognize that LVF models local, independent variation only"
+    ]
+  }
+]

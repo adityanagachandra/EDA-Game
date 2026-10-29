@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Two transistors per literal",
+    "section": "Two transistors per literal",
+    "subgoals": [
+      "Count the literal occurrences in the expression",
+      "Double the count for the nMOS and pMOS networks",
+      "Add any inverter stages a non-inverting cell needs"
+    ]
+  },
+  {
+    "label": "The tallest series stack",
+    "section": "The tallest series stack",
+    "subgoals": [
+      "Assign height 1 to every literal",
+      "Sum heights across series groups and take the maximum across parallel groups",
+      "Swap the roles of AND and OR for the pull-up network"
+    ]
+  },
+  {
+    "label": "Why stacks are kept short",
+    "section": "Why stacks are kept short",
+    "subgoals": [
+      "Relate stack height to the width each device must have",
+      "Recognize that pMOS stacks cost more because holes are slower",
+      "Explain why libraries cap series stacks at three or four devices"
+    ]
+  }
+]

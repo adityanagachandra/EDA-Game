@@ -1,0 +1,5 @@
+[
+  {"label": "The star-mesh resistors", "section": "The star-mesh resistors", "subgoals": ["Sum the conductances of all resistors at the node", "Multiply the two neighbour resistances by that sum", "Repeat for every pair of former neighbours"]},
+  {"label": "Redistributing the capacitance", "section": "Redistributing the capacitance", "subgoals": ["Compute each neighbour's share of the total conductance", "Multiply the node's capacitance by each share", "Add the shares to the neighbours' capacitances"]},
+  {"label": "Which nodes to eliminate", "section": "Which nodes to eliminate", "subgoals": ["Compute each node's capacitance times its parallel resistance", "Compare the time constant with the threshold", "Prefer low-degree nodes to limit fill-in"]}
+]

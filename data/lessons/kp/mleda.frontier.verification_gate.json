@@ -1,0 +1,5 @@
+[
+  {"label": "Every learned output has a checker", "section": "Every learned output has a checker", "subgoals": ["Name the property the learned output claims", "Choose the engine that establishes that property", "Accept the output only after that engine agrees"]},
+  {"label": "Placing the gate in the harness", "section": "Placing the gate in the harness", "subgoals": ["Run the gate between proposal and promotion", "Gate accepted outputs fully and let rejections rest on the fast mode", "Record every verdict with the output"]},
+  {"label": "What the gate cannot see", "section": "What the gate cannot see", "subgoals": ["Identify inputs or behaviors the check does not exercise", "Reject gates that reuse the model's own objective", "Reserve the accurate engine for final promotion"]}
+]

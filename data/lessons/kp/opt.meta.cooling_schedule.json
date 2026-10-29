@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Geometric cooling",
+    "section": "Geometric cooling",
+    "subgoals": [
+      "Write the temperature after k steps as T zero times alpha to the k",
+      "Raise alpha to the number of steps",
+      "Multiply by the initial temperature"
+    ]
+  },
+  {
+    "label": "How many temperature steps",
+    "section": "How many temperature steps",
+    "subgoals": [
+      "Take the log of the final over the initial temperature",
+      "Divide by the log of alpha",
+      "Round up to the next integer step count"
+    ]
+  },
+  {
+    "label": "Initial temperature and adaptation",
+    "section": "Initial temperature and adaptation",
+    "subgoals": [
+      "Average the uphill cost changes of sampled random moves",
+      "Divide by minus the log of the target acceptance ratio",
+      "Adapt the cooling factor to the observed acceptance ratio"
+    ]
+  }
+]

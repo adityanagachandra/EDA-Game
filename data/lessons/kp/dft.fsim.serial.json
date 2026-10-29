@@ -1,0 +1,5 @@
+[
+  {"label": "The serial algorithm", "section": "The serial algorithm", "subgoals": ["Simulate the fault-free circuit once per pattern", "Simulate each faulty circuit on the patterns and compare outputs", "Count one run per fault per pattern"]},
+  {"label": "Fault dropping", "section": "Fault dropping", "subgoals": ["Charge a detected fault the runs up to its first detection", "Charge an undetected fault every pattern", "Sum the per-fault costs and compare with faults times patterns"]},
+  {"label": "Coverage as a by-product", "section": "Coverage as a by-product", "subgoals": ["Count the faults first detected at or before pattern k", "Divide by the total faults for the coverage after k patterns", "Disable dropping for diagnosis and n-detect"]}
+]

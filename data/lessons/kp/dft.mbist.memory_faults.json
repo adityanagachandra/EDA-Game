@@ -1,0 +1,5 @@
+[
+  {"label": "Cell faults", "section": "Cell faults", "subgoals": ["Name a cell fixed at one value as a stuck-at fault", "Name a blocked transition as an up or down transition fault", "Add a pause before reading to expose retention faults"]},
+  {"label": "Coupling faults", "section": "Coupling faults", "subgoals": ["Identify the aggressor and the victim of a coupling fault", "Separate inversion, idempotent and state coupling by their trigger and effect", "Sweep addresses in both directions for victims above and below the aggressor"]},
+  {"label": "Decoder and other faults", "section": "Decoder and other faults", "subgoals": ["Recognize one address selecting several cells as a decoder fault", "Use physical neighbourhoods for pattern-sensitive faults", "Add refresh and retention faults for DRAM"]}
+]

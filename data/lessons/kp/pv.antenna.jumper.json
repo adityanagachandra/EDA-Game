@@ -1,0 +1,5 @@
+[
+  {"label": "How a jump cuts the antenna", "section": "How a jump cuts the antenna", "subgoals": ["Identify the stub that stays connected on the lower layer", "Compute the stub's area", "Divide by the gate area to get the new partial ratio"]},
+  {"label": "Where to jump", "section": "Where to jump", "subgoals": ["Write the stub ratio with the pin area included", "Solve for the largest stub length", "Round down to a whole length"]},
+  {"label": "Jump or diode", "section": "Jump or diode", "subgoals": ["Rule out jumps for violations on the top layer", "Check the upper layer's ratio after the jump", "Assign a diode where the jump fails"]}
+]

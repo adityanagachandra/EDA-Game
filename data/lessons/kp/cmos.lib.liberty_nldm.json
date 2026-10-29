@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Two axes, four tables",
+    "section": "Two axes, four tables",
+    "subgoals": [
+      "Identify which index is input transition and which is output load",
+      "Select the row for the input transition and the column for the load",
+      "Read the delay or transition entry at that grid point"
+    ]
+  },
+  {
+    "label": "Choosing the table from the edges",
+    "section": "Choosing the table from the edges",
+    "subgoals": [
+      "Map the input edge to the output edge through the timing sense",
+      "Read the delay table named for the output edge",
+      "Read the matching transition table for the output slew"
+    ]
+  },
+  {
+    "label": "Chaining lookups along a path",
+    "section": "Chaining lookups along a path",
+    "subgoals": [
+      "Compute each stage's delay and output transition from its slew and load",
+      "Pass the output transition to the next stage as its input slew",
+      "Sum wire and receiver pin capacitance for each stage's load"
+    ]
+  }
+]

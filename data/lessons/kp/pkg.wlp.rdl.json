@@ -1,0 +1,5 @@
+[
+  {"label": "RDL trace resistance", "section": "RDL trace resistance", "subgoals": ["Convert resistivity to ohm micrometres", "Multiply by length and divide by width times thickness", "Judge the resistance against the signal's load"]},
+  {"label": "IR drop on RDL power routes", "section": "IR drop on RDL power routes", "subgoals": ["Compute the RDL route resistance", "Multiply by the current to get the drop", "Compare the drop with the supply budget"]},
+  {"label": "Density against resistance", "section": "Density against resistance", "subgoals": ["Compute lines per millimetre for each line and space", "Take the ratio of densities", "Weigh the density gain against the resistance penalty"]}
+]

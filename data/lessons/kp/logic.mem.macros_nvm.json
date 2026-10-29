@@ -1,0 +1,5 @@
+[
+  {"label": "What a memory compiler delivers", "section": "What a memory compiler delivers", "subgoals": ["List the layout, abstract, timing and behavioral views", "Place and route the macro as a black box", "Time the macro through its library arcs"]},
+  {"label": "Test and repair", "section": "Test and repair", "subgoals": ["Run march tests through an on-chip MBIST engine", "Remap failing rows or columns to spares", "Insert BIST and repair logic as part of the flow"]},
+  {"label": "Non-volatile memories", "section": "Non-volatile memories", "subgoals": ["Contrast flash write speed and endurance with SRAM", "Name the storage mechanisms of MRAM, ReRAM and phase-change memory", "Weigh density, endurance, retention and process cost"]}
+]

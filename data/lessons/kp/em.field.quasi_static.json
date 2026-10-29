@@ -1,0 +1,5 @@
+[
+  {"label": "Wavelength in a dielectric", "section": "Wavelength in a dielectric", "subgoals": ["Compute the wave speed as c over the square root of epsilon r", "Divide the speed by the frequency to get the wavelength", "Convert the wavelength into millimetres"]},
+  {"label": "The size-to-wavelength test", "section": "The size-to-wavelength test", "subgoals": ["Compute the wavelength at the highest significant frequency", "Divide the wavelength by ten for the lumped limit", "Compare the structure's largest dimension with that limit"]},
+  {"label": "Charge relaxation in a lossy substrate", "section": "Charge relaxation in a lossy substrate", "subgoals": ["Multiply eps0 by epsilon r and the resistivity in ohm metres", "Convert the relaxation time into picoseconds", "Compare the operating frequency with one over two pi tau"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The decomposition chart", "section": "The decomposition chart", "subgoals": ["Split the inputs into a bound set and a free set", "Write one column per bound-set assignment", "Count the distinct columns as the column multiplicity"]},
+  {"label": "How many intermediate signals", "section": "How many intermediate signals", "subgoals": ["Note that each distinct column needs its own code", "Take the ceiling of log base 2 of the multiplicity", "Read the result as the number of g functions"]},
+  {"label": "Searching for a good bound set", "section": "Searching for a good bound set", "subgoals": ["Build the chart for every candidate bound set", "Keep the bound sets with multiplicity at most 2", "Count the bound sets that decompose simply"]}
+]

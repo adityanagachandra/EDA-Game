@@ -1,0 +1,5 @@
+[
+  {"label": "Why generic benchmarks under-separate models", "section": "Why generic benchmarks under-separate models", "subgoals": ["Recognize score saturation on fresh-code benchmarks", "Identify the editing skills they do not test", "Expect weak separation on real engines"]},
+  {"label": "Building a benchmark from real engines", "section": "Building a benchmark from real engines", "subgoals": ["Write tasks as change requests on real engines", "Attach tier labels, goldens, differentials and hidden tests", "Measure compile rate, correctness, scope and QoR"]},
+  {"label": "Reporting results honestly", "section": "Reporting results honestly", "subgoals": ["Use held-out tasks after the training cutoff", "Report samples, pass@k and confidence intervals", "Name baselines, designs and seeds for QoR claims"]}
+]

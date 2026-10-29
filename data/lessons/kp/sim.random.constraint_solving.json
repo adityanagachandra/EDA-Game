@@ -1,0 +1,5 @@
+[
+  {"label": "BDD-based and SAT-based solvers", "section": "BDD-based and SAT-based solvers", "subgoals": ["Count satisfying paths in the BDD and walk down proportionally", "Bit-blast word-level constraints into CNF for a SAT solver", "Add random parity constraints to make SAT sampling near-uniform"]},
+  {"label": "The cost of rejection sampling", "section": "The cost of rejection sampling", "subgoals": ["Compute the acceptance probability as legal over total assignments", "Take the mean number of draws as T / L", "Explain why tight constraints make rejection impractical"]},
+  {"label": "Performance pitfalls for constraint writers", "section": "Performance pitfalls for constraint writers", "subgoals": ["Split unrelated random variables into separate constraint groups", "Avoid wide nonlinear arithmetic in constraints", "Account for the ordering that function calls impose"]}
+]

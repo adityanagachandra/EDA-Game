@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Counting a discrete decision space",
+    "section": "Counting a discrete decision space",
+    "subgoals": [
+      "Identify whether choices are independent, a permutation or a balanced split",
+      "Count with k to the n, n factorial or a halved binomial coefficient",
+      "Compare the count with what enumeration could afford"
+    ]
+  },
+  {
+    "label": "Naming the problem class",
+    "section": "Naming the problem class",
+    "subgoals": [
+      "Read the variable types: continuous, binary or mixed",
+      "Read the objective and constraint forms: linear, convex quadratic or other",
+      "Name the class and the solver family it admits"
+    ]
+  },
+  {
+    "label": "Why EDA alternates continuous and discrete",
+    "section": "Why EDA alternates continuous and discrete",
+    "subgoals": [
+      "Relax a discrete problem to a continuous one to get global structure",
+      "Plan a discretization or legalization step after the continuous solve",
+      "Pick search or surrogate methods when no gradient exists"
+    ]
+  }
+]

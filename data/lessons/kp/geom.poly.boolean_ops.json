@@ -1,0 +1,5 @@
+[
+  {"label": "AND as intersection", "section": "AND as intersection", "subgoals": ["Intersect the x-ranges of the two shapes", "Intersect the y-ranges of the two shapes", "Multiply the overlaps to get the AND area"]},
+  {"label": "OR as union", "section": "OR as union", "subgoals": ["Compute each shape's area", "Subtract the intersection area once", "Merge overlapping shapes into one region"]},
+  {"label": "NOT and XOR", "section": "NOT and XOR", "subgoals": ["Subtract the overlap from A for NOT", "Subtract twice the overlap from the sum for XOR", "Choose the operation that expresses the rule"]}
+]

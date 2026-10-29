@@ -1,0 +1,5 @@
+[
+  {"label": "The four layers of a hardware compiler", "section": "The four layers of a hardware compiler", "subgoals": ["Place operation semantics and the verifier in the core", "Place passes and rewrite patterns in the policy layer", "Place pass options and pipelines in the parameter layer"]},
+  {"label": "Which tier a request lands in", "section": "Which tier a request lands in", "subgoals": ["Classify pass reordering as a configuration change", "Implement new rewrites as plug-in patterns", "Escalate changes to operation semantics as core edits"]},
+  {"label": "Seams, checks and promotion", "section": "Seams, checks and promotion", "subgoals": ["Confine agent changes to rewrite patterns at extension points", "Prove each rewrite's equivalence and its quality effect", "Promote a checked pass with a manifest and its tests"]}
+]

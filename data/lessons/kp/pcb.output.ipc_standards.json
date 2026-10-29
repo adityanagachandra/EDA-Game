@@ -1,0 +1,5 @@
+[
+  {"label": "Design standards", "section": "Design standards", "subgoals": ["Match each design decision to its IPC design standard", "Use IPC-7351 for land patterns and IPC-2152 for current capacity", "Trace rule-deck values to the standard tables"]},
+  {"label": "Fabrication, assembly and data standards", "section": "Fabrication, assembly and data standards", "subgoals": ["Separate performance specifications from acceptance standards", "Pair J-STD-001 with IPC-A-610 for assemblies", "Name the IPC data formats for manufacturing and test"]},
+  {"label": "Product classes", "section": "Product classes", "subgoals": ["Describe what each product class demands", "Tighten fabrication and assembly criteria for Class 3", "Drive the rule deck and footprint density from the declared class"]}
+]

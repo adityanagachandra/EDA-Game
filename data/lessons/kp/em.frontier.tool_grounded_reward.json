@@ -1,0 +1,5 @@
+[
+  {"label": "Scoring a termination with a solver", "section": "Scoring a termination with a solver", "subgoals": ["Simulate each proposal with a deterministic engine", "Score the true objective across the full band or window", "Add penalties for every real cost the design consumes"]},
+  {"label": "Reward hacking through a fast proxy", "section": "Reward hacking through a fast proxy", "subgoals": ["Identify where the proxy's physics or validity range ends", "Penalize or reroute proposals outside the valid range", "Reject scores that violate physical invariants"]},
+  {"label": "Closing the gap to signoff", "section": "Closing the gap to signoff", "subgoals": ["Rescore a sample of designs with the accurate solver", "Track the reward gap and route disagreeing cases to accuracy", "Accept final designs only under independent signoff evaluation"]}
+]

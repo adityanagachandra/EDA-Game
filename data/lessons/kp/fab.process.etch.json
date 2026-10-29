@@ -1,0 +1,5 @@
+[
+  {"label": "Isotropic and anisotropic etch", "section": "Isotropic and anisotropic etch", "subgoals": ["Contrast wet and plasma etch mechanisms", "Compute anisotropy from lateral and vertical rates", "Relate undercut to anisotropy"]},
+  {"label": "Over-etch and etch time", "section": "Over-etch and etch time", "subgoals": ["Compute the nominal etch time from thickness and rate", "Multiply by one plus the over-etch fraction", "Explain why cleared regions attack the underlying layer"]},
+  {"label": "Selectivity and mask budget", "section": "Selectivity and mask budget", "subgoals": ["Divide the etched equivalent thickness by the selectivity", "Size the mask for the full etch with over-etch", "Name the pattern-dependent etch effects that reach OPC"]}
+]

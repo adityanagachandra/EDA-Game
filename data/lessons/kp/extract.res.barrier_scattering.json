@@ -1,0 +1,5 @@
+[
+  {"label": "The conducting cross-section", "section": "The conducting cross-section", "subgoals": ["Subtract twice the barrier from the width", "Subtract one barrier thickness from the height", "Divide the copper area by the drawn area"]},
+  {"label": "Resistance penalty of the liner", "section": "Resistance penalty of the liner", "subgoals": ["Compute the copper area with the barrier removed", "Form the ratio of drawn area to copper area", "Convert the ratio into a percentage increase"]},
+  {"label": "Width-dependent resistivity", "section": "Width-dependent resistivity", "subgoals": ["Compute the copper width after the barrier", "Evaluate the width-dependent resistivity", "Combine the resistivity with the copper cross-section and length"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The clique model", "section": "The clique model", "subgoals": ["Count the k(k-1)/2 edges of a clique", "Sum the pairwise squared distances", "Multiply by the clique weight such as 1/(k-1)"]},
+  {"label": "The star model", "section": "The star model", "subgoals": ["Place the star node at the mean of the pins", "Sum squared deviations from the mean", "Relate the clique cost to k times the star cost"]},
+  {"label": "Sparsity and choosing a model", "section": "Sparsity and choosing a model", "subgoals": ["Compare the edge counts of clique and star for large nets", "Choose cliques for small nets and stars for large ones", "Explain why quadratic cost mismatches HPWL"]}
+]

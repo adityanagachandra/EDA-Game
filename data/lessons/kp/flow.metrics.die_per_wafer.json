@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The area ratio",
+    "section": "The area ratio",
+    "subgoals": [
+      "Compute the wafer area from its diameter",
+      "Divide wafer area by die area for the upper bound",
+      "Explain why edge dies are lost"
+    ]
+  },
+  {
+    "label": "The edge-loss correction",
+    "section": "The edge-loss correction",
+    "subgoals": [
+      "Compute the edge-loss term pi d over root 2S",
+      "Subtract it from the area ratio and round down",
+      "Compare edge loss for small and large dies"
+    ]
+  },
+  {
+    "label": "Scribe lanes and die size",
+    "section": "Scribe lanes and die size",
+    "subgoals": [
+      "Add the scribe lane to each die dimension",
+      "Compute the stepped die area",
+      "Relate area savings to dies per wafer"
+    ]
+  }
+]

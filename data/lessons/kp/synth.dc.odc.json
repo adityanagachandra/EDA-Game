@@ -1,0 +1,5 @@
+[
+  {"label": "The Boolean difference", "section": "The Boolean difference", "subgoals": ["Cofactor the output with respect to y = 1 and y = 0", "XOR the two cofactors to get the Boolean difference", "Complement it to get the observability don't care"]},
+  {"label": "Care sets and counting", "section": "Care sets and counting", "subgoals": ["Evaluate the Boolean difference over the side inputs", "Multiply by the number of free input combinations", "Combine the care set with controllability to bound the node's freedom"]},
+  {"label": "Several outputs and reconvergence", "section": "Several outputs and reconvergence", "subgoals": ["Compute the ODC of y separately at each output", "Intersect them when y feeds several outputs", "Use the whole output's Boolean difference when paths reconverge"]}
+]

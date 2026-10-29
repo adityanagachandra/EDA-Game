@@ -1,0 +1,5 @@
+[
+  {"label": "Characteristic equations", "section": "Characteristic equations", "subgoals": ["Write the characteristic equation of the flip-flop type", "Substitute the present state and the inputs", "Evaluate the next state"]},
+  {"label": "Iterating over clock edges", "section": "Iterating over clock edges", "subgoals": ["Start from the stated initial state", "Apply the characteristic equation once per clock edge", "Track the state after every edge"]},
+  {"label": "Level-sensitive latches versus edge-triggered flip-flops", "section": "Level-sensitive latches versus edge-triggered flip-flops", "subgoals": ["Describe a latch as transparent while its enable is active", "Build an edge-triggered flip-flop from a master and a slave latch", "Contrast how each responds to an input change while the clock is high"]}
+]

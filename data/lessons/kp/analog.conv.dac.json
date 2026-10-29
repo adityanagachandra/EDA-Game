@@ -1,0 +1,5 @@
+[
+  {"label": "Binary, thermometer and segmented", "section": "Binary, thermometer and segmented", "subgoals": ["Count N elements for binary weighting", "Count two to the N minus one elements for thermometer coding", "Count two to the M minus one plus N minus M for segmentation"]},
+  {"label": "DNL and INL from measured levels", "section": "DNL and INL from measured levels", "subgoals": ["Compute the endpoint LSB from the span", "Divide each step by the LSB and subtract one for DNL", "Read a DNL of minus one as a missing code"]},
+  {"label": "Mismatch and the major-carry transition", "section": "Mismatch and the major-carry transition", "subgoals": ["Assign each unit element an independent relative error", "Count the units that change at the mid-scale transition", "Add their variances to get sigma times the root of two to the N minus one"]}
+]

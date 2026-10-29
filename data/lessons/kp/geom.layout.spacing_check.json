@@ -1,0 +1,5 @@
+[
+  {"label": "Pairwise Euclidean violations", "section": "Pairwise Euclidean violations", "subgoals": ["Find candidate pairs within the rule distance with a sweep or index", "Compute the gaps for each candidate pair", "Flag pairs whose squared distance is below the squared rule"]},
+  {"label": "Square versus Euclidean metrics", "section": "Square versus Euclidean metrics", "subgoals": ["Compute both the square and the Euclidean distance of each pair", "Find pairs flagged by the square metric", "Remove those that the Euclidean metric passes"]},
+  {"label": "Width and run-length dependent spacing", "section": "Width and run-length dependent spacing", "subgoals": ["Find the wider wire's width and its table row", "Compute the parallel run length and its table column", "Read the required spacing from the table"]}
+]

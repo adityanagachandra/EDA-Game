@@ -1,0 +1,5 @@
+[
+  {"label": "Generalized delay scaling", "section": "Generalized delay scaling", "subgoals": ["Scale current, capacitance and voltage with kappa and s", "Form delay as C V over I", "Simplify to s over kappa squared"]},
+  {"label": "Generalized power density", "section": "Generalized power density", "subgoals": ["Write power per device as V times I under the scaling factors", "Multiply by the kappa squared density increase", "Simplify to kappa cubed over s cubed"]},
+  {"label": "Power density at fixed frequency", "section": "Power density at fixed frequency", "subgoals": ["Hold frequency fixed in C V squared f", "Multiply per-device power by the density increase", "Simplify to kappa over s squared"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Analysis cards and what they compute",
+    "section": "Analysis cards and what they compute",
+    "subgoals": [
+      "Match each analysis card to the equations it solves",
+      "Read tstep as an output interval rather than a fixed step",
+      "Trace which analyses start from the DC operating point"
+    ]
+  },
+  {
+    "label": "Options that steer the numerical engine",
+    "section": "Options that steer the numerical engine",
+    "subgoals": [
+      "Map each option to the convergence test or step control it changes",
+      "Separate DC iteration options from transient accuracy options",
+      "Estimate what a loosened tolerance does to small signals"
+    ]
+  },
+  {
+    "label": "Reading output and choosing a simulator",
+    "section": "Reading output and choosing a simulator",
+    "subgoals": [
+      "Write vectors to a raw file in batch mode",
+      "Compute scalar results with measure statements",
+      "Compare default options before blaming a simulator"
+    ]
+  }
+]

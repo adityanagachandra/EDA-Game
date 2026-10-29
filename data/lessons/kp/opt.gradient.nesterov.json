@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The look-ahead point",
+    "section": "The look-ahead point",
+    "subgoals": [
+      "Take the difference of the last two iterates",
+      "Scale it by the momentum coefficient",
+      "Add it to the current iterate to get the look-ahead point"
+    ]
+  },
+  {
+    "label": "The gradient step from the look-ahead",
+    "section": "The gradient step from the look-ahead",
+    "subgoals": [
+      "Evaluate the gradient at the look-ahead point",
+      "Scale it by the step size",
+      "Subtract from the look-ahead point to get the next iterate"
+    ]
+  },
+  {
+    "label": "Running the iteration",
+    "section": "Running the iteration",
+    "subgoals": [
+      "Set the previous iterate equal to the start for the first step",
+      "Alternate look-ahead and gradient steps for each iteration",
+      "Monitor the objective and restart momentum when it rises"
+    ]
+  }
+]

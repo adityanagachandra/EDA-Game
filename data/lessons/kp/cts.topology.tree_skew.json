@@ -1,0 +1,5 @@
+[
+  {"label": "Elmore delay at a clock sink", "section": "Elmore delay at a clock sink", "subgoals": ["Accumulate downstream capacitance from the sinks up", "Multiply each edge resistance on the root path by its downstream capacitance", "Sum and convert ohm-femtofarads to picoseconds"]},
+  {"label": "Skew from the sink delays", "section": "Skew from the sink delays", "subgoals": ["Compute the Elmore delay of every sink", "Take the largest minus the smallest", "Identify the branch that causes the imbalance"]},
+  {"label": "Balancing with a dummy load", "section": "Balancing with a dummy load", "subgoals": ["Find the faster sink and the skew", "Separate the shared trunk effect from the branch effect", "Divide the skew by the branch resistance"]}
+]

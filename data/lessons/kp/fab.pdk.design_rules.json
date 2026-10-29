@@ -1,0 +1,5 @@
+[
+  {"label": "Width, space and pitch", "section": "Width, space and pitch", "subgoals": ["Read the minimum width and space of a layer", "Add them to get the minimum pitch", "Name the failure each rule protects against"]},
+  {"label": "Enclosure and via landing", "section": "Enclosure and via landing", "subgoals": ["Grow the via by the enclosure on both sides", "Add the line spacing to get the landed-via pitch", "Distinguish side enclosure from line-end enclosure"]},
+  {"label": "Width-dependent and conditional spacing", "section": "Width-dependent and conditional spacing", "subgoals": ["Select the spacing row by the wider wire's width", "Convert edge spacing to a centre-to-centre distance", "Explain why wide wires need more space"]}
+]

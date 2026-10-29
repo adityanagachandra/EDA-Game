@@ -1,0 +1,5 @@
+[
+  {"label": "Pins as nodes, arcs as edges", "section": "Pins as nodes, arcs as edges", "subgoals": ["Map each pin and port to a node", "Join cell input to output pins with cell arcs and net drivers to sinks with net arcs", "Mark clock pins and input ports as startpoints and data pins and output ports as endpoints"]},
+  {"label": "Counting cell arcs and net arcs", "section": "Counting cell arcs and net arcs", "subgoals": ["Count one cell arc per input pin of each single-output cell", "Count one net arc per sink pin of each net", "Add the two counts to get the number of graph edges"]},
+  {"label": "Loops, disabled arcs and why a DAG matters", "section": "Loops, disabled arcs and why a DAG matters", "subgoals": ["Order the nodes topologically before propagating", "Break each combinational loop by disabling one arc", "Track rise and fall values separately at every node"]}
+]

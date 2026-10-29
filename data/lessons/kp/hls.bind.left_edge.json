@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Sort by left edge and fill registers",
+  "section": "Sort by left edge and fill registers",
+  "subgoals": [
+   "Sort the lifetimes by start step with a fixed tie rule",
+   "Give each value the lowest-numbered register that is free at its start",
+   "Open a new register only when none is free"
+  ]
+ },
+ {
+  "label": "Why it is optimal",
+  "section": "Why it is optimal",
+  "subgoals": [
+   "Observe that every earlier register is busy when a new one opens",
+   "Count the values live at that moment",
+   "Conclude that the register count equals the maximum overlap"
+  ]
+ },
+ {
+  "label": "Why the sort matters",
+  "section": "Why the sort matters",
+  "subgoals": [
+   "Run first-fit in the given unsorted order",
+   "Compare its register count with the maximum overlap",
+   "Restore the sort to guarantee the minimum"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Gate functions", "section": "Gate functions", "subgoals": ["Evaluate the gates nearest the inputs first", "Feed each gate output to the gates it drives", "Read the output gate's value"]},
+  {"label": "The multiplexer", "section": "The multiplexer", "subgoals": ["Read the select lines as a binary index", "Pick the data input at that index", "Expand a mux with signal data inputs into a sum of products"]},
+  {"label": "Counting the ones of a small network", "section": "Counting the ones of a small network", "subgoals": ["Enumerate every input combination in binary order", "Evaluate the network on each row", "Count the rows where the output is one"]}
+]

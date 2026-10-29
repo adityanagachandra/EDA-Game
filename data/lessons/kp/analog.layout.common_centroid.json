@@ -1,0 +1,5 @@
+[
+  {"label": "Centroids of split devices", "section": "Centroids of split devices", "subgoals": ["Split each device into equal unit cells with coordinates", "Write the linear gradient's effect as the gradient at the centroid", "Average the cell coordinates to find each device's centroid"]},
+  {"label": "Checking a pattern", "section": "Checking a pattern", "subgoals": ["Compute the centroid of every matched device", "Measure the distance between centroids and require zero", "Construct valid patterns by 180-degree point symmetry"]},
+  {"label": "What else matching needs", "section": "What else matching needs", "subgoals": ["Add dispersion against higher-order gradients", "Surround the array with dummies and keep orientation equal", "Route matched devices symmetrically to avoid reintroducing mismatch"]}
+]

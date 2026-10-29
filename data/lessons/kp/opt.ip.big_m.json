@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Choosing the smallest valid M",
+    "section": "Choosing the smallest valid M",
+    "subgoals": [
+      "Identify the worst-case values of the variables in the switched-off constraint",
+      "Compute the largest possible violation over those ranges",
+      "Set M to that value and no larger"
+    ]
+  },
+  {
+    "label": "Counting binaries in disjunctive models",
+    "section": "Counting binaries in disjunctive models",
+    "subgoals": [
+      "Count the pairs that need a disjunction",
+      "Multiply by the binaries used per pair",
+      "Add any per-block binaries such as rotation"
+    ]
+  },
+  {
+    "label": "Why big-M relaxations are weak",
+    "section": "Why big-M relaxations are weak",
+    "subgoals": [
+      "Solve the relaxed constraint for the smallest fractional binary",
+      "Compare the overlap allowed with the cost paid",
+      "Strengthen the model with a tighter M, symmetry breaking or indicators"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Peak temperature of a stack", "section": "Peak temperature of a stack", "subgoals": ["Sum the stack power through the sink resistance", "Add the far die's power times the bond resistance", "Report the hotter die as the peak"]},
+  {"label": "Ordering dies in the stack", "section": "Ordering dies in the stack", "subgoals": ["Compute the peak for each die order", "Subtract the better peak from the worse", "Weigh the thermal order against the electrical one"]},
+  {"label": "Lateral placement of hot blocks", "section": "Lateral placement of hot blocks", "subgoals": ["Write each temperature with self and mutual terms", "Evaluate the peak for each placement", "Subtract to get the gain from spreading"]}
+]

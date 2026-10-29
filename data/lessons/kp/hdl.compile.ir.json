@@ -1,0 +1,5 @@
+[
+  {"label": "Why compilers lower the AST", "section": "Why compilers lower the AST", "subgoals": ["Replace source-level forms with a small uniform vocabulary", "Represent operations as nodes and values as edges", "Match the IR level to the optimization it serves"]},
+  {"label": "Levels and progressive lowering", "section": "Levels and progressive lowering", "subgoals": ["Lower through processes, word-level cells, gates and AIGs in turn", "Keep registers explicit through every level", "Carry source names and locations as attributes"]},
+  {"label": "SSA, verifiers and text formats", "section": "SSA, verifiers and text formats", "subgoals": ["Give every value exactly one definition", "Dump and replay a pass through a round-trippable text form", "Run the verifier after every pass"]}
+]

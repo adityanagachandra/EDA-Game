@@ -1,0 +1,924 @@
+[
+  {
+    "id": "stat.var.process_variation",
+    "label": "Process variation",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.var",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "stat.dist.normal",
+      "prob.rv.variance",
+      "prob.joint.rv_independence"
+    ],
+    "key_prerequisites": [
+      "stat.dist.normal"
+    ],
+    "encompasses": [
+      "prob.rv.variance"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "stat.var.pelgrom",
+    "label": "Pelgrom mismatch scaling",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.var",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.var.process_variation",
+      "prob.rv.variance",
+      "stat.adv.variance"
+    ],
+    "key_prerequisites": [
+      "stat.var.process_variation"
+    ],
+    "encompasses": [
+      "stat.var.process_variation"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "stat.var.spatial_correlation",
+    "label": "Spatially correlated variation",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.var",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.var.process_variation",
+      "prob.cov.correlation",
+      "prob.cov.covariance"
+    ],
+    "key_prerequisites": [
+      "stat.var.process_variation",
+      "prob.cov.correlation"
+    ],
+    "encompasses": [
+      "stat.var.process_variation"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.var.pca",
+    "label": "Principal components of correlated variation",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.var",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.var.spatial_correlation",
+      "linalg.symmetric.spectral",
+      "linalg.eigen.compute",
+      "ml.pca.variance_percent"
+    ],
+    "key_prerequisites": [
+      "stat.var.spatial_correlation",
+      "linalg.symmetric.spectral"
+    ],
+    "encompasses": [
+      "stat.var.spatial_correlation",
+      "linalg.eigen.compute"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.var.spc",
+    "label": "Statistical process control",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.var",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.var.process_variation",
+      "stat.sampling.se",
+      "stat.zscore.value"
+    ],
+    "key_prerequisites": [
+      "stat.sampling.se"
+    ],
+    "encompasses": [
+      "stat.var.process_variation",
+      "stat.zscore.value"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.gauss.sigma_to_prob",
+    "label": "Sigma level and failure probability",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.gauss",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.dist.z_table",
+      "stat.var.process_variation",
+      "stat.prob.complement"
+    ],
+    "key_prerequisites": [
+      "stat.dist.z_table"
+    ],
+    "encompasses": [
+      "stat.dist.z_table",
+      "stat.var.process_variation"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.gauss.linear_combo",
+    "label": "Sums of correlated Gaussians",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.gauss",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "prob.cov.covariance",
+      "stat.adv.covariance",
+      "stat.var.spatial_correlation"
+    ],
+    "key_prerequisites": [
+      "prob.cov.covariance"
+    ],
+    "encompasses": [
+      "stat.var.spatial_correlation"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.gauss.sum_max",
+    "label": "Sums and maxima of Gaussian variables",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.gauss",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.gauss.linear_combo",
+      "stat.gauss.sigma_to_prob",
+      "stat.dist.normal"
+    ],
+    "key_prerequisites": [
+      "stat.gauss.linear_combo"
+    ],
+    "encompasses": [
+      "stat.gauss.linear_combo",
+      "stat.gauss.sigma_to_prob"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "stat.gauss.canonical_form",
+    "label": "Canonical first-order delay forms",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.gauss",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.gauss.sum_max",
+      "stat.var.pca",
+      "linalg.vector.dot"
+    ],
+    "key_prerequisites": [
+      "stat.gauss.sum_max",
+      "stat.var.pca"
+    ],
+    "encompasses": [
+      "stat.gauss.linear_combo",
+      "stat.var.pca"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.gauss.timing_yield",
+    "label": "Timing yield from a delay distribution",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.gauss",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.gauss.sigma_to_prob",
+      "stat.gauss.linear_combo",
+      "stat.dist.z_table"
+    ],
+    "key_prerequisites": [
+      "stat.gauss.sigma_to_prob"
+    ],
+    "encompasses": [
+      "stat.gauss.sigma_to_prob",
+      "stat.gauss.linear_combo"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.mc.monte_carlo",
+    "label": "Monte Carlo estimation",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.mc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "prob.limit.clt",
+      "stat.infer.proportion",
+      "prob.limit.weak_law"
+    ],
+    "key_prerequisites": [
+      "prob.limit.clt",
+      "stat.infer.proportion"
+    ],
+    "encompasses": [
+      "stat.infer.proportion"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "stat.mc.sample_size",
+    "label": "Monte Carlo sample size for a failure rate",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.mc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.mc.monte_carlo",
+      "stat.gauss.sigma_to_prob",
+      "stat.infer.confidence"
+    ],
+    "key_prerequisites": [
+      "stat.mc.monte_carlo"
+    ],
+    "encompasses": [
+      "stat.mc.monte_carlo",
+      "stat.gauss.sigma_to_prob"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.mc.quasi_mc",
+    "label": "Quasi-Monte Carlo sequences",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.mc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.mc.monte_carlo",
+      "numa.integration.composite"
+    ],
+    "key_prerequisites": [
+      "stat.mc.monte_carlo"
+    ],
+    "encompasses": [
+      "stat.mc.monte_carlo"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "stat.mc.importance_sampling",
+    "label": "Importance sampling",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.mc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.mc.monte_carlo",
+      "stat.gauss.sigma_to_prob",
+      "prob.rv.pdf"
+    ],
+    "key_prerequisites": [
+      "stat.mc.monte_carlo"
+    ],
+    "encompasses": [
+      "stat.mc.monte_carlo",
+      "stat.gauss.sigma_to_prob"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.mc.mpfp",
+    "label": "Most probable failure point",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.mc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.mc.importance_sampling",
+      "linalg.vec.norm_squared",
+      "calc.multi.lagrange"
+    ],
+    "key_prerequisites": [
+      "stat.mc.importance_sampling"
+    ],
+    "encompasses": [
+      "stat.mc.importance_sampling",
+      "stat.gauss.sigma_to_prob"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.mc.rare_event",
+    "label": "Rare-event estimation",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.mc",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "stat.mc.importance_sampling",
+      "stat.mc.sample_size",
+      "stat.mc.mpfp"
+    ],
+    "key_prerequisites": [
+      "stat.mc.importance_sampling"
+    ],
+    "encompasses": [
+      "stat.mc.sample_size",
+      "stat.mc.importance_sampling"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "stat.mc.extreme_value",
+    "label": "Extreme value tails",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.mc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.mc.rare_event",
+      "prob.dist.order_stats",
+      "stat.dist.exponential"
+    ],
+    "key_prerequisites": [
+      "stat.mc.rare_event",
+      "prob.dist.order_stats"
+    ],
+    "encompasses": [
+      "stat.mc.sample_size"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.sens.sensitivity",
+    "label": "Sensitivity analysis",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.sens",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "calc.deriv.partial",
+      "calc.deriv.error_prop",
+      "stat.gauss.linear_combo"
+    ],
+    "key_prerequisites": [
+      "calc.deriv.error_prop",
+      "stat.gauss.linear_combo"
+    ],
+    "encompasses": [
+      "stat.gauss.linear_combo",
+      "calc.deriv.partial"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.sens.sobol",
+    "label": "Variance-based sensitivity indices",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.sens",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.sens.sensitivity",
+      "prob.expect.total_variance",
+      "prob.expect.conditional"
+    ],
+    "key_prerequisites": [
+      "stat.sens.sensitivity",
+      "prob.expect.total_variance"
+    ],
+    "encompasses": [
+      "stat.sens.sensitivity"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.sens.worst_case",
+    "label": "Worst-case versus statistical analysis",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.sens",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.sens.sensitivity",
+      "stat.gauss.sigma_to_prob"
+    ],
+    "key_prerequisites": [
+      "stat.sens.sensitivity"
+    ],
+    "encompasses": [
+      "stat.sens.sensitivity",
+      "stat.gauss.sigma_to_prob"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.sens.corners",
+    "label": "Process corners",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.sens",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "stat.var.process_variation",
+      "stat.sens.worst_case"
+    ],
+    "key_prerequisites": [
+      "stat.sens.worst_case"
+    ],
+    "encompasses": [
+      "stat.var.process_variation"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "stat.fit.regression",
+    "label": "Regression for model fitting",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.fit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "ml.linreg.least_squares",
+      "numa.interp.normal_equations",
+      "stat.reg.r2"
+    ],
+    "key_prerequisites": [
+      "ml.linreg.least_squares"
+    ],
+    "encompasses": [
+      "ml.linreg.least_squares",
+      "stat.reg.r2"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.fit.doe_runs",
+    "label": "Factorial designs and run counts",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.fit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.prob.counting",
+      "stat.fit.regression"
+    ],
+    "key_prerequisites": [
+      "stat.prob.counting"
+    ],
+    "encompasses": [
+      "stat.prob.counting"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "stat.fit.factorial_effects",
+    "label": "Main effects and interactions",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.fit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.fit.doe_runs",
+      "stat.fit.regression",
+      "stat.data.mean"
+    ],
+    "key_prerequisites": [
+      "stat.fit.doe_runs"
+    ],
+    "encompasses": [
+      "stat.fit.doe_runs"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.fit.response_surface",
+    "label": "Response surface methods",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.fit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.fit.factorial_effects",
+      "calc.deriv.optimization",
+      "calc.multi.taylor2"
+    ],
+    "key_prerequisites": [
+      "stat.fit.factorial_effects"
+    ],
+    "encompasses": [
+      "stat.fit.factorial_effects",
+      "stat.fit.regression"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "stat.fit.surrogate_validation",
+    "label": "Validating a surrogate model",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.fit",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.fit.regression",
+      "ml.validation",
+      "ml.overfitting"
+    ],
+    "key_prerequisites": [
+      "ml.validation"
+    ],
+    "encompasses": [
+      "stat.fit.regression"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.yield.yield_model",
+    "label": "Yield as a probability",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.yield",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.gauss.sigma_to_prob",
+      "prob.joint.rv_independence",
+      "stat.prob.compound"
+    ],
+    "key_prerequisites": [
+      "stat.gauss.sigma_to_prob"
+    ],
+    "encompasses": [
+      "stat.gauss.sigma_to_prob"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.yield.poisson",
+    "label": "Poisson defect yield",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.yield",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.yield.yield_model",
+      "stat.dist.poisson",
+      "prob.dist.poisson_process"
+    ],
+    "key_prerequisites": [
+      "stat.dist.poisson"
+    ],
+    "encompasses": [
+      "stat.yield.yield_model"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "stat.yield.clustered",
+    "label": "Clustered defects and negative binomial yield",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.yield",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.yield.poisson",
+      "stat.dist.gamma"
+    ],
+    "key_prerequisites": [
+      "stat.yield.poisson"
+    ],
+    "encompasses": [
+      "stat.yield.poisson"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.yield.redundancy",
+    "label": "Redundancy and repairable yield",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.yield",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.yield.poisson",
+      "stat.dist.binomial"
+    ],
+    "key_prerequisites": [
+      "stat.yield.poisson"
+    ],
+    "encompasses": [
+      "stat.yield.poisson",
+      "stat.yield.yield_model"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.yield.design_centering",
+    "label": "Design centering for yield",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.yield",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.yield.yield_model",
+      "stat.sens.sensitivity",
+      "calc.deriv.optimization"
+    ],
+    "key_prerequisites": [
+      "stat.yield.yield_model"
+    ],
+    "encompasses": [
+      "stat.yield.yield_model",
+      "stat.sens.sensitivity"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.rel.weibull",
+    "label": "The Weibull distribution and lifetime",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.rel",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.dist.exponential",
+      "prob.rv.cdf",
+      "calc.deriv.general_exp"
+    ],
+    "key_prerequisites": [
+      "stat.dist.exponential"
+    ],
+    "encompasses": [
+      "stat.dist.exponential"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.rel.hazard_fit",
+    "label": "Hazard rate and FIT",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.rel",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.rel.weibull",
+      "prob.dist.memoryless"
+    ],
+    "key_prerequisites": [
+      "stat.rel.weibull"
+    ],
+    "encompasses": [
+      "stat.rel.weibull"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.rel.acceleration",
+    "label": "Accelerated life testing",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.rel",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.rel.hazard_fit",
+      "calc.deriv.general_exp"
+    ],
+    "key_prerequisites": [
+      "stat.rel.hazard_fit"
+    ],
+    "encompasses": [
+      "stat.rel.hazard_fit"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.rel.weibull_fit",
+    "label": "Fitting Weibull life data",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.rel",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.rel.weibull",
+      "stat.fit.regression"
+    ],
+    "key_prerequisites": [
+      "stat.rel.weibull",
+      "stat.fit.regression"
+    ],
+    "encompasses": [
+      "stat.rel.weibull",
+      "stat.fit.regression"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.rel.system",
+    "label": "System reliability and fault tolerance",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.rel",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.rel.weibull",
+      "prob.joint.rv_independence",
+      "stat.dist.binomial"
+    ],
+    "key_prerequisites": [
+      "prob.joint.rv_independence"
+    ],
+    "encompasses": [
+      "stat.rel.weibull"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.frontier.variance_aware_surrogate",
+    "label": "Variance-aware surrogates in an agent loop",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.fit.surrogate_validation",
+      "stat.gauss.timing_yield",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate",
+      "stat.fit.surrogate_validation"
+    ],
+    "encompasses": [
+      "stat.gauss.timing_yield"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.frontier.mc_budget",
+    "label": "Allocating a Monte Carlo budget",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.mc.sample_size",
+      "stat.mc.monte_carlo",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "stat.mc.sample_size"
+    ],
+    "encompasses": [
+      "stat.mc.monte_carlo"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "stat.frontier.rare_event_skill",
+    "label": "Rare-event estimation as a skill",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "stat.mc.rare_event",
+      "agentic.skill.manifest",
+      "agentic.tiers.change"
+    ],
+    "key_prerequisites": [
+      "stat.mc.rare_event",
+      "agentic.tiers.change"
+    ],
+    "encompasses": [
+      "stat.mc.importance_sampling"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "stat.frontier.golden_statistical_tests",
+    "label": "Golden tests for statistical engines",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.mc.importance_sampling",
+      "agentic.verify.golden_differential",
+      "stat.infer.type_error"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "stat.mc.monte_carlo"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "stat.frontier.yield_agent_loop",
+    "label": "Agentic yield loops and reward gaming",
+    "domain": "variability_statistics",
+    "subdomain": "variability_statistics.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "stat.yield.design_centering",
+      "stat.mc.sample_size",
+      "agentic.rl.tool_grounded",
+      "agentic.signoff.eco_loop"
+    ],
+    "key_prerequisites": [
+      "agentic.rl.tool_grounded"
+    ],
+    "encompasses": [
+      "stat.mc.sample_size"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  }
+]

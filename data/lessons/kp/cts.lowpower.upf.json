@@ -1,0 +1,5 @@
+[
+  {"label": "Domains and supplies", "section": "Domains and supplies", "subgoals": ["Group instances into a power domain", "Declare and connect the supply nets", "Declare the switch between always-on and switched supplies"]},
+  {"label": "Isolation, level shifting and power states", "section": "Isolation, level shifting and power states", "subgoals": ["Attach isolation with an always-on supply to off-able outputs", "Request level shifters on voltage crossings", "Use the legal power states to decide which crossings need cells"]},
+  {"label": "Retention and sequencing", "section": "Retention and sequencing", "subgoals": ["Mark the registers that need retention", "Order isolation, save, switch-off and the reverse", "Verify the sequence with power-aware simulation"]}
+]

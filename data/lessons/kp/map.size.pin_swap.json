@@ -1,0 +1,5 @@
+[
+  {"label": "Why symmetric pins differ", "section": "Why symmetric pins differ", "subgoals": ["Locate each input's transistor in the series stack", "Read the per-pin delays from the library", "Compute the output time as the latest arrival plus pin delay"]},
+  {"label": "The optimal assignment", "section": "The optimal assignment", "subgoals": ["Sort the signals by arrival time", "Sort the symmetric pins by delay", "Pair the latest signal with the fastest pin and continue in order"]},
+  {"label": "Gains and where symmetry comes from", "section": "Gains and where symmetry comes from", "subgoals": ["Subtract the sorted settle time from the current one", "Restrict swaps to pins in the same symmetry group", "Detect symmetry groups from the cut function"]}
+]

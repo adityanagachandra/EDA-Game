@@ -1,0 +1,5 @@
+[
+  {"label": "Ranking candidates by depth", "section": "Ranking candidates by depth", "subgoals": ["Take the largest best-depth among the cut leaves", "Add one for the LUT itself", "Choose the smallest depth over the candidates"]},
+  {"label": "Keeping the best C cuts", "section": "Keeping the best C cuts", "subgoals": ["Merge the fanins' stored cuts plus their trivial cuts", "Sort the candidates by the pass's primary and secondary keys", "Keep the first C cuts and the best one for the mapping"]},
+  {"label": "Why bounded cut sets work", "section": "Why bounded cut sets work", "subgoals": ["Count the candidate unions as C plus one to the power of the fanin count", "Bound the memory as nodes times C", "Explain what completeness is lost by pruning"]}
+]

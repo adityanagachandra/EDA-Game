@@ -1,0 +1,5 @@
+[
+  {"label": "Weights with := and :/", "section": "Weights with := and :/", "subgoals": ["Give every value of a range the full weight under :=", "Divide the weight across the range under :/", "Divide each value's weight by the total weight"]},
+  {"label": "solve...before changes the distribution, not the space", "section": "solve...before changes the distribution, not the space", "subgoals": ["List the legal solutions for each value of the first variable", "Compute probabilities as uniform over all solutions without ordering", "Choose the first variable uniformly, then the second, with solve-before"]},
+  {"label": "Combining ordering and weights", "section": "Combining ordering and weights", "subgoals": ["Pick the first variable by its dist weights", "Condition the second variable on the first and sample it uniformly", "Sum over the first variable's values by total probability"]}
+]

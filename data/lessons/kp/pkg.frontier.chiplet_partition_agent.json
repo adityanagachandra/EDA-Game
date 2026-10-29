@@ -1,0 +1,5 @@
+[
+  {"label": "A tool-grounded reward", "section": "A tool-grounded reward", "subgoals": ["List the cost, bandwidth, energy and thermal terms", "Ground each term in a deterministic tool", "Reject hard-constraint violations instead of penalizing them"]},
+  {"label": "How the reward gets gamed", "section": "How the reward gets gamed", "subgoals": ["Identify where the fast model is optimistic", "Audit top candidates with accurate engines", "Test the reward on known bad partitions"]},
+  {"label": "Proxy reward against signoff quality", "section": "Proxy reward against signoff quality", "subgoals": ["Run sampled proposals through full signoff", "Compute the rank correlation of proxy and signoff", "Stop training when the proxy rises and signoff does not"]}
+]

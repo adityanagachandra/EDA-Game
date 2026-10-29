@@ -1,0 +1,5 @@
+[
+  {"label": "Parallel merging", "section": "Parallel merging", "subgoals": ["Build the key from type, gate, unordered source and drain, and L", "Group the devices by that key", "Count the groups as merged devices"]},
+  {"label": "The merged device's width", "section": "The merged device's width", "subgoals": ["Identify every finger of the target group", "Sum their widths", "Compare total width with the schematic value"]},
+  {"label": "Resistors and property tolerance", "section": "Resistors and property tolerance", "subgoals": ["Count the squares of each segment as length over width", "Multiply the total squares by the sheet resistance", "Compute the percent difference from the schematic value"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Placement as training", "section": "Placement as training", "subgoals": ["Map cell coordinates to trainable parameters", "Compute wirelength and density in the forward pass", "Update positions with the optimiser from the backward pass"]},
+  {"label": "Custom operators and GPU kernels", "section": "Custom operators and GPU kernels", "subgoals": ["Write hand-coded forward and backward kernels for net-level sums", "Accumulate bins and cell gradients with atomic or ordered reductions", "Move legalization and detailed placement onto the GPU once global placement is fast"]},
+  {"label": "What it changed for tool designers", "section": "What it changed for tool designers", "subgoals": ["Add a new objective as one differentiable operator", "Use fast placement inside exploration loops", "Compare placers on identical downstream legalization and metrics"]}
+]

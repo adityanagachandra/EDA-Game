@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Why a voltage source needs a branch current",
+    "section": "Why a voltage source needs a branch current",
+    "subgoals": [
+      "Identify elements whose current is not set by their voltages",
+      "Add one current unknown and one constraint row per voltage source",
+      "Order node voltages first and branch currents after"
+    ]
+  },
+  {
+    "label": "The augmented stamp",
+    "section": "The augmented stamp",
+    "subgoals": [
+      "Put plus and minus one in the branch column at n+ and n-",
+      "Mirror those entries into the branch row",
+      "Place the source value on the branch row's right-hand side"
+    ]
+  },
+  {
+    "label": "The sign of the branch current",
+    "section": "The sign of the branch current",
+    "subgoals": [
+      "Compute the current the source delivers into the circuit",
+      "Apply the into-the-plus-terminal sign convention",
+      "Report a delivering source as a negative branch current"
+    ]
+  }
+]

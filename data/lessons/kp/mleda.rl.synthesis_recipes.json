@@ -1,0 +1,5 @@
+[
+  {"label": "The recipe space", "section": "The recipe space", "subgoals": ["Count the transform choices per step", "Raise that count to the recipe length", "Frame the next transform as an action on the current graph"]},
+  {"label": "A Q-learning update", "section": "A Q-learning update", "subgoals": ["Add the reward to the discounted best next-state value", "Subtract the current estimate to get the error", "Move the estimate by the learning rate times the error"]},
+  {"label": "Shaping the reward", "section": "Shaping the reward", "subgoals": ["Normalize each improvement by its original value", "Weight and add the area and depth terms", "Check the found recipe after technology mapping"]}
+]

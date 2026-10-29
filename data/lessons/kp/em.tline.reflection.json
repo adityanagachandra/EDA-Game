@@ -1,0 +1,5 @@
+[
+  {"label": "The reflection coefficient", "section": "The reflection coefficient", "subgoals": ["Subtract Z0 from the load impedance", "Divide by the sum of the load impedance and Z0", "Read the sign as a positive or inverted reflection"]},
+  {"label": "The voltage at the load", "section": "The voltage at the load", "subgoals": ["Compute the launched voltage from the source divider with Z0", "Compute the load reflection coefficient", "Multiply the launched voltage by one plus gamma"]},
+  {"label": "Return loss and VSWR", "section": "Return loss and VSWR", "subgoals": ["Take the magnitude of the reflection coefficient", "Compute VSWR from one plus and one minus that magnitude", "Compute return loss as minus twenty log ten of the magnitude"]}
+]

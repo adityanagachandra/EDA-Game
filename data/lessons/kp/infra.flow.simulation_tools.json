@@ -1,0 +1,5 @@
+[
+  {"label": "Digital simulation with Verilator and cocotb", "section": "Digital simulation with Verilator and cocotb", "subgoals": ["Compile synthesizable RTL to a C++ model with Verilator", "Account for its two-state default when X values matter", "Drive the simulator from Python coroutines with cocotb"]},
+  {"label": "Formal checks with SymbiYosys", "section": "Formal checks with SymbiYosys", "subgoals": ["Read the design and properties through Yosys", "Bound a BMC result by its depth", "Use prove mode for all reachable states and cover mode for reachability"]},
+  {"label": "Circuit simulation with ngspice, Xyce and Xschem", "section": "Circuit simulation with ngspice, Xyce and Xschem", "subgoals": ["Simulate transistor-level netlists with ngspice", "Choose Xyce for large circuits that benefit from parallelism", "Draw schematics in Xschem and export SPICE netlists"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Compile-pass rate", "section": "Compile-pass rate", "subgoals": ["Count edits that build", "Divide by edits attempted", "Report the rate per task family"]},
+  {"label": "The unbiased pass@k estimator", "section": "The unbiased pass@k estimator", "subgoals": ["Count successes among n samples", "Compute the binomial ratio for failure-only subsets", "Subtract it from one"]},
+  {"label": "Averaging over tasks", "section": "Averaging over tasks", "subgoals": ["Compute pass@k per task", "Average across tasks", "Compare with the pooled estimate"]}
+]

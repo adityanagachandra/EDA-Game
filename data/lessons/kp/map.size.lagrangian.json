@@ -1,0 +1,5 @@
+[
+  {"label": "Multipliers and flow conservation", "section": "Multipliers and flow conservation", "subgoals": ["Attach a non-negative multiplier to every timing arc", "Require incoming multipliers to sum to outgoing ones at each gate", "Solve for a missing multiplier from the conservation equation"]},
+  {"label": "The local subproblem", "section": "The local subproblem", "subgoals": ["Collect the terms of the Lagrangian that contain one gate's size", "Differentiate and solve for that gate's size", "Sweep the local rule over all gates until sizes settle"]},
+  {"label": "Updating the multipliers", "section": "Updating the multipliers", "subgoals": ["Compute the arc's violation as arrival minus required", "Step the multiplier by the violation and clip at zero", "Project the multipliers back onto flow conservation"]}
+]

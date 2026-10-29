@@ -1,0 +1,5 @@
+[
+  {"label": "A compiled, two-state model", "section": "A compiled, two-state model", "subgoals": ["Contrast static ordering with an event queue", "Map each bit onto two-state machine integers", "Drive the generated model from a C++ loop or a binary"]},
+  {"label": "Scheduling, warnings and threads", "section": "Scheduling, warnings and threads", "subgoals": ["Order clocked reads before register updates", "Resolve UNOPTFLAT warnings by breaking apparent combinational cycles", "Enable the timing option for testbenches with delays"]},
+  {"label": "Where Verilator differs from four-state simulators", "section": "Where Verilator differs from four-state simulators", "subgoals": ["Expose missing resets by randomizing initial values", "Treat Verilator-versus-event-driven differences on racy code as code bugs", "Manage the C++ build time in iterative loops"]}
+]

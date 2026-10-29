@@ -1,0 +1,5 @@
+[
+  {"label": "Stages and what belongs to each", "section": "Stages and what belongs to each", "subgoals": ["Assign synthesis to the synth stage", "Assign floorplan, macro and PDN steps to floorplan", "Assign placement and repair to place, clock to cts, wires to route"]},
+  {"label": "Ordering the steps", "section": "Ordering the steps", "subgoals": ["Sort the steps by stage first", "Order steps within a stage by what each consumes", "Write the full order and compare it with each option"]},
+  {"label": "Why the order is forced", "section": "Why the order is forced", "subgoals": ["Name what each stage needs from the one before", "Find the step immediately after a given one", "Explain the cost of running a step out of order"]}
+]

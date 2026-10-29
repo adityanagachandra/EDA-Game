@@ -1,0 +1,5 @@
+[
+  {"label": "Covering the ON-set with primes", "section": "Covering the ON-set with primes", "subgoals": ["Build the table of ON minterms against primes", "Choose a set of primes that covers every column", "Minimize the number of primes chosen"]},
+  {"label": "The cyclic core", "section": "The cyclic core", "subgoals": ["Select the essential primes", "Remove the minterms they cover", "Count the extra primes the remaining minterms need"]},
+  {"label": "Cost beyond cube count", "section": "Cost beyond cube count", "subgoals": ["List all covers with the minimum number of cubes", "Count the literals of each", "Take the smallest literal count"]}
+]

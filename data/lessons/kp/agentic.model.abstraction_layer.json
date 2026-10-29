@@ -1,0 +1,5 @@
+[
+  {"label": "One tool-call interface", "section": "One tool-call interface", "subgoals": ["Define tools once with typed arguments", "Keep tier policy and gates free of model names", "Exchange messages and tool calls through one interface"]},
+  {"label": "Thin adapters per model", "section": "Thin adapters per model", "subgoals": ["Map messages into the model's chat template", "Parse its tool-call format back into structured calls", "Reject malformed calls with feedback"]},
+  {"label": "Mixing and swapping models", "section": "Mixing and swapping models", "subgoals": ["Assign models per role and per customer", "Rerun the skill-editing benchmark before a swap", "Version the swap and keep rollback"]}
+]

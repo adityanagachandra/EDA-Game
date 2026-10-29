@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The secant condition in one dimension",
+    "section": "The secant condition in one dimension",
+    "subgoals": [
+      "Take the step and the gradient change between two iterates",
+      "Divide them for the secant curvature estimate",
+      "Step to where the linear model of the derivative is zero"
+    ]
+  },
+  {
+    "label": "The BFGS update",
+    "section": "The BFGS update",
+    "subgoals": [
+      "Compute the inner products s transpose s and y transpose s",
+      "Subtract the projection term built from s",
+      "Add the correction term built from y"
+    ]
+  },
+  {
+    "label": "Limited memory at placement scale",
+    "section": "Limited memory at placement scale",
+    "subgoals": [
+      "Count the variables as two coordinates per cell",
+      "Multiply two times pairs times variables times bytes per number",
+      "Compare the memory with dense BFGS and with the machine budget"
+    ]
+  }
+]

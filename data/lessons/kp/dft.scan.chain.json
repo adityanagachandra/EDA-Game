@@ -1,0 +1,5 @@
+[
+  {"label": "The mux-D scan cell", "section": "The mux-D scan cell", "subgoals": ["Place a multiplexer before each flip-flop controlled by scan enable", "Connect each flop's output to the next flop's scan input", "Shift with scan enable at 1 and capture with scan enable at 0"]},
+  {"label": "A scan test cycle", "section": "A scan test cycle", "subgoals": ["Shift the stimulus in for as many cycles as the longest chain", "Capture the response with one functional clock", "Shift the response out while the next stimulus shifts in"]},
+  {"label": "Test time", "section": "Test time", "subgoals": ["Multiply patterns by chain length plus one", "Add one final unload of chain length", "Divide the cycles by the shift frequency for test time"]}
+]

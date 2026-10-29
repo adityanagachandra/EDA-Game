@@ -1,0 +1,5 @@
+[
+  {"label": "Constraint extraction", "section": "Constraint extraction", "subgoals": ["Recognize differential pairs and mirrors as subgraphs of the netlist", "Emit symmetry, matching and sensitive-net constraints", "Let designer annotations override or add constraints"]},
+  {"label": "Placement under symmetry", "section": "Placement under symmetry", "subgoals": ["Write mirror symmetry as equal y and x coordinates summing to twice the axis", "Contrast annealing over sequence pairs with analytical placement", "Pre-build matched primitives with parameterized generators"]},
+  {"label": "Routing and the verification loop", "section": "Routing and the verification loop", "subgoals": ["Route symmetric net pairs as mirror images with equal parasitics", "Require DRC, LVS and post-layout simulation for acceptance", "Feed post-layout failures back as constraints or re-sizing"]}
+]

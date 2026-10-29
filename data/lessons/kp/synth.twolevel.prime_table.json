@@ -1,0 +1,5 @@
+[
+  {"label": "Building the table", "section": "Building the table", "subgoals": ["Make one row per prime and one column per ON minterm", "Mark each minterm that a prime contains", "Count the marks in a column as the ways to cover that minterm"]},
+  {"label": "Essential primes", "section": "Essential primes", "subgoals": ["Find columns with exactly one mark", "Select the prime that marks each such column", "Delete every column covered by the selected essential primes"]},
+  {"label": "The residual problem", "section": "The residual problem", "subgoals": ["Count the ON minterms left after selecting the essentials", "Look for new essentials in the reduced table", "Recognize a cyclic core where every column has two or more marks"]}
+]

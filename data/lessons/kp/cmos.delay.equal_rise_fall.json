@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The reference inverter",
+    "section": "The reference inverter",
+    "subgoals": [
+      "Size the reference inverter with nMOS width 1 and pMOS width gamma",
+      "Compute the reference input capacitance as one plus gamma",
+      "Require every gate's worst-case path to match the inverter's resistance"
+    ]
+  },
+  {
+    "label": "Series stacks get wider",
+    "section": "Series stacks get wider",
+    "subgoals": [
+      "Multiply each series device's width by the stack length",
+      "Keep parallel devices at unit width for the single-device worst case",
+      "Sum nMOS and pMOS widths to get each input's capacitance"
+    ]
+  },
+  {
+    "label": "Compound gates by longest path",
+    "section": "Compound gates by longest path",
+    "subgoals": [
+      "Find the longest series path through each transistor",
+      "Set the width to that path length times the unit width",
+      "Compute each input's capacitance from its two transistor widths"
+    ]
+  }
+]

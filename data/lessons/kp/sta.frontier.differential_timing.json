@@ -1,0 +1,5 @@
+[
+  {"label": "Which endpoints moved", "section": "Which endpoints moved", "subgoals": ["Time the reference design with the baseline and the changed engine", "Subtract each endpoint's old slack from its new slack", "Count endpoints whose change exceeds the tolerance"]},
+  {"label": "Unexpected movers", "section": "Unexpected movers", "subgoals": ["Write down the set of endpoints the change should affect", "Find endpoints outside that set that moved", "Inspect the path of each unexpected mover"]},
+  {"label": "Intended endpoints and the promotion rule", "section": "Intended endpoints and the promotion rule", "subgoals": ["Compare each intended endpoint's change with the intended amount", "Add the unexpected movers to the intended endpoints that are off", "Promote the change only when the total is zero"]}
+]

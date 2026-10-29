@@ -1,0 +1,1239 @@
+[
+  {
+    "id": "opt.formulate.variables_objective",
+    "label": "Formulating an optimization problem",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.formulate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "calc.deriv.optimization",
+      "discrete.sets.relations"
+    ],
+    "key_prerequisites": [
+      "calc.deriv.optimization"
+    ],
+    "encompasses": [
+      "calc.deriv.optimization"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "opt.formulate.problem_classes",
+    "label": "Continuous versus combinatorial optimization",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.formulate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.formulate.variables_objective",
+      "discrete.combinatorics.permutations",
+      "calc.deriv.convexity"
+    ],
+    "key_prerequisites": [
+      "opt.formulate.variables_objective"
+    ],
+    "encompasses": [
+      "discrete.combinatorics.permutations"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 55
+    }
+  },
+  {
+    "id": "opt.formulate.hardness",
+    "label": "Why exact optimization is hard",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.formulate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.formulate.problem_classes",
+      "discrete.sequences.growth_rates"
+    ],
+    "key_prerequisites": [
+      "opt.formulate.problem_classes"
+    ],
+    "encompasses": [
+      "opt.formulate.problem_classes",
+      "discrete.sequences.growth_rates"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "opt.formulate.strategy",
+    "label": "Relax, decompose, approximate or search",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.formulate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.formulate.hardness",
+      "opt.formulate.variables_objective"
+    ],
+    "key_prerequisites": [
+      "opt.formulate.hardness"
+    ],
+    "encompasses": [
+      "opt.formulate.hardness"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 55
+    }
+  },
+  {
+    "id": "opt.lp.simplex_geometry",
+    "label": "Linear programming and its geometry",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.formulate.variables_objective",
+      "linalg.systems.matrix",
+      "linalg.sys.cramer"
+    ],
+    "key_prerequisites": [
+      "opt.formulate.variables_objective",
+      "linalg.systems.matrix"
+    ],
+    "encompasses": [
+      "linalg.systems.matrix"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.lp.simplex_pivot",
+    "label": "Standard form and the simplex pivot",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lp.simplex_geometry",
+      "discrete.combinatorics.combinations",
+      "linalg.matrix.rank"
+    ],
+    "key_prerequisites": [
+      "opt.lp.simplex_geometry"
+    ],
+    "encompasses": [
+      "opt.lp.simplex_geometry",
+      "discrete.combinatorics.combinations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.lp.duality",
+    "label": "Linear programming duality",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lp.simplex_geometry",
+      "linalg.matrix.mult",
+      "opt.lp.simplex_pivot"
+    ],
+    "key_prerequisites": [
+      "opt.lp.simplex_geometry"
+    ],
+    "encompasses": [
+      "opt.lp.simplex_geometry"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.lp.shadow_prices",
+    "label": "Shadow prices and complementary slackness",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lp.duality",
+      "opt.lp.simplex_geometry"
+    ],
+    "key_prerequisites": [
+      "opt.lp.duality"
+    ],
+    "encompasses": [
+      "opt.lp.duality",
+      "opt.lp.simplex_geometry"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.lp.difference_constraints",
+    "label": "Difference constraints and longest paths",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lp.simplex_geometry",
+      "graph.topological_sort",
+      "graph.dag_paths"
+    ],
+    "key_prerequisites": [
+      "graph.topological_sort"
+    ],
+    "encompasses": [
+      "opt.lp.simplex_geometry",
+      "graph.dag_paths"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.ip.lp_relaxation",
+    "label": "LP relaxation and the integrality gap",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.ip",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lp.simplex_geometry",
+      "opt.formulate.problem_classes"
+    ],
+    "key_prerequisites": [
+      "opt.lp.simplex_geometry"
+    ],
+    "encompasses": [
+      "opt.lp.simplex_geometry",
+      "opt.formulate.problem_classes"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.ip.branch_and_bound",
+    "label": "Integer programming and branch and bound",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.ip",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.ip.lp_relaxation",
+      "discrete.graphs.trees"
+    ],
+    "key_prerequisites": [
+      "opt.ip.lp_relaxation"
+    ],
+    "encompasses": [
+      "opt.ip.lp_relaxation",
+      "opt.lp.simplex_geometry"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.ip.big_m",
+    "label": "Big-M and disjunctive constraints",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.ip",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.ip.lp_relaxation",
+      "opt.formulate.variables_objective",
+      "discrete.logic.connectives"
+    ],
+    "key_prerequisites": [
+      "opt.ip.lp_relaxation"
+    ],
+    "encompasses": [
+      "opt.ip.lp_relaxation",
+      "opt.formulate.variables_objective"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.ip.ilp_scheduling",
+    "label": "ILP formulation of operation scheduling",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.ip",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.ip.lp_relaxation",
+      "graph.topological_sort",
+      "opt.formulate.variables_objective"
+    ],
+    "key_prerequisites": [
+      "opt.formulate.variables_objective",
+      "opt.ip.lp_relaxation"
+    ],
+    "encompasses": [
+      "opt.formulate.variables_objective",
+      "graph.topological_sort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.ip.global_routing",
+    "label": "Global routing as an integer program",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.ip",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.ip.lp_relaxation",
+      "prob.rv.expectation",
+      "opt.formulate.variables_objective"
+    ],
+    "key_prerequisites": [
+      "opt.ip.lp_relaxation"
+    ],
+    "encompasses": [
+      "opt.ip.lp_relaxation",
+      "prob.rv.expectation"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.ip.cutting_planes",
+    "label": "Cutting planes and branch and cut",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.ip",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.ip.branch_and_bound",
+      "opt.ip.lp_relaxation"
+    ],
+    "key_prerequisites": [
+      "opt.ip.branch_and_bound"
+    ],
+    "encompasses": [
+      "opt.ip.lp_relaxation",
+      "opt.ip.branch_and_bound"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.ip.benders",
+    "label": "Benders decomposition",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.ip",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.lp.duality",
+      "opt.ip.branch_and_bound",
+      "opt.formulate.strategy"
+    ],
+    "key_prerequisites": [
+      "opt.lp.duality"
+    ],
+    "encompasses": [
+      "opt.lp.duality"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 70
+    }
+  },
+  {
+    "id": "opt.convex.convexity_test",
+    "label": "Testing convexity with the Hessian",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.convex",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "calc.deriv.partial_higher",
+      "linalg.quadratic.definite",
+      "calc.deriv.convexity"
+    ],
+    "key_prerequisites": [
+      "linalg.quadratic.definite"
+    ],
+    "encompasses": [
+      "calc.deriv.convexity",
+      "linalg.quadratic.definite"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "opt.convex.kkt",
+    "label": "The KKT conditions",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.convex",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "calc.multi.lagrange",
+      "opt.convex.convexity_test",
+      "opt.lp.duality"
+    ],
+    "key_prerequisites": [
+      "calc.multi.lagrange",
+      "opt.convex.convexity_test"
+    ],
+    "encompasses": [
+      "opt.convex.convexity_test",
+      "calc.multi.lagrange"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.convex.quadratic_placement",
+    "label": "Quadratic placement as a convex QP",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.convex",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.convex.convexity_test",
+      "graph.laplacian",
+      "linalg.systems.matrix"
+    ],
+    "key_prerequisites": [
+      "opt.convex.convexity_test",
+      "graph.laplacian"
+    ],
+    "encompasses": [
+      "opt.convex.convexity_test",
+      "linalg.systems.matrix"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.convex.geometric_programming",
+    "label": "Posynomials and geometric programming in sizing",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.convex",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.convex.convexity_test",
+      "calc.deriv.critical_points",
+      "calc.deriv.general_exp"
+    ],
+    "key_prerequisites": [
+      "opt.convex.convexity_test"
+    ],
+    "encompasses": [
+      "opt.convex.convexity_test",
+      "calc.deriv.critical_points"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.convex.nonconvex",
+    "label": "Nonconvex landscapes, QCQP and local optima",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.convex",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.convex.convexity_test",
+      "opt.convex.kkt",
+      "calc.deriv.second_test"
+    ],
+    "key_prerequisites": [
+      "opt.convex.convexity_test"
+    ],
+    "encompasses": [
+      "opt.convex.convexity_test",
+      "calc.deriv.second_test"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "opt.gradient.descent",
+    "label": "Gradient descent",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.gradient",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "ml.gradient_descent",
+      "calc.deriv.gradient",
+      "opt.convex.convexity_test"
+    ],
+    "key_prerequisites": [
+      "ml.gradient_descent"
+    ],
+    "encompasses": [
+      "ml.gradient_descent",
+      "calc.deriv.gradient"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.gradient.step_size",
+    "label": "Step size, smoothness and line search",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.gradient",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.gradient.descent",
+      "linalg.eigen.compute",
+      "linalg.matrix.condition"
+    ],
+    "key_prerequisites": [
+      "opt.gradient.descent"
+    ],
+    "encompasses": [
+      "opt.gradient.descent",
+      "linalg.eigen.compute"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.gradient.nesterov",
+    "label": "Nesterov's accelerated gradient",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.gradient",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.gradient.step_size",
+      "ml.optim.momentum"
+    ],
+    "key_prerequisites": [
+      "opt.gradient.step_size",
+      "ml.optim.momentum"
+    ],
+    "encompasses": [
+      "opt.gradient.descent",
+      "opt.gradient.step_size"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.gradient.conjugate_gradient",
+    "label": "Conjugate gradient for placement systems",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.gradient",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.convex.quadratic_placement",
+      "opt.gradient.descent",
+      "linalg.inner_product"
+    ],
+    "key_prerequisites": [
+      "opt.convex.quadratic_placement"
+    ],
+    "encompasses": [
+      "opt.convex.quadratic_placement",
+      "opt.gradient.descent"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.gradient.newton",
+    "label": "Newton's method for minimization",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.gradient",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.gradient.descent",
+      "calc.deriv.newton",
+      "calc.multi.taylor2"
+    ],
+    "key_prerequisites": [
+      "calc.multi.taylor2"
+    ],
+    "encompasses": [
+      "calc.deriv.newton",
+      "opt.gradient.descent"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.gradient.quasi_newton",
+    "label": "Quasi-Newton methods: BFGS and L-BFGS",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.gradient",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.gradient.newton",
+      "numa.roots.secant"
+    ],
+    "key_prerequisites": [
+      "opt.gradient.newton"
+    ],
+    "encompasses": [
+      "opt.gradient.newton",
+      "numa.roots.secant"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.gradient.coordinate_descent",
+    "label": "Coordinate descent",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.gradient",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.gradient.descent",
+      "opt.convex.quadratic_placement",
+      "numa.linear.gauss_seidel"
+    ],
+    "key_prerequisites": [
+      "numa.linear.gauss_seidel"
+    ],
+    "encompasses": [
+      "opt.convex.quadratic_placement",
+      "numa.linear.gauss_seidel"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.gradient.smooth_wirelength",
+    "label": "Smoothing nonsmooth objectives",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.gradient",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.gradient.descent",
+      "calc.deriv.chain_rule",
+      "opt.convex.convexity_test"
+    ],
+    "key_prerequisites": [
+      "opt.gradient.descent"
+    ],
+    "encompasses": [
+      "opt.gradient.descent"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.lagrange.dual_function",
+    "label": "The Lagrangian dual function",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lagrange",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.convex.kkt",
+      "opt.lp.duality"
+    ],
+    "key_prerequisites": [
+      "opt.convex.kkt"
+    ],
+    "encompasses": [
+      "opt.convex.kkt",
+      "opt.lp.duality"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.lagrange.relaxation",
+    "label": "Lagrangian relaxation",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lagrange",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lagrange.dual_function",
+      "opt.convex.geometric_programming",
+      "graph.max_flow"
+    ],
+    "key_prerequisites": [
+      "opt.lagrange.dual_function"
+    ],
+    "encompasses": [
+      "opt.lagrange.dual_function",
+      "opt.convex.geometric_programming"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.lagrange.subgradient",
+    "label": "Subgradient updates of multipliers",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lagrange",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lagrange.relaxation",
+      "opt.gradient.descent"
+    ],
+    "key_prerequisites": [
+      "opt.lagrange.relaxation"
+    ],
+    "encompasses": [
+      "opt.lagrange.relaxation",
+      "opt.gradient.descent"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.lagrange.penalty",
+    "label": "Quadratic penalty methods",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lagrange",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.convex.kkt",
+      "opt.gradient.descent",
+      "calc.deriv.critical_points"
+    ],
+    "key_prerequisites": [
+      "opt.convex.kkt"
+    ],
+    "encompasses": [
+      "opt.convex.kkt",
+      "calc.deriv.critical_points"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.lagrange.augmented",
+    "label": "Augmented Lagrangian method",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lagrange",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lagrange.penalty",
+      "opt.lagrange.dual_function"
+    ],
+    "key_prerequisites": [
+      "opt.lagrange.penalty"
+    ],
+    "encompasses": [
+      "opt.lagrange.penalty",
+      "opt.lagrange.dual_function"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.lagrange.admm",
+    "label": "ADMM and splitting",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.lagrange",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.lagrange.augmented",
+      "opt.gradient.coordinate_descent"
+    ],
+    "key_prerequisites": [
+      "opt.lagrange.augmented"
+    ],
+    "encompasses": [
+      "opt.lagrange.augmented",
+      "opt.lagrange.penalty"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "opt.meta.local_search",
+    "label": "Local search, neighborhoods and tabu search",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.meta",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.formulate.hardness",
+      "discrete.graphs.basics"
+    ],
+    "key_prerequisites": [
+      "opt.formulate.hardness"
+    ],
+    "encompasses": [
+      "opt.formulate.hardness"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.meta.simulated_annealing",
+    "label": "Simulated annealing",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.meta",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.meta.local_search",
+      "prob.process.markov_chain",
+      "calc.deriv.general_exp"
+    ],
+    "key_prerequisites": [
+      "opt.meta.local_search"
+    ],
+    "encompasses": [
+      "opt.meta.local_search",
+      "calc.deriv.general_exp"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "opt.meta.cooling_schedule",
+    "label": "Cooling schedules and equilibrium",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.meta",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.meta.simulated_annealing",
+      "discrete.sequences.recurrence"
+    ],
+    "key_prerequisites": [
+      "opt.meta.simulated_annealing"
+    ],
+    "encompasses": [
+      "opt.meta.simulated_annealing"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.meta.polish_expression",
+    "label": "Slicing floorplans and annealing moves",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.meta",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.meta.simulated_annealing",
+      "discrete.graphs.trees"
+    ],
+    "key_prerequisites": [
+      "opt.meta.simulated_annealing"
+    ],
+    "encompasses": [
+      "opt.meta.simulated_annealing",
+      "discrete.graphs.trees"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.meta.genetic",
+    "label": "Genetic algorithms and evolutionary search",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.meta",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.meta.local_search",
+      "prob.cond.multiplication",
+      "discrete.combinatorics.combinations"
+    ],
+    "key_prerequisites": [
+      "opt.meta.local_search"
+    ],
+    "encompasses": [
+      "opt.meta.local_search",
+      "prob.cond.multiplication"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.dp.principle",
+    "label": "Dynamic programming",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.dp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.formulate.hardness",
+      "discrete.sequences.recurrence",
+      "graph.dag_paths"
+    ],
+    "key_prerequisites": [
+      "discrete.sequences.recurrence"
+    ],
+    "encompasses": [
+      "graph.dag_paths",
+      "discrete.sequences.recurrence"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.dp.tree_mapping",
+    "label": "Tree covering in technology mapping",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.dp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.dp.principle",
+      "discrete.graphs.trees",
+      "discrete.logic.connectives"
+    ],
+    "key_prerequisites": [
+      "opt.dp.principle"
+    ],
+    "encompasses": [
+      "opt.dp.principle"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.dp.buffer_insertion",
+    "label": "Van Ginneken buffer insertion",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.dp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.dp.principle",
+      "discrete.sets.partial_order"
+    ],
+    "key_prerequisites": [
+      "opt.dp.principle"
+    ],
+    "encompasses": [
+      "opt.dp.principle",
+      "discrete.sets.partial_order"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "opt.dp.constraint_propagation",
+    "label": "Constraint satisfaction and propagation",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.dp",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.formulate.variables_objective",
+      "discrete.logic.satisfiability",
+      "discrete.graphs.coloring"
+    ],
+    "key_prerequisites": [
+      "opt.formulate.variables_objective"
+    ],
+    "encompasses": [
+      "discrete.logic.satisfiability"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.multi.pareto",
+    "label": "Pareto optimality",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.multi",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.formulate.variables_objective",
+      "discrete.sets.partial_order"
+    ],
+    "key_prerequisites": [
+      "discrete.sets.partial_order"
+    ],
+    "encompasses": [
+      "discrete.sets.partial_order"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.multi.scalarization",
+    "label": "Weighted sums, epsilon constraints and hypervolume",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.multi",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.multi.pareto",
+      "opt.convex.convexity_test"
+    ],
+    "key_prerequisites": [
+      "opt.multi.pareto"
+    ],
+    "encompasses": [
+      "opt.multi.pareto"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.multi.robust_stochastic",
+    "label": "Robust and stochastic optimization",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.multi",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.formulate.strategy",
+      "prob.rv.expectation",
+      "opt.multi.pareto"
+    ],
+    "key_prerequisites": [
+      "prob.rv.expectation"
+    ],
+    "encompasses": [
+      "prob.rv.expectation",
+      "opt.formulate.strategy"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "opt.bayes.gaussian_process",
+    "label": "Gaussian process surrogates",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.bayes",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.dist.normal",
+      "prob.cov.covariance",
+      "opt.formulate.strategy"
+    ],
+    "key_prerequisites": [
+      "prob.cov.covariance"
+    ],
+    "encompasses": [
+      "stat.dist.normal",
+      "prob.cov.covariance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "opt.bayes.bayesian_optimization",
+    "label": "Bayesian optimization",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.bayes",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "opt.bayes.gaussian_process",
+      "stat.dist.z_table",
+      "opt.multi.robust_stochastic"
+    ],
+    "key_prerequisites": [
+      "opt.bayes.gaussian_process"
+    ],
+    "encompasses": [
+      "opt.bayes.gaussian_process",
+      "stat.dist.z_table"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "opt.bayes.eda_practice",
+    "label": "Bayesian optimization for analog sizing and flow tuning",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.bayes",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.bayes.bayesian_optimization",
+      "opt.multi.scalarization"
+    ],
+    "key_prerequisites": [
+      "opt.bayes.bayesian_optimization"
+    ],
+    "encompasses": [
+      "opt.bayes.bayesian_optimization"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "opt.frontier.objective_weights",
+    "label": "Objective weights as Tier 1 parameters",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.multi.scalarization",
+      "agentic.tiers.change",
+      "agentic.engine.four_layer"
+    ],
+    "key_prerequisites": [
+      "agentic.tiers.change",
+      "opt.multi.scalarization"
+    ],
+    "encompasses": [
+      "opt.multi.scalarization"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "opt.frontier.move_set_policy",
+    "label": "Move sets and cost functions as Tier 2 policies",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.meta.polish_expression",
+      "opt.meta.local_search",
+      "agentic.seam.extension_point"
+    ],
+    "key_prerequisites": [
+      "agentic.seam.extension_point",
+      "opt.meta.local_search"
+    ],
+    "encompasses": [
+      "opt.meta.local_search",
+      "opt.meta.simulated_annealing"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "opt.frontier.reward_design",
+    "label": "Tool-grounded reward design for optimization agents",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.lagrange.penalty",
+      "opt.multi.pareto",
+      "agentic.rl.tool_grounded"
+    ],
+    "key_prerequisites": [
+      "agentic.rl.tool_grounded"
+    ],
+    "encompasses": [
+      "opt.lagrange.penalty"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "opt.frontier.dse_agent",
+    "label": "Agent-driven design-space exploration",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.bayes.bayesian_optimization",
+      "opt.multi.pareto",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "opt.bayes.bayesian_optimization",
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "opt.bayes.bayesian_optimization",
+      "opt.multi.pareto"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "opt.frontier.optimizer_verification",
+    "label": "Golden and differential tests for optimizers",
+    "domain": "optimization_for_eda",
+    "subdomain": "optimization_for_eda.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "opt.ip.branch_and_bound",
+      "opt.convex.kkt",
+      "agentic.verify.golden_differential"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "opt.ip.branch_and_bound",
+      "opt.lp.duality"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Minimum threshold for an off-current budget", "section": "Minimum threshold for an off-current budget", "subgoals": ["Form the ratio of the current at threshold to the off-current budget", "Take its base-ten log to count decades", "Multiply by the subthreshold swing for the minimum threshold"]},
+  {"label": "The hot corner sets the floor", "section": "The hot corner sets the floor", "subgoals": ["Scale the swing with absolute temperature", "Recompute the minimum threshold with the hot swing", "Explain why leakage budgets are checked at the hot corner"]},
+  {"label": "The on-off ratio", "section": "The on-off ratio", "subgoals": ["Count decades from the on-current down to the current at threshold", "Add threshold over swing for the decades below threshold", "Sum to get the on-off ratio in decades"]}
+]

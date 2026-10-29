@@ -1,0 +1,5 @@
+[
+  {"label": "Samples for a relative error", "section": "Samples for a relative error", "subgoals": ["Write the relative error of the estimate as the square root of one minus p over Np", "Solve for N given z and the relative half-width", "Read the result as roughly 400 observed failures for 10 percent accuracy"]},
+  {"label": "Demonstrating a bound with zero failures", "section": "Demonstrating a bound with zero failures", "subgoals": ["Write the probability of zero failures as one minus p0 to the N", "Solve for N against one minus the confidence", "Apply the rule of three at 95 percent confidence"]},
+  {"label": "Why plain Monte Carlo fails at high sigma", "section": "Why plain Monte Carlo fails at high sigma", "subgoals": ["Convert the sigma level to a failure probability", "Substitute it into the sample-size formula", "Compare the resulting CPU time with a practical budget"]}
+]

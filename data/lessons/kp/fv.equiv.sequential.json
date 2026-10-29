@@ -1,0 +1,5 @@
+[
+  {"label": "The product machine", "section": "The product machine", "subgoals": ["Form pairs of states and step both machines on the same input", "Search breadth-first from the pair of reset states", "Count the reachable pairs and compare their outputs"]},
+  {"label": "Shortest distinguishing sequence", "section": "Shortest distinguishing sequence", "subgoals": ["Search the product breadth-first and check outputs at each new pair", "Stop at the first pair whose outputs differ", "Report its depth as the length of the distinguishing sequence"]},
+  {"label": "Sequential equivalence on larger machines", "section": "Sequential equivalence on larger machines", "subgoals": ["Model SEC as an always-equal-outputs safety property on the product", "Search breadth-first for the nearest differing pair on the larger machines", "Strengthen induction with inductively proved register equivalences"]}
+]

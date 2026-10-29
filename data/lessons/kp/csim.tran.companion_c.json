@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Backward Euler capacitor",
+    "section": "Backward Euler capacitor",
+    "subgoals": [
+      "Replace the derivative by the backward difference over one step",
+      "Read the conductance as C over h",
+      "Read the history current as C over h times the previous voltage"
+    ]
+  },
+  {
+    "label": "Trapezoidal capacitor",
+    "section": "Trapezoidal capacitor",
+    "subgoals": [
+      "Write the trapezoidal update for the capacitor voltage",
+      "Solve it for the current at the new time point",
+      "Read off the conductance and the history current with the previous current"
+    ]
+  },
+  {
+    "label": "Recovering the capacitor current",
+    "section": "Recovering the capacitor current",
+    "subgoals": [
+      "Take the voltage change over the accepted step",
+      "Multiply it by two C over h",
+      "Subtract the previous current to get the new one"
+    ]
+  }
+]

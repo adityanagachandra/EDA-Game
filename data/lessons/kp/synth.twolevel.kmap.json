@@ -1,0 +1,5 @@
+[
+  {"label": "Adjacency and implicant groups", "section": "Adjacency and implicant groups", "subgoals": ["Label rows and columns in Gray-code order with wrap-around", "Group power-of-two rectangles of 1-cells", "Read the variables that stay constant across a group as its literals"]},
+  {"label": "Choosing a minimum cover", "section": "Choosing a minimum cover", "subgoals": ["Take every essential prime group first", "Cover the remaining 1-cells with the fewest further primes", "Prefer fewer products, then fewer literals"]},
+  {"label": "Don't cares and the limits of maps", "section": "Don't cares and the limits of maps", "subgoals": ["Include a don't-care cell in a group only when it enlarges the group", "Leave unused don't cares out of every product", "Recognize that the map method stops scaling beyond about five variables"]}
+]

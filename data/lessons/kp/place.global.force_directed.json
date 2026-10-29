@@ -1,0 +1,5 @@
+[
+  {"label": "Springs and the zero-force target", "section": "Springs and the zero-force target", "subgoals": ["Write each connection as a spring force proportional to distance", "Sum the forces on the cell", "Solve for the weighted centroid where the force vanishes"]},
+  {"label": "Net force on a cell", "section": "Net force on a cell", "subgoals": ["Evaluate the spring force sum at the current position", "Read the sign as the pull direction", "Add a density force to stop collapse to the centre"]},
+  {"label": "The ripple-move algorithm", "section": "The ripple-move algorithm", "subgoals": ["Round the zero-force target to the nearest grid slot", "Displace the occupant and ripple it to its own target", "Stop the ripple with an abort rule"]}
+]

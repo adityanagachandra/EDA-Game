@@ -1,0 +1,5 @@
+[
+  {"label": "Slabs and covered length", "section": "Slabs and covered length", "subgoals": ["Cut the plane into slabs at distinct x-coordinates", "Find the covered y-length in each slab", "Sum width times covered length over the slabs"]},
+  {"label": "Maintaining the covered length", "section": "Maintaining the covered length", "subgoals": ["List the y-ranges of the rectangles active at the stop", "Merge overlapping ranges", "Sum the merged lengths to get the covered length"]},
+  {"label": "Area covered at least twice", "section": "Area covered at least twice", "subgoals": ["Keep a cover count for each y-interval in the slab", "Sum the lengths where the count reaches two", "Accumulate width times that length over the slabs"]}
+]

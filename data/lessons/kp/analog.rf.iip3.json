@@ -1,0 +1,5 @@
+[
+  {"label": "Two-tone test and the intercept", "section": "Two-tone test and the intercept", "subgoals": ["Expand the nonlinearity to third order", "Compare the 1 dB per dB and 3 dB per dB slopes", "Add half the measured gap to the input power"]},
+  {"label": "Predicting IM3 levels", "section": "Predicting IM3 levels", "subgoals": ["Compute the input-referred IM3 as three Pin minus two IIP3", "Add the gain for the output level", "Use OIP3 equal to IIP3 plus gain"]},
+  {"label": "Cascading intercepts", "section": "Cascading intercepts", "subgoals": ["Convert each intercept to milliwatts", "Weight each stage's inverse intercept by the gain in front of it", "Sum, invert and convert back to dBm"]}
+]

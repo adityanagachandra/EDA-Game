@@ -1,0 +1,5 @@
+[
+  {"label": "What a dataset contains", "section": "What a dataset contains", "subgoals": ["Identify the early-stage inputs a dataset provides", "Identify the tool that computed each label", "Match the input representation to the model family"]},
+  {"label": "How splits mislead", "section": "How splits mislead", "subgoals": ["Check whether any design appears in both train and test", "Count distinct designs rather than samples", "Record the tool, version and node that produced the labels"]},
+  {"label": "Comparable results", "section": "Comparable results", "subgoals": ["Fix the split and the metric before comparing papers", "Locate the flow scripts that regenerate the labels", "Ask for downstream flow results as well as prediction error"]}
+]

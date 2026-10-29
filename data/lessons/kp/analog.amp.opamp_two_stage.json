@@ -1,0 +1,5 @@
+[
+  {"label": "Gain of two cascaded stages", "section": "Gain of two cascaded stages", "subgoals": ["Compute the first-stage gain from gm1 and its output resistances", "Compute the second-stage gain from gm6 and its output resistances", "Multiply the stage gains, or add them in dB"]},
+  {"label": "Gain-bandwidth set by gm1 and Cc", "section": "Gain-bandwidth set by gm1 and Cc", "subgoals": ["Identify Cc as the integrating element at crossover", "Compute GBW as gm1 over two pi Cc", "Back out gm1 from a GBW spec and a chosen Cc"]},
+  {"label": "The dominant pole", "section": "The dominant pole", "subgoals": ["Convert the DC gain from dB to a ratio", "Divide GBW by the DC gain to locate the dominant pole", "Place the remaining poles well above GBW"]}
+]

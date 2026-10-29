@@ -1,0 +1,29 @@
+[
+  {
+    "label": "GDSII structures and units",
+    "section": "GDSII structures and units",
+    "subgoals": [
+      "Name the BOUNDARY, PATH, SREF, AREF and TEXT elements",
+      "Multiply integer coordinates by the database unit",
+      "Explain why layer numbers need the foundry layer map"
+    ]
+  },
+  {
+    "label": "Polygons and file size",
+    "section": "Polygons and file size",
+    "subgoals": [
+      "Count five points for a closed rectangle",
+      "Multiply rectangles by points by eight bytes",
+      "Explain how SREF and AREF compress repeated cells"
+    ]
+  },
+  {
+    "label": "OASIS and repetition",
+    "section": "OASIS and repetition",
+    "subgoals": [
+      "Name variable-length integers, modal variables and repetitions",
+      "Count the placement records an array repetition saves",
+      "Explain why LVS re-extracts connectivity from geometry"
+    ]
+  }
+]

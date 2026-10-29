@@ -1,0 +1,5 @@
+[
+  {"label": "Velocity proportional to field", "section": "Velocity proportional to field", "subgoals": ["Write drift velocity as mobility times field", "Multiply the given mobility and field in consistent units", "Check that the field is below the velocity-saturation range"]},
+  {"label": "Conductivity and resistivity", "section": "Conductivity and resistivity", "subgoals": ["Write conductivity as q times density times mobility", "Invert conductivity to get resistivity", "Divide by layer thickness when sheet resistance is needed"]},
+  {"label": "Combining scattering mechanisms", "section": "Combining scattering mechanisms", "subgoals": ["Convert each mechanism's mobility to a scattering rate as its reciprocal", "Sum the reciprocals", "Invert the sum to get the combined mobility"]}
+]

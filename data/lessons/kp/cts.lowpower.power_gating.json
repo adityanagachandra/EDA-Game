@@ -1,0 +1,5 @@
+[
+  {"label": "The wake-up energy", "section": "The wake-up energy", "subgoals": ["Compute the charge needed to restore the rail", "Multiply by the supply voltage to get the energy drawn", "Split it into stored and dissipated halves"]},
+  {"label": "Break-even sleep time", "section": "Break-even sleep time", "subgoals": ["Find the leakage saved during sleep", "Divide the wake-up energy by it", "Convert nanojoules over microwatts to microseconds"]},
+  {"label": "Net energy over an interval", "section": "Net energy over an interval", "subgoals": ["Multiply the saved leakage power by the sleep time", "Subtract the wake-up energy", "List the latency, rush current and IR costs not in the sum"]}
+]

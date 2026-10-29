@@ -1,0 +1,5 @@
+[
+  {"label": "Current mismatch in a mirror", "section": "Current mismatch in a mirror", "subgoals": ["Treat the threshold difference as a gate-voltage error", "Multiply by gm over Id to get relative current mismatch", "Choose low gm over Id for current sources and high for input pairs"]},
+  {"label": "Adding independent contributions", "section": "Adding independent contributions", "subgoals": ["Write each independent contribution as a variance", "Add the variances and take the square root", "Target the largest term in the budget"]},
+  {"label": "Input-referred offset of an OTA", "section": "Input-referred offset of an OTA", "subgoals": ["Refer the load mismatch to the input through gm3 over gm1", "Add the input-pair and load contributions in variance", "Lower the load gm relative to the input pair to cut offset"]}
+]

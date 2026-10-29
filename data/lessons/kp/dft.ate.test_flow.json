@@ -1,0 +1,5 @@
+[
+  {"label": "Cost per die at probe", "section": "Cost per die at probe", "subgoals": ["Add the scan pattern time to the fixed overhead per touchdown", "Multiply the touchdown time by the tester cost rate", "Divide the cost by the number of sites per touchdown"]},
+  {"label": "Final test throughput", "section": "Final test throughput", "subgoals": ["Multiply the sites by the multi-site efficiency", "Add the test time and the handler index time", "Divide 3600 times the effective sites by the cycle time for units per hour"]},
+  {"label": "Burn-in", "section": "Burn-in", "subgoals": ["Convert the use and stress temperatures to kelvin", "Multiply the difference of reciprocal temperatures by the activation energy over k", "Exponentiate for the acceleration factor"]}
+]

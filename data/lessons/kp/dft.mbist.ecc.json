@@ -1,0 +1,5 @@
+[
+  {"label": "Check bits for SEC-DED", "section": "Check bits for SEC-DED", "subgoals": ["Find the smallest r with two to the r at least m plus r plus one", "Add one overall parity bit for double-error detection", "Report the total check bits for SEC-DED"]},
+  {"label": "Decoding the syndrome", "section": "Decoding the syndrome", "subgoals": ["Place the check bits at the power-of-two positions", "XOR the indices of all 1 bits for the syndrome", "Flip the bit at the syndrome position to correct the word"]},
+  {"label": "Uncorrectable words", "section": "Uncorrectable words", "subgoals": ["Write the probability of zero or one flips with the binomial law", "Subtract it from one for the uncorrectable probability", "Scrub memory periodically to prevent errors from accumulating"]}
+]

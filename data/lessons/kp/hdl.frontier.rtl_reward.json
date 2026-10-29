@@ -1,0 +1,5 @@
+[
+  {"label": "Components of a grounded reward", "section": "Components of a grounded reward", "subgoals": ["Score compile success, functional correctness and synthesis results separately", "Gate quality terms on correctness", "Reject rewards that a trivial design can maximize"]},
+  {"label": "Reward hacking", "section": "Reward hacking", "subgoals": ["Hide the evaluation tests from the generating model", "Regenerate random stimulus for every evaluation", "Close each checker blind spot that a hack exploits"]},
+  {"label": "Fast proxies and signoff", "section": "Fast proxies and signoff", "subgoals": ["Spot-check proxy rewards with the accurate flow", "Pin tool versions for the whole training run", "Benchmark on real modules with hidden checks"]}
+]

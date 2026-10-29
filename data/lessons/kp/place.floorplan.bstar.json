@@ -1,0 +1,5 @@
+[
+  {"label": "Left children right, right children up", "section": "Left children right, right children up", "subgoals": ["Place the root at the origin", "Add the parent's width for a left child", "Copy the parent's x for a right child"]},
+  {"label": "Dropping blocks onto a contour", "section": "Dropping blocks onto a contour", "subgoals": ["Visit blocks in pre-order", "Set y to the highest placed top edge overlapping the block's x range", "Splice the block's top edge into the contour"]},
+  {"label": "Moves and uses", "section": "Moves and uses", "subgoals": ["Rotate a block, move a node or swap two nodes", "Repack with a pre-order pass after each move", "Contrast the B*-tree with sequence pairs and Polish expressions"]}
+]

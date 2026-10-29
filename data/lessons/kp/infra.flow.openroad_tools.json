@@ -1,0 +1,5 @@
+[
+  {"label": "Floorplan and placement tools", "section": "Floorplan and placement tools", "subgoals": ["Create die, core and rows with ifp", "Place IO pins with ppl and the power grid with pdn and tapcell", "Spread cells with gpl, then legalize with dpl"]},
+  {"label": "Optimization, clock and routing tools", "section": "Optimization, clock and routing tools", "subgoals": ["Repair slew, capacitance and timing with rsz", "Build the clock network with cts", "Route globally with grt, then exactly with drt"]},
+  {"label": "Extraction, timing and the shared database", "section": "Extraction, timing and the shared database", "subgoals": ["Extract routed parasitics with OpenRCX", "Time the design in-process with OpenSTA", "Use the shared database to avoid file round trips"]}
+]

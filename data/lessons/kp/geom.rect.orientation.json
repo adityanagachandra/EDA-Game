@@ -1,0 +1,5 @@
+[
+  {"label": "The sign of a determinant", "section": "The sign of a determinant", "subgoals": ["Form the vectors from a to b and from a to c", "Compute the cross product as a 2 by 2 determinant", "Read the sign as left turn, right turn or collinear"]},
+  {"label": "Deciding whether segments cross", "section": "Deciding whether segments cross", "subgoals": ["Test both endpoints of the second segment against the first", "Test both endpoints of the first segment against the second", "Declare a crossing only when both pairs have opposite signs"]},
+  {"label": "Exactness and bit width", "section": "Exactness and bit width", "subgoals": ["Bound the size of a coordinate difference", "Bound the products and the determinant", "Choose an integer width of 2b plus 1 bits for exactness"]}
+]

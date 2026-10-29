@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "csim.tool.spice_netlist",
+    "label": "SPICE netlists",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tool",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.kcl_kvl",
+      "em.circuit.nodal_analysis"
+    ],
+    "key_prerequisites": [
+      "em.circuit.nodal_analysis"
+    ],
+    "encompasses": [
+      "em.circuit.kcl_kvl"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.tool.scale_suffixes",
+    "label": "SPICE values and scale suffixes",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tool",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tool.spice_netlist",
+      "em.circuit.rc_time_constant"
+    ],
+    "key_prerequisites": [
+      "csim.tool.spice_netlist"
+    ],
+    "encompasses": [
+      "csim.tool.spice_netlist"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.tool.model_cards",
+    "label": "Model cards and device instances",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tool",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.tool.spice_netlist",
+      "dev.model.compact",
+      "dev.model.bsim"
+    ],
+    "key_prerequisites": [
+      "dev.model.compact"
+    ],
+    "encompasses": [
+      "csim.tool.spice_netlist"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "csim.tool.ngspice_xyce",
+    "label": "Running decks in ngspice and Xyce",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tool",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.tool.spice_netlist",
+      "csim.tran.timestep_control",
+      "csim.dc.convergence_aids"
+    ],
+    "key_prerequisites": [
+      "csim.tool.spice_netlist",
+      "csim.tran.timestep_control"
+    ],
+    "encompasses": [
+      "csim.tool.spice_netlist"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.mna.stamps",
+    "label": "Modified nodal analysis stamps",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.nodal_analysis",
+      "linalg.systems.matrix",
+      "csim.tool.spice_netlist"
+    ],
+    "key_prerequisites": [
+      "em.circuit.nodal_analysis"
+    ],
+    "encompasses": [
+      "em.circuit.nodal_analysis"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.mna.current_sources",
+    "label": "Current source stamps",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.stamps",
+      "em.circuit.kcl_kvl"
+    ],
+    "key_prerequisites": [
+      "csim.mna.stamps"
+    ],
+    "encompasses": [
+      "csim.mna.stamps"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.mna.voltage_sources",
+    "label": "Voltage sources in MNA",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.stamps",
+      "csim.mna.current_sources"
+    ],
+    "key_prerequisites": [
+      "csim.mna.stamps"
+    ],
+    "encompasses": [
+      "csim.mna.stamps",
+      "csim.mna.current_sources"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.mna.vccs",
+    "label": "Voltage-controlled current source stamps",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.stamps",
+      "csim.mna.current_sources"
+    ],
+    "key_prerequisites": [
+      "csim.mna.stamps"
+    ],
+    "encompasses": [
+      "csim.mna.stamps"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.mna.vcvs",
+    "label": "VCVS stamps and controlled branch rows",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.voltage_sources",
+      "csim.mna.vccs"
+    ],
+    "key_prerequisites": [
+      "csim.mna.voltage_sources"
+    ],
+    "encompasses": [
+      "csim.mna.voltage_sources",
+      "csim.mna.vccs"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.mna.solve_small",
+    "label": "Solving a small MNA system",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.voltage_sources",
+      "linalg.sys.cramer",
+      "numa.linear.lu"
+    ],
+    "key_prerequisites": [
+      "csim.mna.voltage_sources"
+    ],
+    "encompasses": [
+      "csim.mna.stamps",
+      "csim.mna.current_sources",
+      "csim.mna.voltage_sources"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "csim.mna.structure",
+    "label": "Sparsity and structure of the MNA matrix",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mna",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.voltage_sources",
+      "numer.sparse.storage",
+      "numer.sparse.fill_in"
+    ],
+    "key_prerequisites": [
+      "numer.sparse.storage"
+    ],
+    "encompasses": [
+      "csim.mna.voltage_sources",
+      "numer.sparse.storage"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.dc.op_reduction",
+    "label": "The DC operating point problem",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.solve_small",
+      "em.circuit.rlc"
+    ],
+    "key_prerequisites": [
+      "csim.mna.solve_small"
+    ],
+    "encompasses": [
+      "csim.mna.solve_small"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.dc.diode_companion",
+    "label": "Linearized diode companion model",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dev.junction.pn",
+      "calc.deriv.linear_approx",
+      "csim.mna.current_sources"
+    ],
+    "key_prerequisites": [
+      "dev.junction.pn",
+      "calc.deriv.linear_approx"
+    ],
+    "encompasses": [
+      "calc.deriv.linear_approx",
+      "csim.mna.current_sources"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.dc.newton_companion",
+    "label": "Newton-Raphson with companion models",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.dc.diode_companion",
+      "numer.nonlinear.newton_systems",
+      "numa.roots.newton"
+    ],
+    "key_prerequisites": [
+      "csim.dc.diode_companion",
+      "numer.nonlinear.newton_systems"
+    ],
+    "encompasses": [
+      "csim.dc.diode_companion",
+      "numa.roots.newton"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "csim.dc.newton_convergence",
+    "label": "Newton convergence tests",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.dc.newton_companion",
+      "numa.roots.order"
+    ],
+    "key_prerequisites": [
+      "csim.dc.newton_companion"
+    ],
+    "encompasses": [
+      "csim.dc.newton_companion"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.dc.mosfet_linearization",
+    "label": "Linearizing a MOSFET at a Newton iterate",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dev.mos.square_law",
+      "csim.dc.diode_companion",
+      "calc.deriv.partial"
+    ],
+    "key_prerequisites": [
+      "dev.mos.square_law",
+      "csim.dc.diode_companion"
+    ],
+    "encompasses": [
+      "csim.dc.diode_companion",
+      "calc.deriv.partial"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "csim.dc.junction_limiting",
+    "label": "Junction voltage limiting",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.dc.newton_companion",
+      "calc.deriv.exp_log"
+    ],
+    "key_prerequisites": [
+      "csim.dc.newton_companion"
+    ],
+    "encompasses": [
+      "csim.dc.newton_companion"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.dc.damping",
+    "label": "Damped Newton steps",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.dc.newton_companion",
+      "numer.nonlinear.newton_systems"
+    ],
+    "key_prerequisites": [
+      "csim.dc.newton_companion"
+    ],
+    "encompasses": [
+      "csim.dc.newton_companion"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.dc.gmin_stepping",
+    "label": "Gmin stepping",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.dc.newton_companion",
+      "csim.mna.stamps"
+    ],
+    "key_prerequisites": [
+      "csim.dc.newton_companion"
+    ],
+    "encompasses": [
+      "csim.mna.stamps"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.dc.convergence_aids",
+    "label": "DC convergence aids",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.dc",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.dc.gmin_stepping",
+      "csim.dc.junction_limiting",
+      "csim.dc.damping"
+    ],
+    "key_prerequisites": [
+      "csim.dc.gmin_stepping"
+    ],
+    "encompasses": [
+      "csim.dc.gmin_stepping",
+      "csim.dc.junction_limiting",
+      "csim.dc.damping"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.tran.dae",
+    "label": "Transient equations as a DAE",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.dc.op_reduction",
+      "ode.adv.systems",
+      "numer.ode.stiffness"
+    ],
+    "key_prerequisites": [
+      "ode.adv.systems"
+    ],
+    "encompasses": [
+      "csim.dc.op_reduction"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.tran.companion_c",
+    "label": "Capacitor companion models",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "numer.ode.backward_euler",
+      "numer.ode.trapezoidal",
+      "csim.mna.current_sources",
+      "csim.tran.dae"
+    ],
+    "key_prerequisites": [
+      "numer.ode.backward_euler"
+    ],
+    "encompasses": [
+      "csim.mna.current_sources"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.tran.companion_l",
+    "label": "Inductor companion models",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tran.companion_c",
+      "em.circuit.rlc"
+    ],
+    "key_prerequisites": [
+      "csim.tran.companion_c"
+    ],
+    "encompasses": [
+      "csim.tran.companion_c"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.tran.be_step",
+    "label": "One backward-Euler transient step",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tran.companion_c",
+      "csim.mna.solve_small"
+    ],
+    "key_prerequisites": [
+      "csim.tran.companion_c"
+    ],
+    "encompasses": [
+      "csim.tran.companion_c",
+      "csim.mna.solve_small"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.tran.trap_step",
+    "label": "One trapezoidal transient step",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tran.companion_c",
+      "csim.tran.be_step"
+    ],
+    "key_prerequisites": [
+      "csim.tran.companion_c"
+    ],
+    "encompasses": [
+      "csim.tran.be_step",
+      "csim.tran.companion_c"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "csim.tran.trap_ringing",
+    "label": "Trapezoidal ringing",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tran.trap_step",
+      "numer.ode.stiffness",
+      "ode.stability"
+    ],
+    "key_prerequisites": [
+      "csim.tran.trap_step",
+      "numer.ode.stiffness"
+    ],
+    "encompasses": [
+      "csim.tran.trap_step"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.tran.gear_bdf",
+    "label": "BDF and Gear integration",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tran.companion_c",
+      "numer.ode.stiffness",
+      "csim.tran.be_step"
+    ],
+    "key_prerequisites": [
+      "csim.tran.companion_c"
+    ],
+    "encompasses": [
+      "csim.tran.companion_c",
+      "csim.tran.be_step"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.tran.lte_estimate",
+    "label": "Estimating local truncation error",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "numer.ode.lte",
+      "numa.interp.divided_differences",
+      "csim.tran.trap_step"
+    ],
+    "key_prerequisites": [
+      "numer.ode.lte"
+    ],
+    "encompasses": [
+      "numer.ode.lte"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.tran.timestep_control",
+    "label": "Timestep control",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tran.lte_estimate",
+      "numer.ode.lte"
+    ],
+    "key_prerequisites": [
+      "csim.tran.lte_estimate"
+    ],
+    "encompasses": [
+      "csim.tran.lte_estimate"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.tran.breakpoints",
+    "label": "Breakpoints and step restarts",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.tran",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.tran.timestep_control",
+      "csim.tran.trap_ringing"
+    ],
+    "key_prerequisites": [
+      "csim.tran.timestep_control"
+    ],
+    "encompasses": [
+      "csim.tran.timestep_control",
+      "csim.tran.trap_ringing"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "csim.ac.linearize_op",
+    "label": "Small-signal models from the operating point",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.ac",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.dc.mosfet_linearization",
+      "dev.mos.square_law"
+    ],
+    "key_prerequisites": [
+      "csim.dc.mosfet_linearization"
+    ],
+    "encompasses": [
+      "csim.dc.mosfet_linearization"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.ac.complex_mna",
+    "label": "The complex MNA system",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.ac",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.stamps",
+      "complex.ops.divide",
+      "csim.tran.companion_c"
+    ],
+    "key_prerequisites": [
+      "csim.mna.stamps",
+      "complex.ops.divide"
+    ],
+    "encompasses": [
+      "csim.mna.stamps"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.ac.small_signal",
+    "label": "AC small-signal analysis",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.ac",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.ac.linearize_op",
+      "csim.ac.complex_mna",
+      "em.signal.laplace_transfer"
+    ],
+    "key_prerequisites": [
+      "csim.ac.complex_mna",
+      "csim.ac.linearize_op"
+    ],
+    "encompasses": [
+      "csim.ac.linearize_op",
+      "csim.ac.complex_mna"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.ac.noise",
+    "label": "Noise analysis",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.ac",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.ac.small_signal",
+      "prob.rv.variance"
+    ],
+    "key_prerequisites": [
+      "csim.ac.small_signal"
+    ],
+    "encompasses": [
+      "csim.ac.small_signal"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.pss.shooting",
+    "label": "Shooting for periodic steady state",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.pss",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tran.be_step",
+      "numer.nonlinear.newton_systems"
+    ],
+    "key_prerequisites": [
+      "csim.tran.be_step",
+      "numer.nonlinear.newton_systems"
+    ],
+    "encompasses": [
+      "csim.tran.be_step"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.pss.harmonic_balance",
+    "label": "Harmonic balance",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.pss",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.ac.complex_mna",
+      "calc.series.fourier",
+      "numer.nonlinear.newton_systems"
+    ],
+    "key_prerequisites": [
+      "csim.ac.complex_mna",
+      "calc.series.fourier"
+    ],
+    "encompasses": [
+      "csim.ac.complex_mna"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.pss.rf_methods",
+    "label": "RF simulation beyond periodic steady state",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.pss",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.pss.harmonic_balance",
+      "csim.pss.shooting",
+      "csim.ac.noise"
+    ],
+    "key_prerequisites": [
+      "csim.pss.harmonic_balance"
+    ],
+    "encompasses": [
+      "csim.pss.harmonic_balance",
+      "csim.pss.shooting"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.var.sensitivity",
+    "label": "Direct sensitivity analysis",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.var",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mna.solve_small",
+      "calc.deriv.partial",
+      "stat.sens.sensitivity"
+    ],
+    "key_prerequisites": [
+      "csim.mna.solve_small",
+      "stat.sens.sensitivity"
+    ],
+    "encompasses": [
+      "csim.mna.solve_small"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.var.adjoint",
+    "label": "Adjoint sensitivity",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.var",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.var.sensitivity",
+      "csim.mna.stamps"
+    ],
+    "key_prerequisites": [
+      "csim.var.sensitivity"
+    ],
+    "encompasses": [
+      "csim.var.sensitivity",
+      "csim.mna.stamps"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "csim.var.mismatch",
+    "label": "Device mismatch and the Pelgrom model",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.var",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.var.process_variation",
+      "dev.mos.threshold",
+      "stat.dist.normal"
+    ],
+    "key_prerequisites": [
+      "stat.var.process_variation"
+    ],
+    "encompasses": [
+      "dev.mos.threshold"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.var.monte_carlo_corners",
+    "label": "Corners and Monte Carlo in circuit simulation",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.var",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "stat.mc.monte_carlo",
+      "stat.yield.yield_model",
+      "csim.var.mismatch"
+    ],
+    "key_prerequisites": [
+      "stat.mc.monte_carlo"
+    ],
+    "encompasses": [
+      "csim.var.mismatch"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.var.process_corners",
+    "label": "Process corners and what they bound",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.var",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.var.monte_carlo_corners",
+      "cmos.gate.inverter_vtc",
+      "stat.var.process_variation"
+    ],
+    "key_prerequisites": [
+      "csim.var.monte_carlo_corners"
+    ],
+    "encompasses": [
+      "csim.var.monte_carlo_corners"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "csim.mor.moments",
+    "label": "Moments of an RC network",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mor",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.rc_time_constant",
+      "calc.series.taylor",
+      "csim.mna.solve_small"
+    ],
+    "key_prerequisites": [
+      "em.circuit.rc_time_constant",
+      "calc.series.taylor"
+    ],
+    "encompasses": [
+      "em.circuit.rc_time_constant"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "csim.mor.awe",
+    "label": "Asymptotic waveform evaluation",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mor",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mor.moments",
+      "linalg.sys.cramer"
+    ],
+    "key_prerequisites": [
+      "csim.mor.moments"
+    ],
+    "encompasses": [
+      "csim.mor.moments"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "csim.mor.prima",
+    "label": "PRIMA and passive reduction",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mor",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.mor.awe",
+      "numer.mor.krylov_projection",
+      "linalg.orth.projection_matrix"
+    ],
+    "key_prerequisites": [
+      "numer.mor.krylov_projection",
+      "csim.mor.awe"
+    ],
+    "encompasses": [
+      "csim.mor.awe",
+      "numer.mor.krylov_projection"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.mor.macromodel",
+    "label": "Behavioral macromodels",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.mor",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.mor.prima",
+      "em.tline.s_parameters",
+      "csim.ac.small_signal"
+    ],
+    "key_prerequisites": [
+      "csim.mor.prima"
+    ],
+    "encompasses": [
+      "csim.mor.prima"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.fast.multirate",
+    "label": "Fast SPICE partitioning and multirate",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.fast",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.tran.timestep_control",
+      "csim.mna.structure",
+      "numer.sparse.fill_in"
+    ],
+    "key_prerequisites": [
+      "csim.tran.timestep_control"
+    ],
+    "encompasses": [
+      "csim.tran.timestep_control",
+      "csim.mna.structure"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.fast.table_models",
+    "label": "Table models and fast SPICE accuracy",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.fast",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.fast.multirate",
+      "csim.dc.mosfet_linearization",
+      "dev.model.bsim"
+    ],
+    "key_prerequisites": [
+      "csim.fast.multirate"
+    ],
+    "encompasses": [
+      "csim.fast.multirate"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.fast.mixed_signal",
+    "label": "Mixed-signal simulation and co-simulation",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.fast",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.fast.multirate",
+      "csim.tran.breakpoints"
+    ],
+    "key_prerequisites": [
+      "csim.fast.multirate"
+    ],
+    "encompasses": [
+      "csim.tran.breakpoints"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.frontier.convergence_agent",
+    "label": "An agent that debugs convergence",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.dc.convergence_aids",
+      "csim.tool.ngspice_xyce",
+      "agentic.harness.loop"
+    ],
+    "key_prerequisites": [
+      "csim.dc.convergence_aids"
+    ],
+    "encompasses": [
+      "csim.dc.convergence_aids"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.frontier.option_tiers",
+    "label": "Simulator changes by tier",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.tool.ngspice_xyce",
+      "csim.tran.timestep_control",
+      "agentic.tiers.change",
+      "agentic.engine.four_layer"
+    ],
+    "key_prerequisites": [
+      "agentic.tiers.change"
+    ],
+    "encompasses": [
+      "csim.tran.timestep_control"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "csim.frontier.fast_accurate_sizing",
+    "label": "Fast and accurate simulation in a sizing loop",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.fast.table_models",
+      "csim.var.monte_carlo_corners",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "csim.var.monte_carlo_corners"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "csim.frontier.surrogate_check",
+    "label": "Verifying a surrogate against SPICE",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "csim.var.monte_carlo_corners",
+      "agentic.verify.golden_differential",
+      "ml.validation"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "csim.var.monte_carlo_corners"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "csim.frontier.device_seam",
+    "label": "The device-model seam",
+    "domain": "circuit_simulation",
+    "subdomain": "circuit_simulation.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "csim.dc.mosfet_linearization",
+      "csim.tool.model_cards",
+      "agentic.seam.extension_point",
+      "agentic.verify.golden_differential"
+    ],
+    "key_prerequisites": [
+      "agentic.seam.extension_point"
+    ],
+    "encompasses": [
+      "csim.dc.mosfet_linearization"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  }
+]

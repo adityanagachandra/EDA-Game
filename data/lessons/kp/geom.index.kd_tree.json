@@ -1,0 +1,5 @@
+[
+  {"label": "Splitting at the median", "section": "Splitting at the median", "subgoals": ["Sort the points by the splitting coordinate", "Take the middle point as the split", "Assign smaller coordinates left and larger right"]},
+  {"label": "Alternating axes", "section": "Alternating axes", "subgoals": ["Take the points on one side of the root split", "Sort them by y and take the median", "Record that split as the child's splitting line"]},
+  {"label": "Pruning a nearest-neighbour search", "section": "Pruning a nearest-neighbour search", "subgoals": ["Find the candidate distance from the query's own cell", "Compute each other cell's L1 distance from the query", "Search only the cells closer than the candidate"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The resized gate gets faster", "section": "The resized gate gets faster", "subgoals": ["Divide the drive resistance by the size factor", "Multiply by the load and add the intrinsic delay", "Compare with the original delay to get the gain"]},
+  {"label": "The driver gets slower", "section": "The driver gets slower", "subgoals": ["Compute the extra input capacitance of the resized gate", "Multiply it by the driver's resistance", "Add the result to the driver's delay"]},
+  {"label": "The net change in slack", "section": "The net change in slack", "subgoals": ["Add the resized gate's delay change and the driver's delay change", "Subtract the total from the old slack", "Check hold, area and placement for the resized cell"]}
+]

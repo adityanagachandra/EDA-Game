@@ -1,0 +1,5 @@
+[
+  {"label": "Minimum period of one path", "section": "Minimum period of one path", "subgoals": ["Add clock-to-q, logic delay and setup time", "Invert the period", "Convert picoseconds to megahertz with ten to the six over T"]},
+  {"label": "The worst path sets the clock", "section": "The worst path sets the clock", "subgoals": ["Compute the period required by each path", "Take the maximum over all paths", "Convert the critical period to a frequency"]},
+  {"label": "Skew and the effective period", "section": "Skew and the effective period", "subgoals": ["Subtract positive skew from the path's period requirement", "Recompute the maximum frequency", "Charge the borrowed time to the downstream stage and to hold margin"]}
+]

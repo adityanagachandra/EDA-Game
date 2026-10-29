@@ -69,11 +69,11 @@ means a new thin concept cannot be added quietly.
 
 ## 4. Where the corpus is thin
 
-### 4.1 The course catalog reaches 1250 of the 1250 concepts
+### 4.1 The course catalog reaches 2857 of the 2857 concepts
 
 Courses carry target sets, and a target expands to its transitive prerequisite closure in
 `internal/planning/planner.go:64` (`collectChain`). Across the 28 courses those closures reach
-1250 of the 1250 concepts: 0 of them have a node, a generator, a lesson and three KP shards and
+2857 of the 2857 concepts: 0 of them have a node, a generator, a lesson and three KP shards and
 still sit outside every named course path. The wiring batch of 2026-10-19 moved the 149 that used
 to sit there into the courses that teach their subject, and the table stays as the measurement on
 the number, because a concept that no course targets is unreachable whatever the diagnostic
@@ -401,7 +401,7 @@ because the change this section prepares for is the one that would have tripped 
 
 ### 5.5 The concept target, and where it goes
 
-The catalog holds 1250 concepts. The remaining per-domain targets add up to 0, and this is the table
+The catalog holds 2857 concepts. The remaining per-domain targets add up to 0, and this is the table
 that says where: the thousand-concept milestone is complete, and graph theory has opened the 1,250
 tranche. `Now` is read from the corpus; `Target` is the decision. The rows keep the order step 6 of
 section 6 used, largest deficit first.
@@ -429,6 +429,39 @@ section 6 used, largest deficit first.
 | calculus | bridge | 205 | 205 | +0 |
 | algebra | school | 124 | 124 | +0 |
 | trigonometry | school | 68 | 68 | +0 |
+| boolean_reasoning | eda | 43 | 43 | +0 |
+| circuits_and_electromagnetics | eda | 53 | 53 | +0 |
+| computational_geometry | eda | 41 | 41 | +0 |
+| eda_graph_algorithms | eda | 52 | 52 | +0 |
+| eda_landscape | eda | 50 | 50 | +0 |
+| numerical_methods_for_eda | eda | 52 | 52 | +0 |
+| optimization_for_eda | eda | 55 | 55 | +0 |
+| variability_statistics | eda | 41 | 41 | +0 |
+| digital_logic_design | eda | 54 | 54 | +0 |
+| semiconductor_devices | eda | 53 | 53 | +0 |
+| cmos_circuits_and_cells | eda | 49 | 49 | +0 |
+| fabrication_and_dtco | eda | 49 | 49 | +0 |
+| hdl_and_compilers | eda | 50 | 50 | +0 |
+| circuit_simulation | eda | 54 | 54 | +0 |
+| formal_verification | eda | 58 | 58 | +0 |
+| functional_verification | eda | 45 | 45 | +0 |
+| logic_synthesis | eda | 58 | 58 | +0 |
+| high_level_synthesis | eda | 42 | 42 | +0 |
+| technology_mapping | eda | 38 | 38 | +0 |
+| test_and_dft | eda | 53 | 53 | +0 |
+| timing_analysis | eda | 56 | 56 | +0 |
+| analog_mixed_signal_rf | eda | 51 | 51 | +0 |
+| floorplanning_and_placement | eda | 55 | 55 | +0 |
+| fpga_eda | eda | 37 | 37 | +0 |
+| clock_and_power | eda | 49 | 49 | +0 |
+| routing | eda | 51 | 51 | +0 |
+| extraction_and_signoff | eda | 41 | 41 | +0 |
+| physical_verification_dfm | eda | 43 | 43 | +0 |
+| pcb_design | eda | 40 | 40 | +0 |
+| packaging_and_integration | eda | 47 | 47 | +0 |
+| eda_software_infrastructure | eda | 56 | 56 | +0 |
+| ml_for_eda | eda | 42 | 42 | +0 |
+| agent_first_eda | eda | 49 | 49 | +0 |
 
 **The `Now` column had drifted, and this is the correction.** The table was drawn when the corpus held
 703 concepts, and the batches since have grown it to 819. `scripts/sweep_counts.py` keeps the sentence

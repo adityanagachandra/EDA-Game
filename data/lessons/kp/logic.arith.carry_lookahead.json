@@ -1,0 +1,5 @@
+[
+  {"label": "Generate and propagate per bit", "section": "Generate and propagate per bit", "subgoals": ["Compute the generate vector as a AND b", "Compute the propagate vector as a XOR b", "Classify each column as generate, propagate or kill"]},
+  {"label": "Unrolling the carry recurrence", "section": "Unrolling the carry recurrence", "subgoals": ["Substitute the carry recurrence into itself", "Write each carry as an OR of generate terms gated by downstream propagates", "Evaluate the carries from the given g, p and carry-in"]},
+  {"label": "Blocks and their delay", "section": "Blocks and their delay", "subgoals": ["Form group generate and group propagate for each block", "Chain block carry-outs as G plus P times carry-in", "Add the delays of g and p, each block, and the final XOR"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The component hierarchy", "section": "The component hierarchy", "subgoals": ["Place a test above an environment of agents and checkers", "Split each active agent into sequencer, driver and monitor", "Connect monitors to the scoreboard through analysis ports"]},
+  {"label": "Active and passive agents and reuse", "section": "Active and passive agents and reuse", "subgoals": ["Configure an agent active when the testbench drives the interface", "Configure it passive when real RTL drives the interface", "Reuse the agent's monitor, checks and coverage at every level"]},
+  {"label": "Components versus objects", "section": "Components versus objects", "subgoals": ["Classify drivers, monitors and agents as components", "Classify transactions, sequences and configurations as objects", "Create every component during the build phase"]}
+]

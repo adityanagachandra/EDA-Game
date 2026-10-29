@@ -1,0 +1,5 @@
+[
+  {"label": "Comparing the two cofactors", "section": "Comparing the two cofactors", "subgoals": ["Compute both cofactors in the variable", "Test whether the negative cofactor implies the positive one", "Test the reverse implication"]},
+  {"label": "Classifying every variable", "section": "Classifying every variable", "subgoals": ["Run the cofactor comparison for each variable", "Label each variable positive unate, negative unate or binate", "Count the binate variables"]},
+  {"label": "Syntactic versus semantic unateness", "section": "Syntactic versus semantic unateness", "subgoals": ["Note that a cover with one polarity per variable is unate", "Note that a binate-looking cover may still be a unate function", "Decide from the cofactors, not from the expression"]}
+]

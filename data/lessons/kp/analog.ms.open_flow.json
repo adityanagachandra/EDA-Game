@@ -1,0 +1,5 @@
+[
+  {"label": "The tools and what each does", "section": "The tools and what each does", "subgoals": ["Capture the schematic and netlist with xschem", "Simulate with ngspice using the PDK models", "Lay out, check and extract with Magic, and compare with Netgen"]},
+  {"label": "Signoff steps in order", "section": "Signoff steps in order", "subgoals": ["Clean DRC before extraction", "Match the extracted and schematic netlists as graphs in Netgen", "Simulate the extracted netlist and read the reports as evidence"]},
+  {"label": "The flow as a testbed for new tools", "section": "The flow as a testbed for new tools", "subgoals": ["Script each tool in batch mode", "Judge a new tool by the same signoff steps as a manual design", "Trace every result through the PDK's models and rules"]}
+]

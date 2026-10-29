@@ -1,0 +1,5 @@
+[
+  {"label": "SDC is a Tcl dialect", "section": "SDC is a Tcl dialect", "subgoals": ["Evaluate bracketed commands before the enclosing command", "Substitute variables and expand loops as Tcl does", "Treat braced words as literal lists"]},
+  {"label": "Object queries return collections", "section": "Object queries return collections", "subgoals": ["Resolve the name pattern against the database", "Return object handles rather than name strings", "Warn when a query matches no objects"]},
+  {"label": "Interpreting SDC inside a tool", "section": "Interpreting SDC inside a tool", "subgoals": ["Fix the time unit before interpreting numbers", "Choose between a full and a restricted Tcl interpreter", "Write constraints back with names that resolve in the new netlist"]}
+]

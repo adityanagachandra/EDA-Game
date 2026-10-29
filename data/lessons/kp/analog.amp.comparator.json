@@ -1,0 +1,5 @@
+[
+  {"label": "Regeneration by positive feedback", "section": "Regeneration by positive feedback", "subgoals": ["Model the latch as gm charging C with positive feedback", "Write the exponential growth with tau equal to C over gm", "Compute the regeneration time as tau times the log of the gain needed"]},
+  {"label": "Metastability", "section": "Metastability", "subgoals": ["Invert the regeneration formula for the smallest resolvable input", "Relate the metastability probability to e to the minus T over tau", "Budget time constants per decision against the error rate"]},
+  {"label": "Offset and the preamplifier", "section": "Offset and the preamplifier", "subgoals": ["Refer the latch offset to the input by dividing by preamp gain", "Add independent offsets in variance", "Weigh preamp gain against power, delay and calibration"]}
+]

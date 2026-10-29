@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Cyclic partitioning",
+  "section": "Cyclic partitioning",
+  "subgoals": [
+   "Take the index modulo the factor for the bank",
+   "Take the integer quotient for the offset inside the bank",
+   "Prefer power-of-two factors so the address split is bit selection"
+  ]
+ },
+ {
+  "label": "Block partitioning",
+  "section": "Block partitioning",
+  "subgoals": [
+   "Divide the array length by the number of banks and round up for the bank size",
+   "Divide the index by the bank size for the bank",
+   "Match block partitioning to parallel accesses that are far apart"
+  ]
+ },
+ {
+  "label": "Choosing the factor",
+  "section": "Choosing the factor",
+  "subgoals": [
+   "Count the parallel reads per cycle the schedule needs",
+   "Divide by the ports per bank and round up",
+   "Partition along the dimension the unrolled index walks"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The CPI cost of branches", "section": "The CPI cost of branches", "subgoals": ["Multiply branch frequency by misprediction rate", "Multiply by the misprediction penalty", "Add the result to the base CPI"]},
+  {"label": "The two-bit saturating counter", "section": "The two-bit saturating counter", "subgoals": ["Predict taken in states two and three", "Increment on taken and decrement on not taken with saturation", "Count the outcomes that differ from the prediction"]},
+  {"label": "One bit versus two bits on loops", "section": "One bit versus two bits on loops", "subgoals": ["Predict the last outcome for a one-bit predictor", "Trace both predictors over the loop's outcome pattern", "Compare the misprediction counts"]}
+]

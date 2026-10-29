@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Backward Euler inductor",
+    "section": "Backward Euler inductor",
+    "subgoals": [
+      "Discretize the inductor equation with a backward difference",
+      "Read the conductance as h over L",
+      "Carry the previous current as the history source"
+    ]
+  },
+  {
+    "label": "Trapezoidal inductor conductance",
+    "section": "Trapezoidal inductor conductance",
+    "subgoals": [
+      "Average the inductor voltage over the step",
+      "Isolate the coefficient of the new voltage",
+      "Rewrite it as the diagonal of the inductor branch row"
+    ]
+  },
+  {
+    "label": "The trapezoidal history current",
+    "section": "The trapezoidal history current",
+    "subgoals": [
+      "Multiply the previous voltage by h over two L",
+      "Add the previous current",
+      "Stamp the sum as the inductor's history source"
+    ]
+  }
+]

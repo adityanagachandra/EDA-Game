@@ -1,0 +1,5 @@
+[
+  {"label": "Marking from the outputs", "section": "Marking from the outputs", "subgoals": ["Start the marking at the outputs and kept objects", "Walk backward from each marked value to its operands", "Sweep every definition that was not marked"]},
+  {"label": "Transitive dead code", "section": "Transitive dead code", "subgoals": ["Repeat use-count deletion until no definition loses its last use", "Get the same result in one pass by marking from outputs", "Run DCE after folding to sweep the disconnected logic"]},
+  {"label": "Dead cycles in hardware", "section": "Dead cycles in hardware", "subgoals": ["Recognize registers that feed only each other as dead", "Prefer mark-and-sweep to use counts on cyclic netlists", "Declare probes, properties and kept objects as roots"]}
+]

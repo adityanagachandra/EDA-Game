@@ -1,0 +1,5 @@
+[
+  {"label": "Screening plus verification", "section": "Screening plus verification", "subgoals": ["Multiply candidates by the accurate time for the baseline", "Add surrogate time for all candidates and accurate time for the verified fraction", "Divide the baseline by the new total"]},
+  {"label": "Amortizing the build cost", "section": "Amortizing the build cost", "subgoals": ["Convert the build cost to the loop's time unit", "Divide it by the number of campaigns sharing the model", "Add the share to the loop time and recompute the speedup"]},
+  {"label": "The whole-flow bound", "section": "The whole-flow bound", "subgoals": ["Measure the replaced step's share of flow runtime", "Compute one over the untouched share plus the accelerated share", "Report the bound as one over the untouched share"]}
+]

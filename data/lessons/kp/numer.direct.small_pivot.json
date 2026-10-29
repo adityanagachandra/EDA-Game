@@ -1,0 +1,29 @@
+[
+ {
+  "label": "A tiny pivot creates a huge multiplier",
+  "section": "A tiny pivot creates a huge multiplier",
+  "subgoals": [
+   "Divide the entry below by the tiny pivot",
+   "Form the updated entry and compare its size with the originals",
+   "Note which original digits rounding has discarded"
+  ]
+ },
+ {
+  "label": "Growth factor of an elimination",
+  "section": "Growth factor of an elimination",
+  "subgoals": [
+   "Find the largest entry magnitude in U",
+   "Divide by the largest entry magnitude in A",
+   "Multiply by unit roundoff to estimate the backward error"
+  ]
+ },
+ {
+  "label": "Swapping rows restores stability",
+  "section": "Swapping rows restores stability",
+  "subgoals": [
+   "Exchange rows so the largest column entry becomes the pivot",
+   "Recompute the multiplier and the updated entry",
+   "Confirm every multiplier is at most one in magnitude"
+  ]
+ }
+]

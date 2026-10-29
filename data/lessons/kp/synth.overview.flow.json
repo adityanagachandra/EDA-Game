@@ -1,0 +1,5 @@
+[
+  {"label": "From RTL to a Boolean network", "section": "From RTL to a Boolean network", "subgoals": ["Resolve parameters and hierarchy into a word-level design", "Infer flip-flops from clock-edge assignments and latches from incomplete ones", "Lower word-level operators into a single-bit Boolean network"]},
+  {"label": "Technology-independent optimization, then mapping", "section": "Technology-independent optimization, then mapping", "subgoals": ["Optimize the network with a library-free cost such as literals or AIG nodes", "Cover the optimized network with library cells or LUTs", "Recognize that the pre-mapping cost is only a proxy for mapped QoR"]},
+  {"label": "Why every stage is heuristic", "section": "Why every stage is heuristic", "subgoals": ["Name the NP-hard core: two-level minimization contains set covering", "Explain why transformation order changes the result", "Separate heuristic quality from the hard requirement of equivalence"]}
+]

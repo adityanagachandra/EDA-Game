@@ -1,0 +1,5 @@
+[
+  {"label": "Instance terminals and block terminals", "section": "Instance terminals and block terminals", "subgoals": ["Multiply each master's instance count by its signal pins", "Sum the products to get the ITerm count", "Count block ports separately as BTerms"]},
+  {"label": "Nets as hyperedges of terminals", "section": "Nets as hyperedges of terminals", "subgoals": ["Add connected ITerms and BTerms to get net connections", "Divide the connections by the number of nets", "Separate the high-fanout nets the average hides"]},
+  {"label": "Expanding nets into graphs", "section": "Expanding nets into graphs", "subgoals": ["Compute p(p-1)/2 clique edges for each p-terminal net", "Sum the edges over all nets", "Compare with the p entries of the hyperedge or star form"]}
+]

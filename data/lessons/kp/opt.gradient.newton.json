@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The Newton step in one dimension",
+    "section": "The Newton step in one dimension",
+    "subgoals": [
+      "Compute the first and second derivatives at the current point",
+      "Divide the first by the second for the Newton step",
+      "Subtract the step from the current point"
+    ]
+  },
+  {
+    "label": "One step on a quadratic",
+    "section": "One step on a quadratic",
+    "subgoals": [
+      "Write the gradient and the Hessian",
+      "Solve the Newton system for the step",
+      "Recognize that one step reaches the minimizer of a quadratic"
+    ]
+  },
+  {
+    "label": "Negative curvature and safeguards",
+    "section": "Negative curvature and safeguards",
+    "subgoals": [
+      "Check the sign of the curvature before trusting the step",
+      "Recognize a step heading toward a maximum or saddle",
+      "Apply a safeguard such as Hessian modification or a trust region"
+    ]
+  }
+]

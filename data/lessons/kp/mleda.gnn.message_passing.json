@@ -1,0 +1,5 @@
+[
+  {"label": "Sum aggregation", "section": "Sum aggregation", "subgoals": ["List the neighbors of the target node", "Add their features to get the aggregate", "Apply the weights and the activation to self and aggregate"]},
+  {"label": "Mean and max aggregation", "section": "Mean and max aggregation", "subgoals": ["Divide the neighbor sum by the degree for the mean", "Take the largest neighbor feature for the max", "Clip a negative pre-activation to zero under ReLU"]},
+  {"label": "Degree-normalized GCN layers", "section": "Degree-normalized GCN layers", "subgoals": ["Add one to every degree for the self-loops", "Divide each feature by the square root of the two degrees", "Sum the normalized terms including the node itself"]}
+]

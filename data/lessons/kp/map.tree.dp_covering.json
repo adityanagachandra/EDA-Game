@@ -1,0 +1,5 @@
+[
+  {"label": "The recurrence", "section": "The recurrence", "subgoals": ["Set the cost of each primary input to zero", "Add a match's cell area to the optimal costs of its inputs", "Take the minimum over all matches and bindings at the node"]},
+  {"label": "Running it bottom-up", "section": "Running it bottom-up", "subgoals": ["Visit the subject nodes in post-order", "Evaluate every match using the costs already computed below", "Rebuild the cover top-down from the root's recorded match"]},
+  {"label": "Why greedy fails and what is exact", "section": "Why greedy fails and what is exact", "subgoals": ["Compare a greedy top-down cover with the DP optimum", "State the scope of optimality: one tree, one subject graph, additive costs", "Bound the run time as linear for a fixed library"]}
+]

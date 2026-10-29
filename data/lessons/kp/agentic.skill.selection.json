@@ -1,0 +1,5 @@
+[
+  {"label": "Matching design traits to manifests", "section": "Matching design traits to manifests", "subgoals": ["Summarize the design in the traits manifests use", "Filter out skills whose hard requirements fail", "Match the remaining manifests to the step's objective"]},
+  {"label": "Scoring the candidates", "section": "Scoring the candidates", "subgoals": ["Weight each eligible skill's strengths by the objective weights", "Sum the weighted strengths into a score", "Choose the highest-scoring eligible skill"]},
+  {"label": "When selection should trigger customization", "section": "When selection should trigger customization", "subgoals": ["Recognize when no eligible skill scores well", "Read repeated metric failures in the fast loop as a signal", "Replace advertised strengths with measured ones"]}
+]

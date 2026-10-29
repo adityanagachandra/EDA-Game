@@ -1,0 +1,5 @@
+[
+  {"label": "Power of a gated subtree", "section": "Power of a gated subtree", "subgoals": ["Find the fraction of cycles the enable is true", "Multiply it into the clock power of the gated subtree", "Compare with the ungated power"]},
+  {"label": "Net savings with gate overhead", "section": "Net savings with gate overhead", "subgoals": ["Compute the average capacitance removed by gating", "Subtract the always-toggling gate capacitance", "Convert the difference to power"]},
+  {"label": "The break-even bank width", "section": "The break-even bank width", "subgoals": ["Write the removed load as a function of bank width", "Set it equal to the gate overhead", "Round up to the smallest profitable bank"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The Yee grid and cell size", "section": "The Yee grid and cell size", "subgoals": ["Compute the shortest wavelength in the densest dielectric", "Divide it by the required number of cells per wavelength", "Shrink the cell further if geometry demands it"]},
+  {"label": "The Courant stability limit", "section": "The Courant stability limit", "subgoals": ["Identify the smallest cell and the fastest wave speed", "Divide the cell size by c times the square root of the dimension", "Use that bound as the largest stable time step"]},
+  {"label": "Time steps and run cost", "section": "Time steps and run cost", "subgoals": ["Divide the simulated duration by the time step", "Round up to an integer number of steps", "Scale the work by cells times steps when refining"]}
+]

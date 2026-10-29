@@ -1,0 +1,5 @@
+[
+  {"label": "Arrivals change in the forward cone", "section": "Arrivals change in the forward cone", "subgoals": ["Identify the head of the changed arc", "Collect every node reachable from it", "Count those nodes as the ones whose arrivals must be re-evaluated"]},
+  {"label": "Required times change in the backward cone", "section": "Required times change in the backward cone", "subgoals": ["Identify the tail of the changed arc", "Collect every node that reaches it", "Count those nodes as the ones whose required times must be re-evaluated"]},
+  {"label": "Slack changes in the union, lazily", "section": "Slack changes in the union, lazily", "subgoals": ["Unite the forward cone of the head with the backward cone of the tail", "Mark the affected values invalid instead of recomputing them", "Recompute on query only the nodes the query needs, in level order"]}
+]

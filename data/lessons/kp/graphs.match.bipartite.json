@@ -1,0 +1,5 @@
+[
+  {"label": "Matchings and augmenting paths", "section": "Matchings and augmenting paths", "subgoals": ["Model allowed pin-slot pairs as bipartite edges", "Grow the matching along alternating augmenting paths", "Reduce to unit-capacity max flow when convenient"]},
+  {"label": "Greedy versus maximum", "section": "Greedy versus maximum", "subgoals": ["Run a greedy pass and record the matched size", "Find augmenting paths that shift earlier pins to free slots", "Use Hopcroft-Karp for O(E root V) maximum matching"]},
+  {"label": "Covers and Hall's condition", "section": "Covers and Hall's condition", "subgoals": ["Equate maximum matching size with minimum vertex cover size", "Use a cover as a certificate that no larger matching exists", "Report a subset of pins with too few neighbours as the obstruction"]}
+]

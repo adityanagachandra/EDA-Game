@@ -1,0 +1,5 @@
+[
+  {"label": "Cycle time of a pipeline", "section": "Cycle time of a pipeline", "subgoals": ["Find the slowest stage delay", "Add the register overhead", "Compare with the unpipelined delay plus one register overhead"]},
+  {"label": "Latency and throughput", "section": "Latency and throughput", "subgoals": ["Charge k cycles for the first result", "Charge one cycle for each further item", "Multiply the cycle count by the clock period"]},
+  {"label": "Speedup and its limits", "section": "Speedup and its limits", "subgoals": ["Divide the unpipelined time by the pipelined time", "Attribute the gap to imbalance and register overhead", "Bound the speedup as the period approaches the register overhead"]}
+]

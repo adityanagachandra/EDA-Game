@@ -1,0 +1,5 @@
+[
+  {"label": "The partial antenna ratio", "section": "The partial antenna ratio", "subgoals": ["Compute the gate-connected metal area on the layer", "Compute the total gate area the metal connects to", "Divide metal area by gate area"]},
+  {"label": "The longest legal wire", "section": "The longest legal wire", "subgoals": ["Multiply the maximum ratio by the gate area", "Divide by the wire width to get the longest legal length", "Insert a jumper or a diode when the route is longer"]},
+  {"label": "Cumulative ratios", "section": "Cumulative ratios", "subgoals": ["Compute each layer's partial ratio", "Sum the partial ratios up to the current layer", "Compare the cumulative ratio with its limit"]}
+]

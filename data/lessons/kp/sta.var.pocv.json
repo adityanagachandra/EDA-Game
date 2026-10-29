@@ -1,0 +1,5 @@
+[
+  {"label": "Path sigma from independent arcs", "section": "Path sigma from independent arcs", "subgoals": ["Look up each arc's sigma at its slew and load", "Square and sum the arc sigmas", "Take the square root as the path sigma"]},
+  {"label": "The n-sigma arrival", "section": "The n-sigma arrival", "subgoals": ["Sum the arc means", "Multiply the path sigma by the number of sigma", "Add the two to get the late arrival"]},
+  {"label": "Why per-arc margins are pessimistic", "section": "Why per-arc margins are pessimistic", "subgoals": ["Compute the per-arc stacked margin as n times the sum of sigmas", "Compute the POCV margin as n times the root-sum-square", "Subtract to find the pessimism that per-arc margins add"]}
+]

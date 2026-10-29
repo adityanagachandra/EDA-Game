@@ -1,0 +1,29 @@
+[
+  {
+    "label": "LEF: abstracts of cells and layers",
+    "section": "LEF: abstracts of cells and layers",
+    "subgoals": [
+      "List the layer, via and rule contents of a technology LEF",
+      "Name a cell LEF's size, site, pins and obstructions",
+      "Explain what LEF omits and why a router does not need it"
+    ]
+  },
+  {
+    "label": "DEF: a design in database units",
+    "section": "DEF: a design in database units",
+    "subgoals": [
+      "Divide DEF coordinates by the database units per micron",
+      "Compute die area from the DIEAREA corners",
+      "Read a component's master, location and orientation"
+    ]
+  },
+  {
+    "label": "Rows, sites and capacity",
+    "section": "Rows, sites and capacity",
+    "subgoals": [
+      "Divide core height by site height to count rows",
+      "Divide row width by site width and round down to count sites",
+      "Explain why LEF and DEF unit declarations must agree"
+    ]
+  }
+]

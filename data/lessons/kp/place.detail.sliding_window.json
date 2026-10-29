@@ -1,0 +1,5 @@
+[
+  {"label": "Packing a window in a new order", "section": "Packing a window in a new order", "subgoals": ["Pack the window's cells left to right from the same start", "Place pins at their offsets within each cell", "Limit the evaluation to nets touching the window"]},
+  {"label": "Trying every order", "section": "Trying every order", "subgoals": ["Enumerate all k factorial orders of the window", "Sum the x spans of the touched nets for each order", "Keep the cheapest order if it beats the current one"]},
+  {"label": "Window size and sweeping", "section": "Window size and sweeping", "subgoals": ["Slide the window with overlap along every row", "Keep the window small because the order count grows as k factorial", "Batch non-interacting windows in parallel"]}
+]

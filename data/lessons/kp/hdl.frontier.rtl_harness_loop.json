@@ -1,0 +1,5 @@
+[
+  {"label": "The loop and its order of checks", "section": "The loop and its order of checks", "subgoals": ["Order the checks from lint and compile to simulation to synthesis", "Return each failure to the model and iterate", "Cut build latency before adding more checks"]},
+  {"label": "What feedback to return", "section": "What feedback to return", "subgoals": ["Return structured diagnostics with location and error class", "Return the first failing cycle with expected and actual values", "Gate acceptance on synthesis and selected lint findings"]},
+  {"label": "Failure modes and acceptance", "section": "Failure modes and acceptance", "subgoals": ["Run simulations under time and memory limits", "Detect oscillating edits and escalate them as one problem", "Score agents on hidden tests and synthesizability, not compile rate alone"]}
+]

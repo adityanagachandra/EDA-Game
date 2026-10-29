@@ -1,0 +1,5 @@
+[
+  {"label": "Average power density", "section": "Average power density", "subgoals": ["Convert the die area to square centimetres", "Divide power by area", "Separate the average from the local peak"]},
+  {"label": "Hot-spot density ratio", "section": "Hot-spot density ratio", "subgoals": ["Divide the block power by the block area", "Convert to the same unit as the average", "Divide the block density by the average"]},
+  {"label": "Temperature above the average", "section": "Temperature above the average", "subgoals": ["Multiply each density by the area-specific resistance", "Subtract the background rise from the hot-spot rise", "Explain why lateral spreading lowers the real peak"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The 2D gcell graph", "section": "The 2D gcell graph", "subgoals": ["Count vertices as columns times rows", "Count horizontal and vertical edges separately", "Store capacity, demand and history on each edge"]},
+  {"label": "The 3D graph with layers", "section": "The 3D graph with layers", "subgoals": ["Give each layer only the edges of its preferred direction", "Add one via edge per gcell between adjacent layers", "Compare the 3D size with the 2D projection"]},
+  {"label": "Blockages on the graph", "section": "Blockages on the graph", "subgoals": ["Count edges with both endpoints inside the blocked region", "Count edges crossing the region's boundary", "Lower the capacity of every touched edge"]}
+]

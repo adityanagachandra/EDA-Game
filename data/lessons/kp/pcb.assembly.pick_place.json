@@ -1,0 +1,5 @@
+[
+  {"label": "Machine time from CPH", "section": "Machine time from CPH", "subgoals": ["Multiply placements per board by the build quantity", "Divide by the sustained CPH for the job", "Add setup time that scales with BOM lines"]},
+  {"label": "Balancing a placement line", "section": "Balancing a placement line", "subgoals": ["Compute each machine's time per board", "Take the slowest machine as the cycle time", "Move placements between machines to balance the line"]},
+  {"label": "Centroid data and rotations", "section": "Centroid data and rotations", "subgoals": ["Reference positions to the footprint's center origin", "Apply the package rotation offset modulo 360", "Handle mirroring for bottom-side parts"]}
+]

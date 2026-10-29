@@ -1,0 +1,5 @@
+[
+  {"label": "Metastability and the two-flop synchronizer", "section": "Metastability and the two-flop synchronizer", "subgoals": ["Explain why a flop sampled during its setup-hold window can go metastable", "Insert two destination-clocked flops in series", "Accept one cycle of uncertainty in synchronizer latency"]},
+  {"label": "Structural CDC checks", "section": "Structural CDC checks", "subgoals": ["Require every crossing to start from a source-domain flop", "Flag separately synchronized bits that reconverge", "Stretch or handshake pulses that cross from fast to slow domains"]},
+  {"label": "Why simulation misses CDC bugs", "section": "Why simulation misses CDC bugs", "subgoals": ["Explain why zero-delay simulation never shows metastability", "Inject a random extra or missing cycle at synchronizer outputs", "Assert the handshake protocol that keeps a crossing safe"]}
+]

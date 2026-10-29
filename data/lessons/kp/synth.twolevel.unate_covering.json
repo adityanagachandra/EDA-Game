@@ -1,0 +1,5 @@
+[
+  {"label": "The covering problem as an integer program", "section": "The covering problem as an integer program", "subgoals": ["Introduce one binary variable per row with its cost", "Write one at-least-one constraint per column", "Count violated constraints to test a candidate selection"]},
+  {"label": "Solving by branch and bound", "section": "Solving by branch and bound", "subgoals": ["Reduce the table before branching", "Branch on the rows that cover a chosen column", "Prune with a lower bound from disjoint columns or the LP relaxation"]},
+  {"label": "Costs and weighted covers", "section": "Costs and weighted covers", "subgoals": ["Assign each row its literal count or a unit cost", "Minimize the weighted sum instead of the row count", "Restrict row dominance to rows that cost no more"]}
+]

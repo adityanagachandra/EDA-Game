@@ -1,0 +1,5 @@
+[
+  {"label": "Series termination at the source", "section": "Series termination at the source", "subgoals": ["Subtract the driver resistance from Z0", "Place the resulting resistor in series at the driver", "Confirm the receiver is at the far end of a point-to-point net"]},
+  {"label": "Parallel termination at the load", "section": "Parallel termination at the load", "subgoals": ["Choose a terminator equal to Z0 at the receiver", "Compute its DC power as the line voltage squared over Z0", "Check the driver swing against the divider into Z0"]},
+  {"label": "Thevenin termination", "section": "Thevenin termination", "subgoals": ["Set the parallel combination of the two resistors equal to Z0", "Set the open-circuit divider voltage to the target", "Solve for the pull-up and pull-down resistances"]}
+]

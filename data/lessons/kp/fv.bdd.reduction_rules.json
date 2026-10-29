@@ -1,0 +1,5 @@
+[
+  {"label": "From decision tree to diagram", "section": "From decision tree to diagram", "subgoals": ["Fix the variable order and assign one variable per level", "Count 2^i nodes on level i", "Sum the levels to get 2^n - 1 decision nodes"]},
+  {"label": "Merging isomorphic subgraphs", "section": "Merging isomorphic subgraphs", "subgoals": ["List the cofactors of f by the first i variables of the order", "Keep one node per distinct cofactor on each level", "Sum the distinct cofactors over the levels"]},
+  {"label": "Removing redundant tests", "section": "Removing redundant tests", "subgoals": ["Find nodes whose low and high children are the same", "Delete them and redirect their parents to the child", "Subtract the ROBDD count from the quasi-reduced count"]}
+]

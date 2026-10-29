@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Latency and skew",
+    "section": "Latency and skew",
+    "subgoals": [
+      "Define latency as source-to-sink clock delay",
+      "Subtract the minimum latency from the maximum to get skew",
+      "Name slew and power as further CTS objectives"
+    ]
+  },
+  {
+    "label": "Building the buffered tree",
+    "section": "Building the buffered tree",
+    "subgoals": [
+      "Divide the sinks by the fanout limit and round up",
+      "Repeat the division level by level to a single root",
+      "Sum the buffers across levels"
+    ]
+  },
+  {
+    "label": "Skew and timing",
+    "section": "Skew and timing",
+    "subgoals": [
+      "Add capture-minus-launch skew to setup slack",
+      "Subtract the same skew from hold slack",
+      "Explain why hold fixing follows CTS"
+    ]
+  }
+]

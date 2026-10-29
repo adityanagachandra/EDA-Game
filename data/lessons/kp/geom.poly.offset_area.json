@@ -1,0 +1,5 @@
+[
+  {"label": "The A plus P d plus 4 d squared law", "section": "The A plus P d plus 4 d squared law", "subgoals": ["Measure the area and perimeter of the polygon", "Add or subtract the perimeter times d", "Add 4 d squared for the corner balance"]},
+  {"label": "Applying it to a vertex list", "section": "Applying it to a vertex list", "subgoals": ["Compute the area by the shoelace formula", "Sum the edge lengths to get the perimeter", "Confirm no pocket is narrower than 2d before applying the law"]},
+  {"label": "Round corners and the Euclidean offset", "section": "Round corners and the Euclidean offset", "subgoals": ["Count the convex and reflex corners", "Replace each convex corner square by a quarter disc", "Assemble the area with the reflex corrections"]}
+]

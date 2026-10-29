@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The Metropolis acceptance rule",
+    "section": "The Metropolis acceptance rule",
+    "subgoals": [
+      "Compute the cost change of the proposed move",
+      "Accept improving moves outright",
+      "Accept a worsening move with probability e to the minus delta over T"
+    ]
+  },
+  {
+    "label": "Choosing a temperature",
+    "section": "Choosing a temperature",
+    "subgoals": [
+      "Choose the target acceptance probability for a typical uphill move",
+      "Take the natural logarithm of that probability",
+      "Divide minus delta by it to get the temperature"
+    ]
+  },
+  {
+    "label": "Expected acceptances in a batch",
+    "section": "Expected acceptances in a batch",
+    "subgoals": [
+      "Assign probability one to non-increasing moves",
+      "Compute e to the minus delta over T for each increasing move",
+      "Sum the probabilities for the expected number of acceptances"
+    ]
+  }
+]

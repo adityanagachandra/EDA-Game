@@ -1,0 +1,5 @@
+[
+  {"label": "The layers of a synthesis engine", "section": "The layers of a synthesis engine", "subgoals": ["Place the AIG, hashing and the equivalence contract in the core", "Place recipes and pass-selection policies in the strategy layer", "Classify cut sizes and iteration counts as parameters"]},
+  {"label": "Seams for customer-specific behavior", "section": "Seams for customer-specific behavior", "subgoals": ["Identify the cost decision as the most customer-specific behavior", "Expose a cost provider seam with cut, MFFC, size, level and criticality", "Call the seam per batch so the core's hot loops stay fast"]},
+  {"label": "Proof and promotion", "section": "Proof and promotion", "subgoals": ["Require equivalence and a differential QoR report for Tier 2 plug-ins", "Require human review and full regression for Tier 3 core edits", "Move a seam when common requests keep needing Tier 3"]}
+]

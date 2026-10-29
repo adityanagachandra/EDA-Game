@@ -1,0 +1,5 @@
+[
+  {"label": "The estimator and its standard error", "section": "The estimator and its standard error", "subgoals": ["Count passes over N to estimate the yield", "Write the standard error as the square root of Y times one minus Y over N", "Note the error does not depend on the number of parameters"]},
+  {"label": "Confidence intervals", "section": "Confidence intervals", "subgoals": ["Multiply the standard error by 1.96 for a 95 percent half-width", "Center the interval on the estimated yield", "Switch to an exact binomial interval when failures are few"]},
+  {"label": "Cost scales as one over the square root of N", "section": "Cost scales as one over the square root of N", "subgoals": ["Write the standard error of a mean as s over the square root of N", "Solve for N from a pilot sigma and a target error", "Quote the fourfold cost of halving the error"]}
+]

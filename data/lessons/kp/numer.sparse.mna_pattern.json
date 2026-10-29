@@ -1,0 +1,29 @@
+[
+ {
+  "label": "One unknown per node, one entry per connection",
+  "section": "One unknown per node, one entry per connection",
+  "subgoals": [
+   "Delete the ground node from the circuit graph",
+   "Map each distinct node pair joined by an element to a symmetric off-diagonal pair",
+   "Count the diagonal plus the distinct neighbours for a row"
+  ]
+ },
+ {
+  "label": "Counting nonzeros from the netlist",
+  "section": "Counting nonzeros from the netlist",
+  "subgoals": [
+   "Collect the distinct non-ground node pairs joined by elements",
+   "Ignore elements to ground and merge parallel elements",
+   "Add n diagonal entries to twice the number of pairs"
+  ]
+ },
+ {
+  "label": "Why circuit matrices are so sparse",
+  "section": "Why circuit matrices are so sparse",
+  "subgoals": [
+   "Estimate nonzeros per row from the average node degree",
+   "Compare nnz with n squared for a large mesh",
+   "Flag supply-net hubs as dense rows"
+  ]
+ }
+]

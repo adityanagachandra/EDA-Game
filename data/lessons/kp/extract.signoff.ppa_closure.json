@@ -1,0 +1,5 @@
+[
+  {"label": "The trade-offs", "section": "The trade-offs", "subgoals": ["List what each fix buys and what it costs", "Prefer fixes whose cost falls on an unconstrained resource", "Recover power and area where slack is in excess"]},
+  {"label": "Choosing a fix", "section": "Choosing a fix", "subgoals": ["Discard fixes whose slack gain does not close the endpoint", "Rank the rest by their cost", "Choose the cheapest fix that closes"]},
+  {"label": "Closure with margins", "section": "Closure with margins", "subgoals": ["Leave slack margin matched to the fast mode's error", "Re-time and re-extract after each batch of fixes", "Re-run power analysis on post-ECO parasitics"]}
+]

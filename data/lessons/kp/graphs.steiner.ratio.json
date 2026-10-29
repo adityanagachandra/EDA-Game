@@ -1,0 +1,5 @@
+[
+  {"label": "MST over Steiner", "section": "MST over Steiner", "subgoals": ["Compute the RMST and the RSMT", "Divide the RMST by the RSMT", "Check the ratio against Hwang's bound of 3/2"]},
+  {"label": "Half-perimeter as a lower bound", "section": "Half-perimeter as a lower bound", "subgoals": ["Bound the RSMT below by the half-perimeter", "Note equality for two and three pins", "Expect the ratio to grow with pin count"]},
+  {"label": "Using the bounds", "section": "Using the bounds", "subgoals": ["Multiply the RSMT by 3/2 to bound the RMST", "Multiply the RMST by 2/3 to bound the RSMT from below", "Use HPWL as a lower bound on every tree"]}
+]

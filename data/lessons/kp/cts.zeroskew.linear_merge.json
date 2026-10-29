@@ -1,0 +1,5 @@
+[
+  {"label": "Balancing the two sides", "section": "Balancing the two sides", "subgoals": ["Write the delay from the tap to each subtree", "Set the two delays equal", "Solve for the tap distance from subtree 1"]},
+  {"label": "The merged delay", "section": "The merged delay", "subgoals": ["Compute the tap distance", "Add the tap distance to subtree 1's delay", "Carry the merged delay up to the next merge"]},
+  {"label": "When the tap leaves the segment", "section": "When the tap leaves the segment", "subgoals": ["Detect a tap position outside the wire", "Place the tap at the slower subtree's root", "Lengthen the wire to the delay difference and count the detour"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Counting scenarios", "section": "Counting scenarios", "subgoals": ["Multiply the number of modes by the number of corners", "Subtract the pruned mode-corner pairs", "Justify each pruned pair as unable to dominate"]},
+  {"label": "Merging an endpoint's slack", "section": "Merging an endpoint's slack", "subgoals": ["List an endpoint's slack in every scenario", "Take the minimum as the merged slack", "Identify the scenario that limits the endpoint"]},
+  {"label": "Merged TNS", "section": "Merged TNS", "subgoals": ["Merge each endpoint's slack across scenarios", "Sum the negative merged slacks", "Avoid summing per-scenario TNS values"]}
+]

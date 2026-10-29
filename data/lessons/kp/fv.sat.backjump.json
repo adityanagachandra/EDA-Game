@@ -1,0 +1,5 @@
+[
+  {"label": "The second-highest level", "section": "The second-highest level", "subgoals": ["List the decision level of each literal of the learned clause", "Remove the single conflict-level literal", "Take the highest remaining level, or 0 if none remains"]},
+  {"label": "From trail to backjump level", "section": "From trail to backjump level", "subgoals": ["Compute the first-UIP clause from the trail", "Read the decision level of every literal in it", "Backjump to the second-highest level and propagate the asserted literal"]},
+  {"label": "How much search is skipped", "section": "How much search is skipped", "subgoals": ["Note the conflict level and the backjump level", "Compute the chronological target as the conflict level minus one", "Subtract the backjump level to get the levels skipped"]}
+]

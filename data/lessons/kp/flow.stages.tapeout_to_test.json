@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Tape-out and mask data preparation",
+    "section": "Tape-out and mask data preparation",
+    "subgoals": [
+      "List the deliverables handed to the foundry at tape-out",
+      "Describe OPC as pre-distorting shapes for lithography",
+      "Count masks as one or more per lithography layer"
+    ]
+  },
+  {
+    "label": "Fabrication",
+    "section": "Fabrication",
+    "subgoals": [
+      "Separate front-end-of-line from back-end-of-line steps",
+      "Name scribe-line test structures as process monitors",
+      "Relate engineering lots to debug schedule"
+    ]
+  },
+  {
+    "label": "Packaging and production test",
+    "section": "Packaging and production test",
+    "subgoals": [
+      "Order wafer sort, dicing, packaging and final test",
+      "Name speed binning and defective parts per million",
+      "Choose between a metal-only fix and a full respin"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The hazard function", "section": "The hazard function", "subgoals": ["Write the hazard as density over survival", "Evaluate the Weibull hazard at the operating time", "Classify the phase from whether beta is below, at or above one"]},
+  {"label": "FIT from a life test", "section": "FIT from a life test", "subgoals": ["Accumulate device-hours including the acceleration factor", "Divide failures by device-hours for the rate", "Scale the rate per hour by ten to the ninth for FIT"]},
+  {"label": "From FIT to mean time to failure", "section": "From FIT to mean time to failure", "subgoals": ["Invert the constant failure rate for the mean time to failure", "Convert hours to years at 8760 hours per year", "Add component FIT rates for a series system"]}
+]

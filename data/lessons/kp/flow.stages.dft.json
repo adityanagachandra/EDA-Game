@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Scan chains",
+    "section": "Scan chains",
+    "subgoals": [
+      "Replace a flip-flop with a multiplexed scan flip-flop",
+      "Describe shift, capture and shift-out in test mode",
+      "Divide the scan flops among chains and round up"
+    ]
+  },
+  {
+    "label": "Test time",
+    "section": "Test time",
+    "subgoals": [
+      "Count the first load as L cycles",
+      "Add one capture and L shift cycles per pattern",
+      "Convert cycles to time at the shift clock frequency"
+    ]
+  },
+  {
+    "label": "What DFT costs the rest of the flow",
+    "section": "What DFT costs the rest of the flow",
+    "subgoals": [
+      "Name the area and timing cost of scan flops",
+      "Explain why placement reorders scan chains",
+      "Relate chain count to tester pins and compression"
+    ]
+  }
+]

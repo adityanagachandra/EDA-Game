@@ -1,0 +1,5 @@
+[
+  {"label": "Overlapping and non-overlapping implication", "section": "Overlapping and non-overlapping implication", "subgoals": ["Mark every cycle where the antecedent is 1 as an attempt", "Check the consequent in the same cycle for |-> and the next cycle for |=>", "Count the failures and set aside attempts still pending at the end"]},
+  {"label": "Fixed delays", "section": "Fixed delays", "subgoals": ["Shift each attempt's check by the fixed delay", "Read the consequent at the shifted cycle", "Count failures and mark attempts whose check falls beyond the trace as pending"]},
+  {"label": "Delay ranges", "section": "Delay ranges", "subgoals": ["Open a window from m to n cycles after each attempt", "Pass the attempt at the first cycle in the window where the consequent holds", "Fail it only when the full window lies within the trace and has no match"]}
+]

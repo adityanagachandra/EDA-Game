@@ -1,0 +1,5 @@
+[
+  {"label": "Two stages", "section": "Two stages", "subgoals": ["Convert every noise figure and gain to linear", "Divide the second stage's excess noise factor by the first stage's gain", "Add the first stage's factor and convert back to dB"]},
+  {"label": "Longer chains", "section": "Longer chains", "subgoals": ["Divide each stage's excess factor by the product of the preceding gains", "Sum the terms for the full chain", "Balance early gain for noise against later-stage linearity"]},
+  {"label": "Lossy stages in front", "section": "Lossy stages in front", "subgoals": ["Model a matched passive loss as F equal to L and gain one over L", "Show that a front loss adds in dB to the next noise figure", "Check that each stage's NF is for the source impedance it actually sees"]}
+]

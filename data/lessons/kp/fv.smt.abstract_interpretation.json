@@ -1,0 +1,5 @@
+[
+  {"label": "Interval arithmetic", "section": "Interval arithmetic", "subgoals": ["Represent each variable by its lower and upper bound", "Combine bounds operation by operation, taking corner products for multiplication", "Read off the requested bound"]},
+  {"label": "Joins at merge points", "section": "Joins at merge points", "subgoals": ["Compute the interval on each incoming branch", "Take the minimum of the lower bounds and the maximum of the upper bounds", "Read off the requested bound of the join"]},
+  {"label": "Loops, fixpoints and widening", "section": "Loops, fixpoints and widening", "subgoals": ["Iterate the loop-head interval from the entry value", "Intersect with the guard, apply the body and join until stable", "Intersect the fixpoint with the negated guard to get the exit interval"]}
+]

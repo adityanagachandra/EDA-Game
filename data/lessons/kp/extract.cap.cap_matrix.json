@@ -1,0 +1,5 @@
+[
+  {"label": "Couplings off the diagonal", "section": "Couplings off the diagonal", "subgoals": ["Locate the off-diagonal entry for the pair", "Negate it to get the coupling capacitance", "Check that the mirror entry agrees"]},
+  {"label": "Ground capacitance as a row sum", "section": "Ground capacitance as a row sum", "subgoals": ["Sum all entries of the conductor's row", "Interpret the sum as capacitance to ground", "Convert the matrix into grounded and coupling capacitors"]},
+  {"label": "Building the diagonal", "section": "Building the diagonal", "subgoals": ["Add the ground capacitance and every coupling of the conductor", "Place negated couplings off the diagonal", "Check symmetry and diagonal dominance of the result"]}
+]

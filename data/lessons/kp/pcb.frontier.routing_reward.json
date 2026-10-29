@@ -1,0 +1,5 @@
+[
+  {"label": "A tool-grounded reward", "section": "A tool-grounded reward", "subgoals": ["Name the tool that computes each reward term", "Evaluate the weighted reward for one candidate", "Normalize terms against a baseline so designs are comparable"]},
+  {"label": "Weights encode priorities", "section": "Weights encode priorities", "subgoals": ["Compare reward differences term by term", "Read the relative priorities implied by the weights", "Turn hard constraints into gates instead of penalties"]},
+  {"label": "Reward hacking against signoff", "section": "Reward hacking against signoff", "subgoals": ["Rank candidates by the proxy reward", "Count how many top candidates fail signoff", "Close the gap with an SI term, a gate or periodic signoff scoring"]}
+]

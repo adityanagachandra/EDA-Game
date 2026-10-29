@@ -1,0 +1,5 @@
+[
+  {"label": "Signals update when the process suspends", "section": "Signals update when the process suspends", "subgoals": ["Update variables immediately within the process", "Read every signal as its value from before the activation", "Apply the scheduled signal values when the process suspends"]},
+  {"label": "Variables keep their values between activations", "section": "Variables keep their values between activations", "subgoals": ["Carry variable values from one activation to the next", "Simulate each clock edge as one activation followed by signal updates", "Flag variables read before written as hidden registers"]},
+  {"label": "Delta cycles", "section": "Delta cycles", "subgoals": ["Wake each concurrent assignment in the delta after its input changes", "Set a signal's final delta to one more than its latest input", "Find the longest path from the changed input"]}
+]

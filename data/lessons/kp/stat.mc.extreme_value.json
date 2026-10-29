@@ -1,0 +1,5 @@
+[
+  {"label": "The generalized Pareto tail", "section": "The generalized Pareto tail", "subgoals": ["Choose a threshold and record its exceedance probability", "Fit scale and shape to the excesses over the threshold", "Multiply the exceedance probability by the generalized Pareto survival"]},
+  {"label": "The shape parameter", "section": "The shape parameter", "subgoals": ["Read a positive shape as a heavy tail and a negative shape as a bounded one", "Use the exponential form when the shape is zero", "Treat a clearly positive fitted shape as a modeling warning"]},
+  {"label": "Return levels and threshold choice", "section": "Return levels and threshold choice", "subgoals": ["Invert the generalized Pareto survival for a return level", "Pick the threshold where the fitted shape is stable", "Report an uncertainty band for far extrapolations"]}
+]

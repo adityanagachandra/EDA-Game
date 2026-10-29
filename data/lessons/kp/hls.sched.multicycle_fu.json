@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Non-pipelined units",
+  "section": "Non-pipelined units",
+  "subgoals": [
+   "Group the operations into rounds of one per unit",
+   "Multiply the number of rounds by the latency",
+   "Treat occupancy as equal to latency"
+  ]
+ },
+ {
+  "label": "Fully pipelined units",
+  "section": "Fully pipelined units",
+  "subgoals": [
+   "Issue one operation per unit per step",
+   "Find the step of the last issue",
+   "Add the latency minus one to get the completion step"
+  ]
+ },
+ {
+  "label": "Partially pipelined units",
+  "section": "Partially pipelined units",
+  "subgoals": [
+   "Read the unit's occupancy and its latency separately",
+   "Space issues on each unit by the occupancy",
+   "Add the latency to the last issue step"
+  ]
+ }
+]

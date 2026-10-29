@@ -1,0 +1,5 @@
+[
+  {"label": "Flattening a cell tree", "section": "Flattening a cell tree", "subgoals": ["Compute the flat count of the leaf cells first", "Multiply each child's flat count by its instance count", "Add the cell's own shapes at every level"]},
+  {"label": "Placements as paths in the cell DAG", "section": "Placements as paths in the cell DAG", "subgoals": ["List the paths from the top cell to the target cell", "Multiply the instance counts along each path", "Sum the products over all paths"]},
+  {"label": "AREF versus SREF", "section": "AREF versus SREF", "subgoals": ["Price one SREF with the padded cell name", "Price one AREF with COLROW and its three-point XY", "Subtract the AREF from the SREF total"]}
+]

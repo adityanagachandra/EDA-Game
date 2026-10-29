@@ -1,0 +1,5 @@
+[
+  {"label": "Surrogate error", "section": "Surrogate error", "subgoals": ["Compute the absolute percentage error against SPICE", "Measure error on held-out designs from the region being searched", "Re-measure as the search moves to new regions"]},
+  {"label": "The speed-up budget", "section": "The speed-up budget", "subgoals": ["Write the mixed cost as surrogate calls plus verified SPICE runs", "Divide the all-SPICE cost by the mixed cost", "Reduce the number of candidates that need SPICE"]},
+  {"label": "False accepts and guard bands", "section": "False accepts and guard bands", "subgoals": ["Count candidates the surrogate passes and SPICE fails", "Forward only predictions that clear the spec by a guard band", "Tune the guard band to the measured local error and keep SPICE as judge"]}
+]

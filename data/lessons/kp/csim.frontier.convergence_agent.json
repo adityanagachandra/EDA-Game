@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Reading the failure",
+    "section": "Reading the failure",
+    "subgoals": [
+      "Extract the failure type, time and node from the log",
+      "Map the failure to its likely cause",
+      "Treat partial continuation results as failures"
+    ]
+  },
+  {
+    "label": "Proposing the smallest fix",
+    "section": "Proposing the smallest fix",
+    "subgoals": [
+      "Prefer initial guesses and realistic stimuli over tolerance changes",
+      "Reject fixes that alter the circuit being solved",
+      "Feed each rerun's failure back into the next proposal"
+    ]
+  },
+  {
+    "label": "Proving the fix did not change the answer",
+    "section": "Proving the fix did not change the answer",
+    "subgoals": [
+      "Compare key results with golden values after every fix",
+      "Rerun at tighter tolerances to separate numerical from physical effects",
+      "Reward agreement with golden results rather than mere completion"
+    ]
+  }
+]

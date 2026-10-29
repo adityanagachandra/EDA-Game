@@ -1,0 +1,5 @@
+[
+  {"label": "Offsets and pin arrays", "section": "Offsets and pin arrays", "subgoals": ["Lay out each net's pins contiguously in one array", "Store prefix sums of net sizes as the offset array", "Read a net's pins between consecutive offsets"]},
+  {"label": "The transpose: cell-to-net incidence", "section": "The transpose: cell-to-net incidence", "subgoals": ["Count each cell's degree in one pass over the pins", "Take prefix sums of degrees to get the cell offsets", "Fill each cell's net list in a second pass"]},
+  {"label": "Why compressed storage wins", "section": "Why compressed storage wins", "subgoals": ["Count about 2P integers for both directions", "Multiply the integer count by the word size to get bytes", "Rebuild the static arrays when the netlist changes structurally"]}
+]

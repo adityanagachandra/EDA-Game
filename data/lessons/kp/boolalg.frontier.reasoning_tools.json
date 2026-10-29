@@ -1,0 +1,5 @@
+[
+  {"label": "Typed inputs and outputs", "section": "Typed inputs and outputs", "subgoals": ["Define the formula format the tool accepts", "Return SAT with a model, UNSAT, or UNKNOWN", "Attach the resource limits to every call"]},
+  {"label": "What the manifest advertises", "section": "What the manifest advertises", "subgoals": ["State which engine suits which instance", "State the limits and the failure modes", "Let the agent choose from the manifest, not the source"]},
+  {"label": "Trusting the answer", "section": "Trusting the answer", "subgoals": ["Check a SAT model by evaluating the formula", "Ask for a proof certificate for UNSAT", "Treat a timeout as no information"]}
+]

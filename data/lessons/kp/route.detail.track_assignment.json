@@ -1,0 +1,5 @@
+[
+  {"label": "Interval packing in a panel", "section": "Interval packing in a panel", "subgoals": ["Write each segment as an interval of gcells", "Find the gcell covered by the most segments", "Fill tracks by a left-edge sweep to meet that bound"]},
+  {"label": "Conflicts between segments", "section": "Conflicts between segments", "subgoals": ["List every pair of segments", "Test each pair for a shared gcell", "Count the pairs that conflict"]},
+  {"label": "Overlap cost when tracks run out", "section": "Overlap cost when tracks run out", "subgoals": ["Group the segments by assigned track", "Sum the shared gcells of every same-track pair", "Minimise that total over assignments"]}
+]

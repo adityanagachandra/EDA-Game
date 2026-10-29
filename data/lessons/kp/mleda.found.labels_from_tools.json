@@ -1,0 +1,5 @@
+[
+  {"label": "The cost of a label", "section": "The cost of a label", "subgoals": ["Multiply designs by variants to count flow runs", "Multiply runs by hours per run for machine-hours", "Divide machine-hours by parallel machines and 24 for days"]},
+  {"label": "Samples per run", "section": "Samples per run", "subgoals": ["Divide die dimensions by gcell size to count gcells per run", "Multiply gcells per run by the number of runs", "Count distinct designs as the effective sample size"]},
+  {"label": "Break-even reuse", "section": "Break-even reuse", "subgoals": ["Add labeling and training hours for the fixed cost", "Subtract inference time from tool time for the saving per query", "Divide fixed cost by saving and round up past break-even"]}
+]

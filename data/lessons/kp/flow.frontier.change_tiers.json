@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Three tiers",
+    "section": "Three tiers",
+    "subgoals": [
+      "Define Tier 1 as configuration without recompile",
+      "Define Tier 2 as a plug-in at an extension point",
+      "Define Tier 3 as a reviewed core edit"
+    ]
+  },
+  {
+    "label": "Matching requests to tiers",
+    "section": "Matching requests to tiers",
+    "subgoals": [
+      "Check whether an existing parameter already covers the request",
+      "Check whether a seam can host the new logic",
+      "Recognize a request that changes legality as Tier 3"
+    ]
+  },
+  {
+    "label": "Proving a change at its tier",
+    "section": "Proving a change at its tier",
+    "subgoals": [
+      "Prove a Tier 1 change by QoR comparison",
+      "Add golden and differential tests for a Tier 2 plug-in",
+      "Explain the risks of choosing too high or too low a tier"
+    ]
+  }
+]

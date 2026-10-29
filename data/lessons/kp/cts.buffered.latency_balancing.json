@@ -1,0 +1,5 @@
+[
+  {"label": "Register-level latency", "section": "Register-level latency", "subgoals": ["Add the macro's internal insertion delay to its pin latency", "List the register-level latencies of all groups", "Take the skew over the register-level values"]},
+  {"label": "Padding early groups", "section": "Padding early groups", "subgoals": ["Choose the largest register-level latency as the target", "Compute the gap below the tolerance band", "Round the gap up to whole delay cells"]},
+  {"label": "The cost of balancing", "section": "The cost of balancing", "subgoals": ["Count the delay cells across all groups", "Name the power and variation cost of padding", "Consider structural alternatives to padding"]}
+]

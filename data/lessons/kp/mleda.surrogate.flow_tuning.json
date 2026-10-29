@@ -1,0 +1,5 @@
+[
+  {"label": "Successive halving", "section": "Successive halving", "subgoals": ["Start every configuration at the smallest budget", "Keep the best one over eta at each rung", "Multiply the survivors' budget by eta"]},
+  {"label": "Counting the cost", "section": "Counting the cost", "subgoals": ["Multiply survivors by budget at each rung", "Sum the rungs for the total cost", "Divide the full-budget cost by the total"]},
+  {"label": "When early results mislead", "section": "When early results mislead", "subgoals": ["Measure rank correlation between early and final metrics", "Keep more survivors when the correlation is weak", "Track a Pareto front when objectives conflict"]}
+]

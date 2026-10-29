@@ -1,0 +1,5 @@
+[
+  {"label": "Horizontal slabs", "section": "Horizontal slabs", "subgoals": ["Extend a horizontal cut from every reflex vertex", "Group the polygon into horizontal runs between vertex y-values", "Stack identical runs and count the rectangles"]},
+  {"label": "The gap to the minimum", "section": "The gap to the minimum", "subgoals": ["Count the rectangles from horizontal slabs", "Compute the minimum partition from reflex vertices and chords", "Subtract to find the excess pieces"]},
+  {"label": "Choosing the slicing direction", "section": "Choosing the slicing direction", "subgoals": ["Count the rectangles from horizontal slabs", "Count the rectangles from vertical slabs", "Keep the direction with fewer rectangles"]}
+]

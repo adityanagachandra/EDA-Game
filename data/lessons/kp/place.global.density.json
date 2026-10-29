@@ -1,0 +1,5 @@
+[
+  {"label": "Bin density", "section": "Bin density", "subgoals": ["Clip each cell to each bin it overlaps", "Sum the overlap areas per bin", "Divide by the bin's free area"]},
+  {"label": "Overflow of a bin and of the design", "section": "Overflow of a bin and of the design", "subgoals": ["Subtract the target allowance from each bin's cell area", "Clamp negative excess to zero", "Divide the summed excess by the total cell area"]},
+  {"label": "Using overflow well", "section": "Using overflow well", "subgoals": ["Track maximum bin density alongside total overflow", "Penalise a smooth density model and report true overflow", "Accumulate bin areas with parallel scatter operations"]}
+]

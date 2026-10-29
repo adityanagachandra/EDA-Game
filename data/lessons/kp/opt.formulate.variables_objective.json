@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Decision variables versus data",
+    "section": "Decision variables versus data",
+    "subgoals": [
+      "Separate the quantities the tool may set from the given data",
+      "Classify derived quantities such as arrival times as functions of the variables",
+      "Choose an encoding that makes the rules linear or simple"
+    ]
+  },
+  {
+    "label": "Objective versus constraints",
+    "section": "Objective versus constraints",
+    "subgoals": [
+      "Put hard requirements in constraints and the traded quantity in the objective",
+      "Recognize a weighted penalty term as a soft constraint",
+      "Rewrite a max objective as an auxiliary variable bounded by every term"
+    ]
+  },
+  {
+    "label": "Proxies, scaling and infeasibility",
+    "section": "Proxies, scaling and infeasibility",
+    "subgoals": [
+      "Name the proxy and the signoff metric it stands in for",
+      "Normalize objective terms to comparable magnitudes before weighting",
+      "Trace infeasibility to the constraints, never to the objective"
+    ]
+  }
+]

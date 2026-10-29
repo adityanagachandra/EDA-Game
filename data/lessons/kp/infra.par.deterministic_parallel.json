@@ -1,0 +1,5 @@
+[
+  {"label": "Floating-point sums depend on order", "section": "Floating-point sums depend on order", "subgoals": ["Round after each addition to see the order effect", "Trace how a reduction combines partial sums by finish order", "Explain how a last-digit change flips an optimizer decision"]},
+  {"label": "Fixed partitions and ordered merges", "section": "Fixed partitions and ordered merges", "subgoals": ["Split the work into fixed chunks independent of the thread count", "Merge chunk results in chunk-index order", "Derive each item's random stream from the seed and the item index"]},
+  {"label": "Deterministic tie-breaking and thread-count independence", "section": "Deterministic tie-breaking and thread-count independence", "subgoals": ["Break every tie with a stable key such as an instance index", "Replace address and hash-order sorting with persistent ids", "Treat any run-to-run difference on identical inputs as a defect"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "A weighted objective as configuration", "section": "A weighted objective as configuration", "subgoals": ["Convert each metric to wirelength-equivalent units with its weight", "Sum the weighted terms for each run's cost", "Change weights through configuration without rebuilding"]},
+  {"label": "Comparing runs", "section": "Comparing runs", "subgoals": ["Compute both runs' costs under the same weights", "Take the difference to pick the cheaper run", "Report how sensitive the choice is to the weights"]},
+  {"label": "The break-even weight", "section": "The break-even weight", "subgoals": ["Set the two runs' costs equal", "Solve for the weight at the crossover", "Escalate to a plug-in when no weight setting satisfies the request"]}
+]

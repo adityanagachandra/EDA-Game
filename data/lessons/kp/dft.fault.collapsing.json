@@ -1,0 +1,5 @@
+[
+  {"label": "Equivalence", "section": "Equivalence", "subgoals": ["Match each input stuck at the controlling value to the resulting output fault", "Pair the input and output faults of an inverter with opposite values", "Merge the local equivalences into classes with union-find"]},
+  {"label": "Dominance", "section": "Dominance", "subgoals": ["Show that every test for the input fault also detects the output fault", "Drop the output fault at each multi-input gate's non-controlling response", "Keep the dominated input faults as ATPG targets"]},
+  {"label": "Checkpoints and the collapse ratio", "section": "Checkpoints and the collapse ratio", "subgoals": ["Keep stem and branch faults in separate classes across fanout", "Target primary inputs and fanout branches as checkpoints", "Divide the collapsed count by the original count for the collapse ratio"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Cuts and the slicing tree", "section": "Cuts and the slicing tree", "subgoals": ["Read an internal node as a vertical or horizontal cut", "Place the children side by side for V and stacked for H", "Recognise the wheel as the smallest non-slicing floorplan"]},
+  {"label": "Evaluating the area bottom-up", "section": "Evaluating the area bottom-up", "subgoals": ["Add widths and take the maximum height at a vertical cut", "Take the maximum width and add heights at a horizontal cut", "Traverse the tree in post-order to reach the root"]},
+  {"label": "Why slicing structures are useful and limited", "section": "Why slicing structures are useful and limited", "subgoals": ["Name the problems that become polynomial on slicing trees", "Recompute only the path to the root after a local change", "Weigh the area lost by restricting to slicing structures"]}
+]

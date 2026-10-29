@@ -1,0 +1,5 @@
+[
+  {"label": "A quadratic through three coded runs", "section": "A quadratic through three coded runs", "subgoals": ["Read the intercept from the centre run", "Form the slope and curvature from the outer runs", "Set the derivative to zero for the stationary point"]},
+  {"label": "The fitted optimum", "section": "The fitted optimum", "subgoals": ["Substitute the stationary point into the fitted quadratic", "Confirm the predicted optimum with a real simulation", "Move the region and refit when the optimum lies outside it"]},
+  {"label": "Two factors and the canonical analysis", "section": "Two factors and the canonical analysis", "subgoals": ["Set both partial derivatives of the quadratic to zero", "Solve the 2x2 system by Cramer's rule", "Classify the stationary point by the Hessian eigenvalues"]}
+]

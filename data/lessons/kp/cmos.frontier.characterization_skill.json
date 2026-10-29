@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The four layers of a characterizer",
+    "section": "The four layers of a characterizer",
+    "subgoals": [
+      "Put deck generation and measurement definitions in the immutable core",
+      "Put search and scheduling policies in the strategy layer",
+      "Put grids, thresholds and corners in the parameter layer"
+    ]
+  },
+  {
+    "label": "Change tiers for library requests",
+    "section": "Change tiers for library requests",
+    "subgoals": [
+      "Classify grid, threshold and corner changes as configuration",
+      "Classify new search policies as plug-ins at an extension point",
+      "Classify changes to measurement definitions as core edits"
+    ]
+  },
+  {
+    "label": "The harness and its evidence",
+    "section": "The harness and its evidence",
+    "subgoals": [
+      "Run golden SPICE comparisons and a full baseline diff for every change",
+      "Block promotion when any unexplained table shift appears",
+      "Run the skill sandboxed so models and netlists stay on site"
+    ]
+  }
+]

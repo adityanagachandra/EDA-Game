@@ -1,0 +1,5 @@
+[
+  {"label": "E-classes and e-nodes", "section": "E-classes and e-nodes", "subgoals": ["Represent each operator application as an e-node over child e-classes", "Group equivalent e-nodes into e-classes", "Maintain hashconsing and congruence under merges"]},
+  {"label": "Saturation", "section": "Saturation", "subgoals": ["Match each rule's left-hand side against the e-graph", "Add the right-hand side and merge it into the matched class", "Repeat until nothing new is added or the budget is spent"]},
+  {"label": "Extraction and soundness", "section": "Extraction and soundness", "subgoals": ["Choose one e-node per needed class to minimize cost", "Use dynamic programming for tree cost and integer programming for DAG cost", "Guard rules with width conditions and check the result for equivalence"]}
+]

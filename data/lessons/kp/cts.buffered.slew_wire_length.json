@@ -1,0 +1,5 @@
+[
+  {"label": "Elmore delay of a driven wire", "section": "Elmore delay of a driven wire", "subgoals": ["Charge the total wire and load capacitance through the driver resistance", "Add the wire resistance times half its capacitance plus the load", "Convert ohm-femtofarads to picoseconds"]},
+  {"label": "From delay to slew", "section": "From delay to slew", "subgoals": ["Compute the Elmore delay at the far end", "Multiply by ln 9", "Compare the estimate with the slew limit"]},
+  {"label": "Solving for the longest wire", "section": "Solving for the longest wire", "subgoals": ["Set the slew estimate equal to the limit", "Collect the quadratic coefficients in consistent units", "Take the positive root as the maximum length"]}
+]

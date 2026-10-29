@@ -1,0 +1,29 @@
+[
+ {
+  "label": "One recurrence",
+  "section": "One recurrence",
+  "subgoals": [
+   "Sum the latencies of the operations on the cycle",
+   "Sum the iteration distances of its edges",
+   "Divide and round up to get the recurrence bound"
+  ]
+ },
+ {
+  "label": "RecMII over all cycles",
+  "section": "RecMII over all cycles",
+  "subgoals": [
+   "Compute the bound of every elementary cycle",
+   "Take the maximum as RecMII",
+   "Test candidate IIs by a positive-cycle check instead of enumerating cycles"
+  ]
+ },
+ {
+  "label": "Reading cycles from a loop body",
+  "section": "Reading cycles from a loop body",
+  "subgoals": [
+   "Locate each loop-carried edge and the chain segment it closes",
+   "Sum the segment's latencies and divide by the edge distance",
+   "Include carried dependences through memory that the tool cannot disprove"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Weighted-average wirelength", "section": "Weighted-average wirelength", "subgoals": ["Weight each coordinate by its exponential over gamma", "Form the soft maximum and soft minimum", "Subtract them for the smooth span"]},
+  {"label": "The smoothing gap", "section": "The smoothing gap", "subgoals": ["Compute the exact span as max minus min", "Subtract the smooth wirelength", "Shrink gamma as placement converges"]},
+  {"label": "Placement as training", "section": "Placement as training", "subgoals": ["Combine the wirelength and weighted density gradients", "Step against the combined gradient", "Raise the density weight over iterations"]}
+]

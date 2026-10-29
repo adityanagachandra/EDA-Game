@@ -1,0 +1,5 @@
+[
+  {"label": "Why tools share one database", "section": "Why tools share one database", "subgoals": ["Name the repeated parse and rebuild cost of file handoff", "Route every engine's edits through the shared objects", "Keep file formats for input, output and interchange only"]},
+  {"label": "What the database stores and links", "section": "What the database stores and links", "subgoals": ["Separate technology, library and design data", "Follow instance to terminals to nets and back", "Store each master once and reference it from instances"]},
+  {"label": "Derived results, change and persistence", "section": "Derived results, change and persistence", "subgoals": ["Classify a value as design data or a derived result", "Notify engines of edits so they invalidate derived results", "Checkpoint the object tables in a native binary format"]}
+]

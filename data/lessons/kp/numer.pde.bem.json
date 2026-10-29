@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Discretizing only the conductor surfaces",
+  "section": "Discretizing only the conductor surfaces",
+  "subgoals": [
+   "Write the potential as an integral of surface charge against the Green's function",
+   "Divide each conductor surface into constant-charge panels",
+   "Match panel potentials to conductor voltages to form the dense system"
+  ]
+ },
+ {
+  "label": "Dense matrices and their cost",
+  "section": "Dense matrices and their cost",
+  "subgoals": [
+   "Count the panels to get N",
+   "Charge eight N squared bytes and two N cubed over three flops for dense LU",
+   "Compare with GMRES iterations at two N squared flops each"
+  ]
+ },
+ {
+  "label": "Fast multipole and hierarchical compression",
+  "section": "Fast multipole and hierarchical compression",
+  "subgoals": [
+   "Group distant panels into clusters",
+   "Approximate cluster interactions by expansions or low-rank blocks",
+   "Apply the compressed operator inside GMRES"
+  ]
+ }
+]

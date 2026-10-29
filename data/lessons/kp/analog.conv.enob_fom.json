@@ -1,0 +1,5 @@
+[
+  {"label": "Effective number of bits", "section": "Effective number of bits", "subgoals": ["Measure SNDR with a full-scale sine", "Subtract 1.76 and divide by 6.02", "Quote ENOB at a stated input frequency"]},
+  {"label": "The Walden figure of merit", "section": "The Walden figure of merit", "subgoals": ["Compute two to the ENOB", "Divide power by two to the ENOB times the sample rate", "Express the result in femtojoules per conversion step"]},
+  {"label": "The Schreier figure of merit", "section": "The Schreier figure of merit", "subgoals": ["Use half the sample rate as the bandwidth for a Nyquist converter", "Add ten log ten of bandwidth over power to the SNDR", "Choose Walden or Schreier by whether the design is matching- or noise-limited"]}
+]

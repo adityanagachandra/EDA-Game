@@ -1,0 +1,5 @@
+[
+  {"label": "The time constant", "section": "The time constant", "subgoals": ["Write KCL at the capacitor node as a first-order ODE", "Find the Thevenin resistance the capacitor sees", "Multiply kilohms by femtofarads to get picoseconds"]},
+  {"label": "Charging and discharging waveforms", "section": "Charging and discharging waveforms", "subgoals": ["Identify the initial value, final value and time constant", "Write the response as final value plus decaying initial gap", "Evaluate the exponential at the requested time"]},
+  {"label": "Time to cross a threshold", "section": "Time to cross a threshold", "subgoals": ["Set the normalized response equal to the threshold fraction", "Solve for time with the natural logarithm", "Multiply the logarithm by the time constant"]}
+]

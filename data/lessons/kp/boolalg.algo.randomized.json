@@ -1,0 +1,5 @@
+[
+  {"label": "The chance that random vectors miss a difference", "section": "The chance that random vectors miss a difference", "subgoals": ["Compute the fraction of inputs where the functions differ", "Raise the miss probability per vector to the number of vectors", "Report the probability that every vector misses"]},
+  {"label": "How many vectors are enough", "section": "How many vectors are enough", "subgoals": ["Fix the acceptable miss probability", "Solve for the number of vectors with logarithms", "Round up to a whole vector"]},
+  {"label": "Expected time to the first counterexample", "section": "Expected time to the first counterexample", "subgoals": ["Model each vector as an independent trial", "Use the geometric distribution", "Divide 1 by the detection probability"]}
+]

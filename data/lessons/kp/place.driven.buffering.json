@@ -1,0 +1,5 @@
+[
+  {"label": "Delay of a long unbuffered wire", "section": "Delay of a long unbuffered wire", "subgoals": ["Compute the driver term and the wire term", "Identify the quadratic wire term as dominant on long nets", "Recognise when endpoints cannot be moved closer"]},
+  {"label": "A repeater at the midpoint", "section": "A repeater at the midpoint", "subgoals": ["Split the wire into two stages at the buffer", "Add the buffer's intrinsic delay to the second stage", "Compare the buffered and unbuffered delays"]},
+  {"label": "Buffering and sizing inside the placement flow", "section": "Buffering and sizing inside the placement flow", "subgoals": ["Interleave buffering and sizing with incremental placement", "Estimate buffered delays virtually during timing-driven placement", "Reserve whitespace for inserted buffers"]}
+]

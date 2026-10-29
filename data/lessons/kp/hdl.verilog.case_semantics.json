@@ -1,0 +1,5 @@
+[
+  {"label": "casez and wildcard items", "section": "casez and wildcard items", "subgoals": ["Try the items in order and stop at the first match", "Treat ? and z in a casez item as wildcards", "Compare only the non-wildcard positions with the selector"]},
+  {"label": "Unknown bits in the selector", "section": "Unknown bits in the selector", "subgoals": ["Treat z in the selector as a wildcard under casez", "Compare every bit literally under plain case", "Read ? in plain case as a literal z"]},
+  {"label": "casex and x-masking", "section": "casex and x-masking", "subgoals": ["Treat x and z in both item and selector as wildcards under casex", "Recognize that an all-x selector matches the first item", "Prefer casez or case inside to keep unknowns visible"]}
+]

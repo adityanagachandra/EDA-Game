@@ -1,0 +1,5 @@
+[
+  {"label": "Transport and inertial delay", "section": "Transport and inertial delay", "subgoals": ["Shift every input change by d for transport delay", "Cancel the pending output change on each new input change for inertial delay", "Predict that pulses narrower than d vanish under inertial delay"]},
+  {"label": "Computing the output of a pulse train", "section": "Computing the output of a pulse train", "subgoals": ["Schedule each input change at t plus d", "Cancel any pending output change when a newer input change arrives", "Count the transitions that actually change the output value"]},
+  {"label": "Consequences for gate-level simulation", "section": "Consequences for gate-level simulation", "subgoals": ["Explain why inertial filtering can hide a hazard on an asynchronous input", "Classify pulses against SDF reject and error limits", "Contrast zero-delay RTL, which neither delays nor filters"]}
+]

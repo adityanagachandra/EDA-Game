@@ -1,0 +1,5 @@
+[
+  {"label": "Dictionary matching", "section": "Dictionary matching", "subgoals": ["Predict each candidate's failing patterns by simulation or dictionary", "Count the patterns where prediction and observation disagree", "Choose the candidate with the fewest mismatches"]},
+  {"label": "Effect-cause analysis", "section": "Effect-cause analysis", "subgoals": ["Find the fan-in cone of each failing output", "Intersect the cones under the single-fault assumption", "Keep passing outputs out of the subtraction"]},
+  {"label": "Yield learning", "section": "Yield learning", "subgoals": ["Attribute diagnosed candidates to layers and mechanisms with layout", "Rank mechanisms by their contribution to expected defects", "Recompute the Poisson yield without the top mechanism"]}
+]

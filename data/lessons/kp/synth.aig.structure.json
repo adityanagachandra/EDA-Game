@@ -1,0 +1,5 @@
+[
+  {"label": "One node type with complemented edges", "section": "One node type with complemented edges", "subgoals": ["Express every gate with two-input ANDs and complemented edges", "Rewrite OR as an AND with complemented inputs and output", "Store each node as two fanin literals with complement bits"]},
+  {"label": "AND counts of common gates", "section": "AND counts of common gates", "subgoals": ["Charge one AND node for each two-input AND, OR, NAND or NOR", "Charge three AND nodes for each XOR, XNOR or multiplexer", "Sum the counts over the netlist when nothing is shared"]},
+  {"label": "Levels as the delay measure", "section": "Levels as the delay measure", "subgoals": ["Set primary inputs to level 0", "Add one level per AND layer, two for XOR, XNOR and MUX", "Take the largest output level as the AIG depth"]}
+]

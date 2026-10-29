@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Scaling within a family",
+    "section": "Scaling within a family",
+    "subgoals": [
+      "Divide the X1 resistance by k for size Xk",
+      "Multiply the X1 input and parasitic capacitance by k",
+      "Split the delay into a size-independent parasitic term and a load term"
+    ]
+  },
+  {
+    "label": "The smallest size that meets a target",
+    "section": "The smallest size that meets a target",
+    "subgoals": [
+      "Compute the delay of each size against the target",
+      "Take the first size, in increasing order, that meets the target",
+      "Reject sizes that violate max capacitance or max transition limits"
+    ]
+  },
+  {
+    "label": "Upsizing loads the driver",
+    "section": "Upsizing loads the driver",
+    "subgoals": [
+      "Add the driver's delay into the larger input capacitance",
+      "Find the size that balances the two opposing terms",
+      "Pick the best available discrete size near the continuous optimum"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Highest index wins", "section": "Highest index wins", "subgoals": ["Scan the request vector from the top bit down", "Stop at the first asserted bit", "Report its index and raise the valid flag"]},
+  {"label": "Lowest index wins", "section": "Lowest index wins", "subgoals": ["Scan the request vector from bit zero upward", "Isolate the lowest set bit with x AND minus x", "Encode the isolated bit as its index"]},
+  {"label": "Leading-zero counting for normalization", "section": "Leading-zero counting for normalization", "subgoals": ["Locate the highest set bit with a priority encoder", "Subtract its index from the word width minus one", "Use the count as the normalization shift amount"]}
+]

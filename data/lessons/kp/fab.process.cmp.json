@@ -1,0 +1,5 @@
+[
+  {"label": "Preston's law", "section": "Preston's law", "subgoals": ["Write Preston's law for removal rate", "Scale the rate by the ratio of pressure times velocity", "Name where the linear law breaks down"]},
+  {"label": "Pattern density sets local removal", "section": "Pattern density sets local removal", "subgoals": ["Define local pattern density in a window", "Divide the blanket rate by density for the raised-area rate", "Compute the time to clear a step in a given density"]},
+  {"label": "Density rules and dummy fill", "section": "Density rules and dummy fill", "subgoals": ["Compute the metal area a window needs for the minimum density", "Subtract the drawn metal to get the fill area", "Weigh fill against the coupling capacitance it adds"]}
+]

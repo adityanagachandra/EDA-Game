@@ -1,0 +1,5 @@
+[
+  {"label": "Crossings of horizontal and vertical segments", "section": "Crossings of horizontal and vertical segments", "subgoals": ["Test the vertical's x against the horizontal's x-range", "Test the horizontal's y against the vertical's y-range", "Count the pairs that pass both tests"]},
+  {"label": "The orthogonal sweep", "section": "The orthogonal sweep", "subgoals": ["Insert and delete horizontal segments as the sweep passes their endpoints", "Count the horizontals active at a vertical segment's x", "Report those whose y lies in the vertical's range"]},
+  {"label": "Bentley-Ottmann and output sensitivity", "section": "Bentley-Ottmann and output sensitivity", "subgoals": ["Count the events as endpoints plus crossings", "Multiply the event count by log n for the sweep cost", "Compare the sweep cost with n(n - 1)/2 pair tests"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Power ball count", "section": "Power ball count", "subgoals": ["Divide the rail current by the per-ball limit", "Round up and double for the return", "Place power under the die and signals outside"]},
+  {"label": "Target impedance", "section": "Target impedance", "subgoals": ["Multiply the supply by the ripple fraction", "Divide by the transient current step", "Assign frequency bands to board, package and die"]},
+  {"label": "Parallel paths and inductance", "section": "Parallel paths and inductance", "subgoals": ["Divide the per-path inductance by the target", "Round up to a whole number of paths", "Account for mutual coupling by interleaving"]}
+]

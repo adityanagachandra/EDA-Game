@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Balancing fluxes over a control volume",
+  "section": "Balancing fluxes over a control volume",
+  "subgoals": [
+   "Integrate the conservation law over the cell",
+   "Write each face flow as conductance times temperature difference",
+   "Sum the face flows against the cell's heat source"
+  ]
+ },
+ {
+  "label": "Harmonic averaging at material interfaces",
+  "section": "Harmonic averaging at material interfaces",
+  "subgoals": [
+   "Treat the two half-paths as series resistances",
+   "Combine them into the face conductance",
+   "Use the harmonic mean for equal half-widths"
+  ]
+ },
+ {
+  "label": "Conservation on nonuniform meshes",
+  "section": "Conservation on nonuniform meshes",
+  "subgoals": [
+   "Collect the face conductances and neighbour temperatures",
+   "Add the generated power",
+   "Divide by the total conductance to get the cell temperature"
+  ]
+ }
+]

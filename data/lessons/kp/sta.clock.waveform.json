@@ -1,0 +1,5 @@
+[
+  {"label": "Period and duty cycle", "section": "Period and duty cycle", "subgoals": ["Read the period and the two waveform edge times", "Subtract the rise time from the fall time to get the high time", "Divide the high time by the period to get the duty cycle"]},
+  {"label": "Edges in later cycles", "section": "Edges in later cycles", "subgoals": ["Write the rising edges as the rise time plus multiples of the period", "Index the edge number from the first rise", "Compute the time of the requested edge"]},
+  {"label": "Finding the next edge after a time", "section": "Finding the next edge after a time", "subgoals": ["List the falling edges as fall time plus multiples of the period", "Find the smallest multiple that lands strictly after the given time", "Decide whether a coincident edge counts for the check at hand"]}
+]

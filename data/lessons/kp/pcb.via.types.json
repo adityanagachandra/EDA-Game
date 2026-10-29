@@ -1,0 +1,5 @@
+[
+  {"label": "Through, blind, buried and micro", "section": "Through, blind, buried and micro", "subgoals": ["Classify a via by the layers it spans", "Relate each via type to its fabrication steps", "Model a via as a layer-change edge with a span and a cost"]},
+  {"label": "Pads, antipads and fanout structures", "section": "Pads, antipads and fanout structures", "subgoals": ["Size pads and antipads for each layer a via touches", "Choose via-in-pad with fill and cap for fine-pitch BGAs", "Weigh stacked against staggered microvias"]},
+  {"label": "Via stubs and resonance", "section": "Via stubs and resonance", "subgoals": ["Measure the stub length from the layers a via uses", "Compute the quarter-wave resonance of the stub", "Shorten the stub by layer choice, backdrilling or blind vias"]}
+]

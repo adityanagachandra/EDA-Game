@@ -1,0 +1,5 @@
+[
+  {"label": "Two sources of activity", "section": "Two sources of activity", "subgoals": ["Distinguish waveform files from aggregated activity files", "Seed vectorless activity at inputs and registers", "Propagate it through the logic"]},
+  {"label": "Power from toggle counts", "section": "Power from toggle counts", "subgoals": ["Read the toggle count and window from the activity file", "Charge half of C V squared per toggle", "Divide the energy by the window length"]},
+  {"label": "Coverage and its pitfalls", "section": "Coverage and its pitfalls", "subgoals": ["Check the annotation coverage of the activity file", "Identify glitch and windowed power that averages hide", "Use vectorless worst-case scenarios for IR signoff"]}
+]

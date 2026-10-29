@@ -1,0 +1,29 @@
+[
+  {
+    "label": "A tool-grounded reward",
+    "section": "A tool-grounded reward",
+    "subgoals": [
+      "Score accuracy against golden SPICE tables within tolerance",
+      "Subtract a cost for simulations or compute used",
+      "Pin and version the scoring tools"
+    ]
+  },
+  {
+    "label": "How the reward gets hacked",
+    "section": "How the reward gets hacked",
+    "subgoals": [
+      "Spot reward gains that come from checking only fixed points",
+      "Spot index-range narrowing that pushes real queries into extrapolation",
+      "Spot systematic optimistic bias that per-entry checks miss"
+    ]
+  },
+  {
+    "label": "Closing the gap to signoff",
+    "section": "Closing the gap to signoff",
+    "subgoals": [
+      "Hold out and randomize cells and grid points used for scoring",
+      "Penalize signed bias as well as error magnitude",
+      "Compare reference-design slacks against a SPICE-characterized library"
+    ]
+  }
+]

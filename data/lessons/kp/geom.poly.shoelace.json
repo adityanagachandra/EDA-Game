@@ -1,0 +1,5 @@
+[
+  {"label": "Summing cross terms", "section": "Summing cross terms", "subgoals": ["List the vertices in boundary order", "Sum the cross terms of consecutive vertices", "Halve the sum to get the area"]},
+  {"label": "The sign gives orientation", "section": "The sign gives orientation", "subgoals": ["Keep the sign of the shoelace sum", "Read a negative sum as a clockwise ring", "Reverse the ring to normalize its orientation"]},
+  {"label": "Holes and multi-ring polygons", "section": "Holes and multi-ring polygons", "subgoals": ["Sum the shoelace formula over the outer ring", "Add the clockwise hole rings with their negative signs", "Report the net area of the region"]}
+]

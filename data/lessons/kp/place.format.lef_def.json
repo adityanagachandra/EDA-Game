@@ -1,0 +1,5 @@
+[
+  {"label": "What LEF abstracts", "section": "What LEF abstracts", "subgoals": ["List what technology LEF records about layers, vias and sites", "List what a cell LEF macro records about size, pins and obstructions", "Name what LEF leaves out and which file supplies it"]},
+  {"label": "What DEF records", "section": "What DEF records", "subgoals": ["Name the DEF section that holds instance locations and orientations", "Distinguish NETS from SPECIALNETS", "Convert DEF integer coordinates with the declared database units"]},
+  {"label": "What a tool can compute from them", "section": "What a tool can compute from them", "subgoals": ["List the metrics a placer can compute from LEF and DEF alone", "Identify the timing data that requires Liberty", "Explain the failure when LEF and GDS disagree"]}
+]

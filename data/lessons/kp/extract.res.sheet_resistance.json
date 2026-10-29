@@ -1,0 +1,5 @@
+[
+  {"label": "Resistance per square", "section": "Resistance per square", "subgoals": ["Divide the wire length by its width to count squares", "Recognize that sheet resistance depends only on the layer", "Keep length and width in the same unit before dividing"]},
+  {"label": "From resistivity to ohms", "section": "From resistivity to ohms", "subgoals": ["Compute sheet resistance as resistivity over thickness", "Count squares on each rectangle of the fractured wire", "Add the resistance of segments that carry the same current in series"]},
+  {"label": "Corners and current crowding", "section": "Corners and current crowding", "subgoals": ["Separate the corner square from the straight arms", "Count the corner square as 0.56 squares", "Multiply the total square count by the sheet resistance"]}
+]

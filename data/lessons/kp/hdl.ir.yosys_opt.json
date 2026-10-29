@@ -1,0 +1,5 @@
+[
+  {"label": "Folding, merging and cleaning", "section": "Folding, merging and cleaning", "subgoals": ["Fold constant cells and simple identities with opt_expr", "Merge identical cells with opt_merge", "Sweep unused cells and wires with opt_clean"]},
+  {"label": "Multiplexers and flip-flops", "section": "Multiplexers and flip-flops", "subgoals": ["Remove unreachable multiplexer inputs with opt_muxtree", "Turn constant-input flip-flops into constants with opt_dff", "Fold feedback multiplexers into enable flip-flops"]},
+  {"label": "Flattening and pass ordering", "section": "Flattening and pass ordering", "subgoals": ["Flatten before optimizing to expose cross-boundary constants", "Keep boundaries that carry keep_hierarchy", "Rerun opt after every lowering step"]}
+]

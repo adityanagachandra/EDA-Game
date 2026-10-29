@@ -1,0 +1,5 @@
+[
+  {"label": "Core, policy, parameters and hooks", "section": "Core, policy, parameters and hooks", "subgoals": ["Place the unique table and clause semantics in the core", "Place orderings and heuristics in policy", "Place limits and weights in parameters"]},
+  {"label": "Landing a request in a tier", "section": "Landing a request in a tier", "subgoals": ["Try a configuration change first", "Use a plug-in at a seam when configuration is not enough", "Escalate to a core edit only with human approval"]},
+  {"label": "Seams for Boolean engines", "section": "Seams for Boolean engines", "subgoals": ["Expose a variable-order seam for BDD packages", "Expose a decision-heuristic seam for SAT solvers", "Keep per-call overhead coarse"]}
+]

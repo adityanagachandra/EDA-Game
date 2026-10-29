@@ -1,0 +1,5 @@
+[
+  {"label": "Placer and router", "section": "Placer and router", "subgoals": ["Assign legalization and row rules to the placer core", "Assign DRC-correct paths and layer legality to the router core", "List the weights, move sets and cost functions on each surface"]},
+  {"label": "Timer and extractor", "section": "Timer and extractor", "subgoals": ["Assign propagation and the delay-model API to the timer core", "Assign solver mathematics and netlist correctness to the extractor core", "List reporting, modes, derating and calibration on each surface"]},
+  {"label": "Requests that seem to cross the line", "section": "Requests that seem to cross the line", "subgoals": ["Test whether the result still meets the correctness contract", "Recast core-sounding requests as directives or constraints", "Escalate requests that weaken legality or accuracy guarantees"]}
+]

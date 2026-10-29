@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The four layers of an HLS engine",
+  "section": "The four layers of an HLS engine",
+  "subgoals": [
+   "Place legality checks and dependence analysis in the core",
+   "Place priorities and cost functions in the strategy layer",
+   "Place directive values in parameters and report data in hooks"
+  ]
+ },
+ {
+  "label": "Which tier a request lands in",
+  "section": "Which tier a request lands in",
+  "subgoals": [
+   "Route value changes to Tier 1 configuration",
+   "Route new rankings of legal results to a Tier 2 plug-in seam",
+   "Route anything that alters correctness rules to a reviewed Tier 3 change"
+  ]
+ },
+ {
+  "label": "Designing the seams and proving changes",
+  "section": "Designing the seams and proving changes",
+  "subgoals": [
+   "Call plug-ins once per batch through a frozen interface",
+   "Pass plain data and keep plug-ins deterministic",
+   "Prove each change with golden co-simulation and a QoR differential report"
+  ]
+ }
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The implicit update",
+  "section": "The implicit update",
+  "subgoals": [
+   "Evaluate the derivative at the new time point",
+   "Collect the unknown on one side of the equation",
+   "Solve for the new value, by Newton when the equation is nonlinear"
+  ]
+ },
+ {
+  "label": "One step for an RC circuit",
+  "section": "One step for an RC circuit",
+  "subgoals": [
+   "Compute the time constant from R and C",
+   "Form h over tau",
+   "Apply the backward Euler update for the node voltage"
+  ]
+ },
+ {
+  "label": "Backward Euler on a coupled system",
+  "section": "Backward Euler on a coupled system",
+  "subgoals": [
+   "Form the matrix I minus h times A",
+   "Build the right-hand side from the previous state",
+   "Solve the linear system for the new state"
+  ]
+ }
+]

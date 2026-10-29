@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Regeneration in a cross-coupled latch",
+    "section": "Regeneration in a cross-coupled latch",
+    "subgoals": [
+      "Model the balanced latch as a high-gain loop around its switching point",
+      "Grow the node difference exponentially with time constant tau",
+      "Relate tau to transconductance and node capacitance"
+    ]
+  },
+  {
+    "label": "The MTBF formula",
+    "section": "The MTBF formula",
+    "subgoals": [
+      "Compute the failure rate term from window, clock and data rates",
+      "Exponentiate the resolution time over tau",
+      "Take base-ten logarithms to handle the large numbers"
+    ]
+  },
+  {
+    "label": "Designing for a target MTBF",
+    "section": "Designing for a target MTBF",
+    "subgoals": [
+      "Solve the MTBF formula for the resolution time",
+      "Convert added resolution time into decades of MTBF",
+      "Check synchronizer structure with clock-domain-crossing tools"
+    ]
+  }
+]

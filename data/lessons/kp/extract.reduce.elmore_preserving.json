@@ -1,0 +1,5 @@
+[
+  {"label": "Splitting the eliminated capacitance", "section": "Splitting the eliminated capacitance", "subgoals": ["Write the conductance of each removed resistor", "Form the downstream share as R1 over R1 plus R2", "Move that share to the downstream node and the rest to the driver end"]},
+  {"label": "The Elmore delay is unchanged", "section": "The Elmore delay is unchanged", "subgoals": ["Write the Elmore delay before elimination", "Write it after elimination with the new capacitances", "Expand both and confirm they are equal"]},
+  {"label": "The cost of naive lumping", "section": "The cost of naive lumping", "subgoals": ["Place all of the eliminated capacitance downstream", "Compute the extra delay as R2 times C1", "Compare naive and proportional reductions against the original"]}
+]

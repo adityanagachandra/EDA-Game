@@ -1,0 +1,5 @@
+[
+  {"label": "Decision problems and polynomial time", "section": "Decision problems and polynomial time", "subgoals": ["State the problem as a yes or no question", "Measure running time in the input size", "Place the problem in P when a polynomial algorithm exists"]},
+  {"label": "Certificates and NP", "section": "Certificates and NP", "subgoals": ["Name the certificate for a yes answer", "Check it in polynomial time", "Place the problem in NP"]},
+  {"label": "coNP and the shape of verification problems", "section": "coNP and the shape of verification problems", "subgoals": ["Name the certificate for a no answer", "Recognize tautology and equivalence as coNP problems", "Relate a counterexample to the complement problem"]}
+]

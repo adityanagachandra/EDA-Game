@@ -1,0 +1,5 @@
+[
+  {"label": "Discretizing a continuous block", "section": "Discretizing a continuous block", "subgoals": ["Write the block's ODE with the input held over a step", "Solve it exactly to get alpha as one minus e to the minus T over tau", "Update the real variable at each event"]},
+  {"label": "Stepping a model through time", "section": "Stepping a model through time", "subgoals": ["Compose k exact steps into one exponential", "Evaluate the response at the queried time", "Choose the update interval relative to the fastest time constant"]},
+  {"label": "Discretization error and validation", "section": "Discretization error and validation", "subgoals": ["Compare the Euler factor T over tau with the exact factor", "Compute both responses after k steps and take the difference", "Validate the model against transistor-level simulation on the same stimulus"]}
+]

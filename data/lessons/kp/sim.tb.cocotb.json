@@ -1,0 +1,5 @@
+[
+  {"label": "Python coroutines over the simulator interface", "section": "Python coroutines over the simulator interface", "subgoals": ["Attach to the simulator through VPI or VHPI", "Write tests as async coroutines that await triggers", "Run drivers, monitors and clocks as concurrent coroutines"]},
+  {"label": "The open-source simulators underneath", "section": "The open-source simulators underneath", "subgoals": ["Use Icarus for event-driven four-state Verilog simulation", "Use Verilator for compiled two-state speed", "Use GHDL for VHDL designs"]},
+  {"label": "Reading values at the right moment", "section": "Reading values at the right moment", "subgoals": ["Expect pre-edge values right after a RisingEdge trigger", "Await ReadOnly to read settled values without writing", "Keep per-cycle Python work small to limit crossing overhead"]}
+]

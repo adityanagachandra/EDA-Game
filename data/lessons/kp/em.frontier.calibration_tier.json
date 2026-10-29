@@ -1,0 +1,5 @@
+[
+  {"label": "What calibration data an extractor carries", "section": "What calibration data an extractor carries", "subgoals": ["Separate stack data and tables from engine code", "Treat pattern tables as solver-generated configuration", "Route process changes through regenerated data"]},
+  {"label": "Placing a request in the right tier", "section": "Placing a request in the right tier", "subgoals": ["Classify a request by whether existing data can express it", "Use a plug-in when new logic is needed at a seam", "Escalate kernel changes to a human-approved core edit"]},
+  {"label": "Proving a recalibration", "section": "Proving a recalibration", "subgoals": ["Match regenerated tables against field-solver goldens", "Run a differential report and confirm only intended layers moved", "Version the calibration with every extraction result"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Tier 1 changes in verification", "section": "Tier 1 changes in verification", "subgoals": ["Identify whether the request changes a value, a selection or a waiver", "Apply it through the deck or the run configuration", "Rerun the checks without rebuilding the engine"]},
+  {"label": "Tier 2 plug-ins", "section": "Tier 2 plug-ins", "subgoals": ["Find the extension point the request fits: check, extractor, property or output", "Implement it against the engine's stable API", "Verify it with golden tests on reference layouts"]},
+  {"label": "Tier 3 core edits", "section": "Tier 3 core edits", "subgoals": ["Decide whether the change alters a correctness invariant of the kernel", "Require a reviewed diff and full regression for core edits", "Add a seam when similar requests keep reaching the core"]}
+]

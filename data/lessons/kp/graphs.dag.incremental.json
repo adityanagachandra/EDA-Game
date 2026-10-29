@@ -1,0 +1,5 @@
+[
+  {"label": "The fanout cone bounds the work", "section": "The fanout cone bounds the work", "subgoals": ["Mark the head of the changed arc dirty", "Mark everything reachable from it dirty", "Leave vertices outside the cone untouched"]},
+  {"label": "Stopping early", "section": "Stopping early", "subgoals": ["Recompute a dirty vertex from its fanins", "Compare the new value with the stored one", "Propagate only when the value changed"]},
+  {"label": "Correctness of incremental results", "section": "Correctness of incremental results", "subgoals": ["Compare incremental results with a full recomputation after edits", "Check every propagated quantity, not just arrival", "Repair levels before propagating after structural edits"]}
+]

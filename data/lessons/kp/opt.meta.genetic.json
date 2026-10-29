@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Fitness-proportional selection",
+    "section": "Fitness-proportional selection",
+    "subgoals": [
+      "Sum the fitness values of the population",
+      "Divide the chosen individual's fitness by the total",
+      "Check the selection pressure for premature convergence"
+    ]
+  },
+  {
+    "label": "Crossover on an encoding",
+    "section": "Crossover on an encoding",
+    "subgoals": [
+      "Cut both parents at the crossover point",
+      "Join the head of one parent to the tail of the other",
+      "Decode the child and evaluate its fitness"
+    ]
+  },
+  {
+    "label": "Tournament selection pressure",
+    "section": "Tournament selection pressure",
+    "subgoals": [
+      "Compute the chance the best individual is never drawn in k draws",
+      "Subtract it from one",
+      "Relate the tournament size to selection pressure and diversity"
+    ]
+  }
+]

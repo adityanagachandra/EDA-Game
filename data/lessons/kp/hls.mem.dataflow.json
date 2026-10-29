@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Tasks, channels and the slowest stage",
+  "section": "Tasks, channels and the slowest stage",
+  "subgoals": [
+   "Identify each task's interval",
+   "Take the maximum interval as the region's interval",
+   "Target the task with the maximum interval for optimization"
+  ]
+ },
+ {
+  "label": "Total time for many frames",
+  "section": "Total time for many frames",
+  "subgoals": [
+   "Sum the task latencies for the first frame",
+   "Add the maximum interval for each further frame",
+   "Compare with the sequential sum over all frames"
+  ]
+ },
+ {
+  "label": "Speedup and the rules that make it possible",
+  "section": "Speedup and the rules that make it possible",
+  "subgoals": [
+   "Divide the sequential time by the dataflow time",
+   "Compare with the limit of summed latency over the maximum interval",
+   "Keep channels single-producer, single-consumer and forward-only"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What the manifest must say", "section": "What the manifest must say", "subgoals": ["List region structure, dimension and sigma range in the manifest", "Return an interval, effective sample size and call count with the estimate", "Match the design's failure structure against the advertised support"]},
+  {"label": "Where each change lands", "section": "Where each change lands", "subgoals": ["Place the weight and estimator code in the immutable core", "Place new proposal distributions behind the sampler seam as plug-ins", "Place sigma target, budget and confidence level in configuration"]},
+  {"label": "Golden statistical tests", "section": "Golden statistical tests", "subgoals": ["Build limit states with exact known failure probabilities", "Assert interval coverage across many seeds", "Compare a new variant with the baseline within combined intervals on a reference cell"]}
+]

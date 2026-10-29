@@ -1,0 +1,5 @@
+[
+  {"label": "The four layers of a simulator", "section": "The four layers of a simulator", "subgoals": ["Place scheduling semantics and the value system in the core", "Place X-propagation modes and partitioning heuristics in the policy layer", "Place seeds, threads and dump scope in parameters, and VPI in hooks"]},
+  {"label": "Classifying change requests", "section": "Classifying change requests", "subgoals": ["Classify a dump-scope change as Tier 1 configuration", "Classify a new X policy or coverage monitor as a Tier 2 plug-in", "Classify any change to region order or value semantics as Tier 3"]},
+  {"label": "Designing seams that keep compiled speed", "section": "Designing seams that keep compiled speed", "subgoals": ["Call plug-ins per batch or per cycle rather than per event", "Pass the operator, operand X bits and context to an X policy", "Require determinism and differential evidence before promotion"]}
+]

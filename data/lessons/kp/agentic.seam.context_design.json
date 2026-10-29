@@ -1,0 +1,5 @@
+[
+  {"label": "Where customer-specific behavior lives", "section": "Where customer-specific behavior lives", "subgoals": ["Find where teams disagree but the mathematics does not", "Name the question the core would ask", "Place the seam at that question"]},
+  {"label": "What context the seam must expose", "section": "What context the seam must expose", "subgoals": ["List every fact a plausible plug-in might key on", "Check each known scheme against the context", "Add missing facts before plug-ins reach for global state"]},
+  {"label": "Signs a seam is misplaced", "section": "Signs a seam is misplaced", "subgoals": ["Count repeated Tier 3 edits for one request kind", "Spot plug-ins that duplicate core work", "Spot seams whose boundary overhead shows in profiles"]}
+]

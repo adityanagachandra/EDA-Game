@@ -1,0 +1,5 @@
+[
+  {"label": "Clique and star expansions", "section": "Clique and star expansions", "subgoals": ["Expand a k-pin net into k(k - 1)/2 clique edges", "Expand it instead into k star edges plus one centre vertex", "Compare the counts to see which nets dominate memory"]},
+  {"label": "Weighting clique edges", "section": "Weighting clique edges", "subgoals": ["Weight each clique edge by 1/(k - 1) or 2/k", "Merge parallel edges between the same pair by adding weights", "Sum the contributions of every net containing both cells"]},
+  {"label": "Choosing a model", "section": "Choosing a model", "subgoals": ["Eliminate the free star centre to see it equals a weighted clique", "Note that no graph model reproduces the hyperedge cut exactly", "Use cliques for small nets and stars or Bound2Bound for large ones"]}
+]

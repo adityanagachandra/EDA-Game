@@ -1,0 +1,5 @@
+[
+  {"label": "The sandbox around a plug-in build", "section": "The sandbox around a plug-in build", "subgoals": ["Cut network access so code cannot leak data or fetch dependencies", "Set CPU, memory and time limits on build and test", "Mount the core read-only and build the plug-in as its own module"]},
+  {"label": "Iteration time with a compiler cache", "section": "Iteration time with a compiler cache", "subgoals": ["Weight hit and miss costs by the hit rate per compilation unit", "Add the fixed link and test time", "Divide an hour by the iteration time for iterations per hour"]},
+  {"label": "Pinned offline toolchains", "section": "Pinned offline toolchains", "subgoals": ["Pin compiler and library versions by immutable digest", "Mirror dependency sources for offline builds", "Strip timestamps and absolute paths so builds are reproducible"]}
+]

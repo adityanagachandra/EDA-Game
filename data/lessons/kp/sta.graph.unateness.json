@@ -1,0 +1,5 @@
+[
+  {"label": "Positive, negative and non-unate arcs", "section": "Positive, negative and non-unate arcs", "subgoals": ["Classify buffer, AND and OR arcs as positive unate", "Classify inverter, NAND and NOR arcs as negative unate", "Classify XOR and multiplexer select arcs as non-unate"]},
+  {"label": "Following a transition through a chain", "section": "Following a transition through a chain", "subgoals": ["Start from the transition entering the chain", "Keep the direction through each positive-unate arc and flip it through each negative-unate arc", "Read off the transition at the end of the chain"]},
+  {"label": "Non-unate arcs propagate both edges", "section": "Non-unate arcs propagate both edges", "subgoals": ["Propagate both output transitions through a non-unate arc", "Carry both transitions through every later arc", "Name the pessimism of merging edges that one input vector cannot produce"]}
+]

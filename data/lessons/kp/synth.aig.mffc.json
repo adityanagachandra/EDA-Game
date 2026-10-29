@@ -1,0 +1,5 @@
+[
+  {"label": "Definition", "section": "Definition", "subgoals": ["Collect the transitive fanin cone of the node", "Keep the nodes whose every fanout lies inside the cone", "Count the AND nodes that remain as the MFFC"]},
+  {"label": "Computing it by dereferencing", "section": "Computing it by dereferencing", "subgoals": ["Initialize reference counts from fanouts and primary outputs", "Decrement fanin counts recursively, descending where a count reaches zero", "Restore the counts by referencing the visited nodes back"]},
+  {"label": "Shared logic in the cone", "section": "Shared logic in the cone", "subgoals": ["Subtract the MFFC size from the cone size", "Treat the difference as shared logic that survives replacement", "Credit a replacement only with the nodes of the MFFC"]}
+]

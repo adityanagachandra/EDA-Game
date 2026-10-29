@@ -1,0 +1,5 @@
+[
+  {"label": "Modelling choices", "section": "Modelling choices", "subgoals": ["List the geometry simplifications and submodels", "Specify temperature-dependent and nonlinear materials", "Apply the temperature history from the stress-free state"]},
+  {"label": "Mesh, elements and convergence", "section": "Mesh, elements and convergence", "subgoals": ["Choose element types for thin layers", "Refine the mesh until the target quantity converges", "Replace singular peak stress by convergent measures"]},
+  {"label": "Validation and use in the flow", "section": "Validation and use in the flow", "subgoals": ["Compare FEA with measured warpage and strain", "Use the calibrated model to explore designs", "Restrict surrogates to their fitted range"]}
+]

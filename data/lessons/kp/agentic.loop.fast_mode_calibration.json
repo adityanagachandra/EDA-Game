@@ -1,0 +1,5 @@
+[
+  {"label": "Bias and spread of the error", "section": "Bias and spread of the error", "subgoals": ["Subtract accurate from fast for each pair", "Average the errors to get the bias", "Compute the sample standard deviation of the errors"]},
+  {"label": "A linear correction", "section": "A linear correction", "subgoals": ["Compute the sums of cross and squared deviations", "Divide to get the slope and solve for the intercept", "Predict the accurate value from a fast one"]},
+  {"label": "Ranking agreement", "section": "Ranking agreement", "subgoals": ["Count the pairs of candidates", "Count pairs ordered the same way by both engines", "Divide to get the concordant fraction"]}
+]

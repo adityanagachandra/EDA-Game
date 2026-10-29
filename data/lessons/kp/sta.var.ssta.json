@@ -1,0 +1,5 @@
+[
+  {"label": "The canonical form and its sigma", "section": "The canonical form and its sigma", "subgoals": ["Identify the mean, the global sensitivities and the random coefficient", "Square and sum the global and random coefficients", "Take the square root as the standard deviation"]},
+  {"label": "Adding canonical forms", "section": "Adding canonical forms", "subgoals": ["Add the means", "Add the sensitivities to each shared source", "Combine the random coefficients by root-sum-square"]},
+  {"label": "Correlation through shared sources", "section": "Correlation through shared sources", "subgoals": ["Multiply matching global sensitivities and sum them for the covariance", "Divide by the product of the two standard deviations", "Read the result as the correlation that statistical max must use"]}
+]

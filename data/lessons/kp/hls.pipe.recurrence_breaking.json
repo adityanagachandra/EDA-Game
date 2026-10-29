@@ -1,0 +1,29 @@
+[
+ {
+  "label": "What sits on the recurrence",
+  "section": "What sits on the recurrence",
+  "subgoals": [
+   "Trace the cycle from the carried value back to itself",
+   "Exclude operations that read only non-carried values",
+   "Sum the latencies of the operations that remain on the cycle"
+  ]
+ },
+ {
+  "label": "Interleaved partial sums",
+  "section": "Interleaved partial sums",
+  "subgoals": [
+   "Choose the number of partial sums from the adder latency and the target II",
+   "Assign iteration i to partial sum i mod P",
+   "Accept the reassociated rounding only when the spec allows it"
+  ]
+ },
+ {
+  "label": "Total cost including the final reduction",
+  "section": "Total cost including the final reduction",
+  "subgoals": [
+   "Count the cycles of the main loop at the new II",
+   "Add the reduction tree's levels times the adder latency",
+   "Compare the total with the original recurrence-bound loop"
+  ]
+ }
+]

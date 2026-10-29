@@ -1,0 +1,5 @@
+[
+  {"label": "Looking up the derate by depth", "section": "Looking up the derate by depth", "subgoals": ["Count the logic depth of the path", "Read the derate at that depth from the table", "Multiply the path delay by the derate"]},
+  {"label": "Interpolating between depths", "section": "Interpolating between depths", "subgoals": ["Find the two depth points that bracket the path depth", "Interpolate the derate linearly between them", "Multiply the path delay by the interpolated derate"]},
+  {"label": "Depth and distance together", "section": "Depth and distance together", "subgoals": ["Locate the depth and distance window around the path", "Compute the fractional positions along each axis", "Interpolate the derate bilinearly"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The standard-cell mapping sequence", "section": "The standard-cell mapping sequence", "subgoals": ["Map flip-flops to library cells with dfflibmap", "Map combinational logic with abc and the Liberty file", "Report area with stat using the same library"]},
+  {"label": "techmap and the internal cell library", "section": "techmap and the internal cell library", "subgoals": ["Lower high-level cells with techmap", "Use a custom map file to target special primitives", "Legalize flip-flop types and map constants with hilomap"]},
+  {"label": "Options that steer ABC", "section": "Options that steer ABC", "subgoals": ["Choose LUT mapping with abc -lut", "Set a delay target with abc -D", "Supply a custom ABC script and check equivalence afterwards"]}
+]

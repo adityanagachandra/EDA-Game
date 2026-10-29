@@ -1,0 +1,5 @@
+[
+  {"label": "The tolerance window", "section": "The tolerance window", "subgoals": ["Compute the total area A", "Form the window from (1 - epsilon) A/2 to (1 + epsilon) A/2", "Use area, not cell count, when cell sizes differ"]},
+  {"label": "Checking a move", "section": "Checking a move", "subgoals": ["Subtract the cell's area from its side", "Add it to the other side", "Accept the move only if both sides stay in the window"]},
+  {"label": "Why exhaustive search is hopeless", "section": "Why exhaustive search is hopeless", "subgoals": ["Count bisections as C(n, n/2)/2", "Note the growth like 2 to the n over root n", "Rely on heuristics because minimum bisection is NP-hard"]}
+]

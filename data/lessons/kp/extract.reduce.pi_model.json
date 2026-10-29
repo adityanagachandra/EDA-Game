@@ -1,0 +1,5 @@
+[
+  {"label": "The uniform line", "section": "The uniform line", "subgoals": ["Write the three admittance moments of the load", "Apply the pi formulas for far capacitance, near capacitance and resistance", "Check that near plus far equals the total capacitance"]},
+  {"label": "Admittance moments of a chain", "section": "Admittance moments of a chain", "subgoals": ["Start from the far node's capacitance as its admittance", "Pass the admittance through each resistor as a power series", "Add each node's capacitance and read off the first three coefficients"]},
+  {"label": "The resistance and its use", "section": "The resistance and its use", "subgoals": ["Compute the pi resistance from the second and third moments", "Assemble the near capacitance, resistance and far capacitance", "Feed the pi model to the effective-capacitance iteration"]}
+]

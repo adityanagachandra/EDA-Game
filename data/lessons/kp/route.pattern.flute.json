@@ -1,0 +1,5 @@
+[
+  {"label": "Position sequences", "section": "Position sequences", "subgoals": ["Sort the pins by x and rank their y coordinates", "Read the ranks as a permutation, the position sequence", "Count the possible sequences as n factorial"]},
+  {"label": "Wirelength vectors", "section": "Wirelength vectors", "subgoals": ["Compute the horizontal and vertical gaps between adjacent pin coordinates", "Evaluate each stored coefficient vector against the gaps", "Return the minimum and the tree that achieves it"]},
+  {"label": "FLUTE inside a global router", "section": "FLUTE inside a global router", "subgoals": ["Use FLUTE's tree as the initial net topology", "Reshape tree edges and Steiner points for congestion", "Decompose the reshaped tree into two-pin connections"]}
+]

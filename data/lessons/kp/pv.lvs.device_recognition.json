@@ -1,0 +1,5 @@
+[
+  {"label": "Gates from poly and diffusion", "section": "Gates from poly and diffusion", "subgoals": ["Intersect poly with diffusion to form the gate layer", "Count each connected gate region as one transistor", "Assign the diffusion on either side as source and drain"]},
+  {"label": "Channel width and length", "section": "Channel width and length", "subgoals": ["Find the gate region as the intersection", "Measure L across the poly line", "Measure W along the poly, between the diffusion edges"]},
+  {"label": "Device types from wells and implants", "section": "Device types from wells and implants", "subgoals": ["Test each gate for containment in the well layer", "Combine well and implant layers to choose the device type", "Count the devices of each type"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Messages per layer", "section": "Messages per layer", "subgoals": ["Multiply nets by average pins and add the high-fanout nets", "Treat each pin as one edge", "Double the edges for messages in both directions"]},
+  {"label": "Neighbor sampling", "section": "Neighbor sampling", "subgoals": ["Raise the sample cap to each power up to the layer count", "Sum the powers including the target itself", "Compare the bound with the fanout of the largest net"]},
+  {"label": "When one net dominates", "section": "When one net dominates", "subgoals": ["Compute the clique edges of the high-fanout net", "Divide by the total clique edge count", "Choose to drop, cap or star-expand the dominating net"]}
+]

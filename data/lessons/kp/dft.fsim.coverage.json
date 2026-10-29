@@ -1,0 +1,5 @@
+[
+  {"label": "Fault classes after ATPG", "section": "Fault classes after ATPG", "subgoals": ["Classify each fault as detected, untestable, aborted or not detected", "Require a proof before calling a fault untestable", "Treat aborted faults as unresolved, not untestable"]},
+  {"label": "Fault coverage and test coverage", "section": "Fault coverage and test coverage", "subgoals": ["Divide detected faults by all faults for fault coverage", "Remove untestable faults from the denominator for test coverage", "Check that untestable classifications are proven before trusting test coverage"]},
+  {"label": "ATPG efficiency", "section": "ATPG efficiency", "subgoals": ["Add detected and untestable faults for the resolved count", "Divide by all faults for ATPG efficiency", "State whether coverage is on the collapsed or uncollapsed list"]}
+]

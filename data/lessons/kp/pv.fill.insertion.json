@@ -1,0 +1,5 @@
+[
+  {"label": "Fill needed for a target", "section": "Fill needed for a target", "subgoals": ["Multiply the window area by the minimum density", "Subtract the existing metal to get the deficit", "Divide by one fill square's area and round up"]},
+  {"label": "Legal fill sites", "section": "Legal fill sites", "subgoals": ["Grow every metal shape by the fill spacing", "Test each candidate square against the grown metal", "Count the candidates that stay clear"]},
+  {"label": "The best reachable density", "section": "The best reachable density", "subgoals": ["Compute the existing metal inside the window", "Add the area of every legal fill site", "Divide by the window area and compare with the target"]}
+]

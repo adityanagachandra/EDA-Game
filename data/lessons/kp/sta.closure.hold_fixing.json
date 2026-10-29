@@ -1,0 +1,5 @@
+[
+  {"label": "Buffers needed at the fast corner", "section": "Buffers needed at the fast corner", "subgoals": ["Read the hold violation at the fast corner", "Divide it by the fast-corner buffer delay", "Round up to get the number of buffers"]},
+  {"label": "Setup cost at the slow corner", "section": "Setup cost at the slow corner", "subgoals": ["Multiply the number of buffers by the slow-corner buffer delay", "Subtract it from the slow-corner setup slack", "Compare the setup cost with the hold gain"]},
+  {"label": "The feasibility bound", "section": "The feasibility bound", "subgoals": ["Divide the setup slack by the slow-corner buffer delay", "Round down to get the maximum number of buffers", "Compare it with the number needed to decide whether buffering is feasible"]}
+]

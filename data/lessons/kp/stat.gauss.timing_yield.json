@@ -1,0 +1,5 @@
+[
+  {"label": "Yield at a given period", "section": "Yield at a given period", "subgoals": ["Standardize the clock period against the delay mean and sigma", "Evaluate Phi of z for the yield", "Read the yield at the mean delay as fifty percent"]},
+  {"label": "Period for a target yield", "section": "Period for a target yield", "subgoals": ["Look up z as the inverse normal of the target yield", "Add z sigma to the mean delay", "Compare the guard-band at different yield targets"]},
+  {"label": "Several critical paths", "section": "Several critical paths", "subgoals": ["Multiply path yields when paths are independent", "Take the smaller path yield when paths are perfectly correlated", "Explain the yield loss from many equally critical paths"]}
+]

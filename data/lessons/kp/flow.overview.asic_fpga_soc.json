@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Three ways to build digital logic",
+    "section": "Three ways to build digital logic",
+    "subgoals": [
+      "State what an ASIC team fabricates that an FPGA team does not",
+      "Name the blocks of an FPGA fabric",
+      "Describe an SoC by what it integrates"
+    ]
+  },
+  {
+    "label": "Non-recurring and unit cost",
+    "section": "Non-recurring and unit cost",
+    "subgoals": [
+      "Write total cost as non-recurring cost plus volume times unit cost",
+      "Set the two totals equal and solve for volume",
+      "Compare a forecast volume with the break-even volume"
+    ]
+  },
+  {
+    "label": "Choosing and combining",
+    "section": "Choosing and combining",
+    "subgoals": [
+      "Weigh time to market against power and performance limits",
+      "Explain FPGA prototyping of an ASIC SoC",
+      "Name the two families of back-end tools the choice creates"
+    ]
+  }
+]

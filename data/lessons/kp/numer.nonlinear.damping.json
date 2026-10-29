@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Scaling the Newton step",
+  "section": "Scaling the Newton step",
+  "subgoals": [
+   "Compute the full Newton step",
+   "Multiply it by the damping factor",
+   "Restore the full step once near the root"
+  ]
+ },
+ {
+  "label": "Backtracking until the residual drops",
+  "section": "Backtracking until the residual drops",
+  "subgoals": [
+   "Try the full step and evaluate the residual",
+   "Halve the step until the residual decreases",
+   "Accept the first step that passes the decrease test"
+  ]
+ },
+ {
+  "label": "Limiting the voltage change per iteration",
+  "section": "Limiting the voltage change per iteration",
+  "subgoals": [
+   "Find the largest proposed node voltage change",
+   "Scale the step so it equals the allowed maximum",
+   "Apply the scaled update to every node"
+  ]
+ }
+]

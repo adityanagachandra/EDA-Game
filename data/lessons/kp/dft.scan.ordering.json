@@ -1,0 +1,5 @@
+[
+  {"label": "Wirelength of an order", "section": "Wirelength of an order", "subgoals": ["List the chain from scan-in through the flops to scan-out", "Add the Manhattan distance of each consecutive hop", "Sum the hops for the wirelength"]},
+  {"label": "Greedy and exact ordering", "section": "Greedy and exact ordering", "subgoals": ["Start at scan-in and step to the nearest unvisited flop", "Break ties toward the lower-numbered flop", "Enumerate all orders for small chains to find the optimum"]},
+  {"label": "Constraints and consequences", "section": "Constraints and consequences", "subgoals": ["Keep each reordered chain inside its clock domain", "Fix hold violations on short shift paths with buffers", "Write the new order back to the scan definition"]}
+]

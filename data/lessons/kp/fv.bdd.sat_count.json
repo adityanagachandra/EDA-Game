@@ -1,0 +1,5 @@
+[
+  {"label": "Counting paths to 1", "section": "Counting paths to 1", "subgoals": ["Give terminals level n, with counts 1 and 0", "Compute each node's count from its children, weighting by skipped levels", "Scale the root's count by 2 to the power of its level"]},
+  {"label": "Skipped levels", "section": "Skipped levels", "subgoals": ["Find the level of every node in the order", "Weight each edge by 2 to the power of the number of levels it skips", "Sum the weighted counts bottom-up to the root"]},
+  {"label": "From counts to probabilities", "section": "From counts to probabilities", "subgoals": ["Count the satisfying assignments", "Divide by 2^n", "Round the probability to the requested precision"]}
+]

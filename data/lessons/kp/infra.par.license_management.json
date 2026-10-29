@@ -1,0 +1,5 @@
+[
+  {"label": "Licenses cap concurrency", "section": "Licenses cap concurrency", "subgoals": ["Treat the license count as the concurrency limit", "Divide jobs by licenses, rounding up, to count waves", "Multiply waves by job length for the wall time"]},
+  {"label": "License utilization", "section": "License utilization", "subgoals": ["Compute the license-hours offered over the wall time", "Compute the license-hours the jobs actually use", "Divide used by offered to get utilization"]},
+  {"label": "Check in licenses early", "section": "Check in licenses early", "subgoals": ["Split each job into licensed and unlicensed phases", "Schedule licensed phases back to back in waves", "Add only the last wave's unlicensed phase to the wall time"]}
+]

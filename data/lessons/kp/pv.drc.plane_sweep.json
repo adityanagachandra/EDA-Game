@@ -1,0 +1,5 @@
+[
+  {"label": "The active set", "section": "The active set", "subgoals": ["Extend each shape's x-interval on the right by the rule", "Sort the entry and exit events", "Track the largest number of simultaneously active shapes"]},
+  {"label": "Querying the active set", "section": "Querying the active set", "subgoals": ["Grow the new shape's y-interval by the rule", "Return active intervals that overlap the grown interval", "Pass only the returned shapes to the exact test"]},
+  {"label": "What the sweep saves", "section": "What the sweep saves", "subgoals": ["Count all pairs for the brute-force checker", "Count the pairs near in both axes", "Subtract to get the comparisons avoided"]}
+]

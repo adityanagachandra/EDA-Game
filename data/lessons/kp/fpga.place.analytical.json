@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Quadratic placement of one block",
+  "section": "Quadratic placement of one block",
+  "subgoals": [
+   "Write the weighted sum of squared distances",
+   "Set its derivative with respect to x to zero",
+   "Solve for the weighted mean of the pin positions"
+  ]
+ },
+ {
+  "label": "Many movable blocks",
+  "section": "Many movable blocks",
+  "subgoals": [
+   "Write one zero-gradient equation per movable block",
+   "Assemble the Laplacian plus fixed-pin diagonal",
+   "Solve the linear system for the coordinates"
+  ]
+ },
+ {
+  "label": "Spreading and legalizing on an FPGA",
+  "section": "Spreading and legalizing on an FPGA",
+  "subgoals": [
+   "Spread clumped blocks with density-driven anchors",
+   "Legalize each block type onto its allowed columns",
+   "Refine the legal placement with a local pass"
+  ]
+ }
+]

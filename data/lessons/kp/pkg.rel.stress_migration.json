@@ -1,0 +1,5 @@
+[
+  {"label": "Mechanism and driving force", "section": "Mechanism and driving force", "subgoals": ["Trace the tension to cooling from the anneal", "Locate the stress concentration under vias", "Explain why wide lines supply more vacancies"]},
+  {"label": "The temperature peak", "section": "The temperature peak", "subgoals": ["Identify the stress-free temperature as zero driving force", "Note that diffusion freezes at low temperature", "Locate the failure-rate peak between them"]},
+  {"label": "Design and verification response", "section": "Design and verification response", "subgoals": ["Insert redundant vias on wide lines", "Check via-doubling and plate-slotting rules", "Add package and TSV stress to the residual field"]}
+]

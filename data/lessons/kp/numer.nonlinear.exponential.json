@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The diode-resistor equation",
+  "section": "The diode-resistor equation",
+  "subgoals": [
+   "Write KCL at the diode node",
+   "Evaluate the resistor and diode currents at the guess",
+   "Read the sign of the residual to locate the solution"
+  ]
+ },
+ {
+  "label": "One Newton update from an initial guess",
+  "section": "One Newton update from an initial guess",
+  "subgoals": [
+   "Differentiate the device law to get the small-signal conductance",
+   "Add the resistor conductance to form f prime",
+   "Subtract f over f prime from the guess"
+  ]
+ },
+ {
+  "label": "Overshoot and exponential sensitivity",
+  "section": "Overshoot and exponential sensitivity",
+  "subgoals": [
+   "Compute the current ratio for a voltage change",
+   "Show how a low guess overshoots toward the source voltage",
+   "Apply limiting or damping to keep junction steps small"
+  ]
+ }
+]

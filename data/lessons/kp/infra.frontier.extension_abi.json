@@ -1,0 +1,5 @@
+[
+  {"label": "What a frozen extension ABI promises", "section": "What a frozen extension ABI promises", "subgoals": ["Freeze struct layouts and function signatures at the seam", "Version structs with a size and version field", "Return error codes instead of throwing across the boundary"]},
+  {"label": "Paying for the call boundary", "section": "Paying for the call boundary", "subgoals": ["Multiply calls by per-call overhead for the per-cell design", "Count ceil of N over B calls for the batched design", "Compare total pass time to find the speedup"]},
+  {"label": "Plain data and no hidden state", "section": "Plain data and no hidden state", "subgoals": ["Pass inputs as read-only arrays and outputs as separate arrays", "Remove statics and globals from plug-in code", "Detect hidden state by reordering or parallelizing calls"]}
+]

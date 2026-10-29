@@ -1,0 +1,5 @@
+[
+  {"label": "Overlap means both projections overlap", "section": "Overlap means both projections overlap", "subgoals": ["Check that the x-ranges overlap with positive length", "Check that the y-ranges overlap with positive length", "Count each qualifying pair once"]},
+  {"label": "Near pairs by growing", "section": "Near pairs by growing", "subgoals": ["Grow every shape by half the rule distance", "Report the grown pairs that overlap", "Drop pairs that already touched before growing"]},
+  {"label": "Touching is a separate predicate", "section": "Touching is a separate predicate", "subgoals": ["Compute the x and y overlaps of each pair", "Classify pairs with zero area but nonnegative overlaps as touching", "Distinguish edge contact from corner contact"]}
+]

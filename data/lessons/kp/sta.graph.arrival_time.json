@@ -1,0 +1,5 @@
+[
+  {"label": "The max-plus recurrence", "section": "The max-plus recurrence", "subgoals": ["Seed each startpoint with its launch arrival", "Add each fanin's arrival to its arc delay", "Keep the largest sum as the node's arrival"]},
+  {"label": "Propagating to the endpoints", "section": "Propagating to the endpoints", "subgoals": ["Visit nodes in topological order", "Apply the max recurrence at every node", "Read the endpoint's arrival as its longest-path delay"]},
+  {"label": "Early arrivals for hold", "section": "Early arrivals for hold", "subgoals": ["Seed each startpoint with its earliest launch time", "Take the minimum over fanins of early arrival plus minimum delay", "Store early and late arrivals together at every pin"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Bias temperature instability", "section": "Bias temperature instability", "subgoals": ["Identify static gate bias and temperature as the BTI stress", "Assign NBTI to PMOS and PBTI to NMOS with high-k stacks", "Account for partial recovery when stress is removed"]},
+  {"label": "Power-law time dependence", "section": "Power-law time dependence", "subgoals": ["Form the ratio of target time to measured time", "Raise it to the power-law exponent", "Multiply the measured shift by that factor"]},
+  {"label": "Hot-carrier injection", "section": "Hot-carrier injection", "subgoals": ["Require simultaneous current and high lateral field near the drain", "Accumulate damage per switching event weighted by activity", "Contrast the temperature dependence of HCI with BTI"]}
+]

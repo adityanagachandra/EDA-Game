@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Effective resistance and capacitance per unit width",
+    "section": "Effective resistance and capacitance per unit width",
+    "subgoals": [
+      "Scale a transistor's resistance as one over its width",
+      "Scale its gate and diffusion capacitance in proportion to width",
+      "Multiply the unit pMOS resistance by gamma relative to the nMOS"
+    ]
+  },
+  {
+    "label": "The delay of a gate driving a load",
+    "section": "The delay of a gate driving a load",
+    "subgoals": [
+      "Select the conducting network for the output edge being timed",
+      "Sum the parasitic and load capacitance on the output",
+      "Multiply resistance by capacitance, reading kOhm times fF as ps"
+    ]
+  },
+  {
+    "label": "From time constant to 50% delay",
+    "section": "From time constant to 50% delay",
+    "subgoals": [
+      "Solve the single-pole step response for the 50% crossing",
+      "Multiply the time constant by ln 2 for the propagation delay",
+      "Absorb the constant into a fitted effective resistance"
+    ]
+  }
+]

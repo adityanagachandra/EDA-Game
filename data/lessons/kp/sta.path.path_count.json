@@ -1,0 +1,5 @@
+[
+  {"label": "Counting with one forward pass", "section": "Counting with one forward pass", "subgoals": ["Give each source a count of one", "Visit nodes in topological order", "Sum the fanin counts at each node"]},
+  {"label": "Paths through a node", "section": "Paths through a node", "subgoals": ["Count paths into the node with the forward pass", "Count paths out of the node with the backward pass", "Multiply the two counts"]},
+  {"label": "Exponential growth with reconvergence", "section": "Exponential growth with reconvergence", "subgoals": ["Multiply the branch counts of cascaded reconvergent stages", "Compare the path count with the number of arcs", "Explain why only selective path enumeration is feasible"]}
+]

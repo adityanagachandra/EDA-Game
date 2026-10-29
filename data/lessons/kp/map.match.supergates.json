@@ -1,0 +1,5 @@
+[
+  {"label": "What a supergate is", "section": "What a supergate is", "subgoals": ["Compose a root gate with gates on some of its pins", "Compute the composition's truth table once", "Add the component areas"]},
+  {"label": "Pin-to-output delays", "section": "Pin-to-output delays", "subgoals": ["Sum the pin delays along each input's path", "Add each input's arrival time to its path delay", "Take the latest as the output arrival"]},
+  {"label": "Inputs, bounds and library size", "section": "Inputs, bounds and library size", "subgoals": ["Count supergate inputs from the root pins and the driving gates", "Bound inputs and levels to limit the library", "Prune supergates dominated in area and delay"]}
+]

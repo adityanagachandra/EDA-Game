@@ -1,0 +1,5 @@
+[
+  {"label": "unique: mutually exclusive items", "section": "unique: mutually exclusive items", "subgoals": ["Check that no two items can match the same selector", "Check that some item or a default always matches", "Let synthesis build a parallel multiplexer from the exclusivity"]},
+  {"label": "priority: ordered but complete", "section": "priority: ordered but complete", "subgoals": ["Keep first-match order under priority", "Report a selector that matches no item", "Use the completeness promise to avoid a latch"]},
+  {"label": "Why checked promises beat pragmas", "section": "Why checked promises beat pragmas", "subgoals": ["Replace synthesis-only pragmas with checked keywords", "Recognize that simulation checks cover only applied stimulus", "Prove the promise formally when silicon depends on it"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Delay in a homogeneous dielectric", "section": "Delay in a homogeneous dielectric", "subgoals": ["Convert the vacuum speed to inches per nanosecond", "Use the full dielectric constant for stripline", "Compute delay per inch from the square root of Dk"]},
+  {"label": "Effective dielectric constant of microstrip", "section": "Effective dielectric constant of microstrip", "subgoals": ["Explain why microstrip sees an effective Dk below the laminate's", "Evaluate the effective Dk approximation", "Compare microstrip and stripline delay in one laminate"]},
+  {"label": "Delay of a mixed route", "section": "Delay of a mixed route", "subgoals": ["Split the route into segments by layer", "Sum length times delay per inch over the segments", "Match nets by delay when they change layers"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Essential rows in a covering table", "section": "Essential rows in a covering table", "subgoals": ["Scan each column for a single marking row", "Select that row into the cover", "Delete the columns the selected row covers"]},
+  {"label": "Column dominance", "section": "Column dominance", "subgoals": ["List the set of rows that mark each column", "Find pairs where one column's row set contains another's", "Delete the column with the larger row set, keeping one of identical columns"]},
+  {"label": "Row dominance and the cyclic core", "section": "Row dominance and the cyclic core", "subgoals": ["Delete a row whose columns are a subset of a no-costlier row's", "Repeat essential selection and both dominance rules to a fixpoint", "Hand the remaining cyclic core to branch and bound"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What graph-based analysis merges", "section": "What graph-based analysis merges", "subgoals": ["Merge the worst arrival and the worst slew separately at each pin", "Use conservative values for path-dependent derates", "Read the result as a safe but pessimistic bound"]},
+  {"label": "What path-based analysis recovers", "section": "What path-based analysis recovers", "subgoals": ["Re-time a failing path with its own slews and depth", "Compare its PBA slack with the GBA slack", "Limit PBA to paths whose GBA slack is below a threshold"]},
+  {"label": "Using both in a flow", "section": "Using both in a flow", "subgoals": ["Run optimization on graph-based slack", "Apply path-based re-timing to the worst paths at signoff", "Account for the gap between the two when setting optimization targets"]}
+]

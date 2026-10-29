@@ -1,0 +1,5 @@
+[
+  {"label": "Surface versus volume discretization", "section": "Surface versus volume discretization", "subgoals": ["Choose a surface method when the medium is simple", "Choose a volume method when materials are inhomogeneous", "Weigh dense compressed matrices against large sparse ones"]},
+  {"label": "Time domain versus frequency domain", "section": "Time domain versus frequency domain", "subgoals": ["Prefer time domain for broadband responses in one run", "Prefer frequency domain for resonant or narrowband structures", "Use adaptive sweeps to limit the number of frequency solves"]},
+  {"label": "Matching the solver to the extraction task", "section": "Matching the solver to the extraction task", "subgoals": ["Classify the task by size, frequency and physics needed", "Map quasi-static tasks to capacitance or PEEC solvers", "Reserve full-wave solvers for wavelength-sized structures"]}
+]

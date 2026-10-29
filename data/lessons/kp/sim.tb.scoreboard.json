@@ -1,0 +1,5 @@
+[
+  {"label": "In-order scoreboards", "section": "In-order scoreboards", "subgoals": ["Push each reference-model prediction into an expected queue", "Pop and compare the oldest expected item for each DUT output", "Report leftover expected items at the end of the test"]},
+  {"label": "Out-of-order matching", "section": "Out-of-order matching", "subgoals": ["Choose a matching key such as a transaction ID", "Match each output against any outstanding expected item", "Count the actual items that remain unmatched"]},
+  {"label": "Sizing queues and choosing reference models", "section": "Sizing queues and choosing reference models", "subgoals": ["Count transactions pushed but not yet popped at each cycle", "Take the maximum as the required queue depth", "Keep the reference model independent of the RTL"]}
+]

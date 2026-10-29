@@ -1,0 +1,5 @@
+[
+  {"label": "The common point and its arrivals", "section": "The common point and its arrivals", "subgoals": ["Trace both clock paths back to the root", "Find the last pin they share", "Sum the early and the late delays along the shared segment"]},
+  {"label": "The pessimism credit", "section": "The pessimism credit", "subgoals": ["Subtract early from late delay on each common buffer", "Sum the differences over the common segment", "Exclude the branches after the split point"]},
+  {"label": "Slack after CPPR", "section": "Slack after CPPR", "subgoals": ["Compute the raw slack with late launch and early capture clocks", "Add the reconvergence credit", "Read the credit line in the required-time section of a report"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "From mandrel to spacer lines", "section": "From mandrel to spacer lines", "subgoals": ["Print mandrels at the relaxed pitch", "Deposit and etch back a conformal spacer film", "Halve the pitch per spacer pass"]},
+  {"label": "Alternating spaces", "section": "Alternating spaces", "subgoals": ["Identify the two gaps that alternate after mandrel removal", "Compute the inter-mandrel gap as P minus m minus 2s", "Attribute each gap to its process cause"]},
+  {"label": "Pitch walk and cut masks", "section": "Pitch walk and cut masks", "subgoals": ["Solve for the mandrel width that equalizes spaces", "Compute pitch walk from a mandrel width error", "Explain why SADP layers need cut masks and gridded routing"]}
+]

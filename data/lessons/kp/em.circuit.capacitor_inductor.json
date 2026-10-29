@@ -1,0 +1,5 @@
+[
+  {"label": "Capacitor current from voltage slew", "section": "Capacitor current from voltage slew", "subgoals": ["Write the capacitor current as capacitance times the voltage slope", "Compute the slope as the voltage change over the ramp time", "Express picofarads times volts per nanosecond in milliamperes"]},
+  {"label": "Inductor voltage from current slew", "section": "Inductor voltage from current slew", "subgoals": ["Write the inductor voltage as inductance times the current slope", "Compute the slope as the current change over its duration", "Express nanohenries times milliamperes per nanosecond in millivolts"]},
+  {"label": "Stored energy", "section": "Stored energy", "subgoals": ["Multiply half the capacitance by the voltage squared", "Multiply half the inductance by the current squared", "Track the units to picojoules or femtojoules"]}
+]

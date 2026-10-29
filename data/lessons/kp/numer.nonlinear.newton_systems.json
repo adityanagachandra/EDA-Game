@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The Jacobian and the linearized system",
+  "section": "The Jacobian and the linearized system",
+  "subgoals": [
+   "Differentiate each equation with respect to each unknown",
+   "Evaluate the Jacobian at the current iterate",
+   "Set up the linear system J times delta equals minus F"
+  ]
+ },
+ {
+  "label": "One Newton step on a two-equation system",
+  "section": "One Newton step on a two-equation system",
+  "subgoals": [
+   "Evaluate the residual at the starting point",
+   "Solve the linear system for the update",
+   "Add the update to the iterate"
+  ]
+ },
+ {
+  "label": "Residual norms and when to stop",
+  "section": "Residual norms and when to stop",
+  "subgoals": [
+   "Evaluate the residual at the new iterate",
+   "Compare the residual norm before and after the step",
+   "Stop only when both update and residual meet their tolerances"
+  ]
+ }
+]

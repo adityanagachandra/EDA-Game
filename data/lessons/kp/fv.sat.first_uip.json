@@ -1,0 +1,5 @@
+[
+  {"label": "Unique implication points", "section": "Unique implication points", "subgoals": ["Restrict attention to nodes at the conflict level", "Find the node closest to the conflict that every path from the decision passes through", "Read the learned clause from the cut just after that node"]},
+  {"label": "Resolving back to the first UIP", "section": "Resolving back to the first UIP", "subgoals": ["Start from the falsified clause", "Resolve on the most recently assigned conflict-level literal using its reason", "Stop when exactly one conflict-level literal remains"]},
+  {"label": "Why the first UIP", "section": "Why the first UIP", "subgoals": ["Compare the first-UIP clause with the last-UIP and all-decision clauses", "Check that the learned clause has exactly one conflict-level literal", "Explain why stopping early yields shorter, more general clauses"]}
+]

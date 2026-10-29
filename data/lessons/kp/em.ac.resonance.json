@@ -1,0 +1,5 @@
+[
+  {"label": "Resonant frequency", "section": "Resonant frequency", "subgoals": ["Equate the inductive and capacitive reactances", "Solve for omega as one over the square root of LC", "Divide by two pi to get the resonant frequency"]},
+  {"label": "Quality factor and bandwidth", "section": "Quality factor and bandwidth", "subgoals": ["Divide the characteristic resistance by R to get Q", "Divide the resonant frequency by Q to get the bandwidth", "Relate Q to the damping ratio as one over two zeta"]},
+  {"label": "Anti-resonance in a power delivery network", "section": "Anti-resonance in a power delivery network", "subgoals": ["Treat the package inductance and die capacitance as a parallel tank", "Compute the anti-resonant frequency from L and C", "Estimate the peak impedance as L over R times C"]}
+]

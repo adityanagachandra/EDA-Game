@@ -1,0 +1,5 @@
+[
+  {"label": "Ports from the instruction mix", "section": "Ports from the instruction mix", "subgoals": ["Allocate two read ports and one write port per issued instruction", "Multiply by the issue width", "Count one address of log base two of R bits per port"]},
+  {"label": "Why area grows quadratically", "section": "Why area grows quadratically", "subgoals": ["Add one track per port to the cell side in each direction", "Square the side to get the area", "Take the ratio of areas for the two port counts"]},
+  {"label": "Write-before-read and bypassing", "section": "Write-before-read and bypassing", "subgoals": ["Write in the first half of the cycle and read in the second", "Route results not yet written through bypass paths", "Count the sources each operand mux selects among"]}
+]

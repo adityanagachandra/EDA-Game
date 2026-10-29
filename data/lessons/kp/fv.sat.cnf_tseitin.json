@@ -1,0 +1,5 @@
+[
+  {"label": "Clauses for one gate", "section": "Clauses for one gate", "subgoals": ["Write the binary clauses that tie the output to each input", "Add the single long clause that closes the equivalence", "Count k + 1 clauses for AND and OR, 4 for a 2-input XOR, 0 for NOT"]},
+  {"label": "Counting a whole circuit", "section": "Counting a whole circuit", "subgoals": ["Count one variable per primary input and per non-inverter gate", "Sum k + 1 clauses per AND or OR and 4 per XOR", "Add one unit clause for the asserted output"]},
+  {"label": "Why new variables pay off", "section": "Why new variables pay off", "subgoals": ["Count the 2^(n-1) clauses of the direct parity CNF", "Count 4(n - 1) + 1 clauses for the Tseitin XOR chain", "Subtract to see how the gap grows with n"]}
+]

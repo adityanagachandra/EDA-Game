@@ -1,0 +1,5 @@
+[
+  {"label": "X-propagation checks", "section": "X-propagation checks", "subgoals": ["Model each uninitialized bit as a free value", "Compare the checked signals across two resolutions of the unknowns", "Report differences only where the signal is qualified as valid"]},
+  {"label": "Connectivity checking", "section": "Connectivity checking", "subgoals": ["Turn each connection row into a source-equals-destination property", "Add the delay and enabling condition the row specifies", "Check each property on its small cone of logic"]},
+  {"label": "Clock-domain crossing formal", "section": "Clock-domain crossing formal", "subgoals": ["Locate each crossing and check its synchronizer structure", "Assert gray coding or a handshake for multi-bit crossings", "Inject random synchronizer latency and re-check the functional properties"]}
+]

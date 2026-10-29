@@ -1,0 +1,5 @@
+[
+  {"label": "Minimum area", "section": "Minimum area", "subgoals": ["Divide the minimum area by the wire width", "Round up to a whole length unit", "Subtract the current length to get the extension"]},
+  {"label": "End-of-line spacing", "section": "End-of-line spacing", "subgoals": ["Sort the segments along the track", "Compute the gap between each end and the next start", "Count the gaps below the end-of-line spacing"]},
+  {"label": "Rules that interact", "section": "Rules that interact", "subgoals": ["Compute the length the via enclosure requires", "Compute the length minimum area requires", "Take the larger as the shortest legal stub"]}
+]

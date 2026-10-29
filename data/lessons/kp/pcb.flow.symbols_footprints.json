@@ -1,0 +1,5 @@
+[
+  {"label": "Two views of one part", "section": "Two views of one part", "subgoals": ["Separate the logical symbol data from the physical footprint data", "Bind symbol pins to lands through pin numbers", "Map a multi-unit symbol onto one package footprint"]},
+  {"label": "Pin-to-pad errors and footprint layers", "section": "Pin-to-pad errors and footprint layers", "subgoals": ["Diagnose a swapped pinout that every check passes", "Assign paste, mask and courtyard data to their consumers", "Size a mask opening to absorb registration error"]},
+  {"label": "Land patterns from package tolerances", "section": "Land patterns from package tolerances", "subgoals": ["Compute land size from package, fabrication and placement tolerances", "Choose a density level for the product's reliability needs", "Split a thermal pad's paste opening to avoid floating the part"]}
+]

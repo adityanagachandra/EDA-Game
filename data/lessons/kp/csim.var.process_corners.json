@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The named corners",
+    "section": "The named corners",
+    "subgoals": [
+      "Read the NMOS and PMOS speeds from the corner name",
+      "Map fast and slow to threshold and mobility shifts",
+      "Use skewed corners for ratio-sensitive circuits"
+    ]
+  },
+  {
+    "label": "Which corner for which check",
+    "section": "Which corner for which check",
+    "subgoals": [
+      "Identify whether the check fails on slow or on fast devices",
+      "Pick the process, voltage and temperature that push in that direction",
+      "Account for temperature inversion at low supply"
+    ]
+  },
+  {
+    "label": "What corners miss",
+    "section": "What corners miss",
+    "subgoals": [
+      "Run Monte Carlo with mismatch for matching-limited metrics",
+      "Treat parameter corners as approximate bounds on performance",
+      "Derive statistical corners for metrics that need sharp bounds"
+    ]
+  }
+]

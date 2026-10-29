@@ -1,0 +1,5 @@
+[
+  {"label": "Cell size by depth", "section": "Cell size by depth", "subgoals": ["Write the cell side as W over 2 to the depth", "Find the first depth where the side drops to the target", "Count the cells at that depth as 4 to the depth"]},
+  {"label": "Separating two points", "section": "Separating two points", "subgoals": ["Compute each point's cell index at successive depths", "Compare the indices in x and in y", "Report the first depth at which they differ"]},
+  {"label": "Rectangles across cells", "section": "Rectangles across cells", "subgoals": ["Find the first and last overlapped cell in x", "Find the first and last overlapped cell in y", "Multiply the counts to get the cells overlapped"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Exact matching of a raster pattern", "section": "Exact matching of a raster pattern", "subgoals": ["Count the window positions of the pattern", "Compare every pixel of the pattern at each position", "Count the positions where all pixels agree"]},
+  {"label": "Orientation-invariant matching", "section": "Orientation-invariant matching", "subgoals": ["Generate the rotated versions of the pattern", "Test every orientation at each position", "Count each matching position once"]},
+  {"label": "Don't-care pixels", "section": "Don't-care pixels", "subgoals": ["Mark the don't-care pixels of the pattern", "Compare only the constrained pixels at each position", "Count the matching positions"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Self-loading from output diffusion",
+    "section": "Self-loading from output diffusion",
+    "subgoals": [
+      "Collect the diffusion capacitance of devices touching the output",
+      "Multiply by the gate's own resistance to get the load-independent delay",
+      "Show that scaling the gate leaves this product unchanged"
+    ]
+  },
+  {
+    "label": "Computing p from widths",
+    "section": "Computing p from widths",
+    "subgoals": [
+      "Sum the widths of all devices whose drains touch the output",
+      "Divide by one plus gamma and multiply by the inverter's parasitic delay",
+      "Recognize p equals n times p_inv for NAND and NOR gates"
+    ]
+  },
+  {
+    "label": "Why parasitic delay limits sizing",
+    "section": "Why parasitic delay limits sizing",
+    "subgoals": [
+      "Split stage delay into effort and parasitic parts",
+      "Compute the parasitic share for a lightly loaded gate",
+      "Explain why upsizing has diminishing returns and stages cost p each"
+    ]
+  }
+]

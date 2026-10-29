@@ -1,0 +1,5 @@
+[
+  {"label": "Front end and process lowering", "section": "Front end and process lowering", "subgoals": ["Parse and elaborate Verilog into RTLIL modules and processes", "Lower processes into multiplexers, flip-flops and latches with proc", "Simplify the word-level netlist with the opt passes"]},
+  {"label": "Lowering and the hand-off to ABC", "section": "Lowering and the hand-off to ABC", "subgoals": ["Lower word-level cells to single-bit gates with techmap", "Map flip-flops to library cells with dfflibmap", "Optimize and map the combinational logic with the abc pass"]},
+  {"label": "Where new optimizations belong", "section": "Where new optimizations belong", "subgoals": ["Place word-level pattern recognition before techmap", "Place generic Boolean optimization in ABC on the AIG", "Place library-aware sizing and buffering after mapping"]}
+]

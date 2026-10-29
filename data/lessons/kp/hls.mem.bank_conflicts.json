@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Which bank an access hits",
+  "section": "Which bank an access hits",
+  "subgoals": [
+   "Add the offset to the loop index for the element",
+   "Reduce the element index modulo the number of banks",
+   "Group the accesses by bank using the offsets modulo B"
+  ]
+ },
+ {
+  "label": "The busiest bank",
+  "section": "The busiest bank",
+  "subgoals": [
+   "Count the accesses that fall in each bank",
+   "Take the largest count as the busiest bank's load",
+   "Choose the factor that spreads the residues of the offsets evenly"
+  ]
+ },
+ {
+  "label": "From conflicts to II",
+  "section": "From conflicts to II",
+  "subgoals": [
+   "Divide the busiest bank's load by its ports and round up",
+   "Read the result as a lower bound on the II",
+   "Change the factor or reuse values in registers to lower it"
+  ]
+ }
+]

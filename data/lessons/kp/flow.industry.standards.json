@@ -1,0 +1,29 @@
+[
+  {
+    "label": "IEEE and Accellera",
+    "section": "IEEE and Accellera",
+    "subgoals": [
+      "Match Verilog, SystemVerilog, VHDL and SystemC to their IEEE numbers",
+      "Match UPF, JTAG and core test to their IEEE numbers",
+      "Explain how Accellera hands work to the IEEE"
+    ]
+  },
+  {
+    "label": "Si2, SEMI and IPC",
+    "section": "Si2, SEMI and IPC",
+    "subgoals": [
+      "Name the formats Si2 stewards",
+      "Name SEMI's layout format standard",
+      "Match IPC standards to board design, assembly and data exchange"
+    ]
+  },
+  {
+    "label": "De facto standards",
+    "section": "De facto standards",
+    "subgoals": [
+      "Name the vendor origin of Liberty, SDC, LEF, DEF and GDSII",
+      "Explain why vendor extensions break reference parsers",
+      "Test a parser against files from the major tools"
+    ]
+  }
+]

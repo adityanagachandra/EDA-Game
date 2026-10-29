@@ -1,0 +1,5 @@
+[
+  {"label": "Removing excess metal", "section": "Removing excess metal", "subgoals": ["Multiply the limit by the gate area to get the allowed metal", "Subtract it from the connected metal", "Choose a fix that removes at least that much from the layer"]},
+  {"label": "Sizing the diode protection", "section": "Sizing the diode protection", "subgoals": ["Compute the net's ratio from metal and gate area", "Divide the excess over the limit by the protection per cell", "Round up to whole diode cells"]},
+  {"label": "Diodes on nets with several gates", "section": "Diodes on nets with several gates", "subgoals": ["Sum the gate areas of every gate on the net", "Compute the net's ratio and its excess", "Insert enough diode cells for the whole net"]}
+]

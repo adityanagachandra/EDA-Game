@@ -1,0 +1,5 @@
+[
+  {"label": "Reports in, verified ECOs out", "section": "Reports in, verified ECOs out", "subgoals": ["Read typed violation reports from the engines", "Apply the proposed fix and re-run the affected checks", "Hand a human a diff with the engines' evidence"]},
+  {"label": "Guarding against bad loops", "section": "Guarding against bad loops", "subgoals": ["Detect repeated states and escalate oscillating loops", "Block changes to constraints and margins without approval", "Require differential evidence that only intended nets changed"]},
+  {"label": "Fast engines, accurate signoff, and the flywheel", "section": "Fast engines, accurate signoff, and the flywheel", "subgoals": ["Recurse to accurate extraction inside the error band", "Run the loop sandboxed inside the IP boundary", "Promote repeatedly successful fixes to validated library skills"]}
+]

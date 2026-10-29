@@ -1,0 +1,5 @@
+[
+  {"label": "Concordant pairs", "section": "Concordant pairs", "subgoals": ["List every pair of candidates", "Compare the order of each pair under prediction and truth", "Count the pairs ordered the same way"]},
+  {"label": "Kendall's tau", "section": "Kendall's tau", "subgoals": ["Subtract discordant from concordant pairs", "Divide by the number of pairs", "Read the sign and size as rank agreement"]},
+  {"label": "Top-k overlap", "section": "Top-k overlap", "subgoals": ["Find the true best k candidates", "Find the predicted best k candidates", "Count how many appear in both sets"]}
+]

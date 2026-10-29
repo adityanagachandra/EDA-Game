@@ -1,0 +1,5 @@
+[
+  {"label": "The starting period", "section": "The starting period", "subgoals": ["Find the register-free paths of the original circuit", "Sum node delays along each path", "Take the longest as the starting clock period"]},
+  {"label": "Searching for the minimum", "section": "Searching for the minimum", "subgoals": ["Collect and sort the distinct D values as candidate periods", "Test each candidate for feasibility of the difference constraints", "Binary-search for the smallest feasible candidate"]},
+  {"label": "Lower bounds and the register cost", "section": "Lower bounds and the register cost", "subgoals": ["Bound the period below by the largest node delay", "Bound it below by delay over registers on every cycle", "Choose the cheapest lag vector among those reaching the minimum"]}
+]

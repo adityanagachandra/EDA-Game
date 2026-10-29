@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The push-out curve",
+    "section": "The push-out curve",
+    "subgoals": [
+      "Sweep the data-to-clock skew and measure clock-to-q",
+      "Identify the flat nominal region and the steep push-out region",
+      "Recognize that setup needs a chosen criterion on a continuous curve"
+    ]
+  },
+  {
+    "label": "The push-out criterion",
+    "section": "The push-out criterion",
+    "subgoals": [
+      "Compute the clock-to-q limit from the nominal value and percentage",
+      "Find the smallest skew whose clock-to-q stays within the limit",
+      "Search for that skew by bisection with one transient per probe"
+    ]
+  },
+  {
+    "label": "Why the criterion matters downstream",
+    "section": "Why the criterion matters downstream",
+    "subgoals": [
+      "Add skew and clock-to-q to get the data-to-output delay",
+      "Find the skew that minimizes that sum on the curve",
+      "Treat the criterion as a core definition because it shifts every table"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Wirelength against the baseline", "section": "Wirelength against the baseline", "subgoals": ["Check zero DRC violations and zero opens first", "Compute the percentage change in wirelength", "Compare it with the tolerance"]},
+  {"label": "Differential checks", "section": "Differential checks", "subgoals": ["Route the reference design with and without the change", "Compare per-net routes or wirelength", "Count changes outside the intended scope"]},
+  {"label": "The golden suite", "section": "The golden suite", "subgoals": ["Apply the hard gates to every design", "Apply the quality tolerance to the survivors", "Promote only when every design passes"]}
+]

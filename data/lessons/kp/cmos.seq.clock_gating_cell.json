@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Why a plain AND fails",
+    "section": "Why a plain AND fails",
+    "subgoals": [
+      "Gate the clock with an AND of clock and enable",
+      "Show that an enable change during the high phase creates a runt or spurious pulse",
+      "Note that enables launched by the same clock change during the high phase"
+    ]
+  },
+  {
+    "label": "The latch-based ICG",
+    "section": "The latch-based ICG",
+    "subgoals": [
+      "Latch the enable while the clock is low",
+      "AND the latched enable with the clock to pass whole pulses",
+      "Time the enable with clock-gating setup and hold checks"
+    ]
+  },
+  {
+    "label": "Where and when gating pays",
+    "section": "Where and when gating pays",
+    "subgoals": [
+      "Replace a bank's hold multiplexers with one gate on its clock",
+      "Estimate the saving from the fraction of cycles the enable is off",
+      "Balance gate placement in the tree against enable timing"
+    ]
+  }
+]

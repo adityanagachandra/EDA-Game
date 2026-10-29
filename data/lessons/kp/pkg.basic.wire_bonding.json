@@ -1,0 +1,5 @@
+[
+  {"label": "Perimeter-limited pad count", "section": "Perimeter-limited pad count", "subgoals": ["Divide the die side by the pad pitch and floor it", "Multiply by four sides and the number of rows", "Compare linear pad growth with quadratic logic growth"]},
+  {"label": "Bond wire resistance", "section": "Bond wire resistance", "subgoals": ["Compute the wire cross-section from its diameter", "Multiply resistivity by length and divide by area", "Convert ohms to milliohms and judge the IR drop"]},
+  {"label": "Inductance and ground bounce", "section": "Inductance and ground bounce", "subgoals": ["Multiply wire length by inductance per millimetre", "Divide the inductance by the number of parallel wires", "Compute the induced voltage from current change over rise time"]}
+]

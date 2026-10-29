@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Datapath area from an allocation",
+  "section": "Datapath area from an allocation",
+  "subgoals": [
+   "Look up the cost of each unit type",
+   "Multiply each cost by its count",
+   "Sum the products as the functional-unit area estimate"
+  ]
+ },
+ {
+  "label": "Minimum allocation for a latency target",
+  "section": "Minimum allocation for a latency target",
+  "subgoals": [
+   "Divide each operation count by the latency bound and round up",
+   "Multiply by each unit's cost",
+   "Sum to get the minimum functional-unit area"
+  ]
+ },
+ {
+  "label": "Specialized or multi-function units",
+  "section": "Specialized or multi-function units",
+  "subgoals": [
+   "Compute the counting bound for each specialized type",
+   "Compute the bound for the pooled operations on combined units",
+   "Compare the two areas and pick the smaller"
+  ]
+ }
+]

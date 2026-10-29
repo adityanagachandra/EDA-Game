@@ -1,0 +1,5 @@
+[
+  {"label": "Merging test cubes", "section": "Merging test cubes", "subgoals": ["Check two cubes for conflicting specified bits", "Merge compatible cubes by keeping every specified bit", "Process the cubes in order and merge each into the first compatible pattern"]},
+  {"label": "Minimum covering sets", "section": "Minimum covering sets", "subgoals": ["Build the fault-detection table from fault simulation", "Keep the essential tests that alone detect some fault", "Search for the smallest set of tests covering all detected faults"]},
+  {"label": "Reverse-order fault simulation", "section": "Reverse-order fault simulation", "subgoals": ["Simulate the tests from last to first with fault dropping", "Keep a test only if it detects a new fault", "Count the kept tests"]}
+]

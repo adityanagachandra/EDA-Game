@@ -1,0 +1,5 @@
+[
+  {"label": "The MTBF formula", "section": "The MTBF formula", "subgoals": ["Compute the metastable event rate", "Multiply its inverse by e to the resolution time over tau", "Take log base ten to compare magnitudes"]},
+  {"label": "Resolution time in a two-flop synchronizer", "section": "Resolution time in a two-flop synchronizer", "subgoals": ["Start from one clock period between the two flip-flops", "Subtract clock-to-q of the first flop and setup of the second", "Insert the resolution time into the MTBF formula"]},
+  {"label": "Adding stages to meet a target", "section": "Adding stages to meet a target", "subgoals": ["Multiply the per-stage resolution time by the number of stages minus one", "Compute log base ten of the MTBF for each candidate stage count", "Pick the smallest stage count meeting the target"]}
+]

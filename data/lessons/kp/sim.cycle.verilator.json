@@ -1,0 +1,5 @@
+[
+  {"label": "From RTL to a C++ model", "section": "From RTL to a C++ model", "subgoals": ["Translate the RTL into C++ model classes", "Drive inputs and call eval from a harness", "Enable timing support for testbenches with delays"]},
+  {"label": "Two-state values and X handling", "section": "Two-state values and X handling", "subgoals": ["Map X and Z onto concrete two-state values", "Choose initial and X-assignment values with the x options", "Randomize initial values across seeds to expose missing resets"]},
+  {"label": "Threads, lint and circular logic", "section": "Threads, lint and circular logic", "subgoals": ["Partition evaluation into macro-tasks across threads", "Use lint mode for static RTL checks", "Split signals flagged UNOPTFLAT to restore static ordering"]}
+]

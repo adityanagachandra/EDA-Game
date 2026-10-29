@@ -1,0 +1,5 @@
+[
+  {"label": "Counting entries from topology", "section": "Counting entries from topology", "subgoals": ["Count the pins and internal nodes of the network", "Subtract one from the node count to get the resistor count", "Add ground capacitors and couplings for the CAP count"]},
+  {"label": "Totals and units", "section": "Totals and units", "subgoals": ["Read the capacitance unit from the header", "Convert every entry to femtofarads", "Sum the entries and compare with the header total"]},
+  {"label": "Elmore delay from the entries", "section": "Elmore delay from the entries", "subgoals": ["Order the resistors from the driver to the sink", "Accumulate the capacitance downstream of each resistor", "Sum resistance times downstream capacitance in picoseconds"]}
+]

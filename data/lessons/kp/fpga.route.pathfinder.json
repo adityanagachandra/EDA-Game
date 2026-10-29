@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The node cost",
+  "section": "The node cost",
+  "subgoals": [
+   "Add base cost and history cost",
+   "Compute the present cost from occupancy plus one minus capacity",
+   "Multiply the two to price the node"
+  ]
+ },
+ {
+  "label": "Negotiation between paths",
+  "section": "Negotiation between paths",
+  "subgoals": [
+   "Sum node costs along each candidate path",
+   "Take the cheaper path even when it is congested",
+   "Let rising prices push flexible nets onto alternatives"
+  ]
+ },
+ {
+  "label": "Convergence and legality",
+  "section": "Convergence and legality",
+  "subgoals": [
+   "Sum the overuse over all nodes",
+   "Iterate while the total overuse is positive",
+   "Declare failure at the iteration limit"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What DTCO optimizes", "section": "What DTCO optimizes", "subgoals": ["List the knobs a DTCO study varies", "State the block-level objective", "Explain why pathfinding PDKs are used"]},
+  {"label": "The loop step by step", "section": "The loop step by step", "subgoals": ["Order rules, cells, characterization, place and route, and analysis", "Compare candidates at matched targets", "Use several benchmark blocks to avoid misleading wins"]},
+  {"label": "From DTCO to STCO", "section": "From DTCO to STCO", "subgoals": ["Recognize a cell-level proxy that can be gamed", "Iterate on a losing candidate by its mechanism", "Extend the evaluation to system partitioning in STCO"]}
+]

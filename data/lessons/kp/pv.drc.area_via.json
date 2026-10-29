@@ -1,0 +1,5 @@
+[
+  {"label": "Minimum area", "section": "Minimum area", "subgoals": ["Compute the merged polygon's area", "Divide the required area by the width and round up", "Subtract the present length to get the extension"]},
+  {"label": "Fitting a via array", "section": "Fitting a via array", "subgoals": ["Subtract twice the enclosure from each side of the overlap", "Divide by the cut pitch after adding one spacing", "Multiply the counts along x and y"]},
+  {"label": "Minimum-cut rules", "section": "Minimum-cut rules", "subgoals": ["Classify each wire into its width band", "Look up the cuts required for that band", "Count connections with fewer cuts than required"]}
+]

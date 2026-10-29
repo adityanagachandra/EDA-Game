@@ -1,0 +1,5 @@
+[
+  {"label": "From simple numbers to conditional rules", "section": "From simple numbers to conditional rules", "subgoals": ["Classify a rule as width, space, enclosure, area, antenna or density", "Identify the condition that selects a rule's value", "Name the process mechanism behind a conditional rule"]},
+  {"label": "How a deck computes a check", "section": "How a deck computes a check", "subgoals": ["Derive layers by boolean and sizing operations", "Measure distances between selected edges", "Treat the deck as the signoff authority when it disagrees with the manual"]},
+  {"label": "Recommended rules and restricted layouts", "section": "Recommended rules and restricted layouts", "subgoals": ["Distinguish mandatory from recommended rules", "Explain why some hotspots need pattern-matching rules", "Trade gridded layers' simplicity against routing flexibility"]}
+]

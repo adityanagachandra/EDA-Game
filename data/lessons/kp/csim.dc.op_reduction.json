@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Capacitors open, inductors short",
+    "section": "Capacitors open, inductors short",
+    "subgoals": [
+      "Replace every capacitor by an open circuit",
+      "Replace every inductor by a short circuit",
+      "Solve the remaining resistive network"
+    ]
+  },
+  {
+    "label": "Currents at the operating point",
+    "section": "Currents at the operating point",
+    "subgoals": [
+      "Find the node voltages of the reduced network",
+      "Compute each inductor current from the resistors it feeds",
+      "Set each capacitor current to zero"
+    ]
+  },
+  {
+    "label": "The DC system a simulator actually builds",
+    "section": "The DC system a simulator actually builds",
+    "subgoals": [
+      "Keep every node, including those isolated by capacitors",
+      "Add branch rows for voltage sources and inductors",
+      "Check for nodes with no DC path to ground"
+    ]
+  }
+]

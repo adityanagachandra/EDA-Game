@@ -1,0 +1,5 @@
+[
+  {"label": "What makes a PDN solver fast", "section": "What makes a PDN solver fast", "subgoals": ["List the reductions a fast solver makes", "Name the error each reduction introduces", "Identify the shared conductance-matrix core"]},
+  {"label": "When to recurse to the accurate solver", "section": "When to recurse to the accurate solver", "subgoals": ["Compare the margin with the fast model's error", "Route known-disagreement regions to the accurate solver", "Screen trials fast and confirm winners accurately"]},
+  {"label": "Where the choice lives in the engine", "section": "Where the choice lives in the engine", "subgoals": ["Expose solver mode and tolerance as parameters", "Use estimate variance to target accurate runs", "Report speed together with error on the same reference"]}
+]

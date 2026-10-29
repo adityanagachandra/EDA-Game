@@ -1,0 +1,5 @@
+[
+  {"label": "Dominator sets", "section": "Dominator sets", "subgoals": ["Initialize every non-entry dominator set to all blocks", "Intersect the predecessors' sets and add the block itself", "Iterate until no set changes"]},
+  {"label": "Immediate dominators and the tree", "section": "Immediate dominators and the tree", "subgoals": ["List the strict dominators of the block", "Pick the strict dominator closest to the block as its immediate dominator", "Link every block to its immediate dominator to form the tree"]},
+  {"label": "Dominance frontiers", "section": "Dominance frontiers", "subgoals": ["Find the joins: blocks with two or more predecessors", "Walk up the dominator tree from each predecessor to the join's immediate dominator", "Add the join to the frontier of every block on that walk"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Leakage ratio between flavors", "section": "Leakage ratio between flavors", "subgoals": ["Find the threshold difference between flavors", "Divide by the subthreshold swing", "Raise ten to that power for the leakage ratio"]},
+  {"label": "Threshold step for a leakage target", "section": "Threshold step for a leakage target", "subgoals": ["Take the base-ten log of the leakage reduction factor", "Multiply by the subthreshold swing", "Translate the step into a discrete library flavor"]},
+  {"label": "Leakage of a mixed-flavor block", "section": "Leakage of a mixed-flavor block", "subgoals": ["Compute per-cell leakage for each flavor from the threshold offsets", "Weight each by its cell count and sum", "Identify which flavor dominates the total"]}
+]

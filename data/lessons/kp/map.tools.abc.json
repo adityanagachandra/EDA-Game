@@ -1,0 +1,5 @@
+[
+  {"label": "The script skeleton", "section": "The script skeleton", "subgoals": ["Convert the design to an AIG with strash", "Load a library with read_lib before standard-cell mapping", "Map with if, map or amap and report with print_stats or stime"]},
+  {"label": "Which mapper does what", "section": "Which mapper does what", "subgoals": ["Use if for LUT mapping with priority cuts", "Use map for delay-oriented and amap for area-oriented standard-cell mapping", "Add dch before mapping and mfs or lutpack after it"]},
+  {"label": "Checking and finishing the result", "section": "Checking and finishing the result", "subgoals": ["Run cec between the original and mapped networks", "Report timing with stime and resize with upsize and dnsize", "Hold inputs fixed when comparing two scripts"]}
+]

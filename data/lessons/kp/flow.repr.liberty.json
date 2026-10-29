@@ -1,0 +1,29 @@
+[
+  {
+    "label": "What a Liberty file contains",
+    "section": "What a Liberty file contains",
+    "subgoals": [
+      "List the unit, operating-condition and cell groups of a library",
+      "Name the index variables of an NLDM table",
+      "Name the extra arcs a sequential cell carries"
+    ]
+  },
+  {
+    "label": "Reading and interpolating a table",
+    "section": "Reading and interpolating a table",
+    "subgoals": [
+      "Read a delay directly at a grid point",
+      "Interpolate linearly between neighbouring loads",
+      "Flag a lookup that falls outside the table"
+    ]
+  },
+  {
+    "label": "Power, leakage and what tables miss",
+    "section": "Power, leakage and what tables miss",
+    "subgoals": [
+      "Sum leakage over instances by cell type",
+      "Name current-source models as the fix for ramp inaccuracy",
+      "Explain how a missing corner propagates downstream"
+    ]
+  }
+]

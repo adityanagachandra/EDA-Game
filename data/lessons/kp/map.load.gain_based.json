@@ -1,0 +1,5 @@
+[
+  {"label": "Delay at fixed gain", "section": "Delay at fixed gain", "subgoals": ["Fix the electrical effort h for every gate", "Compute each gate's delay as g h plus p", "Sum the stage delays along the path"]},
+  {"label": "Sizing realizes the gain", "section": "Sizing realizes the gain", "subgoals": ["Measure each gate's output load after mapping", "Set its input capacitance to the load divided by h", "Propagate the new input capacitances backward to the drivers"]},
+  {"label": "Comparing structures, not loads", "section": "Comparing structures, not loads", "subgoals": ["Compute each candidate structure's delay from g and p", "Pick the structure with the smaller delay", "Identify fanout and wire load as where fixed gain breaks"]}
+]

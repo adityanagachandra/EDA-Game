@@ -1,0 +1,5 @@
+[
+  {"label": "The device-net bipartite graph", "section": "The device-net bipartite graph", "subgoals": ["Create one vertex per device and one per distinct net", "Add one edge per device terminal", "Label each edge with its terminal kind"]},
+  {"label": "Isomorphism and invariants", "section": "Isomorphism and invariants", "subgoals": ["List invariants that any isomorphism preserves", "Compare those invariants across the two netlists", "Conclude a mismatch when any invariant differs"]},
+  {"label": "From mismatch to diagnosis", "section": "From mismatch to diagnosis", "subgoals": ["Refine both netlists with shared colour names", "Find classes whose sizes differ between the netlists", "Trace the differing class back to a short, open or swap"]}
+]

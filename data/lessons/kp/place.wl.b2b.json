@@ -1,0 +1,5 @@
+[
+  {"label": "Edges between the bounds", "section": "Edges between the bounds", "subgoals": ["Sort the pins and identify the two bounds", "Connect each inner pin to both bounds and the bounds to each other", "Count 2k - 3 edges per dimension"]},
+  {"label": "Weights that reproduce HPWL", "section": "Weights that reproduce HPWL", "subgoals": ["Compute each edge weight from the current pin distance", "Show each edge contributes distance over k - 1", "Sum the contributions to recover the net span"]},
+  {"label": "Iterating the model", "section": "Iterating the model", "subgoals": ["Rebuild the B2B edges and weights after each solve", "Clamp tiny pin distances to avoid infinite weights", "Warm-start the next solve from the previous placement"]}
+]

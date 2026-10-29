@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The stability limit two over L",
+    "section": "The stability limit two over L",
+    "subgoals": [
+      "Compute the eigenvalues of the Hessian",
+      "Take the largest one as the Lipschitz constant",
+      "Divide two by it for the largest stable step"
+    ]
+  },
+  {
+    "label": "The best fixed step and conditioning",
+    "section": "The best fixed step and conditioning",
+    "subgoals": [
+      "Balance the extreme eigenvalues to get the best fixed step",
+      "Compute the contraction factor from the condition number",
+      "Estimate the iterations needed for a target error reduction"
+    ]
+  },
+  {
+    "label": "Backtracking line search",
+    "section": "Backtracking line search",
+    "subgoals": [
+      "Start from a trial step and evaluate the sufficient-decrease condition",
+      "Halve the step until the condition holds",
+      "Count the halvings needed to reach an accepted step"
+    ]
+  }
+]

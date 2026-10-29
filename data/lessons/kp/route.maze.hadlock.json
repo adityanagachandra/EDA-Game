@@ -1,0 +1,5 @@
+[
+  {"label": "Counting detours", "section": "Counting detours", "subgoals": ["Mark a move as a detour if it increases the distance to the target", "Relate route length to Manhattan distance plus twice the detours", "Compute the detour count from the route length"]},
+  {"label": "Expanding by detour number", "section": "Expanding by detour number", "subgoals": ["Label the source 0 and keep the label on moves toward the target", "Add one to the label on moves away from the target", "Expand cells in order of label until the target is reached"]},
+  {"label": "Why it expands less", "section": "Why it expands less", "subgoals": ["Show that an obstacle-free search stays inside the bounding box", "Keep one bucket of cells per detour level", "Relate detour ordering to goal-directed search"]}
+]

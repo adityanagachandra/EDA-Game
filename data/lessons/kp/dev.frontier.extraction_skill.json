@@ -1,0 +1,5 @@
+[
+  {"label": "Which tier a modeling request lands in", "section": "Which tier a modeling request lands in", "subgoals": ["Classify parameter refits as Tier 1 configuration", "Classify new model terms as Tier 2 plug-ins", "Escalate solver changes to Tier 3 with human approval"]},
+  {"label": "The extraction skill and its manifest", "section": "The extraction skill and its manifest", "subgoals": ["Declare model version, inputs, fitted parameters and bounds in the manifest", "Select a skill by matching device type and model version", "Expose staging and bounds as tunables"]},
+  {"label": "Verifying and promoting extraction skills", "section": "Verifying and promoting extraction skills", "subgoals": ["Gate every skill edit on golden reference fits", "Check benchmark circuits differentially before promoting a new card", "Keep measured data on-site and promote only reusable know-how"]}
+]

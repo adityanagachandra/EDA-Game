@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Why grounded conductance matrices are SPD",
+  "section": "Why grounded conductance matrices are SPD",
+  "subgoals": [
+   "Write the quadratic form as a sum of conductance times squared voltage differences",
+   "Show each term is non-negative",
+   "Require a path to ground for strict positivity"
+  ]
+ },
+ {
+  "label": "Computing the Cholesky factor",
+  "section": "Computing the Cholesky factor",
+  "subgoals": [
+   "Take the square root of the first pivot",
+   "Divide the column below by that root",
+   "Subtract the squared entries before the next diagonal root"
+  ]
+ },
+ {
+  "label": "Half the work and no pivoting",
+  "section": "Half the work and no pivoting",
+  "subgoals": [
+   "Count n cubed over three flops for Cholesky",
+   "Choose the ordering for fill alone since diagonal pivots are stable",
+   "Switch to LU when sources break symmetry"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The four layers of a board placer", "section": "The four layers of a board placer", "subgoals": ["Assign each placer component to core, policy, parameter or hook", "Expose live placement state through observation hooks", "Keep legality checks out of the agent's change surface"]},
+  {"label": "Change tiers for constraint requests", "section": "Change tiers for constraint requests", "subgoals": ["Classify a constraint request as configuration, plug-in or core edit", "Implement a new rule kind at the rule extension point", "Verify agent-extracted constraints against their source tables"]},
+  {"label": "Evidence for accepting agent changes", "section": "Evidence for accepting agent changes", "subgoals": ["Gate placements on DRC, constraint and thermal checks against a baseline", "Keep constraint edits small, versioned and reversible", "Block agent edits to rules that define legality"]}
+]

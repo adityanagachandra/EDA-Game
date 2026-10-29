@@ -1,0 +1,5 @@
+[
+  {"label": "What a build failure should return", "section": "What a build failure should return", "subgoals": ["Return the first compiler diagnostic verbatim", "Attach the interface declaration the error refers to", "Trim sanitizer traces to the skill's own frames"]},
+  {"label": "What a test failure should return", "section": "What a test failure should return", "subgoals": ["Name the failing test, design and metric", "Give expected value, actual value and tolerance", "List unexpected movers with before and after values"]},
+  {"label": "Feedback that invites gaming", "section": "Feedback that invites gaming", "subgoals": ["Withhold expected outputs of hidden tests", "Separate infrastructure errors from skill errors", "Replace bare pass or fail bits with located failures"]}
+]

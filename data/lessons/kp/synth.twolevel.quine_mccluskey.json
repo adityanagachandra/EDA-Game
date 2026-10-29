@@ -1,0 +1,5 @@
+[
+  {"label": "Merging adjacent minterms", "section": "Merging adjacent minterms", "subgoals": ["Group the minterms by their number of 1 bits", "Merge pairs from neighboring groups that differ in one bit", "Check off every entry that participates in a merge"]},
+  {"label": "Iterating to the prime implicants", "section": "Iterating to the prime implicants", "subgoals": ["Merge cubes with equal dash positions that differ in one bit", "Discard duplicate cubes reached by different merges", "Collect the unchecked entries as the prime implicants"]},
+  {"label": "Don't cares and the hand-off to covering", "section": "Don't cares and the hand-off to covering", "subgoals": ["Merge don't cares as 1s during prime generation", "Keep only primes that cover at least one ON minterm", "Pass the primes and ON minterms to the covering phase"]}
+]

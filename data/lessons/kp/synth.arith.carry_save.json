@@ -1,0 +1,5 @@
+[
+  {"label": "Levels of a 3:2 reduction tree", "section": "Levels of a 3:2 reduction tree", "subgoals": ["Reduce three rows to two per carry-save adder in one full-adder delay", "Generate the Dadda sequence 2, 3, 4, 6, 9, 13, 19, 28, 42", "Find the first term at least the operand count and count its levels"]},
+  {"label": "How many carry-save adders", "section": "How many carry-save adders", "subgoals": ["Note that each carry-save adder removes exactly one row", "Count k minus 2 adders to go from k rows to two", "Multiply by the word width for the full-adder count"]},
+  {"label": "Total delay and synthesis", "section": "Total delay and synthesis", "subgoals": ["Add the tree levels to the final adder's delay", "Compare with a chain of carry-propagate adders", "Recognize multi-operand sums so they can be built as one tree"]}
+]

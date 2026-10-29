@@ -1,0 +1,5 @@
+[
+  {"label": "Process and device simulation", "section": "Process and device simulation", "subgoals": ["Separate process simulation of structure from device simulation of transport", "Refine the mesh at junctions and the dielectric interface", "Discretize with box integration and Scharfetter-Gummel fluxes"]},
+  {"label": "Solving and calibrating", "section": "Solving and calibrating", "subgoals": ["Solve the sparse nonlinear system with Newton iterations", "Ramp bias in steps to keep each Newton solve converging", "Calibrate physical model parameters against measured curves"]},
+  {"label": "TCAD in the design flow", "section": "TCAD in the design flow", "subgoals": ["Place TCAD as a slow accurate engine feeding compact models", "Trace a DTCO loop from device options to circuit metrics", "Use statistical TCAD samples to inform variability models"]}
+]

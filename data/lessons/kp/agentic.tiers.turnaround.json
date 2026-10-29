@@ -1,0 +1,5 @@
+[
+  {"label": "Expected turnaround of a request mix", "section": "Expected turnaround of a request mix", "subgoals": ["Multiply each tier's fraction by its turnaround", "Sum the products", "Contrast the mean with the typical request"]},
+  {"label": "Where the time goes", "section": "Where the time goes", "subgoals": ["Divide one tier's contribution by the expected turnaround", "Express the share as a percentage", "Compare the share of time with the share of requests"]},
+  {"label": "The payoff of moving a seam", "section": "The payoff of moving a seam", "subgoals": ["Move the converted fraction from Tier 3 to Tier 2", "Recompute the expected turnaround", "Compare the new mean with the old one"]}
+]

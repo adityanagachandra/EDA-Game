@@ -1,0 +1,5 @@
+[
+  {"label": "Flattening by multiplication", "section": "Flattening by multiplication", "subgoals": ["Compute each leaf cell's own shape count", "Multiply child flat counts by their instance counts", "Sum up the hierarchy from the bottom"]},
+  {"label": "What hierarchy saves", "section": "What hierarchy saves", "subgoals": ["Count the shapes each cell stores once", "Divide the flat count by that total", "Separate context-free work from interaction regions"]},
+  {"label": "Interaction between instances", "section": "Interaction between instances", "subgoals": ["Compute the gap between instance bounding boxes", "Compare each gap with the interaction distance", "Count the instance pairs that must be checked together"]}
+]

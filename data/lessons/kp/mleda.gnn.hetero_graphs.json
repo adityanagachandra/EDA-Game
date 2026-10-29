@@ -1,0 +1,5 @@
+[
+  {"label": "Relation-specific weights", "section": "Relation-specific weights", "subgoals": ["Count one weight matrix per relation plus the self matrix", "Multiply by the squared width and add the bias", "Multiply by the number of layers"]},
+  {"label": "Per-type input encoders", "section": "Per-type input encoders", "subgoals": ["Count each type's raw feature dimension", "Multiply by the shared width and add a bias per type", "Prefer library-derived numeric features to one-hot cell names"]},
+  {"label": "Typed edges and direction", "section": "Typed edges and direction", "subgoals": ["Count one drives edge per net", "Count one feeds edge per sink", "Double the total when reverse relations are added"]}
+]

@@ -76,13 +76,14 @@ export function HeroSection({ onGetStarted }: { onGetStarted: () => void }) {
           className="reveal mt-5 max-w-[18ch] text-balance font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-normal leading-[1.05] sm:leading-[0.95] tracking-tight text-white lg:text-mathua-primary"
           style={{ animationDelay: '80ms' }}
         >
-          Adaptive math learning platform
+          Adaptive EDA learning platform
         </h1>
         <p
           className="reveal mt-6 max-w-[46ch] text-pretty text-base sm:text-[15px] leading-relaxed text-white/85 lg:text-mathua-secondary"
           style={{ animationDelay: '160ms' }}
         >
-          Mathua is an open-source adaptive math learning engine. You cannot advance until you
+          Mathua is an open-source adaptive engine for learning electronic design automation, from
+          the mathematics underneath to agent-first engine architecture. You cannot advance until you
           have truly mastered the prerequisite, both speed and accuracy must be proven.
         </p>
         <div className="reveal mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center" style={{ animationDelay: '240ms' }}>
@@ -148,10 +149,10 @@ export function TrustSection() {
       <div className="section-label">( 02 · Why it is trusted )</div>
       <div className="mt-5 grid gap-10 md:grid-cols-12 md:items-start">
         <p className="max-w-[52ch] text-sm leading-relaxed text-mathua-secondary md:col-span-7">
-          Open-source under MIT. Sequencing inspired by Math Academy, with MIT OpenCourseWare and
-          Art of Problem Solving consulted for curriculum structure and problem quality. Lessons
-          build on OpenStax (CC BY-NC-SA 4.0) and Algebrica (CC BY-NC 4.0). No accounts to start,
-          no paywall on the graph.
+          Open-source under MIT. Sequencing inspired by Math Academy. The EDA curriculum follows the
+          design flow from specification to tape-out, with every engine taught as the mathematics it
+          computes. Mathematics lessons build on OpenStax (CC BY-NC-SA 4.0) and Algebrica (CC BY-NC
+          4.0). No accounts to start, no paywall on the graph.
         </p>
         <div className="grid grid-cols-3 divide-x divide-mathua-division border border-mathua-border md:col-span-5">
           <div className="p-5">

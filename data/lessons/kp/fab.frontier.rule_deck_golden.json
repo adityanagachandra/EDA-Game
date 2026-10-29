@@ -1,0 +1,5 @@
+[
+  {"label": "Golden clips for each rule", "section": "Golden clips for each rule", "subgoals": ["Write pass and fail clips with expected markers", "Probe both sides of every numeric boundary", "Version the golden suite with the deck"]},
+  {"label": "Differential runs on reference designs", "section": "Differential runs on reference designs", "subgoals": ["Compare old and new deck reports rule by rule", "Treat movement in unrelated rules as a side effect", "Combine real and synthetic layouts in the reference set"]},
+  {"label": "What passing does not prove", "section": "What passing does not prove", "subgoals": ["Add clips that pin every new behaviour", "Separate the author of the change from the author of its tests", "Run boundary clips even when reference reports are unchanged"]}
+]

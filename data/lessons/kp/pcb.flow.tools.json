@@ -1,0 +1,5 @@
+[
+  {"label": "Open-source tools", "section": "Open-source tools", "subgoals": ["Name the open-source schematic and layout tools", "Identify the file-format and scripting properties of each", "Describe how an external router exchanges a board"]},
+  {"label": "Commercial families", "section": "Commercial families", "subgoals": ["Pair each vendor with its product families", "Distinguish mainstream from enterprise tool tiers", "Name the team-scale features enterprise tools stress"]},
+  {"label": "Data models and interoperability", "section": "Data models and interoperability", "subgoals": ["Judge a tool's automation potential from its formats and APIs", "Predict which design data survives a tool migration", "Choose a neutral format for each handoff"]}
+]

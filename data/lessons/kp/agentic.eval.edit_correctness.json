@@ -1,0 +1,5 @@
+[
+  {"label": "The correctness funnel", "section": "The correctness funnel", "subgoals": ["Measure each stage's pass rate given the previous stage", "Multiply the conditional rates", "Locate the stage where most edits fail"]},
+  {"label": "Comparing models on correctness", "section": "Comparing models on correctness", "subgoals": ["Compute the funnel product for each model", "Subtract to compare correctness", "Contrast the ranking with compile rate"]},
+  {"label": "Scope and minimality", "section": "Scope and minimality", "subgoals": ["Check each passing diff against its tier", "Count passing edits that stayed in scope", "Divide by the passing edits"]}
+]

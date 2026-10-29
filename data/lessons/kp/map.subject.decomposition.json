@@ -1,0 +1,5 @@
+[
+  {"label": "The decomposition rules", "section": "The decomposition rules", "subgoals": ["Split multi-input operators into two-input ones", "Rewrite AND, OR and NOT with the NAND2/INV rules", "Count one NAND2 per binary operator and the raw inverters"]},
+  {"label": "Cancelling inverter pairs", "section": "Cancelling inverter pairs", "subgoals": ["Find every place an inversion feeds an inversion", "Delete each INV-INV pair", "Subtract twice the cancelled pairs from the raw inverter count"]},
+  {"label": "Why the shape matters", "section": "Why the shape matters", "subgoals": ["Compare balanced and chain decompositions of one function", "Relate the subject shape to which patterns can match", "Name the remedies: balancing, several pattern shapes, structural choices"]}
+]

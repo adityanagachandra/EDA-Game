@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Why the bits are the ground truth",
+  "section": "Why the bits are the ground truth",
+  "subgoals": [
+   "Decode the bitstream into configured primitives",
+   "Check equivalence against the synthesized design",
+   "Diff features to see exactly what changed"
+  ]
+ },
+ {
+  "label": "Matching the check to the change",
+  "section": "Matching the check to the change",
+  "subgoals": [
+   "Use bit identity when nothing should change",
+   "Use decoded equivalence plus QoR when the implementation changes",
+   "Never accept a routing change on timing alone"
+  ]
+ },
+ {
+  "label": "Golden checks in an agent loop",
+  "section": "Golden checks in an agent loop",
+  "subgoals": [
+   "Explore with fast checks and gate promotion on the golden check",
+   "Suspect the database when mismatches cluster in one tile type",
+   "Gate every reward on legality and equivalence"
+  ]
+ }
+]

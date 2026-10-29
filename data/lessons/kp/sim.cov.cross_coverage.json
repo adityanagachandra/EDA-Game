@@ -1,0 +1,5 @@
+[
+  {"label": "Crosses as Cartesian products", "section": "Crosses as Cartesian products", "subgoals": ["Multiply the bin counts of the crossed coverpoints", "Hit a cross bin only when all components match in one sample", "Explain why full coverpoints do not imply a full cross"]},
+  {"label": "Removing ignored and illegal combinations", "section": "Removing ignored and illegal combinations", "subgoals": ["Count the combinations each ignore selection removes", "Subtract the overlap so no combination is removed twice", "Remove illegal combinations that are not already excluded"]},
+  {"label": "Coverage of a cross and its cost", "section": "Coverage of a cross and its cost", "subgoals": ["Count distinct remaining bins hit by the samples", "Ignore samples in excluded bins and repeat hits", "Limit crosses to fields whose interaction matters"]}
+]

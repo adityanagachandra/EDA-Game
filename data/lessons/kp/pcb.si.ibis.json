@@ -1,0 +1,5 @@
+[
+  {"label": "What an IBIS model contains", "section": "What an IBIS model contains", "subgoals": ["List the V-I and V-t tables of a buffer model", "Separate die capacitance from package parasitics", "Read the typ, min and max corner columns"]},
+  {"label": "Reading drive strength from a V-I table", "section": "Reading drive strength from a V-I table", "subgoals": ["Take the slope of the linear region of the pull-down table", "Distinguish small-signal resistance from a large-signal ratio", "Use the output resistance to size a series terminator"]},
+  {"label": "Corners, power and the limits of IBIS", "section": "Corners, power and the limits of IBIS", "subgoals": ["Run SI at the min and max corners as well as typ", "Add power-aware modeling for simultaneous switching noise", "Replace lumped package parasitics when edges are fast"]}
+]

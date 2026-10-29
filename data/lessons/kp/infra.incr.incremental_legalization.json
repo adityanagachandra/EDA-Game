@@ -1,0 +1,5 @@
+[
+  {"label": "Push-right shifting in a row", "section": "Push-right shifting in a row", "subgoals": ["Compute the new right edge of the edited cell", "Move each later cell to the larger of its old x and its neighbour's right edge", "Count the cells whose position changed"]},
+  {"label": "Where a pushed cell lands", "section": "Where a pushed cell lands", "subgoals": ["Start the pushed run at the edited cell's new right edge", "Add each pushed cell's width to place the next one", "Stop at the first gap that absorbs the remaining push"]},
+  {"label": "Total displacement and when to stop", "section": "Total displacement and when to stop", "subgoals": ["Subtract old from new x for every moved cell", "Sum the shifts into the total displacement", "Bound the repair window so the update stays local"]}
+]

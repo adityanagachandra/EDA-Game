@@ -1,0 +1,5 @@
+[
+  {"label": "Bytes saved per net", "section": "Bytes saved per net", "subgoals": ["Compute the saving per reference as name length minus token length", "Multiply by the number of references", "Subtract the cost of the map line"]},
+  {"label": "Scaling to a whole chip", "section": "Scaling to a whole chip", "subgoals": ["Compute the saving for one typical net", "Multiply by the number of nets", "Convert bytes to megabytes"]},
+  {"label": "The break-even point", "section": "The break-even point", "subgoals": ["Write the inequality between savings and map cost", "Solve for the smallest reference count", "Identify which names are not worth mapping"]}
+]

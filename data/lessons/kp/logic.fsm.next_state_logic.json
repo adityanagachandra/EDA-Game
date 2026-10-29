@@ -1,0 +1,5 @@
+[
+  {"label": "The next-state truth table", "section": "The next-state truth table", "subgoals": ["Count the state bits and the input bits", "Raise two to their sum for the rows", "Mark rows of unused codes as don't-cares"]},
+  {"label": "Deriving a next-state bit", "section": "Deriving a next-state bit", "subgoals": ["Write the next state code for every state and input row", "Read the chosen next-state bit in each row", "Collect the rows where it is one as minterms"]},
+  {"label": "One-hot next-state equations", "section": "One-hot next-state equations", "subgoals": ["List the arcs entering the target state", "Write one product of predecessor bit and arc condition per source state", "OR the products together"]}
+]

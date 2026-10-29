@@ -1,0 +1,5 @@
+[
+  {"label": "Sampled coverage", "section": "Sampled coverage", "subgoals": ["Draw a uniform random sample from the full fault list", "Fault-simulate only the sample", "Report detected over sampled as the estimate"]},
+  {"label": "Confidence", "section": "Confidence", "subgoals": ["Compute the standard deviation from p and n", "Multiply by 1.96 for the 95 percent half-width", "Shrink the half-width by sampling more faults"]},
+  {"label": "When to recurse", "section": "When to recurse", "subgoals": ["Solve the half-width formula for the sample size", "Recurse to full simulation when candidates differ by less than twice the half-width", "Let the harness draw the sampling seed"]}
+]

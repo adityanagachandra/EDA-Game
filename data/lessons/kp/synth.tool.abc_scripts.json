@@ -1,0 +1,5 @@
+[
+  {"label": "The core commands", "section": "The core commands", "subgoals": ["Build the AIG with strash", "Name the roles of balance, rewrite, refactor and resub", "Distinguish the zero-gain variants rwz and rfz"]},
+  {"label": "Reading resyn2", "section": "Reading resyn2", "subgoals": ["Read resyn2 as alternating area moves and depth moves", "Use level-preserving options when depth must not grow", "Add structural choices with dch before mapping"]},
+  {"label": "Scripts as strategy", "section": "Scripts as strategy", "subgoals": ["Treat a script as a policy over compiled transformations", "Search script variants per design to improve QoR", "Confirm every script result with equivalence checking and mapped QoR"]}
+]

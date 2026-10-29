@@ -1,0 +1,5 @@
+[
+  {"label": "What drives board placement", "section": "What drives board placement", "subgoals": ["Place the enclosure-fixed parts first", "Cluster functional blocks using schematic cross-probing", "Put decoupling capacitors against the power pins they serve"]},
+  {"label": "Ratsnest as a minimum spanning tree", "section": "Ratsnest as a minimum spanning tree", "subgoals": ["Build the complete pin graph with Manhattan distances", "Run Prim's algorithm to get the spanning tree length", "Compare the tree with the star, chain and bounding-box estimates"]},
+  {"label": "What the ratsnest misses", "section": "What the ratsnest misses", "subgoals": ["Weight critical nets above the total wirelength", "Add separation rules for noise and thermal interaction", "Check side assignment against assembly constraints"]}
+]

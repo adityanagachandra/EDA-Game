@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Periodic small-signal analyses",
+    "section": "Periodic small-signal analyses",
+    "subgoals": [
+      "Solve the periodic steady state for the large drive",
+      "Linearize about it as a time-varying system",
+      "Read conversion gain, transfer and folded noise at each sideband"
+    ]
+  },
+  {
+    "label": "Multitone and envelope methods",
+    "section": "Multitone and envelope methods",
+    "subgoals": [
+      "Identify the fast and slow time scales of the signals",
+      "Represent quasi-periodic tones with multitone harmonic balance",
+      "Step a carrier-period problem along the envelope for modulated signals"
+    ]
+  },
+  {
+    "label": "Choosing shooting or harmonic balance",
+    "section": "Choosing shooting or harmonic balance",
+    "subgoals": [
+      "Prefer shooting for switching and strongly nonlinear waveforms",
+      "Prefer harmonic balance for frequency-domain models and mild nonlinearity",
+      "Add the period and a phase condition for oscillators"
+    ]
+  }
+]

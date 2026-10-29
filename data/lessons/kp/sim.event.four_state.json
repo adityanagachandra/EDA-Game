@@ -1,0 +1,5 @@
+[
+  {"label": "Four values and what they mean", "section": "Four values and what they mean", "subgoals": ["Name the meanings of 0, 1, X and Z", "Explain why uninitialized logic variables start at X", "Relate four-state storage to two machine bits per signal"]},
+  {"label": "Truth tables with X and Z", "section": "Truth tables with X and Z", "subgoals": ["Treat a Z input to a logic operator as X", "Apply the controlling value 0 for AND and 1 for OR", "Return X from XOR whenever any input is X or Z"]},
+  {"label": "Expressions and driver resolution", "section": "Expressions and driver resolution", "subgoals": ["Let a Z driver yield to the other driver", "Resolve conflicting 0 and 1 drivers to X", "Evaluate a multi-operator expression from the inside out"]}
+]

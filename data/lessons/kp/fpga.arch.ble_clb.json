@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The BLE and its configuration",
+  "section": "The BLE and its configuration",
+  "subgoals": [
+   "Count 2 to the k LUT bits per BLE",
+   "Add one output-select bit per BLE",
+   "Multiply by the number of BLEs in the cluster"
+  ]
+ },
+ {
+  "label": "Sizing the cluster inputs",
+  "section": "Sizing the cluster inputs",
+  "subgoals": [
+   "Compute I as k over 2 times N plus 1",
+   "Count the LUT inputs as k times N",
+   "Multiply the LUT inputs by I plus N local sources"
+  ]
+ },
+ {
+  "label": "Cluster counts and device sizing",
+  "section": "Cluster counts and device sizing",
+  "subgoals": [
+   "Divide BLEs by cluster size and round up",
+   "Find the least square side holding that many clusters",
+   "Weigh absorbed nets against crossbar growth for larger N"
+  ]
+ }
+]

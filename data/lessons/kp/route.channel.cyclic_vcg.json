@@ -1,0 +1,5 @@
+[
+  {"label": "Detecting cycles", "section": "Detecting cycles", "subgoals": ["Build the VCG from the pin columns", "Search from each net for a path back to itself", "Collect the nets that reach themselves"]},
+  {"label": "How many nets must be split", "section": "How many nets must be split", "subgoals": ["Enumerate sets of nets in increasing size", "Remove each set and test the rest for cycles", "Report the smallest set that leaves the VCG acyclic"]},
+  {"label": "Shortest cycles", "section": "Shortest cycles", "subgoals": ["Run breadth-first search from each net", "Stop when the search returns to its start", "Take the smallest cycle length over all starts"]}
+]

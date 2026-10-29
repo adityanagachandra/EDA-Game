@@ -1,0 +1,5 @@
+[
+  {"label": "States, transitions and labels", "section": "States, transitions and labels", "subgoals": ["Write down S, I, R and the labelling", "Search forward from the initial states along R", "Count the states the search reaches"]},
+  {"label": "From circuits to Kripke structures", "section": "From circuits to Kripke structures", "subgoals": ["Take the latch valuations as states and the reset value as the initial state", "Apply the next-state functions, branching on every value of the free inputs", "Count the valuations reached from reset"]},
+  {"label": "Totality and deadlocks", "section": "Totality and deadlocks", "subgoals": ["List each state's successors", "Mark the states whose successor list is empty", "Count them as the states that need a self-loop for totality"]}
+]

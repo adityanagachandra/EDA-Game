@@ -1,0 +1,5 @@
+[
+  {"label": "The miter", "section": "The miter", "subgoals": ["Connect corresponding inputs of the two circuits", "XOR each pair of outputs and OR the results", "Count the input vectors on which the miter is 1"]},
+  {"label": "Several outputs", "section": "Several outputs", "subgoals": ["XOR every output pair and OR them into one miter output", "Take the union of the per-output difference sets", "Report the first satisfying assignment as the counterexample"]},
+  {"label": "Making the proof scale", "section": "Making the proof scale", "subgoals": ["Count the miter nodes as both cones plus the output XORs and OR", "Merge proven internal equivalences from the inputs upward", "Use sequential equivalence checking when registers have moved"]}
+]

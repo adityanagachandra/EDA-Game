@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Learned policies behind seams",
+  "section": "Learned policies behind seams",
+  "subgoals": [
+   "Keep legality and cost evaluation in the placer core",
+   "Let the learned policy only propose moves",
+   "Reward the policy with the cost change the placer measures"
+  ]
+ },
+ {
+  "label": "Proxies and reward hacking",
+  "section": "Proxies and reward hacking",
+  "subgoals": [
+   "Identify the proxy the reward actually measures",
+   "Check samples against routed timing with accurate engines",
+   "Validate on held-out designs at equal run time"
+  ]
+ },
+ {
+  "label": "Judging and deploying learned placers",
+  "section": "Judging and deploying learned placers",
+  "subgoals": [
+   "Demand controlled comparisons at equal effort",
+   "Prefer learned pieces that fit existing seams",
+   "Return know-how, not customer designs, to the shared library"
+  ]
+ }
+]

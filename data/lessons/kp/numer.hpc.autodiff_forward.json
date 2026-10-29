@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Dual numbers carry a value and a derivative",
+  "section": "Dual numbers carry a value and a derivative",
+  "subgoals": [
+   "Seed the input with derivative one",
+   "Propagate value and derivative through each operation",
+   "Read the derivative from the epsilon coefficient"
+  ]
+ },
+ {
+  "label": "Propagating tangents through a computation",
+  "section": "Propagating tangents through a computation",
+  "subgoals": [
+   "Choose a seed direction for the inputs",
+   "Apply the chain rule to each intermediate value",
+   "Read the output tangent as the directional derivative"
+  ]
+ },
+ {
+  "label": "Cost: one pass per input direction",
+  "section": "Cost: one pass per input direction",
+  "subgoals": [
+   "Count the inputs of the function",
+   "Divide by the tangents carried per pass and round up",
+   "Prefer forward mode when inputs are few"
+  ]
+ }
+]

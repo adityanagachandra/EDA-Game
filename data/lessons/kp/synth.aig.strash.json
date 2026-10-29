@@ -1,0 +1,5 @@
+[
+  {"label": "The hash table on fanin pairs", "section": "The hash table on fanin pairs", "subgoals": ["Sort the two fanin literals of each new AND", "Look the pair up in the hash table", "Return the existing node on a hit and insert a new one on a miss"]},
+  {"label": "Cascading merges", "section": "Cascading merges", "subgoals": ["Visit the nodes in topological order", "Translate each fanin through the earlier merges", "Hash the translated pair so merges cascade upward"]},
+  {"label": "Trivial rules and what hashing cannot see", "section": "Trivial rules and what hashing cannot see", "subgoals": ["Fold x AND x to x and x AND NOT x to 0 at creation", "Propagate constants through later nodes", "Recognize that equal functions with different structure survive hashing"]}
+]

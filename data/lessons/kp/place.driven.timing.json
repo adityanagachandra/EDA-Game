@@ -1,0 +1,5 @@
+[
+  {"label": "Criticality and net weights", "section": "Criticality and net weights", "subgoals": ["Take each net's worst slack from the timing report", "Map slack to criticality between 0 and 1", "Raise the net weight with alpha times criticality to the beta"]},
+  {"label": "Weighted wirelength and its effect", "section": "Weighted wirelength and its effect", "subgoals": ["Multiply each net's wirelength by its weight in the objective", "Solve the weighted placement and compare with the unweighted one", "Check that total wirelength stays close while critical nets shorten"]},
+  {"label": "Keeping weights current", "section": "Keeping weights current", "subgoals": ["Re-run timing at fixed milestones and update the weights", "Blend new weights with old ones to avoid oscillation", "Delay the first update until cells have spread"]}
+]

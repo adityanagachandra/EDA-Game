@@ -1,0 +1,5 @@
+[
+  {"label": "Wall time of a parallel sweep", "section": "Wall time of a parallel sweep", "subgoals": ["Divide experiments by machines and round up", "Multiply waves by run time", "Count grid points as values to the power of parameters"]},
+  {"label": "Successive halving", "section": "Successive halving", "subgoals": ["Multiply surviving configurations by their budget each round", "Divide survivors by eta between rounds", "Sum the round costs"]},
+  {"label": "Pareto filtering of results", "section": "Pareto filtering of results", "subgoals": ["Compare each pair on every objective", "Discard points dominated by another", "Count the points on the front"]}
+]

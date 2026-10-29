@@ -1,0 +1,5 @@
+[
+  {"label": "The BSIM family", "section": "The BSIM family", "subgoals": ["Map planar bulk to BSIM4 and SOI to BSIM-SOI", "Map FinFET and gate-all-around devices to BSIM-CMG", "Map independent front and back gates to BSIM-IMG"]},
+  {"label": "Inside a BSIM model card", "section": "Inside a BSIM model card", "subgoals": ["Distinguish threshold-based BSIM4 from surface-potential-based BSIM-CMG", "Group the card's parameters by the physical effect they describe", "Check that binned parameters stay continuous at bin edges"]},
+  {"label": "BSIM in tools", "section": "BSIM in tools", "subgoals": ["Compile reference Verilog-A rather than hand-porting equations", "Load compiled models into ngspice through OSDI", "Pin the model version that the parameters were extracted with"]}
+]

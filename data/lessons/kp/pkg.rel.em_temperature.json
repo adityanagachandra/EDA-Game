@@ -1,0 +1,5 @@
+[
+  {"label": "Arrhenius acceleration", "section": "Arrhenius acceleration", "subgoals": ["Convert both temperatures to kelvin", "Multiply activation energy over k by the difference of reciprocals", "Exponentiate for the acceleration factor"]},
+  {"label": "Extrapolating a stress test", "section": "Extrapolating a stress test", "subgoals": ["Scale the stress life by the current-density ratio to the n", "Multiply by the temperature acceleration factor", "Convert hours to years and discount for failure fraction"]},
+  {"label": "The Blech length", "section": "The Blech length", "subgoals": ["Divide the critical product by the current density", "Convert centimetres to micrometres", "Waive segments shorter than the critical length"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The spread of the difference", "section": "The spread of the difference", "subgoals": ["Square both sigmas and subtract twice the correlation times their product", "Take the square root to get theta", "Divide the difference of the means by theta to get alpha"]},
+  {"label": "The tightness probability", "section": "The tightness probability", "subgoals": ["Compute theta and alpha", "Evaluate the standard normal distribution at alpha", "Read the result as the probability that A is the later arrival"]},
+  {"label": "The mean of the max", "section": "The mean of the max", "subgoals": ["Weight each input mean by its tightness probability", "Add theta times the normal density at alpha", "Compare the result with the larger input mean"]}
+]

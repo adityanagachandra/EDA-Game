@@ -1,0 +1,5 @@
+[
+  {"label": "Maximal period", "section": "Maximal period", "subgoals": ["Exclude the all-zero state from the cycle", "Recognize a primitive polynomial as the condition for maximal period", "Compute the maximal period as two to the n minus one"]},
+  {"label": "Period by stepping", "section": "Period by stepping", "subgoals": ["Write the characteristic polynomial from the taps", "Step the register from the seed until the seed recurs", "Count the clocks for the period"]},
+  {"label": "How many primitive polynomials", "section": "How many primitive polynomials", "subgoals": ["Count the generators of the multiplicative group with Euler's totient", "Divide by n for the conjugate roots per polynomial", "Prefer primitive trinomials for single-XOR feedback"]}
+]

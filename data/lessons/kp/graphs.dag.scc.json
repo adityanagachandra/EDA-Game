@@ -1,0 +1,5 @@
+[
+  {"label": "Components by mutual reachability", "section": "Components by mutual reachability", "subgoals": ["Group vertices that can each reach the other", "Treat a vertex on no cycle as its own component", "Contract components to obtain an acyclic condensation"]},
+  {"label": "Linear-time algorithms", "section": "Linear-time algorithms", "subgoals": ["Track discovery index and lowlink in one depth-first search", "Pop a component when a vertex's lowlink equals its index", "Run Kosaraju's two searches as the linear-time alternative"]},
+  {"label": "From components to loop reports", "section": "From components to loop reports", "subgoals": ["Flag every vertex in a component of size two or more", "Extract one short cycle from a component for the report", "Break the remaining loops by disabling chosen arcs, with a warning"]}
+]

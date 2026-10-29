@@ -1,0 +1,5 @@
+[
+  {"label": "Prover outcomes as reward", "section": "Prover outcomes as reward", "subgoals": ["Rank proof, bounded pass, counterexample and timeout by evidence strength", "Score timeouts as unknown", "Return counterexample traces as feedback"]},
+  {"label": "How the reward gets hacked", "section": "How the reward gets hacked", "subgoals": ["Identify contradictory or over-constraining assumptions", "Identify trivially true properties", "Identify bounded proxies and editable specifications as exploitable gaps"]},
+  {"label": "Designing a robust reward", "section": "Designing a robust reward", "subgoals": ["Fix the property suite outside the policy's edit scope", "Add non-vacuity covers and a mutation kill rate to the reward", "Stage cheap filters before full proofs and evaluate on held-out designs"]}
+]

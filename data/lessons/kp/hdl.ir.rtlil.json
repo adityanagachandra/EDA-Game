@@ -1,0 +1,5 @@
+[
+  {"label": "Modules, wires, cells and connections", "section": "Modules, wires, cells and connections", "subgoals": ["Read a module as wires, cells, processes, memories and connections", "Distinguish internal cell types from user module instances", "Express a port connection as a SigSpec of wire slices and constants"]},
+  {"label": "Coarse cells, fine cells and processes", "section": "Coarse cells, fine cells and processes", "subgoals": ["Classify a cell as coarse-grain word-level or fine-grain single-bit", "Recognize processes as not-yet-lowered procedural code", "Keep memories abstract until the memory passes map them"]},
+  {"label": "Text format and attributes", "section": "Text format and attributes", "subgoals": ["Round-trip the design through write_rtlil and read_rtlil to isolate a pass", "Follow src attributes from cells back to RTL lines", "Protect objects from cleanup with keep attributes"]}
+]

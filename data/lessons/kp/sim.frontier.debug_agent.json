@@ -1,0 +1,5 @@
+[
+  {"label": "Inputs and the first divergence", "section": "Inputs and the first divergence", "subgoals": ["Gather the seed, the failure message and the waveform database", "Rerun the seed to confirm deterministic reproduction", "Search backward from the symptom for the earliest divergence"]},
+  {"label": "Bisection over time and cones", "section": "Bisection over time and cones", "subgoals": ["Bisect the cycle interval with reruns from checkpoints", "Compute the worst-case number of reruns as ceil(log2 N)", "Trace the fan-in cone backward from the first wrong register"]},
+  {"label": "Tools, hypotheses and review", "section": "Tools, hypotheses and review", "subgoals": ["Query waveforms through typed tools instead of raw files", "Confirm a hypothesis by patching and rerunning the same seed", "Deliver the evidence and the fix as a reviewable diff"]}
+]

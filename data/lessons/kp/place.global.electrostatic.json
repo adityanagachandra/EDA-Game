@@ -1,0 +1,5 @@
+[
+  {"label": "Cells as charges, density as energy", "section": "Cells as charges, density as energy", "subgoals": ["Assign each cell a charge equal to its area", "Compute the potential from Poisson's equation", "Take half the sum of charge times potential as the penalty"]},
+  {"label": "Density force as electric force", "section": "Density force as electric force", "subgoals": ["Express the density gradient as charge times electric field", "Compute the force magnitude from the field components", "Precondition by pin count plus lambda times charge"]},
+  {"label": "Fillers and the overflow target", "section": "Fillers and the overflow target", "subgoals": ["Compute the filler area as target density times free area minus movable area", "Divide by the filler size for the filler count", "Remove fillers before legalization"]}
+]

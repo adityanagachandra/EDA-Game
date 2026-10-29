@@ -1,0 +1,5 @@
+[
+  {"label": "Factory creation and overrides", "section": "Factory creation and overrides", "subgoals": ["Create components and items through type_id::create", "Apply a type override to replace a class everywhere", "Apply an instance override to replace it at one path"]},
+  {"label": "The configuration database", "section": "The configuration database", "subgoals": ["Set a value with a context, a path and a field name", "Get it in the component's build_phase", "Let the higher-level set win during build"]},
+  {"label": "Silent failures and defensive use", "section": "Silent failures and defensive use", "subgoals": ["Check the return value of every config_db get", "Report required missing items as fatal errors", "Fix configuration during build rather than at run time"]}
+]

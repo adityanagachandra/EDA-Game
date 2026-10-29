@@ -1,0 +1,5 @@
+[
+  {"label": "Elementary intervals", "section": "Elementary intervals", "subgoals": ["Collect and sort the distinct endpoints", "Count the point leaves and the open gaps", "Total them as 2m plus 1 elementary intervals"]},
+  {"label": "Canonical nodes", "section": "Canonical nodes", "subgoals": ["Descend from the root comparing node ranges with the interval", "Store the interval at nodes fully inside it", "Count the canonical nodes, at most two per level"]},
+  {"label": "Storage and aggregates", "section": "Storage and aggregates", "subgoals": ["Decompose each interval into its canonical nodes", "Add the node counts over all intervals", "Maintain aggregates such as covered length at each node"]}
+]

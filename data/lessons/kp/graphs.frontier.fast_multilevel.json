@@ -1,0 +1,5 @@
+[
+  {"label": "What a fast mode gives up", "section": "What a fast mode gives up", "subgoals": ["Lower V-cycles, initial tries and fine-level refinement", "Keep the cut definition and balance rule identical", "Build the fast mode from parameters as a Tier 1 change"]},
+  {"label": "Deciding whether to trust it", "section": "Deciding whether to trust it", "subgoals": ["Compute the fast mode's mean gap to the accurate reference", "Compute the spread across seeds", "Recurse to the accurate mode when either test fails"]},
+  {"label": "Budgeting the loop", "section": "Budgeting the loop", "subgoals": ["Screen every candidate with the fast mode", "Spend the accurate budget on the shortlist", "Treat differences inside the proxy's error as ties"]}
+]

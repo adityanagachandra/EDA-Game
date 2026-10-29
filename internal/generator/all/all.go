@@ -66,6 +66,7 @@ func Register(reg *generator.Registry) {
 	probability.Register(reg)
 	numerical.Register(reg)
 	realanalysis.Register(reg)
+	registerEDA(reg)
 }
 
 // Registry returns a registry with every generator registered.

@@ -1,0 +1,5 @@
+[
+  {"label": "The vertical constraint graph", "section": "The vertical constraint graph", "subgoals": ["Scan each column for two different nets", "Add an edge from the top net to the bottom net", "Merge repeated pairs into one edge"]},
+  {"label": "Longest chain as a lower bound", "section": "Longest chain as a lower bound", "subgoals": ["Topologically order the acyclic VCG", "Compute the longest path in vertices by dynamic programming", "Take the larger of the chain length and the density as the bound"]},
+  {"label": "The horizontal constraint graph", "section": "The horizontal constraint graph", "subgoals": ["Write each net's span", "Join every pair of nets whose spans share a column", "Read the largest clique as the channel density"]}
+]

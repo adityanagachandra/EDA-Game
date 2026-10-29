@@ -1,0 +1,5 @@
+[
+  {"label": "Dividing a master clock", "section": "Dividing a master clock", "subgoals": ["Identify the master clock and its period", "Multiply the period by the divide factor or divide it by the multiply factor", "Declare the result with create_generated_clock rather than an independent clock"]},
+  {"label": "Building a waveform from master edges", "section": "Building a waveform from master edges", "subgoals": ["Number the master edges starting from the first rise", "Read the times of the three listed edges", "Subtract to get the generated clock's high time and period"]},
+  {"label": "Latency through the generating logic", "section": "Latency through the generating logic", "subgoals": ["Start from the master's source latency", "Add the master network to the divider and the divider's clock-to-Q", "Add the generated clock's network to reach the sink"]}
+]

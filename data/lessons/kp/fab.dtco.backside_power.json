@@ -1,0 +1,5 @@
+[
+  {"label": "Power from the back of the wafer", "section": "Power from the back of the wafer", "subgoals": ["Order the bonding, thinning and backside via steps", "Distinguish connection through buried rails from direct backside contacts", "Describe what remains on the front side"]},
+  {"label": "IR drop with and without backside power", "section": "IR drop with and without backside power", "subgoals": ["Sum the resistance of a front-side via stack", "Multiply by current for the IR drop", "Compare it with a backside path"]},
+  {"label": "Trade-offs and tool consequences", "section": "Trade-offs and tool consequences", "subgoals": ["List the benefits of moving power to the back", "List the costs, including the thermal path", "Name the engines whose models must change"]}
+]

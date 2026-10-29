@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Loose tolerances and what they buy",
+  "section": "Loose tolerances and what they buy",
+  "subgoals": [
+   "Express the iteration count as a function of the tolerance",
+   "Compute the ratio of counts for the two tolerances",
+   "Apply the same scaling reasoning to step size, precision and mesh"
+  ]
+ },
+ {
+  "label": "Error budgets for ranking candidates",
+  "section": "Error budgets for ranking candidates",
+  "subgoals": [
+   "Take the gap between the fast estimates",
+   "Compare it with twice the error band",
+   "Recurse to the accurate engine when the gap is smaller"
+  ]
+ },
+ {
+  "label": "Promoting a fast result to signoff",
+  "section": "Promoting a fast result to signoff",
+  "subgoals": [
+   "Re-run the chosen candidate in the accurate deterministic mode",
+   "Re-measure the fast-mode error band on the current design class",
+   "Recompute rewards with the accurate engine to catch proxy gaming"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Voltage scaling of dynamic power", "section": "Voltage scaling of dynamic power", "subgoals": ["Hold frequency and activity fixed", "Scale power by the square of the voltage ratio", "Check which logic has the timing margin to move"]},
+  {"label": "Dynamic voltage and frequency scaling", "section": "Dynamic voltage and frequency scaling", "subgoals": ["Compute the voltage and frequency ratios", "Multiply the squared voltage ratio by the frequency ratio", "Convert the ratio to a percentage saving"]},
+  {"label": "The speed cost", "section": "The speed cost", "subgoals": ["Write the alpha-power delay law", "Evaluate it at both voltages", "Take the ratio as the slowdown"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The upper confidence bound",
+    "section": "The upper confidence bound",
+    "subgoals": [
+      "Compute mean plus kappa times standard deviation for each candidate",
+      "Pick the candidate with the largest score",
+      "Raise kappa to explore more and lower it to exploit"
+    ]
+  },
+  {
+    "label": "Expected improvement",
+    "section": "Expected improvement",
+    "subgoals": [
+      "Standardize the gap between incumbent and mean by the standard deviation",
+      "Look up the normal distribution and density at that value",
+      "Combine the gap term and the uncertainty term"
+    ]
+  },
+  {
+    "label": "Exploit or explore",
+    "section": "Exploit or explore",
+    "subgoals": [
+      "Compute the expected improvement of each candidate",
+      "Pick the candidate with the larger value",
+      "Report the best evaluated point when the budget ends"
+    ]
+  }
+]

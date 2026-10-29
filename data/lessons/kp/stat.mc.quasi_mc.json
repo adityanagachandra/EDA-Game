@@ -1,0 +1,5 @@
+[
+  {"label": "The van der Corput sequence", "section": "The van der Corput sequence", "subgoals": ["Write n in base b", "Mirror the digits about the radix point", "Sum the digit weights as negative powers of b"]},
+  {"label": "Halton points in several dimensions", "section": "Halton points in several dimensions", "subgoals": ["Assign a distinct prime base to each coordinate", "Compute the radical inverse of n in that base", "Map each coordinate through the inverse normal distribution"]},
+  {"label": "Convergence rate and its limits", "section": "Convergence rate and its limits", "subgoals": ["State the QMC error rate as log N to the d over N", "Compare r against r squared samples for an r-fold error cut", "Identify discontinuous indicators as the case where QMC gains shrink"]}
+]

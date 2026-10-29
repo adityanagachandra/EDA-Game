@@ -1,0 +1,29 @@
+[
+  {
+    "label": "State-dependent leakage",
+    "section": "State-dependent leakage",
+    "subgoals": [
+      "Read the leakage value for each when condition",
+      "Compute each input state's probability",
+      "Sum leakage weighted by state probability"
+    ]
+  },
+  {
+    "label": "Internal power tables",
+    "section": "Internal power tables",
+    "subgoals": [
+      "Read energy per transition from the internal power table at the grid point",
+      "Multiply by the transition rate for internal power",
+      "Exclude the external load's charging from internal energy"
+    ]
+  },
+  {
+    "label": "Total pin power and noise views",
+    "section": "Total pin power and noise views",
+    "subgoals": [
+      "Add half C V squared per toggle to the internal energy",
+      "Multiply by the toggle rate for total pin power",
+      "Use noise views for glitch tolerance and victim holding resistance"
+    ]
+  }
+]

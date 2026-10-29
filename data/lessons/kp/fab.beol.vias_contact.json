@@ -1,0 +1,5 @@
+[
+  {"label": "Specific contact resistivity", "section": "Specific contact resistivity", "subgoals": ["Write contact resistance as rho_c over area", "Convert square nanometres to square centimetres", "Compute the contact resistance and its area scaling"]},
+  {"label": "Via stacks in series and parallel", "section": "Via stacks in series and parallel", "subgoals": ["Add via levels in series", "Divide each level by its number of parallel vias", "Compare single and redundant via stacks"]},
+  {"label": "When contacts dominate", "section": "When contacts dominate", "subgoals": ["Sum contact, via and wire resistance along a short path", "Compute the contact share of the total", "Name the process and architecture levers for contact resistance"]}
+]

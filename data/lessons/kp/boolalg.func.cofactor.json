@@ -1,0 +1,5 @@
+[
+  {"label": "Fixing one variable", "section": "Fixing one variable", "subgoals": ["Substitute the constant for the variable everywhere", "Simplify the expression with the identity and null laws", "Read the cofactor as a function of the remaining variables"]},
+  {"label": "Cofactors from the truth table", "section": "Cofactors from the truth table", "subgoals": ["Select the rows where the variable has the fixed value", "Drop the variable's column to index the surviving rows", "Count the ON rows of the cofactor"]},
+  {"label": "Cofactor with respect to a cube", "section": "Cofactor with respect to a cube", "subgoals": ["Fix every literal of the cube at once", "Keep only the rows consistent with the cube", "Count the ON rows over the free variables"]}
+]

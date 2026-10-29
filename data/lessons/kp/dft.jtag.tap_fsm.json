@@ -1,0 +1,5 @@
+[
+  {"label": "The state graph", "section": "The state graph", "subgoals": ["Enter Run-Test/Idle from Test-Logic-Reset with TMS at 0", "Climb Select-DR-Scan and Select-IR-Scan with TMS at 1", "Walk Capture, Shift, Exit1, Pause, Exit2 and Update in each column"]},
+  {"label": "Following a TMS sequence", "section": "Following a TMS sequence", "subgoals": ["Apply one transition per TCK edge from the starting state", "Read the final state after the last TMS value", "Search the state graph breadth-first for the shortest path"]},
+  {"label": "Scan cycle counts", "section": "Scan cycle counts", "subgoals": ["Reach the Shift state from Run-Test/Idle in 3 edges for DR or 4 for IR", "Shift the last bit on the edge that exits to Exit1", "Return through Update to Run-Test/Idle in 2 more edges"]}
+]

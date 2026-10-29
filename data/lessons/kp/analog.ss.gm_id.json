@@ -1,0 +1,5 @@
+[
+  {"label": "Transconductance efficiency", "section": "Transconductance efficiency", "subgoals": ["Start from the transconductance that a spec demands", "Divide gm by the chosen gm over Id to get the drain current", "Treat gm over Id as the power knob of the design"]},
+  {"label": "Inversion level and its limits", "section": "Inversion level and its limits", "subgoals": ["Convert gm over Id to overdrive with two over Vov in strong inversion", "Compute the weak-inversion ceiling one over n times the thermal voltage", "Place a design point between strong and weak inversion"]},
+  {"label": "The speed and efficiency trade-off", "section": "The speed and efficiency trade-off", "subgoals": ["Compute gm from gm over Id and the drain current", "Estimate transit frequency as gm over two pi Cgg", "Locate the efficiency-speed optimum in moderate inversion"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Stages of the board flow", "section": "Stages of the board flow", "subgoals": ["Order the stages from schematic capture to manufacturing outputs", "Name the artifact each stage hands to the next", "Contrast the board flow's inputs with a chip flow's RTL and PDK"]},
+  {"label": "What crosses each boundary", "section": "What crosses each boundary", "subgoals": ["List what the netlist carries and what it omits", "Separate fabrication outputs from assembly outputs", "Match each output file to the shop that consumes it"]},
+  {"label": "Iteration and failure propagation", "section": "Iteration and failure propagation", "subgoals": ["Trace a library error to the bench failure it causes", "Locate the upstream stage that owns a routing failure", "Push a fix forward from schematic to layout instead of patching copper"]}
+]

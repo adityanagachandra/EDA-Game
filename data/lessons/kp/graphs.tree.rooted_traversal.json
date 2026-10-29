@@ -1,0 +1,5 @@
+[
+  {"label": "Pre-order: parent before children", "section": "Pre-order: parent before children", "subgoals": ["Visit the node before any of its children", "Descend into the child subtrees in the fixed child order", "Finish one subtree completely before starting the next"]},
+  {"label": "Post-order: children before parent", "section": "Post-order: children before parent", "subgoals": ["Visit every child subtree before the node", "Emit leaves first and the root last", "Combine children's results when the node is reached"]},
+  {"label": "Two passes on an RC tree", "section": "Two passes on an RC tree", "subgoals": ["Accumulate downstream capacitance in post-order", "Push delay from the root in pre-order", "Decide for each quantity whether it flows up or down the tree"]}
+]

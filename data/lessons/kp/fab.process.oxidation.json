@@ -1,0 +1,5 @@
+[
+  {"label": "Oxide grows into the silicon", "section": "Oxide grows into the silicon", "subgoals": ["Relate oxide thickness to consumed silicon by the factor 0.44", "Locate the original surface inside the oxide", "Contrast dry and wet oxidation rates"]},
+  {"label": "The Deal-Grove equation", "section": "The Deal-Grove equation", "subgoals": ["Write the Deal-Grove quadratic", "Solve it for thickness with the positive root", "Convert micrometres to nanometres"]},
+  {"label": "Linear and parabolic regimes", "section": "Linear and parabolic regimes", "subgoals": ["Identify the reaction-limited and diffusion-limited terms", "Rearrange the equation for growth time", "Recognize where the model fails for very thin oxides"]}
+]

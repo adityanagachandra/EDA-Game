@@ -1,0 +1,5 @@
+[
+  {"label": "Database units", "section": "Database units", "subgoals": ["Read the database unit from the UNITS record", "Compute database units per micrometre", "Multiply the coordinate by that factor to get the stored integer"]},
+  {"label": "The coordinate range", "section": "The coordinate range", "subgoals": ["Take 2^31 - 1 as the largest stored value", "Multiply by the database unit", "Convert the result to millimetres"]},
+  {"label": "The manufacturing grid", "section": "The manufacturing grid", "subgoals": ["Test each coordinate for divisibility by the grid", "Flag a vertex if either coordinate fails", "Count the flagged vertices"]}
+]

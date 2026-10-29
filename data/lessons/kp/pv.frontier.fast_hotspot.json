@@ -1,0 +1,5 @@
+[
+  {"label": "Screen then verify", "section": "Screen then verify", "subgoals": ["Compute the time to simulate every clip", "Compute the predictor time plus the time to simulate flagged clips", "Divide the first by the second"]},
+  {"label": "Escapes at a threshold", "section": "Escapes at a threshold", "subgoals": ["List the true hotspots with their scores", "Count those scoring below the threshold", "Report them as escapes of the fast screen"]},
+  {"label": "Gaming the proxy", "section": "Gaming the proxy", "subgoals": ["Multiply the predicted count by precision to get true positives", "Divide by recall to estimate the real count", "Check the reward against the accurate engine"]}
+]

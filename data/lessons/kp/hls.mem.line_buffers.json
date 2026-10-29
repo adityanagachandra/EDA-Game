@@ -1,0 +1,29 @@
+[
+ {
+  "label": "How many pixels to keep",
+  "section": "How many pixels to keep",
+  "subgoals": [
+   "Count the K minus 1 rows the window needs above the current one",
+   "Multiply by the image width",
+   "Hold the current window in a K by K shift register"
+  ]
+ },
+ {
+  "label": "Block RAMs for the buffers",
+  "section": "Block RAMs for the buffers",
+  "subgoals": [
+   "Multiply the row width by the pixel width for the bits per row",
+   "Divide by the block RAM capacity and round up",
+   "Multiply by the number of buffered rows"
+  ]
+ },
+ {
+  "label": "Latency to the first output",
+  "section": "Latency to the first output",
+  "subgoals": [
+   "Identify the bottom-right pixel of the first full window",
+   "Convert its row and column to an arrival cycle",
+   "Match the border policy to the reference model"
+  ]
+ }
+]

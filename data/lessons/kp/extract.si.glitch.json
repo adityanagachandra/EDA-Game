@@ -1,0 +1,5 @@
+[
+  {"label": "The capacitive divider", "section": "The capacitive divider", "subgoals": ["Identify the victim's ground and coupling capacitance", "Form the coupling over the total capacitance", "Multiply by the aggressor's swing to get the peak"]},
+  {"label": "Several aggressors", "section": "Several aggressors", "subgoals": ["Sum the couplings of the aggressors that switch together", "Use the victim's total capacitance as the denominator", "Multiply the ratio by the swing"]},
+  {"label": "Shielding", "section": "Shielding", "subgoals": ["Reduce the coupling by the fraction the shield absorbs", "Keep the victim's total capacitance unchanged", "Recompute the divider and take the difference"]}
+]

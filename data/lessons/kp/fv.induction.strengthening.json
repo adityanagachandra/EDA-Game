@@ -1,0 +1,5 @@
+[
+  {"label": "Counterexamples to induction", "section": "Counterexamples to induction", "subgoals": ["Read the CTI's start state and its bad successor", "Decide whether the start state is reachable", "Identify the internal values that the design can never produce"]},
+  {"label": "Adding a lemma", "section": "Adding a lemma", "subgoals": ["Write a lemma that excludes the CTI's start state", "Check that the lemma holds initially", "Prove the conjunction of the property and the lemma inductive"]},
+  {"label": "Where lemmas come from", "section": "Where lemmas come from", "subgoals": ["Write helper assertions and prove them as assertions", "Let k-induction or IC3 strengthen the property automatically", "Filter proposed candidate lemmas with the prover"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What the agent checks and from what", "section": "What the agent checks and from what", "subgoals": ["Route exact connectivity checks to the rule engine", "Reserve model reasoning for datasheet-dependent checks", "Attach the net, the source and the observed values to each finding"]},
+  {"label": "Precision and recall", "section": "Precision and recall", "subgoals": ["Count true findings against the seeded defects", "Compute precision over findings and recall over seeded defects", "Hold the evaluation set out of tuning data"]},
+  {"label": "Grounding and the review loop", "section": "Grounding and the review loop", "subgoals": ["Match every cited requirement against the retrieved source text", "Deliver fixes as diffs for designer approval", "Promote validated checks into deterministic rules"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The phase sequence and traversal order", "section": "The phase sequence and traversal order", "subgoals": ["List the common phases from build to final", "Run build_phase top-down as a pre-order traversal", "Run connect and later function phases bottom-up"]},
+  {"label": "Run-time phases and objections", "section": "Run-time phases and objections", "subgoals": ["Raise an objection before starting the main stimulus", "Drop it when the stimulus completes", "Diagnose a time-0 finish as a missing objection and a hang as an undropped one"]},
+  {"label": "Using the phases correctly", "section": "Using the phases correctly", "subgoals": ["Read configuration and create children in build_phase", "Connect ports in connect_phase", "Check leftovers in check_phase after traffic ends"]}
+]

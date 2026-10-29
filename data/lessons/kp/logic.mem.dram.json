@@ -1,0 +1,5 @@
+[
+  {"label": "The 1T1C cell and refresh", "section": "The 1T1C cell and refresh", "subgoals": ["Divide the retention window by the number of refresh commands", "Compare the refresh busy time with the interval", "Express refresh overhead as a fraction of time"]},
+  {"label": "Peak bandwidth", "section": "Peak bandwidth", "subgoals": ["Multiply the bus width by the transfer rate", "Divide by eight to convert bits to bytes", "Account for refresh and row changes in sustained bandwidth"]},
+  {"label": "Row hits, misses and conflicts", "section": "Row hits, misses and conflicts", "subgoals": ["Charge column latency alone for a row hit", "Add activate and precharge for a row conflict", "Weight the latencies by their probabilities"]}
+]

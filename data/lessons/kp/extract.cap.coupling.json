@@ -1,0 +1,5 @@
+[
+  {"label": "Facing sidewalls", "section": "Facing sidewalls", "subgoals": ["Take the facing area as thickness times parallel run length", "Divide by the spacing between the sidewalls", "Scale by the permittivity of the dielectric between them"]},
+  {"label": "Spacing dependence", "section": "Spacing dependence", "subgoals": ["Read the coupling per length at the tabulated spacing", "Scale it by the ratio of old to new spacing", "Multiply by the parallel run length"]},
+  {"label": "Parallel run length", "section": "Parallel run length", "subgoals": ["Find the interval where both wires exist on adjacent tracks", "Take its length as the parallel run", "Multiply the run by the coupling per length at that spacing"]}
+]

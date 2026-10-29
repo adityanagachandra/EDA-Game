@@ -1,0 +1,5 @@
+[
+  {"label": "Inductive relative to a frame", "section": "Inductive relative to a frame", "subgoals": ["List the states of F that lie outside the cube", "Find which of them have a successor inside the cube", "Count them; zero means the clause is relatively inductive"]},
+  {"label": "Clauses that exclude larger cubes", "section": "Clauses that exclude larger cubes", "subgoals": ["Expand the cube into the states it contains", "Check each state of F outside the cube for a transition into it", "Count the offending states"]},
+  {"label": "Initiation and why relative induction is enough", "section": "Initiation and why relative induction is enough", "subgoals": ["Check that no initial state lies in the excluded cube", "Add the number of states of F that step into the cube", "Accept the clause only when the total is zero"]}
+]

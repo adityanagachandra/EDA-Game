@@ -1,0 +1,5 @@
+[
+  {"label": "ite as the universal operator", "section": "ite as the universal operator", "subgoals": ["Rewrite the connective as an ite with constant arguments", "Form the combined function f op g", "Count the nodes of its ROBDD in the given order"]},
+  {"label": "Apply for XOR", "section": "Apply for XOR", "subgoals": ["Split both arguments on the earliest top variable", "Recurse on the low and high cofactor pairs", "Rebuild the result through the unique table and count its nodes"]},
+  {"label": "The computed table and the product bound", "section": "The computed table and the product bound", "subgoals": ["Count the nodes of each argument, terminals included", "Multiply the sizes to bound the distinct calls", "Explain why the computed table removes repeated work"]}
+]

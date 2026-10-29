@@ -1,0 +1,5 @@
+[
+  {"label": "Equivalence as a fixed point", "section": "Equivalence as a fixed point", "subgoals": ["Group the states by their output", "Split each block by the blocks of its members' successors", "Repeat until no block splits"]},
+  {"label": "A worked refinement", "section": "A worked refinement", "subgoals": ["Write each state's successor blocks for every input", "Compare the successor signatures within each block", "Count the blocks when no signature differs"]},
+  {"label": "Engineering consequences", "section": "Engineering consequences", "subgoals": ["Charge refinement by states times inputs per round", "Separate completely specified machines from incompletely specified ones", "Check machine equivalence by refining the union of both"]}
+]

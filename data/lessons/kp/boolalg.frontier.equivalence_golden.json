@@ -1,0 +1,5 @@
+[
+  {"label": "The miter", "section": "The miter", "subgoals": ["XOR the outputs of the original and the transformed logic", "Assert the XOR output with a unit clause", "Count the inputs that satisfy the miter"]},
+  {"label": "The size of the check", "section": "The size of the check", "subgoals": ["Encode both circuits with Tseitin", "Add the XOR gate and the output unit clause", "Total the clauses"]},
+  {"label": "Equivalence up to don't cares", "section": "Equivalence up to don't cares", "subgoals": ["Restrict the comparison to the care set", "Ignore mismatches on don't-care inputs", "Count the counterexamples that remain"]}
+]

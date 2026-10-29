@@ -1,0 +1,5 @@
+[
+  {"label": "Bumping with a growing increment", "section": "Bumping with a growing increment", "subgoals": ["Start every activity at 0 and the increment at 1", "Add the current increment to each variable of each learned clause", "Divide the increment by the decay factor after each conflict"]},
+  {"label": "Picking the next decision", "section": "Picking the next decision", "subgoals": ["Drop the variables that are already assigned", "Compare the activities of the remaining variables", "Pick the variable with the highest activity"]},
+  {"label": "Explicit decay gives the same ranking", "section": "Explicit decay gives the same ranking", "subgoals": ["Multiply every activity by the decay factor on each conflict", "Add 1 to each variable of the learned clause", "Compare with the growing-increment scores scaled by the decay factor to the power k - 1"]}
+]

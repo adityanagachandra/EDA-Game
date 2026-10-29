@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Wire nodes",
+  "section": "Wire nodes",
+  "subgoals": [
+   "Count n plus 1 channels in each direction",
+   "Multiply by W tracks and n over L wires per track",
+   "Double for horizontal and vertical channels"
+  ]
+ },
+ {
+  "label": "Pin, source and sink nodes",
+  "section": "Pin, source and sink nodes",
+  "subgoals": [
+   "Count one IPIN per input and one OPIN per output",
+   "Add one SOURCE and one shared SINK per block",
+   "Sum block nodes and wire nodes"
+  ]
+ },
+ {
+  "label": "Edges",
+  "section": "Edges",
+  "subgoals": [
+   "Count Fc_in W edges into each input pin",
+   "Count Fc_out W edges out of each output pin",
+   "Multiply the per-block total by the number of blocks"
+  ]
+ }
+]

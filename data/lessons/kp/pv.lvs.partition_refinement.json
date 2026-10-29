@@ -1,0 +1,5 @@
+[
+  {"label": "One round of refinement", "section": "One round of refinement", "subgoals": ["Assign initial colours by device type and net degree", "Form each vertex's signature from its colour and its labelled neighbour colours", "Count the distinct signatures"]},
+  {"label": "Rounds until stable", "section": "Rounds until stable", "subgoals": ["Recompute signatures with the previous round's colours", "Compare the new class count with the old one", "Stop when a round splits no class"]},
+  {"label": "The stable partition", "section": "The stable partition", "subgoals": ["Run refinement to its fixed point", "Count the classes of the stable partition", "Mark singleton classes as matched vertices"]}
+]

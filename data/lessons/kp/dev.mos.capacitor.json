@@ -1,0 +1,5 @@
+[
+  {"label": "Oxide capacitance per unit area", "section": "Oxide capacitance per unit area", "subgoals": ["Write oxide capacitance as permittivity over thickness", "Convert the thickness from nm to cm", "Convert F per square centimetre to fF per square micron"]},
+  {"label": "Equivalent oxide thickness", "section": "Equivalent oxide thickness", "subgoals": ["Scale the physical thickness by 3.9 over the dielectric constant", "Add series layers such as the interfacial oxide", "Distinguish EOT for capacitance from physical thickness for tunneling"]},
+  {"label": "Inversion charge from gate overdrive", "section": "Inversion charge from gate overdrive", "subgoals": ["Compute the oxide capacitance from EOT", "Multiply by the gate overdrive for the inversion charge", "Divide by q to get the sheet density"]}
+]

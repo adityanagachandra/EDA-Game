@@ -1,0 +1,5 @@
+[
+  {"label": "Golden tests for a solver", "section": "Golden tests for a solver", "subgoals": ["Choose reference grids with exactly known answers", "Include single-supply and current-checking cases", "Keep the golden data read-only to the optimiser"]},
+  {"label": "The differential comparison", "section": "The differential comparison", "subgoals": ["Compute the absolute difference at each node", "Compare each difference with the tolerance", "Count the failing nodes"]},
+  {"label": "What a passing check must also show", "section": "What a passing check must also show", "subgoals": ["Check runtime and iteration baselines alongside voltages", "Confirm that changes are confined to the intended region", "Add dynamic reference waveforms for dynamic changes"]}
+]

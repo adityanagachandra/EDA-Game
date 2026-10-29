@@ -1,0 +1,5 @@
+[
+  {"label": "From odd mode to differential impedance", "section": "From odd mode to differential impedance", "subgoals": ["Halve the differential target to get the odd-mode target", "Narrow tightly coupled traces to restore the odd-mode impedance", "Store width, gap and target together in a pair rule"]},
+  {"label": "Common-mode impedance", "section": "Common-mode impedance", "subgoals": ["Halve the even-mode impedance to get the common-mode impedance", "Approximate both impedances for a loosely coupled pair", "Specify common-mode behavior alongside the differential target"]},
+  {"label": "Coupling from measured impedances", "section": "Coupling from measured impedances", "subgoals": ["Convert measured differential and common-mode impedance to odd and even values", "Compute the coupling coefficient", "Trade loose against tight coupling for area and tolerance"]}
+]

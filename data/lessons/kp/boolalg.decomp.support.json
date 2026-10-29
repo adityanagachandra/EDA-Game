@@ -1,0 +1,5 @@
+[
+  {"label": "The true support of a function", "section": "The true support of a function", "subgoals": ["Compute the Boolean difference for each variable", "Keep the variables whose difference is not identically 0", "Count the variables in the support"]},
+  {"label": "Vacuous variables in a redundant expression", "section": "Vacuous variables in a redundant expression", "subgoals": ["Simplify the expression or tabulate it", "Find the variables whose two cofactors are equal", "Count the variables the function ignores"]},
+  {"label": "When one function is a function of others", "section": "When one function is a function of others", "subgoals": ["Group the input rows by the value pair of the given functions", "Find the groups whose target values disagree", "Declare dependence only when no group conflicts"]}
+]

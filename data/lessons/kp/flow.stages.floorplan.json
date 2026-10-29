@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Core area from utilization",
+    "section": "Core area from utilization",
+    "subgoals": [
+      "Define utilization as cell area over core area",
+      "Divide total cell area by target utilization",
+      "Explain why utilization targets leave white space"
+    ]
+  },
+  {
+    "label": "Shape, rows and the die",
+    "section": "Shape, rows and the die",
+    "subgoals": [
+      "Solve for core width from area and aspect ratio",
+      "Add the I/O margin on both sides of each dimension",
+      "Convert the die area from square microns to square millimetres"
+    ]
+  },
+  {
+    "label": "Macros and the power grid",
+    "section": "Macros and the power grid",
+    "subgoals": [
+      "Place macros at edges with routing channels between them",
+      "Describe rings, straps and rails of the power grid",
+      "Trade grid density against signal routing resources"
+    ]
+  }
+]

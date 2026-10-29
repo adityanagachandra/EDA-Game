@@ -1,0 +1,5 @@
+[
+  {"label": "Minimum bends", "section": "Minimum bends", "subgoals": ["Shoot level-0 lines from both pins until blocked", "Launch perpendicular lines from every point of the previous level", "Stop at the first intersection and count its bends"]},
+  {"label": "Probe lines and what they cover", "section": "Probe lines and what they cover", "subgoals": ["Walk each of the four directions from the pin until blocked", "Count the cells on those lines as zero-bend reachable", "Add the cells on perpendicular lines for one-bend reachability"]},
+  {"label": "Line probing versus maze routing", "section": "Line probing versus maze routing", "subgoals": ["Contrast segment storage with per-cell labels", "Separate the complete Mikami-Tabuchi method from greedy Hightower probing", "Fall back to maze search when probes fail"]}
+]

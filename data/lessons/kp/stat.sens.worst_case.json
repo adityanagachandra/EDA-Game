@@ -1,0 +1,5 @@
+[
+  {"label": "The worst-case stack", "section": "The worst-case stack", "subgoals": ["Push each parameter k sigma in its harmful direction", "Sum the absolute sensitivity times sigma terms", "Multiply by k for the worst-case shift"]},
+  {"label": "The statistical spread", "section": "The statistical spread", "subgoals": ["Combine the contributions in variance for the statistical sigma", "Multiply by k for the statistical spread", "Compare the two as the root-sum-square against the plain sum"]},
+  {"label": "How rare the worst case really is", "section": "How rare the worst case really is", "subgoals": ["Divide the worst-case shift by the true output sigma", "Convert the resulting sigma level to a probability", "Weigh the cost of pessimism against protection from model error"]}
+]

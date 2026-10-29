@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Arithmetic intensity of sparse kernels",
+  "section": "Arithmetic intensity of sparse kernels",
+  "subgoals": [
+   "Count the flops of the kernel",
+   "Count the bytes it moves from memory",
+   "Divide flops by bytes to get the intensity"
+  ]
+ },
+ {
+  "label": "The roofline bound",
+  "section": "The roofline bound",
+  "subgoals": [
+   "Compute intensity times bandwidth",
+   "Take the minimum with peak performance",
+   "Classify the kernel as memory-bound or compute-bound"
+  ]
+ },
+ {
+  "label": "Mapping solver kernels to GPU threads",
+  "section": "Mapping solver kernels to GPU threads",
+  "subgoals": [
+   "Choose a thread or warp mapping that balances row lengths",
+   "Keep Krylov kernels on the GPU and batch small factorizations",
+   "Estimate kernel time as bytes over bandwidth"
+  ]
+ }
+]

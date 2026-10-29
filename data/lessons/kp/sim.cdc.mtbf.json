@@ -1,0 +1,5 @@
+[
+  {"label": "The MTBF formula", "section": "The MTBF formula", "subgoals": ["Write the metastability event rate as T0 f_clk f_data", "Model the probability of not resolving as e^(-t/tau)", "Combine them into MTBF = e^(t_r/tau) / (T0 f_clk f_data)"]},
+  {"label": "Computing MTBF", "section": "Computing MTBF", "subgoals": ["Compute the denominator T0 f_clk f_data in events per second", "Compute the exponent t_r over tau", "Divide e^(t_r/tau) by the denominator and convert units"]},
+  {"label": "Adding stages and designing to a target", "section": "Adding stages and designing to a target", "subgoals": ["Multiply MTBF by e^(T/tau) for each added stage", "Solve t_r = tau ln(MTBF T0 f_clk f_data) for a target", "Divide the system MTBF target by the number of synchronizers"]}
+]

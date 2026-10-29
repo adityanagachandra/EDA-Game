@@ -1,0 +1,5 @@
+[
+  {"label": "Drop across the switch network", "section": "Drop across the switch network", "subgoals": ["Combine the parallel on-resistances", "Multiply by the domain current", "Add the result to the domain's IR budget"]},
+  {"label": "Switch count for a budget", "section": "Switch count for a budget", "subgoals": ["Set the switch-network drop equal to the budget", "Solve for the number of switches", "Use the peak rather than the average current"]},
+  {"label": "The leakage floor", "section": "The leakage floor", "subgoals": ["Multiply switch count, off current and supply voltage", "Compare the floor with the domain's leakage when on", "Explain the threshold choice for switch devices"]}
+]

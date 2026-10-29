@@ -1,0 +1,5 @@
+[
+  {"label": "Settling vertices in order of distance", "section": "Settling vertices in order of distance", "subgoals": ["Set the source distance to 0 and all others to infinity", "Settle the unsettled vertex with the smallest tentative distance", "Relax every edge of the settled vertex"]},
+  {"label": "Tentative distances during the run", "section": "Tentative distances during the run", "subgoals": ["Read tentative distances as upper bounds that only decrease", "Lower a tentative distance when a cheaper route is relaxed", "Break ties by an explicit rule so results are reproducible"]},
+  {"label": "Data structures and limits", "section": "Data structures and limits", "subgoals": ["Use a binary heap for O((V + E) log V) time", "Use a bucket queue for small integer costs", "Switch to Bellman-Ford when any edge cost is negative"]}
+]

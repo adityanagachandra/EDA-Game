@@ -1,0 +1,5 @@
+[
+  {"label": "Delay per unit length", "section": "Delay per unit length", "subgoals": ["Take the square root of the relative permittivity", "Multiply by 3.336 ps per mm", "Multiply by the line length for the total delay"]},
+  {"label": "When a wire is a transmission line", "section": "When a wire is a transmission line", "subgoals": ["Divide the rise time by the threshold fraction to get the delay budget", "Divide the budget by the delay per unit length", "Report the longest length that may be treated as lumped"]},
+  {"label": "Electrical length in degrees", "section": "Electrical length in degrees", "subgoals": ["Compute the line's delay from its length and permittivity", "Multiply 360 degrees by the frequency and the delay", "Interpret 90 degrees as a quarter wavelength"]}
+]

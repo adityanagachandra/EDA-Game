@@ -1,0 +1,5 @@
+[
+  {"label": "Utilization from cell area", "section": "Utilization from cell area", "subgoals": ["Define core utilization as cell area over core area", "Divide total cell area by the target utilization", "Weigh higher utilization against routability"]},
+  {"label": "Aspect ratio and core dimensions", "section": "Aspect ratio and core dimensions", "subgoals": ["Compute the core width as the square root of area over aspect ratio", "Multiply the width by the aspect ratio for the height", "Round the height to whole rows and the width to whole sites"]},
+  {"label": "From core to die", "section": "From core to die", "subgoals": ["Add twice the margin to each core dimension", "Multiply the padded dimensions for the die area", "Compare the margin overhead of small and large blocks"]}
+]

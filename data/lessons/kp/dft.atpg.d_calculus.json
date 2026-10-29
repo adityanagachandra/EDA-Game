@@ -1,0 +1,5 @@
+[
+  {"label": "The five values", "section": "The five values", "subgoals": ["Write each line as a pair of fault-free and faulty values", "Name the pair 1 and 0 as D and the pair 0 and 1 as D-bar", "Mark the fault site D or D-bar when the fault is activated"]},
+  {"label": "Evaluating gates", "section": "Evaluating gates", "subgoals": ["Split each input into its fault-free and faulty components", "Evaluate each machine with three-valued logic", "Recombine the two results into one of the five values"]},
+  {"label": "Multi-gate evaluation", "section": "Multi-gate evaluation", "subgoals": ["Evaluate the gates in topological order", "Carry D or D-bar forward through non-controlling side inputs", "Collapse partly unknown pairs to X"]}
+]

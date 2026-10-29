@@ -1,0 +1,5 @@
+[
+  {"label": "Cubes as products of literals", "section": "Cubes as products of literals", "subgoals": ["Write the cube in positional notation with 0, 1 and dash", "Count the dashes as free variables", "Raise 2 to the number of dashes"]},
+  {"label": "Intersection and union of cubes", "section": "Intersection and union of cubes", "subgoals": ["Intersect two cubes position by position", "Detect an empty intersection from a conflicting position", "Count the union by inclusion and exclusion"]},
+  {"label": "Distance and consensus", "section": "Distance and consensus", "subgoals": ["Count the positions where the cubes conflict", "Form the consensus when the distance is exactly 1", "Count the minterms of the consensus cube"]}
+]

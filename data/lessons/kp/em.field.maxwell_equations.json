@@ -1,0 +1,5 @@
+[
+  {"label": "The four laws and what each constrains", "section": "The four laws and what each constrains", "subgoals": ["Match each law to the flux or circulation it constrains", "Relate D to E and B to H with the material constants", "Reduce Faraday's law to zero circulation in statics"]},
+  {"label": "Conduction and displacement current", "section": "Conduction and displacement current", "subgoals": ["Write the conduction term as conductivity times E", "Write the displacement term as the rate of change of D", "Compare sigma with omega epsilon to decide which dominates"]},
+  {"label": "Which laws an extractor solves", "section": "Which laws an extractor solves", "subgoals": ["Use Gauss's law with a potential for capacitance extraction", "Use Ampere's law without displacement current for inductance", "Keep all four laws coupled for wavelength-sized structures"]}
+]

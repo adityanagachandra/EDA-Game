@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Solving an equivalent system that converges faster",
+  "section": "Solving an equivalent system that converges faster",
+  "subgoals": [
+   "Rewrite the system with the preconditioner applied",
+   "Estimate the new condition number",
+   "Scale the iteration count by the square root of the kappa ratio"
+  ]
+ },
+ {
+  "label": "Jacobi scaling of a badly scaled matrix",
+  "section": "Jacobi scaling of a badly scaled matrix",
+  "subgoals": [
+   "Extract the diagonal of the matrix",
+   "Scale rows and columns by its inverse square root",
+   "Compute the condition number of the scaled matrix"
+  ]
+ },
+ {
+  "label": "Cost per iteration against iterations saved",
+  "section": "Cost per iteration against iterations saved",
+  "subgoals": [
+   "Add setup time to iterations times per-iteration cost",
+   "Compare with the unpreconditioned total",
+   "Reuse the setup across solves when the matrix changes little"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Carries column by column", "section": "Carries column by column", "subgoals": ["Add the two operand bits and the incoming carry in each column", "Emit a carry when at least two inputs are one", "Pass the carry into the next column"]},
+  {"label": "Generate, propagate and the full adder equations", "section": "Generate, propagate and the full adder equations", "subgoals": ["Compute generate as a AND b", "Compute propagate as a XOR b", "Combine them as carry-out equals g plus p times carry-in"]},
+  {"label": "Gate counts and the cost of a column", "section": "Gate counts and the cost of a column", "subgoals": ["Count two XOR, two AND and one OR per full adder", "Use a half adder in the column with a zero carry-in", "Locate the carry path through each column"]}
+]

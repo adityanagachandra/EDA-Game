@@ -1,0 +1,5 @@
+[
+  {"label": "Two classes of litho engine", "section": "Two classes of litho engine", "subgoals": ["Describe compact models, pattern matching and ML detectors", "Describe what rigorous simulation adds", "State the calibration domain that limits a fast model"]},
+  {"label": "When to recurse to the accurate engine", "section": "When to recurse to the accurate engine", "subgoals": ["Recurse for patterns outside the calibration domain", "Recurse when score differences are below the proxy error", "Audit fast against accurate results on a fixed sample"]},
+  {"label": "Proxy gaming and honest reporting", "section": "Proxy gaming and honest reporting", "subgoals": ["Recognize reward hacking of a fast litho proxy", "Base acceptance on rigorous verification", "Label every reported number with the engine that produced it"]}
+]

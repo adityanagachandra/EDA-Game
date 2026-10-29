@@ -1,0 +1,5 @@
+[
+  {"label": "The representation", "section": "The representation", "subgoals": ["Write the arrival as a mean plus shared sensitivities plus a private term", "Sum the squared coefficients for the variance", "Add shared coefficients and combine private terms in variance for a sum"]},
+  {"label": "Correlation comes for free", "section": "Correlation comes for free", "subgoals": ["Ignore the private terms when computing the covariance", "Take the dot product of the shared coefficients", "Divide by both sigmas for the correlation"]},
+  {"label": "Re-expressing the max", "section": "Re-expressing the max", "subgoals": ["Weight each input's sensitivity by its tightness probability", "Set the mean to Clark's mean of the max", "Fit the private term so the variance matches Clark's variance"]}
+]

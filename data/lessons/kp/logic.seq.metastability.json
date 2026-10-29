@@ -1,0 +1,5 @@
+[
+  {"label": "How often a flip-flop goes metastable", "section": "How often a flip-flop goes metastable", "subgoals": ["Treat each data transition as landing at a uniform clock phase", "Multiply clock rate, data rate and the aperture", "Express the result as events per second"]},
+  {"label": "Exponential resolution", "section": "Exponential resolution", "subgoals": ["Model growth of the imbalance as exponential with time constant tau", "Compute the probability of remaining unresolved as e to the minus t over tau", "Read off how fast the probability falls per added tau"]},
+  {"label": "Buying reliability with time", "section": "Buying reliability with time", "subgoals": ["Set the improvement factor X", "Multiply tau by the natural logarithm of X", "Note that tau worsens at low supply voltage"]}
+]

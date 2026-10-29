@@ -1,0 +1,5 @@
+[
+  {"label": "The closure loop", "section": "The closure loop", "subgoals": ["Read bin-level holes and the constraints that control them", "Pre-check a proposed constraint by sampling the solver alone", "Run, merge and compare coverage against the baseline"]},
+  {"label": "Reward design and how it is gamed", "section": "Reward design and how it is gamed", "subgoals": ["Name the ways an agent can raise coverage without new stimulus", "Freeze the coverage model and checkers outside the change surface", "Penalize simulation cost and spot-check newly hit bins"]},
+  {"label": "Change tiers for closure", "section": "Change tiers for closure", "subgoals": ["Classify weight and mode changes as Tier 1", "Classify new sequences as Tier 2 at the sequence-library seam", "Route edits to the DUT, coverage model or checkers to a human"]}
+]

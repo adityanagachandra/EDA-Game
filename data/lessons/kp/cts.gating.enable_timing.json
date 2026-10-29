@@ -1,0 +1,5 @@
+[
+  {"label": "The gating setup check", "section": "The gating setup check", "subgoals": ["Place the gate's clock arrival upstream of its subtree", "Write required minus arrival for the enable", "Note that the subtree delay subtracts from the slack"]},
+  {"label": "The deepest allowed subtree", "section": "The deepest allowed subtree", "subgoals": ["Rewrite the slack in terms of the subtree delay", "Set the slack to zero", "Solve for the largest subtree delay"]},
+  {"label": "Cloning gates toward the flops", "section": "Cloning gates toward the flops", "subgoals": ["Compute the slack change from the new subtree delay", "Count the extra gates and their overhead", "Choose between cloning and merging by slack and power"]}
+]

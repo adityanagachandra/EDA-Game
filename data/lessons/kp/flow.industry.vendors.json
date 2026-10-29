@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The large digital vendors",
+    "section": "The large digital vendors",
+    "subgoals": [
+      "Name the three largest EDA vendors",
+      "Match each large vendor to its best-known product areas",
+      "Explain the role of acquisitions in the industry"
+    ]
+  },
+  {
+    "label": "Specialists by domain",
+    "section": "Specialists by domain",
+    "subgoals": [
+      "Match Ansys, Keysight, Silvaco, Zuken and Altium to their domains",
+      "Explain why FPGA vendors write their own tools",
+      "Name the 2024 acquisition agreement involving Ansys"
+    ]
+  },
+  {
+    "label": "How the business works",
+    "section": "How the business works",
+    "subgoals": [
+      "Describe time-based licences counted by simultaneous use",
+      "Explain foundry certification and customer tuning",
+      "List the switching costs that protect incumbents"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Database units and the integer grid", "section": "Database units and the integer grid", "subgoals": ["Convert a DBU coordinate into physical units", "Check a vertex against the manufacturing grid", "Rescale coordinates exactly when moving to a finer unit"]},
+  {"label": "Exact predicates and overflow", "section": "Exact predicates and overflow", "subgoals": ["Identify which predicate decides the branch", "Bound the bit width the exact value needs", "Use a fast filter with an exact fallback near zero"]},
+  {"label": "Where non-integer geometry sneaks in", "section": "Where non-integer geometry sneaks in", "subgoals": ["Recognize operations that create off-grid points", "Predict the sliver or gap that snapping can cause", "Keep transforms and sizing on the integer grid"]}
+]

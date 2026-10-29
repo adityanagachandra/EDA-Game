@@ -1,0 +1,5 @@
+[
+  {"label": "The depth-of-focus relation", "section": "The depth-of-focus relation", "subgoals": ["Write depth of focus as k2 lambda over NA squared", "Compute it for a given scanner", "Read the focus extent of a process window"]},
+  {"label": "The price of numerical aperture", "section": "The price of numerical aperture", "subgoals": ["Compare how resolution and DOF scale with NA", "Compute the DOF ratio between two apertures", "Name the process changes a smaller DOF forces"]},
+  {"label": "Budgeting focus", "section": "Budgeting focus", "subgoals": ["List the contributors to the focus budget", "Subtract them from the usable DOF", "Trace the topography limit to density rules"]}
+]

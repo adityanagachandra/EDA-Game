@@ -1,0 +1,5 @@
+[
+  {"label": "Difference equations and the Z transform", "section": "Difference equations and the Z transform", "subgoals": ["Replace each one-sample delay by z to the minus one", "Solve for the transfer function and locate its pole", "Iterate the recursion from zero initial conditions"]},
+  {"label": "Forward Euler and the stability limit", "section": "Forward Euler and the stability limit", "subgoals": ["Apply the forward difference to the decay equation", "Read the pole as one minus h over tau", "Require the pole magnitude below one to bound the step"]},
+  {"label": "Backward Euler and trapezoidal poles", "section": "Backward Euler and trapezoidal poles", "subgoals": ["Apply the implicit difference and solve for the new value", "Read each method's pole from the update ratio", "Compare the pole's sign and magnitude for a large step"]}
+]

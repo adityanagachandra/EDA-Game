@@ -1,0 +1,5 @@
+[
+  {"label": "The standard instructions", "section": "The standard instructions", "subgoals": ["Select the bypass register with BYPASS", "Select the boundary register with SAMPLE/PRELOAD or EXTEST", "Select the 32-bit identification register with IDCODE"]},
+  {"label": "Path lengths", "section": "Path lengths", "subgoals": ["Include every instruction register in an IR scan", "Add the selected data register lengths along the chain for a DR scan", "Count one bit for each bypassed device"]},
+  {"label": "Conventions that tools rely on", "section": "Conventions that tools rely on", "subgoals": ["Capture the fixed 01 pattern in each IR to check the chain", "Read device IDs with a DR scan right after reset", "Preload safe boundary values before switching to EXTEST"]}
+]

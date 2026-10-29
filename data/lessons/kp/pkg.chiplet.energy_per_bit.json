@@ -1,0 +1,5 @@
+[
+  {"label": "Link power", "section": "Link power", "subgoals": ["Convert picojoules per bit and terabits per second", "Multiply energy per bit by bandwidth", "Add both directions for total link power"]},
+  {"label": "On-package against off-package", "section": "On-package against off-package", "subgoals": ["Compute the power of each link at the same bandwidth", "Subtract to get the saving", "Check that both figures count the same blocks"]},
+  {"label": "Energy from capacitance", "section": "Energy from capacitance", "subgoals": ["Sum wire, pad and receiver capacitance", "Multiply by the voltage squared and divide by four", "Convert femtojoules to picojoules per bit"]}
+]

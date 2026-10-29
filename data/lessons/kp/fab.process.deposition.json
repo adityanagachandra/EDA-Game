@@ -1,0 +1,5 @@
+[
+  {"label": "Three ways to put down a film", "section": "Three ways to put down a film", "subgoals": ["Describe the mechanism of CVD, PVD and ALD", "Classify a described process into one family", "Match each family to a typical film"]},
+  {"label": "ALD cycles and step coverage", "section": "ALD cycles and step coverage", "subgoals": ["Divide target thickness by growth per cycle and round up", "Compute step coverage as bottom over field thickness", "Rank the three families by conformality"]},
+  {"label": "Choosing a method by what the layer must do", "section": "Choosing a method by what the layer must do", "subgoals": ["Pick a deposition method from thickness and conformality needs", "Explain overhang and pinch-off in directional deposition", "Trace a conformality limit to a width or spacing rule"]}
+]

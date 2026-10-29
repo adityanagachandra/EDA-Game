@@ -1,0 +1,29 @@
+[
+  {
+    "label": "What NLDM keeps and drops",
+    "section": "What NLDM keeps and drops",
+    "subgoals": [
+      "Name the stimulus a grid entry is exact for",
+      "List the waveform and load details the table drops",
+      "Recognize that values between grid points are interpolated"
+    ]
+  },
+  {
+    "label": "Resistive loads and effective capacitance",
+    "section": "Resistive loads and effective capacitance",
+    "subgoals": [
+      "Explain how wire resistance shields far capacitance from the driver",
+      "Find an effective capacitance that matches the transferred charge",
+      "Look up the table with Ceff and add the wire delay separately"
+    ]
+  },
+  {
+    "label": "Waveforms, receivers and the range of validity",
+    "section": "Waveforms, receivers and the range of validity",
+    "subgoals": [
+      "Show that one slew number cannot capture waveform shape",
+      "Note that fixed pin capacitance misses Miller and nonlinear effects",
+      "Avoid extrapolating outside the table's index range"
+    ]
+  }
+]

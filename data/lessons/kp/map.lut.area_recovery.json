@@ -1,0 +1,5 @@
+[
+  {"label": "Required depths", "section": "Required depths", "subgoals": ["Assign the target depth to every primary output", "Give each LUT leaf one less than the smallest requirement of its users", "Traverse the cover in reverse topological order"]},
+  {"label": "Slack and where it comes from", "section": "Slack and where it comes from", "subgoals": ["Compute arrival depth from the node's LUT inputs", "Subtract arrival from required depth to get slack", "Raise the target depth to create slack everywhere"]},
+  {"label": "Spending slack on cheaper cuts", "section": "Spending slack on cheaper cuts", "subgoals": ["Filter candidate cuts by the node's required depth", "Pick the legal cut with the smallest area flow or exact area", "Reselect the cover and recompute required depths after each pass"]}
+]

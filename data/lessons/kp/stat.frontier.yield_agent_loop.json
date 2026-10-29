@@ -1,0 +1,5 @@
+[
+  {"label": "What the loop reads, proposes and verifies", "section": "What the loop reads, proposes and verifies", "subgoals": ["Read failure counts, intervals and sensitivities per spec", "Verify each proposal on fresh samples with a differential report", "Spend samples where intervals overlap the decision"]},
+  {"label": "How a yield reward is gamed", "section": "How a yield reward is gamed", "subgoals": ["Identify seed selection as gaming the sampling noise", "Identify surrogate extrapolation as gaming the fast proxy", "Identify testbench edits as changing the question rather than the design"]},
+  {"label": "Rewards and reports that resist gaming", "section": "Rewards and reports that resist gaming", "subgoals": ["Score rewards on harness-owned seeds and the lower confidence bound", "Protect specs and testbenches as part of the core", "Re-estimate the winning variant on fresh samples before reporting"]}
+]

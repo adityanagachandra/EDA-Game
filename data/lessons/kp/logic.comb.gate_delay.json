@@ -1,0 +1,5 @@
+[
+  {"label": "Arrival times in topological order", "section": "Arrival times in topological order", "subgoals": ["Order the gates topologically", "Take the latest input arrival at each gate", "Add the gate delay to get its output arrival"]},
+  {"label": "Inputs that arrive late", "section": "Inputs that arrive late", "subgoals": ["Initialize each primary input with its arrival time", "Propagate the maximum through the network", "Identify which input launches the critical path"]},
+  {"label": "The shortest path and why it matters", "section": "The shortest path and why it matters", "subgoals": ["Propagate the minimum arrival through each gate", "Compare the shortest path with the longest path", "Assign the maximum to setup checks and the minimum to hold checks"]}
+]

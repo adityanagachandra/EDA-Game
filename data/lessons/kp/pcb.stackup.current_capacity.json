@@ -1,0 +1,5 @@
+[
+  {"label": "The IPC-2221 chart fit", "section": "The IPC-2221 chart fit", "subgoals": ["Compute the cross-section in square mils", "Evaluate the chart fit with the layer's constant k", "Scale current with the allowed temperature rise"]},
+  {"label": "Inverting the rule for width", "section": "Inverting the rule for width", "subgoals": ["Solve the chart fit for cross-sectional area", "Divide the area by copper thickness to get width", "Compare inner-layer and outer-layer widths for the same current"]},
+  {"label": "Limits of the rule", "section": "Limits of the rule", "subgoals": ["Name the assumptions behind the IPC-2221 constants", "Explain why nearby planes change the answer", "Escalate high-current nets to a thermal simulation"]}
+]

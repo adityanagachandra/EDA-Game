@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Integrated, fabless and foundry companies",
+    "section": "Integrated, fabless and foundry companies",
+    "subgoals": [
+      "Distinguish an IDM, a fabless company and a pure-play foundry",
+      "Name OSAT companies as packaging and test providers",
+      "Explain which interface made fabless design possible"
+    ]
+  },
+  {
+    "label": "The PDK as the interface",
+    "section": "The PDK as the interface",
+    "subgoals": [
+      "List what a foundry PDK delivers",
+      "Explain foundry certification of signoff tools",
+      "Name what each side never needs to see"
+    ]
+  },
+  {
+    "label": "Economics and consequences for EDA",
+    "section": "Economics and consequences for EDA",
+    "subgoals": [
+      "Contrast fab capital cost with per-wafer prices",
+      "Explain how shuttle runs share mask cost",
+      "Name what the model demands of EDA tools"
+    ]
+  }
+]

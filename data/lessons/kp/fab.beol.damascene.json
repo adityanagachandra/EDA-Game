@@ -1,0 +1,5 @@
+[
+  {"label": "The dual-damascene sequence", "section": "The dual-damascene sequence", "subgoals": ["Order the etch, barrier, seed, plate and polish steps", "Explain why copper is patterned by fill rather than etch", "Link CMP dishing to line thickness variation"]},
+  {"label": "Copper area after the barrier", "section": "Copper area after the barrier", "subgoals": ["Subtract the barrier from both sidewalls and the bottom", "Compute the copper fraction of the trench", "Convert resistivity and divide by the copper area"]},
+  {"label": "A barrier that does not scale", "section": "A barrier that does not scale", "subgoals": ["Compute the resistance penalty of the barrier", "Recompute it after a width shrink", "Name the alternatives studied for the tightest pitches"]}
+]

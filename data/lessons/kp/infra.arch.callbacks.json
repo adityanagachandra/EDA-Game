@@ -1,0 +1,5 @@
+[
+  {"label": "Observers subscribe to edit events", "section": "Observers subscribe to edit events", "subgoals": ["List the observers subscribed to each edit kind", "Count the subscribers for every edit in the stream", "Sum the counts over the stream"]},
+  {"label": "Mark dirty, recompute on query", "section": "Mark dirty, recompute on query", "subgoals": ["Set a dirty flag in the callback instead of recomputing", "Recompute at a query only when the flag is set", "Clear the flag after the recompute"]},
+  {"label": "Batching notifications per transaction", "section": "Batching notifications per transaction", "subgoals": ["Collect the edits of a transaction until commit", "Call each observer once if any of its edit kinds occurred", "Pass the edit list so the observer updates in one step"]}
+]

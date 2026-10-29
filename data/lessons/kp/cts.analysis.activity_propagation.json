@@ -1,0 +1,5 @@
+[
+  {"label": "Signal probability through gates", "section": "Signal probability through gates", "subgoals": ["Look up the probability rule for each gate", "Propagate probabilities in topological order", "Combine them at the output"]},
+  {"label": "From probability to activity", "section": "From probability to activity", "subgoals": ["Assume temporal independence of successive values", "Multiply the probabilities of 0 then 1", "Check the result against the 0.25 maximum"]},
+  {"label": "Node power and the limits of independence", "section": "Node power and the limits of independence", "subgoals": ["Multiply activity, capacitance, supply squared and frequency", "Convert the units to microwatts", "Name the effects that break independence"]}
+]

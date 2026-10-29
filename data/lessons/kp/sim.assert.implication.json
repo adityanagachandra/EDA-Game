@@ -1,0 +1,5 @@
+[
+  {"label": "Overlapping and non-overlapping implication", "section": "Overlapping and non-overlapping implication", "subgoals": ["Check the consequent in the same cycle for overlapping implication", "Check it k cycles later for a delay of k", "Start a new overlapping attempt at every clock tick"]},
+  {"label": "Counting failures on a trace", "section": "Counting failures on a trace", "subgoals": ["List the cycles where the antecedent holds", "Look up the consequent k cycles after each one", "Count the attempts whose consequent is false"]},
+  {"label": "Vacuous success", "section": "Vacuous success", "subgoals": ["Classify attempts with a false antecedent as vacuous", "Separate real passes from vacuous ones", "Add a cover property on the antecedent to expose vacuity"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "kT/C noise", "section": "kT/C noise", "subgoals": ["Integrate the switch thermal noise over the RC noise bandwidth", "Show that the resistance cancels to leave kT over C", "Quadruple the capacitance to halve the noise"]},
+  {"label": "Sizing the capacitor against quantization", "section": "Sizing the capacitor against quantization", "subgoals": ["Set kT over C equal to delta squared over 12", "Solve for the minimum sampling capacitance", "Show the capacitance quadrupling per added bit"]},
+  {"label": "Aperture jitter", "section": "Aperture jitter", "subgoals": ["Write the sampling error as the signal slope times the timing error", "Compute the jitter-limited SNR from input frequency and RMS jitter", "Add jitter to the other noise powers in the converter budget"]}
+]

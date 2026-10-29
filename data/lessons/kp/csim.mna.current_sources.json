@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Injected current on the right-hand side",
+    "section": "Injected current on the right-hand side",
+    "subgoals": [
+      "Add the current a source pushes into the node",
+      "Subtract the current a source draws out of the node",
+      "Leave the conductance matrix unchanged"
+    ]
+  },
+  {
+    "label": "The SPICE current-source convention",
+    "section": "The SPICE current-source convention",
+    "subgoals": [
+      "Read each card as taking current out of n+ and into n-",
+      "Stamp minus the value at n+ and plus the value at n-",
+      "Sum the stamps of all cards that touch the node"
+    ]
+  },
+  {
+    "label": "Sources that touch ground",
+    "section": "Sources that touch ground",
+    "subgoals": [
+      "Cancel the paired stamps of floating current sources",
+      "Keep the stamps of sources tied to ground",
+      "Sum the surviving stamps as the net current from ground"
+    ]
+  }
+]

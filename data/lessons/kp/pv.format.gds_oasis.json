@@ -1,0 +1,5 @@
+[
+  {"label": "Variable-length integers", "section": "Variable-length integers", "subgoals": ["Count the significant bits of the value", "Divide by 7 payload bits per byte and round up", "Compare with the fixed 4 bytes of GDSII"]},
+  {"label": "Storing a regular array", "section": "Storing a regular array", "subgoals": ["Price the flat version at 64 bytes per rectangle", "Price the cell definition once and the AREF once", "Compare the totals for the flat and the hierarchical form"]},
+  {"label": "Why OASIS files are smaller", "section": "Why OASIS files are smaller", "subgoals": ["Name the modal variables a record may omit", "Identify repetitions that replace copies of a shape", "Explain why conversion between the formats loses no geometry"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Why multi-bit binary crossings fail", "section": "Why multi-bit binary crossings fail", "subgoals": ["Compute the bits that change as popcount of k XOR (k+1)", "Explain that independent synchronizers can capture any mixture", "Require exactly one changing bit per transition"]},
+  {"label": "Gray codes", "section": "Gray codes", "subgoals": ["Shift b right by one bit", "XOR b with the shifted value to get the Gray code", "Check that consecutive codes differ in exactly one bit"]},
+  {"label": "Asynchronous FIFOs and their depth", "section": "Asynchronous FIFOs and their depth", "subgoals": ["Convert FIFO pointers to Gray code before synchronizing", "Compute the burst backlog as B(1 - f_r / f_w)", "Round up and add margin for pointer synchronization latency"]}
+]

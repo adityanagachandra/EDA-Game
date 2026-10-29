@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Partitioning a function",
+    "section": "Partitioning a function",
+    "subgoals": [
+      "Profile runtime to find the dominant kernels",
+      "Weigh accelerator speed against area, effort and communication",
+      "Name the models that evaluate a split before RTL"
+    ]
+  },
+  {
+    "label": "Amdahl's law",
+    "section": "Amdahl's law",
+    "subgoals": [
+      "Identify the accelerated fraction and the factor",
+      "Divide one by the unaccelerated time plus the accelerated time",
+      "Compute the speedup limit one over one minus f"
+    ]
+  },
+  {
+    "label": "Sizing the accelerator",
+    "section": "Sizing the accelerator",
+    "subgoals": [
+      "Rearrange Amdahl's law for the accelerator factor",
+      "Check that the target is below the speedup limit",
+      "Compare the factor needed for two nearby targets"
+    ]
+  }
+]

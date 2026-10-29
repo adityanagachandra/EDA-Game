@@ -1,0 +1,5 @@
+[
+  {"label": "Satisfiability don't cares", "section": "Satisfiability don't cares", "subgoals": ["Write y_i XOR f_i for each internal node", "Take the union over the nodes as the network SDC", "Project the impossible points onto a node's local inputs"]},
+  {"label": "Impossible local patterns", "section": "Impossible local patterns", "subgoals": ["Simulate all input vectors and record the local patterns that appear", "Complement the reachable set to get the controllability don't cares", "Use image computation or SAT when the window is too large to simulate"]},
+  {"label": "Minimizing a node with them", "section": "Minimizing a node with them", "subgoals": ["Mark the unreachable local patterns as don't cares", "Run two-level minimization of the node with those don't cares", "Accept the result as equivalent in context, not in isolation"]}
+]

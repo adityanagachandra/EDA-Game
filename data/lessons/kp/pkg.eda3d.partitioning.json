@@ -1,0 +1,5 @@
+[
+  {"label": "Cut nets between two dies", "section": "Cut nets between two dies", "subgoals": ["List the dies each net touches", "Mark a net cut when it touches two dies", "Count the cut nets"]},
+  {"label": "Vertical connections in a stack", "section": "Vertical connections in a stack", "subgoals": ["Find the lowest and highest die of each net", "Subtract to count interfaces crossed", "Sum over nets for the total vertical connections"]},
+  {"label": "Move gain", "section": "Move gain", "subgoals": ["Find the nets that contain the moved cell", "Recount which of them are cut after the move", "Subtract the new cut from the old cut"]}
+]

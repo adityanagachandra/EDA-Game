@@ -1,0 +1,1141 @@
+[
+  {
+    "id": "graphs.model.hypergraph",
+    "label": "Netlists as hypergraphs",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.model",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.graphs.basics",
+      "discrete.sets.relations"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.basics"
+    ],
+    "encompasses": [
+      "discrete.graphs.basics"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "graphs.model.pin_graph",
+    "label": "Directed pin graphs of drivers and sinks",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.model",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.model.hypergraph",
+      "discrete.graphs.paths"
+    ],
+    "key_prerequisites": [
+      "graphs.model.hypergraph"
+    ],
+    "encompasses": [
+      "graphs.model.hypergraph"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.model.net_models",
+    "label": "Clique and star models of a net",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.model",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.model.hypergraph",
+      "discrete.combinatorics.combinations"
+    ],
+    "key_prerequisites": [
+      "graphs.model.hypergraph"
+    ],
+    "encompasses": [
+      "graphs.model.hypergraph",
+      "discrete.combinatorics.combinations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.model.csr",
+    "label": "Compressed incidence storage for netlists",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.model",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.model.hypergraph",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "graphs.model.hypergraph"
+    ],
+    "encompasses": [
+      "graphs.model.hypergraph"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.tree.rooted_traversal",
+    "label": "Pre-order and post-order traversal of a rooted tree",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.dag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.graphs.trees",
+      "discrete.proof.structural"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.trees"
+    ],
+    "encompasses": [
+      "discrete.graphs.trees"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "graphs.dag.topo_sort",
+    "label": "Topological sorting of a DAG",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.dag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graph.topological_sort",
+      "graphs.model.pin_graph"
+    ],
+    "key_prerequisites": [
+      "graph.topological_sort"
+    ],
+    "encompasses": [
+      "graph.topological_sort",
+      "graphs.model.pin_graph"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.dag.levelize",
+    "label": "Levelization of a combinational netlist",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.dag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.dag.topo_sort",
+      "graphs.model.pin_graph"
+    ],
+    "key_prerequisites": [
+      "graphs.dag.topo_sort"
+    ],
+    "encompasses": [
+      "graphs.dag.topo_sort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.dag.scc",
+    "label": "Strongly connected components and combinational loops",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.dag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graph.strong_connectivity",
+      "graphs.dag.topo_sort",
+      "graphs.model.pin_graph"
+    ],
+    "key_prerequisites": [
+      "graph.strong_connectivity"
+    ],
+    "encompasses": [
+      "graph.strong_connectivity",
+      "graphs.model.pin_graph"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.dag.longest_path",
+    "label": "Longest paths in a DAG",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.dag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.dag.topo_sort",
+      "discrete.sequences.recurrence"
+    ],
+    "key_prerequisites": [
+      "graphs.dag.topo_sort"
+    ],
+    "encompasses": [
+      "graphs.dag.topo_sort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.dag.reverse_pass",
+    "label": "Reverse-topological passes and node slack",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.dag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.dag.longest_path",
+      "graphs.tree.rooted_traversal"
+    ],
+    "key_prerequisites": [
+      "graphs.dag.longest_path"
+    ],
+    "encompasses": [
+      "graphs.dag.longest_path",
+      "graphs.dag.topo_sort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.dag.path_count",
+    "label": "Counting paths through a node",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.dag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graph.dag_paths",
+      "graphs.dag.topo_sort",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "graph.dag_paths"
+    ],
+    "encompasses": [
+      "graph.dag_paths",
+      "graphs.dag.topo_sort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.dag.incremental",
+    "label": "Incremental updates on a DAG",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.dag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.dag.longest_path",
+      "graphs.dag.levelize"
+    ],
+    "key_prerequisites": [
+      "graphs.dag.longest_path"
+    ],
+    "encompasses": [
+      "graphs.dag.longest_path",
+      "graphs.dag.topo_sort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.path.grid_graph",
+    "label": "Routing grids as graphs",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.path",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.graphs.basics",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.basics"
+    ],
+    "encompasses": [
+      "discrete.graphs.basics"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.path.bfs_maze",
+    "label": "Breadth-first wavefront search on a grid",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.path",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.path.grid_graph",
+      "graph.distance"
+    ],
+    "key_prerequisites": [
+      "graphs.path.grid_graph"
+    ],
+    "encompasses": [
+      "graphs.path.grid_graph",
+      "graph.distance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.path.dijkstra",
+    "label": "Dijkstra's shortest-path algorithm",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.path",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.path.bfs_maze",
+      "graph.distance"
+    ],
+    "key_prerequisites": [
+      "graphs.path.bfs_maze"
+    ],
+    "encompasses": [
+      "graphs.path.bfs_maze",
+      "graph.distance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.path.bellman_ford",
+    "label": "Bellman-Ford and negative edge weights",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.path",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.path.dijkstra",
+      "discrete.graphs.paths"
+    ],
+    "key_prerequisites": [
+      "graphs.path.dijkstra"
+    ],
+    "encompasses": [
+      "graphs.path.dijkstra"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.path.difference_constraints",
+    "label": "Difference constraints as shortest paths",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.path",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.path.bellman_ford",
+      "graphs.dag.longest_path"
+    ],
+    "key_prerequisites": [
+      "graphs.path.bellman_ford"
+    ],
+    "encompasses": [
+      "graphs.path.bellman_ford",
+      "graphs.dag.longest_path"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.path.astar",
+    "label": "A* search",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.path",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.path.dijkstra",
+      "graphs.path.grid_graph"
+    ],
+    "key_prerequisites": [
+      "graphs.path.dijkstra"
+    ],
+    "encompasses": [
+      "graphs.path.dijkstra",
+      "graphs.path.bfs_maze"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.partition.cut_size",
+    "label": "The cut size of a partition",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.model.hypergraph",
+      "discrete.sets.relations"
+    ],
+    "key_prerequisites": [
+      "graphs.model.hypergraph"
+    ],
+    "encompasses": [
+      "graphs.model.hypergraph"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.partition.clique_distortion",
+    "label": "How net models distort cut size",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.partition.cut_size",
+      "graphs.model.net_models"
+    ],
+    "key_prerequisites": [
+      "graphs.model.net_models"
+    ],
+    "encompasses": [
+      "graphs.partition.cut_size",
+      "graphs.model.net_models"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.partition.balance",
+    "label": "Balance constraints on a bipartition",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.partition.cut_size",
+      "discrete.combinatorics.combinations"
+    ],
+    "key_prerequisites": [
+      "graphs.partition.cut_size"
+    ],
+    "encompasses": [
+      "discrete.combinatorics.combinations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.partition.kl_gain",
+    "label": "Kernighan-Lin swap gain",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.partition.cut_size",
+      "graphs.partition.balance"
+    ],
+    "key_prerequisites": [
+      "graphs.partition.cut_size"
+    ],
+    "encompasses": [
+      "graphs.partition.cut_size"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.partition.fm_gain",
+    "label": "Fiduccia-Mattheyses cell gain",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.partition.kl_gain",
+      "graphs.partition.cut_size"
+    ],
+    "key_prerequisites": [
+      "graphs.partition.cut_size"
+    ],
+    "encompasses": [
+      "graphs.partition.cut_size",
+      "graphs.partition.kl_gain"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.partition.fm_bucket",
+    "label": "Gain buckets and incremental gain updates",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.partition.fm_gain",
+      "graphs.model.csr"
+    ],
+    "key_prerequisites": [
+      "graphs.partition.fm_gain"
+    ],
+    "encompasses": [
+      "graphs.partition.fm_gain"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.partition.fm",
+    "label": "The Fiduccia-Mattheyses algorithm",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "graphs.partition.fm_bucket",
+      "graphs.partition.balance"
+    ],
+    "key_prerequisites": [
+      "graphs.partition.fm_bucket"
+    ],
+    "encompasses": [
+      "graphs.partition.fm_bucket",
+      "graphs.partition.fm_gain",
+      "graphs.partition.balance"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "graphs.partition.coarsen_matching",
+    "label": "Coarsening by heavy-edge matching",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.model.net_models",
+      "graph.matching"
+    ],
+    "key_prerequisites": [
+      "graph.matching"
+    ],
+    "encompasses": [
+      "graph.matching",
+      "graphs.model.net_models"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.partition.multilevel",
+    "label": "Multilevel partitioning",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.partition",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "graphs.partition.coarsen_matching",
+      "graphs.partition.fm",
+      "discrete.sequences.growth_rates"
+    ],
+    "key_prerequisites": [
+      "graphs.partition.coarsen_matching",
+      "graphs.partition.fm"
+    ],
+    "encompasses": [
+      "graphs.partition.coarsen_matching",
+      "graphs.partition.fm"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "graphs.spectral.laplacian",
+    "label": "The graph Laplacian",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.spectral",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graph.laplacian",
+      "graphs.model.net_models",
+      "linalg.matrix.mult"
+    ],
+    "key_prerequisites": [
+      "graph.laplacian"
+    ],
+    "encompasses": [
+      "graph.laplacian",
+      "graphs.model.net_models"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.spectral.cut_quadratic",
+    "label": "Cut size as a Laplacian quadratic form",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.spectral",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.spectral.laplacian",
+      "graphs.partition.cut_size",
+      "linalg.quadratic.definite"
+    ],
+    "key_prerequisites": [
+      "graphs.spectral.laplacian"
+    ],
+    "encompasses": [
+      "graphs.spectral.laplacian",
+      "graphs.partition.cut_size"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.spectral.ratio_cut",
+    "label": "Ratio cut and normalized objectives",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.spectral",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.spectral.cut_quadratic",
+      "graphs.partition.balance"
+    ],
+    "key_prerequisites": [
+      "graphs.partition.balance"
+    ],
+    "encompasses": [
+      "graphs.partition.cut_size",
+      "graphs.partition.balance"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.spectral.fiedler",
+    "label": "Spectral bisection with the Fiedler vector",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.spectral",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.spectral.cut_quadratic",
+      "graph.spectral_gap",
+      "linalg.symmetric.spectral"
+    ],
+    "key_prerequisites": [
+      "graphs.spectral.cut_quadratic",
+      "graph.spectral_gap"
+    ],
+    "encompasses": [
+      "graphs.spectral.cut_quadratic",
+      "graphs.spectral.laplacian"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.flow.max_flow_min_cut",
+    "label": "Maximum flow and minimum cut",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.flow",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graph.max_flow",
+      "graphs.partition.cut_size",
+      "graphs.path.bfs_maze"
+    ],
+    "key_prerequisites": [
+      "graph.max_flow"
+    ],
+    "encompasses": [
+      "graph.max_flow"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.flow.residual",
+    "label": "Residual graphs and augmenting paths",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.flow",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.flow.max_flow_min_cut",
+      "graphs.path.bfs_maze"
+    ],
+    "key_prerequisites": [
+      "graphs.flow.max_flow_min_cut"
+    ],
+    "encompasses": [
+      "graphs.flow.max_flow_min_cut",
+      "graphs.path.bfs_maze"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.flow.hypergraph_mincut",
+    "label": "Hypergraph min-cut through a flow network",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.flow",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.flow.max_flow_min_cut",
+      "graphs.partition.cut_size"
+    ],
+    "key_prerequisites": [
+      "graphs.flow.max_flow_min_cut"
+    ],
+    "encompasses": [
+      "graphs.flow.max_flow_min_cut",
+      "graphs.partition.cut_size"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.flow.min_cost",
+    "label": "Minimum-cost flow",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.flow",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.flow.residual",
+      "graphs.path.bellman_ford"
+    ],
+    "key_prerequisites": [
+      "graphs.flow.residual"
+    ],
+    "encompasses": [
+      "graphs.flow.residual",
+      "graphs.path.bellman_ford"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.match.bipartite",
+    "label": "Bipartite matching",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.flow",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.graphs.bipartite",
+      "graph.matching",
+      "graphs.flow.max_flow_min_cut"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.bipartite"
+    ],
+    "encompasses": [
+      "graph.matching",
+      "graphs.flow.max_flow_min_cut"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.match.assignment",
+    "label": "Weighted assignment of cells to slots",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.flow",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.match.bipartite",
+      "graphs.flow.min_cost"
+    ],
+    "key_prerequisites": [
+      "graphs.match.bipartite"
+    ],
+    "encompasses": [
+      "graphs.match.bipartite",
+      "graphs.flow.min_cost"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.steiner.mst",
+    "label": "Minimum spanning trees for net estimation",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.steiner",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.graphs.trees",
+      "graphs.model.net_models"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.trees"
+    ],
+    "encompasses": [
+      "discrete.graphs.trees"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.steiner.hanan",
+    "label": "The Hanan grid",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.steiner",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.steiner.mst",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "graphs.steiner.mst"
+    ],
+    "encompasses": [
+      "discrete.combinatorics.counting_principle"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.steiner.rsmt",
+    "label": "Rectilinear Steiner minimum trees",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.steiner",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.steiner.hanan",
+      "graphs.steiner.mst"
+    ],
+    "key_prerequisites": [
+      "graphs.steiner.hanan"
+    ],
+    "encompasses": [
+      "graphs.steiner.hanan",
+      "graphs.steiner.mst"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.steiner.ratio",
+    "label": "RSMT versus RMST and half-perimeter",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.steiner",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.steiner.rsmt",
+      "graphs.steiner.mst"
+    ],
+    "key_prerequisites": [
+      "graphs.steiner.rsmt"
+    ],
+    "encompasses": [
+      "graphs.steiner.rsmt",
+      "graphs.steiner.mst"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.steiner.one_steiner",
+    "label": "The iterated 1-Steiner heuristic",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.steiner",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.steiner.rsmt",
+      "graphs.steiner.hanan"
+    ],
+    "key_prerequisites": [
+      "graphs.steiner.hanan"
+    ],
+    "encompasses": [
+      "graphs.steiner.mst",
+      "graphs.steiner.hanan"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "graphs.steiner.scan_tsp",
+    "label": "Scan-chain ordering as a traveling salesman path",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.steiner",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.steiner.mst",
+      "discrete.graphs.eulerian"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.eulerian"
+    ],
+    "encompasses": [
+      "discrete.graphs.eulerian"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.color.coloring",
+    "label": "Graph coloring in EDA",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.coloring",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "discrete.graphs.coloring",
+      "graph.independent_set"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.coloring"
+    ],
+    "encompasses": [
+      "discrete.graphs.coloring"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.color.interval",
+    "label": "Interval graphs and track assignment",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.coloring",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.color.coloring",
+      "graph.perfect_graph"
+    ],
+    "key_prerequisites": [
+      "graphs.color.coloring"
+    ],
+    "encompasses": [
+      "graphs.color.coloring"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "graphs.color.double_patterning",
+    "label": "Two-coloring for double patterning",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.coloring",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "graphs.color.coloring",
+      "discrete.graphs.bipartite"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.bipartite"
+    ],
+    "encompasses": [
+      "graphs.color.coloring",
+      "discrete.graphs.bipartite"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "graphs.embed.planarity",
+    "label": "Planarity and embedding in layout",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.coloring",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "discrete.graphs.planar",
+      "graph.kuratowski",
+      "graphs.color.coloring"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.planar"
+    ],
+    "encompasses": [
+      "discrete.graphs.planar"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "graphs.frontier.engine_layers",
+    "label": "A partitioner's core versus its change surface",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "graphs.partition.multilevel",
+      "agentic.engine.four_layer",
+      "agentic.tiers.change"
+    ],
+    "key_prerequisites": [
+      "agentic.engine.four_layer"
+    ],
+    "encompasses": [
+      "graphs.partition.fm"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "graphs.frontier.net_weight_seam",
+    "label": "A seam for custom net weighting",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "graphs.frontier.engine_layers",
+      "graphs.partition.cut_size",
+      "agentic.seam.extension_point"
+    ],
+    "key_prerequisites": [
+      "agentic.seam.extension_point"
+    ],
+    "encompasses": [
+      "graphs.partition.cut_size"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "graphs.frontier.diff_cut_tests",
+    "label": "Differential tests on cut size",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "graphs.frontier.net_weight_seam",
+      "graphs.partition.fm_bucket",
+      "agentic.verify.golden_differential"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "graphs.partition.cut_size",
+      "graphs.partition.fm_bucket"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "graphs.frontier.fast_multilevel",
+    "label": "Fast multilevel modes in an agent's modeling loop",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "graphs.partition.multilevel",
+      "graphs.frontier.engine_layers",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "graphs.partition.multilevel"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "graphs.frontier.graph_rewards",
+    "label": "Tool-grounded rewards for graph engines",
+    "domain": "eda_graph_algorithms",
+    "subdomain": "eda_graph_algorithms.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "graphs.frontier.diff_cut_tests",
+      "graphs.steiner.rsmt",
+      "agentic.rl.tool_grounded"
+    ],
+    "key_prerequisites": [
+      "agentic.rl.tool_grounded"
+    ],
+    "encompasses": [
+      "graphs.partition.cut_size",
+      "graphs.steiner.rsmt"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The Luby sequence", "section": "The Luby sequence", "subgoals": ["Find k with 2^(k-1) <= i <= 2^k - 1", "Return 2^(k-1) when i = 2^k - 1", "Otherwise recurse on i - 2^(k-1) + 1"]},
+  {"label": "Restart budgets", "section": "Restart budgets", "subgoals": ["List the first r Luby terms", "Sum them", "Multiply by the unit to get the total conflicts"]},
+  {"label": "Geometric schedules and what survives a restart", "section": "Geometric schedules and what survives a restart", "subgoals": ["Compute each run length as floor of c times g to the power j - 1", "Sum the run lengths", "List what a restart keeps: learned clauses, activities and saved phases"]}
+]

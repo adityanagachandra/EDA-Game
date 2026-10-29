@@ -1,0 +1,5 @@
+[
+  {"label": "Algebraic connectivity", "section": "Algebraic connectivity", "subgoals": ["Order the Laplacian eigenvalues from smallest", "Take lambda 2 as the algebraic connectivity", "Express it as the minimum Rayleigh quotient over vectors orthogonal to all-ones"]},
+  {"label": "Splitting the Fiedler vector", "section": "Splitting the Fiedler vector", "subgoals": ["Sort vertices by their Fiedler vector entries", "Split by sign, at the median, or at the best ratio-cut position", "Compute the vector with a sparse eigensolver such as Lanczos"]},
+  {"label": "Rayleigh quotients as bounds", "section": "Rayleigh quotients as bounds", "subgoals": ["Evaluate the Rayleigh quotient of a vector orthogonal to all-ones", "Read it as an upper bound on lambda 2", "Read lambda 2 as a lower bound on every bisection's RatioCut"]}
+]

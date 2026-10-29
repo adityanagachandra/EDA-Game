@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Reading scale suffixes",
+    "section": "Reading scale suffixes",
+    "subgoals": [
+      "Split the value into its mantissa and suffix",
+      "Replace the suffix by its power of ten",
+      "Divide by the target unit's power of ten"
+    ]
+  },
+  {
+    "label": "The M and MEG trap",
+    "section": "The M and MEG trap",
+    "subgoals": [
+      "Treat M and m as milli in every case",
+      "Read MEG for mega and ignore trailing unit letters",
+      "Read a bare F after a number as femto"
+    ]
+  },
+  {
+    "label": "Computing with netlist values",
+    "section": "Computing with netlist values",
+    "subgoals": [
+      "Convert each card's value to base units",
+      "Multiply the values to form the requested quantity",
+      "Express the product in the requested unit"
+    ]
+  }
+]

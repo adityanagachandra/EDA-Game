@@ -1,0 +1,5 @@
+[
+  {"label": "From constraints to a graph", "section": "From constraints to a graph", "subgoals": ["Turn each constraint into an arc of weight c", "Add a source with weight-0 arcs to every variable", "Read the solution as shortest distances from the source"]},
+  {"label": "Compaction by longest paths", "section": "Compaction by longest paths", "subgoals": ["Write each spacing rule as an arc of weight width plus gap", "Compute longest-path positions from the left boundary", "Add the last cell's width to get the row width"]},
+  {"label": "Bounds and feasibility", "section": "Bounds and feasibility", "subgoals": ["Read the shortest distance from x_i to x_j as the bound on x_j - x_i", "Declare the system infeasible on a negative cycle", "Map retiming's register constraints onto the same graph"]}
+]

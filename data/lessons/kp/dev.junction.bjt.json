@@ -1,0 +1,5 @@
+[
+  {"label": "Collector current from base-emitter voltage", "section": "Collector current from base-emitter voltage", "subgoals": ["Identify forward-active bias of the two junctions", "Divide the base-emitter voltage by kT/q", "Multiply the saturation current by the exponential"]},
+  {"label": "Current gain and terminal currents", "section": "Current gain and terminal currents", "subgoals": ["Divide the collector current by beta to get the base current", "Add base and collector currents for the emitter current", "Recognize parasitic bipolar pairs in bulk CMOS wells"]},
+  {"label": "Transconductance", "section": "Transconductance", "subgoals": ["Differentiate the exponential collector current", "Divide the bias current by kT/q", "Compare gm per unit current with a MOSFET's"]}
+]

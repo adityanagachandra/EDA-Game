@@ -1,0 +1,5 @@
+[
+  {"label": "Greedy nearest-pair merging", "section": "Greedy nearest-pair merging", "subgoals": ["Compute Manhattan distances between all current subtrees", "Merge the closest pair", "Replace the pair by its merge node and repeat"]},
+  {"label": "Means and medians", "section": "Means and medians", "subgoals": ["Sort the sinks by the current cut coordinate", "Cut at the median so the halves are equal", "Alternate the cut direction and recurse"]},
+  {"label": "Matching rounds", "section": "Matching rounds", "subgoals": ["Pair all current subtrees in one round", "Sum the lengths of the chosen pairs", "Merge every pair to form the next level"]}
+]

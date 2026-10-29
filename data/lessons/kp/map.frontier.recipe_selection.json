@@ -1,0 +1,5 @@
+[
+  {"label": "Recipes as skills with manifests", "section": "Recipes as skills with manifests", "subgoals": ["Write a manifest with target, objective, tunables and known limits", "Match the design's target and failing metric against the manifests", "Pick the recipe without reading engine source"]},
+  {"label": "Running and comparing candidates", "section": "Running and comparing candidates", "subgoals": ["Gate every candidate on equivalence and timing before comparing area", "Filter with fast estimates and decide with the reference timer", "Stop on an iteration budget or a minimum improvement"]},
+  {"label": "Learning which recipe to pick", "section": "Learning which recipe to pick", "subgoals": ["Record design features, recipe, parameters and QoR for every run", "Update manifests with the conditions under which a recipe wins", "Ground rewards in reference-engine QoR rather than proxies"]}
+]

@@ -16,14 +16,14 @@
 [![Go](https://img.shields.io/badge/Go-1.26+-00ADD8?style=flat-square&logo=go&logoColor=white)](https://golang.org)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![License](https://img.shields.io/badge/license-MIT-c8a96e?style=flat-square)](LICENSE)
-[![Concepts](https://img.shields.io/badge/concepts-1250-a8a0f0?style=flat-square)](#content)
-[![Domains](https://img.shields.io/badge/domains-21-c8a96e?style=flat-square)](#content)
+[![Concepts](https://img.shields.io/badge/concepts-2857-a8a0f0?style=flat-square)](#content)
+[![Domains](https://img.shields.io/badge/domains-54-c8a96e?style=flat-square)](#content)
 
 </div>
 
 ---
 
-Mathua is a local-first adaptive math learning engine inspired by the mastery-gating philosophy of Math Academy. It guides a learner from arithmetic through university math through a dependency graph of 1250 atomic concepts and 28 courses, never advancing until speed and accuracy thresholds are both met. Knowledge is scaffolded into 3750 worked examples (1250 KP shard files × 3 subgoals each) with subgoal labels and 183 dual-coded diagrams. It runs as a single Go binary with a web server delivery mode and React + Next.js for leagues, parent/teacher share links and graph visualisation. Transcripts export as CSV via the API.
+Mathua is a local-first adaptive math learning engine inspired by the mastery-gating philosophy of Math Academy. It guides a learner from arithmetic through university math through a dependency graph of 2857 atomic concepts and 62 courses, never advancing until speed and accuracy thresholds are both met. Knowledge is scaffolded into 8571 worked examples (2857 KP shard files × 3 subgoals each) with subgoal labels and 183 dual-coded diagrams. It runs as a single Go binary with a web server delivery mode and React + Next.js for leagues, parent/teacher share links and graph visualisation. Transcripts export as CSV via the API.
 
 ---
 
@@ -88,7 +88,7 @@ One administrator can demote nobody, including themselves. Promote a second admi
 
 All math knowledge in Mathua is a directed acyclic graph. Each node is an atomic concept, something small enough to fail independently. Each edge is a prerequisite relationship.
 
-The graph contains **1250 concepts** across **21 domains** (1250 KP shard files × 3 = 3750 KPs). The scheduler reads your progress and the graph structure to decide what to show next, it will never surface a concept whose prerequisites you have not mastered.
+The graph contains **2857 concepts** across **54 domains** (2857 KP shard files × 3 = 8571 KPs). The scheduler reads your progress and the graph structure to decide what to show next, it will never surface a concept whose prerequisites you have not mastered.
 
 ### Mastery gating
 
@@ -146,7 +146,40 @@ When a concept reaches MASTERED, Mathua schedules its next review using SM-2 sca
 | Probability Theory | 50 |
 | Numerical Analysis | 40 |
 | Real Analysis | 50 |
-| **Total** | **1250** |
+| Boolean Reasoning | 43 |
+| Circuits and EM | 53 |
+| Computational Geometry | 41 |
+| EDA Graph Algorithms | 52 |
+| EDA Landscape | 50 |
+| Numerical Methods | 52 |
+| Optimization | 55 |
+| Variability and Yield | 41 |
+| Digital Logic | 54 |
+| Semiconductor Devices | 53 |
+| CMOS and Cells | 49 |
+| Fabrication and DTCO | 49 |
+| HDLs and Compilers | 50 |
+| Circuit Simulation | 54 |
+| Formal Verification | 58 |
+| Functional Verification | 45 |
+| Logic Synthesis | 58 |
+| High-Level Synthesis | 42 |
+| Technology Mapping | 38 |
+| Test and DFT | 53 |
+| Static Timing | 56 |
+| Analog and RF | 51 |
+| Placement | 55 |
+| FPGA CAD | 37 |
+| Clocks and Power | 49 |
+| Routing | 51 |
+| Extraction and Signoff | 41 |
+| Physical Verification | 43 |
+| PCB Design | 40 |
+| Packaging and 3D | 47 |
+| EDA Software | 56 |
+| ML for EDA | 42 |
+| Agent-First EDA | 49 |
+| **Total** | **2857** |
 
 ---
 
@@ -164,7 +197,7 @@ The five-layer architecture, UI, API, Core Engine, Grading, Storage, is fully do
 
 ## Courses and transcripts
 
-28 courses from 4th grade to university are wired through the DAG, including Calculus I/II, Linear Algebra, Discrete Math I/II, Probability & Statistics, Differential Equations, Abstract Algebra I/II, Topology and Machine Learning. Each course shows mastered/total, percent and an estimate of days remaining at your daily XP goal. Transcripts export as CSV via `GET /api/transcript?format=csv` and the read-only share link (Settings → Share) lets a parent or teacher follow along.
+62 courses from 4th grade to university are wired through the DAG, including Calculus I/II, Linear Algebra, Discrete Math I/II, Probability & Statistics, Differential Equations, Abstract Algebra I/II, Topology and Machine Learning. Each course shows mastered/total, percent and an estimate of days remaining at your daily XP goal. Transcripts export as CSV via `GET /api/transcript?format=csv` and the read-only share link (Settings → Share) lets a parent or teacher follow along.
 
 ## Contributing
 
@@ -180,7 +213,7 @@ go test ./...
 
 # Validate the concept graph (no cycles, no orphans)
 go run scripts/validate_graph.go
-python3 scripts/audit_lessons.py  # lessons + KP shards + diagrams + course targets (1250 files ×3 =3750 KPs)
+python3 scripts/audit_lessons.py  # lessons + KP shards + diagrams + course targets (2857 files ×3 =8571 KPs)
 python3 scripts/counts.py --check # docs counts match the data (run --write after a content wave)
 
 # Generator fuzz, 1000 local (make fuzz), 100 lightweight in CI (.github/workflows/ci.yml:27)

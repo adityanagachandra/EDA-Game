@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The optimal stage effort for the path",
+    "section": "The optimal stage effort for the path",
+    "subgoals": [
+      "Compute the path effort from G and H",
+      "Take the N-th root to get the common stage effort",
+      "Divide by each gate's logical effort to get its electrical effort"
+    ]
+  },
+  {
+    "label": "Back-propagate input capacitances",
+    "section": "Back-propagate input capacitances",
+    "subgoals": [
+      "Size the last gate from the load and the stage effort",
+      "Use each computed input as the previous gate's load",
+      "Check that the first gate's computed input matches the given value"
+    ]
+  },
+  {
+    "label": "From continuous sizes to a real netlist",
+    "section": "From continuous sizes to a real netlist",
+    "subgoals": [
+      "Snap each continuous size to an available drive strength",
+      "Include off-path and wire capacitance in each stage's load",
+      "Re-evaluate the path after snapping because loads change"
+    ]
+  }
+]

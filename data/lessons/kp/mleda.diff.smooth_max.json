@@ -1,0 +1,5 @@
+[
+  {"label": "Log-sum-exp", "section": "Log-sum-exp", "subgoals": ["Factor out the largest arrival", "Sum the exponentials of the shifted arrivals over gamma", "Add gamma times the log of the sum to the largest arrival"]},
+  {"label": "How much it overestimates", "section": "How much it overestimates", "subgoals": ["Subtract the true max from the smoothed value", "Bound the gap by gamma times the log of the input count", "Note that pessimism accumulates along a path"]},
+  {"label": "Gradients through the soft max", "section": "Gradients through the soft max", "subgoals": ["Exponentiate each shifted arrival over gamma", "Divide by the sum of the exponentials", "Read the weight as that input's share of the gradient"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Spines and fishbones", "section": "Spines and fishbones", "subgoals": ["Describe the trunk and its ribs", "Explain why short ribs add little skew", "Compare the wire use of a spine with a mesh"]},
+  {"label": "Choosing among tree, mesh and spine", "section": "Choosing among tree, mesh and spine", "subgoals": ["Rank the topologies by wire and power", "Rank them by skew and tolerance of variation", "Match the topology to the region's sink density and frequency"]},
+  {"label": "Hybrid and multi-source distribution", "section": "Hybrid and multi-source distribution", "subgoals": ["Trace the clock from the global tree through the mesh to the flops", "Describe how multi-source CTS splits the problem", "Name the analysis and power consequences of loops"]}
+]

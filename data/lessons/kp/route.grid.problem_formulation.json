@@ -1,0 +1,5 @@
+[
+  {"label": "The routing graph", "section": "The routing graph", "subgoals": ["Name grid points on tracks as vertices and wire segments and vias as edges", "Map a two-pin net to a shortest-path problem", "Map a multipin net to the graph Steiner tree problem"]},
+  {"label": "Capacity couples the nets", "section": "Capacity couples the nets", "subgoals": ["State the capacity constraint as a bound on trees per edge", "Explain why sequential routing depends on net order", "Distinguish a heuristic routing failure from proof of infeasibility"]},
+  {"label": "Legality first, then cost", "section": "Legality first, then cost", "subgoals": ["Treat design-rule correctness as a hard constraint", "Write the objective as weighted wirelength plus vias plus secondary terms", "Split routing into global and detailed stages to make it tractable"]}
+]

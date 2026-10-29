@@ -1,0 +1,5 @@
+[
+  {"label": "The 6T cell and the array", "section": "The 6T cell and the array", "subgoals": ["Count six transistors per stored bit", "Multiply words by bits for the cell count", "Select one row by raising its wordline from the row decoder"]},
+  {"label": "Column multiplexing", "section": "Column multiplexing", "subgoals": ["Divide the word count by the column-mux factor for the rows", "Multiply the word width by the mux factor for the columns", "Split the address into row bits and column bits"]},
+  {"label": "Choosing the shape", "section": "Choosing the shape", "subgoals": ["Set rows equal to columns to find the square mux factor", "Compute the mux factor as the square root of words over bits", "Split very large arrays into banks"]}
+]

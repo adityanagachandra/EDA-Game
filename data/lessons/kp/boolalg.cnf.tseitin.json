@@ -1,0 +1,5 @@
+[
+  {"label": "Clauses for one gate", "section": "Clauses for one gate", "subgoals": ["Introduce a fresh variable for the gate output", "Write the clauses of output if and only if gate function", "Count k plus 1 clauses for a k-input AND or OR"]},
+  {"label": "Clauses for a netlist", "section": "Clauses for a netlist", "subgoals": ["Encode each gate on its own", "Sum the clauses gate by gate", "Add the unit clause that asserts the output"]},
+  {"label": "Variables and the size of the encoding", "section": "Variables and the size of the encoding", "subgoals": ["Count one variable per primary input", "Add one variable per gate", "Read the encoding as linear in the circuit size"]}
+]

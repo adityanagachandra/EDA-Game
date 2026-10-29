@@ -1,0 +1,5 @@
+[
+  {"label": "The reflection coefficient", "section": "The reflection coefficient", "subgoals": ["Write the reflection coefficient from load and line impedance", "Interpret the sign of the reflection", "Identify open, short and matched limits"]},
+  {"label": "Launch voltage and the first arrival", "section": "Launch voltage and the first arrival", "subgoals": ["Divide the source step between output resistance and line impedance", "Add the reflected wave to the incident wave at the load", "Track the next bounce with the source's reflection coefficient"]},
+  {"label": "Terminations and discontinuities", "section": "Terminations and discontinuities", "subgoals": ["Size a series terminator from line and driver impedance", "Compare series and parallel termination costs", "Compute the transmitted fraction at a mid-line discontinuity"]}
+]

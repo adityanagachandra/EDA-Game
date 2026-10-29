@@ -1,0 +1,5 @@
+[
+  {"label": "Base case and step case", "section": "Base case and step case", "subgoals": ["Check the base case as BMC to depth k - 1", "Assume P on k consecutive states in the step case", "Find a path of k P-states followed by a not-P state, or show none exists"]},
+  {"label": "Computing the minimal k", "section": "Computing the minimal k", "subgoals": ["Mark the P-states that have a successor outside P", "Find the longest path of P-states ending at a marked state", "Add 1 to its number of states to get the minimal k"]},
+  {"label": "Cycles and the simple-path constraint", "section": "Cycles and the simple-path constraint", "subgoals": ["Detect a cycle of P-states that can reach a marked state", "Add the pairwise-distinct constraint to the step case", "Find the longest loop-free P-path ending at a marked state and add 1"]}
+]

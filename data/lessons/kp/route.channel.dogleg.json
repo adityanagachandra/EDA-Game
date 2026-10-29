@@ -1,0 +1,5 @@
+[
+  {"label": "Splitting into subnets", "section": "Splitting into subnets", "subgoals": ["List each net's distinct pin columns in order", "Cut the trunk at each intermediate pin column", "Count m minus 1 subnets per net"]},
+  {"label": "The subnet VCG", "section": "The subnet VCG", "subgoals": ["Find the subnets of each net that cover the constraining column", "Add edges only between those subnets", "Compute the longest path of the subnet VCG"]},
+  {"label": "What doglegs buy", "section": "What doglegs buy", "subgoals": ["Compare the longest chain before and after splitting", "Count the tracks the reduction saves", "Weigh the saved tracks against the extra vias"]}
+]

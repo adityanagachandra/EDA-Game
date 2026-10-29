@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Weighted sums",
+    "section": "Weighted sums",
+    "subgoals": [
+      "Normalize the objectives to comparable scales",
+      "Compute the weighted score of every design",
+      "Pick the lowest score and note that only convex-hull points can win"
+    ]
+  },
+  {
+    "label": "Epsilon constraints",
+    "section": "Epsilon constraints",
+    "subgoals": [
+      "Discard designs that violate the bound on the constrained objective",
+      "Minimize the remaining objective among those left",
+      "Sweep the bound to trace the front"
+    ]
+  },
+  {
+    "label": "Hypervolume of a front",
+    "section": "Hypervolume of a front",
+    "subgoals": [
+      "Keep only the nondominated designs and sort them by the first objective",
+      "Add each design's rectangle below the previous design's second objective",
+      "Sum the rectangles against the fixed reference point"
+    ]
+  }
+]

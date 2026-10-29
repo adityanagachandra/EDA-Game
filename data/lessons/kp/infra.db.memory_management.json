@@ -1,0 +1,5 @@
+[
+  {"label": "Handles, tables and arenas", "section": "Handles, tables and arenas", "subgoals": ["Store objects in tables and hand out slot indices", "Increment a slot's generation when it is reused", "Allocate per-pass temporary data from an arena"]},
+  {"label": "Dangling references and leaks", "section": "Dangling references and leaks", "subgoals": ["Replace cached raw pointers with validated handles", "Multiply the leak per iteration by the iteration count", "Add leak and sanitizer runs to long-loop regressions"]},
+  {"label": "Compaction, side arrays and sharing", "section": "Compaction, side arrays and sharing", "subgoals": ["Compact tables and remap handles at a safe point", "Grow side arrays when objects are created", "Freeze the database for read-only parallel phases"]}
+]

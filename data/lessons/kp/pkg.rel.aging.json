@@ -1,0 +1,5 @@
+[
+  {"label": "Power-law threshold shift", "section": "Power-law threshold shift", "subgoals": ["Take the ratio of the later time to the reference time", "Raise it to the power-law exponent", "Multiply the reference shift by the factor"]},
+  {"label": "Time to a shift limit", "section": "Time to a shift limit", "subgoals": ["Divide the limit by the reference shift", "Raise the ratio to one over the exponent", "Multiply by the reference time and convert to years"]},
+  {"label": "Delay guard bands", "section": "Delay guard bands", "subgoals": ["Compute the gate overdrive before and after the shift", "Raise the ratio to the alpha exponent", "Express the increase as a timing guard band"]}
+]

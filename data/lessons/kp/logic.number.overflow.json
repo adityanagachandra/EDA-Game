@@ -1,0 +1,5 @@
+[
+  {"label": "Wrapped sums and signed overflow", "section": "Wrapped sums and signed overflow", "subgoals": ["Add the operands as ordinary integers", "Shift the sum by two to the n into the signed range", "Flag overflow when two same-sign operands give an opposite-sign result"]},
+  {"label": "Sign extension", "section": "Sign extension", "subgoals": ["Copy the sign bit into every new upper position", "Read the widened pattern as an unsigned integer", "Distinguish sign extension from zero extension"]},
+  {"label": "Arithmetic shifts round toward minus infinity", "section": "Arithmetic shifts round toward minus infinity", "subgoals": ["Shift the pattern right and refill with the sign bit", "Take the floor of the value divided by two to the s", "Contrast the floor with truncation toward zero for negative values"]}
+]

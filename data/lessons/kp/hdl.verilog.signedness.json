@@ -1,0 +1,5 @@
+[
+  {"label": "Signed operands are sign-extended", "section": "Signed operands are sign-extended", "subgoals": ["Read each signed operand as a two's-complement value", "Sign-extend every operand to the context width", "Wrap the result to the target width"]},
+  {"label": "One unsigned operand makes everything unsigned", "section": "One unsigned operand makes everything unsigned", "subgoals": ["Check every operand of the expression for signedness", "Zero-extend all operands when any one is unsigned", "Ignore the signedness of the assignment target"]},
+  {"label": "Part-selects and literals", "section": "Part-selects and literals", "subgoals": ["Treat every part-select as unsigned", "Classify sized based literals as unsigned and unsized decimals as signed", "Recompute the extension after classifying each operand"]}
+]

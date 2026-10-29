@@ -1,0 +1,5 @@
+[
+  {"label": "Setup slack across a die boundary", "section": "Setup slack across a die boundary", "subgoals": ["Add the launch latency, both dies' logic and the crossing", "Add the period and capture latency and subtract setup", "Subtract arrival from required time"]},
+  {"label": "Independent die corners", "section": "Independent die corners", "subgoals": ["Scale each die's logic by its own corner factor", "Compare with the delay assumed under one shared corner", "Report the difference as pessimism"]},
+  {"label": "Hold across dies", "section": "Hold across dies", "subgoals": ["Add the launch latency to the minimum data delay", "Add the capture latency to the hold time", "Subtract the second sum from the first"]}
+]

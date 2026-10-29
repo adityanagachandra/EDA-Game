@@ -1,0 +1,5 @@
+[
+  {"label": "Scoring recommended rules", "section": "Scoring recommended rules", "subgoals": ["Count the locations that meet the recommended value", "Divide by all applicable locations", "Weight locations by yield impact where the score requires it"]},
+  {"label": "Wire spreading and critical area", "section": "Wire spreading and critical area", "subgoals": ["Write the critical area as proportional to one over the spacing", "Take the ratio of the old to the new spacing", "Subtract from one to get the reduction"]},
+  {"label": "How tools use recommended rules", "section": "How tools use recommended rules", "subgoals": ["Apply recommended rules where routing resources are free", "Insert redundant vias after detailed routing", "Trade each rule's yield benefit against its area cost"]}
+]

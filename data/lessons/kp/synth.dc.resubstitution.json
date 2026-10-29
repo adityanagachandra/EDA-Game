@@ -1,0 +1,5 @@
+[
+  {"label": "Which divisor values occur", "section": "Which divisor values occur", "subgoals": ["Simulate each candidate divisor on the window's input vectors", "Record the divisor value combinations that occur", "Treat the missing combinations as don't cares for the new node"]},
+  {"label": "The functional-dependency test", "section": "The functional-dependency test", "subgoals": ["Group the input vectors by the chosen divisors' values", "Check that each group has a single value of f", "Search divisor subsets in increasing size for the first that passes"]},
+  {"label": "Using don't cares and accepting the move", "section": "Using don't cares and accepting the move", "subgoals": ["Drop don't-care vectors before testing dependency", "Build the replacement node h over the chosen divisors", "Accept only when h is smaller than the freed cone"]}
+]

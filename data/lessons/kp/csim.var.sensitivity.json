@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Differentiating the circuit equations",
+    "section": "Differentiating the circuit equations",
+    "subgoals": [
+      "Differentiate the MNA equations with respect to the parameter",
+      "Solve with the nominal factorization for the derivative of the solution",
+      "Read off the derivative of the output"
+    ]
+  },
+  {
+    "label": "Normalized sensitivity",
+    "section": "Normalized sensitivity",
+    "subgoals": [
+      "Multiply the derivative by the parameter value",
+      "Divide by the output value",
+      "Compare normalized sensitivities across parameters"
+    ]
+  },
+  {
+    "label": "First-order change estimate",
+    "section": "First-order change estimate",
+    "subgoals": [
+      "Convert the percent change into an absolute parameter change",
+      "Multiply by the sensitivity",
+      "Check that the change is small enough for linearity"
+    ]
+  }
+]

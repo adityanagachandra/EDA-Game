@@ -1,0 +1,5 @@
+[
+  {"label": "Datapath elements and control signals", "section": "Datapath elements and control signals", "subgoals": ["List the datapath components an instruction uses", "Name the control signal each mux, register and unit needs", "Set those signals for one instruction"]},
+  {"label": "Single-cycle and multicycle control", "section": "Single-cycle and multicycle control", "subgoals": ["Decode control combinationally in a single-cycle design", "Sequence the steps of each instruction with an FSM in a multicycle design", "Share functional units across steps"]},
+  {"label": "Hardwired versus microcoded control", "section": "Hardwired versus microcoded control", "subgoals": ["Generate control from logic and FSMs in hardwired control", "Read control signals from a ROM of microinstructions in microcode", "Match datapath bugs and control bugs to their verification methods"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Thermal acceleration", "section": "Thermal acceleration", "subgoals": ["Convert both temperatures to kelvin", "Multiply the activation energy over k by the difference of reciprocal temperatures", "Exponentiate to get the acceleration factor"]},
+  {"label": "Voltage acceleration", "section": "Voltage acceleration", "subgoals": ["Take the difference between stress and use voltage", "Multiply by the voltage acceleration constant", "Exponentiate to get the voltage acceleration factor"]},
+  {"label": "Lifetime at use conditions", "section": "Lifetime at use conditions", "subgoals": ["Compute the thermal and voltage acceleration factors", "Multiply the stress time by both factors", "Convert hours to years for the use-condition lifetime"]}
+]

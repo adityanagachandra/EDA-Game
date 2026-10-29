@@ -1,0 +1,5 @@
+[
+  {"label": "Flip-flop counts per encoding", "section": "Flip-flop counts per encoding", "subgoals": ["Take the ceiling of log base two of S for binary and Gray", "Use one flip-flop per state for one-hot", "Use the ceiling of S over two for Johnson"]},
+  {"label": "Unused codes", "section": "Unused codes", "subgoals": ["Raise two to the number of flip-flops", "Subtract the number of used states", "Decide whether unused codes are don't-cares or recovered"]},
+  {"label": "Switching activity of an encoding", "section": "Switching activity of an encoding", "subgoals": ["List the code of each state in the transition order", "Count the differing bits of each consecutive pair", "Sum the toggles over one pass including the wrap"]}
+]

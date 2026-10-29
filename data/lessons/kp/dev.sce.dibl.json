@@ -1,0 +1,5 @@
+[
+  {"label": "Threshold at high drain bias", "section": "Threshold at high drain bias", "subgoals": ["Take the threshold measured at low drain bias", "Subtract the DIBL coefficient times the drain-voltage increase", "Express the result as the saturation threshold"]},
+  {"label": "Extracting the DIBL coefficient", "section": "Extracting the DIBL coefficient", "subgoals": ["Measure threshold at low and at full drain bias with one definition", "Divide the threshold drop by the drain-voltage difference", "Repeat across lengths to capture the length dependence"]},
+  {"label": "The leakage cost of DIBL", "section": "The leakage cost of DIBL", "subgoals": ["Multiply the DIBL coefficient by the drain-voltage change", "Divide by the subthreshold swing to get decades", "Raise ten to that power for the off-current factor"]}
+]

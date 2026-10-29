@@ -1,0 +1,5 @@
+[
+  {"label": "Identify, iterate, validate, promote", "section": "Identify, iterate, validate, promote", "subgoals": ["Record who identified the behavior and on which design", "Iterate on it as a runtime-loaded plug-in", "Validate with golden, differential and multi-seed QoR"]},
+  {"label": "From plug-in to library skill", "section": "From plug-in to library skill", "subgoals": ["Compile the validated plug-in into the static library", "Write the manifest with applicability and limits", "Rebuild shippable goldens on vendor-held designs"]},
+  {"label": "What flows back", "section": "What flows back", "subgoals": ["Add the skill to the shared library", "Feed the skill and its usage pattern to the domain model", "Keep the customer's design out of everything exported"]}
+]

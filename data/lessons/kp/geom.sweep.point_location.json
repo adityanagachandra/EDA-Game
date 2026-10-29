@@ -1,0 +1,5 @@
+[
+  {"label": "Slabs from vertical lines", "section": "Slabs from vertical lines", "subgoals": ["Collect the distinct endpoint x-coordinates", "Draw a vertical slab boundary at each", "Count the slabs including the two unbounded ones"]},
+  {"label": "The cost of slabs", "section": "The cost of slabs", "subgoals": ["List the bounded slabs between consecutive boundaries", "Count the segments that span each slab", "Sum the counts to get the storage"]},
+  {"label": "Trapezoidal maps", "section": "Trapezoidal maps", "subgoals": ["Extend vertical rays from each endpoint to the nearest segments", "Bound the trapezoids by 3n plus 1", "Bound the vertices by 6n plus 4"]}
+]

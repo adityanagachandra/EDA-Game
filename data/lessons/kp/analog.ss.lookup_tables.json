@@ -1,0 +1,5 @@
+[
+  {"label": "Current density sets the width", "section": "Current density sets the width", "subgoals": ["Sweep a unit-width device and record density, gain and capacitance", "Reindex the sweep by gm over Id", "Divide the required current by the current density to get the width"]},
+  {"label": "Interpolating between rows", "section": "Interpolating between rows", "subgoals": ["Locate the two table rows around the design point", "Interpolate the density linearly by the fractional position", "Prefer interpolation in log density where density is exponential"]},
+  {"label": "A complete sizing step", "section": "A complete sizing step", "subgoals": ["Choose gm over Id and channel length from gain and speed needs", "Divide gm by gm over Id, then divide the current by the density", "Read intrinsic gain and capacitance from the same table row"]}
+]

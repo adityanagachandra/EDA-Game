@@ -1,0 +1,5 @@
+[
+  {"label": "Partial products", "section": "Partial products", "subgoals": ["Take one row per multiplier bit", "Shift the multiplicand by the bit position when the bit is one", "Sum the shifted rows"]},
+  {"label": "Sizes and widths", "section": "Sizes and widths", "subgoals": ["Count n times m partial-product bits", "Size the product at n plus m bits", "Check the extreme product of the most negative operands"]},
+  {"label": "Array versus tree reduction", "section": "Array versus tree reduction", "subgoals": ["Add rows sequentially in an array multiplier", "Reduce three rows to two with carry-save full adders", "Finish with one carry-propagate adder"]}
+]

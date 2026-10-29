@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Soft, firm and hard IP",
+    "section": "Soft, firm and hard IP",
+    "subgoals": [
+      "Distinguish soft, firm and hard IP by delivery format",
+      "Match a block such as a PHY or a CPU core to its usual delivery",
+      "Relate physical delivery to integrator freedom and risk"
+    ]
+  },
+  {
+    "label": "The standard-cell library",
+    "section": "The standard-cell library",
+    "subgoals": [
+      "List the views a standard-cell library ships with",
+      "Match each view to the stage that reads it",
+      "Predict which stage fails when a view is missing"
+    ]
+  },
+  {
+    "label": "Characterization and reuse economics",
+    "section": "Characterization and reuse economics",
+    "subgoals": [
+      "Describe characterization as sweeps over slew, load, voltage and temperature",
+      "Explain how one library amortizes over many designs",
+      "Explain why teams license IP instead of designing it"
+    ]
+  }
+]

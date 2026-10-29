@@ -1,0 +1,5 @@
+[
+  {"label": "Architecture", "section": "Architecture", "subgoals": ["Divide the flops by the internal chain count for the internal chain length", "Compare it with the uncompressed chain length for the shift reduction", "Expand tester bits through the decompressor into the internal chains"]},
+  {"label": "Data volume and ratio", "section": "Data volume and ratio", "subgoals": ["Write stimulus volume as patterns times channels times shift cycles", "Divide uncompressed by compressed volume for the ratio", "Exploit the low care-bit density of ATPG cubes"]},
+  {"label": "Pattern inflation", "section": "Pattern inflation", "subgoals": ["Increase the compressed pattern count by the inflation factor", "Recompute the volume ratio with the inflated pattern count", "Mask unknown values before they reach the compactor"]}
+]

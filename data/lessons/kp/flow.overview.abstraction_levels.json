@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The ladder of levels",
+    "section": "The ladder of levels",
+    "subgoals": [
+      "List the levels from system down to layout",
+      "Place a description such as a NAND2 netlist at its level",
+      "Locate behavioral, structural and physical views on the Y-chart"
+    ]
+  },
+  {
+    "label": "What each level keeps and drops",
+    "section": "What each level keeps and drops",
+    "subgoals": [
+      "Name the information each step down adds",
+      "Explain why a higher level simulates faster",
+      "Identify a property that a given level cannot compute exactly"
+    ]
+  },
+  {
+    "label": "Refinement and checking between levels",
+    "section": "Refinement and checking between levels",
+    "subgoals": [
+      "Pair each refinement with the check that guards it",
+      "Match synthesis to equivalence checking and layout to LVS",
+      "Trace a failed check back to the level that must change"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Tier 1: configuration", "section": "Tier 1: configuration", "subgoals": ["Identify requests that change only a value, a table or a component choice", "Apply them through configuration without a rebuild", "Record each change so it can be reversed"]},
+  {"label": "Tier 2: a plug-in at the seam", "section": "Tier 2: a plug-in at the seam", "subgoals": ["Recognize a rule that no parameter can express", "Check that the seam's context already carries the fields the rule needs", "Implement the rule as a provider and validate it with differential tests"]},
+  {"label": "Tier 3: a core edit", "section": "Tier 3: a core edit", "subgoals": ["Identify changes to propagation, conventions or the delay-model API", "Route them through a reviewed diff with full regression", "Extend the seam once so similar requests become plug-ins"]}
+]

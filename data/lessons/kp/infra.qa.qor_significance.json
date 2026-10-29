@@ -1,0 +1,5 @@
+[
+  {"label": "Paired differences across seeds", "section": "Paired differences across seeds", "subgoals": ["Run before and after builds with the same seeds", "Subtract before from after for each seed", "Average the differences"]},
+  {"label": "Seed-to-seed spread", "section": "Seed-to-seed spread", "subgoals": ["Subtract the mean from each difference", "Sum the squared deviations and divide by n - 1", "Take the square root to get the sample standard deviation"]},
+  {"label": "The paired t statistic", "section": "The paired t statistic", "subgoals": ["Divide the standard deviation by the square root of n", "Divide the mean difference by that standard error", "Compare the absolute t with the critical value for n - 1 degrees of freedom"]}
+]

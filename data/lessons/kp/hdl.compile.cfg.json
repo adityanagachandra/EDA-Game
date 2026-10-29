@@ -1,0 +1,5 @@
+[
+  {"label": "Basic blocks", "section": "Basic blocks", "subgoals": ["Start a new block at every branch target and every join", "End a block at each condition test", "Add the blocks contributed by each if, if-else and while"]},
+  {"label": "Edges", "section": "Edges", "subgoals": ["Draw the two edges out of every condition test", "Connect the end of each arm or body to its join or header", "Mark the back edge of each loop"]},
+  {"label": "Cyclomatic complexity", "section": "Cyclomatic complexity", "subgoals": ["Compute E minus N plus 2 for the graph", "Check the result against the number of decisions plus one", "Relate the complexity to test paths and multiplexer depth"]}
+]

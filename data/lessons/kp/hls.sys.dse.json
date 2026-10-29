@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The size of the directive space",
+  "section": "The size of the directive space",
+  "subgoals": [
+   "Count the options of each directive",
+   "Multiply the counts of independent directives",
+   "Prune illegal and redundant combinations before running synthesis"
+  ]
+ },
+ {
+  "label": "Pareto-optimal designs",
+  "section": "Pareto-optimal designs",
+  "subgoals": [
+   "Compare every pair of designs on both objectives",
+   "Remove each design that another dominates",
+   "Keep the rest as the Pareto front"
+  ]
+ },
+ {
+  "label": "Measuring a front with hypervolume",
+  "section": "Measuring a front with hypervolume",
+  "subgoals": [
+   "Sort the front by latency",
+   "Sum the rectangles from each point to the next latency and up to the reference area",
+   "Compare explorers by hypervolume per synthesis run"
+  ]
+ }
+]

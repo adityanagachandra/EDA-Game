@@ -1,0 +1,5 @@
+[
+  {"label": "Supergates and balanced trees", "section": "Supergates and balanced trees", "subgoals": ["Collect a supergate's leaves through single-fanout uncomplemented ANDs", "Rebuild the multi-input AND as a binary tree", "Compute the balanced depth as the ceiling of log base 2 of the leaf count"]},
+  {"label": "Balancing with arrival levels", "section": "Balancing with arrival levels", "subgoals": ["Sort the supergate's inputs by arrival level", "Combine the two lowest-level inputs into a node at max plus one", "Repeat until one node remains and read its level"]},
+  {"label": "Depth reduction and its costs", "section": "Depth reduction and its costs", "subgoals": ["Compute the chain's output level input by input", "Compute the balanced output level by greedy pairing", "Subtract to find the depth reduction"]}
+]

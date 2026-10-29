@@ -1,0 +1,5 @@
+[
+  {"label": "Local mismatch shrinks with area", "section": "Local mismatch shrinks with area", "subgoals": ["Attribute local mismatch to averaged independent microscopic sources", "Compute sigma of delta Vt as AVT over the square root of WL", "Separate the area term from the distance term handled by layout"]},
+  {"label": "Area for a target sigma", "section": "Area for a target sigma", "subgoals": ["Square the ratio of AVT to the target sigma", "Show that halving sigma quadruples the area", "Add an offset constraint so the optimizer cannot shrink matched devices"]},
+  {"label": "Using the statistics", "section": "Using the statistics", "subgoals": ["Express a spec as a multiple of sigma for a yield target", "Scale sigma by the square root of the area ratio", "Draw per-device threshold shifts in Monte Carlo from the Pelgrom sigma"]}
+]

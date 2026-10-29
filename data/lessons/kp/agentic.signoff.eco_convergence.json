@@ -1,0 +1,5 @@
+[
+  {"label": "A linear model of the loop", "section": "A linear model of the loop", "subgoals": ["Multiply open violations by the unfixed fraction", "Add the new violations", "Iterate the recurrence"]},
+  {"label": "Iterations to reach a target", "section": "Iterations to reach a target", "subgoals": ["Compute the floor as new violations over fix fraction", "Solve the geometric decay for the iteration count", "Round up to whole iterations"]},
+  {"label": "The floor and when to change strategy", "section": "The floor and when to change strategy", "subgoals": ["Compare the target with the floor", "Raise the fix fraction or cut side effects", "Recompute the floor after the change"]}
+]

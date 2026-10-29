@@ -1,0 +1,5 @@
+[
+  {"label": "KLayout", "section": "KLayout", "subgoals": ["Read both stream formats into KLayout", "Write checks as derived layers and measurements in its script language", "Choose deep or tiled mode for large layouts"]},
+  {"label": "Magic", "section": "Magic", "subgoals": ["Describe how corner-stitched tiles represent a layer", "Locate the DRC rules in the technology file", "Extract the layout and convert the result to SPICE"]},
+  {"label": "Netgen and the open flow", "section": "Netgen and the open flow", "subgoals": ["Run Netgen on the extracted and schematic netlists", "Set tolerances and permutations in the setup file", "Chain Magic, Netgen and KLayout checks in the flow"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Slow-to-rise and slow-to-fall", "section": "Slow-to-rise and slow-to-fall", "subgoals": ["Assign each line a slow-to-rise and a slow-to-fall fault", "Assume the extra delay is large enough to miss capture on any path", "Count transition faults as two per line including branches"]},
+  {"label": "Two-pattern tests", "section": "Two-pattern tests", "subgoals": ["Set the initial value on the line with the first vector", "Launch the opposite value at speed with the second vector", "Make the second vector a stuck-at test for the initial value"]},
+  {"label": "What the model misses", "section": "What the model misses", "subgoals": ["Recognize gross delay as the model's core assumption", "Prefer long paths to catch small-delay defects", "Use path-delay or timing-aware tests for critical paths"]}
+]

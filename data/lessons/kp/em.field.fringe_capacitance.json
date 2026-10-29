@@ -1,0 +1,5 @@
+[
+  {"label": "Area capacitance alone", "section": "Area capacitance alone", "subgoals": ["Treat the wire bottom as one plate of a capacitor", "Multiply epsilon by the width-to-height ratio", "Express the result in attofarads per micrometre"]},
+  {"label": "An empirical fringe model", "section": "An empirical fringe model", "subgoals": ["Compute the width and thickness ratios to the height", "Evaluate the fitted expression for C over epsilon", "Multiply by epsilon to get capacitance per unit length"]},
+  {"label": "The fringe share as wires narrow", "section": "The fringe share as wires narrow", "subgoals": ["Evaluate the area term and the total separately", "Subtract and divide by the total to get the fringe share", "Track how the share grows as width falls"]}
+]

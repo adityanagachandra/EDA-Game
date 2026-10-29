@@ -1,0 +1,5 @@
+[
+  {"label": "Legality gates first", "section": "Legality gates first", "subgoals": ["Check each hard condition with an independent engine", "Give failed candidates no credit", "Count the candidates that are scored"]},
+  {"label": "Normalizing per design", "section": "Normalizing per design", "subgoals": ["Compute improvement relative to the same design's baseline", "Normalize slack changes by the clock period", "Check the sign for minimize and maximize metrics"]},
+  {"label": "Combining objectives", "section": "Combining objectives", "subgoals": ["Multiply each normalized term by its weight", "Sum the weighted terms", "Inspect which term dominates the reward"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Linearizing around the operating point", "section": "Linearizing around the operating point", "subgoals": ["Expand the drain current to first order around the bias point", "Define gm and gds as partial derivatives of the drain current", "Assemble the controlled source, output resistance and capacitances"]},
+  {"label": "Square-law estimates of gm and ro", "section": "Square-law estimates of gm and ro", "subgoals": ["Differentiate the square law to get gm in three forms", "Compute ro as one over lambda times the drain current", "Compare how gm scales with width and with current"]},
+  {"label": "Where the square law fails", "section": "Where the square law fails", "subgoals": ["Identify velocity saturation and weak inversion as square-law failures", "Read small-signal parameters from the compact model at the operating point", "Explain why square-law optimizers optimize the wrong function"]}
+]

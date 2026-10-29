@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Stamping the linearized diode",
+    "section": "Stamping the linearized diode",
+    "subgoals": [
+      "Replace the diode by its companion at the iterate",
+      "Write KCL at the node with all currents leaving",
+      "Collect the conductances into the matrix entry and the sources into the right-hand side"
+    ]
+  },
+  {
+    "label": "One Newton iterate",
+    "section": "One Newton iterate",
+    "subgoals": [
+      "Compute the diode current, conductance and intercept at the iterate",
+      "Solve the linear node equation for the new voltage",
+      "Compare the new voltage with the previous one"
+    ]
+  },
+  {
+    "label": "The KCL residual",
+    "section": "The KCL residual",
+    "subgoals": [
+      "Evaluate every element's true current at the iterate",
+      "Sum the currents leaving the node to form the residual",
+      "Read the sign of the residual as the direction of the next update"
+    ]
+  }
+]

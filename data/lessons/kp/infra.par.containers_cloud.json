@@ -1,0 +1,5 @@
+[
+  {"label": "Containers pin the tool environment", "section": "Containers pin the tool environment", "subgoals": ["Package tool binaries and libraries in one image", "Pin the image by content digest instead of a mutable tag", "Cap memory and CPU per job with cgroup limits"]},
+  {"label": "Sizing a parameter sweep", "section": "Sizing a parameter sweep", "subgoals": ["Divide jobs by machines, rounding up, to count waves", "Multiply waves by job length for the wall time", "Price reserved machines by wall time and on-demand machines by job time"]},
+  {"label": "Scheduling, storage and data locality", "section": "Scheduling, storage and data locality", "subgoals": ["Separate independent jobs from tightly coupled runs", "Stage large inputs near the compute", "Key step outputs by their inputs so a sweep can resume"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What is confidential and why it is architecture", "section": "What is confidential and why it is architecture", "subgoals": ["Classify data as process-confidential or public", "Enforce the boundary with on-site models and sandboxes", "Treat logs that quote process data as confidential"]},
+  {"label": "What may cross the boundary", "section": "What may cross the boundary", "subgoals": ["Generalize a skill without carrying customer data", "Train centrally on public data and adapt locally", "Reduce a bug report to a synthetic, dummy-valued case"]},
+  {"label": "Narrow interfaces instead of shared text", "section": "Narrow interfaces instead of shared text", "subgoals": ["Expose process data through narrow query tools", "Reject renaming and scaling as protection", "Place enforcement in the sandbox rather than the prompt"]}
+]

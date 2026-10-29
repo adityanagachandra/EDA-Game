@@ -1,0 +1,1290 @@
+{
+ "math_domains": [
+  "discrete_math",
+  "graph_theory",
+  "linear_algebra",
+  "numerical_analysis",
+  "probability_theory",
+  "statistics",
+  "calculus",
+  "differential_equations",
+  "complex_numbers",
+  "machine_learning",
+  "real_analysis",
+  "number_theory",
+  "abstract_algebra"
+ ],
+ "frontier_rule": "Every domain except agent_first_eda has a subdomain <domain>.frontier of 4 to 6 concepts on AI-native, agent-first futures of that domain. Frontier concepts may also depend on agent_first_eda anchors.",
+ "domains": [
+  {
+   "key": "flow",
+   "domain": "eda_landscape",
+   "prefix": "flow",
+   "layer": 1,
+   "upstream": [
+    "discrete_math"
+   ],
+   "target": 45,
+   "covers": [
+    "Electronic design automation, ECAD, computer-aided engineering",
+    "Integrated circuit design, VLSI, ULSI",
+    "ASIC, FPGA, SoC, semiconductor IP cores, standard cells and cell libraries as products",
+    "Design abstraction, hierarchy, top-down and bottom-up design, hardware-software co-design",
+    "The end-to-end flow: specification, architecture, RTL, verification, synthesis, DFT, floorplan, placement, CTS, routing, extraction, signoff, tape-out, fabrication, packaging, test",
+    "Why real flows are iterative: timing, power and verification recur at many stages; how errors propagate downstream",
+    "Representations and formats map: HDL/RTL, Boolean networks, BDD/AIG, gate netlists, Liberty, SDC, LEF/DEF, SPEF, GDSII/OASIS, SPICE netlists, PDK decks - what each preserves, abstracts and enables",
+    "PPA (power, performance, area) and the cost of a respin",
+    "Analog/mixed-signal, FPGA, PCB/package and manufacturing as adjacent branches with different flows",
+    "Industry: Cadence, Synopsys, Siemens EDA (Mentor), Ansys, Keysight, Silvaco, Zuken, Altium; foundry model, fabless companies, the EDA industry structure",
+    "Major tools by role (Virtuoso, Innovus, Genus, Xcelium, Spectre, Design Compiler, Fusion Compiler, PrimeTime, VCS, Calibre, Questa, Tessent, Vivado, Quartus) - what class of problem each solves",
+    "Research communities: DAC, ICCAD, DATE, ISPD, ITC, CAV; landmark history: Mead-Conway, SPICE at Berkeley, Berkeley CAD tools, Brayton, Sangiovanni-Vincentelli, Newton, Pederson, Mead, Conway",
+    "Standards bodies: IEEE, Accellera, Si2, IPC, SEMI"
+   ],
+   "anchors": {
+    "flow.overview.what_is_eda": "What electronic design automation is",
+    "flow.overview.abstraction_levels": "Abstraction levels from system to layout",
+    "flow.overview.asic_fpga_soc": "ASICs, FPGAs and systems on chip",
+    "flow.stages.rtl_to_gds": "The RTL-to-GDSII flow end to end",
+    "flow.stages.iteration_closure": "Why design flows iterate",
+    "flow.repr.format_map": "The map of design representations and formats",
+    "flow.repr.netlist": "Netlists as the shared currency of the flow",
+    "flow.metrics.ppa": "Power, performance and area",
+    "flow.industry.foundry_fabless": "The foundry and fabless model",
+    "flow.industry.tool_landscape": "The commercial and open-source tool landscape"
+   }
+  },
+  {
+   "key": "boolalg",
+   "domain": "boolean_reasoning",
+   "prefix": "boolalg",
+   "layer": 1,
+   "upstream": [
+    "discrete_math",
+    "abstract_algebra"
+   ],
+   "target": 40,
+   "covers": [
+    "Boolean algebra and Boolean functions, propositional and predicate logic as used in hardware",
+    "Cofactors, Shannon expansion, Boolean difference, unate and binate functions, symmetry",
+    "Cubes, covers, SOP/POS, minterms, implicants, prime implicants",
+    "Boolean decomposition, functional dependence",
+    "Decision diagrams overview, constraint satisfaction problems",
+    "Partial orders and lattices in logic",
+    "Computational complexity: P vs NP, NP-completeness, NP-hardness, reductions (SAT, 3-SAT, clique, vertex cover), approximation algorithms, heuristics, parameterized complexity, randomized algorithms, amortized analysis, algorithm analysis",
+    "Data structures for Boolean reasoning (bit-parallel truth tables, hash-consing)"
+   ],
+   "anchors": {
+    "boolalg.func.truth_table": "Boolean functions and truth tables",
+    "boolalg.func.cofactor": "Cofactors of a Boolean function",
+    "boolalg.func.shannon": "Shannon expansion",
+    "boolalg.func.unateness": "Unate and binate functions",
+    "boolalg.cover.implicants": "Cubes, implicants and prime implicants",
+    "boolalg.cover.sop_pos": "Sum-of-products and product-of-sums forms",
+    "boolalg.cnf.clauses": "Conjunctive normal form and clauses",
+    "boolalg.complexity.np_complete": "NP-completeness",
+    "boolalg.complexity.reduction": "Polynomial-time reductions",
+    "boolalg.complexity.approximation": "Approximation algorithms and heuristics"
+   }
+  },
+  {
+   "key": "graphs",
+   "domain": "eda_graph_algorithms",
+   "prefix": "graphs",
+   "layer": 1,
+   "upstream": [
+    "discrete_math",
+    "graph_theory",
+    "linear_algebra"
+   ],
+   "target": 50,
+   "covers": [
+    "Directed graphs, DAGs, hypergraphs; netlists as hypergraphs; clique and star net models",
+    "Topological sorting, strongly connected components, graph traversal",
+    "Graph partitioning, hypergraph partitioning, min-cut, Kernighan-Lin, Fiduccia-Mattheyses, multilevel partitioning (coarsen, partition, uncoarsen), spectral partitioning, graph Laplacian, spectral graph theory",
+    "Graph coloring, graph matching, bipartite matching",
+    "Network flow, maximum flow, minimum cut, minimum-cost flow",
+    "Shortest paths: Dijkstra, Bellman-Ford, A* search; longest paths in DAGs",
+    "Minimum spanning tree, Steiner tree problem, rectilinear Steiner tree, Hanan grid",
+    "Traveling salesman problem (scan-chain ordering), graph embedding, planarity, graph drawing"
+   ],
+   "anchors": {
+    "graphs.model.hypergraph": "Netlists as hypergraphs",
+    "graphs.model.net_models": "Clique and star models of a net",
+    "graphs.dag.topo_sort": "Topological sorting of a DAG",
+    "graphs.dag.longest_path": "Longest paths in a DAG",
+    "graphs.tree.rooted_traversal": "Pre-order and post-order traversal of a rooted tree",
+    "graphs.partition.cut_size": "The cut size of a partition",
+    "graphs.partition.fm": "The Fiduccia-Mattheyses algorithm",
+    "graphs.partition.multilevel": "Multilevel partitioning",
+    "graphs.path.dijkstra": "Dijkstra's shortest-path algorithm",
+    "graphs.path.astar": "A* search",
+    "graphs.flow.max_flow_min_cut": "Maximum flow and minimum cut",
+    "graphs.steiner.rsmt": "Rectilinear Steiner minimum trees",
+    "graphs.steiner.mst": "Minimum spanning trees for net estimation",
+    "graphs.color.coloring": "Graph coloring in EDA",
+    "graphs.match.bipartite": "Bipartite matching",
+    "graphs.spectral.laplacian": "The graph Laplacian"
+   }
+  },
+  {
+   "key": "geom",
+   "domain": "computational_geometry",
+   "prefix": "geom",
+   "layer": 1,
+   "upstream": [
+    "discrete_math",
+    "linear_algebra"
+   ],
+   "target": 38,
+   "covers": [
+    "Computational geometry for layout: orthogonal/rectilinear geometry, Manhattan distance, polygons",
+    "Polygon clipping and Boolean operations on polygons (AND/OR/NOT/XOR of layers), sizing (grow/shrink)",
+    "Line-segment intersection, sweep-line / plane-sweep algorithms, point location",
+    "Nearest-neighbor search, range searching, spatial indexing: R-tree, R*-tree, quadtree, k-d tree, interval tree, segment tree, bounding volume hierarchy",
+    "Voronoi diagrams, Delaunay triangulation, convex hull, Minkowski sum, geometric optimization",
+    "Rectangular decomposition of rectilinear polygons, spatial databases"
+   ],
+   "anchors": {
+    "geom.rect.manhattan": "Manhattan distance and rectilinear geometry",
+    "geom.rect.bbox": "Bounding boxes and rectangle intersection",
+    "geom.poly.boolean_ops": "Boolean operations on layout polygons",
+    "geom.poly.sizing": "Growing and shrinking polygons",
+    "geom.sweep.plane_sweep": "The plane-sweep paradigm",
+    "geom.sweep.segment_intersection": "Line-segment intersection by sweep",
+    "geom.index.interval_tree": "Interval trees",
+    "geom.index.rtree": "R-trees for spatial queries",
+    "geom.index.kd_tree": "k-d trees and nearest neighbors",
+    "geom.decomp.rectangles": "Decomposing rectilinear polygons into rectangles"
+   }
+  },
+  {
+   "key": "opt",
+   "domain": "optimization_for_eda",
+   "prefix": "opt",
+   "layer": 1,
+   "upstream": [
+    "calculus",
+    "linear_algebra",
+    "machine_learning",
+    "discrete_math",
+    "probability_theory"
+   ],
+   "target": 50,
+   "covers": [
+    "Mathematical optimization, operations research, combinatorial vs continuous optimization",
+    "Linear programming, duality, integer programming, MILP, branch and bound, branch and cut, Benders decomposition",
+    "Quadratic programming, QCQP, nonlinear programming, convex and nonconvex optimization, constrained optimization",
+    "Lagrange multipliers, KKT conditions, Lagrangian relaxation (as in gate sizing), penalty methods, augmented Lagrangian, ADMM",
+    "Gradient descent, conjugate gradient as an optimizer, Newton and quasi-Newton (BFGS, L-BFGS), Nesterov acceleration, coordinate descent",
+    "Metaheuristics: simulated annealing, genetic algorithms, evolutionary computation, tabu search, local search",
+    "Dynamic programming, constraint programming and constraint satisfaction",
+    "Multi-objective optimization, Pareto efficiency, robust and stochastic optimization, Bayesian optimization",
+    "Problem formulation discipline: decision variables, objective, constraints, why exact optimization is hard, relax/approximate/decompose/search"
+   ],
+   "anchors": {
+    "opt.formulate.variables_objective": "Formulating an optimization problem",
+    "opt.lp.simplex_geometry": "Linear programming and its geometry",
+    "opt.lp.duality": "Linear programming duality",
+    "opt.ip.branch_and_bound": "Integer programming and branch and bound",
+    "opt.convex.kkt": "The KKT conditions",
+    "opt.lagrange.relaxation": "Lagrangian relaxation",
+    "opt.gradient.descent": "Gradient descent",
+    "opt.gradient.nesterov": "Nesterov's accelerated gradient",
+    "opt.meta.simulated_annealing": "Simulated annealing",
+    "opt.dp.principle": "Dynamic programming",
+    "opt.multi.pareto": "Pareto optimality",
+    "opt.bayes.bayesian_optimization": "Bayesian optimization"
+   }
+  },
+  {
+   "key": "numer",
+   "domain": "numerical_methods_for_eda",
+   "prefix": "numer",
+   "layer": 1,
+   "upstream": [
+    "numerical_analysis",
+    "linear_algebra",
+    "differential_equations",
+    "calculus"
+   ],
+   "target": 48,
+   "covers": [
+    "Sparse matrices and sparse linear systems, storage formats (CSR), fill-in, orderings (minimum degree, AMD, nested dissection)",
+    "LU and Cholesky factorization, pivoting, numerical stability, conditioning, floating-point arithmetic",
+    "Iterative methods, Krylov subspaces, conjugate gradient, GMRES, preconditioning, multigrid",
+    "Nonlinear equations: Newton-Raphson for systems, damping, fixed-point iteration, convergence",
+    "ODEs, DAEs, stiff equations, numerical integration: backward Euler, trapezoidal rule, BDF/Gear, Runge-Kutta, stability regions, local truncation error",
+    "PDE discretization: finite difference, finite element, finite volume, boundary element methods",
+    "Eigenvalue problems, SVD, model order reduction and reduced-order models (as numerics)",
+    "Automatic differentiation, scientific computing, HPC, parallel computing, distributed computing, GPU computing"
+   ],
+   "anchors": {
+    "numer.sparse.storage": "Sparse matrix storage",
+    "numer.sparse.fill_in": "Fill-in and reordering",
+    "numer.direct.lu": "LU factorization for circuit matrices",
+    "numer.iter.conjugate_gradient": "The conjugate gradient method",
+    "numer.iter.gmres": "GMRES",
+    "numer.iter.preconditioning": "Preconditioning",
+    "numer.nonlinear.newton_systems": "Newton-Raphson for nonlinear systems",
+    "numer.ode.backward_euler": "Backward Euler",
+    "numer.ode.trapezoidal": "The trapezoidal rule for ODEs",
+    "numer.ode.stiffness": "Stiff equations",
+    "numer.ode.lte": "Local truncation error",
+    "numer.pde.finite_difference": "Finite difference discretization",
+    "numer.pde.fem": "The finite element method",
+    "numer.mor.krylov_projection": "Model order reduction by Krylov projection",
+    "numer.hpc.gpu": "GPU computing for EDA kernels"
+   }
+  },
+  {
+   "key": "stat",
+   "domain": "variability_statistics",
+   "prefix": "stat",
+   "layer": 1,
+   "upstream": [
+    "probability_theory",
+    "statistics",
+    "linear_algebra"
+   ],
+   "target": 38,
+   "covers": [
+    "Monte Carlo method, quasi-Monte Carlo, importance sampling, rare-event simulation (SRAM failure rates)",
+    "Regression analysis, design of experiments, response surface methodology, surrogate fitting",
+    "Uncertainty quantification, sensitivity analysis, worst-case analysis",
+    "Statistical process control, process variation (global, local, systematic, random), spatial correlation, PCA of variation",
+    "Extreme value theory, Weibull distribution, lifetime modeling, reliability engineering, failure analysis, fault tolerance",
+    "Yield and yield optimization, statistical timing analysis as a statistics problem (sum and max of Gaussians)"
+   ],
+   "anchors": {
+    "stat.mc.monte_carlo": "Monte Carlo estimation",
+    "stat.mc.importance_sampling": "Importance sampling",
+    "stat.mc.rare_event": "Rare-event estimation",
+    "stat.var.process_variation": "Process variation",
+    "stat.var.spatial_correlation": "Spatially correlated variation",
+    "stat.gauss.sum_max": "Sums and maxima of Gaussian variables",
+    "stat.fit.regression": "Regression for model fitting",
+    "stat.fit.response_surface": "Response surface methods",
+    "stat.sens.sensitivity": "Sensitivity analysis",
+    "stat.rel.weibull": "The Weibull distribution and lifetime",
+    "stat.yield.yield_model": "Yield as a probability"
+   }
+  },
+  {
+   "key": "em",
+   "domain": "circuits_and_electromagnetics",
+   "prefix": "em",
+   "layer": 1,
+   "upstream": [
+    "calculus",
+    "differential_equations",
+    "complex_numbers",
+    "linear_algebra"
+   ],
+   "target": 48,
+   "covers": [
+    "Circuit theory: Kirchhoff's laws, nodal analysis, mesh analysis, network analysis, Thevenin/Norton",
+    "RC and RLC circuits, time constants, step responses",
+    "Signals and systems, linear systems, Fourier, Laplace and Z transforms, transfer functions, poles/zeros, feedback, control theory, stability theory",
+    "Impedance, admittance, resonance",
+    "Transmission lines, telegrapher's equations, characteristic impedance, reflection coefficient, impedance matching, scattering parameters",
+    "Electromagnetism: Maxwell's equations, electrostatics, magnetostatics, capacitance and inductance of conductors",
+    "Electromagnetic field solvers, computational electromagnetics, method of moments, FDTD",
+    "EMC/EMI, grounding, shielding, return current, skin effect, proximity effect, dielectric loss"
+   ],
+   "anchors": {
+    "em.circuit.kcl_kvl": "Kirchhoff's current and voltage laws",
+    "em.circuit.nodal_analysis": "Nodal analysis",
+    "em.circuit.rc_time_constant": "RC circuits and time constants",
+    "em.circuit.rlc": "RLC circuits",
+    "em.signal.laplace_transfer": "Transfer functions and the Laplace domain",
+    "em.signal.poles_zeros": "Poles, zeros and stability",
+    "em.tline.telegrapher": "Transmission lines and the telegrapher's equations",
+    "em.tline.reflection": "Reflections and impedance matching",
+    "em.tline.s_parameters": "Scattering parameters",
+    "em.field.electrostatics_capacitance": "Electrostatics and capacitance",
+    "em.field.inductance": "Inductance and return paths",
+    "em.field.skin_effect": "The skin effect",
+    "em.solver.method_of_moments": "The method of moments field solver"
+   }
+  },
+  {
+   "key": "dev",
+   "domain": "semiconductor_devices",
+   "prefix": "dev",
+   "layer": 2,
+   "upstream": [
+    "em",
+    "numer",
+    "calculus",
+    "differential_equations",
+    "probability_theory"
+   ],
+   "target": 48,
+   "covers": [
+    "Semiconductors, solid-state physics, band theory, energy bands, Fermi level, charge carriers, intrinsic and doped silicon",
+    "Electron mobility, carrier transport, drift-diffusion model, Poisson's equation, continuity equation",
+    "P-n junction, diode, bipolar junction transistor",
+    "MOSFET operation: threshold voltage, body effect, square law, velocity saturation, subthreshold conduction, leakage current",
+    "CMOS as a device pair; short-channel effects, DIBL",
+    "FinFET, gate-all-around / nanosheet transistors, silicon on insulator, CFET outlook",
+    "Quantum tunneling, quantum confinement",
+    "Reliability physics: hot-carrier injection, bias temperature instability, time-dependent dielectric breakdown, aging",
+    "Device scaling, Dennard scaling, Moore's law",
+    "TCAD, semiconductor device simulation, compact transistor models, BSIM"
+   ],
+   "anchors": {
+    "dev.physics.bands_fermi": "Energy bands and the Fermi level",
+    "dev.physics.drift_diffusion": "The drift-diffusion model",
+    "dev.junction.pn": "The p-n junction",
+    "dev.mos.threshold": "MOSFET threshold voltage",
+    "dev.mos.square_law": "The MOSFET square law",
+    "dev.mos.subthreshold": "Subthreshold conduction",
+    "dev.mos.leakage": "Leakage currents",
+    "dev.mos.short_channel": "Short-channel effects",
+    "dev.advanced.finfet": "FinFETs",
+    "dev.advanced.gaa": "Gate-all-around nanosheet transistors",
+    "dev.model.compact": "Compact transistor models",
+    "dev.model.bsim": "BSIM",
+    "dev.rel.bti_hci": "Bias temperature instability and hot carriers",
+    "dev.scaling.dennard": "Dennard scaling and its end"
+   }
+  },
+  {
+   "key": "logic",
+   "domain": "digital_logic_design",
+   "prefix": "logic",
+   "layer": 2,
+   "upstream": [
+    "boolalg",
+    "discrete_math",
+    "number_theory"
+   ],
+   "target": 50,
+   "covers": [
+    "Digital circuits: combinational logic, gates, multiplexers, decoders, encoders",
+    "Sequential logic: latches, flip-flops, registers, setup/hold/clock-to-q as cell timing, metastability",
+    "Synchronous vs asynchronous circuits, clocking disciplines",
+    "Finite-state machines: Moore, Mealy, state diagrams, encodings",
+    "Arithmetic circuits: ripple-carry, carry-lookahead, carry-select, prefix adders (Kogge-Stone, Brent-Kung), multipliers (array, Booth, Wallace/Dadda trees)",
+    "Computer architecture and microarchitecture: datapath, control, pipelining, hazards, caches",
+    "Memories: SRAM, DRAM, register files, CAM, non-volatile memory, memory macros",
+    "Two's complement, fixed point and floating point in hardware"
+   ],
+   "anchors": {
+    "logic.comb.gates_mux": "Gates and multiplexers",
+    "logic.seq.latch_ff": "Latches and flip-flops",
+    "logic.seq.flip_flop_timing": "Setup, hold and clock-to-q",
+    "logic.seq.metastability": "Metastability",
+    "logic.seq.synchronous_design": "Synchronous design",
+    "logic.fsm.moore_mealy": "Moore and Mealy machines",
+    "logic.fsm.encoding": "State encoding",
+    "logic.arith.ripple_carry": "Ripple-carry adders",
+    "logic.arith.prefix_adder": "Parallel-prefix adders",
+    "logic.arith.multiplier": "Multiplier architectures",
+    "logic.arch.pipelining": "Pipelining",
+    "logic.mem.sram": "SRAM organization",
+    "logic.number.twos_complement": "Two's complement arithmetic"
+   }
+  },
+  {
+   "key": "fab",
+   "domain": "fabrication_and_dtco",
+   "prefix": "fab",
+   "layer": 3,
+   "upstream": [
+    "dev",
+    "em",
+    "stat",
+    "geom"
+   ],
+   "target": 45,
+   "covers": [
+    "Semiconductor device fabrication, wafers, silicon wafers, semiconductor substrates",
+    "Epitaxy, oxidation, diffusion, ion implantation, CVD, PVD, ALD, etching, chemical-mechanical polishing",
+    "Photolithography, resolution limits (Rayleigh), extreme ultraviolet lithography, optical proximity correction, resolution enhancement technology, inverse lithography, multiple patterning (LELE, SADP, SAQP), mask synthesis, photomasks, mask data preparation",
+    "Process integration, FEOL, MOL, BEOL, interconnect, copper interconnect, damascene, low-k dielectrics, contact resistance, vias",
+    "Process design kits, design rules, design-rule manuals",
+    "Design-technology co-optimization (DTCO), system-technology co-optimization (STCO), standard-cell architecture (track height, fin depopulation, buried power rails, backside power delivery)",
+    "Design for manufacturability, design for yield, critical area analysis, defect density"
+   ],
+   "anchors": {
+    "fab.process.flow_overview": "The CMOS process flow",
+    "fab.litho.resolution": "Lithographic resolution",
+    "fab.litho.opc": "Optical proximity correction",
+    "fab.litho.multiple_patterning": "Multiple patterning",
+    "fab.litho.euv": "Extreme ultraviolet lithography",
+    "fab.beol.interconnect_stack": "The interconnect stack",
+    "fab.pdk.contents": "What a process design kit contains",
+    "fab.pdk.design_rules": "Design rules",
+    "fab.dtco.cell_architecture": "Standard-cell architecture and DTCO",
+    "fab.dtco.backside_power": "Backside power delivery",
+    "fab.yield.critical_area": "Critical area analysis",
+    "fab.yield.defect_density": "Defect density and yield models"
+   }
+  },
+  {
+   "key": "cmos",
+   "domain": "cmos_circuits_and_cells",
+   "prefix": "cmos",
+   "layer": 3,
+   "upstream": [
+    "dev",
+    "logic",
+    "em",
+    "opt"
+   ],
+   "target": 48,
+   "covers": [
+    "Static CMOS gates: pull-up/pull-down networks, NAND/NOR/AOI/OAI, transmission gates, dynamic logic",
+    "Inverter characteristics, noise margins, transistor sizing",
+    "RC delay models, logical effort, parasitic delay, path effort and optimal sizing",
+    "Power: dynamic switching power, short-circuit power, leakage power, activity factors, multi-Vt",
+    "Sequential cell circuits and their timing characterization",
+    "Standard cells, cell libraries, standard-cell layout (rows, rails, tracks), cell characterization",
+    "Liberty timing format: NLDM tables, CCS, LVF, power and noise views; what Liberty preserves and abstracts",
+    "Special cells: level shifters, isolation cells, retention cells, always-on cells, tie cells, fillers, decaps"
+   ],
+   "anchors": {
+    "cmos.gate.static_cmos": "Static CMOS gate structure",
+    "cmos.gate.inverter_vtc": "The CMOS inverter transfer characteristic",
+    "cmos.delay.rc_model": "RC delay models of a gate",
+    "cmos.delay.logical_effort": "Logical effort",
+    "cmos.power.dynamic": "Dynamic power",
+    "cmos.power.leakage": "Leakage power and multi-Vt",
+    "cmos.cell.standard_cell_layout": "Standard-cell layout",
+    "cmos.lib.liberty_nldm": "Liberty NLDM timing tables",
+    "cmos.lib.liberty_ccs_lvf": "CCS and LVF models",
+    "cmos.lib.characterization": "Cell characterization",
+    "cmos.special.lowpower_cells": "Level shifters, isolation and retention cells"
+   }
+  },
+  {
+   "key": "hdl",
+   "domain": "hdl_and_compilers",
+   "prefix": "hdl",
+   "layer": 3,
+   "upstream": [
+    "logic",
+    "graphs",
+    "boolalg",
+    "discrete_math"
+   ],
+   "target": 45,
+   "covers": [
+    "Hardware description languages; RTL; behavioral vs structural modeling",
+    "Verilog, SystemVerilog, VHDL, SystemC, Verilog-AMS, VHDL-AMS: semantics that matter for synthesis and simulation",
+    "Blocking vs nonblocking assignment, always_ff/always_comb, inferred latches, synthesizable subset",
+    "Elaboration, parameters, generate, hierarchy flattening",
+    "Compilers for hardware: lexing/parsing, abstract syntax trees, intermediate representations, static single assignment, control-flow graphs, data-flow analysis",
+    "Classical optimizations on IR: constant propagation, common subexpression elimination, dead-code elimination",
+    "Open-source front ends: Verilator, Icarus Verilog, GHDL, Surelog, UHDM, slang, Yosys frontend (RTLIL)",
+    "CIRCT and MLIR: dialects (HW, Comb, Seq, FIRRTL), lowering; Chisel/FIRRTL",
+    "Domain-specific languages for hardware"
+   ],
+   "anchors": {
+    "hdl.rtl.register_transfer": "Register-transfer level design",
+    "hdl.verilog.blocking_nonblocking": "Blocking and nonblocking assignments",
+    "hdl.verilog.synthesizable_subset": "The synthesizable subset",
+    "hdl.sv.always_ff_comb": "SystemVerilog always_ff and always_comb",
+    "hdl.compile.elaboration": "Elaboration",
+    "hdl.compile.ast": "Abstract syntax trees for HDLs",
+    "hdl.compile.ir": "Intermediate representations for hardware",
+    "hdl.compile.ssa": "Static single assignment",
+    "hdl.compile.dataflow": "Data-flow analysis",
+    "hdl.ir.rtlil": "Yosys RTLIL",
+    "hdl.ir.mlir_circt": "MLIR and CIRCT"
+   }
+  },
+  {
+   "key": "synth",
+   "domain": "logic_synthesis",
+   "prefix": "synth",
+   "layer": 4,
+   "upstream": [
+    "boolalg",
+    "logic",
+    "hdl",
+    "graphs",
+    "opt",
+    "cmos"
+   ],
+   "target": 55,
+   "covers": [
+    "Logic synthesis overview: RTL to optimized Boolean network to mapped netlist",
+    "Two-level minimization: Karnaugh maps, Quine-McCluskey, unate covering, Petrick's method, Espresso (expand, irredundant, reduce)",
+    "Multi-level logic: Boolean networks, algebraic division, kernels and co-kernels, factoring, extraction, substitution, elimination",
+    "Don't cares: satisfiability, observability, external; Boolean resubstitution",
+    "And-inverter graphs, structural hashing, AIG rewriting, refactoring, balancing, FRAIGing, SAT sweeping",
+    "FSM synthesis: state minimization, state encoding",
+    "Retiming (Leiserson-Saxe), pipelining as synthesis",
+    "Arithmetic circuit optimization in synthesis",
+    "E-graphs and equality saturation for logic/datapath optimization",
+    "ABC and Yosys: scripts, passes (proc, opt, techmap, abc), RTLIL to netlist",
+    "What a synthesized netlist preserves vs abstracts"
+   ],
+   "anchors": {
+    "synth.overview.flow": "The logic synthesis flow",
+    "synth.twolevel.quine_mccluskey": "The Quine-McCluskey method",
+    "synth.twolevel.espresso": "The Espresso heuristic minimizer",
+    "synth.multilevel.boolean_network": "Boolean networks",
+    "synth.multilevel.kernels": "Kernels and algebraic division",
+    "synth.dc.dont_cares": "Don't-care conditions",
+    "synth.aig.structure": "And-inverter graphs",
+    "synth.aig.rewriting": "AIG rewriting",
+    "synth.aig.balancing": "AIG balancing",
+    "synth.seq.retiming": "Retiming",
+    "synth.fsm.state_minimization": "FSM state minimization",
+    "synth.egraph.equality_saturation": "E-graphs and equality saturation",
+    "synth.tool.yosys_abc": "Synthesis with Yosys and ABC"
+   }
+  },
+  {
+   "key": "fv",
+   "domain": "formal_verification",
+   "prefix": "fv",
+   "layer": 4,
+   "upstream": [
+    "boolalg",
+    "logic",
+    "hdl",
+    "graphs",
+    "discrete_math"
+   ],
+   "target": 55,
+   "covers": [
+    "Boolean satisfiability, SAT solvers: DPLL, CDCL (unit propagation, conflict analysis, learned clauses, VSIDS, restarts), Tseitin encoding",
+    "Binary decision diagrams: ROBDDs, variable ordering, apply/ite, BDD size blow-up",
+    "Equivalence checking: combinational (miters, SAT sweeping, cut points), sequential equivalence checking",
+    "Model checking: Kripke structures, temporal logic (LTL, CTL), symbolic model checking, state-space explosion",
+    "Bounded model checking, k-induction, invariants, IC3/PDR, CEGAR, abstraction, abstract interpretation",
+    "SMT: theories (bit-vectors, arrays, uninterpreted functions), DPLL(T)",
+    "Theorem proving, automated theorem proving, property checking",
+    "Assertion languages: SVA, PSL; assume/assert/cover",
+    "Symbolic execution, formal apps (X-propagation, connectivity, CDC formal)",
+    "SymbiYosys, ABC pdr, open formal tools"
+   ],
+   "anchors": {
+    "fv.sat.cnf_tseitin": "The Tseitin encoding",
+    "fv.sat.dpll": "DPLL",
+    "fv.sat.cdcl": "Conflict-driven clause learning",
+    "fv.bdd.robdd": "Reduced ordered BDDs",
+    "fv.bdd.variable_order": "BDD variable ordering",
+    "fv.equiv.miter": "Miters for equivalence checking",
+    "fv.equiv.cec": "Combinational equivalence checking",
+    "fv.mc.kripke": "Kripke structures",
+    "fv.mc.ltl": "Linear temporal logic",
+    "fv.mc.ctl": "Computation tree logic",
+    "fv.bmc.unrolling": "Bounded model checking",
+    "fv.induction.k_induction": "k-induction",
+    "fv.ic3.pdr": "IC3 / property-directed reachability",
+    "fv.smt.bitvectors": "SMT over bit-vectors",
+    "fv.sva.assertions": "SystemVerilog assertions"
+   }
+  },
+  {
+   "key": "sim",
+   "domain": "functional_verification",
+   "prefix": "sim",
+   "layer": 4,
+   "upstream": [
+    "hdl",
+    "logic",
+    "graphs",
+    "stat",
+    "boolalg"
+   ],
+   "target": 42,
+   "covers": [
+    "Hardware verification, functional verification, the verification gap",
+    "Logic simulation: event-driven simulation, delta cycles, scheduling regions, four-state logic and X-propagation, cycle-based simulation, compiled simulation (Verilator)",
+    "Testbenches, stimulus, checkers, scoreboards, reference models",
+    "Constrained-random verification, constraint solving for stimulus",
+    "Coverage-driven verification: code coverage, functional coverage, covergroups, coverage closure",
+    "Assertion-based verification in simulation",
+    "UVM and OVM: agents, sequences, drivers, monitors, the phasing model",
+    "Transaction-level modeling, SystemC TLM",
+    "Hardware emulation, FPGA prototyping, hardware acceleration for verification",
+    "Clock-domain crossing and reset-domain crossing verification",
+    "cocotb, Verilator, Icarus Verilog, GHDL in practice"
+   ],
+   "anchors": {
+    "sim.event.event_driven": "Event-driven logic simulation",
+    "sim.event.delta_cycles": "Delta cycles",
+    "sim.event.four_state": "Four-state logic and X propagation",
+    "sim.cycle.compiled": "Cycle-based and compiled simulation",
+    "sim.tb.testbench": "Testbench architecture",
+    "sim.random.constrained": "Constrained-random stimulus",
+    "sim.cov.functional_coverage": "Functional coverage",
+    "sim.cov.code_coverage": "Code coverage",
+    "sim.uvm.architecture": "UVM architecture",
+    "sim.cdc.synchronizers": "CDC verification and synchronizers",
+    "sim.accel.emulation": "Emulation and FPGA prototyping"
+   }
+  },
+  {
+   "key": "csim",
+   "domain": "circuit_simulation",
+   "prefix": "csim",
+   "layer": 4,
+   "upstream": [
+    "numer",
+    "em",
+    "dev",
+    "cmos",
+    "stat",
+    "linear_algebra"
+   ],
+   "target": 50,
+   "covers": [
+    "Electronic circuit simulation, SPICE and its history, SPICE netlists, device models",
+    "Modified nodal analysis: element stamps for R, C, L, sources, controlled sources",
+    "DC operating point: Newton-Raphson on circuit equations, linearized companion models, convergence aids (gmin stepping, source stepping, damping, limiting)",
+    "Transient analysis: companion models for C and L under backward Euler and trapezoidal, BDF/Gear, timestep control from local truncation error, ringing of trapezoidal",
+    "AC small-signal analysis, noise analysis",
+    "Periodic steady state: shooting, harmonic balance; RF circuit simulation",
+    "Sensitivity analysis, corner analysis (PVT), Monte Carlo circuit simulation, device mismatch",
+    "Model order reduction for interconnect (AWE, PRIMA), behavioral macromodeling",
+    "Fast SPICE, mixed-signal simulation, co-simulation",
+    "ngspice and Xyce: running decks, reading output, what numerical machinery each exposes"
+   ],
+   "anchors": {
+    "csim.mna.stamps": "Modified nodal analysis stamps",
+    "csim.mna.voltage_sources": "Voltage sources in MNA",
+    "csim.dc.newton_companion": "Newton-Raphson with companion models",
+    "csim.dc.convergence_aids": "DC convergence aids",
+    "csim.tran.companion_c": "Capacitor companion models",
+    "csim.tran.timestep_control": "Timestep control",
+    "csim.ac.small_signal": "AC small-signal analysis",
+    "csim.pss.harmonic_balance": "Harmonic balance",
+    "csim.var.monte_carlo_corners": "Corners and Monte Carlo in circuit simulation",
+    "csim.mor.prima": "PRIMA and passive reduction",
+    "csim.tool.spice_netlist": "SPICE netlists"
+   }
+  },
+  {
+   "key": "map",
+   "domain": "technology_mapping",
+   "prefix": "map",
+   "layer": 5,
+   "upstream": [
+    "synth",
+    "cmos",
+    "graphs",
+    "opt",
+    "boolalg"
+   ],
+   "target": 35,
+   "covers": [
+    "Technology mapping: covering a subject graph with library patterns",
+    "Tree covering by dynamic programming (DAGON), DAG covering, subject graph decomposition",
+    "Cut enumeration, k-feasible cuts, priority cuts, area flow and exact area recovery",
+    "LUT mapping for FPGAs: FlowMap (depth-optimal), area-oriented LUT mapping",
+    "Boolean matching, NPN classification, supergates",
+    "Load-dependent and delay-oriented mapping using Liberty data",
+    "Post-mapping optimization: gate sizing, buffer insertion (van Ginneken), pin swapping, Vt swapping",
+    "ABC map/amap/if commands and Yosys techmap/dfflibmap/abc"
+   ],
+   "anchors": {
+    "map.tree.dp_covering": "Tree covering by dynamic programming",
+    "map.cut.k_feasible": "k-feasible cuts",
+    "map.cut.priority_cuts": "Priority cuts",
+    "map.lut.flowmap": "FlowMap",
+    "map.match.npn": "NPN classes and Boolean matching",
+    "map.size.gate_sizing": "Gate sizing",
+    "map.buffer.van_ginneken": "Van Ginneken buffer insertion"
+   }
+  },
+  {
+   "key": "hls",
+   "domain": "high_level_synthesis",
+   "prefix": "hls",
+   "layer": 5,
+   "upstream": [
+    "hdl",
+    "synth",
+    "graphs",
+    "opt",
+    "logic"
+   ],
+   "target": 40,
+   "covers": [
+    "High-level synthesis: C/C++/dataflow to RTL, why and where it is used",
+    "Data-flow graphs and control-data-flow graphs",
+    "Scheduling: ASAP, ALAP, mobility, list scheduling, force-directed scheduling, ILP scheduling, SDC-based scheduling, resource-constrained vs latency-constrained",
+    "Allocation and binding: register binding by left-edge and interval graph coloring, functional-unit binding by clique partitioning",
+    "Pipelining, initiation interval, loop unrolling, loop pipelining, modulo scheduling",
+    "Memory partitioning, interface synthesis, dataflow architectures",
+    "Hardware-software co-design, design-space exploration",
+    "Open HLS and IRs: Vitis HLS concepts, CIRCT/Calyx, Bambu"
+   ],
+   "anchors": {
+    "hls.ir.cdfg": "Control-data-flow graphs",
+    "hls.sched.asap_alap": "ASAP and ALAP scheduling",
+    "hls.sched.list": "List scheduling",
+    "hls.sched.ilp": "ILP and SDC scheduling",
+    "hls.bind.left_edge": "Register binding by the left-edge algorithm",
+    "hls.pipe.initiation_interval": "Initiation interval",
+    "hls.pipe.modulo_scheduling": "Modulo scheduling"
+   }
+  },
+  {
+   "key": "sta",
+   "domain": "timing_analysis",
+   "prefix": "sta",
+   "layer": 5,
+   "upstream": [
+    "cmos",
+    "graphs",
+    "logic",
+    "stat",
+    "em",
+    "opt"
+   ],
+   "target": 52,
+   "covers": [
+    "Static timing analysis as graph propagation: timing graph, arcs, arrival time, required time, slack, WNS, TNS",
+    "Setup and hold checks, clock-to-q, recovery/removal, latches and time borrowing",
+    "Delay models: Elmore delay, NLDM table interpolation (slew and load), effective capacitance, slew propagation, wire delay",
+    "Clocks: definitions, generated clocks, clock latency and uncertainty, skew, jitter, CPPR/CRPR",
+    "Timing constraints and SDC: create_clock, set_input_delay, set_output_delay, false paths, multicycle paths, clock groups",
+    "Critical paths, path-based vs graph-based analysis, path enumeration",
+    "Corners and modes: PVT corners, MCMM",
+    "On-chip variation: flat OCV derates, AOCV, POCV, LVF; statistical STA (canonical first-order form, sum and max)",
+    "Incremental timing, timing closure, timing ECOs",
+    "OpenSTA: Liberty + Verilog netlist + SDC + SPEF in, reports out"
+   ],
+   "anchors": {
+    "sta.graph.timing_graph": "The timing graph",
+    "sta.graph.arrival_required": "Arrival and required times",
+    "sta.graph.slack_meaning": "What slack measures",
+    "sta.check.setup_hold": "Setup and hold checks",
+    "sta.delay.elmore": "Elmore delay of an RC tree",
+    "sta.delay.nldm_interpolation": "Interpolating NLDM tables",
+    "sta.clock.skew_jitter": "Clock skew and jitter",
+    "sta.clock.cppr": "Clock reconvergence pessimism removal",
+    "sta.constraint.sdc": "SDC timing constraints",
+    "sta.constraint.exceptions": "False and multicycle paths",
+    "sta.var.ocv_derate": "On-chip variation derates",
+    "sta.var.ssta": "Statistical static timing analysis",
+    "sta.incremental.update": "Incremental timing analysis",
+    "sta.closure.timing_closure": "Timing closure"
+   }
+  },
+  {
+   "key": "dft",
+   "domain": "test_and_dft",
+   "prefix": "dft",
+   "layer": 5,
+   "upstream": [
+    "logic",
+    "synth",
+    "fv",
+    "sim",
+    "stat",
+    "graphs"
+   ],
+   "target": 48,
+   "covers": [
+    "Design for testing, semiconductor testing, manufacturing defects vs faults",
+    "Fault models: stuck-at, transition, path delay, bridging, cell-aware",
+    "Fault simulation (serial, parallel, deductive, concurrent), fault coverage, test coverage, fault collapsing, equivalence and dominance",
+    "ATPG: D-algorithm, PODEM, FAN, SAT-based ATPG, controllability/observability (SCOAP)",
+    "Scan design: scan cells, scan chains, scan insertion, scan chain ordering, launch-on-capture vs launch-on-shift",
+    "Scan compression (EDT-style decompressors and compactors)",
+    "BIST: LFSRs, MISRs, logic BIST, memory BIST (March tests)",
+    "Boundary scan, JTAG, IEEE 1149.1, IEEE 1500, IEEE 1687, STIL",
+    "Automatic test equipment, wafer probing, burn-in, yield analysis, diagnosis, silicon debug, post-silicon validation",
+    "Error correction, redundancy and repair (memory repair)"
+   ],
+   "anchors": {
+    "dft.fault.stuck_at": "The stuck-at fault model",
+    "dft.fault.transition": "Transition faults",
+    "dft.fault.collapsing": "Fault collapsing",
+    "dft.fsim.coverage": "Fault simulation and coverage",
+    "dft.atpg.d_algorithm": "The D-algorithm",
+    "dft.atpg.podem": "PODEM",
+    "dft.atpg.scoap": "SCOAP testability measures",
+    "dft.scan.chain": "Scan chains",
+    "dft.scan.compression": "Scan compression",
+    "dft.bist.lfsr_misr": "LFSRs and MISRs",
+    "dft.mbist.march": "March tests for memories",
+    "dft.jtag.boundary_scan": "Boundary scan and JTAG"
+   }
+  },
+  {
+   "key": "place",
+   "domain": "floorplanning_and_placement",
+   "prefix": "place",
+   "layer": 6,
+   "upstream": [
+    "graphs",
+    "geom",
+    "opt",
+    "numer",
+    "sta",
+    "map",
+    "cmos",
+    "fab"
+   ],
+   "target": 50,
+   "covers": [
+    "Physical design overview; floorplanning objectives; die, core, rows and sites; LEF/DEF as the physical representation (what LEF abstracts, what DEF records)",
+    "Floorplan representations: slicing floorplans, Polish expressions, sequence pairs, B*-trees; floorplanning by simulated annealing",
+    "Macro placement, pin assignment, I/O placement, power planning handoff",
+    "Wirelength models: HPWL, clique/star, Steiner estimates; partitioning-based (min-cut) placement",
+    "Global placement: quadratic placement (B2B net model), force-directed placement, analytical nonlinear placement (log-sum-exp and weighted-average wirelength, density penalty), electrostatics-based placement (ePlace/RePlAce, FFT Poisson solve, Nesterov), DREAMPlace",
+    "Legalization (Tetris, Abacus) and detailed placement (cell swapping, sliding windows, independent-set matching)",
+    "Timing-driven placement (net weighting), congestion-driven and routability-driven placement",
+    "Placement optimization: buffering and sizing during placement"
+   ],
+   "anchors": {
+    "place.overview.rows_sites": "Rows, sites and the placement region",
+    "place.format.lef_def": "LEF and DEF",
+    "place.floorplan.slicing": "Slicing floorplans",
+    "place.floorplan.sequence_pair": "Sequence pairs",
+    "place.wl.hpwl": "Half-perimeter wirelength",
+    "place.global.quadratic": "Quadratic placement",
+    "place.global.smooth_wirelength": "Smooth wirelength models",
+    "place.global.electrostatic": "Electrostatics-based placement",
+    "place.legal.abacus": "Legalization with Abacus",
+    "place.detail.swap": "Detailed placement",
+    "place.driven.timing": "Timing-driven placement",
+    "place.driven.routability": "Routability-driven placement",
+    "place.macro.placement": "Macro placement"
+   }
+  },
+  {
+   "key": "analog",
+   "domain": "analog_mixed_signal_rf",
+   "prefix": "analog",
+   "layer": 6,
+   "upstream": [
+    "csim",
+    "cmos",
+    "dev",
+    "em",
+    "opt",
+    "stat"
+   ],
+   "target": 45,
+   "covers": [
+    "Analog integrated circuit design and its automation gap",
+    "Small-signal models, gm/Id methodology, intrinsic gain, common-source and differential pairs, current mirrors",
+    "Operational amplifiers, comparators, stability and compensation (phase margin)",
+    "Data converters (ADC, DAC), phase-locked loops, voltage-controlled oscillators",
+    "Analog sizing as optimization: equation-based, simulation-based, Bayesian optimization, PVT robustness",
+    "Matching, mismatch (Pelgrom), common-centroid and interdigitated layout, analog layout automation (MAGICAL/ALIGN style)",
+    "RF IC design, microwave circuits, S-parameters, noise figure",
+    "Mixed-signal design and simulation, Verilog-A, real-number modeling, behavioral models",
+    "Specialized branches: photonic integrated circuits and electronic-photonic design automation, MEMS design, power electronics and power semiconductor devices, neuromorphic hardware",
+    "Open analog flow: xschem, ngspice, Magic, Netgen"
+   ],
+   "anchors": {
+    "analog.ss.gm_id": "The gm/Id methodology",
+    "analog.amp.opamp_two_stage": "The two-stage op-amp",
+    "analog.amp.stability_phase_margin": "Stability and phase margin",
+    "analog.match.pelgrom": "Mismatch and Pelgrom's law",
+    "analog.layout.common_centroid": "Common-centroid layout",
+    "analog.size.optimization": "Analog sizing as optimization",
+    "analog.conv.adc": "Analog-to-digital converters",
+    "analog.pll.loop": "Phase-locked loops",
+    "analog.ms.verilog_a": "Verilog-A behavioral models"
+   }
+  },
+  {
+   "key": "fpga",
+   "domain": "fpga_eda",
+   "prefix": "fpga",
+   "layer": 6,
+   "upstream": [
+    "synth",
+    "map",
+    "graphs",
+    "opt",
+    "sta",
+    "logic"
+   ],
+   "target": 35,
+   "covers": [
+    "FPGA architecture: LUTs, CLBs/slices, carry chains, DSP and BRAM blocks, routing architecture (switch boxes, connection boxes, channel width)",
+    "FPGA synthesis and LUT mapping (links to technology mapping)",
+    "Packing (clustering), FPGA placement by simulated annealing (VPR), timing-driven placement",
+    "FPGA routing: routing-resource graphs, PathFinder negotiated congestion",
+    "Timing analysis on FPGAs, bitstream generation, partial reconfiguration",
+    "Open toolchains: Yosys + nextpnr, Project IceStorm, Project Trellis, Project X-Ray, VPR/VTR; vendor flows: AMD Vivado/Vitis, Intel Quartus Prime, Lattice Radiant, Microchip Libero"
+   ],
+   "anchors": {
+    "fpga.arch.lut": "Lookup tables",
+    "fpga.arch.routing_architecture": "FPGA routing architecture",
+    "fpga.pack.clustering": "Packing",
+    "fpga.place.vpr_annealing": "VPR placement by annealing",
+    "fpga.route.pathfinder": "PathFinder negotiated-congestion routing",
+    "fpga.flow.open_toolchain": "The open FPGA toolchain"
+   }
+  },
+  {
+   "key": "cts",
+   "domain": "clock_and_power",
+   "prefix": "cts",
+   "layer": 7,
+   "upstream": [
+    "place",
+    "sta",
+    "em",
+    "cmos",
+    "graphs",
+    "opt",
+    "numer"
+   ],
+   "target": 45,
+   "covers": [
+    "Clock distribution networks, clock tree synthesis objectives (skew, latency, power, slew)",
+    "H-trees, clock meshes, spines; zero-skew trees, deferred-merge embedding (DME), bounded-skew trees",
+    "Useful skew and clock scheduling as optimization",
+    "Clock gating (ICG cells), clock power",
+    "Power distribution networks: rings, straps, grids; IR drop (static and dynamic) as a sparse linear system; decoupling capacitors",
+    "Power integrity, voltage drop, electromigration in power grids",
+    "Power gating, multi-voltage design, voltage islands, UPF/CPF power intent, level shifters/isolation/retention in the flow",
+    "Power analysis: vectorless vs vector-based, activity propagation"
+   ],
+   "anchors": {
+    "cts.objective.skew_latency": "Clock tree objectives",
+    "cts.topology.h_tree": "H-trees",
+    "cts.zeroskew.dme": "Deferred-merge embedding",
+    "cts.skew.useful_skew": "Useful skew",
+    "cts.gating.icg": "Clock gating",
+    "cts.pdn.grid": "Power distribution grids",
+    "cts.pdn.ir_drop": "IR drop analysis",
+    "cts.pdn.decap": "Decoupling capacitance",
+    "cts.pdn.electromigration": "Electromigration in power grids",
+    "cts.lowpower.upf": "UPF power intent",
+    "cts.lowpower.power_gating": "Power gating"
+   }
+  },
+  {
+   "key": "route",
+   "domain": "routing",
+   "prefix": "route",
+   "layer": 7,
+   "upstream": [
+    "graphs",
+    "geom",
+    "place",
+    "opt",
+    "fab",
+    "sta"
+   ],
+   "target": 45,
+   "covers": [
+    "Routing as constrained graph search and network optimization; global vs detailed routing",
+    "Routing grids, gcells, tracks and layers, preferred directions",
+    "Maze routing, Lee algorithm, Soukup and Hadlock variants, A* routing, line probing",
+    "Pattern routing (L, Z), Steiner-based net decomposition, FLUTE",
+    "Global routing: ILP/multicommodity-flow formulation, negotiated congestion (PathFinder-style), rip-up and reroute, congestion maps and overflow",
+    "Layer assignment, via minimization",
+    "Detailed routing: track assignment, DRC-aware routing, design-rule costs, pin access",
+    "Channel routing: left-edge algorithm, horizontal and vertical constraint graphs, doglegs; switchbox routing",
+    "Timing-driven routing, crosstalk-aware routing, antenna-aware routing",
+    "Open routers: FastRoute, TritonRoute, OpenROAD grt/drt"
+   ],
+   "anchors": {
+    "route.grid.gcells_tracks": "Routing grids, gcells and tracks",
+    "route.maze.lee": "Lee's maze router",
+    "route.maze.astar_routing": "A* routing",
+    "route.pattern.l_z": "Pattern routing",
+    "route.global.congestion": "Routing congestion and overflow",
+    "route.global.negotiation": "Negotiated-congestion global routing",
+    "route.global.rip_up_reroute": "Rip-up and reroute",
+    "route.layer.via_minimization": "Layer assignment and via minimization",
+    "route.detail.drc_aware": "DRC-aware detailed routing",
+    "route.channel.left_edge": "Channel routing by the left-edge algorithm"
+   }
+  },
+  {
+   "key": "extract",
+   "domain": "extraction_and_signoff",
+   "prefix": "extract",
+   "layer": 8,
+   "upstream": [
+    "route",
+    "em",
+    "numer",
+    "sta",
+    "csim",
+    "cts",
+    "fab"
+   ],
+   "target": 38,
+   "covers": [
+    "Parasitic extraction: resistance, capacitance (ground, coupling, fringe) and inductance extraction",
+    "Pattern-matching (rule-based) extraction vs field solvers (random-walk, boundary element, FEM)",
+    "SPEF: what it records; RC network reduction",
+    "Signal integrity: crosstalk, coupling-induced delay change, glitch/noise analysis, Miller factor",
+    "Signoff: timing, power, EM/IR, SI, physical; engineering change orders (ECO), PPA closure, the signoff checklist"
+   ],
+   "anchors": {
+    "extract.cap.coupling": "Coupling capacitance",
+    "extract.cap.field_solver": "Field-solver capacitance extraction",
+    "extract.res.wire_resistance": "Wire and via resistance",
+    "extract.format.spef": "SPEF",
+    "extract.reduce.rc_reduction": "RC network reduction",
+    "extract.si.crosstalk_delay": "Crosstalk-induced delay",
+    "extract.si.glitch": "Crosstalk glitches",
+    "extract.signoff.eco": "Engineering change orders",
+    "extract.signoff.checklist": "The signoff checklist"
+   }
+  },
+  {
+   "key": "pv",
+   "domain": "physical_verification_dfm",
+   "prefix": "pv",
+   "layer": 8,
+   "upstream": [
+    "geom",
+    "fab",
+    "route",
+    "graphs",
+    "place",
+    "cmos"
+   ],
+   "target": 40,
+   "covers": [
+    "Physical verification overview; GDSII and OASIS: what a layout stream preserves",
+    "Design rule checking: width, spacing, enclosure, extension, density, antenna; rule decks; edge-based and hierarchical DRC engines",
+    "Layout versus schematic: device recognition, netlist extraction, graph-isomorphism matching (Netgen-style partition refinement)",
+    "Electrical rule checking",
+    "Antenna effects and fixes, metal fill and density rules",
+    "DFM: lithography hotspot detection, double-patterning coloring checks, critical area, recommended rules",
+    "Tape-out, mask data handoff, signoff physical checks",
+    "KLayout, Magic, Netgen in practice"
+   ],
+   "anchors": {
+    "pv.format.gds_oasis": "GDSII and OASIS",
+    "pv.drc.rule_types": "Design rule types",
+    "pv.drc.engine": "How a DRC engine works",
+    "pv.drc.hierarchical": "Hierarchical DRC",
+    "pv.lvs.extraction": "Layout netlist extraction",
+    "pv.lvs.graph_matching": "LVS as graph matching",
+    "pv.antenna.rules": "Antenna rules",
+    "pv.fill.density": "Metal fill and density",
+    "pv.dfm.hotspots": "Lithography hotspot detection",
+    "pv.tapeout.handoff": "Tape-out"
+   }
+  },
+  {
+   "key": "pcb",
+   "domain": "pcb_design",
+   "prefix": "pcb",
+   "layer": 9,
+   "upstream": [
+    "em",
+    "geom",
+    "route",
+    "graphs",
+    "flow",
+    "pv"
+   ],
+   "target": 35,
+   "covers": [
+    "Printed circuit boards, schematic capture, component libraries, footprints and land patterns, bill of materials",
+    "PCB layout, autorouters, PCB stackup, controlled impedance, differential signaling and differential pairs, length matching",
+    "Vias: through-hole, blind, buried, microvias; HDI; flexible and rigid-flex PCBs",
+    "Through-hole vs surface-mount technology, design for assembly, pick-and-place, reflow soldering",
+    "PCB DRC/ERC, design for test, Gerber and ODB++ outputs, IPC standards",
+    "Board bring-up and hardware debugging; signal and power integrity at board level (IBIS, IBIS-AMI, Touchstone)",
+    "Tools: KiCad, LibrePCB, gEDA/Lepton, Altium Designer, Cadence Allegro/OrCAD, Siemens Xpedition/PADS, Zuken, Autodesk EAGLE"
+   ],
+   "anchors": {
+    "pcb.flow.schematic_to_layout": "The PCB design flow",
+    "pcb.stackup.controlled_impedance": "Stackups and controlled impedance",
+    "pcb.diff.pairs": "Differential pairs",
+    "pcb.via.types": "Via types",
+    "pcb.output.gerber_odb": "Gerber and ODB++",
+    "pcb.si.ibis": "IBIS models"
+   }
+  },
+  {
+   "key": "pkg",
+   "domain": "packaging_and_integration",
+   "prefix": "pkg",
+   "layer": 10,
+   "upstream": [
+    "pcb",
+    "em",
+    "fab",
+    "cts",
+    "numer",
+    "stat",
+    "pv",
+    "dev"
+   ],
+   "target": 42,
+   "covers": [
+    "Electronic and IC packaging: wire bonding, flip chip, BGA, package substrates, organic and glass substrates",
+    "Wafer-level packaging, fan-out WLP, redistribution layers",
+    "System in package, multi-chip modules, chiplets, heterogeneous integration, 2.5D integration, interposers, silicon interposers, 3D ICs, TSVs, microbumps, hybrid bonding",
+    "Die-to-die interconnect, UCIe, advanced packaging, package-board co-design",
+    "Thermal: heat transfer, conduction, thermal resistance, thermal simulation, self-heating, Joule heating, power density, hot spots, thermal management",
+    "Mechanical: thermomechanical stress, CTE mismatch, package warpage, FEA",
+    "Reliability: electromigration, stress migration, interconnect reliability, dielectric breakdown, aging; multiphysics simulation; thermal-electrical co-design"
+   ],
+   "anchors": {
+    "pkg.basic.flip_chip_bga": "Flip chip and BGA packages",
+    "pkg.adv.interposer_25d": "2.5D integration on interposers",
+    "pkg.adv.3dic_tsv": "3D ICs and TSVs",
+    "pkg.adv.hybrid_bonding": "Hybrid bonding",
+    "pkg.chiplet.ucie": "Chiplets and UCIe",
+    "pkg.thermal.resistance_network": "Thermal resistance networks",
+    "pkg.thermal.simulation": "Thermal simulation",
+    "pkg.mech.cte_warpage": "CTE mismatch and warpage",
+    "pkg.rel.electromigration": "Electromigration and Black's equation"
+   }
+  },
+  {
+   "key": "infra",
+   "domain": "eda_software_infrastructure",
+   "prefix": "infra",
+   "layer": 11,
+   "upstream": [
+    "flow",
+    "hdl",
+    "synth",
+    "map",
+    "sta",
+    "place",
+    "route",
+    "cts",
+    "extract",
+    "pv",
+    "graphs",
+    "geom",
+    "fab",
+    "csim",
+    "fv",
+    "sim"
+   ],
+   "target": 50,
+   "covers": [
+    "EDA software architecture: design databases (OpenDB, OpenAccess), object models, hierarchy and instancing",
+    "Parsing industry formats: Verilog netlists, Liberty, LEF/DEF, SDC, SPEF, GDS; EDIF, IP-XACT, UPF; Si2 standards",
+    "Tcl and Python APIs, domain-specific languages, plug-in architectures, APIs",
+    "Incremental computation and dependency graphs (incremental STA, incremental legalization), memory management, cache locality, serialization",
+    "Parallel algorithms, concurrency, determinism and reproducible builds, distributed task scheduling, workflow orchestration, cloud computing, containers, Linux",
+    "Software engineering for tools: version control, regression testing, continuous integration, QoR tracking, build systems, C++ and Rust in EDA",
+    "Open-source EDA hands-on: Yosys, ABC, OpenROAD (OpenDB, OpenSTA, RePlAce, TritonRoute, OpenRCX), OpenROAD-flow-scripts and its GCD design, OpenLane 2, OpenTimer, KLayout, Magic, Netgen, ngspice, Xyce, Xschem, Verilator, cocotb, SymbiYosys",
+    "Open PDKs: SkyWater SKY130, GF180MCU, IHP SG13G2; open-source hardware; what open access does not give you (production readiness, fab access)",
+    "License management, commercial tool economics"
+   ],
+   "anchors": {
+    "infra.db.design_database": "Design databases",
+    "infra.db.opendb": "OpenDB",
+    "infra.parse.liberty_parser": "Parsing Liberty",
+    "infra.parse.def_parser": "Parsing LEF and DEF",
+    "infra.api.tcl_python": "Tcl and Python tool APIs",
+    "infra.incr.dependency_graph": "Incremental computation and dependency graphs",
+    "infra.par.deterministic_parallel": "Deterministic parallelism",
+    "infra.qa.regression_qor": "Regression testing and QoR tracking",
+    "infra.flow.orfs": "OpenROAD-flow-scripts",
+    "infra.flow.openlane": "OpenLane 2",
+    "infra.pdk.sky130": "The SKY130 open PDK",
+    "infra.arch.plugin": "Plug-in architectures"
+   }
+  },
+  {
+   "key": "mleda",
+   "domain": "ml_for_eda",
+   "prefix": "mleda",
+   "layer": 12,
+   "upstream": [
+    "machine_learning",
+    "graphs",
+    "place",
+    "route",
+    "sta",
+    "opt",
+    "synth",
+    "analog",
+    "fv",
+    "infra",
+    "stat"
+   ],
+   "target": 38,
+   "covers": [
+    "Machine learning for electronic design automation: where learning helps and where it cannot replace algorithms, physics and verification",
+    "Graph neural networks for circuits and netlists",
+    "Prediction tasks: timing prediction, congestion prediction, DRC hotspot prediction, IR-drop prediction; datasets (CircuitNet)",
+    "Reinforcement learning for placement (the AlphaChip debate and reproducibility), RL for synthesis recipes",
+    "Surrogate modeling, active learning, Bayesian optimization for analog sizing and flow tuning",
+    "Differentiable optimization: differentiable placement and timing (DREAMPlace, differentiable STA)",
+    "Learning-based routing, generative circuit design",
+    "LLMs for RTL generation, assertion generation, script generation; benchmarks (VerilogEval, RTLLM); evaluation pitfalls"
+   ],
+   "anchors": {
+    "mleda.gnn.netlist_gnn": "Graph neural networks on netlists",
+    "mleda.predict.congestion": "Congestion prediction",
+    "mleda.predict.timing": "Timing prediction",
+    "mleda.rl.placement": "Reinforcement learning for placement",
+    "mleda.surrogate.active_learning": "Surrogates and active learning",
+    "mleda.diff.differentiable_placement": "Differentiable placement",
+    "mleda.llm.rtl_generation": "LLMs for RTL generation",
+    "mleda.eval.benchmarks": "Benchmarks and evaluation for ML in EDA"
+   }
+  },
+  {
+   "key": "agentic",
+   "domain": "agent_first_eda",
+   "prefix": "agentic",
+   "layer": 13,
+   "upstream": [
+    "infra",
+    "mleda",
+    "flow",
+    "sta",
+    "place",
+    "route",
+    "extract",
+    "pv",
+    "synth",
+    "fv",
+    "sim",
+    "opt"
+   ],
+   "target": 45,
+   "covers": [
+    "Agent-first EDA architecture: tools as callable engines for AI agents rather than GUIs for humans",
+    "The four-layer engine model: immutable core (correctness, legality, numerical kernel), strategy/policy (heuristics: cost functions, move sets, orderings), parameters (weights, thresholds, modes), observation hooks (where an agent reads state and injects behavior)",
+    "Per-engine core vs change surface (placer, router, timer, extractor)",
+    "Skills: an engine packaged with source, build, golden tests and a plain-language manifest; skill selection by manifest; skill libraries",
+    "The harness loop: request, model edit, incremental build, golden tests, failure feedback, diff for human approval",
+    "Change tiers: Tier 1 config (no recompile), Tier 2 plug-in at an extension point, Tier 3 core edit (human-approved)",
+    "Seams and extension points: narrow stable interfaces, abstract base plus factory, frozen extension ABI, coarse-grained plugin boundaries (per batch, not per cell) to keep the hot kernel fast; example seam: a derate provider for timing (flat OCV, AOCV, POCV providers, custom margins)",
+    "Golden and differential testing; QoR baselines; nothing promoted without passing",
+    "Sandboxing, resource limits, IP boundaries, on-site/offline deployment, determinism and seedability",
+    "The skill flywheel: identify, iterate as plug-in, validate, promote to compiled library skill; a domain brain model that learns skills and when to pick them",
+    "Fast vs accurate engines; fast-skill continuous modeling loops; surrogate/fast modes; deciding where to recurse",
+    "Tool-grounded reinforcement learning: deterministic solvers as reward; reward design; reward hacking risks",
+    "Model abstraction layers, model swappability, open-weights vs API models and the roles each can play",
+    "MCP and tool interfaces for EDA engines; multi-agent orchestration; agentic signoff and ECO loops; design-space exploration agents",
+    "Evaluating agents on EDA: compile-pass rate, skill-edit correctness, QoR deltas; the industry landscape of agentic EDA (super-agents, domain models)"
+   ],
+   "anchors": {
+    "agentic.engine.four_layer": "The four-layer engine model",
+    "agentic.engine.core_vs_surface": "Core versus change surface",
+    "agentic.skill.manifest": "Skills and manifests",
+    "agentic.skill.selection": "Selecting a skill from manifests",
+    "agentic.harness.loop": "The edit-build-test harness loop",
+    "agentic.tiers.change": "Change tiers: config, plug-in, core",
+    "agentic.seam.extension_point": "Seams and extension points",
+    "agentic.verify.golden_differential": "Golden and differential testing",
+    "agentic.safety.sandbox_ip": "Sandboxing and the IP boundary",
+    "agentic.flywheel.skill_promotion": "The skill flywheel",
+    "agentic.brain.domain_model": "A domain brain model",
+    "agentic.loop.fast_accurate": "Fast and accurate engines in a modeling loop",
+    "agentic.rl.tool_grounded": "Tool-grounded reinforcement learning",
+    "agentic.mcp.tool_interface": "Engines as agent tools over MCP",
+    "agentic.signoff.eco_loop": "Agentic signoff and ECO loops",
+    "agentic.eval.skill_benchmarks": "Benchmarks for agentic EDA"
+   }
+  }
+ ]
+}

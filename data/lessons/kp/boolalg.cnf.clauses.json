@@ -1,0 +1,5 @@
+[
+  {"label": "Clauses and assignments", "section": "Clauses and assignments", "subgoals": ["Evaluate each literal under the assignment", "Mark a clause satisfied if any literal is true", "Count the falsified clauses"]},
+  {"label": "What one clause forbids", "section": "What one clause forbids", "subgoals": ["Find the single assignment of the clause's variables that falsifies it", "Leave the other variables free", "Raise 2 to the number of free variables"]},
+  {"label": "CNF size of familiar functions", "section": "CNF size of familiar functions", "subgoals": ["Write one clause per OFF row for the canonical CNF", "Note that parity has no shorter CNF", "Count the clauses"]}
+]

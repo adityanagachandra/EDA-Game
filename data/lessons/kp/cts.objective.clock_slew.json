@@ -1,0 +1,5 @@
+[
+  {"label": "The single-pole estimate", "section": "The single-pole estimate", "subgoals": ["Write the RC step response", "Find the 10% and 90% crossing times", "Multiply RC by ln 9 to get the transition time"]},
+  {"label": "Maximum load for a slew limit", "section": "Maximum load for a slew limit", "subgoals": ["Set the slew estimate equal to the limit", "Solve for the largest capacitance", "Convert ohm-femtofarads to picoseconds"]},
+  {"label": "From load budget to fanout", "section": "From load budget to fanout", "subgoals": ["Compute the load budget from the slew limit", "Add pin and wire capacitance per sink", "Take the floor of the budget divided by the per-sink load"]}
+]

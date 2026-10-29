@@ -1,0 +1,29 @@
+[
+ {
+  "label": "What HLS turns into what",
+  "section": "What HLS turns into what",
+  "subgoals": [
+   "Name the untimed input and the clocked RTL output",
+   "List what the source fixes: arithmetic and dependences",
+   "List what HLS adds: cycles, unit counts, sharing and interfaces"
+  ]
+ },
+ {
+  "label": "The steps of the flow",
+  "section": "The steps of the flow",
+  "subgoals": [
+   "Lower the C to an SSA control-data-flow graph",
+   "Run allocation, then scheduling, then binding",
+   "Emit the datapath, the FSM controller and the interfaces"
+  ]
+ },
+ {
+  "label": "Where HLS fits and where it struggles",
+  "section": "Where HLS fits and where it struggles",
+  "subgoals": [
+   "Match HLS to loop-heavy algorithmic kernels",
+   "Rule out unbounded recursion and dynamic allocation",
+   "Treat the QoR report as an estimate to confirm with co-simulation and implementation"
+  ]
+ }
+]

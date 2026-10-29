@@ -1,0 +1,5 @@
+[
+  {"label": "Random variables and constraints define a solution space", "section": "Random variables and constraints define a solution space", "subgoals": ["Declare random variables and their constraints", "Read all constraints as one simultaneous condition", "Check the return value of randomize for an unsatisfiable set"]},
+  {"label": "Counting solutions", "section": "Counting solutions", "subgoals": ["Enumerate the legal values of y for each value of x", "Sum the counts to get the size of the solution space", "Remove the pairs a second constraint excludes"]},
+  {"label": "Uniform over solutions, not uniform per variable", "section": "Uniform over solutions, not uniform per variable", "subgoals": ["Assign probability 1 over the number of solutions to each legal assignment", "Count the solutions with a given value of one variable", "Divide by the total to get that value's probability"]}
+]

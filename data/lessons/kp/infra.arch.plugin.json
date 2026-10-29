@@ -1,0 +1,5 @@
+[
+  {"label": "Registries and factories", "section": "Registries and factories", "subgoals": ["Define an abstract interface the core calls", "Register each implementation's factory under a unique name", "Construct the implementation the configuration names"]},
+  {"label": "Compiled-in modules versus loaded libraries", "section": "Compiled-in modules versus loaded libraries", "subgoals": ["Choose between compiling a module in and loading it at run time", "Identify the ABI assumptions a loaded C++ plug-in makes", "Prefer a C-callable boundary with plain structs and handles"]},
+  {"label": "Versioning the plug-in contract", "section": "Versioning the plug-in contract", "subgoals": ["Add a version or size field and append fields only", "Check the plug-in's declared version at load time", "Pass state explicitly instead of through globals"]}
+]

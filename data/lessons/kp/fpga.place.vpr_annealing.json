@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The Metropolis acceptance rule",
+  "section": "The Metropolis acceptance rule",
+  "subgoals": [
+   "Accept every move with zero or negative cost change",
+   "Compute e to the minus delta C over T for uphill moves",
+   "Accept the uphill move when a uniform draw falls below it"
+  ]
+ },
+ {
+  "label": "Evaluating a swap",
+  "section": "Evaluating a swap",
+  "subgoals": [
+   "Collect the nets touching either swapped block",
+   "Recompute those nets with the blocks exchanged",
+   "Subtract the old cost from the new"
+  ]
+ },
+ {
+  "label": "Choosing a temperature",
+  "section": "Choosing a temperature",
+  "subgoals": [
+   "Set e to the minus delta C over T equal to p",
+   "Solve T as minus delta C over ln p",
+   "Relate the temperature to typical move sizes in the schedule"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Bit-vector terms and wraparound", "section": "Bit-vector terms and wraparound", "subgoals": ["Reduce every arithmetic result modulo 2^n", "Apply shifts by dropping bits and filling with 0 or the sign bit", "Read the result as an unsigned integer"]},
+  {"label": "Bit-blasting cost", "section": "Bit-blasting cost", "subgoals": ["Count one half adder and n - 1 full adders", "Charge 7 clauses per half adder and 17 per full adder", "Add the operand bits and gate outputs to count variables"]},
+  {"label": "Signed interpretation", "section": "Signed interpretation", "subgoals": ["Compute the n-bit result pattern", "Weight the top bit by minus 2 to the power n - 1", "Report the signed value and note any overflow"]}
+]

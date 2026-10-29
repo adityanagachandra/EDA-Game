@@ -1,0 +1,5 @@
+[
+  {"label": "Iterating the coupling", "section": "Iterating the coupling", "subgoals": ["Compute the power at the current temperature", "Update the temperature from the power", "Update the resistance and repeat"]},
+  {"label": "The converged temperature", "section": "The converged temperature", "subgoals": ["Compute the loop gain of the coupling", "Divide the uncoupled rise by one minus the gain", "Add the rise to the ambient temperature"]},
+  {"label": "Thermal runaway", "section": "Thermal runaway", "subgoals": ["Set the loop gain equal to one", "Solve for the critical current", "Check that the operating point keeps margin to runaway"]}
+]

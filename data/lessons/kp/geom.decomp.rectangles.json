@@ -1,0 +1,5 @@
+[
+  {"label": "Reflex vertices", "section": "Reflex vertices", "subgoals": ["Classify each vertex by the turn direction", "Use convex minus reflex equals 4", "Compute the reflex count from the vertex count"]},
+  {"label": "Chords and the r minus g plus 1 formula", "section": "Chords and the r minus g plus 1 formula", "subgoals": ["Find the chords that join two reflex vertices through the interior", "Compute the largest set of non-intersecting chords by bipartite matching", "Evaluate r minus g plus 1"]},
+  {"label": "Holes and degenerate cases", "section": "Holes and degenerate cases", "subgoals": ["Count reflex vertices on the outer ring and on every hole", "Find the largest non-intersecting chord set", "Evaluate r minus g minus h plus 1"]}
+]

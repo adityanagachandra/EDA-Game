@@ -1,0 +1,5 @@
+[
+  {"label": "Reset establishes the initial state", "section": "Reset establishes the initial state", "subgoals": ["Force the state register to the initial code at reset", "Distinguish synchronous from asynchronous reset", "Reset control state even when datapath registers skip reset"]},
+  {"label": "Reachable versus unreachable states", "section": "Reachable versus unreachable states", "subgoals": ["Search the transition graph from the reset state", "Mark codes not reached as unreachable", "Use unreachable codes as don't-cares only when equivalence is checked from reset"]},
+  {"label": "Illegal states and recovery", "section": "Illegal states and recovery", "subgoals": ["Define illegal codes as those outside the legal state set", "Compare don't-care treatment with explicit recovery logic", "State the bounded-recovery property a formal tool checks"]}
+]

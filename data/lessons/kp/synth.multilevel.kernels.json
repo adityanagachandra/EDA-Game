@@ -1,0 +1,5 @@
+[
+  {"label": "Cube-free quotients and kernels", "section": "Cube-free quotients and kernels", "subgoals": ["Check whether any literal appears in every cube", "Divide F by candidate cubes and keep the cube-free quotients", "Count F itself as a kernel when it is cube-free"]},
+  {"label": "Enumerating kernels and co-kernels", "section": "Enumerating kernels and co-kernels", "subgoals": ["Divide by each literal that appears in two or more cubes", "Strip the largest common cube to make each quotient cube-free", "Record each kernel with every co-kernel that produces it"]},
+  {"label": "Levels and the intersection theorem", "section": "Levels and the intersection theorem", "subgoals": ["Test each kernel for kernels other than itself", "Classify the kernels without proper kernels as level 0", "Use kernel intersections of two cubes or more to find common divisors"]}
+]

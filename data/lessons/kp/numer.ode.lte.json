@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Taylor expansion of one step",
+  "section": "Taylor expansion of one step",
+  "subgoals": [
+   "Expand the exact solution in a Taylor series over the step",
+   "Identify the first term the method drops",
+   "Evaluate that term with the step size and derivative"
+  ]
+ },
+ {
+  "label": "Estimating the error from divided differences",
+  "section": "Estimating the error from divided differences",
+  "subgoals": [
+   "Compute the first divided differences between accepted points",
+   "Divide their difference by the total time span",
+   "Double the result to estimate the second derivative"
+  ]
+ },
+ {
+  "label": "Error constants of BE, trapezoidal and BDF2",
+  "section": "Error constants of BE, trapezoidal and BDF2",
+  "subgoals": [
+   "Pick the leading error term for the method",
+   "Estimate the needed derivative from divided differences",
+   "Multiply by the step power and the error constant"
+  ]
+ }
+]

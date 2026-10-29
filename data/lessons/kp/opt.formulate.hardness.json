@@ -1,0 +1,29 @@
+[
+  {
+    "label": "How fast enumeration runs out",
+    "section": "How fast enumeration runs out",
+    "subgoals": [
+      "Take the base-10 logarithm of the search-space size",
+      "Subtract the logarithm of the evaluation rate",
+      "Read the result as a power of ten seconds and compare it with a real budget"
+    ]
+  },
+  {
+    "label": "What NP-hardness does and does not say",
+    "section": "What NP-hardness does and does not say",
+    "subgoals": [
+      "State hardness as a worst-case claim about all instances",
+      "Separate the cost per node from the number of nodes in branch and bound",
+      "Look for convexity or graph structure that makes an instance class easy"
+    ]
+  },
+  {
+    "label": "Engineering under hardness",
+    "section": "Engineering under hardness",
+    "subgoals": [
+      "Report an optimality gap whenever a bound is available",
+      "Estimate empirical complexity from run times at two sizes",
+      "Choose relaxation, decomposition, approximation or search to scale"
+    ]
+  }
+]

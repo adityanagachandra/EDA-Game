@@ -1,0 +1,5 @@
+[
+  {"label": "The Weibull failure distribution", "section": "The Weibull failure distribution", "subgoals": ["Divide the time by the characteristic life", "Raise the ratio to the shape parameter", "Compute one minus the exponential of its negative"]},
+  {"label": "Time to a target failure fraction", "section": "Time to a target failure fraction", "subgoals": ["Take minus the natural log of one minus the target fraction", "Raise it to one over the shape parameter", "Multiply by the characteristic life"]},
+  {"label": "Scaling from test structures to a chip", "section": "Scaling from test structures to a chip", "subgoals": ["Form the ratio of test area to chip area", "Raise it to one over the shape parameter", "Multiply the test characteristic life by that factor"]}
+]

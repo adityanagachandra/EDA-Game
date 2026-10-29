@@ -1,0 +1,5 @@
+[
+  {"label": "Average rush current", "section": "Average rush current", "subgoals": ["Compute the charge needed to restore the rail", "Divide by the ramp time", "Convert nanocoulombs per nanosecond to milliamps"]},
+  {"label": "The shortest safe ramp", "section": "The shortest safe ramp", "subgoals": ["Compute the charge to deliver", "Divide by the current limit", "Note that the peak exceeds the average"]},
+  {"label": "Staged switch turn-on", "section": "Staged switch turn-on", "subgoals": ["Write the average current for k groups", "Solve for the smallest group count", "Describe the weak-then-strong turn-on"]}
+]

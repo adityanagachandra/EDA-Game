@@ -1,0 +1,5 @@
+[
+  {"label": "Packed arrays", "section": "Packed arrays", "subgoals": ["Multiply the packed dimensions to get the vector width", "Select along the leftmost packed dimension first", "Choose four-state logic or two-state bit by intent"]},
+  {"label": "Packed structs", "section": "Packed structs", "subgoals": ["Sum the field widths of the packed struct", "Place the first field in the most significant bits", "Multiply by the count of a packed array of structs"]},
+  {"label": "Unpacked arrays and selects", "section": "Unpacked arrays and selects", "subgoals": ["Count unpacked elements separately from the packed width", "Select unpacked dimensions before packed ones", "Compute the width that remains after each index"]}
+]

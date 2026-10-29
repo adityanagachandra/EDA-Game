@@ -1,0 +1,5 @@
+[
+  {"label": "Backward selection", "section": "Backward selection", "subgoals": ["Seed the worklist with the primary outputs", "Implement each popped node over its best cut", "Push the gate leaves of that cut that are not yet implemented"]},
+  {"label": "Counting LUTs and duplication", "section": "Counting LUTs and duplication", "subgoals": ["Count the implemented nodes as the LUT count", "List the gates each LUT absorbs between its cut and its root", "Count gates absorbed by two or more LUTs as duplicated"]},
+  {"label": "Depth of the selected cover", "section": "Depth of the selected cover", "subgoals": ["Compute each LUT's depth from its LUT inputs", "Read the network depth as the largest output label", "Separate the depth decision from the area decision"]}
+]

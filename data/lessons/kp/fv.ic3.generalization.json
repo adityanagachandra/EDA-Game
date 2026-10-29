@@ -1,0 +1,5 @@
+[
+  {"label": "Why generalize", "section": "Why generalize", "subgoals": ["Note that a full-state clause excludes only one state", "Look for a sub-cube with fewer literals", "Require initiation and relative inductiveness of the smaller cube"]},
+  {"label": "Dropping a literal", "section": "Dropping a literal", "subgoals": ["Form the cube with one literal removed", "Check that it contains no initial state", "Check that no state of F outside it has a transition into it"]},
+  {"label": "MIC and unsat cores", "section": "MIC and unsat cores", "subgoals": ["Drop the literals absent from the unsat core", "Try dropping each remaining literal with one SAT call", "Block counterexamples to generalization before retrying a drop"]}
+]

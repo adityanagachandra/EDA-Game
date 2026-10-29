@@ -1,0 +1,5 @@
+[
+  {"label": "Threshold shift with source-body bias", "section": "Threshold shift with source-body bias", "subgoals": ["Raise the inversion surface potential by the source-body bias", "Take the difference of the two square roots", "Multiply by gamma to get the threshold shift"]},
+  {"label": "Body effect in transistor stacks", "section": "Body effect in transistor stacks", "subgoals": ["Identify the source voltage of the upper device in a stack", "Add the body-effect shift to the zero-bias threshold", "Explain the consequence for stacked-gate delay and leakage"]},
+  {"label": "The body-effect coefficient", "section": "The body-effect coefficient", "subgoals": ["Compute the square root of 2 q epsilon_Si N_A", "Compute the oxide capacitance from the thickness", "Divide to get gamma in volts to the one half"]}
+]

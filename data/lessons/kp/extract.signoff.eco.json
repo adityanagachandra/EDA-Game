@@ -1,0 +1,5 @@
+[
+  {"label": "Functional and timing ECOs", "section": "Functional and timing ECOs", "subgoals": ["Classify the change as functional or timing", "State which equivalence check must pass", "Apply the change locally instead of re-running the flow"]},
+  {"label": "Metal-only ECOs and spare cells", "section": "Metal-only ECOs and spare cells", "subgoals": ["Restrict the change to metal and via layers", "Map the fix onto nearby spare cells", "Finish held wafers with the new metal masks"]},
+  {"label": "Side effects and re-verification", "section": "Side effects and re-verification", "subgoals": ["Re-extract the touched nets and their neighbours", "Re-run timing, SI, EM, IR and physical checks", "Prove functional patches with formal equivalence"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Definition by input capacitance",
+    "section": "Definition by input capacitance",
+    "subgoals": [
+      "Size the gate for the reference inverter's drive",
+      "Divide the input's capacitance by the inverter's input capacitance",
+      "Note that g depends on topology and gamma, not on absolute size"
+    ]
+  },
+  {
+    "label": "NAND and NOR formulas",
+    "section": "NAND and NOR formulas",
+    "subgoals": [
+      "Write the inverter's input capacitance as one plus gamma",
+      "Write each input's capacitance from its sized nMOS and pMOS",
+      "Divide to get g for NAND and NOR gates"
+    ]
+  },
+  {
+    "label": "Compound gates and per-pin effort",
+    "section": "Compound gates and per-pin effort",
+    "subgoals": [
+      "Size the compound gate by longest series paths",
+      "Compute each pin's g from its own transistor widths",
+      "Assign critical signals to the pins with the lowest effort"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Golden and differential tests", "section": "Golden and differential tests", "subgoals": ["Compare every change against golden outputs", "Run old and new versions side by side on the same stimulus", "Use the last approved version as the reference"]},
+  {"label": "Choosing the equivalence method", "section": "Choosing the equivalence method", "subgoals": ["Check register correspondence before choosing the method", "Use sequential equivalence when state encoding changed", "Account for latency when pipeline stages were added"]},
+  {"label": "Intended changes and quality", "section": "Intended changes and quality", "subgoals": ["Bound where an intended change moves behavior", "Check each distinct parameterization of a changed module", "Report quality regressions beside the equivalence result"]}
+]

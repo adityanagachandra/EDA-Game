@@ -1,0 +1,29 @@
+[
+ {
+  "label": "From RTL to device primitives",
+  "section": "From RTL to device primitives",
+  "subgoals": [
+   "Elaborate and convert processes into registers and logic",
+   "Infer hard blocks and map the rest of the logic",
+   "Emit a netlist of device primitives for place and route"
+  ]
+ },
+ {
+  "label": "LUT mapping with ABC",
+  "section": "LUT mapping with ABC",
+  "subgoals": [
+   "Build and optimize an AIG of the combinational logic",
+   "Choose a depth-optimal cover of k-feasible cuts",
+   "Recover area on non-critical nodes and write LUT truth tables"
+  ]
+ },
+ {
+  "label": "What the netlist does not know",
+  "section": "What the netlist does not know",
+  "subgoals": [
+   "Separate unit-delay depth from routed delay",
+   "Distinguish mapped LUT counts from packed element counts",
+   "Judge synthesis by its effect on placed and routed results"
+  ]
+ }
+]

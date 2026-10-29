@@ -1,0 +1,5 @@
+[
+  {"label": "Junction from power and theta", "section": "Junction from power and theta", "subgoals": ["Multiply power by the junction-to-ambient resistance", "Add the ambient temperature", "Note the test conditions behind the theta value"]},
+  {"label": "Maximum allowed power", "section": "Maximum allowed power", "subgoals": ["Subtract ambient from the junction limit", "Divide by the junction-to-ambient resistance", "Use the worst-case ambient for the budget"]},
+  {"label": "Case and sink resistances", "section": "Case and sink resistances", "subgoals": ["Add the junction-to-case, case-to-sink and sink resistances", "Multiply by power and add ambient", "Distinguish theta resistances from psi parameters"]}
+]

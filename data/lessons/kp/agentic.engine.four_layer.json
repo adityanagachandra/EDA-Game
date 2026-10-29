@@ -1,0 +1,5 @@
+[
+  {"label": "Four layers from hardest to easiest to change", "section": "Four layers from hardest to easiest to change", "subgoals": ["Name the four layers from core to hooks", "Place legality and numerical kernels in the core", "Place heuristics in policy and weights in parameters"]},
+  {"label": "Classifying a change", "section": "Classifying a change", "subgoals": ["Ask whether the change could make a result illegal or wrong", "Map tuning requests to parameters and new heuristics to policy", "Map read-state and stop-early requests to hooks"]},
+  {"label": "The design rule: a small core", "section": "The design rule: a small core", "subgoals": ["Keep only correctness guarantees inside the core", "Push every quality trade-off out of the core", "Treat frequent core edits as a misplaced line"]}
+]

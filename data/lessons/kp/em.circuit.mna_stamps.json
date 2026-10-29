@@ -1,0 +1,5 @@
+[
+  {"label": "Stamping conductances", "section": "Stamping conductances", "subgoals": ["Add the conductance to both diagonal entries of its nodes", "Subtract the conductance from the two off-diagonal entries", "Drop the ground row and column from every stamp"]},
+  {"label": "Stamping voltage sources and inductors", "section": "Stamping voltage sources and inductors", "subgoals": ["Add a branch-current unknown for each voltage source", "Add a branch-current unknown for each inductor", "Count the non-ground nodes plus the added branch currents"]},
+  {"label": "Companion models for capacitors", "section": "Companion models for capacitors", "subgoals": ["Replace the capacitor derivative by a backward difference", "Stamp C over h as a conductance between the capacitor nodes", "Stamp C over h times the previous voltage as a history current"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The AMI model structure", "section": "The AMI model structure", "subgoals": ["Separate the analog IBIS part from the algorithmic part", "Name the three AMI entry points and their inputs", "Configure a model through its parameter file"]},
+  {"label": "Transmit FFE as a filter", "section": "Transmit FFE as a filter", "subgoals": ["Assign the pre-cursor, main and post-cursor taps to their symbols", "Evaluate the FIR output for a symbol pattern", "Explain how emphasizing transitions offsets channel loss"]},
+  {"label": "Statistical and time-domain flows", "section": "Statistical and time-domain flows", "subgoals": ["Choose the statistical flow for linear time-invariant equalization", "Switch to the time-domain flow for adaptive or nonlinear models", "Assign pre-cursor and post-cursor ISI to the right equalizer"]}
+]

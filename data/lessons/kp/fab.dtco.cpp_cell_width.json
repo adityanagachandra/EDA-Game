@@ -1,0 +1,5 @@
+[
+  {"label": "Cell width in gate pitches", "section": "Cell width in gate pitches", "subgoals": ["Count the gate positions of a cell", "Add one CPP for a single diffusion break or two for a double", "Multiply by the contacted poly pitch"]},
+  {"label": "Row length from a cell list", "section": "Row length from a cell list", "subgoals": ["Convert each cell to its CPP count", "Sum the CPPs along the row", "Convert the CPP total into micrometres"]},
+  {"label": "Area scaling between nodes", "section": "Area scaling between nodes", "subgoals": ["Write cell area as CPP times tracks times metal pitch", "Compute the area ratio between two nodes", "Name the effects the first-order metric omits"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Golden tests", "section": "Golden tests", "subgoals": ["Fix inputs with verified expected outputs", "Check invariants, exact results and tolerances", "Keep goldens small enough for the harness loop"]},
+  {"label": "Differential checks against a baseline", "section": "Differential checks against a baseline", "subgoals": ["Run baseline and candidate on identical inputs and seeds", "Classify each object's change as intended, wrong amount or unintended", "Pass only with zero unintended and zero wrong-amount movers"]},
+  {"label": "What the pair proves and what it cannot", "section": "What the pair proves and what it cannot", "subgoals": ["Choose reference designs that exercise every condition", "Fix seeds so the baseline does not move", "Add a golden for each escaped bug"]}
+]

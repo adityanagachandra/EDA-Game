@@ -1,0 +1,5 @@
+[
+  {"label": "The tapping-point formula", "section": "The tapping-point formula", "subgoals": ["Write the Elmore delay from the tap to each subtree", "Cancel the quadratic terms to get a linear equation in x", "Evaluate the formula with delays in picoseconds"]},
+  {"label": "The merged node", "section": "The merged node", "subgoals": ["Place the tap at x times L", "Evaluate the Elmore delay from the tap to either subtree", "Sum the loads and the wire capacitance for the merged node"]},
+  {"label": "Elongation under Elmore delay", "section": "Elongation under Elmore delay", "subgoals": ["Detect a fraction outside zero to one", "Set up the quadratic for the elongated length", "Take the positive root"]}
+]

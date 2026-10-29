@@ -1,0 +1,5 @@
+[
+  {"label": "Cores, prepreg and copper", "section": "Cores, prepreg and copper", "subgoals": ["Distinguish cores from prepreg in the stack", "Convert copper weight in ounces to thickness", "Sum dielectrics and copper into the finished thickness"]},
+  {"label": "Layer count and construction", "section": "Layer count and construction", "subgoals": ["Count cores and prepreg layers for a foil build", "Derive the number of dielectric layers from the layer count", "Choose a layer count from escape and reference-plane needs"]},
+  {"label": "Symmetry and why boards warp", "section": "Symmetry and why boards warp", "subgoals": ["Pair each layer with its mirror about the board center", "Count copper and dielectric pairs that differ", "Balance copper area as well as copper weight"]}
+]

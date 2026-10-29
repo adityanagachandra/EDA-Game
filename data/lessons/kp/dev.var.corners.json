@@ -1,0 +1,5 @@
+[
+  {"label": "What corners represent", "section": "What corners represent", "subgoals": ["Read a corner name as NMOS speed then PMOS speed", "Combine process corners with voltage and temperature into PVT corners", "Explain temperature inversion from competing mobility and threshold effects"]},
+  {"label": "Combining independent sigmas", "section": "Combining independent sigmas", "subgoals": ["Square each independent sigma and add", "Take the square root for the total sigma", "Place the k-sigma point at nominal plus k times the total"]},
+  {"label": "Statistical models and Monte Carlo", "section": "Statistical models and Monte Carlo", "subgoals": ["Separate global and local parameter distributions in the statistical model", "Sample them per die and per device in Monte Carlo", "Use rare-event methods for tails beyond a few sigma"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The rules of the discipline", "section": "The rules of the discipline", "subgoals": ["List flip-flops as the only state elements", "Require every clock pin to be driven from the clock network", "Break every cycle with at least one flip-flop"]},
+  {"label": "What tools gain from it", "section": "What tools gain from it", "subgoals": ["Match each engine to the synchronous assumption it relies on", "Explain why a combinational loop breaks levelization", "Name the tool checks that reject a combinational loop"]},
+  {"label": "Clocks, enables and resets done safely", "section": "Clocks, enables and resets done safely", "subgoals": ["Replace logic-gated clocks with an integrated clock-gating cell or an enable mux", "Synchronize the release of an asynchronous reset", "Identify recovery and removal as the reset timing checks"]}
+]

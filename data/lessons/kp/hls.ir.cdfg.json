@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Basic blocks inside a control-flow graph",
+  "section": "Basic blocks inside a control-flow graph",
+  "subgoals": [
+   "Split the code into maximal straight-line basic blocks",
+   "Connect blocks with control edges for branches, back edges and exits",
+   "Keep an acyclic DFG inside every block"
+  ]
+ },
+ {
+  "label": "Branches, if-conversion and exclusive arms",
+  "section": "Branches, if-conversion and exclusive arms",
+  "subgoals": [
+   "Replace a short branch by both arms and a select",
+   "Charge both arms' operations to the units after if-conversion",
+   "Share units between mutually exclusive arms that stay as control"
+  ]
+ },
+ {
+  "label": "What the representation lets the scheduler do",
+  "section": "What the representation lets the scheduler do",
+  "subgoals": [
+   "Identify block boundaries as barriers for block-local scheduling",
+   "Move side-effect-free operations across branches by speculation",
+   "Record loop-carried values as phis at the loop header"
+  ]
+ }
+]

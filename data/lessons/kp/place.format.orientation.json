@@ -1,0 +1,5 @@
+[
+  {"label": "Database units and the placement point", "section": "Database units and the placement point", "subgoals": ["Divide DEF coordinates by the DBU per micron", "Read the placement point as the lower-left corner after orientation", "Express the site grid as an integer step in database units"]},
+  {"label": "Transforming a pin offset", "section": "Transforming a pin offset", "subgoals": ["Apply the N, FN, FS and S maps to a pin offset", "Add the transformed offset to the placement point", "Note which orientations swap width and height"]},
+  {"label": "Why orientation matters to the placer", "section": "Why orientation matters to the placer", "subgoals": ["Flip a cell's orientation when it moves to a row of the other parity", "Use a mirror move to shorten a net without displacement", "Recompute affected net boxes after an orientation change"]}
+]

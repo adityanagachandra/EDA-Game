@@ -1,0 +1,5 @@
+[
+  {"label": "Reading relations from two sequences", "section": "Reading relations from two sequences", "subgoals": ["Mark a left of b when a precedes b in both sequences", "Mark a below b when a follows b in the first and precedes it in the second", "Count (n!) squared possible sequence pairs"]},
+  {"label": "Packing by longest paths", "section": "Packing by longest paths", "subgoals": ["Build horizontal edges weighted by widths and vertical edges weighted by heights", "Process blocks in the order of the second sequence", "Take the longest path to each block as its coordinate"]},
+  {"label": "Annealing over sequence pairs", "section": "Annealing over sequence pairs", "subgoals": ["Perturb by swapping blocks in one or both sequences or rotating a block", "Re-pack and score area, outline violation and wirelength", "Use a longest-common-subsequence packer to cut evaluation cost"]}
+]

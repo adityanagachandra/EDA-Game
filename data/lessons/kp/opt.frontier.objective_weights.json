@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Which tier a request lands in",
+    "section": "Which tier a request lands in",
+    "subgoals": [
+      "Classify the request as a value change, a new function or a core change",
+      "Check whether the engine already exposes the needed knob",
+      "Extend the seam once when a request recurs outside it"
+    ]
+  },
+  {
+    "label": "What a weight change selects",
+    "section": "What a weight change selects",
+    "subgoals": [
+      "Normalize each objective against the baseline",
+      "Score each candidate with the new weights",
+      "Switch to an epsilon constraint when no weight reaches the wanted design"
+    ]
+  },
+  {
+    "label": "Proving a weight change worked",
+    "section": "Proving a weight change worked",
+    "subgoals": [
+      "Run the reference designs and check the legality invariants",
+      "Compare QoR deltas against the baseline on both objectives",
+      "Repeat seeds when the effect is near the noise level"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Whose IP is whose", "section": "Whose IP is whose", "subgoals": ["Assign each data item to the foundry or the customer", "List what the agent may read from results and documentation", "Keep protected deck content out of the agent's inputs"]},
+  {"label": "Architecture of the boundary", "section": "Architecture of the boundary", "subgoals": ["Run engines behind typed tools in a network-free sandbox", "Redact design data from every log that leaves the site", "Keep models and skills trained on one customer's data with that customer"]},
+  {"label": "Boundary decisions in practice", "section": "Boundary decisions in practice", "subgoals": ["Classify each request as staying inside or crossing the boundary", "Replace a crossing transfer with an on-site equivalent", "Promote only generic, reference-validated skills"]}
+]

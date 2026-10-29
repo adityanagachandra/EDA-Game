@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The gradient of a quadratic cost",
+    "section": "The gradient of a quadratic cost",
+    "subgoals": [
+      "Differentiate the quadratic with respect to each coordinate",
+      "Evaluate each partial derivative at the current point",
+      "Read the components as the net pull on the cell"
+    ]
+  },
+  {
+    "label": "One descent step",
+    "section": "One descent step",
+    "subgoals": [
+      "Compute the gradient at the current point",
+      "Multiply it by the step size",
+      "Subtract the scaled gradient from every coordinate"
+    ]
+  },
+  {
+    "label": "Iterates on a quadratic and the contraction factor",
+    "section": "Iterates on a quadratic and the contraction factor",
+    "subgoals": [
+      "Write the error after one step as the factor times the previous error",
+      "Raise the factor to the number of steps",
+      "Check that the factor's magnitude is below one for convergence"
+    ]
+  }
+]

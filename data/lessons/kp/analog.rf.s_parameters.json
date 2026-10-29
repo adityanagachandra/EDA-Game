@@ -1,0 +1,5 @@
+[
+  {"label": "Reflection and return loss", "section": "Reflection and return loss", "subgoals": ["Compute gamma from the load and reference impedances", "Convert the magnitude to return loss with minus twenty log ten", "Read an S11 below minus 10 dB as a good match"]},
+  {"label": "VSWR", "section": "VSWR", "subgoals": ["Convert S11 in dB to the reflection magnitude", "Form one plus gamma over one minus gamma", "Map VSWR, return loss and gamma onto each other"]},
+  {"label": "Transmission and two-port blocks", "section": "Transmission and two-port blocks", "subgoals": ["Name the four S-parameters of a two-port", "Compute the gain as twenty log ten of the S21 magnitude", "Separate magnitude from insertion phase and reverse isolation"]}
+]

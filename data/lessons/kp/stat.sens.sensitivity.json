@@ -1,0 +1,5 @@
+[
+  {"label": "First-order variance propagation", "section": "First-order variance propagation", "subgoals": ["Linearize the output about the nominal point", "Square each sensitivity times its sigma", "Sum the terms and take the square root for the output sigma"]},
+  {"label": "Ranking the contributors", "section": "Ranking the contributors", "subgoals": ["Compute each parameter's variance term", "Divide each term by the total variance for its share", "Rank parameters by the product of sensitivity and sigma"]},
+  {"label": "Estimating sensitivities by simulation", "section": "Estimating sensitivities by simulation", "subgoals": ["Simulate the output at plus and minus one step", "Divide the difference by twice the step", "Choose the step to balance simulator noise against curvature"]}
+]

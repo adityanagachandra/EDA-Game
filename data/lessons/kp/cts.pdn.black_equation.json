@@ -1,0 +1,5 @@
+[
+  {"label": "The form of the model", "section": "The form of the model", "subgoals": ["Write the current and temperature dependence", "Hold temperature fixed and take the current ratio to the power minus n", "Compare lifetimes for n of one and two"]},
+  {"label": "Temperature dependence", "section": "Temperature dependence", "subgoals": ["Convert both temperatures to kelvin", "Evaluate the exponential of the activation term", "Interpret the ratio as a lifetime change"]},
+  {"label": "Derating the limit", "section": "Derating the limit", "subgoals": ["Set the lifetimes at the two temperatures equal", "Solve for the ratio of current densities", "Express it as a percentage of the original limit"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Contributions build the nodal equations", "section": "Contributions build the nodal equations", "subgoals": ["Contribute branch currents with the contribution operator", "Add contributions on one branch to model parallel elements", "Rely on the compiler for the Jacobian entries Newton needs"]},
+  {"label": "Evaluating a behavioral model", "section": "Evaluating a behavioral model", "subgoals": ["Substitute the operating-point voltages into the contribution", "Add every contribution on the same branch", "Compare the hand value with the simulator output"]},
+  {"label": "Writing models that converge", "section": "Writing models that converge", "subgoals": ["Replace discontinuities with smooth functions or transition filters", "Trigger threshold behaviour with cross and timer events", "Keep every expression finite and remember AC sees only the linearization"]}
+]

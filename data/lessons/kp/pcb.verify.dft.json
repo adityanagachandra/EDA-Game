@@ -1,0 +1,5 @@
+[
+  {"label": "Test access and coverage", "section": "Test access and coverage", "subgoals": ["Classify each net as probe-accessible, scan-accessible or neither", "Compute coverage as the accessible fraction of nets", "Trade test points against area and fast-net capacitance"]},
+  {"label": "The JTAG chain and instruction registers", "section": "The JTAG chain and instruction registers", "subgoals": ["Trace the chain from TDI through each device to TDO", "Sum the instruction register lengths for Shift-IR", "Use BSDL files to map cells to board nets"]},
+  {"label": "Bypass and test pattern length", "section": "Bypass and test pattern length", "subgoals": ["Put non-target devices into bypass", "Add one bit per bypassed device to the target's register length", "Generate interconnect patterns that distinguish every net"]}
+]

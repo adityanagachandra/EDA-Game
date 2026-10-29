@@ -1,0 +1,5 @@
+[
+  {"label": "Definition from SNR", "section": "Definition from SNR", "subgoals": ["Divide input SNR by output SNR at a 290 K source", "Convert the factor to dB for the noise figure", "Write F as one plus the added noise over the source noise"]},
+  {"label": "Noise temperature", "section": "Noise temperature", "subgoals": ["Define Te as the extra source temperature that matches the added noise", "Compute Te as F minus one times 290 K", "Use noise temperature for very low-noise systems"]},
+  {"label": "Sensitivity of a receiver", "section": "Sensitivity of a receiver", "subgoals": ["Start from minus 174 dBm per hertz", "Add ten log ten of the bandwidth, the noise figure and the required SNR", "Use periodic noise analysis for frequency-translating blocks"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The RUDY estimate", "section": "The RUDY estimate", "subgoals": ["Compute the net's bounding-box width and height", "Multiply the pitch by the half-perimeter", "Divide by the box area to get the density"]},
+  {"label": "Summing over a tile", "section": "Summing over a tile", "subgoals": ["Find the nets whose boxes contain the tile", "Add their densities", "Compare the sum with the tile's capacity"]},
+  {"label": "When to recurse to the accurate router", "section": "When to recurse to the accurate router", "subgoals": ["Compare fast and accurate utilisation on calibration tiles", "Count overflowing tiles the fast estimate failed to flag", "Lower the threshold or recurse more often when misses appear"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Renaming straight-line code", "section": "Renaming straight-line code", "subgoals": ["Number the versions of each variable in order of assignment", "Rewrite each read to the most recent version above it", "Treat each version as a separate net"]},
+  {"label": "Phi functions at joins", "section": "Phi functions at joins", "subgoals": ["List the variables assigned in either arm", "Place one phi per such variable at the join", "Read each phi as a multiplexer on the branch condition"]},
+  {"label": "Pruned SSA", "section": "Pruned SSA", "subgoals": ["Compute which variables are read after the join before being overwritten", "Keep phis only for those live variables", "Remove dead phis with dead-code elimination"]}
+]

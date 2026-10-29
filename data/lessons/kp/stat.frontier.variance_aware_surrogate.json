@@ -1,0 +1,5 @@
+[
+  {"label": "A prediction with an uncertainty", "section": "A prediction with an uncertainty", "subgoals": ["Read the surrogate output as a mean and a predictive sigma", "Compute Phi of minus mean over sigma for the violation probability", "Decide by the probability rather than by the point prediction"]},
+  {"label": "A recursion rule", "section": "A recursion rule", "subgoals": ["Compare the absolute predicted margin with k predictive sigmas", "Send candidates inside the band to the accurate engine", "Sum the violation probabilities of accepted passes for the expected false passes"]},
+  {"label": "Calibration is the precondition", "section": "Calibration is the precondition", "subgoals": ["Standardize held-out errors by the predicted sigma", "Check that the coverage of the two-sigma band is near 95 percent", "Force recursion for inputs outside the training distribution"]}
+]

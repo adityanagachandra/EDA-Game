@@ -1,0 +1,5 @@
+[
+  {"label": "Returns and discounting", "section": "Returns and discounting", "subgoals": ["Raise the discount to each step index", "Multiply each reward by its discount weight", "Sum the weighted rewards for the return"]},
+  {"label": "Sparse terminal rewards", "section": "Sparse terminal rewards", "subgoals": ["Identify the step at which the only nonzero reward arrives", "Discount it by the discount factor to the power of steps elapsed", "Compare the resulting weight across discount choices"]},
+  {"label": "Value estimates and TD error", "section": "Value estimates and TD error", "subgoals": ["Discount the next state's value and add the reward", "Subtract the current state's value", "Interpret the sign as better or worse than expected"]}
+]

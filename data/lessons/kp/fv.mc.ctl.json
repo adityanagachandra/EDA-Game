@@ -1,0 +1,5 @@
+[
+  {"label": "Path quantifiers and one step", "section": "Path quantifiers and one step", "subgoals": ["Compute the set of states satisfying the subformula", "For EX, keep states with at least one successor in the set", "For AX, keep states whose successors all lie in the set"]},
+  {"label": "Fixpoint operators EF, AG, EG, AF and EU", "section": "Fixpoint operators EF, AG, EG, AF and EU", "subgoals": ["Compute EF and EU by backward search from the target states", "Compute EG by keeping states with an infinite path inside the set", "Obtain AG and AF as complements of EF and EG of the negation"]},
+  {"label": "Nesting and the LTL versus CTL divide", "section": "Nesting and the LTL versus CTL divide", "subgoals": ["Compute the innermost subformula's state set first", "Apply each outer operator to the set computed so far", "Count the states in the final set"]}
+]

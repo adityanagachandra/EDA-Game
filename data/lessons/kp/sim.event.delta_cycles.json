@@ -1,0 +1,5 @@
+[
+  {"label": "Ordering zero-delay updates in delta steps", "section": "Ordering zero-delay updates in delta steps", "subgoals": ["Apply the pending changes of the current delta", "Evaluate the readers of changed nets and queue their outputs", "Advance simulated time only when a delta produces no change"]},
+  {"label": "Counting deltas to settle", "section": "Counting deltas to settle", "subgoals": ["Record the input change as delta 1", "Trace each changed output into the next delta", "Stop counting when a delta produces no change"]},
+  {"label": "Zero-time glitches and loops", "section": "Zero-time glitches and loops", "subgoals": ["Find reconvergent paths of unequal length", "Count how many times a net changes across the deltas of one time", "Recognize a delta limit error as an unsettled combinational loop"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "What the device interface returns",
+    "section": "What the device interface returns",
+    "subgoals": [
+      "List the inputs the core passes to every device",
+      "List the currents, charges and derivatives the model returns",
+      "Add noise densities for noise analysis"
+    ]
+  },
+  {
+    "label": "Adding a model as a plug-in",
+    "section": "Adding a model as a plug-in",
+    "subgoals": [
+      "Compile the model to the device interface",
+      "Keep the plug-in free of hidden state",
+      "Evaluate instances of one model in batches"
+    ]
+  },
+  {
+    "label": "Testing a new device model",
+    "section": "Testing a new device model",
+    "subgoals": [
+      "Compare the Jacobian with finite differences of the currents",
+      "Test continuity and symmetry around zero drain-source voltage",
+      "Block promotion when circuit golden results disagree"
+    ]
+  }
+]

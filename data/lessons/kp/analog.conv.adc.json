@@ -1,0 +1,5 @@
+[
+  {"label": "Resolution and the LSB", "section": "Resolution and the LSB", "subgoals": ["Divide the full-scale range by two to the N", "Express every error budget as a fraction of an LSB", "Relate each extra bit to doubled precision and roughly fourfold noise cost"]},
+  {"label": "From input voltage to code", "section": "From input voltage to code", "subgoals": ["Compute the input in units of LSB", "Truncate and clip to get the code", "Bound the quantization error by the LSB"]},
+  {"label": "Architectures by speed and resolution", "section": "Architectures by speed and resolution", "subgoals": ["Count two to the N minus one comparators for a flash", "Count the comparators of a two-step converter", "Place SAR, pipeline and delta-sigma on the speed-resolution map"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Results are distributions",
+  "section": "Results are distributions",
+  "subgoals": [
+   "Run each configuration on several seeds",
+   "Average the per-seed results",
+   "Keep the per-seed values to see the spread"
+  ]
+ },
+ {
+  "label": "Comparing configurations",
+  "section": "Comparing configurations",
+  "subgoals": [
+   "Compute the baseline mean on the same seeds",
+   "Compute each configuration's mean",
+   "Report the best mean minus the baseline mean"
+  ]
+ },
+ {
+  "label": "Gating promotion on noise",
+  "section": "Gating promotion on noise",
+  "subgoals": [
+   "Measure the baseline's seed-to-seed range",
+   "Require the improvement to exceed that range",
+   "Confirm the winner on held-out designs before promotion"
+  ]
+ }
+]

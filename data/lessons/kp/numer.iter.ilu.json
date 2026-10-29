@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Factor but keep the original pattern",
+  "section": "Factor but keep the original pattern",
+  "subgoals": [
+   "Run the elimination updates in the usual order",
+   "Skip any update landing outside the pattern of A",
+   "Use the resulting sparse factors as the preconditioner"
+  ]
+ },
+ {
+  "label": "The entry ILU(0) drops",
+  "section": "The entry ILU(0) drops",
+  "subgoals": [
+   "Compute the fill entry from the multiplier and pivot-row entry",
+   "Drop it and continue the elimination",
+   "Compare the incomplete pivot with the exact one"
+  ]
+ },
+ {
+  "label": "Levels of fill and drop tolerances",
+  "section": "Levels of fill and drop tolerances",
+  "subgoals": [
+   "Assign fill levels from the levels of the entries that create them",
+   "Drop entries below the tolerance times the row norm",
+   "Shift the diagonal if an incomplete pivot breaks down"
+  ]
+ }
+]

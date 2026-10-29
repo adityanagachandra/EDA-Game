@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Reading the name",
+    "section": "Reading the name",
+    "subgoals": [
+      "Read the first letter as the inner group operator",
+      "Read the digits as group sizes in order",
+      "Apply the outer operator and the final inversion"
+    ]
+  },
+  {
+    "label": "Inputs, transistors and networks",
+    "section": "Inputs, transistors and networks",
+    "subgoals": [
+      "Sum the digits to get the number of inputs",
+      "Double the input count to get the transistor count",
+      "Derive the pull-down network from the expression and dualize it"
+    ]
+  },
+  {
+    "label": "Why mappers love compound cells",
+    "section": "Why mappers love compound cells",
+    "subgoals": [
+      "Compare the stage and transistor counts of the compound and multi-gate versions",
+      "Weigh higher logical effort against fewer stages",
+      "Connect compound cells to cut-based technology mapping"
+    ]
+  }
+]

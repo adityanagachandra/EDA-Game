@@ -1,0 +1,5 @@
+[
+  {"label": "Partially and fully depleted SOI", "section": "Partially and fully depleted SOI", "subgoals": ["Compare the film thickness with the maximum depletion depth", "Trace floating-body charge into threshold shifts and history effects", "Credit the buried oxide with lower junction capacitance and no latch-up path"]},
+  {"label": "Back-gate bias", "section": "Back-gate bias", "subgoals": ["Identify the substrate under the buried oxide as a back gate", "Multiply the coupling coefficient by the back-bias voltage", "Lower the NMOS threshold for forward bias and raise it for reverse"]},
+  {"label": "What SOI means for models and flows", "section": "What SOI means for models and flows", "subgoals": ["Model the floating body with an internal node and slow time constants", "Add a thermal node for self-heating through the buried oxide", "Characterize libraries at each back-bias operating point"]}
+]

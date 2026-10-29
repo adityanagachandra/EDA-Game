@@ -1,0 +1,5 @@
+[
+  {"label": "Two ways to attach a part", "section": "Two ways to attach a part", "subgoals": ["Describe how each technology forms its joints", "Explain why SMT dominates high-volume assembly", "Name the parts that still use through-hole"]},
+  {"label": "Consequences for layout and process", "section": "Consequences for layout and process", "subgoals": ["Count the layers a plated hole blocks", "Choose pin-in-paste or wave soldering for mixed technology", "Match each package type to its inspection method"]},
+  {"label": "Assembly defects and their causes", "section": "Assembly defects and their causes", "subgoals": ["Trace tombstoning to land and thermal asymmetry", "Relate bridging to paste volume and pitch", "Prevent moisture damage with dry storage or baking"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Counting the tokens", "section": "Counting the tokens", "subgoals": ["Multiply skill count by manifest size and add the summary", "Compute the same total for reading source", "Take the ratio of the two token counts"]},
+  {"label": "Selection time against loop time", "section": "Selection time against loop time", "subgoals": ["Divide input tokens by the prefill rate", "Divide output tokens by the decode rate", "Express the call time as a share of one loop iteration"]},
+  {"label": "What fits in the context window", "section": "What fits in the context window", "subgoals": ["Subtract reserved tokens from the context window", "Divide by manifest size and round down", "Prefilter by structured tags when the library does not fit"]}
+]

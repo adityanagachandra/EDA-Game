@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The simulation count",
+    "section": "The simulation count",
+    "subgoals": [
+      "Enumerate the arcs of each cell and the edges of each arc",
+      "Multiply by grid points per table and by corners",
+      "Add the extra simulations that constraint searches need"
+    ]
+  },
+  {
+    "label": "Measuring delay and transition",
+    "section": "Measuring delay and transition",
+    "subgoals": [
+      "Measure delay between the input and output fifty percent crossings",
+      "Measure transition between the library's lower and upper thresholds",
+      "Compute crossings on linear ramps from their start and end times"
+    ]
+  },
+  {
+    "label": "Thresholds, derating and conventions",
+    "section": "Thresholds, derating and conventions",
+    "subgoals": [
+      "Divide a threshold-to-threshold time by the threshold span for a full-swing ramp",
+      "Record the convention in the library's threshold and derate attributes",
+      "Check selected points against independent SPICE runs"
+    ]
+  }
+]

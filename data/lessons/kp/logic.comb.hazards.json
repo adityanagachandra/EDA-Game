@@ -1,0 +1,5 @@
+[
+  {"label": "How a static-1 hazard happens", "section": "How a static-1 hazard happens", "subgoals": ["Find an input change that leaves the function value unchanged", "Trace which product term turns off and which turns on", "Compare the delays of the two paths to spot the gap"]},
+  {"label": "Covering adjacent implicants removes the hazard", "section": "Covering adjacent implicants removes the hazard", "subgoals": ["Mark adjacent minterms covered by different terms", "Add the consensus term that spans both", "Recognize the added term as redundant for the function value"]},
+  {"label": "When glitches matter in a synchronous design", "section": "When glitches matter in a synchronous design", "subgoals": ["Explain why a register sampling after settling ignores data glitches", "Attribute extra switching power to glitches in deep reconvergent logic", "Flag glitches on clocks and asynchronous resets as functional bugs"]}
+]

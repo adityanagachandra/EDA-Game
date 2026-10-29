@@ -1,0 +1,5 @@
+[
+  {"label": "Congruence closure", "section": "Congruence closure", "subgoals": ["Merge the classes of every asserted equality", "Merge f(s) with f(t) whenever s and t share a class", "Repeat until stable and count the classes"]},
+  {"label": "Chains of congruence", "section": "Chains of congruence", "subgoals": ["Merge the asserted equalities", "Propagate congruence upward through nested applications", "Count the classes after the last merge"]},
+  {"label": "Ackermann's reduction", "section": "Ackermann's reduction", "subgoals": ["Count the distinct applications of the function", "Add one consistency constraint per unordered pair", "Compute m(m - 1)/2"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Overhead per call", "section": "Overhead per call", "subgoals": ["Add the crossing cost to the per-element kernel cost", "Divide the crossing cost by the total per element", "Note that per-element calls also block vectorization"]},
+  {"label": "Batching the call", "section": "Batching the call", "subgoals": ["Divide the element count by the batch size and round up", "Multiply the crossings by the crossing cost", "Express the overhead as a share of kernel time"]},
+  {"label": "Choosing a batch size", "section": "Choosing a batch size", "subgoals": ["Set crossing cost over batch size at most x times kernel cost", "Solve for the batch size and round up", "Check the batch against the boundary's natural unit"]}
+]

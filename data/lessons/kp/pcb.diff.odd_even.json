@@ -1,0 +1,5 @@
+[
+  {"label": "Two modes of a coupled pair", "section": "Two modes of a coupled pair", "subgoals": ["Split a pair of line voltages into odd and even parts", "Add or subtract the mutual terms for each mode", "Predict how coupling moves the odd and even impedances"]},
+  {"label": "Differential and common-mode impedance", "section": "Differential and common-mode impedance", "subgoals": ["Combine odd-mode impedances in series for the differential impedance", "Combine even-mode impedances in parallel for the common-mode impedance", "Design a T termination that matches both modes"]},
+  {"label": "Velocities, crosstalk and reference planes", "section": "Velocities, crosstalk and reference planes", "subgoals": ["Compare odd-mode and even-mode velocity in microstrip", "Explain why stripline has little far-end crosstalk", "Trace mode conversion to a broken reference plane"]}
+]

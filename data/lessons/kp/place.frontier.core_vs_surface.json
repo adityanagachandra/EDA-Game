@@ -1,0 +1,5 @@
+[
+  {"label": "What belongs in the placer's core", "section": "What belongs in the placer's core", "subgoals": ["Place the slot model, legality checker and legalizer in the core", "Place the density and Poisson kernels in the core", "Require human review and full regression for core changes"]},
+  {"label": "Strategy, parameters and hooks", "section": "Strategy, parameters and hooks", "subgoals": ["Classify net models, move sets and rule plug-ins as strategy", "Classify density targets and weights as parameters", "Classify live metric exports as observation hooks"]},
+  {"label": "Routing a request to a layer", "section": "Routing a request to a layer", "subgoals": ["Ask what the request needs that the engine lacks", "Assign it to configuration, plug-in or core accordingly", "Add a seam when similar requests keep reaching the core"]}
+]

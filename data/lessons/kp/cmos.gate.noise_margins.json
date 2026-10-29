@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Defining the four levels",
+    "section": "Defining the four levels",
+    "subgoals": [
+      "Read VOH and VOL as the levels a driver guarantees",
+      "Locate VIL and VIH at the unity-gain points of the VTC",
+      "Subtract to get the high and low noise margins"
+    ]
+  },
+  {
+    "label": "Margins from a piecewise-linear VTC",
+    "section": "Margins from a piecewise-linear VTC",
+    "subgoals": [
+      "Draw the transition as a line of slope minus g through the switching point",
+      "Find VIL and VIH where the line meets the rails",
+      "Compute both margins from the line's corners"
+    ]
+  },
+  {
+    "label": "Margins belong to connections",
+    "section": "Margins belong to connections",
+    "subgoals": [
+      "Pair a driver's output levels with a receiver's input thresholds",
+      "Take the smaller of the two margins as the connection's limit",
+      "Relate static margins to crosstalk glitch checks in signoff"
+    ]
+  }
+]

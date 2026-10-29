@@ -1,0 +1,5 @@
+[
+  {"label": "Canonical sum of minterms", "section": "Canonical sum of minterms", "subgoals": ["Write one minterm per ON row", "Count the n literals in each minterm", "Multiply terms by literals for the canonical size"]},
+  {"label": "Canonical product of maxterms", "section": "Canonical product of maxterms", "subgoals": ["Write one maxterm per OFF row", "Count the OFF rows", "Multiply the clauses by n for the literal count"]},
+  {"label": "Evaluating a product of sums", "section": "Evaluating a product of sums", "subgoals": ["Find the rows that falsify each sum term", "Union the falsifying rows of all the terms", "Subtract from 2 to the n to count the ON rows"]}
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Floating-point addition is not associative",
+  "section": "Floating-point addition is not associative",
+  "subgoals": [
+   "Find the spacing of floating-point numbers near the large term",
+   "Round each partial sum to the nearest representable value",
+   "Compare the results of the two groupings"
+  ]
+ },
+ {
+  "label": "Computing a sum in two orders",
+  "section": "Computing a sum in two orders",
+  "subgoals": [
+   "Add the terms left to right in the given order",
+   "Round each partial sum to float32",
+   "Repeat in the other order and compare"
+  ]
+ },
+ {
+  "label": "Making parallel results reproducible",
+  "section": "Making parallel results reproducible",
+  "subgoals": [
+   "Compare the recursive and pairwise error bounds",
+   "Fix the reduction tree independently of thread count",
+   "Offer a deterministic mode for golden tests and signoff"
+  ]
+ }
+]

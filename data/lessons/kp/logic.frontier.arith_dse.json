@@ -1,0 +1,5 @@
+[
+  {"label": "Fast filters from closed forms", "section": "Fast filters from closed forms", "subgoals": ["Evaluate depth and node count for each candidate architecture", "Discard candidates whose depth misses the timing budget", "Rank the survivors by node count"]},
+  {"label": "Recursing to the accurate engines", "section": "Recursing to the accurate engines", "subgoals": ["Send only candidates near the budget or near each other to synthesis", "Record the fast estimate beside the accurate result", "Calibrate the fast model from the gap"]},
+  {"label": "Objectives and traps", "section": "Objectives and traps", "subgoals": ["Choose an objective that encodes the hard constraints", "Keep the Pareto set of delay, area and power", "Check what synthesis actually built before crediting an architecture"]}
+]

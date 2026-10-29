@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Unknowns in the frequency domain",
+    "section": "Unknowns in the frequency domain",
+    "subgoals": [
+      "Count the real coefficients per unknown as two K plus one",
+      "Multiply by the number of circuit unknowns",
+      "Note which elements couple different harmonics"
+    ]
+  },
+  {
+    "label": "Harmonics of a quadratic nonlinearity",
+    "section": "Harmonics of a quadratic nonlinearity",
+    "subgoals": [
+      "Expand the squared cosine into DC and second harmonic",
+      "Read off each harmonic's coefficient",
+      "Multiply by the device coefficients and the drive amplitude"
+    ]
+  },
+  {
+    "label": "Harmonics of a cubic nonlinearity",
+    "section": "Harmonics of a cubic nonlinearity",
+    "subgoals": [
+      "Expand the cubed cosine into first and third harmonics",
+      "Add the cubic contribution to the linear fundamental",
+      "Read the third-harmonic coefficient"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Low-frequency gain",
+    "section": "Low-frequency gain",
+    "subgoals": [
+      "Combine the drain resistor and output resistance in parallel",
+      "Multiply by gm for the gain magnitude",
+      "Convert the magnitude to decibels"
+    ]
+  },
+  {
+    "label": "Gain at a frequency",
+    "section": "Gain at a frequency",
+    "subgoals": [
+      "Compute the pole frequency from the output resistance and load",
+      "Form the ratio of the frequency to the pole",
+      "Divide the low-frequency gain by the root of one plus that ratio squared"
+    ]
+  },
+  {
+    "label": "The pole frequency",
+    "section": "The pole frequency",
+    "subgoals": [
+      "Multiply the output resistance by the load capacitance",
+      "Invert two pi times that time constant",
+      "Express the pole in megahertz"
+    ]
+  }
+]

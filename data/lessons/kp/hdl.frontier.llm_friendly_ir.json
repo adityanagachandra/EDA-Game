@@ -1,0 +1,5 @@
+[
+  {"label": "Properties that make edits safe", "section": "Properties that make edits safe", "subgoals": ["Prefer textual, round-trippable IRs with explicit types", "Trace an edit's effect through SSA uses", "Rely on the verifier for immediate, precise feedback"]},
+  {"label": "Comparing hardware representations", "section": "Comparing hardware representations", "subgoals": ["Identify the implicit Verilog rules a structural IR makes explicit", "Edit at the level that still shows the designer's intent", "Retrieve the relevant slice instead of the whole design"]},
+  {"label": "Exposing IR edits as tools", "section": "Exposing IR edits as tools", "subgoals": ["Offer typed, validated edit operations instead of free-text patches", "Follow every verified edit with an equivalence or test check", "Propose changes as small local rewrites with preconditions"]}
+]

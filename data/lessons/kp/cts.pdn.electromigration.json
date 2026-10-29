@@ -1,0 +1,5 @@
+[
+  {"label": "Current density", "section": "Current density", "subgoals": ["Compute the cross-section from width and thickness", "Divide the current by the cross-section", "Recover branch currents from the solved node drops"]},
+  {"label": "Sizing wires to the limit", "section": "Sizing wires to the limit", "subgoals": ["Read the current-density limit for the layer", "Divide the current by the limit and the thickness", "Compare the minimum width with the drawn width"]},
+  {"label": "Vias, the weak point", "section": "Vias, the weak point", "subgoals": ["Divide the connection current by the per-via rating", "Round up to a whole via count", "Account for uneven sharing and temperature"]}
+]

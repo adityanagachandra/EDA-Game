@@ -1,0 +1,5 @@
+[
+  {"label": "Read over write", "section": "Read over write", "subgoals": ["Compare the read address with the outermost store's address", "Return the stored value on a match, otherwise move to the inner array", "Return the initial content when every store misses"]},
+  {"label": "Symbolic addresses", "section": "Symbolic addresses", "subgoals": ["Compare the read index with the outer store index first", "Resolve each comparison that is known to be equal or different", "Leave an ite for every comparison that is unknown"]},
+  {"label": "Arrays as memories in hardware proofs", "section": "Arrays as memories in hardware proofs", "subgoals": ["Use extensionality to compare whole arrays", "Model each write as a store and each read as a select over the store chain", "Treat a memory abstraction as an over-approximation"]}
+]

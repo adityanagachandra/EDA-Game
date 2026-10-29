@@ -1,0 +1,1170 @@
+[
+  {
+    "id": "dft.fault.defects_vs_faults",
+    "label": "Defects, faults, errors and failures",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fault",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "logic.comb.gates_mux",
+      "stat.yield.yield_model",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "logic.comb.gates_mux"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "dft.fault.stuck_at",
+    "label": "The stuck-at fault model",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fault",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fault.defects_vs_faults",
+      "logic.comb.gates_mux",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "dft.fault.defects_vs_faults"
+    ],
+    "encompasses": [
+      "discrete.combinatorics.counting_principle"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.fault.transition",
+    "label": "Transition faults",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fault",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.fault.stuck_at",
+      "logic.seq.flip_flop_timing",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "dft.fault.stuck_at"
+    ],
+    "encompasses": [
+      "dft.fault.stuck_at"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "dft.fault.path_delay",
+    "label": "Path delay faults",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fault",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fault.transition",
+      "graph.dag_paths",
+      "graphs.dag.topo_sort"
+    ],
+    "key_prerequisites": [
+      "dft.fault.transition"
+    ],
+    "encompasses": [
+      "graph.dag_paths",
+      "dft.fault.transition"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.fault.bridging",
+    "label": "Bridging faults",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fault",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fault.stuck_at",
+      "discrete.logic.truth_tables",
+      "discrete.combinatorics.combinations"
+    ],
+    "key_prerequisites": [
+      "dft.fault.stuck_at"
+    ],
+    "encompasses": [
+      "discrete.combinatorics.combinations",
+      "discrete.logic.truth_tables"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.fault.cell_aware",
+    "label": "Cell-aware fault models",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fault",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.fault.bridging",
+      "dft.fault.transition",
+      "logic.comb.gates_mux"
+    ],
+    "key_prerequisites": [
+      "dft.fault.bridging"
+    ],
+    "encompasses": [
+      "dft.fault.stuck_at"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.fault.collapsing",
+    "label": "Fault collapsing",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fault",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fault.stuck_at",
+      "discrete.sets.relations",
+      "logic.comb.gates_mux"
+    ],
+    "key_prerequisites": [
+      "dft.fault.stuck_at"
+    ],
+    "encompasses": [
+      "dft.fault.stuck_at",
+      "discrete.sets.relations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "dft.fsim.fault_detection",
+    "label": "Detecting a fault with a test vector",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fsim",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fault.stuck_at",
+      "sim.event.event_driven",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "dft.fault.stuck_at"
+    ],
+    "encompasses": [
+      "dft.fault.stuck_at",
+      "discrete.logic.truth_tables"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.fsim.serial",
+    "label": "Serial fault simulation and fault dropping",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fsim",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.fault_detection",
+      "sim.cycle.compiled"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.fault_detection"
+    ],
+    "encompasses": [
+      "dft.fsim.fault_detection"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.fsim.parallel",
+    "label": "Parallel-fault and parallel-pattern simulation",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fsim",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.serial",
+      "nt.base.convert",
+      "discrete.logic.connectives"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.serial"
+    ],
+    "encompasses": [
+      "dft.fsim.fault_detection",
+      "discrete.logic.connectives"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.fsim.deductive",
+    "label": "Deductive fault simulation",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fsim",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.fault_detection",
+      "discrete.sets.operations",
+      "dft.fault.collapsing"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.fault_detection",
+      "discrete.sets.operations"
+    ],
+    "encompasses": [
+      "discrete.sets.operations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.fsim.concurrent",
+    "label": "Concurrent fault simulation",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fsim",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.fsim.deductive",
+      "sim.event.event_driven"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.deductive"
+    ],
+    "encompasses": [
+      "dft.fsim.fault_detection"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.fsim.coverage",
+    "label": "Fault simulation and coverage",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.fsim",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.serial",
+      "dft.fault.collapsing",
+      "stat.prob.basic"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.serial"
+    ],
+    "encompasses": [
+      "dft.fault.collapsing",
+      "dft.fsim.fault_detection"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.atpg.d_calculus",
+    "label": "D-calculus and five-valued logic",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.fsim.fault_detection",
+      "sim.event.four_state",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.fault_detection"
+    ],
+    "encompasses": [
+      "discrete.logic.truth_tables",
+      "sim.event.four_state"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.atpg.sensitization",
+    "label": "Fault activation and path sensitization",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.atpg.d_calculus",
+      "dft.fsim.fault_detection"
+    ],
+    "key_prerequisites": [
+      "dft.atpg.d_calculus"
+    ],
+    "encompasses": [
+      "dft.fsim.fault_detection",
+      "dft.atpg.d_calculus"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.atpg.d_algorithm",
+    "label": "The D-algorithm",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.atpg.sensitization",
+      "dft.atpg.d_calculus",
+      "fv.sat.dpll"
+    ],
+    "key_prerequisites": [
+      "dft.atpg.sensitization"
+    ],
+    "encompasses": [
+      "dft.atpg.d_calculus"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.atpg.scoap",
+    "label": "SCOAP testability measures",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fault.stuck_at",
+      "graphs.dag.topo_sort",
+      "logic.comb.gates_mux"
+    ],
+    "key_prerequisites": [
+      "graphs.dag.topo_sort"
+    ],
+    "encompasses": [
+      "graphs.dag.topo_sort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.atpg.scoap_observability",
+    "label": "SCOAP observability",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.atpg.scoap",
+      "dft.atpg.sensitization"
+    ],
+    "key_prerequisites": [
+      "dft.atpg.scoap"
+    ],
+    "encompasses": [
+      "dft.atpg.scoap"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.atpg.podem",
+    "label": "PODEM",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.atpg.d_algorithm",
+      "dft.atpg.scoap",
+      "fv.sat.dpll"
+    ],
+    "key_prerequisites": [
+      "dft.atpg.d_algorithm"
+    ],
+    "encompasses": [
+      "dft.atpg.sensitization",
+      "dft.atpg.scoap"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.atpg.fan",
+    "label": "The FAN algorithm",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.atpg.podem",
+      "dft.atpg.scoap_observability"
+    ],
+    "key_prerequisites": [
+      "dft.atpg.podem"
+    ],
+    "encompasses": [
+      "dft.atpg.podem"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.atpg.sat_based",
+    "label": "SAT-based ATPG",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.atpg.sensitization",
+      "fv.sat.cnf_tseitin",
+      "fv.equiv.miter",
+      "fv.sat.cdcl"
+    ],
+    "key_prerequisites": [
+      "fv.sat.cnf_tseitin",
+      "fv.equiv.miter"
+    ],
+    "encompasses": [
+      "fv.sat.cnf_tseitin"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.atpg.random_pattern",
+    "label": "Random-pattern testability",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.coverage",
+      "stat.dist.geometric",
+      "stat.prob.complement"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.coverage"
+    ],
+    "encompasses": [
+      "stat.prob.complement",
+      "dft.fsim.fault_detection"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.atpg.compaction",
+    "label": "Test compaction",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.atpg",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.atpg.podem",
+      "dft.fsim.serial"
+    ],
+    "key_prerequisites": [
+      "dft.atpg.podem"
+    ],
+    "encompasses": [
+      "dft.fsim.serial"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.scan.chain",
+    "label": "Scan chains",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.scan",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "logic.seq.latch_ff",
+      "logic.comb.gates_mux",
+      "dft.atpg.sensitization"
+    ],
+    "key_prerequisites": [
+      "logic.seq.latch_ff"
+    ],
+    "encompasses": [
+      "logic.seq.latch_ff"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.scan.insertion",
+    "label": "Scan insertion and chain balancing",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.scan",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.scan.chain",
+      "logic.seq.synchronous_design"
+    ],
+    "key_prerequisites": [
+      "dft.scan.chain"
+    ],
+    "encompasses": [
+      "dft.scan.chain"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.scan.ordering",
+    "label": "Scan-chain ordering",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.scan",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.scan.insertion",
+      "discrete.graphs.paths",
+      "discrete.combinatorics.permutations"
+    ],
+    "key_prerequisites": [
+      "dft.scan.insertion"
+    ],
+    "encompasses": [
+      "discrete.combinatorics.permutations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "dft.scan.loc_los",
+    "label": "Launch-on-capture and launch-on-shift",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.scan",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.scan.chain",
+      "dft.fault.transition",
+      "logic.fsm.moore_mealy"
+    ],
+    "key_prerequisites": [
+      "dft.scan.chain",
+      "dft.fault.transition"
+    ],
+    "encompasses": [
+      "dft.fault.transition"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "dft.scan.compression",
+    "label": "Scan compression",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.scan",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.scan.insertion",
+      "dft.atpg.compaction"
+    ],
+    "key_prerequisites": [
+      "dft.scan.insertion"
+    ],
+    "encompasses": [
+      "dft.scan.chain"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.compress.decompressor",
+    "label": "Linear decompressors",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.compress",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.scan.compression",
+      "abstract.field.finite",
+      "linalg.matrix.rank"
+    ],
+    "key_prerequisites": [
+      "dft.scan.compression",
+      "linalg.matrix.rank"
+    ],
+    "encompasses": [
+      "linalg.matrix.rank"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "dft.compress.compactor",
+    "label": "Response compactors and X-masking",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.compress",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.scan.compression",
+      "discrete.logic.connectives",
+      "sim.event.four_state"
+    ],
+    "key_prerequisites": [
+      "dft.scan.compression"
+    ],
+    "encompasses": [
+      "dft.scan.compression",
+      "discrete.logic.connectives"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.bist.lfsr_misr",
+    "label": "LFSRs and MISRs",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.bist",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "abstract.rings.polynomial",
+      "abstract.field.finite",
+      "logic.seq.latch_ff",
+      "dft.atpg.random_pattern"
+    ],
+    "key_prerequisites": [
+      "abstract.rings.polynomial"
+    ],
+    "encompasses": [
+      "abstract.field.finite"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.bist.lfsr_period",
+    "label": "LFSR periods and primitive polynomials",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.bist",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.bist.lfsr_misr",
+      "nt.basics.order_mod",
+      "nt.adv.euler_phi"
+    ],
+    "key_prerequisites": [
+      "dft.bist.lfsr_misr"
+    ],
+    "encompasses": [
+      "dft.bist.lfsr_misr",
+      "nt.adv.euler_phi"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.bist.aliasing",
+    "label": "Signature aliasing",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.bist",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.bist.lfsr_misr",
+      "stat.prob.basic",
+      "dft.fsim.coverage"
+    ],
+    "key_prerequisites": [
+      "dft.bist.lfsr_misr"
+    ],
+    "encompasses": [
+      "stat.prob.basic"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.bist.lbist",
+    "label": "Logic BIST and test points",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.bist",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.bist.lfsr_period",
+      "dft.atpg.random_pattern",
+      "dft.scan.insertion"
+    ],
+    "key_prerequisites": [
+      "dft.atpg.random_pattern"
+    ],
+    "encompasses": [
+      "dft.atpg.random_pattern",
+      "dft.scan.chain"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.mbist.memory_faults",
+    "label": "Memory fault models",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.mbist",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "logic.mem.sram",
+      "dft.fault.stuck_at",
+      "dft.fault.bridging"
+    ],
+    "key_prerequisites": [
+      "logic.mem.sram"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.mbist.march",
+    "label": "March tests for memories",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.mbist",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.mbist.memory_faults",
+      "logic.mem.sram"
+    ],
+    "key_prerequisites": [
+      "dft.mbist.memory_faults"
+    ],
+    "encompasses": [
+      "logic.mem.sram"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.mbist.march_simulation",
+    "label": "Simulating a March test on a faulty memory",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.mbist",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.mbist.march",
+      "dft.mbist.memory_faults"
+    ],
+    "key_prerequisites": [
+      "dft.mbist.march"
+    ],
+    "encompasses": [
+      "dft.mbist.march",
+      "dft.mbist.memory_faults"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "dft.mbist.repair",
+    "label": "Redundancy allocation and memory repair",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.mbist",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.mbist.march_simulation",
+      "graph.vertex_cover",
+      "graphs.match.bipartite"
+    ],
+    "key_prerequisites": [
+      "graph.vertex_cover"
+    ],
+    "encompasses": [
+      "graph.vertex_cover"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.mbist.ecc",
+    "label": "Error-correcting codes for memories",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.mbist",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "logic.mem.sram",
+      "abstract.field.finite",
+      "stat.dist.binomial",
+      "dft.mbist.memory_faults"
+    ],
+    "key_prerequisites": [
+      "abstract.field.finite"
+    ],
+    "encompasses": [
+      "stat.dist.binomial"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.jtag.boundary_scan",
+    "label": "Boundary scan and JTAG",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.jtag",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.scan.chain",
+      "logic.seq.latch_ff",
+      "nt.base.convert"
+    ],
+    "key_prerequisites": [
+      "dft.scan.chain"
+    ],
+    "encompasses": [
+      "dft.scan.chain"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "dft.jtag.tap_fsm",
+    "label": "The TAP controller state machine",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.jtag",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.jtag.boundary_scan",
+      "logic.fsm.moore_mealy"
+    ],
+    "key_prerequisites": [
+      "logic.fsm.moore_mealy"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 75
+    }
+  },
+  {
+    "id": "dft.jtag.instructions",
+    "label": "JTAG instructions and registers",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.jtag",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.jtag.tap_fsm",
+      "dft.jtag.boundary_scan"
+    ],
+    "key_prerequisites": [
+      "dft.jtag.boundary_scan"
+    ],
+    "encompasses": [
+      "dft.jtag.tap_fsm"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.jtag.ieee1500_1687",
+    "label": "Core wrappers and IJTAG networks",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.jtag",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.jtag.instructions",
+      "dft.scan.insertion"
+    ],
+    "key_prerequisites": [
+      "dft.jtag.instructions"
+    ],
+    "encompasses": [
+      "dft.jtag.boundary_scan"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.ate.test_flow",
+    "label": "Wafer probe, final test and burn-in",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.ate",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.scan.chain",
+      "stat.rel.weibull",
+      "stat.yield.yield_model"
+    ],
+    "key_prerequisites": [
+      "dft.scan.chain"
+    ],
+    "encompasses": [
+      "dft.scan.chain"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.ate.stil",
+    "label": "Test pattern languages: STIL",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.ate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.ate.test_flow",
+      "dft.scan.loc_los"
+    ],
+    "key_prerequisites": [
+      "dft.ate.test_flow"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.ate.defect_level",
+    "label": "Defect level and the Williams-Brown model",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.ate",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.coverage",
+      "stat.yield.yield_model",
+      "dft.ate.test_flow"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.coverage",
+      "stat.yield.yield_model"
+    ],
+    "encompasses": [
+      "dft.fsim.coverage"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.ate.diagnosis",
+    "label": "Fault diagnosis and yield learning",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.ate",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.serial",
+      "dft.ate.defect_level",
+      "discrete.sets.operations"
+    ],
+    "key_prerequisites": [
+      "dft.fsim.serial"
+    ],
+    "encompasses": [
+      "dft.fsim.fault_detection",
+      "discrete.sets.operations"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "dft.ate.silicon_debug",
+    "label": "Silicon debug and post-silicon validation",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.ate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.ate.diagnosis",
+      "dft.jtag.instructions",
+      "sim.accel.emulation"
+    ],
+    "key_prerequisites": [
+      "dft.ate.diagnosis"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.frontier.atpg_skill",
+    "label": "ATPG as a callable skill",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.atpg.podem",
+      "dft.atpg.sat_based",
+      "agentic.skill.manifest",
+      "agentic.mcp.tool_interface"
+    ],
+    "key_prerequisites": [
+      "agentic.skill.manifest"
+    ],
+    "encompasses": [
+      "dft.atpg.sat_based"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.frontier.dft_insertion_agent",
+    "label": "Agents that insert and verify test logic",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dft.scan.insertion",
+      "fv.equiv.cec",
+      "agentic.tiers.change",
+      "agentic.harness.loop"
+    ],
+    "key_prerequisites": [
+      "agentic.tiers.change"
+    ],
+    "encompasses": [
+      "dft.scan.insertion"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "dft.frontier.golden_coverage_tests",
+    "label": "Golden tests on coverage and pattern counts",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.coverage",
+      "dft.atpg.compaction",
+      "agentic.verify.golden_differential"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "dft.fsim.coverage"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.frontier.diagnosis_agent",
+    "label": "Diagnosis agents that read failure logs",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.ate.diagnosis",
+      "prob.bayes.prior",
+      "agentic.signoff.eco_loop"
+    ],
+    "key_prerequisites": [
+      "dft.ate.diagnosis"
+    ],
+    "encompasses": [
+      "prob.bayes.prior",
+      "dft.ate.diagnosis"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "dft.frontier.fast_coverage_estimate",
+    "label": "Fast fault-sampled coverage in an agent loop",
+    "domain": "test_and_dft",
+    "subdomain": "test_and_dft.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dft.fsim.coverage",
+      "prob.limit.clt",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "dft.fsim.coverage"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Multirate time stepping",
+    "section": "Multirate time stepping",
+    "subgoals": [
+      "List the step each block needs",
+      "Compare the global-step work with the sum of per-block work",
+      "Weigh the speedup against interpolation across block boundaries"
+    ]
+  },
+  {
+    "label": "Latency and event-driven evaluation",
+    "section": "Latency and event-driven evaluation",
+    "subgoals": [
+      "Count the active partitions per step",
+      "Add the cost of checking the latent ones",
+      "Divide the all-evaluated cost by the result"
+    ]
+  },
+  {
+    "label": "Partitioned matrix solves",
+    "section": "Partitioned matrix solves",
+    "subgoals": [
+      "Cube the block sizes and sum them with the interface",
+      "Divide the unpartitioned cost by the partitioned cost",
+      "Cut partitions where coupling is weak"
+    ]
+  }
+]

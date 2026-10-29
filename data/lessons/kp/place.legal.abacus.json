@@ -1,0 +1,5 @@
+[
+  {"label": "Clusters and their optimal position", "section": "Clusters and their optimal position", "subgoals": ["Write each cell's position as the cluster origin plus its offset", "Minimise the weighted squared displacement over the cluster origin", "Clamp the cluster to the row boundaries"]},
+  {"label": "Adding cells and merging clusters", "section": "Adding cells and merging clusters", "subgoals": ["Start a new cluster when the cell clears the last one", "Add the cell to the last cluster and update e, q and w", "Merge with the left neighbour while clusters overlap"]},
+  {"label": "Choosing rows and the full algorithm", "section": "Choosing rows and the full algorithm", "subgoals": ["Trial-place the cell at the end of each nearby row", "Commit to the row with the least added squared displacement", "Snap the continuous result to the site grid"]}
+]

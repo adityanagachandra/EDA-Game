@@ -1,0 +1,5 @@
+[
+  {"label": "Reduction and mask scale", "section": "Reduction and mask scale", "subgoals": ["Multiply wafer dimensions by four for the mask", "Divide mask dimensions by four for the wafer", "Contrast transmissive DUV masks with reflective EUV masks"]},
+  {"label": "The mask error enhancement factor", "section": "The mask error enhancement factor", "subgoals": ["Write the MEEF relation between mask and wafer errors", "Compute a wafer CD error from a mask error", "Name the features with the largest MEEF"]},
+  {"label": "Fields, dies and mask cost", "section": "Fields, dies and mask cost", "subgoals": ["Count the dies per field with floor division", "Halve the field for anamorphic high-NA optics", "Relate mask count to design cost"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Time equals count times CPI times period", "section": "Time equals count times CPI times period", "subgoals": ["Multiply the instruction count by the CPI", "Divide by the clock frequency", "Attribute each factor to the layer that controls it"]},
+  {"label": "CPI from an instruction mix", "section": "CPI from an instruction mix", "subgoals": ["Multiply each class's frequency by its cycles", "Sum over the classes", "Use the weighted CPI in the time equation"]},
+  {"label": "Amdahl's law", "section": "Amdahl's law", "subgoals": ["Split execution time into the improved fraction and the rest", "Divide the improved fraction by its speedup factor", "Invert the new total to get the overall speedup"]}
+]

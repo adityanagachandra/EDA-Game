@@ -1,0 +1,5 @@
+[
+  {"label": "A cost that mixes area and wirelength", "section": "A cost that mixes area and wirelength", "subgoals": ["Write the cost as weighted area plus weighted wirelength", "Evaluate both terms after packing the new floorplan", "Take the difference new minus old"]},
+  {"label": "The Metropolis acceptance rule", "section": "The Metropolis acceptance rule", "subgoals": ["Accept every move that does not raise the cost", "Accept a worsening move with probability e to the minus delta over T", "Compare against a uniform random number"]},
+  {"label": "The cooling schedule", "section": "The cooling schedule", "subgoals": ["Choose a starting temperature that accepts most uphill moves", "Count cooling steps with the logarithm of the temperature ratio", "Trade a slower schedule for better quality"]}
+]

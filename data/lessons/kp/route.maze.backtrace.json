@@ -1,0 +1,5 @@
+[
+  {"label": "Walking down the labels", "section": "Walking down the labels", "subgoals": ["Start at the target and read its label D", "Step to a neighbour whose label is exactly one less", "Repeat until the source and mark the route's cells used"]},
+  {"label": "Counting shortest routes", "section": "Counting shortest routes", "subgoals": ["Treat label-increasing moves as edges of a DAG", "Sum the counts of predecessors wavefront by wavefront", "Read the target's count as the number of shortest routes"]},
+  {"label": "Tie-breaking for fewer bends", "section": "Tie-breaking for fewer bends", "subgoals": ["Prefer the neighbour that keeps the current direction", "Track the incoming direction in each state of the DAG", "Minimise direction changes over shortest routes by dynamic programming"]}
+]

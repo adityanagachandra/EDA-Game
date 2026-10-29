@@ -1,0 +1,5 @@
+[
+  {"label": "The basic estimate", "section": "The basic estimate", "subgoals": ["Treat every erroneous response stream as equally likely", "Note that aliasing means the error signature is zero", "Approximate the aliasing probability as two to the minus n"]},
+  {"label": "Sizing the signature", "section": "Sizing the signature", "subgoals": ["Take log base 2 of one over the target", "Round up for the signature length", "Recognize X values as the real limit on BIST signatures"]},
+  {"label": "Escapes at volume", "section": "Escapes at volume", "subgoals": ["Multiply defective dies by two to the minus n for expected escapes", "Question the equal-likelihood model for structured errors", "Use intermediate signatures to localize a failing pattern"]}
+]

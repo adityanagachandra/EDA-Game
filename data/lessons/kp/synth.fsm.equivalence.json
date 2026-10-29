@@ -1,0 +1,5 @@
+[
+  {"label": "One-step distinguishable pairs", "section": "One-step distinguishable pairs", "subgoals": ["Compare the output pair of every two states", "Count the pairs whose outputs differ on some input", "Identify these pairs with the block boundaries of P0"]},
+  {"label": "Breadth-first search over state pairs", "section": "Breadth-first search over state pairs", "subgoals": ["Start the search at the pair of states", "Expand each pair by every input, stopping at the first output difference", "Report the depth of that difference as the sequence length"]},
+  {"label": "Length bounds and refinement", "section": "Length bounds and refinement", "subgoals": ["Relate the partition index of a split to the sequence length", "Take the maximum over pairs as the number of refinement steps", "Bound every distinguishing sequence by n minus one"]}
+]

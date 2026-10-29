@@ -1,0 +1,5 @@
+[
+  {"label": "The cheaper L", "section": "The cheaper L", "subgoals": ["Sum the row-0 and far-column edge costs for the horizontal-first L", "Sum the near-column and far-row edge costs for the vertical-first L", "Keep the cheaper of the two"]},
+  {"label": "Adding Z shapes", "section": "Adding Z shapes", "subgoals": ["Sum the three segments of each HVH Z by its jog column", "Sum the three segments of each VHV Z by its jog row", "Take the minimum over all L and Z shapes"]},
+  {"label": "Bends as a cost", "section": "Bends as a cost", "subgoals": ["Add one bend penalty to each L shape", "Add two bend penalties to each Z shape", "Compare the penalised costs and pick the minimum"]}
+]

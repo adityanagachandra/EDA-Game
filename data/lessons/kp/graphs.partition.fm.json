@@ -1,0 +1,5 @@
+[
+  {"label": "One pass of tentative moves", "section": "One pass of tentative moves", "subgoals": ["Pick the highest-gain free cell whose move keeps balance", "Move and lock it, then update neighbour gains", "Record each move's gain until no free cell can move"]},
+  {"label": "Committing the best prefix", "section": "Committing the best prefix", "subgoals": ["Accumulate the gains in move order", "Keep the prefix with the largest cumulative gain and undo the rest", "Start a new pass unless the best gain was zero"]},
+  {"label": "Strengths and limits", "section": "Strengths and limits", "subgoals": ["Count O(P) work per pass with buckets", "Recognize that single-cell moves cannot shift whole clusters", "Combine FM with multilevel coarsening to escape local minima"]}
+]

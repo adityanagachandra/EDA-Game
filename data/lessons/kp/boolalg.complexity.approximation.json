@@ -1,0 +1,5 @@
+[
+  {"label": "The matching-based vertex cover", "section": "The matching-based vertex cover", "subgoals": ["Scan the edges in order", "Take both endpoints of every uncovered edge", "Count the cover"]},
+  {"label": "What a ratio guarantees", "section": "What a ratio guarantees", "subgoals": ["Find the optimum on the small instance", "Divide the algorithm's cost by the optimum", "Compare the ratio with the proven bound"]},
+  {"label": "Greedy set cover and heuristics without guarantees", "section": "Greedy set cover and heuristics without guarantees", "subgoals": ["Compute the harmonic number of the largest set size", "Multiply by the optimum for the worst-case greedy size", "Separate guaranteed approximations from heuristics"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Sort, then place greedily", "section": "Sort, then place greedily", "subgoals": ["Sort cells by desired x", "Evaluate each row at the larger of the desired x and the row's right edge", "Place the cell in the cheapest row and advance that row's edge"]},
+  {"label": "Choosing the row", "section": "Choosing the row", "subgoals": ["Compare the vertical and horizontal displacement for each candidate row", "Restrict the search to nearby rows for speed", "Track free row segments around blockages"]},
+  {"label": "Strengths and failure modes", "section": "Strengths and failure modes", "subgoals": ["Explain why greedy order leaves long moves at row ends", "Note that relative order across rows is not preserved", "Replace greedy placement by clustering when quality matters"]}
+]

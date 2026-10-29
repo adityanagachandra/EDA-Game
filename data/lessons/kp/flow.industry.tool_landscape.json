@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Front-end tools",
+    "section": "Front-end tools",
+    "subgoals": [
+      "Match each front-end product to simulation, formal, synthesis or test",
+      "Name the vendor of each front-end product",
+      "Name the vendor-owned FPGA tools"
+    ]
+  },
+  {
+    "label": "Back-end and signoff tools",
+    "section": "Back-end and signoff tools",
+    "subgoals": [
+      "Match each back-end product to place and route, timing, extraction or physical verification",
+      "Name the leading signoff timer and physical verifier",
+      "Name the custom design environment and its simulators"
+    ]
+  },
+  {
+    "label": "The open-source landscape",
+    "section": "The open-source landscape",
+    "subgoals": [
+      "Name an open-source tool for each problem class",
+      "Explain what open PDKs add to open tools",
+      "Explain why open tools matter to a tool designer"
+    ]
+  }
+]

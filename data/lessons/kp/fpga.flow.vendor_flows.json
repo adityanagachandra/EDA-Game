@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Which tool for which device",
+  "section": "Which tool for which device",
+  "subgoals": [
+   "Match each device family to its vendor suite",
+   "Separate implementation tools from software and HLS tools",
+   "Map each suite onto the common stage sequence"
+  ]
+ },
+ {
+  "label": "Stages and constraints",
+  "section": "Stages and constraints",
+  "subgoals": [
+   "Order the vendor's implementation steps",
+   "Write clocks and exceptions in the SDC-based format",
+   "Use post-placement optimization to fix estimated decisions"
+  ]
+ },
+ {
+  "label": "Checkpoints and comparisons",
+  "section": "Checkpoints and comparisons",
+  "subgoals": [
+   "Save checkpoints after placement and routing",
+   "Time both flows' results with one timer to compare",
+   "Choose by coverage for production and by source access for research"
+  ]
+ }
+]

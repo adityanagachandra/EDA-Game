@@ -1,0 +1,5 @@
+[
+  {"label": "The Arrhenius acceleration factor", "section": "The Arrhenius acceleration factor", "subgoals": ["Convert both temperatures to kelvin", "Multiply Ea over k by the difference of reciprocal temperatures", "Exponentiate to get the acceleration factor"]},
+  {"label": "Equivalent field time", "section": "Equivalent field time", "subgoals": ["Multiply stress hours by the acceleration factor", "Convert the equivalent hours to years", "Check that the stress accelerates the same mechanism as the field"]},
+  {"label": "Current and voltage acceleration", "section": "Current and voltage acceleration", "subgoals": ["Raise the current-density ratio to the power n", "Compute the thermal Arrhenius factor", "Multiply the two factors for the lifetime ratio"]}
+]

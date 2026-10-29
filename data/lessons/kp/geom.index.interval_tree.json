@@ -1,0 +1,5 @@
+[
+  {"label": "Stabbing queries", "section": "Stabbing queries", "subgoals": ["Compare the query with each interval's left endpoint", "Compare it with each interval's right endpoint", "Count the intervals that contain the query point"]},
+  {"label": "Building a centred interval tree", "section": "Building a centred interval tree", "subgoals": ["Choose the centre at the median endpoint", "Keep the intervals that contain the centre at the root", "Send the rest to the left or right subtree"]},
+  {"label": "Querying the root", "section": "Querying the root", "subgoals": ["Decide which side of the centre the query lies on", "Scan the matching sorted endpoint list until the first failure", "Count the intervals reported at the root"]}
+]

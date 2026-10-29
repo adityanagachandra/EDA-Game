@@ -1,0 +1,5 @@
+[
+  {"label": "Centering the mean", "section": "Centering the mean", "subgoals": ["Compute the yield at the current mean", "Compute the yield with the mean at the spec centre", "Subtract to get the yield gained by centering"]},
+  {"label": "The sigma a spec can afford", "section": "The sigma a spec can afford", "subgoals": ["Split the allowed failure equally between the two tails", "Look up the z value for one tail", "Divide the spec width by twice z"]},
+  {"label": "Moving the nominal with sensitivities", "section": "Moving the nominal with sensitivities", "subgoals": ["Divide the required mean shift by the sensitivity", "Recompute the yield at the shifted mean", "Re-estimate the spread because sensitivities change with the design point"]}
+]

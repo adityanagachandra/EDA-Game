@@ -1,0 +1,5 @@
+[
+  {"label": "Technology, libraries and blocks", "section": "Technology, libraries and blocks", "subgoals": ["Map technology LEF to dbTech and its layers", "Map library LEF to dbLib, dbMaster and dbMTerm", "Map the design to a dbBlock of instances, nets and terms"]},
+  {"label": "Navigating instances, terminals and nets", "section": "Navigating instances, terminals and nets", "subgoals": ["Walk from a dbNet to its dbITerms and their instances", "Read size and pin shapes from the dbMaster", "Register a block callback to observe edits"]},
+  {"label": "Flat blocks, wires and checkpoints", "section": "Flat blocks, wires and checkpoints", "subgoals": ["Link a hierarchical netlist into a flat block", "Separate logical dbNet connectivity from routed dbWire geometry", "Save native database checkpoints between flow stages"]}
+]

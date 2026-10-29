@@ -1,0 +1,5 @@
+[
+  {"label": "Two watches per clause", "section": "Two watches per clause", "subgoals": ["Identify the literal made false by the assignment", "Find the clauses whose two watches include that literal", "Count only those clauses as visited"]},
+  {"label": "Moving a watch", "section": "Moving a watch", "subgoals": ["React only when a watched literal becomes false", "Scan in clause order for a non-false literal that is not the other watch", "Move the watch if found; otherwise propagate or report the conflict"]},
+  {"label": "Why it beats occurrence lists", "section": "Why it beats occurrence lists", "subgoals": ["Count the clauses that contain the falsified literal", "Count the clauses that watch it", "Subtract to get the visits the watched scheme saves"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Generating all primes", "section": "Generating all primes", "subgoals": ["Enumerate the implicants of the function", "Discard every implicant contained in a larger one", "Count the primes that remain"]},
+  {"label": "Essential primes", "section": "Essential primes", "subgoals": ["List, for each ON minterm, the primes that cover it", "Mark minterms covered by exactly one prime", "Count the distinct primes those minterms force"]},
+  {"label": "What the essentials leave behind", "section": "What the essentials leave behind", "subgoals": ["Union the minterms of the essential primes", "Subtract them from the ON-set", "Count the minterms left for the covering step"]}
+]

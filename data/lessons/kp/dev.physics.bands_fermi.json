@@ -1,0 +1,5 @@
+[
+  {"label": "Bands, gaps and carriers", "section": "Bands, gaps and carriers", "subgoals": ["Distinguish metal, semiconductor and insulator by band filling and gap size", "Identify electron-hole pair generation across the gap", "Relate effective mass to the curvature of the band edge"]},
+  {"label": "The Fermi-Dirac occupancy", "section": "The Fermi-Dirac occupancy", "subgoals": ["Compute the normalized energy offset (E - E_F)/kT", "Evaluate the Fermi-Dirac occupancy at that offset", "Take one minus the occupancy for the hole probability"]},
+  {"label": "What the Fermi level does in a device", "section": "What the Fermi level does in a device", "subgoals": ["Keep the Fermi level flat across a device in equilibrium", "Split it into quasi-Fermi levels under applied bias", "Switch to Fermi-Dirac statistics when doping is degenerate"]}
+]

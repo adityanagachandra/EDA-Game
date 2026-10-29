@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Gate voltage opens and closes the channel",
+    "section": "Gate voltage opens and closes the channel",
+    "subgoals": [
+      "Map a high gate to a closed nMOS and an open pMOS",
+      "Map a low gate to an open nMOS and a closed pMOS",
+      "Measure gate high and low against each device's source rail"
+    ]
+  },
+  {
+    "label": "Series means AND, parallel means OR",
+    "section": "Series means AND, parallel means OR",
+    "subgoals": [
+      "Combine series switches with AND of their conduction conditions",
+      "Combine parallel switches with OR of their conduction conditions",
+      "Confirm exactly one network conducts for every input vector"
+    ]
+  },
+  {
+    "label": "Where the switch model stops",
+    "section": "Where the switch model stops",
+    "subgoals": [
+      "Mark nMOS-passed ones and pMOS-passed zeros as weak levels",
+      "Treat an undriven node as holding its stored charge",
+      "Replace each closed switch by a resistance when delay is needed"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Wire delay from placed pins", "section": "Wire delay from placed pins", "subgoals": ["Estimate a two-pin wire's length by the Manhattan distance of its pins", "Compute the distributed wire delay as r c L squared over 2", "Convert ohm-femtofarads to picoseconds"]},
+  {"label": "Adding the driver and the load", "section": "Adding the driver and the load", "subgoals": ["Charge the wire and load capacitance through the driver resistance", "Add the wire resistance times half its capacitance plus the load", "Decide whether the driver term or the wire term dominates"]},
+  {"label": "What this means for a placer", "section": "What this means for a placer", "subgoals": ["Scale wire delay with the square of the length change", "Prefer short critical nets over short total wirelength", "Hand very long nets to buffering rather than placement"]}
+]

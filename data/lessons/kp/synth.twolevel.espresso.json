@@ -1,0 +1,5 @@
+[
+  {"label": "The overall loop", "section": "The overall loop", "subgoals": ["Compute the OFF-set by complementing ON plus don't cares", "Expand, make irredundant and set aside essential primes", "Iterate reduce, expand and irredundant until the cost stops improving"]},
+  {"label": "Why REDUCE helps", "section": "Why REDUCE helps", "subgoals": ["Shrink each cube to the part only it covers", "Re-expand the reduced cubes in new directions", "Remove cubes made redundant by the new expansion"]},
+  {"label": "Scope and limits", "section": "Scope and limits", "subgoals": ["Add an output part to each cube to share products across outputs", "Explain why cube-list operations scale beyond truth tables", "Place Espresso as the per-node simplifier in multi-level flows"]}
+]

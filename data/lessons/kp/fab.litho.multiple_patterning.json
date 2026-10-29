@@ -1,0 +1,5 @@
+[
+  {"label": "Pitch splitting", "section": "Pitch splitting", "subgoals": ["Describe the LELE sequence of exposures and etches", "Compute the per-mask pitch for n exposures", "Explain how overlay error changes alternate spaces"]},
+  {"label": "How many exposures a pitch needs", "section": "How many exposures a pitch needs", "subgoals": ["Compute the single-exposure minimum pitch", "Divide it by the target pitch and round up", "Spot a boundary where better k1 saves a mask"]},
+  {"label": "Counting masks", "section": "Counting masks", "subgoals": ["Assign a mask count to each patterning scheme", "Add mandrel and cut masks for self-aligned layers", "Sum the masks of an interconnect module"]}
+]

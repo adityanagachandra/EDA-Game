@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Singular capacitance matrices make DAEs",
+  "section": "Singular capacitance matrices make DAEs",
+  "subgoals": [
+   "Find the zero rows of the capacitance matrix",
+   "Count n minus rank of C as algebraic equations",
+   "Treat those rows as constraints holding at every time"
+  ]
+ },
+ {
+  "label": "Index and consistent initial conditions",
+  "section": "Index and consistent initial conditions",
+  "subgoals": [
+   "Classify the circuit structure that sets the index",
+   "Check the initial state against every algebraic constraint",
+   "Compute a DC operating point to obtain consistent initial values"
+  ]
+ },
+ {
+  "label": "Why BDF methods handle index-1 DAEs",
+  "section": "Why BDF methods handle index-1 DAEs",
+  "subgoals": [
+   "Form the matrix C over h plus G for the step",
+   "Require that matrix to be nonsingular rather than C",
+   "Prefer BDF steps where trapezoidal would ring on algebraic variables"
+  ]
+ }
+]

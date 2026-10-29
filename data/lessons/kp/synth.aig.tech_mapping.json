@@ -1,0 +1,5 @@
+[
+  {"label": "Subject graphs and patterns", "section": "Subject graphs and patterns", "subgoals": ["Decompose the logic into a NAND2 and inverter subject graph", "Express each library cell as a pattern tree in the same primitives", "Cover every subject node exactly once with pattern matches"]},
+  {"label": "Minimum-area cover by dynamic programming", "section": "Minimum-area cover by dynamic programming", "subgoals": ["Visit the subject nodes from the leaves up", "Try every pattern matching at the node and add its subtrees' best costs", "Keep the cheapest choice and read the root's cost"]},
+  {"label": "Delay covers and the limits of trees", "section": "Delay covers and the limits of trees", "subgoals": ["Replace area with gate delay plus the latest input arrival", "Partition a DAG into trees at multiple-fanout points", "Recognize the losses at tree boundaries and with load-dependent delay"]}
+]

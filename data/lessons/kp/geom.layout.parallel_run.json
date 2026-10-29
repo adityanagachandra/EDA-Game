@@ -1,0 +1,5 @@
+[
+  {"label": "Parallel run length", "section": "Parallel run length", "subgoals": ["Take the larger of the left ends", "Take the smaller of the right ends", "Subtract and clamp at zero to get the run length"]},
+  {"label": "Overlap between layers", "section": "Overlap between layers", "subgoals": ["Find the pairs of crossing shapes on the two layers", "Compute each pair's intersection area", "Sum the areas for the layer pair"]},
+  {"label": "Neighbours within a coupling window", "section": "Neighbours within a coupling window", "subgoals": ["Grow the victim by the coupling window", "Keep neighbours whose gap is within the window", "Sum their parallel run lengths with the victim"]}
+]

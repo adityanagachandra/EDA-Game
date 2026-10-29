@@ -1,0 +1,5 @@
+[
+  {"label": "Pass at 1", "section": "Pass at 1", "subgoals": ["Divide passing samples by samples drawn for each problem", "Average the per-problem fractions", "Record the decoding settings with the number"]},
+  {"label": "The unbiased estimator", "section": "The unbiased estimator", "subgoals": ["Count the k-subsets drawn only from failing samples", "Divide by all k-subsets", "Subtract from one"]},
+  {"label": "Averaging and interpreting", "section": "Averaging and interpreting", "subgoals": ["Compute the unbiased pass@k for each problem", "Average over problems", "Name the checker that plays the oracle in a real tool"]}
+]

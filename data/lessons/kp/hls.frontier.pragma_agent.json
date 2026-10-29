@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The search problem",
+  "section": "The search problem",
+  "subgoals": [
+   "Restrict the agent to directive values at Tier 1",
+   "Reject illegal or oversized configurations with cheap checks",
+   "Read achieved II, latency, resources and violation reasons after each run"
+  ]
+ },
+ {
+  "label": "Reading the report to choose the next move",
+  "section": "Reading the report to choose the next move",
+  "subgoals": [
+   "Identify the limiting resource or recurrence named in the report",
+   "Choose the directive that attacks that specific bound",
+   "Judge each proposal by its QoR delta against the kernel's baseline"
+  ]
+ },
+ {
+  "label": "Rewards, proxies and verification",
+  "section": "Rewards, proxies and verification",
+  "subgoals": [
+   "Include area or resource limits in the objective",
+   "Validate finalists with implementation runs and co-simulation",
+   "Forbid unreviewed source edits that remove dependences"
+  ]
+ }
+]

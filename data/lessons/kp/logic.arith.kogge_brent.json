@@ -1,0 +1,5 @@
+[
+  {"label": "Kogge-Stone: minimum depth, fanout two", "section": "Kogge-Stone: minimum depth, fanout two", "subgoals": ["Count n minus two to the l nodes at level l", "Sum the levels to n log n minus n plus one", "Set the depth to log base two of n"]},
+  {"label": "Brent-Kung: few nodes, twice the depth", "section": "Brent-Kung: few nodes, twice the depth", "subgoals": ["Count n minus one nodes in the up-sweep", "Count n minus one minus log n nodes in the down-sweep", "Set the depth to two log n minus one"]},
+  {"label": "Comparing the two", "section": "Comparing the two", "subgoals": ["Compute depth and node count of both networks for the same width", "Take the difference in nodes and in levels", "Weigh logic depth against wiring and area"]}
+]

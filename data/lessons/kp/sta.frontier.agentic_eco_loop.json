@@ -1,0 +1,5 @@
+[
+  {"label": "What the loop reads and proposes", "section": "What the loop reads and proposes", "subgoals": ["Read reports across all active scenarios with the physical context of each failing path", "Propose only netlist and clock changes", "Reject constraint edits as fixes"]},
+  {"label": "What the loop verifies", "section": "What the loop verifies", "subgoals": ["Re-time incrementally after each change", "Accept a change only when no check degrades in any scenario", "Confirm accepted changes with the signoff timer and a differential report"]},
+  {"label": "Authority, containment and reuse", "section": "Authority, containment and reuse", "subgoals": ["Require human approval of the final ECO with evidence attached", "Run the loop sandboxed with design data kept on site", "Promote validated tactics as skills without exporting design data"]}
+]

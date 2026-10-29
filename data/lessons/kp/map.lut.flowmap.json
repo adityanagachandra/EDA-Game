@@ -1,0 +1,5 @@
+[
+  {"label": "Labels as optimal depth", "section": "Labels as optimal depth", "subgoals": ["Give primary inputs label zero", "Take the minimum over k-feasible cuts of one plus the deepest leaf label", "Process the nodes in topological order"]},
+  {"label": "The flow test: p or p plus one", "section": "The flow test: p or p plus one", "subgoals": ["Find p as the largest fanin label", "Collapse the node and its label-p cone nodes into the sink", "Compare the minimum node cut with k to choose p or p plus one"]},
+  {"label": "From labels to a mapping", "section": "From labels to a mapping", "subgoals": ["Generate LUTs backward from the outputs over each node's chosen cut", "Split nodes to turn node capacities into edge capacities", "Follow the depth-optimal mapping with area recovery"]}
+]

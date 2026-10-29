@@ -1,0 +1,5 @@
+[
+  {"label": "Immediate, deferred and concurrent assertions", "section": "Immediate, deferred and concurrent assertions", "subgoals": ["Distinguish procedural immediate checks from clocked concurrent properties", "Use deferred assertions to ignore transient glitches", "Attach concurrent assertions to a design with bind"]},
+  {"label": "Sampling and evaluation regions", "section": "Sampling and evaluation regions", "subgoals": ["Sample assertion operands in the Preponed region", "Evaluate the property in the Observed region", "Run pass and fail action blocks in the Reactive region"]},
+  {"label": "Engineering assertions for simulation", "section": "Engineering assertions for simulation", "subgoals": ["Place assertions where they localize a failure in time and space", "Reuse the same properties in formal tools", "Pair each important assertion with a cover property on its precondition"]}
+]

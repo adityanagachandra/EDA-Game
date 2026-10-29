@@ -1,0 +1,5 @@
+[
+  {"label": "Slack at an endpoint", "section": "Slack at an endpoint", "subgoals": ["Take the endpoint's required time", "Take the endpoint's latest arrival", "Subtract arrival from required time"]},
+  {"label": "Slack at an internal node", "section": "Slack at an internal node", "subgoals": ["Compute arrivals with the forward max pass", "Compute required times with the backward min pass", "Subtract arrival from required time at the node"]},
+  {"label": "The critical path shares one slack", "section": "The critical path shares one slack", "subgoals": ["Find the worst slack over all nodes", "Identify the nodes whose slack equals that value", "Trace them backward from the worst endpoint as the critical path"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Resistive shielding", "section": "Resistive shielding", "subgoals": ["Reduce the net to near capacitance, resistance and far capacitance", "Compute the shielding time constant R times C2", "Compare the time constant with the driver's ramp time"]},
+  {"label": "Charge matching over a ramp", "section": "Charge matching over a ramp", "subgoals": ["Compute the ratio of the time constant to the ramp time", "Evaluate the fraction of the far capacitance that charges during the ramp", "Add the near capacitance to get the effective capacitance"]},
+  {"label": "Iterating with the cell table", "section": "Iterating with the cell table", "subgoals": ["Look up the ramp time at the current capacitance", "Recompute the effective capacitance for that ramp", "Repeat until the ramp time and effective capacitance agree"]}
+]

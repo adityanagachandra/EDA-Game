@@ -1,0 +1,5 @@
+[
+  {"label": "Writing the product of sums", "section": "Writing the product of sums", "subgoals": ["Name a variable for each row", "Write one clause per column listing the rows that cover it", "Drop duplicate clauses and clauses that contain another clause"]},
+  {"label": "Expanding into covers", "section": "Expanding into covers", "subgoals": ["Multiply clauses pairwise into products", "Apply idempotence and absorption after each multiplication", "Read each surviving product as an irredundant cover"]},
+  {"label": "Choosing the minimum", "section": "Choosing the minimum", "subgoals": ["Score each product by row count or total literal cost", "Select the least-cost product as the minimum cover", "Count ties among the minimum-cost products"]}
+]

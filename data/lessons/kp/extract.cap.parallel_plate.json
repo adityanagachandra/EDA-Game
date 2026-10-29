@@ -1,0 +1,5 @@
+[
+  {"label": "The parallel-plate formula", "section": "The parallel-plate formula", "subgoals": ["Form the plate area as width times length", "Multiply the vacuum permittivity by the relative permittivity", "Divide by the dielectric thickness to get capacitance"]},
+  {"label": "Capacitance per unit length", "section": "Capacitance per unit length", "subgoals": ["Drop the length from the formula to get capacitance per micron", "Convert femtofarads to attofarads by multiplying by 1000", "Multiply the per-length value by each segment's length"]},
+  {"label": "Scaling and its limits", "section": "Scaling and its limits", "subgoals": ["Write area capacitance as permittivity times width over height", "Multiply the scale factors of each quantity", "Compare the area term with the sidewall terms it neglects"]}
+]

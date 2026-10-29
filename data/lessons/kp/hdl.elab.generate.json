@@ -1,0 +1,5 @@
+[
+  {"label": "Generate loops", "section": "Generate loops", "subgoals": ["Treat the genvar as a constant inside each copy", "Count the loop's iterations from start, bound and step", "Name each copy through the generate block label"]},
+  {"label": "Nested loops with conditions", "section": "Nested loops with conditions", "subgoals": ["Enumerate every combination of the nested genvars", "Evaluate the generate-if condition for each combination", "Count only the combinations whose condition holds"]},
+  {"label": "Parameter-dependent structures", "section": "Parameter-dependent structures", "subgoals": ["Evaluate each level's bound from the parameters", "Sum the instance counts over the levels", "Check the total against the closed form for a full tree"]}
+]

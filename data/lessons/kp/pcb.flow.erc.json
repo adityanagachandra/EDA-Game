@@ -1,0 +1,5 @@
+[
+  {"label": "Pin types and the conflict matrix", "section": "Pin types and the conflict matrix", "subgoals": ["Read each pin's declared electrical type", "Look up each pair of types in the conflict matrix", "Mark deliberately open pins with no-connect flags"]},
+  {"label": "Evaluating the rules net by net", "section": "Evaluating the rules net by net", "subgoals": ["Count each net's pins by electrical type", "Evaluate every rule as a predicate on those counts", "Count each flagged net once"]},
+  {"label": "What ERC cannot see", "section": "What ERC cannot see", "subgoals": ["Identify errors hidden by a wrong pin type in the library", "Separate type-level checks from datasheet-level checks", "Annotate intentional exceptions instead of waiving warnings in bulk"]}
+]

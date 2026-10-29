@@ -1,0 +1,5 @@
+[
+  {"label": "Components of a layered testbench", "section": "Components of a layered testbench", "subgoals": ["Separate stimulus generation from pin-level driving", "Observe the interface passively with a monitor", "Compare monitored outputs against reference-model predictions in a scoreboard"]},
+  {"label": "Directed, self-checking and random testbenches", "section": "Directed, self-checking and random testbenches", "subgoals": ["Write directed tests for specific anticipated scenarios", "Move checking into the environment so every run is judged", "Combine random breadth with coverage to show what was reached"]},
+  {"label": "Driving and sampling without races", "section": "Driving and sampling without races", "subgoals": ["Drive DUT inputs after the active clock edge", "Sample DUT outputs before the edge with an input skew", "Follow the protocol every cycle in the monitor"]}
+]

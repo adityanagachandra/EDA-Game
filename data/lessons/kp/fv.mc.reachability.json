@@ -1,0 +1,5 @@
+[
+  {"label": "Image computation", "section": "Image computation", "subgoals": ["Set R_0 to the initial states", "Add the image of R_i to get R_(i+1)", "Count the steps that add a state before the set stops growing"]},
+  {"label": "Counting the sets R_i", "section": "Counting the sets R_i", "subgoals": ["Run breadth-first search from the initial states", "Count the states at distance at most i", "Keep the frontier of newly reached states for the next image"]},
+  {"label": "Backward reachability and the BDD view", "section": "Backward reachability and the BDD view", "subgoals": ["Reverse the transitions", "Search breadth-first from the bad states", "Count the states that can reach a bad state and check whether an initial state is among them"]}
+]

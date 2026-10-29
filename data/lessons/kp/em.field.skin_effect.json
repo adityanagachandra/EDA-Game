@@ -1,0 +1,5 @@
+[
+  {"label": "Skin depth", "section": "Skin depth", "subgoals": ["Write the skin depth from resistivity, frequency and permeability", "Evaluate the square root in metres", "Convert the skin depth to micrometres"]},
+  {"label": "AC resistance of a round wire", "section": "AC resistance of a round wire", "subgoals": ["Check that the radius is much larger than the skin depth", "Model the current as flowing in a shell one skin depth thick", "Divide the radius by twice the skin depth for the ratio"]},
+  {"label": "Square-root frequency scaling", "section": "Square-root frequency scaling", "subgoals": ["Take the ratio of the two frequencies", "Multiply the known resistance by the square root of that ratio", "Report the resistance at the new frequency"]}
+]

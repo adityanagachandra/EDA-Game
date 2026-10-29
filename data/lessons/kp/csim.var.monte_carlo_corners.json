@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Counting corner runs",
+    "section": "Counting corner runs",
+    "subgoals": [
+      "List the values on each variation axis",
+      "Multiply the counts across axes",
+      "Prune corners that cannot bound the metric"
+    ]
+  },
+  {
+    "label": "Samples for a yield estimate",
+    "section": "Samples for a yield estimate",
+    "subgoals": [
+      "Write the standard error of a pass-fail fraction",
+      "Solve for the number of samples at the target error",
+      "Round up to a whole number of samples"
+    ]
+  },
+  {
+    "label": "Standard error of a simulated mean",
+    "section": "Standard error of a simulated mean",
+    "subgoals": [
+      "Take the sample standard deviation of the metric",
+      "Divide by the square root of the number of runs",
+      "Distinguish the metric's spread from the estimate's error"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Impedances in the s-domain", "section": "Impedances in the s-domain", "subgoals": ["Replace each element by its s-domain impedance", "Set s to zero so capacitors open and inductors short", "Evaluate the remaining divider to get the DC gain"]},
+  {"label": "The pole of an RC divider", "section": "The pole of an RC divider", "subgoals": ["Write the shunt impedance of R2 in parallel with C", "Simplify the divider into DC gain over one plus s tau", "Read tau as C times the parallel resistance"]},
+  {"label": "Initial and final values of a step response", "section": "Initial and final values of a step response", "subgoals": ["Multiply the transfer function by the step transform V over s", "Take s to zero for the final value", "Take s to infinity for the initial value"]}
+]

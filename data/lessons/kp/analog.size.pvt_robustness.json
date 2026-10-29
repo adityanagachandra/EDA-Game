@@ -1,0 +1,5 @@
+[
+  {"label": "Corner grids", "section": "Corner grids", "subgoals": ["List process, voltage and temperature axes", "Multiply the axis sizes and the Monte Carlo samples", "Prune to worst corners while re-checking them as sizing changes"]},
+  {"label": "Worst-case margin", "section": "Worst-case margin", "subgoals": ["Evaluate the spec at every corner", "Take the minimum and subtract the spec", "Constrain each corner separately to avoid a non-smooth minimum"]},
+  {"label": "Parametric yield", "section": "Parametric yield", "subgoals": ["Standardize the distance from mean to spec by sigma", "Evaluate the normal CDF for the single-spec yield", "Bound the joint yield by the weakest spec and estimate it jointly"]}
+]

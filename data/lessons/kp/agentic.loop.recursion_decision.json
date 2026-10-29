@@ -1,0 +1,5 @@
+[
+  {"label": "A calibrated error band", "section": "A calibrated error band", "subgoals": ["Subtract the bias from the fast estimate", "Divide by the error standard deviation", "Look up the probability of the wrong side of zero"]},
+  {"label": "Counting candidates that need recursion", "section": "Counting candidates that need recursion", "subgoals": ["Compute each object's z-score", "Flag objects with absolute z below k", "Count the flagged objects"]},
+  {"label": "Spending a recursion budget", "section": "Spending a recursion budget", "subgoals": ["Send the smallest absolute z-scores to the accurate engine", "Sum the tail probabilities of the rest", "Raise recursion when the spread grows"]}
+]

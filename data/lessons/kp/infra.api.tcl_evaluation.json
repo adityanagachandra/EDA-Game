@@ -1,0 +1,5 @@
+[
+  {"label": "Words and lists", "section": "Words and lists", "subgoals": ["Split the list into top-level elements", "Count each braced group, even an empty one, as one element", "Build lists with the list command rather than by concatenation"]},
+  {"label": "Substitution in quotes and braces", "section": "Substitution in quotes and braces", "subgoals": ["Substitute brackets and variables inside double quotes", "Keep braced text literal with no substitution", "Count the characters of the resulting value"]},
+  {"label": "Integer arithmetic in expr", "section": "Integer arithmetic in expr", "subgoals": ["Brace expr arguments so substitution happens once", "Round integer quotients toward negative infinity", "Give the remainder the sign of the divisor"]}
+]

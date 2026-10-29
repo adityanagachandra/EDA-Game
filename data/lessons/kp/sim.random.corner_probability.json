@@ -1,0 +1,5 @@
+[
+  {"label": "The probability of a corner per draw", "section": "The probability of a corner per draw", "subgoals": ["Multiply the per-field probabilities of independent fields", "Recognize the wait for the first hit as geometric", "Compute the mean wait as 1 over p"]},
+  {"label": "At least one hit in N tests", "section": "At least one hit in N tests", "subgoals": ["Write the probability that all N tests miss as (1 - p)^N", "Subtract from 1 to get the probability of at least one hit", "Approximate with 1 - e^(-Np) for small p"]},
+  {"label": "Tests needed for a target confidence", "section": "Tests needed for a target confidence", "subgoals": ["Set 1 - (1 - p)^N at least the confidence c", "Solve N >= ln(1 - c) / ln(1 - p)", "Round up to a whole number of tests"]}
+]

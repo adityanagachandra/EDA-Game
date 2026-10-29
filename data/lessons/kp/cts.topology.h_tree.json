@@ -1,0 +1,5 @@
+[
+  {"label": "The recursive geometry", "section": "The recursive geometry", "subgoals": ["Draw the level-1 H with bars of length D/2", "Halve the size and quadruple the count at each level", "Count the tips as four to the power n"]},
+  {"label": "Wirelength level by level", "section": "Wirelength level by level", "subgoals": ["Multiply the number of H's at a level by the size of each", "Sum the geometric series over the levels", "Identify the bottom levels as the dominant wire cost"]},
+  {"label": "Equal path length and its limits", "section": "Equal path length and its limits", "subgoals": ["Add half a horizontal and half a vertical bar per level", "Sum the series to get the common path length", "Name what breaks the nominal zero skew"]}
+]

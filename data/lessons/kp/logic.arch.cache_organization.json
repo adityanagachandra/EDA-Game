@@ -1,0 +1,5 @@
+[
+  {"label": "Tag, index and offset", "section": "Tag, index and offset", "subgoals": ["Take log base two of the block size for the offset", "Divide capacity by block size times associativity for the sets", "Assign the remaining address bits to the tag"]},
+  {"label": "Associativity changes the split", "section": "Associativity changes the split", "subgoals": ["Halve the set count when associativity doubles", "Move one bit from the index to the tag", "Charge one tag comparator per way"]},
+  {"label": "Total storage", "section": "Total storage", "subgoals": ["Count the lines as capacity over block size", "Add data, tag, valid and dirty bits per line", "Multiply by the number of lines"]}
+]

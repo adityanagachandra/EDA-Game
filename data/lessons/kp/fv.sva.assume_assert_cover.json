@@ -1,0 +1,5 @@
+[
+  {"label": "Three directives, three jobs", "section": "Three directives, three jobs", "subgoals": ["Write interface facts as assumptions", "Write required design behavior as assertions", "Write reachability questions as covers"]},
+  {"label": "Over-constraining assumptions", "section": "Over-constraining assumptions", "subgoals": ["Trace every assumption to the interface specification", "Prove each assumption as an assertion on the driving block", "Watch for passes that occur because traces were removed"]},
+  {"label": "Covers and vacuity", "section": "Covers and vacuity", "subgoals": ["Cover the antecedent of every implication", "Cover the normal behaviors the block must reach", "Investigate any cover that stays unreachable"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Where the DAG is cut", "section": "Where the DAG is cut", "subgoals": ["Mark primary outputs as roots", "Mark every gate with fanout of two or more as a root", "Collect each root's single-fanout descendants into its tree"]},
+  {"label": "Counting trees and tree sizes", "section": "Counting trees and tree sizes", "subgoals": ["Count roots as outputs plus multi-fanout gates", "Walk down from a root and stop at inputs and other roots", "Treat each root as a leaf of its consuming trees"]},
+  {"label": "What partitioning costs", "section": "What partitioning costs", "subgoals": ["Show that a multi-fanout node cannot be absorbed by a match", "Compare the forced cover with a duplicated one", "Relate the loss to the amount of reconvergent fanout"]}
+]

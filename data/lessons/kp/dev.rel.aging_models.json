@@ -1,0 +1,5 @@
+[
+  {"label": "From stress to aged models", "section": "From stress to aged models", "subgoals": ["Define the mission profile of voltages, temperatures and time fractions", "Derive per-device stress from signal probabilities and activity", "Apply modeled parameter shifts to the compact model and recharacterize"]},
+  {"label": "Timing consequences", "section": "Timing consequences", "subgoals": ["Use aged libraries for setup and fresh views for hold", "Trace asymmetric clock-branch aging into skew drift", "Weigh uniform worst-case aging against instance-specific aging"]},
+  {"label": "Model risks", "section": "Model risks", "subgoals": ["Bound extrapolation error in time, voltage and temperature", "Include recovery and self-heating in the stress profile", "Check asymmetric static stress in SRAM and adaptive voltage schemes"]}
+]

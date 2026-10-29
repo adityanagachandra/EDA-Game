@@ -1,0 +1,5 @@
+[
+  {"label": "Prim's end: c equals zero", "section": "Prim's end: c equals zero", "subgoals": ["Start the tree at the source", "Add the outside pin with the shortest edge to the tree", "Sum the edge lengths to get the wirelength"]},
+  {"label": "Dijkstra's end: c equals one", "section": "Dijkstra's end: c equals one", "subgoals": ["Use the source path length through u plus the edge as the key", "Grow the tree by Dijkstra's rule", "Compare its wirelength with the MST"]},
+  {"label": "The trade-off in between", "section": "The trade-off in between", "subgoals": ["Choose the trade-off parameter from the net's criticality", "Grow the tree with the blended key", "Measure the resulting wirelength and radius"]}
+]

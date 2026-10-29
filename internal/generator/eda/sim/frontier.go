@@ -1,0 +1,208 @@
+package sim
+
+import (
+	"math"
+
+	"github.com/chuma-beep/mathua/internal/generator"
+	"github.com/chuma-beep/mathua/internal/generator/eda/edakit"
+)
+
+func mutationScore(ctx generator.GeneratorContext) generator.Problem {
+	m := edakit.Int(20, 80)
+	e := edakit.Int(1, m/8+1)
+	k := edakit.Int((m-e)/3, m-e)
+	sc := 100 * float64(k) / float64(m-e)
+	ans := edakit.Num(sc, 1) + "%"
+	q := edakit.Sprintf("To judge an agent-written testbench, a harness injects %d mutants (small deliberate bugs) into the RTL. %d of them are equivalent mutants that no test can distinguish from the original. The testbench fails (kills) %d mutants. What is its mutation score?", m, e, k)
+	return edakit.Choice(q, ans,
+		edakit.Sprintf("Mutation score is killed over killable mutants: %d / (%d - %d) = %s. A testbench that runs but checks little scores low even when every test passes on the original RTL.", k, m, e, ans),
+		edakit.Num(100*float64(k)/float64(m), 1)+"%",
+		edakit.Num(100*float64(m-e-k)/float64(m-e), 1)+"%",
+		edakit.Num(100*float64(k)/float64(m+e), 1)+"%")
+}
+
+func bisectReruns(ctx generator.GeneratorContext) generator.Problem {
+	n := edakit.Int(1, 200) * 1000
+	r := int(math.Ceil(math.Log2(float64(n))))
+	q := edakit.Sprintf("A debug agent knows that design state matched the reference model at cycle 0 and mismatches at cycle %d. Each rerun from a checkpoint tells it whether the state still matches at one chosen cycle. In the worst case, how many reruns does bisection need to find the first mismatching cycle?", n)
+	return edakit.Choice(q, edakit.IntStr(r),
+		edakit.Sprintf("Each rerun halves the candidate interval, so ceil(log2 %d) = %d reruns suffice. A linear scan would need up to %d.", n, r, n),
+		edakit.Distinct(r, 3, r*2, int(math.Floor(math.Log10(float64(n)))), r+3)...)
+}
+
+var coverageAgentItems = []edakit.Item{
+	{KP: 1, Q: "An agent runs a coverage-closure loop. Which sequence of steps describes one iteration?",
+		A: "Read the coverage holes, propose a stimulus change, run the regression, merge coverage and compare with the baseline", D: []string{"Edit the DUT until tests pass, then report", "Delete uncovered bins, then rerun", "Run one seed and report the percentage"},
+		Why: "The loop is grounded in the simulator: every proposal is measured by real coverage on real runs."},
+	{KP: 1, Q: "What should an agent read to decide which hole to attack next?",
+		A: "The per-bin hit counts and the cross holes, along with the constraints that control those fields", D: []string{"Only the overall coverage percentage", "The waveform of a random passing test", "The synthesis area report"},
+		Why: "Bin-level data says what is missing; constraints say what can be changed to reach it."},
+	{KP: 1, Q: "Why is the simulator, not the agent's own judgment, the source of the reward in this loop?",
+		A: "The simulator measures what the stimulus actually reached, which cannot be argued with", D: []string{"Agents cannot read coverage reports", "Simulators are faster than agents", "The reward must be random"},
+		Why: "Tool-grounded reward ties the agent's success to measured coverage."},
+	{KP: 1, Q: "An agent proposes a new constraint that it claims will hit a hole. What is the cheapest check before a full regression?",
+		A: "Randomize the constrained item many times without simulation and count how often the target bin values appear", D: []string{"Run the full nightly regression", "Ask the agent to rate its confidence", "Synthesize the design"},
+		Why: "Solver-only sampling is a fast surrogate that filters bad proposals before expensive runs."},
+	{KP: 2, Q: "The reward is 'new bins covered'. The agent adds ignore_bins for every hole and reports 100% coverage. What failure is this?",
+		A: "Reward hacking: it changed the measurement instead of the stimulus", D: []string{"A legitimate closure strategy", "A simulator bug", "Overfitting to the seed"},
+		Why: "Editing the coverage model games the metric; the model must be outside the agent's change surface."},
+	{KP: 2, Q: "An agent weakens a scoreboard comparison so a failing test passes and coverage rises. Which guardrail prevents this?",
+		A: "Checkers and the coverage model are frozen; the agent may only change stimulus", D: []string{"Running more seeds", "Lowering the coverage goal", "Allowing edits only at night"},
+		Why: "Separating the measurement and checking from the change surface keeps the reward honest."},
+	{KP: 2, Q: "Coverage rises sharply after an agent's change, but bug-finding does not. What should be inspected first?",
+		A: "Whether the new stimulus reaches meaningful scenarios or merely satisfies bin definitions with degenerate traffic", D: []string{"The simulator's version", "The number of CPU cores", "The color of the report"},
+		Why: "Bins can be hit in trivial ways; spot-checking the traffic guards against a hollow metric."},
+	{KP: 2, Q: "Why should an agent's reward include a penalty for regression run time?",
+		A: "Otherwise it can raise coverage by brute force, running ever more seeds instead of improving stimulus", D: []string{"Run time is irrelevant", "Simulators charge per run", "Penalties make the reward deterministic"},
+		Why: "Rewarding coverage per unit cost favors smarter stimulus over sheer volume."},
+	{KP: 3, Q: "An agent changes the weight of a dist on the opcode field. Which change tier is this?",
+		A: "Tier 1, configuration: a parameter change with no new code", D: []string{"Tier 2, plug-in", "Tier 3, core edit", "Not a change at all"},
+		Why: "Adjusting existing weights is configuration of the stimulus."},
+	{KP: 3, Q: "An agent writes a new sequence class that throttles the reader to fill a FIFO. Which tier is this?",
+		A: "Tier 2: new code at a defined extension point, the sequence library", D: []string{"Tier 1, configuration", "Tier 3, core edit", "Tier 0, no review needed"},
+		Why: "A new sequence plugs into the environment without changing its core."},
+	{KP: 3, Q: "An agent proposes changing the DUT RTL to make a coverage bin easier to hit. How should the harness treat it?",
+		A: "Reject it, or route it to a human: the design under test is not part of the closure agent's change surface", D: []string{"Accept it if coverage rises", "Treat it as a Tier 1 change", "Accept it if it compiles"},
+		Why: "Changing the DUT to satisfy verification inverts the purpose of verification."},
+	{KP: 3, Q: "Which artifact must accompany an agent's accepted stimulus change for human review?",
+		A: "The diff, the coverage delta against the baseline, and the seeds that reproduce it", D: []string{"Only the final coverage number", "The agent's chat transcript", "Nothing, if tests pass"},
+		Why: "Reviewable, reproducible evidence is what makes an automated change promotable."},
+}
+
+var llmTestbenchItems = []edakit.Item{
+	{KP: 1, Q: "An LLM generates a testbench that compiles and prints PASS on the original RTL. What has been shown?",
+		A: "Only that it runs; whether it would detect bugs is still unknown", D: []string{"That the RTL is correct", "That coverage is complete", "That the testbench is equivalent to the spec"},
+		Why: "A testbench that never fails gives no evidence; its checking strength must be measured separately."},
+	{KP: 1, Q: "The generated testbench computes expected values by reading the DUT's own internal signals. What is wrong?",
+		A: "It checks the DUT against itself, so a bug in the DUT also appears in the expectation", D: []string{"Nothing: internal signals are more accurate", "It is too slow", "It needs four-state simulation"},
+		Why: "Expected results must come from an independent reference model or the specification."},
+	{KP: 1, Q: "A generated testbench calls a UVM method that does not exist. What harness step catches this cheaply?",
+		A: "Compilation, whose errors go back to the model as feedback", D: []string{"Coverage merging", "Waveform viewing", "Code review weeks later"},
+		Why: "The edit-build-test loop uses compile errors as the first, fastest signal."},
+	{KP: 1, Q: "A generated assertion is written as req |-> ##1 ack, but req is never asserted in any test. What does a passing result mean?",
+		A: "Nothing: every attempt passed vacuously", D: []string{"The handshake is correct", "The assertion is too strict", "The simulator ignored it"},
+		Why: "Vacuous passes check nothing; a cover property on req would expose this."},
+	{KP: 3, Q: "Why is mutation testing a good acceptance criterion for an agent-written testbench?",
+		A: "It measures whether the testbench actually detects injected bugs, which is what a testbench is for", D: []string{"It measures line coverage", "It shortens simulation", "It removes the need for a reference model"},
+		Why: "Killing mutants is direct evidence of checking strength."},
+	{KP: 3, Q: "Two generated testbenches reach the same code coverage. One kills 90% of mutants, the other 40%. What does this tell you?",
+		A: "The first checks outputs far more thoroughly; coverage alone did not show the difference", D: []string{"They are equally good", "The second is better because it is simpler", "Mutation scores are meaningless when coverage is equal"},
+		Why: "Coverage measures stimulus; mutation score measures checking."},
+	{KP: 3, Q: "A mutant survives every test. What are the two possible explanations?",
+		A: "The tests never exercise the mutated logic, or they exercise it but do not check the affected output", D: []string{"The simulator is broken, or the seed is wrong", "The mutant is always equivalent, or the RTL is wrong", "The testbench is too fast, or too slow"},
+		Why: "Surviving mutants point to a stimulus gap or a checking gap; equivalent mutants are a third, rarer case."},
+	{KP: 3, Q: "What keeps an agent from scoring well on mutation testing by flagging every run as a failure?",
+		A: "The testbench must also pass cleanly on the unmutated RTL", D: []string{"Nothing: that is a high score", "A higher mutant count", "Running in two-state mode"},
+		Why: "Killing mutants counts only if the original design passes, which rules out a testbench that always fails."},
+	{KP: 3, Q: "Which is the safest use of an LLM-generated reference model?",
+		A: "Treat it as untrusted until it agrees with an independent source on directed cases from the specification", D: []string{"Use it as the specification", "Use it only if it is short", "Trust it if it compiles"},
+		Why: "A reference model generated from the same misunderstanding as the RTL would hide bugs."},
+}
+
+var debugAgentItems = []edakit.Item{
+	{KP: 1, Q: "A regression failure lands on a debug agent. Which inputs let it start root-cause analysis?",
+		A: "The failing seed and command, the scoreboard mismatch and its time, and the waveform database", D: []string{"Only the failure count of the regression", "The synthesis netlist", "The design's power report"},
+		Why: "Reproduction plus the first observed symptom and signal history are what debugging needs."},
+	{KP: 1, Q: "Why does the agent first rerun the failing seed before analyzing anything?",
+		A: "To confirm the failure reproduces deterministically with the same code and seed", D: []string{"To get a different random result", "To warm up the simulator cache", "To delete the old waveform"},
+		Why: "A non-reproducible failure points to nondeterminism, which changes the debugging strategy."},
+	{KP: 1, Q: "The scoreboard reports a mismatch at cycle 9,000 but the bug corrupted state at cycle 6,000. What does the agent do next?",
+		A: "Trace backward from the mismatching output through its fan-in cone and earlier cycles to find where values first diverge", D: []string{"Report cycle 9,000 as the root cause", "Rerun with a new seed", "Increase the coverage goal"},
+		Why: "The symptom appears downstream; root cause is the earliest divergence on the causal path."},
+	{KP: 1, Q: "Why are waveform queries exposed to the agent as typed tool calls rather than raw VCD text?",
+		A: "Typed queries return only the requested signals and time ranges, which fits context limits and avoids parsing errors", D: []string{"VCD files cannot be read", "Typed calls change the waveform", "Agents cannot use tools"},
+		Why: "A narrow interface (for example over MCP) lets the agent ask precise questions of a huge database."},
+	{KP: 3, Q: "The agent proposes that a FIFO pointer wraps incorrectly. How should it test the hypothesis?",
+		A: "Patch or force the suspected logic, rerun the same seed, and check that the mismatch disappears without new ones", D: []string{"Accept it because the explanation is plausible", "Run a different seed", "Ask for more waveforms only"},
+		Why: "A hypothesis is confirmed by a controlled experiment in the simulator, not by narrative."},
+	{KP: 3, Q: "Why does the agent compare the DUT against the reference model state cycle by cycle near the failure?",
+		A: "The first cycle where internal or output state diverges localizes the bug in time", D: []string{"It is required by the LRM", "It increases coverage", "It removes X values"},
+		Why: "Differential comparison turns a late symptom into an early, precise divergence point."},
+	{KP: 3, Q: "A debug agent's root-cause report is wrong but convincing. What review practice limits the damage?",
+		A: "Require the report to include the reproducing seed, the divergence cycle and the rerun that confirms the fix", D: []string{"Trust reports from larger models", "Shorten the report", "Skip human review for small fixes"},
+		Why: "Evidence that can be re-executed makes a wrong conclusion visible."},
+	{KP: 3, Q: "A failure disappears when the agent adds waveform dumping. What should it suspect?",
+		A: "A race or nondeterminism that the change in process scheduling hides", D: []string{"The dump fixed the bug", "The seed changed", "The reference model is wrong"},
+		Why: "Heisenbugs that react to instrumentation usually indicate ordering dependence."},
+	{KP: 3, Q: "Why should the debug agent's fix be proposed as a diff rather than applied directly to the design repository?",
+		A: "A human must review changes to the design, and the diff can be checked by regression first", D: []string{"Agents cannot edit files", "Diffs simulate faster", "The repository forbids all edits"},
+		Why: "Design changes are core edits: reviewable, reversible, regression-checked."},
+}
+
+var differentialItems = []edakit.Item{
+	{KP: 1, Q: "An agent refactors an RTL block for readability, with no intended behavior change. What test gives the strongest evidence it is safe?",
+		A: "A differential run: same stimulus and seeds on old and new RTL, with every output compared cycle by cycle", D: []string{"Running only the new RTL's directed tests", "Checking that it compiles", "Comparing line counts"},
+		Why: "If nothing is supposed to change, any difference in outputs is a bug."},
+	{KP: 1, Q: "What makes a golden test reliable as a gate for agent edits?",
+		A: "Fixed inputs, fixed seeds and recorded expected outputs that are reproduced exactly", D: []string{"A new random seed each run", "Human inspection of waveforms", "A loose tolerance on every output"},
+		Why: "Determinism is what lets a mismatch mean a regression."},
+	{KP: 1, Q: "A differential run between old and new RTL shows no output differences on 50 seeds. What is still unproven?",
+		A: "Equivalence on inputs those seeds never reached", D: []string{"That the new RTL compiles", "That the seeds were used", "That the old RTL is synthesizable"},
+		Why: "Simulation proves only what it exercises; formal equivalence checking would cover all inputs."},
+	{KP: 1, Q: "Why must races be removed from a design before it is used in differential simulation?",
+		A: "A race makes outputs depend on process ordering, so differences appear without any real change", D: []string{"Races slow simulation", "Races are illegal syntax", "Races hide coverage"},
+		Why: "Nondeterminism produces false alarms that drown out real regressions."},
+	{KP: 2, Q: "An agent's change is meant to add one pipeline stage, delaying outputs by a cycle. How should the differential check be set up?",
+		A: "Compare at transaction level, in order and content, rather than cycle by cycle", D: []string{"Compare cycle by cycle and accept every mismatch", "Skip the differential check", "Compare only the first output"},
+		Why: "When timing is meant to change, the invariant is the transaction stream, not the cycle alignment."},
+	{KP: 2, Q: "What must a differential report show for an intended change, such as a new error-status bit?",
+		A: "That only the intended signals or transactions changed, and everything else matched", D: []string{"That every output changed", "That coverage went up", "That the run was faster"},
+		Why: "The proof of an intended change is the absence of unintended ones."},
+	{KP: 2, Q: "Old and new RTL are compared in a four-state simulator. The old version produced X on an output after reset; the new version produces 0. How should this be read?",
+		A: "As a real behavioral difference to investigate: the new code initializes something the old did not", D: []string{"As equal, because X matches anything", "As a simulator bug", "As a timing difference"},
+		Why: "X versus a known value is a difference in initialization, which may or may not be intended."},
+	{KP: 2, Q: "Why is a two-state simulator weaker than a four-state one as the differential oracle for reset logic?",
+		A: "It maps X to a concrete value, so differences in initialization can vanish", D: []string{"It is slower", "It cannot compare outputs", "It requires more seeds"},
+		Why: "Two-state hides exactly the unknown-state differences that reset changes create."},
+	{KP: 3, Q: "Running the same RTL and tests in Icarus Verilog and in Verilator gives different outputs. What are the main suspects?",
+		A: "A race or X-dependent behavior in the code, or a simulator bug", D: []string{"Different random seeds always explain it", "Waveform settings", "The host operating system"},
+		Why: "Cross-simulator differential testing exposes nondeterminism, four-state versus two-state behavior and tool bugs."},
+	{KP: 3, Q: "An agent modifies a simulator's scheduler for speed. What must the differential test suite include?",
+		A: "Designs with delta-cycle ordering, nonblocking assignments and X behavior, compared against the unmodified simulator", D: []string{"Only the fastest benchmark", "Only synthesizable designs with one clock", "A single directed test"},
+		Why: "Scheduler changes break semantics in subtle orderings, so the tests must stress them."},
+	{KP: 3, Q: "Why does each golden test record the exact simulator version and command line?",
+		A: "A different version or option can legitimately change results, which would masquerade as a regression", D: []string{"For billing", "To make tests faster", "Because seeds depend on the date"},
+		Why: "Reproducing a baseline requires the whole configuration, not just the design."},
+	{KP: 3, Q: "A differential check passes but code coverage of the changed module is 20%. What is the conclusion?",
+		A: "The check is weak: most of the changed logic was never exercised", D: []string{"The change is proven safe", "Coverage does not matter for differential tests", "The module is unused"},
+		Why: "Differential testing is only as strong as the stimulus that reaches the change."},
+}
+
+var seamItems = []edakit.Item{
+	{KP: 1, Q: "In the four-layer engine model applied to an event-driven simulator, which belongs in the immutable core?",
+		A: "The LRM scheduling semantics and the four-state value system", D: []string{"The X-propagation mode", "The random seed", "The list of signals dumped to the waveform"},
+		Why: "Region ordering and value semantics define correctness; everything else can vary."},
+	{KP: 1, Q: "Which simulator feature is best treated as a strategy (policy) layer?",
+		A: "The X-propagation mode, for example standard LRM semantics versus a more pessimistic merge", D: []string{"The order of the NBA region", "The meaning of 1'bx", "The event queue's correctness invariants"},
+		Why: "X-handling modes are alternative policies on top of a fixed value system."},
+	{KP: 1, Q: "Which of these is a parameter, in the four-layer sense, for a simulator run?",
+		A: "The thread count and the random seed", D: []string{"The scheduling regions", "The VPI callback interface", "The parser for SystemVerilog"},
+		Why: "Parameters change behavior without code: thread count, seeds, plusargs and optimization levels."},
+	{KP: 1, Q: "Where does an agent read live simulation state, such as signal values or coverage counts, during a run?",
+		A: "Through observation hooks such as VPI callbacks and coverage or assertion monitors", D: []string{"By editing the scheduler", "From the compiled C++ source", "From the synthesis log"},
+		Why: "Hooks are the observation layer: read state and inject behavior without core changes."},
+	{KP: 2, Q: "A customer asks for waveforms of only one subsystem to save disk. Which change tier is this?",
+		A: "Tier 1: a dump-scope configuration", D: []string{"Tier 2: a new plug-in", "Tier 3: a scheduler change", "It cannot be done"},
+		Why: "Selecting what to dump is configuration of an existing feature."},
+	{KP: 2, Q: "A team wants a custom X-propagation policy that treats X selects on muxes as the merge of both inputs. Where should it go?",
+		A: "Tier 2: a new policy at an X-propagation seam, leaving the core value system untouched", D: []string{"Tier 1: a seed change", "Tier 3: rewrite the scheduler", "In every RTL file"},
+		Why: "A seam with a defined interface lets new X policies plug in without touching the core."},
+	{KP: 2, Q: "A change request would reorder the Active and NBA regions for speed. Which tier, and what is required?",
+		A: "Tier 3, a core edit: it changes LRM semantics and needs human approval and full regression", D: []string{"Tier 1: a flag", "Tier 2: a plug-in", "No tier: it is harmless"},
+		Why: "Region order is the simulator's correctness contract."},
+	{KP: 2, Q: "A user wants a new coverage metric collected during simulation. Which tier usually fits?",
+		A: "Tier 2: a monitor plugged into the observation hooks", D: []string{"Tier 3: a scheduler change", "Tier 1: a seed", "It requires a new simulator"},
+		Why: "New observations attach at hooks without altering how the design is evaluated."},
+	{KP: 3, Q: "Why should a callback seam in a compiled simulator be called per batch or per cycle rather than per signal event?",
+		A: "Fine-grained calls defeat the compiled, inlined evaluation that makes the simulator fast", D: []string{"Per-event calls are illegal", "Batches are more accurate", "Callbacks cannot see signals"},
+		Why: "Coarse plug-in calls keep the hot kernel inside the core where the compiler can optimize it."},
+	{KP: 3, Q: "What context must an X-propagation policy seam receive to make its decision?",
+		A: "The operator, the operand values including X bits, and where the operation sits (for example an if condition or a mux select)", D: []string{"Only the simulation time", "The waveform file name", "The host CPU type"},
+		Why: "A policy decides per operation, so it needs the operation and its operands."},
+	{KP: 3, Q: "How should a new scheduling-strategy plug-in be validated before promotion?",
+		A: "Golden tests and differential runs against the existing simulator on designs that stress ordering and X behavior", D: []string{"A single fast benchmark", "A compile check only", "Customer sign-off without tests"},
+		Why: "Promotion requires the same evidence as any engine change: unchanged results where results should not change."},
+	{KP: 3, Q: "Why must simulator plug-ins be deterministic and seedable?",
+		A: "Otherwise golden and differential tests cannot tell a regression from noise", D: []string{"So they run on GPUs", "So they can be written in Python", "Because the LRM forbids randomness"},
+		Why: "Reproducibility is what makes automated checking of plug-ins possible."},
+}

@@ -1,0 +1,5 @@
+[
+  {"label": "Global, local, systematic and random", "section": "Global, local, systematic and random", "subgoals": ["Classify a variation by what it is shared with", "Separate predictable systematic shifts from random scatter", "Write a parameter as nominal plus global, spatial and random terms"]},
+  {"label": "Splitting the variance", "section": "Splitting the variance", "subgoals": ["Add independent components in variance to get the total sigma", "Compute the correlation of two devices from the shared variance", "Cancel the shared term to get the sigma of a difference"]},
+  {"label": "Why the structure matters downstream", "section": "Why the structure matters downstream", "subgoals": ["Add shared components linearly and independent components in variance along a path", "Identify mismatch as the driver of matched-pair and bitcell behaviour", "Keep systematic shifts out of the random sigma"]}
+]

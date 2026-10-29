@@ -1,0 +1,5 @@
+[
+  {"label": "Groups, simple and complex attributes", "section": "Groups, simple and complex attributes", "subgoals": ["Classify each statement as group, simple attribute or complex attribute", "Recurse into a group's braced body", "Build a generic tree before interpreting cells and arcs"]},
+  {"label": "What the parser must keep for timing", "section": "What the parser must keep for timing", "subgoals": ["Attach each timing group to its output pin and related pin", "Resolve the table template to name the index variables", "Check the value matrix shape against the two indices"]},
+  {"label": "Scale, streaming and the header", "section": "Scale, streaming and the header", "subgoals": ["Skip unneeded group bodies while tracking brace depth", "Read units and templates from the header before the cells", "Convert each library's values to internal units at read time"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Instructions hiding in data", "section": "Instructions hiding in data", "subgoals": ["Identify text the agent reads from parties other than its operator", "Recognize instruction-like strings in comments, names and logs", "Treat all such text as data"]},
+  {"label": "Capability limits as the real defense", "section": "Capability limits as the real defense", "subgoals": ["Enforce the tier policy in the harness", "Require human approval for merges and promotions", "Allowlist tools per task and block the network"]},
+  {"label": "Validating what the agent passes to tools", "section": "Validating what the agent passes to tools", "subgoals": ["Validate every tool argument against a typed schema", "Confine paths to allowed directories", "Log every call with its arguments"]}
+]

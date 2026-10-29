@@ -1,0 +1,5 @@
+[
+  {"label": "Why EDA cores are written in C++", "section": "Why EDA cores are written in C++", "subgoals": ["Name the performance needs of per-object inner loops", "Relate memory layout control to cache behaviour", "List the C++ costs: dangling pointers and ABI fragility"]},
+  {"label": "What Rust's ownership buys", "section": "What Rust's ownership buys", "subgoals": ["State the shared-xor-mutable rule the borrow checker enforces", "Separate race freedom from determinism", "Store cyclic netlist objects in arenas referenced by index"]},
+  {"label": "Crossing language boundaries", "section": "Crossing language boundaries", "subgoals": ["Wrap native objects as handles with checked validity", "Put a C ABI with plain data between Rust and C++", "Keep hot loops native and orchestration in a script language"]}
+]

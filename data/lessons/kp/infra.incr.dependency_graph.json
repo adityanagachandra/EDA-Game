@@ -1,0 +1,5 @@
+[
+  {"label": "Invalidation follows forward edges", "section": "Invalidation follows forward edges", "subgoals": ["Draw an edge from each input to the result computed from it", "Search forward from every edited node", "Count the reached results as invalid, excluding the edited nodes"]},
+  {"label": "A query needs only its dirty ancestors", "section": "A query needs only its dirty ancestors", "subgoals": ["Mark the reached results dirty without recomputing them", "Collect the queried node and its ancestors", "Count the dirty nodes in that set as the recomputations"]},
+  {"label": "Recompute in levels", "section": "Recompute in levels", "subgoals": ["Give a dirty node with only clean inputs level 1", "Set every other dirty node one above its highest dirty input", "Take the deepest level as the number of rounds"]}
+]

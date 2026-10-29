@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Residual and backward-error checks",
+  "section": "Residual and backward-error checks",
+  "subgoals": [
+   "Compute the residual of the returned solution",
+   "Divide its norm by norm A times norm x plus norm b",
+   "Compare eta with the solver's expected accuracy"
+  ]
+ },
+ {
+  "label": "Tolerances that respect conditioning",
+  "section": "Tolerances that respect conditioning",
+  "subgoals": [
+   "Estimate the condition number of the test matrix",
+   "Allow a difference of about two kappa times the tolerance",
+   "Flag the change only when the difference exceeds that allowance"
+  ]
+ },
+ {
+  "label": "Golden circuits and what must not move",
+  "section": "Golden circuits and what must not move",
+  "subgoals": [
+   "Include analytic, independently verified and ill-conditioned cases",
+   "Report iteration counts, timesteps and fill as QoR",
+   "Run the baseline comparison on representative large designs before promotion"
+  ]
+ }
+]

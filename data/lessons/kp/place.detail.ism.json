@@ -1,0 +1,5 @@
+[
+  {"label": "Why the cells must be independent", "section": "Why the cells must be independent", "subgoals": ["Build the conflict graph of cells sharing nets", "Choose an independent set of equal-size cells", "Cost each cell-slot pair from the cell's own nets"]},
+  {"label": "Solving the matching", "section": "Solving the matching", "subgoals": ["Fill the cost matrix of cells against slots", "Solve the linear assignment by the Hungarian algorithm or enumeration", "Apply the permutation and realise the exact gain"]},
+  {"label": "ISM in a detailed placer", "section": "ISM in a detailed placer", "subgoals": ["Grow an independent set of similar cells in a window around a seed", "Trade set size against solve cost and independence", "Solve non-interacting sets concurrently"]}
+]

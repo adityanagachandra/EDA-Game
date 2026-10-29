@@ -1,0 +1,5 @@
+[
+  {"label": "Counting literals", "section": "Counting literals", "subgoals": ["Count each variable occurrence in each cube, complemented or not", "Sum the literal counts over all cubes of the cover", "Count leaf occurrences when the expression is a factored form"]},
+  {"label": "Two-input gate count", "section": "Two-input gate count", "subgoals": ["Charge l - 1 two-input ANDs for a cube with l literals", "Charge k - 1 two-input ORs for k cubes", "Use the identity that the total equals literals minus one"]},
+  {"label": "Depth as the delay proxy", "section": "Depth as the delay proxy", "subgoals": ["Compute a balanced tree depth as the ceiling of log base 2 of its width", "Add the product depth and the sum depth for a two-level form", "Weigh depth against literal count when a transformation trades one for the other"]}
+]

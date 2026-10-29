@@ -1,0 +1,5 @@
+[
+  {"label": "Nonblocking: sample now, update later", "section": "Nonblocking: sample now, update later", "subgoals": ["Read every right-hand side using the values from before the edge", "Apply all updates together at the end of the edge", "Repeat the edge to get values after several cycles"]},
+  {"label": "Blocking: update immediately", "section": "Blocking: update immediately", "subgoals": ["Update each variable before executing the next statement", "Track how statement order changes the result", "Rename each blocking write as a new version of the variable"]},
+  {"label": "Mixing the two in one block", "section": "Mixing the two in one block", "subgoals": ["Execute statements in order while queueing nonblocking updates", "Read newly blocked values in later statements of the same edge", "Restrict blocking writes to temporaries written before they are read"]}
+]

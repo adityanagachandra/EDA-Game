@@ -1,0 +1,29 @@
+[
+ {
+  "label": "As soon as possible",
+  "section": "As soon as possible",
+  "subgoals": [
+   "Start every source operation in step 1",
+   "Start each other operation at the latest predecessor start plus latency",
+   "Visit the operations in topological order"
+  ]
+ },
+ {
+  "label": "The minimum schedule length",
+  "section": "The minimum schedule length",
+  "subgoals": [
+   "Find the finishing step of every operation in the ASAP schedule",
+   "Take the largest finishing step as the minimum length",
+   "Read it as a lower bound for any resource-limited schedule"
+  ]
+ },
+ {
+  "label": "As late as possible",
+  "section": "As late as possible",
+  "subgoals": [
+   "Start every sink at L minus its latency plus 1",
+   "Start each other operation at its earliest consumer's start minus its own latency",
+   "Pair the ASAP and ALAP starts into a time frame"
+  ]
+ }
+]

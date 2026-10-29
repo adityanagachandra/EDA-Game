@@ -1,0 +1,5 @@
+[
+  {"label": "Single-layer rules", "section": "Single-layer rules", "subgoals": ["Decide whether the measurement is within one shape or between two", "Merge overlapping shapes before measuring", "Match the measurement to width, spacing, notch or area"]},
+  {"label": "Two-layer rules", "section": "Two-layer rules", "subgoals": ["Identify the inner and outer layer of the rule", "Measure the margin on every side or end", "Classify the rule as enclosure, extension or inter-layer spacing"]},
+  {"label": "Context-dependent rules", "section": "Context-dependent rules", "subgoals": ["Find the context the rule depends on: an edge's length, a window or connectivity", "Compute that context before applying the threshold", "Name the rule type from the context it needs"]}
+]

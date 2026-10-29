@@ -1,0 +1,5 @@
+[
+  {"label": "What is delivered", "section": "What is delivered", "subgoals": ["Stream the layout with a single top cell", "Map every layer to the foundry's layer and datatype numbers", "Include the seal ring and the required marks"]},
+  {"label": "The signoff checks", "section": "The signoff checks", "subgoals": ["Run DRC, LVS, antenna, density and ERC on the final data", "Document each waiver by rule and location", "XOR the delivered stream against the signed-off database"]},
+  {"label": "After the handoff", "section": "After the handoff", "subgoals": ["Expect foundry intake checks and possible rejection", "Restrict late fixes to metal layers where spare cells allow", "Use shuttles to share mask cost for small runs"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "One line per part number", "section": "One line per part number", "subgoals": ["Group placements by manufacturer part number", "Split lines that share a value but differ in package", "Record each line's quantity and designator list"]},
+  {"label": "Rolling up an order", "section": "Rolling up an order", "subgoals": ["Multiply per-board quantity by the build quantity", "Add the attrition allowance to each line", "Round the order quantity up to a whole part"]},
+  {"label": "Variants and DNP", "section": "Variants and DNP", "subgoals": ["Mark the lines a variant leaves unpopulated", "Sum only populated quantities to get placements per board", "Propagate the variant to the centroid file and assembly drawing"]}
+]

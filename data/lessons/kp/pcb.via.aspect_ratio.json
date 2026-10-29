@@ -1,0 +1,5 @@
+[
+  {"label": "Through-hole aspect ratio", "section": "Through-hole aspect ratio", "subgoals": ["Divide board thickness by drilled diameter", "Relate a high aspect ratio to thin barrel plating", "Check every drill size against the stackup thickness"]},
+  {"label": "Minimum drill from a fab limit", "section": "Minimum drill from a fab limit", "subgoals": ["Divide thickness by the maximum aspect ratio", "Round up to the next available drill size", "Distinguish drilled diameter from finished hole size"]},
+  {"label": "Microvia aspect ratio", "section": "Microvia aspect ratio", "subgoals": ["Take the spanned dielectric thickness as microvia depth", "Multiply the drill diameter by the aspect cap to get the maximum depth", "Flag build-up dielectrics that exceed the microvia limit"]}
+]

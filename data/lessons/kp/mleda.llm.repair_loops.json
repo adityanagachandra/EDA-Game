@@ -1,0 +1,5 @@
+[
+  {"label": "Independent retries", "section": "Independent retries", "subgoals": ["Compute the probability that one attempt fails", "Raise it to the number of attempts", "Subtract from one for the probability of some success"]},
+  {"label": "Expected tool calls", "section": "Expected tool calls", "subgoals": ["Sum the probabilities of needing each successive attempt", "Use the closed form for a capped geometric count", "Multiply by tool time per attempt for the loop's cost"]},
+  {"label": "Compiling is not correct", "section": "Compiling is not correct", "subgoals": ["Multiply compile and functional pass probabilities per round", "Compute success over all rounds from the product", "Compare with the compile-only success rate"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Delay ranges instead of one delay", "section": "Delay ranges instead of one delay", "subgoals": ["Summarise each subtree by its minimum and maximum delay", "Write the latest and earliest delays from the tap", "Subtract to get the merged skew"]},
+  {"label": "The feasible tapping interval", "section": "The feasible tapping interval", "subgoals": ["Write the two binding skew inequalities", "Solve each for x and clamp to the wire", "Measure the interval's width"]},
+  {"label": "Spending the freedom", "section": "Spending the freedom", "subgoals": ["Replace merging segments by merging regions", "Relate the extremes of the bound to zero-skew trees and Steiner trees", "Derive the skew budget from timing margins"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Usage, capacity and overflow",
+    "section": "Usage, capacity and overflow",
+    "subgoals": [
+      "Sum the selected routes crossing each edge",
+      "Subtract capacity where usage exceeds it",
+      "Add the excesses into the total overflow"
+    ]
+  },
+  {
+    "label": "The 0-1 routing program",
+    "section": "The 0-1 routing program",
+    "subgoals": [
+      "Enumerate one candidate per net in every combination",
+      "Discard combinations that overflow any edge",
+      "Keep the overflow-free combination of least total length"
+    ]
+  },
+  {
+    "label": "LP relaxation and randomized rounding",
+    "section": "LP relaxation and randomized rounding",
+    "subgoals": [
+      "Read each net's fractional route weights from the LP",
+      "Sum the weights of the routes crossing the edge",
+      "Use the sum as the edge's expected usage after rounding"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Mesh geometry and wirelength", "section": "Mesh geometry and wirelength", "subgoals": ["Count the full-span wires in each direction", "Multiply the wire count by the span", "Relate the mesh pitch to the stub length and residual skew"]},
+  {"label": "The power cost", "section": "The power cost", "subgoals": ["Compute the mesh wire capacitance", "Add the sink pin capacitance", "Apply the clock power formula with activity one"]},
+  {"label": "Comparing a mesh with an H-tree", "section": "Comparing a mesh with an H-tree", "subgoals": ["Compute the wirelength of both structures on the same region", "Convert the difference into capacitance and power", "Explain why a mesh needs a circuit solve rather than Elmore delay"]}
+]

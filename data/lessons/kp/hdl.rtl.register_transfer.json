@@ -1,0 +1,5 @@
+[
+  {"label": "Registers and next-state logic", "section": "Registers and next-state logic", "subgoals": ["Identify the registers as the state of the design", "Write each register's next value as a combinational function of state and inputs", "Separate the storage from the logic that feeds it"]},
+  {"label": "The cycle-accurate abstraction", "section": "The cycle-accurate abstraction", "subgoals": ["State the synchronous-design assumption that lets RTL ignore delay", "Count operations per cycle instead of gate events", "Name what an operator fixes and what it leaves to synthesis"]},
+  {"label": "What later tools may change", "section": "What later tools may change", "subgoals": ["Distinguish observable behavior from internal state encoding", "Choose combinational or sequential equivalence from register correspondence", "Trace how a late RTL change reruns every downstream stage"]}
+]

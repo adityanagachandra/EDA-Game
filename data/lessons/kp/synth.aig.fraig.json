@@ -1,0 +1,5 @@
+[
+  {"label": "Candidates from simulation", "section": "Candidates from simulation", "subgoals": ["Simulate random input patterns to get each node's signature", "Normalize signatures so complementary ones compare equal", "Group nodes with equal normalized signatures into candidate classes"]},
+  {"label": "Proving with SAT", "section": "Proving with SAT", "subgoals": ["Pick a representative for each candidate class", "Ask SAT whether a member and its representative can differ", "Merge the member on UNSAT and count s minus one calls per class"]},
+  {"label": "Counterexamples refine the classes", "section": "Counterexamples refine the classes", "subgoals": ["Simulate the counterexample returned by a satisfiable query", "Append its bit to every signature and split the classes", "Repeat simulation and SAT until every class is proved or split"]}
+]

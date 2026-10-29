@@ -1,0 +1,5 @@
+[
+  {"label": "Cell delay from drive resistance and load", "section": "Cell delay from drive resistance and load", "subgoals": ["Add the wire capacitance and the sink pin capacitances", "Multiply the total load by the drive resistance", "Add the intrinsic delay to get the cell delay"]},
+  {"label": "Adding the net arc", "section": "Adding the net arc", "subgoals": ["Split the wire capacitance between the two ends of a pi model", "Multiply the wire resistance by the far-end capacitance", "Add the net delay to the cell delay for the stage"]},
+  {"label": "Summing stages into a path arrival", "section": "Summing stages into a path arrival", "subgoals": ["Start from the arrival at the first cell input", "Add each stage's cell and net delay in order", "Account for the load change one stage upstream when a cell is resized"]}
+]

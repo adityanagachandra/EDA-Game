@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Relaxation and its bound",
+    "section": "Relaxation and its bound",
+    "subgoals": [
+      "Enlarge the feasible set by dropping or loosening a hard constraint",
+      "Use the relaxed optimum as a bound on the true optimum",
+      "Plan the repair step that restores feasibility"
+    ]
+  },
+  {
+    "label": "Decomposition and coordination",
+    "section": "Decomposition and coordination",
+    "subgoals": [
+      "Split the problem along weakly coupled boundaries",
+      "Coordinate the pieces with budgets, cuts or dual prices",
+      "Measure the quality lost to the split"
+    ]
+  },
+  {
+    "label": "Search, approximation and certificates",
+    "section": "Search, approximation and certificates",
+    "subgoals": [
+      "Classify an engine as search, approximation or exact dynamic programming",
+      "Bracket the optimum between a feasible solution and a relaxation bound",
+      "Report the gap as the quality certificate"
+    ]
+  }
+]

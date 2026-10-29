@@ -1,0 +1,5 @@
+[
+  {"label": "Cost of a class from its e-nodes", "section": "Cost of a class from its e-nodes", "subgoals": ["Assign operator costs, with leaves free", "Cost each e-node as its operator plus its child classes", "Take the minimum over the e-nodes of a class"]},
+  {"label": "The root term", "section": "The root term", "subgoals": ["Compute the costs of inner classes bottom up", "Add the root operator cost to its children's best costs", "Read off the extracted term from the chosen e-nodes"]},
+  {"label": "Cycles and DAG cost", "section": "Cycles and DAG cost", "subgoals": ["Initialize every class cost to infinity", "Relax classes from e-nodes with finite children until nothing changes", "Switch to an integer program when shared subterms should be counted once"]}
+]

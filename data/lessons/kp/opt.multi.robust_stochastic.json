@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Min-max over corners",
+    "section": "Min-max over corners",
+    "subgoals": [
+      "Find each option's worst cost across the scenarios",
+      "Pick the option whose worst cost is smallest",
+      "Write the min-max with an epigraph variable for continuous models"
+    ]
+  },
+  {
+    "label": "Minimizing expected cost",
+    "section": "Minimizing expected cost",
+    "subgoals": [
+      "Multiply each scenario cost by its probability",
+      "Sum to get each option's expected cost",
+      "Pick the option with the smallest expected cost"
+    ]
+  },
+  {
+    "label": "The price of robustness",
+    "section": "The price of robustness",
+    "subgoals": [
+      "Find the robust option and its expected cost",
+      "Find the minimum expected cost over all options",
+      "Subtract to get the price of robustness"
+    ]
+  }
+]

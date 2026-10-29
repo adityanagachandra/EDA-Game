@@ -1,0 +1,5 @@
+[
+  {"label": "Finding the nearest spare", "section": "Finding the nearest spare", "subgoals": ["Filter spares by the needed cell type", "Compute each candidate's Manhattan distance to the target", "Pick the closest candidate"]},
+  {"label": "Wirelength of the new net", "section": "Wirelength of the new net", "subgoals": ["Collect the pin coordinates of the new net", "Take the bounding box's width plus height", "Check timing with the new net's extracted parasitics"]},
+  {"label": "Masks changed", "section": "Masks changed", "subgoals": ["List the metal and via layers the change touches", "Multiply each metal layer by its masks per layer", "Add the via masks for the total"]}
+]

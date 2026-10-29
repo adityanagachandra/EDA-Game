@@ -1,0 +1,1072 @@
+[
+  {
+    "id": "cmos.gate.switch_model",
+    "label": "The MOSFET as a switch",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.gate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "dev.mos.threshold",
+      "discrete.logic.connectives"
+    ],
+    "key_prerequisites": [
+      "dev.mos.threshold"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 40
+    }
+  },
+  {
+    "id": "cmos.gate.static_cmos",
+    "label": "Static CMOS gate structure",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.gate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.gate.switch_model",
+      "logic.comb.gates_mux",
+      "discrete.logic.equivalence"
+    ],
+    "key_prerequisites": [
+      "cmos.gate.switch_model"
+    ],
+    "encompasses": [
+      "cmos.gate.switch_model"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "cmos.gate.transistor_count",
+    "label": "Transistor counts and series stacks",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.gate",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.gate.static_cmos",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "cmos.gate.static_cmos"
+    ],
+    "encompasses": [
+      "cmos.gate.static_cmos"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "cmos.gate.aoi_oai",
+    "label": "AOI and OAI compound gates",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.gate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.gate.static_cmos",
+      "cmos.gate.transistor_count",
+      "discrete.logic.equivalence"
+    ],
+    "key_prerequisites": [
+      "cmos.gate.static_cmos"
+    ],
+    "encompasses": [
+      "cmos.gate.transistor_count",
+      "cmos.gate.static_cmos"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "cmos.gate.transmission_gate",
+    "label": "Transmission gates and pass-transistor logic",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.gate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.gate.switch_model",
+      "dev.mos.threshold",
+      "logic.comb.gates_mux"
+    ],
+    "key_prerequisites": [
+      "cmos.gate.switch_model"
+    ],
+    "encompasses": [
+      "cmos.gate.switch_model"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.gate.inverter_vtc",
+    "label": "The CMOS inverter transfer characteristic",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.gate",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.gate.static_cmos",
+      "dev.mos.square_law",
+      "dev.mos.threshold"
+    ],
+    "key_prerequisites": [
+      "dev.mos.square_law"
+    ],
+    "encompasses": [
+      "cmos.gate.static_cmos"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.gate.noise_margins",
+    "label": "Noise margins",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.gate",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.gate.inverter_vtc",
+      "calc.deriv.concept"
+    ],
+    "key_prerequisites": [
+      "cmos.gate.inverter_vtc"
+    ],
+    "encompasses": [
+      "cmos.gate.inverter_vtc"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.gate.dynamic_logic",
+    "label": "Dynamic and domino logic",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.gate",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.gate.static_cmos",
+      "cmos.gate.noise_margins",
+      "em.field.electrostatics_capacitance"
+    ],
+    "key_prerequisites": [
+      "cmos.gate.static_cmos"
+    ],
+    "encompasses": [
+      "cmos.gate.static_cmos"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "cmos.delay.rc_model",
+    "label": "RC delay models of a gate",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.circuit.rc_time_constant",
+      "cmos.gate.static_cmos",
+      "dev.mos.square_law"
+    ],
+    "key_prerequisites": [
+      "em.circuit.rc_time_constant"
+    ],
+    "encompasses": [
+      "em.circuit.rc_time_constant"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.delay.equal_rise_fall",
+    "label": "Sizing for equal rise and fall",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.rc_model",
+      "cmos.gate.transistor_count"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.rc_model"
+    ],
+    "encompasses": [
+      "cmos.delay.rc_model",
+      "cmos.gate.transistor_count"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.delay.stack_elmore",
+    "label": "Elmore delay of a transistor stack",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.rc_model",
+      "cmos.delay.equal_rise_fall",
+      "em.circuit.rc_time_constant"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.rc_model"
+    ],
+    "encompasses": [
+      "cmos.delay.rc_model"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.delay.logical_effort",
+    "label": "Logical effort",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.equal_rise_fall",
+      "cmos.delay.rc_model"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.equal_rise_fall"
+    ],
+    "encompasses": [
+      "cmos.delay.equal_rise_fall"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.delay.parasitic_delay",
+    "label": "Parasitic delay",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.logical_effort",
+      "cmos.delay.equal_rise_fall"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.logical_effort"
+    ],
+    "encompasses": [
+      "cmos.delay.equal_rise_fall"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "cmos.delay.stage_delay",
+    "label": "Stage delay d = gh + p",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.logical_effort",
+      "cmos.delay.parasitic_delay"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.logical_effort"
+    ],
+    "encompasses": [
+      "cmos.delay.logical_effort",
+      "cmos.delay.parasitic_delay"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "cmos.delay.fo4",
+    "label": "The FO4 delay as a process yardstick",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.stage_delay",
+      "cmos.delay.rc_model"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.stage_delay"
+    ],
+    "encompasses": [
+      "cmos.delay.stage_delay"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "cmos.delay.path_effort",
+    "label": "Path effort and minimum path delay",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.stage_delay",
+      "calc.deriv.optimization"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.stage_delay"
+    ],
+    "encompasses": [
+      "cmos.delay.stage_delay",
+      "cmos.delay.logical_effort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.delay.optimal_stages",
+    "label": "The optimal number of stages",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.path_effort",
+      "calc.deriv.critical_points",
+      "calc.deriv.exp_log"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.path_effort"
+    ],
+    "encompasses": [
+      "cmos.delay.path_effort"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.delay.path_sizing",
+    "label": "Sizing a path at equal stage effort",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.path_effort",
+      "cmos.delay.stage_delay"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.path_effort"
+    ],
+    "encompasses": [
+      "cmos.delay.path_effort",
+      "cmos.delay.stage_delay"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 180
+    }
+  },
+  {
+    "id": "cmos.delay.slew_dependence",
+    "label": "Input slew and the limits of the RC model",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.delay",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.delay.rc_model",
+      "cmos.gate.inverter_vtc",
+      "cmos.delay.stage_delay"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.rc_model"
+    ],
+    "encompasses": [
+      "cmos.delay.rc_model"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.power.dynamic",
+    "label": "Dynamic power",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.power",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "em.field.electrostatics_capacitance",
+      "cmos.gate.static_cmos",
+      "prob.rv.expectation"
+    ],
+    "key_prerequisites": [
+      "em.field.electrostatics_capacitance"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "cmos.power.activity_factor",
+    "label": "Signal probability and activity factors",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.power",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.power.dynamic",
+      "prob.independence.pairwise",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "cmos.power.dynamic"
+    ],
+    "encompasses": [
+      "cmos.power.dynamic"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.power.short_circuit",
+    "label": "Short-circuit power",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.power",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.power.dynamic",
+      "cmos.gate.inverter_vtc",
+      "cmos.delay.slew_dependence"
+    ],
+    "key_prerequisites": [
+      "cmos.gate.inverter_vtc"
+    ],
+    "encompasses": [
+      "cmos.power.dynamic"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.power.leakage",
+    "label": "Leakage power and multi-Vt",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.power",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "dev.mos.subthreshold",
+      "dev.mos.leakage",
+      "cmos.power.dynamic"
+    ],
+    "key_prerequisites": [
+      "dev.mos.subthreshold"
+    ],
+    "encompasses": [],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.power.multi_vt",
+    "label": "Multi-Vt assignment trade-offs",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.power",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.power.leakage",
+      "cmos.delay.stage_delay"
+    ],
+    "key_prerequisites": [
+      "cmos.power.leakage"
+    ],
+    "encompasses": [
+      "cmos.power.leakage"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.power.energy_per_op",
+    "label": "Energy per operation",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.power",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.power.dynamic",
+      "cmos.power.leakage"
+    ],
+    "key_prerequisites": [
+      "cmos.power.dynamic"
+    ],
+    "encompasses": [
+      "cmos.power.dynamic",
+      "cmos.power.leakage"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.seq.latch_circuits",
+    "label": "Transistor-level latches and flip-flops",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.seq",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "logic.seq.latch_ff",
+      "cmos.gate.transmission_gate",
+      "cmos.gate.static_cmos"
+    ],
+    "key_prerequisites": [
+      "logic.seq.latch_ff"
+    ],
+    "encompasses": [
+      "cmos.gate.transmission_gate"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.seq.setup_hold_characterization",
+    "label": "Characterizing setup, hold and clock-to-q",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.seq",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.seq.latch_circuits",
+      "logic.seq.flip_flop_timing",
+      "cmos.delay.rc_model"
+    ],
+    "key_prerequisites": [
+      "logic.seq.flip_flop_timing"
+    ],
+    "encompasses": [
+      "cmos.seq.latch_circuits"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.seq.clock_gating_cell",
+    "label": "Integrated clock-gating cells",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.seq",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.seq.latch_circuits",
+      "cmos.power.dynamic",
+      "logic.seq.synchronous_design"
+    ],
+    "key_prerequisites": [
+      "cmos.seq.latch_circuits"
+    ],
+    "encompasses": [
+      "cmos.seq.latch_circuits",
+      "cmos.power.dynamic"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.seq.metastability",
+    "label": "Latch regeneration and synchronizer MTBF",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.seq",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.seq.latch_circuits",
+      "logic.seq.metastability",
+      "calc.deriv.exp_log"
+    ],
+    "key_prerequisites": [
+      "logic.seq.metastability"
+    ],
+    "encompasses": [
+      "cmos.seq.latch_circuits"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.cell.standard_cell_layout",
+    "label": "Standard-cell layout",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.cell",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.gate.static_cmos",
+      "cmos.gate.transistor_count",
+      "dev.advanced.finfet"
+    ],
+    "key_prerequisites": [
+      "cmos.gate.static_cmos"
+    ],
+    "encompasses": [
+      "cmos.gate.static_cmos"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "cmos.cell.library_views",
+    "label": "The views of a cell library",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.cell",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.cell.standard_cell_layout",
+      "cmos.gate.static_cmos"
+    ],
+    "key_prerequisites": [
+      "cmos.cell.standard_cell_layout"
+    ],
+    "encompasses": [
+      "cmos.cell.standard_cell_layout"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "cmos.cell.row_arithmetic",
+    "label": "Rows, sites, rails and utilization",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.cell",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.cell.standard_cell_layout",
+      "cmos.cell.library_views"
+    ],
+    "key_prerequisites": [
+      "cmos.cell.standard_cell_layout"
+    ],
+    "encompasses": [
+      "cmos.cell.standard_cell_layout"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "cmos.cell.drive_strength",
+    "label": "Drive strengths within a cell family",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.cell",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.delay.rc_model",
+      "cmos.delay.logical_effort",
+      "cmos.cell.standard_cell_layout"
+    ],
+    "key_prerequisites": [
+      "cmos.delay.rc_model"
+    ],
+    "encompasses": [
+      "cmos.delay.rc_model"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.lib.liberty_structure",
+    "label": "Liberty structure: cells, pins and arcs",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.lib",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.cell.library_views",
+      "logic.comb.gates_mux",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "cmos.cell.library_views"
+    ],
+    "encompasses": [
+      "cmos.cell.library_views"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.lib.liberty_nldm",
+    "label": "Liberty NLDM timing tables",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.lib",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.lib.liberty_structure",
+      "cmos.delay.slew_dependence",
+      "cmos.delay.rc_model"
+    ],
+    "key_prerequisites": [
+      "cmos.lib.liberty_structure",
+      "cmos.delay.slew_dependence"
+    ],
+    "encompasses": [
+      "cmos.lib.liberty_structure"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.lib.nldm_abstraction",
+    "label": "What NLDM preserves and abstracts",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.lib",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.lib.liberty_nldm",
+      "cmos.delay.slew_dependence",
+      "em.circuit.rc_time_constant"
+    ],
+    "key_prerequisites": [
+      "cmos.lib.liberty_nldm"
+    ],
+    "encompasses": [
+      "cmos.lib.liberty_nldm"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.lib.liberty_ccs_lvf",
+    "label": "CCS and LVF models",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.lib",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.lib.nldm_abstraction",
+      "cmos.lib.liberty_nldm",
+      "stat.dist.normal"
+    ],
+    "key_prerequisites": [
+      "cmos.lib.nldm_abstraction"
+    ],
+    "encompasses": [
+      "cmos.lib.liberty_nldm"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.lib.power_noise_views",
+    "label": "Liberty power and noise views",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.lib",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.lib.liberty_nldm",
+      "cmos.power.activity_factor",
+      "cmos.power.leakage"
+    ],
+    "key_prerequisites": [
+      "cmos.lib.liberty_nldm"
+    ],
+    "encompasses": [
+      "cmos.lib.liberty_nldm",
+      "cmos.power.activity_factor"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.lib.characterization",
+    "label": "Cell characterization",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.lib",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.lib.liberty_nldm",
+      "cmos.seq.setup_hold_characterization",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "cmos.lib.liberty_nldm"
+    ],
+    "encompasses": [
+      "cmos.lib.liberty_nldm"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.lib.corners",
+    "label": "PVT corners and library sets",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.lib",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.lib.characterization",
+      "cmos.power.leakage",
+      "dev.mos.threshold"
+    ],
+    "key_prerequisites": [
+      "cmos.lib.characterization"
+    ],
+    "encompasses": [
+      "cmos.lib.characterization"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.lib.sequential_arcs",
+    "label": "Sequential constraint arcs in Liberty",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.lib",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.lib.liberty_nldm",
+      "cmos.seq.setup_hold_characterization",
+      "logic.seq.flip_flop_timing"
+    ],
+    "key_prerequisites": [
+      "cmos.seq.setup_hold_characterization"
+    ],
+    "encompasses": [
+      "cmos.lib.liberty_nldm",
+      "cmos.seq.setup_hold_characterization"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 150
+    }
+  },
+  {
+    "id": "cmos.special.lowpower_cells",
+    "label": "Level shifters, isolation and retention cells",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.special",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.power.leakage",
+      "cmos.seq.latch_circuits",
+      "cmos.gate.inverter_vtc"
+    ],
+    "key_prerequisites": [
+      "cmos.power.leakage"
+    ],
+    "encompasses": [
+      "cmos.power.leakage"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.special.power_gating",
+    "label": "Power switches and power gating",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.special",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.special.lowpower_cells",
+      "cmos.delay.rc_model",
+      "em.circuit.kcl_kvl"
+    ],
+    "key_prerequisites": [
+      "cmos.special.lowpower_cells"
+    ],
+    "encompasses": [
+      "cmos.special.lowpower_cells"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.special.physical_cells",
+    "label": "Tie, filler, tap, endcap and decap cells",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.special",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.cell.standard_cell_layout",
+      "em.field.electrostatics_capacitance",
+      "cmos.gate.static_cmos"
+    ],
+    "key_prerequisites": [
+      "cmos.cell.standard_cell_layout"
+    ],
+    "encompasses": [
+      "cmos.cell.standard_cell_layout"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "cmos.frontier.characterization_skill",
+    "label": "Characterization as an agent skill",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.lib.characterization",
+      "agentic.skill.manifest",
+      "agentic.tiers.change"
+    ],
+    "key_prerequisites": [
+      "cmos.lib.characterization"
+    ],
+    "encompasses": [
+      "cmos.lib.characterization"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "cmos.frontier.golden_spice_check",
+    "label": "Golden SPICE checks for library tables",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "cmos.frontier.characterization_skill",
+      "agentic.verify.golden_differential",
+      "cmos.lib.liberty_nldm"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "cmos.lib.liberty_nldm",
+      "cmos.lib.characterization"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "cmos.frontier.fast_char_surrogate",
+    "label": "Fast characterization surrogates",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.lib.characterization",
+      "agentic.loop.fast_accurate",
+      "numa.interp.extrapolation"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "cmos.lib.characterization"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "cmos.frontier.dtco_cell_agent",
+    "label": "Agents choosing cell architectures in DTCO",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.cell.standard_cell_layout",
+      "cmos.cell.drive_strength",
+      "opt.multi.pareto",
+      "agentic.harness.loop"
+    ],
+    "key_prerequisites": [
+      "opt.multi.pareto"
+    ],
+    "encompasses": [
+      "cmos.cell.standard_cell_layout"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "cmos.frontier.library_reward",
+    "label": "Tool-grounded rewards for library agents",
+    "domain": "cmos_circuits_and_cells",
+    "subdomain": "cmos_circuits_and_cells.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "cmos.frontier.golden_spice_check",
+      "agentic.rl.tool_grounded",
+      "cmos.lib.liberty_nldm"
+    ],
+    "key_prerequisites": [
+      "agentic.rl.tool_grounded"
+    ],
+    "encompasses": [
+      "cmos.lib.liberty_nldm"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Printing below the wavelength",
+    "section": "Printing below the wavelength",
+    "subgoals": [
+      "Explain how diffraction distorts sub-wavelength features",
+      "Describe OPC as biasing polygons to print correctly",
+      "Map multiple patterning to graph colouring of a layer"
+    ]
+  },
+  {
+    "label": "Design for manufacturability",
+    "section": "Design for manufacturability",
+    "subgoals": [
+      "Name density rules and fill insertion",
+      "Compute exposure to particles as critical area",
+      "Explain why redundant vias raise yield"
+    ]
+  },
+  {
+    "label": "Process and device modelling",
+    "section": "Process and device modelling",
+    "subgoals": [
+      "Describe TCAD as process and device simulation",
+      "Describe DTCO as judging process options by cell PPA",
+      "Trace yield learning from wafer failures back to layout rules"
+    ]
+  }
+]

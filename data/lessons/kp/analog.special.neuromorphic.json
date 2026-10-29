@@ -1,0 +1,5 @@
+[
+  {"label": "Crossbar multiply-accumulate", "section": "Crossbar multiply-accumulate", "subgoals": ["Encode each weight as a cell conductance", "Multiply row voltages by conductances by Ohm's law", "Sum the cell currents on each column by Kirchhoff's current law"]},
+  {"label": "Signed weights and non-idealities", "section": "Signed weights and non-idealities", "subgoals": ["Represent a signed weight as the difference of two conductances", "List variation, drift, IR drop and ADC quantization as error sources", "Evaluate accuracy with a statistical model of the array"]},
+  {"label": "Spiking neurons", "section": "Spiking neurons", "subgoals": ["Write the membrane voltage under constant current", "Solve for the time to reach threshold", "Recognize that the neuron never fires when IR is below threshold"]}
+]

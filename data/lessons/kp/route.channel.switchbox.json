@@ -1,0 +1,5 @@
+[
+  {"label": "Channels versus switchboxes", "section": "Channels versus switchboxes", "subgoals": ["Contrast fixed pins on four sides with a channel's open ends", "Apply the cut-line density bound in both directions", "Declare a box unroutable when a cut is over capacity"]},
+  {"label": "Routing inside a fixed box", "section": "Routing inside a fixed box", "subgoals": ["Route straight-across nets first", "Fit the remaining nets and rip up when blocked", "Report failure when density holds but no routing exists"]},
+  {"label": "Switchboxes in modern routers", "section": "Switchboxes in modern routers", "subgoals": ["Treat a repair clip with fixed boundary wires as a switchbox", "Reroute inside while keeping boundary connections", "Enlarge the clip when the box itself is unroutable"]}
+]

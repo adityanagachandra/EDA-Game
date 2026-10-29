@@ -1,0 +1,5 @@
+[
+  {"label": "The Miller effect", "section": "The Miller effect", "subgoals": ["Find the voltage swing across the bridging capacitor", "Multiply Cc by one plus the stage gain", "Place the Miller capacitance at the first-stage output"]},
+  {"label": "Pole splitting", "section": "Pole splitting", "subgoals": ["Write the split poles in terms of gm6, R1, R2 and the capacitances", "Reduce the output pole to gm6 over CL when Cc and CL dominate", "Explain the high-frequency short that makes the stage diode-like"]},
+  {"label": "The right-half-plane zero and its fix", "section": "The right-half-plane zero and its fix", "subgoals": ["Locate the feedforward zero at gm6 over Cc", "Explain why a right-half-plane zero lags phase", "Choose the nulling resistor as one over gm6 or slightly larger"]}
+]

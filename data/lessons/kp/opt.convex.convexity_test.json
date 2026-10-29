@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Classifying a quadratic by its Hessian",
+    "section": "Classifying a quadratic by its Hessian",
+    "subgoals": [
+      "Write the constant Hessian from the quadratic coefficients",
+      "Read the signs of its determinant and leading entry",
+      "Classify the function as convex, concave or a saddle"
+    ]
+  },
+  {
+    "label": "The determinant test in practice",
+    "section": "The determinant test in practice",
+    "subgoals": [
+      "Place 2a and 2c on the diagonal and b off the diagonal",
+      "Compute the determinant as 4ac minus b squared",
+      "Use the sign to decide convexity together with the leading entry"
+    ]
+  },
+  {
+    "label": "Convexity of EDA cost terms",
+    "section": "Convexity of EDA cost terms",
+    "subgoals": [
+      "Decompose the cost into terms with known convexity",
+      "Apply the max, sum and composition rules",
+      "Flag products, differences and minima as possible convexity breakers"
+    ]
+  }
+]

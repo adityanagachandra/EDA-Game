@@ -1,0 +1,5 @@
+[
+  {"label": "Parallel-fault simulation", "section": "Parallel-fault simulation", "subgoals": ["Reserve one bit of the word for the fault-free machine", "Force each fault's bit at its site with OR and AND masks", "Divide the faults by W minus 1 and round up for passes per pattern"]},
+  {"label": "Parallel-pattern single-fault simulation", "section": "Parallel-pattern single-fault simulation", "subgoals": ["Pack W patterns into each word", "Simulate the fault-free circuit and each fault once per word", "Multiply the word count by faults plus one for total passes"]},
+  {"label": "Bitwise evaluation", "section": "Bitwise evaluation", "subgoals": ["Map each gate to one bitwise machine instruction", "Apply the instruction to the input words bit by bit", "Read each output bit as one pattern's response"]}
+]

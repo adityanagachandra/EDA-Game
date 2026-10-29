@@ -1,0 +1,1088 @@
+[
+ {
+  "id": "cts.objective.skew_latency",
+  "label": "Clock tree objectives",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.objective",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "sta.clock.skew_jitter",
+   "sta.check.setup_hold",
+   "discrete.graphs.trees"
+  ],
+  "key_prerequisites": [
+   "sta.clock.skew_jitter"
+  ],
+  "encompasses": [
+   "sta.clock.skew_jitter"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "cts.objective.clock_slew",
+  "label": "Clock slew and the transition limit",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.objective",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.objective.skew_latency",
+   "em.circuit.rc_time_constant",
+   "calc.deriv.exp_log"
+  ],
+  "key_prerequisites": [
+   "em.circuit.rc_time_constant"
+  ],
+  "encompasses": [
+   "em.circuit.rc_time_constant"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.objective.clock_power",
+  "label": "Clock network power",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.objective",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.objective.skew_latency",
+   "cmos.power.dynamic"
+  ],
+  "key_prerequisites": [
+   "cmos.power.dynamic"
+  ],
+  "encompasses": [
+   "cmos.power.dynamic"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "cts.topology.h_tree",
+  "label": "H-trees",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.topology",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.objective.skew_latency",
+   "calc.series.geometric",
+   "place.wl.hpwl"
+  ],
+  "key_prerequisites": [
+   "cts.objective.skew_latency"
+  ],
+  "encompasses": [
+   "calc.series.geometric"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.topology.mesh",
+  "label": "Clock meshes",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.topology",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.topology.h_tree",
+   "cts.objective.clock_power",
+   "em.circuit.nodal_analysis"
+  ],
+  "key_prerequisites": [
+   "cts.topology.h_tree"
+  ],
+  "encompasses": [
+   "cts.objective.clock_power"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.topology.spine_hybrid",
+  "label": "Spines, fishbones and hybrid clock networks",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.topology",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.topology.mesh",
+   "cts.topology.h_tree"
+  ],
+  "key_prerequisites": [
+   "cts.topology.mesh"
+  ],
+  "encompasses": [
+   "cts.topology.h_tree"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.topology.tree_skew",
+  "label": "Skew of a given clock tree",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.topology",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.objective.skew_latency",
+   "sta.delay.elmore",
+   "graphs.tree.rooted_traversal"
+  ],
+  "key_prerequisites": [
+   "sta.delay.elmore"
+  ],
+  "encompasses": [
+   "sta.delay.elmore",
+   "cts.objective.skew_latency"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.zeroskew.linear_merge",
+  "label": "Zero-skew merging under linear delay",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.zeroskew",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.topology.tree_skew",
+   "ra.metric.spaces"
+  ],
+  "key_prerequisites": [
+   "cts.topology.tree_skew"
+  ],
+  "encompasses": [
+   "cts.topology.tree_skew"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "cts.zeroskew.tsay_merge",
+  "label": "Tsay's zero-skew tapping point",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.zeroskew",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.zeroskew.linear_merge",
+   "sta.delay.elmore",
+   "cts.topology.tree_skew"
+  ],
+  "key_prerequisites": [
+   "cts.zeroskew.linear_merge",
+   "sta.delay.elmore"
+  ],
+  "encompasses": [
+   "sta.delay.elmore",
+   "cts.zeroskew.linear_merge"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 180
+  }
+ },
+ {
+  "id": "cts.zeroskew.merging_segment",
+  "label": "Merging segments in the Manhattan plane",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.zeroskew",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.zeroskew.linear_merge",
+   "ra.metric.spaces",
+   "graphs.steiner.rsmt"
+  ],
+  "key_prerequisites": [
+   "cts.zeroskew.linear_merge"
+  ],
+  "encompasses": [
+   "cts.zeroskew.linear_merge"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.zeroskew.topology_generation",
+  "label": "Clock tree topology generation",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.zeroskew",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.zeroskew.linear_merge",
+   "graphs.steiner.mst",
+   "stat.data.median"
+  ],
+  "key_prerequisites": [
+   "cts.zeroskew.linear_merge"
+  ],
+  "encompasses": [
+   "stat.data.median"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.zeroskew.dme",
+  "label": "Deferred-merge embedding",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.zeroskew",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.zeroskew.merging_segment",
+   "cts.zeroskew.topology_generation",
+   "cts.zeroskew.tsay_merge",
+   "graphs.tree.rooted_traversal"
+  ],
+  "key_prerequisites": [
+   "cts.zeroskew.merging_segment"
+  ],
+  "encompasses": [
+   "cts.zeroskew.merging_segment",
+   "cts.zeroskew.linear_merge"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 75
+  }
+ },
+ {
+  "id": "cts.zeroskew.bounded_skew",
+  "label": "Bounded-skew clock trees",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.zeroskew",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.zeroskew.dme",
+   "cts.zeroskew.linear_merge"
+  ],
+  "key_prerequisites": [
+   "cts.zeroskew.dme"
+  ],
+  "encompasses": [
+   "cts.zeroskew.linear_merge"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.buffered.buffer_levels",
+  "label": "Buffer levels and fanout in a clock tree",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.buffered",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.objective.skew_latency",
+   "cmos.delay.logical_effort",
+   "cts.topology.h_tree"
+  ],
+  "key_prerequisites": [
+   "cts.objective.skew_latency"
+  ],
+  "encompasses": [
+   "cts.objective.skew_latency"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "cts.buffered.slew_wire_length",
+  "label": "Slew-limited buffer spacing",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.buffered",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.objective.clock_slew",
+   "cts.buffered.buffer_levels",
+   "sta.delay.elmore"
+  ],
+  "key_prerequisites": [
+   "cts.objective.clock_slew"
+  ],
+  "encompasses": [
+   "cts.objective.clock_slew",
+   "sta.delay.elmore"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 180
+  }
+ },
+ {
+  "id": "cts.buffered.duty_cycle",
+  "label": "Duty-cycle distortion in clock buffer chains",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.buffered",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.buffered.buffer_levels",
+   "cmos.delay.rc_model"
+  ],
+  "key_prerequisites": [
+   "cts.buffered.buffer_levels"
+  ],
+  "encompasses": [
+   "cts.buffered.buffer_levels"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 90
+  }
+ },
+ {
+  "id": "cts.buffered.latency_balancing",
+  "label": "Insertion-delay balancing across sinks",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.buffered",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.buffered.buffer_levels",
+   "cts.objective.skew_latency",
+   "place.macro.placement"
+  ],
+  "key_prerequisites": [
+   "cts.buffered.buffer_levels"
+  ],
+  "encompasses": [
+   "cts.objective.skew_latency"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.buffered.cts_flow",
+  "label": "The clock tree synthesis flow in OpenROAD",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.buffered",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.zeroskew.dme",
+   "cts.buffered.latency_balancing",
+   "cts.buffered.slew_wire_length",
+   "sta.clock.cppr"
+  ],
+  "key_prerequisites": [
+   "cts.zeroskew.dme"
+  ],
+  "encompasses": [
+   "cts.buffered.latency_balancing"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.skew.useful_skew",
+  "label": "Useful skew",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.skew",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.objective.skew_latency",
+   "sta.check.setup_hold",
+   "sta.graph.arrival_required"
+  ],
+  "key_prerequisites": [
+   "sta.check.setup_hold"
+  ],
+  "encompasses": [
+   "sta.check.setup_hold",
+   "cts.objective.skew_latency"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.skew.difference_constraints",
+  "label": "Clock scheduling as difference constraints",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.skew",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.skew.useful_skew",
+   "graphs.path.dijkstra",
+   "graphs.dag.longest_path"
+  ],
+  "key_prerequisites": [
+   "cts.skew.useful_skew"
+  ],
+  "encompasses": [
+   "cts.skew.useful_skew"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 180
+  }
+ },
+ {
+  "id": "cts.skew.scheduling_lp",
+  "label": "Maximum-slack clock scheduling as a linear program",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.skew",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.skew.difference_constraints",
+   "opt.lp.simplex_geometry",
+   "opt.formulate.variables_objective"
+  ],
+  "key_prerequisites": [
+   "cts.skew.difference_constraints"
+  ],
+  "encompasses": [
+   "cts.skew.difference_constraints",
+   "cts.skew.useful_skew"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 180
+  }
+ },
+ {
+  "id": "cts.gating.icg",
+  "label": "Clock gating",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.gating",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.objective.clock_power",
+   "sta.check.setup_hold",
+   "cmos.gate.static_cmos"
+  ],
+  "key_prerequisites": [
+   "cts.objective.clock_power"
+  ],
+  "encompasses": [
+   "cts.objective.clock_power"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.gating.power_savings",
+  "label": "Clock-gating power savings",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.gating",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.gating.icg",
+   "cts.objective.clock_power",
+   "prob.rv.expectation"
+  ],
+  "key_prerequisites": [
+   "cts.gating.icg",
+   "cts.objective.clock_power"
+  ],
+  "encompasses": [
+   "cts.objective.clock_power"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.gating.enable_timing",
+  "label": "Timing the clock-gate enable",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.gating",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.gating.icg",
+   "sta.check.setup_hold",
+   "cts.objective.skew_latency"
+  ],
+  "key_prerequisites": [
+   "cts.gating.icg"
+  ],
+  "encompasses": [
+   "sta.check.setup_hold",
+   "cts.objective.skew_latency"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.pdn.grid",
+  "label": "Power distribution grids",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "place.overview.rows_sites",
+   "em.circuit.kcl_kvl",
+   "place.format.lef_def"
+  ],
+  "key_prerequisites": [
+   "em.circuit.kcl_kvl"
+  ],
+  "encompasses": [
+   "em.circuit.kcl_kvl"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.pdn.rail_ladder",
+  "label": "IR drop along a resistive rail",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.grid",
+   "em.circuit.kcl_kvl"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.grid"
+  ],
+  "encompasses": [
+   "cts.pdn.grid",
+   "em.circuit.kcl_kvl"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.pdn.conductance_matrix",
+  "label": "The conductance matrix of a power grid",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.rail_ladder",
+   "em.circuit.nodal_analysis",
+   "graph.laplacian",
+   "linalg.quadratic.definite"
+  ],
+  "key_prerequisites": [
+   "em.circuit.nodal_analysis"
+  ],
+  "encompasses": [
+   "em.circuit.nodal_analysis"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.pdn.ir_drop",
+  "label": "IR drop analysis",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.conductance_matrix",
+   "linalg.systems.matrix",
+   "numer.sparse.storage"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.conductance_matrix"
+  ],
+  "encompasses": [
+   "cts.pdn.conductance_matrix",
+   "cts.pdn.rail_ladder",
+   "linalg.systems.matrix"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 180
+  }
+ },
+ {
+  "id": "cts.pdn.iterative_solve",
+  "label": "Solving large power grids iteratively",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.ir_drop",
+   "numa.linear.gauss_seidel",
+   "numer.iter.conjugate_gradient"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.ir_drop",
+   "numa.linear.gauss_seidel"
+  ],
+  "encompasses": [
+   "numa.linear.gauss_seidel",
+   "cts.pdn.conductance_matrix"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.pdn.strap_pitch",
+  "label": "Sizing strap pitch from an IR budget",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.rail_ladder",
+   "cts.pdn.grid",
+   "calc.integral.definite"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.rail_ladder"
+  ],
+  "encompasses": [
+   "cts.pdn.rail_ladder",
+   "cts.pdn.grid"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.pdn.dynamic_ir",
+  "label": "Dynamic IR drop",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.ir_drop",
+   "em.circuit.rc_time_constant",
+   "ode.first_order.linear"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.ir_drop"
+  ],
+  "encompasses": [
+   "em.circuit.rc_time_constant"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.pdn.decap",
+  "label": "Decoupling capacitance",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.dynamic_ir",
+   "em.field.electrostatics_capacitance"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.dynamic_ir"
+  ],
+  "encompasses": [
+   "cts.pdn.dynamic_ir"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.pdn.ldi_dt",
+  "label": "Inductive supply noise and L di/dt",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.decap",
+   "em.field.inductance",
+   "em.circuit.rlc"
+  ],
+  "key_prerequisites": [
+   "em.field.inductance"
+  ],
+  "encompasses": [
+   "cts.pdn.decap",
+   "em.circuit.rlc"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.pdn.electromigration",
+  "label": "Electromigration in power grids",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.grid",
+   "cts.pdn.ir_drop"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.grid"
+  ],
+  "encompasses": [
+   "cts.pdn.grid"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.pdn.black_equation",
+  "label": "Black's equation and EM lifetime",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.pdn",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.pdn.electromigration",
+   "calc.deriv.exp_log"
+  ],
+  "key_prerequisites": [
+   "cts.pdn.electromigration"
+  ],
+  "encompasses": [
+   "cts.pdn.electromigration"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.lowpower.multi_voltage",
+  "label": "Multi-voltage design and voltage islands",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.lowpower",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cmos.power.dynamic",
+   "cmos.delay.rc_model",
+   "cts.pdn.grid"
+  ],
+  "key_prerequisites": [
+   "cmos.power.dynamic"
+  ],
+  "encompasses": [
+   "cmos.power.dynamic"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.lowpower.power_gating",
+  "label": "Power gating",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.lowpower",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cmos.power.leakage",
+   "cts.pdn.grid",
+   "cts.lowpower.multi_voltage"
+  ],
+  "key_prerequisites": [
+   "cmos.power.leakage"
+  ],
+  "encompasses": [
+   "cmos.power.leakage"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.lowpower.switch_sizing",
+  "label": "Sizing header and footer switches",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.lowpower",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.lowpower.power_gating",
+   "cts.pdn.ir_drop"
+  ],
+  "key_prerequisites": [
+   "cts.lowpower.power_gating"
+  ],
+  "encompasses": [
+   "cts.lowpower.power_gating"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.lowpower.rush_current",
+  "label": "Rush current and wake-up",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.lowpower",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.lowpower.power_gating",
+   "cts.pdn.decap",
+   "em.circuit.rc_time_constant"
+  ],
+  "key_prerequisites": [
+   "cts.lowpower.power_gating"
+  ],
+  "encompasses": [
+   "cts.pdn.decap",
+   "em.circuit.rc_time_constant"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.lowpower.upf",
+  "label": "UPF power intent",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.lowpower",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.lowpower.power_gating",
+   "cts.lowpower.multi_voltage",
+   "cmos.special.lowpower_cells"
+  ],
+  "key_prerequisites": [
+   "cmos.special.lowpower_cells"
+  ],
+  "encompasses": [
+   "cts.lowpower.power_gating"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.lowpower.isolation_level_shift",
+  "label": "Isolation and level-shifting requirements",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.lowpower",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.lowpower.upf",
+   "cmos.special.lowpower_cells"
+  ],
+  "key_prerequisites": [
+   "cts.lowpower.upf"
+  ],
+  "encompasses": [
+   "cts.lowpower.upf"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.analysis.activity_propagation",
+  "label": "Signal probability and activity propagation",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.analysis",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cmos.power.dynamic",
+   "prob.independence.pairwise",
+   "prob.rv.expectation"
+  ],
+  "key_prerequisites": [
+   "prob.independence.pairwise"
+  ],
+  "encompasses": [
+   "prob.independence.pairwise"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 120
+  }
+ },
+ {
+  "id": "cts.analysis.transition_density",
+  "label": "Transition density propagation",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.analysis",
+  "grading_type": "numeric",
+  "prerequisites": [
+   "cts.analysis.activity_propagation",
+   "discrete.logic.truth_tables"
+  ],
+  "key_prerequisites": [
+   "cts.analysis.activity_propagation"
+  ],
+  "encompasses": [
+   "cts.analysis.activity_propagation"
+  ],
+  "mastery_threshold": {
+   "streak": 5,
+   "avg_time_seconds": 150
+  }
+ },
+ {
+  "id": "cts.analysis.vector_vs_vectorless",
+  "label": "Vector-based and vectorless power analysis",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.analysis",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.analysis.activity_propagation",
+   "cts.objective.clock_power",
+   "cts.pdn.dynamic_ir"
+  ],
+  "key_prerequisites": [
+   "cts.analysis.activity_propagation"
+  ],
+  "encompasses": [
+   "cts.analysis.activity_propagation"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.frontier.ir_eco_loop",
+  "label": "Agentic IR-drop ECO loops",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.pdn.ir_drop",
+   "cts.pdn.decap",
+   "agentic.signoff.eco_loop"
+  ],
+  "key_prerequisites": [
+   "agentic.signoff.eco_loop"
+  ],
+  "encompasses": [
+   "cts.pdn.ir_drop"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 75
+  }
+ },
+ {
+  "id": "cts.frontier.fast_accurate_pdn",
+  "label": "Fast and accurate PDN solvers in a loop",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.pdn.iterative_solve",
+   "cts.pdn.dynamic_ir",
+   "agentic.loop.fast_accurate"
+  ],
+  "key_prerequisites": [
+   "agentic.loop.fast_accurate"
+  ],
+  "encompasses": [
+   "cts.pdn.iterative_solve"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.frontier.golden_ir",
+  "label": "Golden and differential IR checks",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.pdn.ir_drop",
+   "agentic.verify.golden_differential"
+  ],
+  "key_prerequisites": [
+   "agentic.verify.golden_differential"
+  ],
+  "encompasses": [
+   "cts.pdn.ir_drop"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.frontier.cts_policy_plugin",
+  "label": "CTS policies as Tier 2 plug-ins",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.buffered.cts_flow",
+   "cts.zeroskew.dme",
+   "agentic.tiers.change",
+   "agentic.seam.extension_point"
+  ],
+  "key_prerequisites": [
+   "agentic.tiers.change"
+  ],
+  "encompasses": [
+   "cts.zeroskew.dme"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ },
+ {
+  "id": "cts.frontier.pdn_reward",
+  "label": "Tool-grounded rewards for clock and power agents",
+  "domain": "clock_and_power",
+  "subdomain": "clock_and_power.frontier",
+  "grading_type": "multiple_choice",
+  "prerequisites": [
+   "cts.pdn.electromigration",
+   "cts.skew.useful_skew",
+   "agentic.rl.tool_grounded"
+  ],
+  "key_prerequisites": [
+   "agentic.rl.tool_grounded"
+  ],
+  "encompasses": [
+   "cts.pdn.electromigration"
+  ],
+  "mastery_threshold": {
+   "streak": 6,
+   "avg_time_seconds": 60
+  }
+ }
+]

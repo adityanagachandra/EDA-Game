@@ -1,0 +1,5 @@
+[
+  {"label": "Panels and the potential coefficient", "section": "Panels and the potential coefficient", "subgoals": ["Discretize each conductor surface into charged panels", "Evaluate the Green's function between panel centres", "Sum the contributions of all panel charges at a target panel"]},
+  {"label": "Solving for the charges", "section": "Solving for the charges", "subgoals": ["Set every panel potential to its conductor's voltage", "Solve the dense system for the panel charges", "Sum each conductor's panel charges to fill a capacitance column"]},
+  {"label": "Dense matrices and their cost", "section": "Dense matrices and their cost", "subgoals": ["Count the dense entries as N squared", "Multiply by eight bytes for double-precision storage", "Scale the direct solve time with the cube of N"]}
+]

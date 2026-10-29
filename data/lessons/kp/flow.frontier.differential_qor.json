@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Comparing two runs",
+    "section": "Comparing two runs",
+    "subgoals": [
+      "Pair each endpoint across the baseline and new runs",
+      "Subtract baseline from new slack for each endpoint",
+      "Count the endpoints whose change exceeds the tolerance"
+    ]
+  },
+  {
+    "label": "Summary metrics and their limits",
+    "section": "Summary metrics and their limits",
+    "subgoals": [
+      "Sum negative slacks before and after",
+      "Compare worst negative slack before and after",
+      "Explain why summaries can hide per-endpoint changes"
+    ]
+  },
+  {
+    "label": "Intended versus unintended movement",
+    "section": "Intended versus unintended movement",
+    "subgoals": [
+      "List the endpoints the request intended to move",
+      "Count moved endpoints outside the intended set",
+      "Extend the differential to area, congestion and DRC counts"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Design rules and stitching", "section": "Design rules and stitching", "subgoals": ["Check clocks, resets and loops against the scan design rules", "Group flops into chains by clock domain and edge", "Insert lockup latches where a chain crosses domains"]},
+  {"label": "Balancing", "section": "Balancing", "subgoals": ["Divide the flops by the chains and round up for the balanced length", "Read the test time from the longest chain", "Compare cycles for the unbalanced and balanced longest chains"]},
+  {"label": "Choosing the chain count", "section": "Choosing the chain count", "subgoals": ["Write the cycle count as a function of chain count", "Increase the chain count until the cycles meet the budget", "Turn to compression when scan pins run out"]}
+]

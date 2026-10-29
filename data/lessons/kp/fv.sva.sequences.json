@@ -1,0 +1,5 @@
+[
+  {"label": "Sampled-value functions", "section": "Sampled-value functions", "subgoals": ["Compare each cycle's value with the previous cycle's value", "Assume the stated value before cycle 0", "Count the cycles where the requested change or non-change occurs"]},
+  {"label": "Concatenation with cycle delays", "section": "Concatenation with cycle delays", "subgoals": ["Slide the sequence's start along the trace", "Check each element at its offset from the start", "Count the start cycles whose whole pattern fits and matches"]},
+  {"label": "Consecutive repetition", "section": "Consecutive repetition", "subgoals": ["Expand the repetition range into its alternatives", "Check each alternative from the start cycle", "Count the start cycle once if any alternative matches within the trace"]}
+]

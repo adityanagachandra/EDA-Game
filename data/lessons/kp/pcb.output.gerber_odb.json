@@ -1,0 +1,5 @@
+[
+  {"label": "The Gerber image model", "section": "The Gerber image model", "subgoals": ["Define apertures and select them with D codes", "Distinguish draw, move and flash operations", "Fill pours with region statements"]},
+  {"label": "Coordinates and units", "section": "Coordinates and units", "subgoals": ["Read the integer and decimal digit counts from the format statement", "Divide each coordinate by the power of ten the format implies", "Compute segment lengths from decoded coordinates"]},
+  {"label": "Attributes and unified databases", "section": "Attributes and unified databases", "subgoals": ["List what plain Gerber leaves to side documents", "Use X2 attributes to identify layers and object roles", "Choose a unified database when consistency across files matters"]}
+]

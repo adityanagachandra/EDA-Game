@@ -1,0 +1,5 @@
+[
+  {"label": "Interfaces bundle signals", "section": "Interfaces bundle signals", "subgoals": ["Group the bus signals into one interface declaration", "Connect the interface as a single port", "Expand the interface into individual nets at elaboration"]},
+  {"label": "Modports give directions", "section": "Modports give directions", "subgoals": ["Define one modport per role on the bus", "Assign each signal a direction within each modport", "Reject writes to signals the modport marks as inputs"]},
+  {"label": "Packages and compile order", "section": "Packages and compile order", "subgoals": ["Collect shared types and constants into a package", "Analyze each package before the code that imports it", "Distinguish compile-time imports from elaboration-time instance binding"]}
+]

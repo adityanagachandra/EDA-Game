@@ -1,0 +1,5 @@
+[
+  {"label": "Counting vias of a path", "section": "Counting vias of a path", "subgoals": ["Count the stack from the first pin up to the first segment's layer", "Add the layer difference at every bend", "Add the stack from the last segment down to the second pin"]},
+  {"label": "The minimum for a fixed 2D route", "section": "The minimum for a fixed 2D route", "subgoals": ["Assign each segment to the lowest layer of its direction", "Verify that every bend and pin then pays only its lower bound", "Subtract the minimum from the given count to get the saving"]},
+  {"label": "Vias at junctions", "section": "Vias at junctions", "subgoals": ["Collect the layers of all segments meeting at the point", "Count the stack as the highest layer minus the lowest", "Sum stacks over pins, bends and junctions of the tree"]}
+]

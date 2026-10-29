@@ -1,0 +1,5 @@
+[
+  {"label": "Shot count of a rectangle", "section": "Shot count of a rectangle", "subgoals": ["Divide each side by the maximum shot size", "Round each quotient up", "Multiply the two counts"]},
+  {"label": "Choosing a fracture", "section": "Choosing a fracture", "subgoals": ["Cut the polygon into rectangles in each candidate way", "Count the shots of each rectangle", "Keep the cut with the fewer total shots"]},
+  {"label": "Vertex growth after OPC", "section": "Vertex growth after OPC", "subgoals": ["Count the fragments on each side", "Add two vertices per internal break", "Add the four corners"]}
+]

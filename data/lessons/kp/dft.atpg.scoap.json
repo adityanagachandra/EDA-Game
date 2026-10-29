@@ -1,0 +1,5 @@
+[
+  {"label": "Combinational controllability", "section": "Combinational controllability", "subgoals": ["Assign controllability 1 to both values of every primary input", "Take the cheapest input at the controlling value plus one for the controlled output", "Sum the inputs at the non-controlling value plus one for the other output"]},
+  {"label": "Computing a value", "section": "Computing a value", "subgoals": ["Order the gates topologically", "Compute each gate's two controllabilities from its inputs", "Use the minimum over the two input combinations for XOR"]},
+  {"label": "What the numbers mean", "section": "What the numbers mean", "subgoals": ["Recognize that sums double-count reconvergent inputs", "Rank lines by controllability to order ATPG decisions", "Flag lines with large values as random-pattern resistant"]}
+]

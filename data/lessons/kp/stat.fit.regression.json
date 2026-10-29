@@ -1,0 +1,5 @@
+[
+  {"label": "Fitting a characterization line", "section": "Fitting a characterization line", "subgoals": ["Compute the means of load and delay", "Divide the cross-deviation sum by the load deviation sum for the slope", "Recover the intercept from the means and the slope"]},
+  {"label": "Prediction and extrapolation", "section": "Prediction and extrapolation", "subgoals": ["Evaluate the fitted line at the query point", "Check whether the query lies inside the characterized range", "Flag extrapolation beyond the table edge"]},
+  {"label": "How good is the fit", "section": "How good is the fit", "subgoals": ["Compute R squared from the three sums of squares", "Inspect residuals for curvature that R squared hides", "Prefer held-out error for models used in optimization"]}
+]

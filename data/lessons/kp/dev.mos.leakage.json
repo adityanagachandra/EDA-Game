@@ -1,0 +1,5 @@
+[
+  {"label": "The leakage components", "section": "The leakage components", "subgoals": ["List subthreshold, gate, junction and gate-induced drain leakage", "Name the mechanism and current path of each", "Identify which component usually dominates logic leakage"]},
+  {"label": "What leakage depends on", "section": "What leakage depends on", "subgoals": ["Relate subthreshold leakage to temperature through threshold and swing", "Explain the stack effect from the intermediate node voltage", "Weigh reverse body bias against junction and GIDL leakage"]},
+  {"label": "How EDA models leakage", "section": "How EDA models leakage", "subgoals": ["Store leakage per input state and weight by state probability", "Report every leakage number with its process and temperature corner", "Iterate the electrothermal loop to a fixed point"]}
+]

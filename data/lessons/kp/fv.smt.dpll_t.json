@@ -1,0 +1,5 @@
+[
+  {"label": "Boolean abstraction", "section": "Boolean abstraction", "subgoals": ["Replace each theory atom by a Boolean variable", "Let the SAT solver search the Boolean abstraction", "Send the chosen atom values to the theory solver"]},
+  {"label": "Theory checks and explanations", "section": "Theory checks and explanations", "subgoals": ["Check the asserted literals for theory consistency", "Return a minimal inconsistent subset as a learned clause", "Propagate theory-implied atoms with reason clauses"]},
+  {"label": "Eager versus lazy and theory combination", "section": "Eager versus lazy and theory combination", "subgoals": ["Classify a solver as eager or lazy for each theory", "Combine theories by exchanging equalities between shared variables", "Use incremental interfaces for the many related queries of BMC and IC3"]}
+]

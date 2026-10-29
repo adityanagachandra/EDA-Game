@@ -1,0 +1,5 @@
+[
+  {"label": "The ratio cut", "section": "The ratio cut", "subgoals": ["Compute the cut weight of the bisection", "Multiply the two side sizes", "Divide the cut by the product"]},
+  {"label": "Comparing candidate partitions", "section": "Comparing candidate partitions", "subgoals": ["Compute the ratio cut of each candidate", "Pick the smaller ratio, not the smaller cut", "Use ratio objectives where natural block sizes are unknown"]},
+  {"label": "RatioCut and the Fiedler vector", "section": "RatioCut and the Fiedler vector", "subgoals": ["Scale the ratio cut by n to get RatioCut", "Build the two-valued vector whose Rayleigh quotient equals RatioCut", "Use lambda 2 as a lower bound on every bisection's RatioCut"]}
+]

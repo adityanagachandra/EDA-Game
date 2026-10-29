@@ -1,0 +1,5 @@
+[
+  {"label": "Eliminating a variable by resolution", "section": "Eliminating a variable by resolution", "subgoals": ["Split the clauses into those with x and those with its negation", "Resolve every positive clause with every negative clause on x", "Drop tautologies and count the remaining resolvents"]},
+  {"label": "When elimination pays", "section": "When elimination pays", "subgoals": ["Count the non-tautological resolvents", "Subtract the number of clauses that contain x or its negation", "Eliminate only when the change is zero or negative"]},
+  {"label": "Subsumption", "section": "Subsumption", "subgoals": ["Test each clause for being a superset of another clause", "Mark every clause that is a superset as deletable", "Count each deletable clause once"]}
+]

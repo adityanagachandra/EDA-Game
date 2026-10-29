@@ -1,0 +1,5 @@
+[
+  {"label": "The main tools and their roles", "section": "The main tools and their roles", "subgoals": ["Match each tool to the language it reads", "Distinguish event-driven, compiled and synthesis front ends", "Identify the tools usable as front ends by other tools"]},
+  {"label": "Front-end architecture and shared models", "section": "Front-end architecture and shared models", "subgoals": ["Order the phases from preprocessing to lowering", "Locate elaboration as the phase where tools diverge", "Consume a shared elaborated model instead of reparsing"]},
+  {"label": "Choosing and cross-checking front ends", "section": "Choosing and cross-checking front ends", "subgoals": ["Check a construct's support across tools in a conformance suite", "Use parser-based tools for lint and formatting", "Investigate disagreements between independent front ends"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "One node per distinct structure", "section": "One node per distinct structure", "subgoals": ["Key each node by its operator and its operand ids", "Look the key up in the unique table before creating a node", "Count the distinct keys"]},
+  {"label": "Canonical keys", "section": "Canonical keys", "subgoals": ["Sort the operands of a commutative node", "Map a duplicate node to the id of its first copy", "Rewrite later nodes through that map"]},
+  {"label": "Trivial simplification before hashing", "section": "Trivial simplification before hashing", "subgoals": ["Replace AND of x with x by x", "Replace AND of x with not x by constant 0", "Count the nodes that survive"]}
+]

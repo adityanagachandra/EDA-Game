@@ -1,0 +1,5 @@
+[
+  {"label": "Bin index arithmetic", "section": "Bin index arithmetic", "subgoals": ["Divide the x-coordinate by the bin size and round down", "Divide the y-coordinate by the bin size and round down", "Combine row and column into the row-major index"]},
+  {"label": "Shapes in several bins", "section": "Shapes in several bins", "subgoals": ["Find the range of bin columns the shape overlaps", "Find the range of bin rows it overlaps", "Sum the bins over all shapes to get the stored entries"]},
+  {"label": "Expected candidates per query", "section": "Expected candidates per query", "subgoals": ["Compute the average number of shapes per bin", "Multiply by the number of bins the query touches", "Compare the result with the cost of a full scan"]}
+]

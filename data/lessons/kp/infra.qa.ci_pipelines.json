@@ -1,0 +1,5 @@
+[
+  {"label": "Wall time of a sharded test stage", "section": "Wall time of a sharded test stage", "subgoals": ["Divide the designs by the runners, rounding up", "Multiply by the per-design time", "Add the per-runner setup to get the wall time"]},
+  {"label": "Runners needed to meet a budget", "section": "Runners needed to meet a budget", "subgoals": ["Subtract setup from the budget and divide by the design time", "Round down to get the designs allowed per runner", "Divide the designs by that limit, rounding up, to get the runners"]},
+  {"label": "Flaky tests and retries", "section": "Flaky tests and retries", "subgoals": ["Square the flaky failure probability for one retry", "Raise the per-test pass probability to the number of flaky tests", "Log every retried pass as a determinism defect to fix"]}
+]

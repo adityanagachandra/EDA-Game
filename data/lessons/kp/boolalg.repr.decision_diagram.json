@@ -1,0 +1,5 @@
+[
+  {"label": "From the Shannon tree to a reduced diagram", "section": "From the Shannon tree to a reduced diagram", "subgoals": ["Expand the function in a fixed variable order", "Merge identical subfunctions", "Delete nodes whose two children are equal"]},
+  {"label": "Counting reduced nodes level by level", "section": "Counting reduced nodes level by level", "subgoals": ["Fix the first variables in every way", "Keep the distinct subfunctions that depend on the next variable", "Sum the counts over all levels"]},
+  {"label": "The order decides the size", "section": "The order decides the size", "subgoals": ["Rename the variables to the new order", "Recount the nodes level by level", "Compare the sizes under the two orders"]}
+]

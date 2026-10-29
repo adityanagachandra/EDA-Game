@@ -1,0 +1,5 @@
+[
+  {"label": "Ground loops and grounding topologies", "section": "Ground loops and grounding topologies", "subgoals": ["Identify every path that connects two ground points", "Use single-point grounding where resistance dominates", "Use a solid plane with many connections where inductance dominates"]},
+  {"label": "How a shield works", "section": "How a shield works", "subgoals": ["Separate the attenuation into reflection and absorption", "Compute absorption from thickness over skin depth", "Check apertures and seams against the wavelength"]},
+  {"label": "The proximity effect", "section": "The proximity effect", "subgoals": ["Locate where opposing currents face each other", "Predict current crowding toward the facing surfaces", "Model conductors with filaments to capture the redistribution"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "When a crossing needs protection", "section": "When a crossing needs protection", "subgoals": ["Check whether the source domain can be off", "Check the power states for source off while sink on", "Compare the two supply voltages"]},
+  {"label": "Choosing the clamp value", "section": "Choosing the clamp value", "subgoals": ["Identify the receiving pin's polarity", "Clamp to its inactive value", "Power the isolation cell from an always-on supply"]},
+  {"label": "Level-shifter direction", "section": "Level-shifter direction", "subgoals": ["Compare source and destination voltages", "Choose a low-to-high or high-to-low shifter", "Combine with isolation where both are needed"]}
+]

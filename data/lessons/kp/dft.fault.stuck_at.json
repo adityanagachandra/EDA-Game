@@ -1,0 +1,5 @@
+[
+  {"label": "Lines, stems and branches", "section": "Lines, stems and branches", "subgoals": ["Count every input and gate output as a stem", "Add one branch line for each connection of a stem with fanout two or more", "Multiply the line count by two for single stuck-at faults"]},
+  {"label": "Single versus multiple faults", "section": "Single versus multiple faults", "subgoals": ["Give each line three states in the multiple fault model", "Subtract the all-fault-free combination", "Compare the multiple count with the single count of two per line"]},
+  {"label": "Activation and the excitation condition", "section": "Activation and the excitation condition", "subgoals": ["Set the fault-free value of the line to the opposite of the stuck value", "Enumerate the vectors that produce that fault-free value", "Separate activation from propagation to an output"]}
+]

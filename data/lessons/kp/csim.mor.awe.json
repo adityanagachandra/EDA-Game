@@ -1,0 +1,29 @@
+[
+  {
+    "label": "A one-pole fit from two moments",
+    "section": "A one-pole fit from two moments",
+    "subgoals": [
+      "Write the one-pole model's Taylor expansion",
+      "Match its coefficients to the first two moments",
+      "Solve for the pole as the zeroth over the first moment"
+    ]
+  },
+  {
+    "label": "Delay from the dominant pole",
+    "section": "Delay from the dominant pole",
+    "subgoals": [
+      "Take the time constant as minus the first moment over the zeroth",
+      "Multiply it by the natural log of two",
+      "Compare the estimate with the Elmore bound"
+    ]
+  },
+  {
+    "label": "A two-pole Pade fit",
+    "section": "A two-pole Pade fit",
+    "subgoals": [
+      "Set up the moment matrix and right-hand side",
+      "Solve for the denominator coefficients by Cramer's rule",
+      "Take the poles from the roots of the denominator"
+    ]
+  }
+]

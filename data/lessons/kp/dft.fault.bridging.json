@@ -1,0 +1,5 @@
+[
+  {"label": "Wired and dominant models", "section": "Wired and dominant models", "subgoals": ["Replace both nets by the AND of their values for a wired-AND bridge", "Replace both nets by the OR of their values for a wired-OR bridge", "Copy the aggressor's value onto the victim for a dominant bridge"]},
+  {"label": "Excitation and candidate counts", "section": "Excitation and candidate counts", "subgoals": ["Require opposite fault-free values on the two nets to excite the bridge", "Count candidate pairs as N choose 2 without layout data", "Restrict candidates to layout-adjacent pairs in production flows"]},
+  {"label": "Detection in practice", "section": "Detection in practice", "subgoals": ["Compute fault-free values for the vector", "Force the bridged value onto the affected nets and resimulate their fan-out", "Compare primary outputs to decide detection"]}
+]

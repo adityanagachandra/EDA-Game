@@ -1,0 +1,5 @@
+[
+  {"label": "Fermi level from doping", "section": "Fermi level from doping", "subgoals": ["Write the majority density as ni times an exponential of the Fermi offset", "Solve for the offset as kT times the natural log of N over ni", "Assign the sign: above Ei for n-type, below for p-type"]},
+  {"label": "Doping from a Fermi level", "section": "Doping from a Fermi level", "subgoals": ["Divide the Fermi offset by kT", "Exponentiate and multiply by ni", "Express the density in the requested power of ten"]},
+  {"label": "Distance from the band edge", "section": "Distance from the band edge", "subgoals": ["Write the electron density with the conduction-band density of states", "Solve for Ec minus EF as kT ln(Nc/ND)", "Flag degeneracy when the doping approaches Nc"]}
+]

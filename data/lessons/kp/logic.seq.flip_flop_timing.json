@@ -1,0 +1,5 @@
+[
+  {"label": "Three cell timing parameters", "section": "Three cell timing parameters", "subgoals": ["Define clock-to-q as edge-to-output delay", "Define setup as stability required before the edge", "Define hold as stability required after the edge"]},
+  {"label": "The setup and hold checks", "section": "The setup and hold checks", "subgoals": ["Sum clock-to-q, the longest logic delay and setup for the setup check", "Sum the minimum clock-to-q and the shortest logic delay for the hold check", "Subtract to get each slack"]},
+  {"label": "Clock skew shifts both checks", "section": "Clock skew shifts both checks", "subgoals": ["Move the capture edge later by the skew", "Add the skew to setup slack", "Subtract the skew from hold slack"]}
+]

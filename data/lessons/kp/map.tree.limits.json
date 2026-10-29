@@ -1,0 +1,5 @@
+[
+  {"label": "What tree covering guarantees", "section": "What tree covering guarantees", "subgoals": ["State the scope: one tree, one subject graph, one pattern set", "Explain why the DP is linear for a fixed library", "Read a sum of tree optima as an upper bound on the network's optimum"]},
+  {"label": "Hard and easy DAG problems", "section": "Hard and easy DAG problems", "subgoals": ["Classify area-optimal DAG covering as NP-hard", "Explain why load-independent delay mapping is polynomial", "Identify load dependence as what breaks the forward labeling"]},
+  {"label": "How practical mappers respond", "section": "How practical mappers respond", "subgoals": ["Compute exact delay-optimal labels first", "Recover area at nodes with slack against required times", "Name the widening tricks: structural choices and inverter pairs"]}
+]

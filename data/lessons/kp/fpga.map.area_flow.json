@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Area flow of a node",
+  "section": "Area flow of a node",
+  "subgoals": [
+   "Sum the area flows of the cut's leaves",
+   "Add the LUT's own unit area",
+   "Divide by the node's fanout"
+  ]
+ },
+ {
+  "label": "Choosing cuts by area flow",
+  "section": "Choosing cuts by area flow",
+  "subgoals": [
+   "Filter the cuts that meet the required time",
+   "Compute each remaining cut's area flow",
+   "Keep the cut with the smallest area flow"
+  ]
+ },
+ {
+  "label": "Why area flow is only a heuristic",
+  "section": "Why area flow is only a heuristic",
+  "subgoals": [
+   "Propagate area flows bottom-up through shared nodes",
+   "Spot reconvergence that counts a node twice",
+   "Refine with exact local area against the current mapping"
+  ]
+ }
+]

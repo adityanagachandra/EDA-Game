@@ -1,0 +1,5 @@
+[
+  {"label": "Precedence levels", "section": "Precedence levels", "subgoals": ["Find the operator with the loosest binding, which becomes the root", "Group tighter operators into subtrees first", "Rewrite the expression with full parentheses before evaluating"]},
+  {"label": "Bitwise operators below comparisons", "section": "Bitwise operators below comparisons", "subgoals": ["Place & ^ and | below the comparisons in the table", "Associate equal-precedence binary operators to the left", "Parse each right operand at one level tighter than its operator"]},
+  {"label": "The conditional and logical operators", "section": "The conditional and logical operators", "subgoals": ["Make ?: the root of an expression that contains it", "Associate chained conditionals to the right", "Attach source locations to every node of the tree"]}
+]

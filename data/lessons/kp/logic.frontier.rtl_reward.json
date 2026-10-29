@@ -1,0 +1,5 @@
+[
+  {"label": "Building the reward from tools", "section": "Building the reward from tools", "subgoals": ["Gate every credit on parsing and elaboration", "Weight functional correctness above lint", "Add QoR only for designs already correct"]},
+  {"label": "How the reward gets hacked", "section": "How the reward gets hacked", "subgoals": ["Spot vector hard-coding and unchecked outputs", "Replace sampled tests with formal or hidden randomized checks", "Measure QoR with the sign-off flow rather than a proxy"]},
+  {"label": "Proxy versus sign-off gap", "section": "Proxy versus sign-off gap", "subgoals": ["Score a sample of designs with the accurate flow", "Measure rank agreement between proxy and accurate scores", "Report held-out results with the accurate flow"]}
+]

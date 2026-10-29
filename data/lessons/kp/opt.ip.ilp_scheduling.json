@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Time-indexed binaries and their count",
+    "section": "Time-indexed binaries and their count",
+    "subgoals": [
+      "Write one binary per operation and allowed start step",
+      "Count ALAP minus ASAP plus one variables per operation",
+      "Sum the window sizes for the model size"
+    ]
+  },
+  {
+    "label": "ASAP, ALAP and mobility",
+    "section": "ASAP, ALAP and mobility",
+    "subgoals": [
+      "Propagate ASAP times forward from the sources",
+      "Propagate ALAP times backward from the latency bound",
+      "Subtract ASAP from ALAP for each operation's mobility"
+    ]
+  },
+  {
+    "label": "Resource constraints and unit counts",
+    "section": "Resource constraints and unit counts",
+    "subgoals": [
+      "Mark the steps each multi-cycle operation occupies",
+      "Count busy units of each type in every step",
+      "Take the peak count as the required number of units"
+    ]
+  }
+]

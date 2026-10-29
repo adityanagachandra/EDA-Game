@@ -1,0 +1,5 @@
+[
+  {"label": "Outline area and whitespace", "section": "Outline area and whitespace", "subgoals": ["Compute the outline area", "Subtract the total block area", "Divide by the outline area to get the whitespace fraction"]},
+  {"label": "Packing and its bounding box", "section": "Packing and its bounding box", "subgoals": ["Combine block dimensions for a side-by-side or stacked arrangement", "Compute the bounding box area of the arrangement", "Locate where the wasted area sits"]},
+  {"label": "Fixed outlines and aspect ratio", "section": "Fixed outlines and aspect ratio", "subgoals": ["Set the outline area from block area and allowed whitespace", "Divide by the fixed height for the minimum width", "Penalise packings that exceed the fixed outline"]}
+]

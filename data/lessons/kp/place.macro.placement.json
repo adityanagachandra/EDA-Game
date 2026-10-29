@@ -1,0 +1,5 @@
+[
+  {"label": "What a good macro placement looks like", "section": "What a good macro placement looks like", "subgoals": ["Push macros toward the boundary or into clusters", "Face macro pins toward their connected logic", "Add halos and avoid narrow channels"]},
+  {"label": "Sizing the channel between macros", "section": "Sizing the channel between macros", "subgoals": ["Divide crossing nets by layers and round up to tracks", "Multiply tracks by the pitch", "Add a halo on each side of the channel"]},
+  {"label": "How macro placement is automated and judged", "section": "How macro placement is automated and judged", "subgoals": ["List the annealing, analytical and learning-based approaches", "Separate the proxy cost from the post-placement metrics", "Evaluate candidates by running standard-cell placement afterwards"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The same question asked many times",
+    "section": "The same question asked many times",
+    "subgoals": [
+      "List the stages that re-estimate timing",
+      "Order the estimates from cheapest to most accurate",
+      "Explain how an estimate's error becomes a later surprise"
+    ]
+  },
+  {
+    "label": "Loops and their costs",
+    "section": "Loops and their costs",
+    "subgoals": [
+      "Try the most local fix first",
+      "Name the timing, congestion and functional loops",
+      "Explain why a step back re-runs every later stage"
+    ]
+  },
+  {
+    "label": "Convergence and when it fails",
+    "section": "Convergence and when it fails",
+    "subgoals": [
+      "Identify two fixes that fight each other",
+      "Name margins and correlation as convergence aids",
+      "Explain how incremental analysis shortens each iteration"
+    ]
+  }
+]

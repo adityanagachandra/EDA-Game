@@ -1,0 +1,5 @@
+[
+  {"label": "Wavefront labels", "section": "Wavefront labels", "subgoals": ["Label the source cell 0", "Give every unlabelled free neighbour of label k the label k + 1", "Read a cell's label as its distance around blockages"]},
+  {"label": "Reaching the target and retracing", "section": "Reaching the target and retracing", "subgoals": ["Stop when the target receives a label", "Retrace from the target through labels decreasing by one", "Prefer the same direction during retrace to reduce bends"]},
+  {"label": "The cost of the wavefront", "section": "The cost of the wavefront", "subgoals": ["Count the cells with label exactly k as wavefront k", "Estimate about 2D squared cells explored for a target at distance D", "Bound or guide the search to cut wasted expansion"]}
+]

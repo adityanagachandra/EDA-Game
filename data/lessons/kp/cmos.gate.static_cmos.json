@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The pull-down network from the function",
+    "section": "The pull-down network from the function",
+    "subgoals": [
+      "Rewrite the function as the complement of an AND-OR expression",
+      "Turn every AND into series nMOS and every OR into parallel nMOS",
+      "Place one nMOS per literal between the output and ground"
+    ]
+  },
+  {
+    "label": "The pull-up network is the dual",
+    "section": "The pull-up network is the dual",
+    "subgoals": [
+      "Exchange series and parallel at every level of the pull-down network",
+      "Keep the same input on each dual pMOS device",
+      "Test one input vector against both networks and the function"
+    ]
+  },
+  {
+    "label": "Why the structure is worth its cost",
+    "section": "Why the structure is worth its cost",
+    "subgoals": [
+      "Note that one network always drives the output to a rail",
+      "Note that inputs present only fixed gate capacitance to drivers",
+      "Connect timing independence to the soundness of static timing analysis"
+    ]
+  }
+]

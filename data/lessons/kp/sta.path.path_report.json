@@ -1,0 +1,5 @@
+[
+  {"label": "Data arrival time", "section": "Data arrival time", "subgoals": ["Start at the launching clock edge", "Add the launch clock network delay and clock-to-Q", "Add every net and cell increment to the data pin"]},
+  {"label": "Data required time", "section": "Data required time", "subgoals": ["Start at the capturing clock edge", "Add the capture clock network delay and the pessimism credit", "Subtract the clock uncertainty and the setup time"]},
+  {"label": "Slack and what to read next", "section": "Slack and what to read next", "subgoals": ["Subtract the arrival time from the required time", "Locate the largest increments on a failing path", "Check the start point, end point and path group against the intended constraint"]}
+]

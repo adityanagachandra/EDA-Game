@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The cost of one net",
+  "section": "The cost of one net",
+  "subgoals": [
+   "Find the minimum and maximum x and y of the terminals",
+   "Count the channels spanned in each direction",
+   "Multiply their sum by q(n)"
+  ]
+ },
+ {
+  "label": "The q(n) correction",
+  "section": "The q(n) correction",
+  "subgoals": [
+   "Read q(n) for each net's terminal count",
+   "Multiply each net's span sum by its q(n)",
+   "Sum over the nets"
+  ]
+ },
+ {
+  "label": "Incremental cost of a move",
+  "section": "Incremental cost of a move",
+  "subgoals": [
+   "Collect only the nets on the moved block",
+   "Recompute each net's cost before and after the move",
+   "Sum the differences to get the change in cost"
+  ]
+ }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The critical voltage",
+    "section": "The critical voltage",
+    "subgoals": [
+      "Divide the thermal voltage by root two times the saturation current",
+      "Take the natural log of that ratio",
+      "Multiply by the thermal voltage"
+    ]
+  },
+  {
+    "label": "Limiting a forward step",
+    "section": "Limiting a forward step",
+    "subgoals": [
+      "Check that the proposal exceeds the critical voltage",
+      "Check that the step exceeds twice the thermal voltage",
+      "Replace the proposal by the logarithmic step from the old voltage"
+    ]
+  },
+  {
+    "label": "When limiting does nothing",
+    "section": "When limiting does nothing",
+    "subgoals": [
+      "Keep proposals below the critical voltage unchanged",
+      "Keep steps of at most twice the thermal voltage unchanged",
+      "Use the thermal-voltage log of the proposal when the old voltage was not positive"
+    ]
+  }
+]

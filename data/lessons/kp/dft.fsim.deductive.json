@@ -1,0 +1,5 @@
+[
+  {"label": "Fault lists", "section": "Fault lists", "subgoals": ["Start each primary input's list with its own opposite stuck-at fault", "Compute each gate output list from its inputs' lists and values", "Add the output's own local fault to its list"]},
+  {"label": "Propagation rules", "section": "Propagation rules", "subgoals": ["Take the union of the input lists when no input is at the controlling value", "Intersect the lists of the inputs at the controlling value", "Remove every fault in the lists of the other inputs"]},
+  {"label": "Strengths and limits", "section": "Strengths and limits", "subgoals": ["Represent the lists as sorted sets or bit vectors for speed", "Expect large lists near the inputs of big cones", "Switch to concurrent simulation for unknown values and timing"]}
+]

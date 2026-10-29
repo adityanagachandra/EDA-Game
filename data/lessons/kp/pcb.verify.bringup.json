@@ -1,0 +1,5 @@
+[
+  {"label": "A safe power-up order", "section": "A safe power-up order", "subgoals": ["Measure rail-to-ground resistance before applying power", "Power up through a current-limited supply and check each rail", "Confirm clocks, resets and JTAG IDCODEs before firmware"]},
+  {"label": "Measurement and localization", "section": "Measurement and localization", "subgoals": ["Remove probe artifacts before trusting a waveform", "Localize a rail short with injected current and a thermal camera", "Read TDR dips and rises as capacitive and inductive discontinuities"]},
+  {"label": "Closing the loop", "section": "Closing the loop", "subgoals": ["Distinguish margin failures from connectivity errors", "Return each bring-up fix to the design as an ECO", "Feed bring-up findings back into rules and checklists"]}
+]

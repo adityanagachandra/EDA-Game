@@ -1,0 +1,5 @@
+[
+  {"label": "Tier 1: configuration", "section": "Tier 1: configuration", "subgoals": ["Identify value, table or skill-choice changes", "Confirm the core validates the parameter range", "Record the change as a configuration revision"]},
+  {"label": "Tier 2: plug-in at an extension point", "section": "Tier 2: plug-in at an extension point", "subgoals": ["Confirm no existing parameter expresses the behavior", "Locate the extension point that can host it", "Build and test the plug-in without touching the core"]},
+  {"label": "Tier 3: core edits", "section": "Tier 3: core edits", "subgoals": ["Identify edits to legality, propagation or interfaces", "Require a human-approved diff and full regression", "Try lower tiers first and refuse unsafe requests"]}
+]

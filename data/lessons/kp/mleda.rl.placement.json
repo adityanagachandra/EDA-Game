@@ -1,0 +1,5 @@
+[
+  {"label": "Macro placement as a sequence", "section": "Macro placement as a sequence", "subgoals": ["Define the state as netlist plus partial placement", "Define an action as a legal grid cell for the next macro", "Leave standard cells to a conventional placer"]},
+  {"label": "The proxy cost", "section": "The proxy cost", "subgoals": ["Read the normalized wirelength, congestion and density", "Multiply congestion and density by their weights", "Add the three terms for the proxy cost"]},
+  {"label": "Judging an RL placement result", "section": "Judging an RL placement result", "subgoals": ["Compare against a compute-matched classical optimizer", "Check the proxy result against routed PPA", "Account for pretraining, inputs and compute"]}
+]

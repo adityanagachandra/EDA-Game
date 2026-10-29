@@ -1,0 +1,5 @@
+[
+  {"label": "The CEGAR loop", "section": "The CEGAR loop", "subgoals": ["Model check an over-approximating abstraction", "Concretize the abstract counterexample on the real design", "Refine when the counterexample is spurious and repeat"]},
+  {"label": "Existential abstraction", "section": "Existential abstraction", "subgoals": ["Map each concrete state to its visible variables", "Add an abstract edge for every concrete edge, reachable or not", "Search the abstract graph from the abstract initial states"]},
+  {"label": "Spurious counterexamples and refinement", "section": "Spurious counterexamples and refinement", "subgoals": ["Locate the abstract step that no concrete transition can produce", "Use the unsat core of the concrete check to choose what to make visible", "Re-run the abstract check with the refined model"]}
+]

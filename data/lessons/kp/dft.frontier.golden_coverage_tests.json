@@ -1,0 +1,5 @@
+[
+  {"label": "Per-design limits", "section": "Per-design limits", "subgoals": ["Fix a baseline coverage and pattern count per reference design", "Fail a design if either metric exceeds its tolerance", "Fail the change if any design fails"]},
+  {"label": "Computing the thresholds", "section": "Computing the thresholds", "subgoals": ["Multiply the baseline by one plus the allowance", "Round down for the largest passing pattern count", "Recompute test coverage from raw counts"]},
+  {"label": "What the metric can hide", "section": "What the metric can hide", "subgoals": ["Compare detected counts as well as coverage", "Verify newly proven untestable faults", "Check that unchanged fault classes keep the same detections"]}
+]

@@ -179,5 +179,25 @@ func domainToCourse(c *concepts.Concept) string {
 	case strings.HasPrefix(d, "probability_theory"):
 		return "prob"
 	}
+	// Every EDA domain has a course of the same id (scripts/eda_integrate.py writes them).
+	if edaDomains[d] {
+		return d
+	}
 	return ""
+}
+
+// edaDomains are the electronic-design-automation domains, whose placement course id is the
+// domain name itself. The list mirrors docs/eda/curriculum.json.
+var edaDomains = map[string]bool{
+	"eda_landscape": true, "boolean_reasoning": true, "eda_graph_algorithms": true,
+	"computational_geometry": true, "optimization_for_eda": true, "numerical_methods_for_eda": true,
+	"variability_statistics": true, "circuits_and_electromagnetics": true, "semiconductor_devices": true,
+	"digital_logic_design": true, "fabrication_and_dtco": true, "cmos_circuits_and_cells": true,
+	"hdl_and_compilers": true, "logic_synthesis": true, "formal_verification": true,
+	"functional_verification": true, "circuit_simulation": true, "technology_mapping": true,
+	"high_level_synthesis": true, "timing_analysis": true, "test_and_dft": true,
+	"floorplanning_and_placement": true, "analog_mixed_signal_rf": true, "fpga_eda": true,
+	"clock_and_power": true, "routing": true, "extraction_and_signoff": true,
+	"physical_verification_dfm": true, "pcb_design": true, "packaging_and_integration": true,
+	"eda_software_infrastructure": true, "ml_for_eda": true, "agent_first_eda": true,
 }

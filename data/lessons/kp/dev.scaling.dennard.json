@@ -1,0 +1,5 @@
+[
+  {"label": "Constant-field scaling rules", "section": "Constant-field scaling rules", "subgoals": ["Scale dimensions and voltage by s and doping by its inverse", "Apply the power of s for each quantity", "Confirm that power density stays constant"]},
+  {"label": "Moore's law and density", "section": "Moore's law and density", "subgoals": ["Square the inverse linear scale factor for density per generation", "Count doublings as elapsed time over the doubling period", "Distinguish density growth from per-transistor benefits"]},
+  {"label": "Why Dennard scaling ended", "section": "Why Dennard scaling ended", "subgoals": ["Trace the fixed subthreshold swing to a threshold floor", "Hold voltage fixed and recompute power per gate and density", "Multiply the per-generation power-density growth over generations"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Counting bytes per object", "section": "Counting bytes per object", "subgoals": ["Multiply each object count by its record size", "Sum the object kinds into a total", "Convert the total to megabytes and scale with design size"]},
+  {"label": "Indices instead of pointers", "section": "Indices instead of pointers", "subgoals": ["Count the references stored in each record", "Multiply records by references by the 4 bytes saved", "Index side arrays by the same object number"]},
+  {"label": "Alignment and padding", "section": "Alignment and padding", "subgoals": ["Place each field at the next multiple of its size", "Round the record up to its largest alignment", "Reorder fields from largest to smallest to cut padding"]}
+]

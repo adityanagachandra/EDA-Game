@@ -1,0 +1,5 @@
+[
+  {"label": "Activity one", "section": "Activity one", "subgoals": ["Set the activity factor of a clock to one", "Multiply capacitance, supply squared and frequency", "Read pF times V squared times GHz as mW"]},
+  {"label": "Where the capacitance lives", "section": "Where the capacitance lives", "subgoals": ["Add wire capacitance from length and capacitance per length", "Add the pin and buffer capacitance", "Apply the clock power formula to the total"]},
+  {"label": "The clock's share of total power", "section": "The clock's share of total power", "subgoals": ["Weight each capacitance by its activity factor", "Cancel the common supply and frequency factor", "Divide clock power by the total"]}
+]

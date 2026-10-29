@@ -1,0 +1,5 @@
+[
+  {"label": "Subtraction with an adder", "section": "Subtraction with an adder", "subgoals": ["Invert every bit of the subtrahend", "Add with a carry-in of one", "Reduce the result modulo two to the n"]},
+  {"label": "Unsigned comparison from the carry-out", "section": "Unsigned comparison from the carry-out", "subgoals": ["Compute a plus the inverted b plus one as an ordinary integer", "Set the carry-out when the sum reaches two to the n", "Read carry-out one as a greater than or equal to b"]},
+  {"label": "Signed comparison from N and V", "section": "Signed comparison from N and V", "subgoals": ["Compute the sign bit of the wrapped difference", "Compute the signed-overflow flag of the subtraction", "XOR the two flags to decide a less than b"]}
+]

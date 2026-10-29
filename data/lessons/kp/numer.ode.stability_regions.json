@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The test equation and the amplification factor",
+  "section": "The test equation and the amplification factor",
+  "subgoals": [
+   "Substitute the test equation into the method",
+   "Read off the amplification factor",
+   "Check whether its magnitude is at most one"
+  ]
+ },
+ {
+  "label": "Comparing forward Euler, backward Euler and trapezoidal",
+  "section": "Comparing forward Euler, backward Euler and trapezoidal",
+  "subgoals": [
+   "Compute z from the eigenvalue and the step",
+   "Evaluate the magnitude of R for each method",
+   "Classify each method as stable, A-stable or L-stable"
+  ]
+ },
+ {
+  "label": "Oscillatory modes and numerical damping",
+  "section": "Oscillatory modes and numerical damping",
+  "subgoals": [
+   "Place the oscillatory eigenvalue on the imaginary axis",
+   "Compute the magnitude of R for each method",
+   "Raise it to the number of steps to get the amplitude change"
+  ]
+ }
+]

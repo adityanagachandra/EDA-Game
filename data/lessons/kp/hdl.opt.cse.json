@@ -1,0 +1,5 @@
+[
+  {"label": "Local value numbering", "section": "Local value numbering", "subgoals": ["Give every input and every new result a value number", "Key each operation by its operator and operand numbers", "Replace an operation whose key already exists with a copy"]},
+  {"label": "Commutativity and canonical keys", "section": "Commutativity and canonical keys", "subgoals": ["Sort the operands of commutative operators before forming the key", "Keep operand order for non-commutative operators", "Recognize that value numbering sees only syntactic equality"]},
+  {"label": "Redefinition kills availability", "section": "Redefinition kills availability", "subgoals": ["Update a variable's value number on every reassignment", "Stop matching expressions whose operands were redefined", "Count each replaced operation as one cell saved"]}
+]

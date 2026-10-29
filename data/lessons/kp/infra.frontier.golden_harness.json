@@ -1,0 +1,5 @@
+[
+  {"label": "Relative change against a golden baseline", "section": "Relative change against a golden baseline", "subgoals": ["Subtract the baseline from the candidate value", "Divide by the baseline and multiply by 100", "Keep the sign to show whether the metric grew or shrank"]},
+  {"label": "Counting tolerance violations", "section": "Counting tolerance violations", "subgoals": ["Compute each design's relative change", "Compare its magnitude against the tolerance band", "Count the designs outside the band as flagged"]},
+  {"label": "Proving only intended designs moved", "section": "Proving only intended designs moved", "subgoals": ["Mark the designs the change is meant to affect", "Count the other designs whose change exceeds tolerance", "Treat any unintended mover as a failed proof"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Gain of a replacement", "section": "Gain of a replacement", "subgoals": ["Compute the node's function over a 4-input cut", "Count the MFFC nodes the replacement frees", "Subtract the candidate's nodes that hashing does not find"]},
+  {"label": "Precomputed structures and NPN classes", "section": "Precomputed structures and NPN classes", "subgoals": ["Canonicalize the cut function to its NPN class", "Try each stored structure for that class", "Keep the best gain over all cuts and candidates"]},
+  {"label": "Zero-cost moves and the overall pass", "section": "Zero-cost moves and the overall pass", "subgoals": ["Accept positive gains in a topological pass", "Accept zero-gain replacements in the zero-cost variant", "Reject depth-increasing replacements when levels must be preserved"]}
+]

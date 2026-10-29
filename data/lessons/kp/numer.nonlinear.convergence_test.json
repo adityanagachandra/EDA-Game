@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Update tolerances: reltol plus abstol",
+  "section": "Update tolerances: reltol plus abstol",
+  "subgoals": [
+   "Take the larger magnitude of the two iterates",
+   "Multiply by reltol and add the absolute tolerance",
+   "Compare the actual change with the tolerance"
+  ]
+ },
+ {
+  "label": "Residual tolerances on the equations",
+  "section": "Residual tolerances on the equations",
+  "subgoals": [
+   "Find the largest branch current into the node",
+   "Form the allowed imbalance from reltol and abstol",
+   "Compare the KCL residual with that allowance"
+  ]
+ },
+ {
+  "label": "Reading quadratic convergence from the iterates",
+  "section": "Reading quadratic convergence from the iterates",
+  "subgoals": [
+   "Take ratios of successive errors",
+   "Divide the log of the later ratio by the log of the earlier one",
+   "Diagnose a wrong Jacobian when the order is near one"
+  ]
+ }
+]

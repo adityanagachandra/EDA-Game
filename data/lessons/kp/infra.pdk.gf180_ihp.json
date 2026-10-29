@@ -1,0 +1,5 @@
+[
+  {"label": "GF180MCU for mixed-voltage designs", "section": "GF180MCU for mixed-voltage designs", "subgoals": ["Identify GF180MCU as a 180 nm MCU-class process", "Match higher-voltage IO needs to its device options", "Relate cell track height to drive and area"]},
+  {"label": "IHP SG13G2 for SiGe BiCMOS and RF", "section": "IHP SG13G2 for SiGe BiCMOS and RF", "subgoals": ["Identify SG13G2 as a 130 nm SiGe BiCMOS process", "Connect SiGe HBTs to RF and high-speed analog work", "Explain why thick top metals help inductors and power"]},
+  {"label": "Choosing and porting between open PDKs", "section": "Choosing and porting between open PDKs", "subgoals": ["Match the dominant requirement to the process that serves it", "List the views that change when a flow is ported", "Keep platform data out of the design configuration"]}
+]

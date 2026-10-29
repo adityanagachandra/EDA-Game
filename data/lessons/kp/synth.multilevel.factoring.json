@@ -1,0 +1,5 @@
+[
+  {"label": "Expanding a factored form", "section": "Expanding a factored form", "subgoals": ["Add the cube counts of the terms of a sum", "Multiply the cube counts of the factors of a product", "Apply the rules bottom up to the whole factored form"]},
+  {"label": "SOP literals from a factored form", "section": "SOP literals from a factored form", "subgoals": ["Track cube count and literal count for every subexpression", "Combine a product as literals of A times cubes of B plus the reverse", "Add counts for a sum and read the totals at the root"]},
+  {"label": "Finding a good factored form", "section": "Finding a good factored form", "subgoals": ["Divide the SOP by a kernel to write it as KQ + R", "Factor the kernel, quotient and remainder recursively", "Count the leaves of the factored form and compare with the SOP"]}
+]

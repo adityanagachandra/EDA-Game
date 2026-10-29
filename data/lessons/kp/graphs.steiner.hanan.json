@@ -1,0 +1,5 @@
+[
+  {"label": "Drawing the grid", "section": "Drawing the grid", "subgoals": ["Draw a horizontal and a vertical line through each pin", "Count distinct x and distinct y coordinates", "Multiply them to get the number of grid points"]},
+  {"label": "Candidate Steiner points", "section": "Candidate Steiner points", "subgoals": ["Subtract the pins from the grid points", "Restrict Steiner points to these candidates", "Use at most n - 2 Steiner points"]},
+  {"label": "The Hanan grid as a graph", "section": "The Hanan grid as a graph", "subgoals": ["Join neighbouring grid points with weighted edges", "Count (X - 1)Y + X(Y - 1) edges", "Solve the Steiner problem as a graph Steiner tree on this grid"]}
+]

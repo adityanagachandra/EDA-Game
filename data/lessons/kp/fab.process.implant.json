@@ -1,0 +1,5 @@
+[
+  {"label": "Dose, range and the Gaussian profile", "section": "Dose, range and the Gaussian profile", "subgoals": ["Read dose, projected range and straggle from the implant recipe", "Normalize the Gaussian so it integrates to the dose", "Convert the straggle to centimetres before dividing"]},
+  {"label": "Concentration at a given depth", "section": "Concentration at a given depth", "subgoals": ["Express the depth as a number of straggles from the peak", "Multiply the peak by the Gaussian factor", "Note the skew and tails that the Gaussian ignores"]},
+  {"label": "Junction depth", "section": "Junction depth", "subgoals": ["Set the implanted profile equal to the background doping", "Solve for the depth beyond the peak", "Explain why junction depth tracks straggle more than dose"]}
+]

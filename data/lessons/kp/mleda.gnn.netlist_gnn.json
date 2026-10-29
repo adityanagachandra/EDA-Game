@@ -1,0 +1,5 @@
+[
+  {"label": "The receptive field", "section": "The receptive field", "subgoals": ["Run breadth-first search from the target node", "Stop at depth equal to the number of layers", "Count the nodes reached, the target included"]},
+  {"label": "Depth versus logic depth", "section": "Depth versus logic depth", "subgoals": ["Count the cells and nets on the path", "Double the net count for bipartite hops", "Compare the hop count with the GNN's layer count"]},
+  {"label": "Inductive models and parameter count", "section": "Inductive models and parameter count", "subgoals": ["Count weights and biases of the first layer from the input width", "Count the same terms for each remaining hidden layer", "Add the readout and note that cell count never appears"]}
+]

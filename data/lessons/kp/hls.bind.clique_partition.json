@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The compatibility graph",
+  "section": "The compatibility graph",
+  "subgoals": [
+   "Join two operations when one unit can execute both",
+   "Exclude pairs that need the unit in the same step",
+   "Count the compatible pairs as edges"
+  ]
+ },
+ {
+  "label": "Cliques as units",
+  "section": "Cliques as units",
+  "subgoals": [
+   "Partition the compatibility graph into cliques",
+   "Map each clique to one functional unit",
+   "Size the partition by the busiest step for single-cycle operations"
+  ]
+ },
+ {
+  "label": "Multicycle operations and weighted edges",
+  "section": "Multicycle operations and weighted edges",
+  "subgoals": [
+   "Turn each multicycle operation into a busy interval",
+   "Count the maximum overlap of busy intervals",
+   "Weight compatible pairs by the multiplexer inputs they share"
+  ]
+ }
+]

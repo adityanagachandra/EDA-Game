@@ -1,0 +1,5 @@
+[
+  {"label": "Distance to a linear boundary", "section": "Distance to a linear boundary", "subgoals": ["Whiten the parameters to independent standard normals", "Minimize the squared norm on the boundary with a Lagrange multiplier", "Divide b by the norm of a to get beta"]},
+  {"label": "The failure probability", "section": "The failure probability", "subgoals": ["Project the standard normal vector onto the boundary normal", "Evaluate Q of beta for the failure probability", "Judge the error of the first-order estimate from the boundary curvature"]},
+  {"label": "Scaling and the search in practice", "section": "Scaling and the search in practice", "subgoals": ["Substitute sigma times x for each physical parameter", "Recompute beta from the whitened coefficients", "Use the found point as the center of an importance-sampling proposal"]}
+]

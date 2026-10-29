@@ -1,0 +1,5 @@
+[
+  {"label": "Decision levels", "section": "Decision levels", "subgoals": ["Give each decision the level it opens", "Find the antecedents of an implied literal in its reason clause", "Take the maximum level of the antecedents"]},
+  {"label": "Nodes, edges and reasons", "section": "Nodes, edges and reasons", "subgoals": ["Locate the reason clause of the implied literal", "Read each other literal of the clause as a false antecedent", "Count one incoming edge per antecedent"]},
+  {"label": "The conflict and its cone", "section": "The conflict and its cone", "subgoals": ["Add the conflict node with edges from the falsified clause's literals", "Walk the reason clauses backwards from the conflict", "Collect the decisions reached and negate them into a clause"]}
+]

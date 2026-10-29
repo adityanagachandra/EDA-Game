@@ -1,0 +1,5 @@
+[
+  {"label": "Coupling capacitance", "section": "Coupling capacitance", "subgoals": ["Take the coupling per micron at minimum spacing", "Multiply by the parallel run length", "Scale inversely with the spacing in tracks"]},
+  {"label": "Miller factors and the delay window", "section": "Miller factors and the delay window", "subgoals": ["Assign Miller factor 0, 1 or 2 by the aggressor's switching", "Write the effective capacitance range from ground to ground plus twice the coupling", "Multiply the range by the driver resistance to get the delay window"]},
+  {"label": "Spacing and shielding", "section": "Spacing and shielding", "subgoals": ["Compute the coupling at the old and new spacing", "Multiply the reduction by twice the driver resistance", "Weigh spacing or shielding against the tracks they use"]}
+]

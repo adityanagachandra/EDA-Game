@@ -1,0 +1,5 @@
+[
+  {"label": "Correlation between proxy and signoff", "section": "Correlation between proxy and signoff", "subgoals": ["Compute deviations from the means", "Sum cross products and squared deviations", "Divide to get the correlation"]},
+  {"label": "Regret of choosing by proxy", "section": "Regret of choosing by proxy", "subgoals": ["Find the candidate the proxy ranks first", "Find the best candidate at signoff", "Subtract their signoff values"]},
+  {"label": "Shortlisting with a proxy", "section": "Shortlisting with a proxy", "subgoals": ["Rank candidates by signoff and by proxy", "Count true top-k candidates inside the proxy shortlist", "Divide by k"]}
+]

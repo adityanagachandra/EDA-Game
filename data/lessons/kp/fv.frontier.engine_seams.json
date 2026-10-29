@@ -1,0 +1,5 @@
+[
+  {"label": "The four layers of a formal engine", "section": "The four layers of a formal engine", "subgoals": ["Place propagation, conflict analysis and proof logging in the core", "Place heuristics such as decision, restart and generalization in the policy layer", "Place tunable values in parameters and progress data in hooks"]},
+  {"label": "Which tier a request lands in", "section": "Which tier a request lands in", "subgoals": ["Map value changes to Tier 1 configuration", "Map new strategies at an existing seam to Tier 2 plug-ins", "Map changes to soundness-critical code to Tier 3 with human approval"]},
+  {"label": "Certificates as golden checks", "section": "Certificates as golden checks", "subgoals": ["Check UNSAT answers with DRAT proofs and an independent checker", "Replay counterexamples and re-check returned invariants", "Resolve solver disagreements by validating each side's certificate"]}
+]

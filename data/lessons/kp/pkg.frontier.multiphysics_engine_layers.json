@@ -1,0 +1,5 @@
+[
+  {"label": "Core and change surface of a multiphysics engine", "section": "Core and change surface of a multiphysics engine", "subgoals": ["Name the discretization and solver as the core", "List materials, meshing, coupling and tolerances as change surface", "Identify the hooks an agent reads during a run"]},
+  {"label": "Placing a request in a tier", "section": "Placing a request in a tier", "subgoals": ["Map data-only requests to configuration", "Map new laws and importers to plug-ins at seams", "Reserve core edits for assembly and solver changes"]},
+  {"label": "Seam design for coupled physics", "section": "Seam design for coupled physics", "subgoals": ["Define a field-exchange interface between solvers", "Put coupling policy in the coupler, not the solvers", "Pass coarse, deterministic, unit-carrying fields"]}
+]

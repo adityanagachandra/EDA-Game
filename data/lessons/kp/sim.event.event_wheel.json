@@ -1,0 +1,5 @@
+[
+  {"label": "Slots indexed by time modulo the wheel size", "section": "Slots indexed by time modulo the wheel size", "subgoals": ["Compute the due time as current time plus delay", "Map the due time to slot due time mod N", "Append the event to that slot's list in constant time"]},
+  {"label": "The overflow list for far-future events", "section": "The overflow list for far-future events", "subgoals": ["Identify the window of times the wheel covers", "Send events at or beyond base plus N to the overflow list", "Migrate overflow events into the wheel as the base advances"]},
+  {"label": "Advancing time in jumps", "section": "Advancing time in jumps", "subgoals": ["List the distinct timestamps in the queue", "Process all events of one time before advancing", "Skip empty times by jumping to the next occupied slot"]}
+]

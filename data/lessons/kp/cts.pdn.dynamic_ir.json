@@ -1,0 +1,5 @@
+[
+  {"label": "An RC model of a grid region", "section": "An RC model of a grid region", "subgoals": ["Write KCL at the node with the decap current", "Solve the first-order ODE for the drop", "Evaluate it with the time constant RC"]},
+  {"label": "How fast the droop develops", "section": "How fast the droop develops", "subgoals": ["Invert the exponential response", "Compute the time to reach the given drop", "Compare the burst length with RC"]},
+  {"label": "Why averages mislead", "section": "Why averages mislead", "subgoals": ["Compute the static drop from the average current", "Compute the dynamic drop at the end of the burst", "Explain how the transient grid solve is set up"]}
+]

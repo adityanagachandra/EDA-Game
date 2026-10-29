@@ -1,0 +1,5 @@
+[
+  {"label": "Linearity and time invariance", "section": "Linearity and time invariance", "subgoals": ["Scale each known response by its input coefficient", "Add the scaled responses at the same time", "Shift a response in time when its input is delayed"]},
+  {"label": "Discrete convolution", "section": "Discrete convolution", "subgoals": ["Flip the input against the impulse response for each output index", "Multiply the overlapping samples pairwise", "Sum the products to get the output sample"]},
+  {"label": "Pulse response from the step response", "section": "Pulse response from the step response", "subgoals": ["Write the pulse as a step minus a delayed step", "Subtract the delayed step response from the step response", "Evaluate the difference of exponentials at the requested time"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Sidewall coupling between neighbours", "section": "Sidewall coupling between neighbours", "subgoals": ["Treat the facing sidewalls as parallel plates", "Multiply epsilon by thickness and run length", "Divide by the spacing to get the coupling capacitance"]},
+  {"label": "The Miller factor", "section": "The Miller factor", "subgoals": ["Determine the voltage change across the coupling capacitor", "Assign the factor zero, one or two to the neighbour's activity", "Add k times the coupling to the ground capacitance"]},
+  {"label": "Capacitive crosstalk on a floating victim", "section": "Capacitive crosstalk on a floating victim", "subgoals": ["Write charge conservation on the floating node", "Compute the capacitive divider ratio", "Multiply the aggressor swing by the ratio to get the glitch"]}
+]

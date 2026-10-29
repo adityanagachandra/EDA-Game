@@ -1,0 +1,5 @@
+[
+  {"label": "Series paths", "section": "Series paths", "subgoals": ["Add the load currents flowing through each resistor", "Multiply each current by its resistance", "Sum the drops along the path to the node"]},
+  {"label": "A doubly fed rail", "section": "A doubly fed rail", "subgoals": ["Stamp the tridiagonal conductance matrix", "Solve the system by elimination", "Locate the worst node"]},
+  {"label": "A small mesh", "section": "A small mesh", "subgoals": ["Stamp all branches and supply connections into G", "Solve the four-node system", "Map the worst drop to its cause"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The distributed line halves the lumped delay", "section": "The distributed line halves the lumped delay", "subgoals": ["Write the resistance per unit length and capacitance per unit length", "Integrate position-dependent resistance times capacitance along the wire", "Compute rcL squared over two and convert ohm-fF to ps"]},
+  {"label": "Driver, wire and load together", "section": "Driver, wire and load together", "subgoals": ["Multiply the driver resistance by the wire plus load capacitance", "Multiply the wire resistance by half its capacitance plus the load", "Add the terms and convert to ps"]},
+  {"label": "Quadratic growth and repeaters", "section": "Quadratic growth and repeaters", "subgoals": ["Recompute the delay at the new wire length", "Compare the growth of the quadratic wire term with the linear driver term", "Explain how repeaters turn quadratic wire delay into linear delay"]}
+]

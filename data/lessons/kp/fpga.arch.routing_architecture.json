@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Connection boxes and Fc",
+  "section": "Connection boxes and Fc",
+  "subgoals": [
+   "Multiply each input pin by Fc_in times W",
+   "Multiply each output pin by Fc_out times W",
+   "Add the two to get the connection-box switches"
+  ]
+ },
+ {
+  "label": "Switch boxes and Fs",
+  "section": "Switch boxes and Fs",
+  "subgoals": [
+   "Count 4 W track ends per interior switch box",
+   "Multiply by Fs and halve, since each switch joins two ends",
+   "Multiply by the number of switch boxes"
+  ]
+ },
+ {
+  "label": "Track domains in disjoint switch boxes",
+  "section": "Track domains in disjoint switch boxes",
+  "subgoals": [
+   "List the tracks each pin's connection box reaches",
+   "Intersect the two sets under a disjoint switch box",
+   "Recognize that domain-changing patterns lift this limit"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Definition of a cut", "section": "Definition of a cut", "subgoals": ["Check that every input-to-node path crosses the set", "Include the trivial cut of each node", "Keep only cuts with at most k leaves"]},
+  {"label": "Counting cuts by merging", "section": "Counting cuts by merging", "subgoals": ["Start every primary input with its trivial cut", "Form all unions of one fanin cut per fanin within k leaves", "Add the trivial cut and drop dominated cuts"]},
+  {"label": "How the count grows", "section": "How the count grows", "subgoals": ["Bound a node's cut count by the product of its fanins' counts plus one", "Count the extra cuts admitted when k grows", "Relate the growth to the need for cut pruning"]}
+]

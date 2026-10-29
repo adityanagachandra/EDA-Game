@@ -1,0 +1,5 @@
+[
+  {"label": "Layers in series", "section": "Layers in series", "subgoals": ["List the layers along the heat path", "Add their resistances", "Multiply by power for the temperature rise"]},
+  {"label": "Parallel paths", "section": "Parallel paths", "subgoals": ["Invert each path resistance", "Add the conductances", "Invert the sum for the combined resistance"]},
+  {"label": "Heat split between paths", "section": "Heat split between paths", "subgoals": ["Identify the two path resistances from the junction", "Divide the opposite resistance by the sum", "Use the split for board and joint temperatures"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Borrowing past the opening edge", "section": "Borrowing past the opening edge", "subgoals": ["Find the latch's opening edge", "Compare the data arrival with that edge", "Compute the borrow as arrival minus opening edge when positive"]},
+  {"label": "The maximum borrow", "section": "The maximum borrow", "subgoals": ["Find the closing edge of the latch", "Subtract the latch setup time from the pulse width", "Read the result as the maximum time a path may borrow"]},
+  {"label": "Charging the next stage", "section": "Charging the next stage", "subgoals": ["Start the next path at the latch's data arrival plus D-to-Q delay", "Time the next stage against its own capture edge", "Recognize that the borrowed time reduces the next stage's margin"]}
+]

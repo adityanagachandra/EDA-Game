@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Bounds propagation on precedence chains",
+    "section": "Bounds propagation on precedence chains",
+    "subgoals": [
+      "Push lower bounds forward along each precedence",
+      "Push upper bounds backward along each precedence",
+      "Repeat until no domain changes and count what remains"
+    ]
+  },
+  {
+    "label": "Counting solutions of a small CSP",
+    "section": "Counting solutions of a small CSP",
+    "subgoals": [
+      "Enumerate or count the choices for the most constrained variables",
+      "Count the remaining free choices for each case",
+      "Multiply and sum to get the number of solutions"
+    ]
+  },
+  {
+    "label": "What propagation buys",
+    "section": "What propagation buys",
+    "subgoals": [
+      "Sum the initial domain sizes",
+      "Subtract the sizes after propagation",
+      "Weigh propagation strength against its cost per search node"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Fick's law and the diffusion length", "section": "Fick's law and the diffusion length", "subgoals": ["Write the diffusion equation from Fick's law", "Compute Dt in square centimetres", "Convert the diffusion length 2 times root Dt into nanometres"]},
+  {"label": "Arrhenius temperature dependence", "section": "Arrhenius temperature dependence", "subgoals": ["Write the Arrhenius form of diffusivity", "Convert Celsius to kelvin", "Compute the diffusivity ratio between two temperatures"]},
+  {"label": "Adding up the thermal budget", "section": "Adding up the thermal budget", "subgoals": ["Sum the Dt products of successive anneals", "Take the diffusion length of the total budget", "Explain why post-implant steps keep the budget small"]}
+]

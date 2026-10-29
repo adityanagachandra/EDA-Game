@@ -1,0 +1,5 @@
+[
+  {"label": "Equivalent states and the initial partition", "section": "Equivalent states and the initial partition", "subgoals": ["Group states by their outputs on every single input", "Treat each group as a block of the initial partition", "Note that equivalent states must share a block"]},
+  {"label": "Refining until stable", "section": "Refining until stable", "subgoals": ["Key each state by its block and the blocks of its next states", "Split blocks whose states have different keys", "Stop when a pass splits nothing and count the blocks"]},
+  {"label": "Counting passes and building the minimal machine", "section": "Counting passes and building the minimal machine", "subgoals": ["Count the refinement passes that split at least one block", "Build one state per block with transitions to blocks", "Switch to compatibility and covering when the machine is incompletely specified"]}
+]

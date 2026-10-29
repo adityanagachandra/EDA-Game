@@ -1,0 +1,5 @@
+[
+  {"label": "Cache lines touched by a loop", "section": "Cache lines touched by a loop", "subgoals": ["Multiply objects by struct size to get bytes swept", "Divide by the 64-byte line size to count lines", "Compare the bytes used with the bytes loaded"]},
+  {"label": "Structure of arrays", "section": "Structure of arrays", "subgoals": ["Store each hot field in its own contiguous array", "Count the lines for the field array alone", "Divide struct size by field size for the reduction factor"]},
+  {"label": "Hot and cold splitting", "section": "Hot and cold splitting", "subgoals": ["Separate the fields the inner loop reads from the rest", "Count the lines over the hot array", "Reach the cold part by the same index when needed"]}
+]

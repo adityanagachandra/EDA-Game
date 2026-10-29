@@ -1,0 +1,5 @@
+[
+  {"label": "Nodes of an expression tree", "section": "Nodes of an expression tree", "subgoals": ["Make each operator an internal node with its operands as children", "Count every operand occurrence as a leaf", "Drop parentheses because the shape already records them"]},
+  {"label": "Height and traversal", "section": "Height and traversal", "subgoals": ["Identify the root as the operator applied last", "Measure height as edges on the longest root-to-leaf path", "Evaluate in post-order and push context down in pre-order"]},
+  {"label": "Sharing subtrees in a DAG", "section": "Sharing subtrees in a DAG", "subgoals": ["Hash each node by its operator and its children's identities", "Reuse an existing node when the hash matches", "Count the distinct nodes that remain in the DAG"]}
+]

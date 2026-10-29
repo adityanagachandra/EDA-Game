@@ -1,0 +1,5 @@
+[
+  {"label": "Flip-flop counts of common encodings", "section": "Flip-flop counts of common encodings", "subgoals": ["Compute the ceiling of log base 2 of the state count for binary", "Use one flip-flop per state for one-hot", "Weigh flip-flop count against next-state logic size"]},
+  {"label": "Adjacency cost of an assignment", "section": "Adjacency cost of an assignment", "subgoals": ["Assign an affinity weight to each pair of states", "Multiply each weight by the Hamming distance of the two codes", "Sum the products to score the assignment"]},
+  {"label": "Exact choice for small machines", "section": "Exact choice for small machines", "subgoals": ["Note that only the diagonal pairs change the cost in a two-bit code", "Enumerate the three diagonal splits and pick the cheapest", "Use heuristic encoders for larger machines"]}
+]

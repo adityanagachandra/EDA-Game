@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The architecture choice and its scoring",
+    "section": "The architecture choice and its scoring",
+    "subgoals": [
+      "Score each candidate architecture on routed benchmark blocks",
+      "Run cell generation, characterization and place and route as typed tools",
+      "Choose the next candidate with a sample-efficient search such as Bayesian optimization"
+    ]
+  },
+  {
+    "label": "Pareto sets, not single winners",
+    "section": "Pareto sets, not single winners",
+    "subgoals": [
+      "Compare candidates pairwise for dominance on every metric",
+      "Keep the non-dominated candidates as the Pareto set",
+      "Leave the final architecture commitment to a human decision"
+    ]
+  },
+  {
+    "label": "Proxies and the danger of overfitting",
+    "section": "Proxies and the danger of overfitting",
+    "subgoals": [
+      "Use cheap proxies to prune and routed results to decide",
+      "Validate wins across benchmarks, corners and utilizations",
+      "Keep experiments reproducible through typed tool interfaces"
+    ]
+  }
+]

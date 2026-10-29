@@ -1,0 +1,5 @@
+[
+  {"label": "Integer-multiple periods", "section": "Integer-multiple periods", "subgoals": ["List the launch edges within one capture period", "Pair each with the first strictly later capture edge", "Take the smallest gap as the setup relationship"]},
+  {"label": "General periods over the common period", "section": "General periods over the common period", "subgoals": ["Compute the least common multiple of the two periods", "Pair every launch edge in that window with its next capture edge", "Take the smallest gap as the setup relationship"]},
+  {"label": "Deriving the hold relationship", "section": "Deriving the hold relationship", "subgoals": ["Take the most restrictive setup pair", "Compute the earlier capture edge against the launch and the capture edge against the next launch", "Keep the larger value as the hold relationship"]}
+]

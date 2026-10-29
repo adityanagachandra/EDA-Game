@@ -1,0 +1,5 @@
+[
+  {"label": "Diagonal entries", "section": "Diagonal entries", "subgoals": ["List every branch and supply connection at the node", "Convert each resistance to conductance", "Sum them for the diagonal entry"]},
+  {"label": "Off-diagonal entries and sparsity", "section": "Off-diagonal entries and sparsity", "subgoals": ["Stamp minus the branch conductance off the diagonal", "Set entries for unconnected nodes to zero", "Count the non-zeros per row"]},
+  {"label": "Row sums and definiteness", "section": "Row sums and definiteness", "subgoals": ["Sum a row and cancel the internal branches", "Identify the surviving supply conductance", "Explain why one supply connection makes G positive definite"]}
+]

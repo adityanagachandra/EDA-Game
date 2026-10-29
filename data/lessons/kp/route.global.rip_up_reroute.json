@@ -1,0 +1,5 @@
+[
+  {"label": "Which nets to rip up", "section": "Which nets to rip up", "subgoals": ["Count each edge's demand from the routes", "Find the edges whose demand exceeds capacity", "Rip up the nets that use any overflowed edge"]},
+  {"label": "Reroute ordering", "section": "Reroute ordering", "subgoals": ["Collect the ripped nets", "Sort them by the chosen rule, such as bounding-box half-perimeter", "Reroute them in that order on the updated costs"]},
+  {"label": "Measuring a reroute", "section": "Measuring a reroute", "subgoals": ["Remove the net's demand from its old edges", "Add its demand to the new edges", "Recompute total overflow and keep the change only if it helps"]}
+]

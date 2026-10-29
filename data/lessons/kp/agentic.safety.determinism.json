@@ -1,0 +1,5 @@
+[
+  {"label": "Same inputs, same outputs", "section": "Same inputs, same outputs", "subgoals": ["Take every random choice from a recorded seed", "Make results independent of thread count", "Remove dependence on time, addresses and hash order"]},
+  {"label": "Sources of nondeterminism", "section": "Sources of nondeterminism", "subgoals": ["Spot unordered floating-point reductions", "Spot iteration over pointer-keyed containers", "Replace time limits with iteration limits"]},
+  {"label": "Why differential tests need determinism", "section": "Why differential tests need determinism", "subgoals": ["Explain why baseline noise hides regressions", "Run fixed seeds deliberately to study variation", "Run each candidate twice with one seed in the gate"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "A multiplier update from the violation",
+    "section": "A multiplier update from the violation",
+    "subgoals": [
+      "Evaluate the constraint violation at the current solution",
+      "Add the step size times the violation to the multiplier",
+      "Keep the best dual bound found so far"
+    ]
+  },
+  {
+    "label": "Projection onto nonnegative multipliers",
+    "section": "Projection onto nonnegative multipliers",
+    "subgoals": [
+      "Compute the raw multiplier update",
+      "Replace a negative result by zero",
+      "Interpret a zero multiplier as a constraint the relaxation ignores"
+    ]
+  },
+  {
+    "label": "Step-size rules and convergence",
+    "section": "Step-size rules and convergence",
+    "subgoals": [
+      "Choose a diminishing step such as the initial step over k",
+      "Apply successive projected updates with the shrinking steps",
+      "Stop when the gap between bound and feasible cost is small"
+    ]
+  }
+]

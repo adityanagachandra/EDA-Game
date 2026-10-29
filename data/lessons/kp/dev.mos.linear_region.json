@@ -1,0 +1,5 @@
+[
+  {"label": "The on-resistance of a switch", "section": "The on-resistance of a switch", "subgoals": ["Write the uniform channel charge at small drain voltage", "Derive the current as proportional to the drain voltage", "Invert to get the on-resistance"]},
+  {"label": "The full linear-region current", "section": "The full linear-region current", "subgoals": ["Check that the drain voltage is below the overdrive", "Evaluate the bracket of overdrive times V_DS minus half V_DS squared", "Multiply by k prime times W over L"]},
+  {"label": "Choosing the region", "section": "Choosing the region", "subgoals": ["Compute the overdrive and compare it with the drain voltage", "Select the triode or saturation formula accordingly", "Confirm the two formulas agree at the boundary"]}
+]

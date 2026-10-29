@@ -1,0 +1,5 @@
+[
+  {"label": "The area law", "section": "The area law", "subgoals": ["Model mismatch as an average of many independent events over the gate area", "Divide the Pelgrom coefficient by the square root of WL", "Express the area in square micrometres before dividing"]},
+  {"label": "Sizing for a target mismatch", "section": "Sizing for a target mismatch", "subgoals": ["Solve the area law for WL given a target sigma", "Square the ratio of coefficient to target sigma", "Quote the fourfold area cost of halving mismatch"]},
+  {"label": "Pair sigma versus device sigma", "section": "Pair sigma versus device sigma", "subgoals": ["Recall that a difference of two independent devices has twice the device variance", "Divide the pair sigma by the square root of two for each device", "Convert between pair and device conventions when loading a mismatch model"]}
+]

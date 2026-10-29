@@ -1,0 +1,5 @@
+[
+  {"label": "Greedy first, breadth-first when blocked", "section": "Greedy first, breadth-first when blocked", "subgoals": ["Move toward the target depth-first while the way is open", "Switch to breadth-first expansion when the greedy move is blocked", "Resume the greedy walk from the expanded frontier"]},
+  {"label": "What is guaranteed and what is not", "section": "What is guaranteed and what is not", "subgoals": ["State that Soukup is complete but not optimal", "Contrast it with Hadlock, which is faster than Lee and still optimal", "Predict when the speedup disappears"]},
+  {"label": "Where the idea went", "section": "Where the idea went", "subgoals": ["Name goal direction as the idea that survived", "Explain why A* replaced greedy search in modern routers", "Reserve optimal search for timing-critical nets"]}
+]

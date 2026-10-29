@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Defining FO4 from stage delay",
+    "section": "Defining FO4 from stage delay",
+    "subgoals": [
+      "Set g to 1 and h to 4 for an inverter with four copies as load",
+      "Add the inverter's parasitic delay",
+      "Multiply by tau to get the FO4 delay in picoseconds"
+    ]
+  },
+  {
+    "label": "Measuring tau from FO4",
+    "section": "Measuring tau from FO4",
+    "subgoals": [
+      "Divide the measured FO4 delay by four plus p_inv",
+      "Fit delay against fanout to separate slope and intercept",
+      "Read tau from the slope and p_inv tau from the intercept"
+    ]
+  },
+  {
+    "label": "Thinking in FO4 units",
+    "section": "Thinking in FO4 units",
+    "subgoals": [
+      "Divide a cycle time by the FO4 delay",
+      "Subtract flop and skew overhead to get usable logic depth",
+      "Use FO4 counts to sanity-check timer results across nodes"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The ON, OFF and don't-care sets", "section": "The ON, OFF and don't-care sets", "subgoals": ["Partition the rows into ON, OFF and don't-care", "Note that each don't-care row may be set either way", "Raise 2 to the number of don't-care rows"]},
+  {"label": "Minimizing with don't cares", "section": "Minimizing with don't cares", "subgoals": ["Grow primes over ON plus don't-care rows", "Cover only the ON rows", "Count the cubes of the minimum cover"]},
+  {"label": "Primes of an incompletely specified function", "section": "Primes of an incompletely specified function", "subgoals": ["Compute the primes of ON union don't-care", "Discard primes that cover no ON row", "Count the useful primes"]}
+]

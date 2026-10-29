@@ -1,0 +1,5 @@
+[
+  {"label": "How the gate loses control", "section": "How the gate loses control", "subgoals": ["Identify charge sharing as the cause of threshold roll-off", "Identify the drain field lowering the source barrier as DIBL", "Relate both to channel length over the natural length"]},
+  {"label": "Countermeasures and companion effects", "section": "Countermeasures and companion effects", "subgoals": ["Explain how halo implants flatten threshold roll-off", "Distinguish velocity saturation and mobility degradation from charge sharing", "Name thin-body multi-gate geometry as the remaining lever"]},
+  {"label": "Consequences for EDA", "section": "Consequences for EDA", "subgoals": ["Trace gate-length variation into threshold and delay variation", "Explain why cell models tabulate current against output voltage", "Require extraction to fit minimum-length devices at high drain bias"]}
+]

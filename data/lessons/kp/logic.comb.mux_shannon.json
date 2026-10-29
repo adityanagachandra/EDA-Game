@@ -1,0 +1,5 @@
+[
+  {"label": "Any function as a mux tree", "section": "Any function as a mux tree", "subgoals": ["Expand the function on one variable per mux level", "Count two to the level muxes at each level", "Sum the levels to two to the n minus one"]},
+  {"label": "The LUT and its configuration word", "section": "The LUT and its configuration word", "subgoals": ["Index each truth-table row by its input bits", "Set configuration bit i to the function value on row i", "Sum the powers of two of the set bits"]},
+  {"label": "Mapping wide functions onto small LUTs", "section": "Mapping wide functions onto small LUTs", "subgoals": ["Reduce the signal count by k minus one per LUT", "Round up n minus one over k minus one", "Count the levels as the ceiling of log base k of n"]}
+]

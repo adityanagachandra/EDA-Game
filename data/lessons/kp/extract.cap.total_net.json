@@ -1,0 +1,5 @@
+[
+  {"label": "Summing the components", "section": "Summing the components", "subgoals": ["Add ground and coupling capacitance per unit length", "Multiply by the wire length", "Add every sink pin's input capacitance"]},
+  {"label": "The coupling share", "section": "The coupling share", "subgoals": ["Total the coupling capacitance to all neighbours", "Divide by the net's total capacitance", "Flag nets whose coupling share is high for SI attention"]},
+  {"label": "Grounded versus dropped coupling", "section": "Grounded versus dropped coupling", "subgoals": ["Compute the total with coupling grounded", "Compute the total with coupling removed", "Report the difference as the load the careless flow loses"]}
+]

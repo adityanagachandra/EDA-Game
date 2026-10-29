@@ -1,0 +1,5 @@
+[
+  {"label": "Linear size from Euler's formula", "section": "Linear size from Euler's formula", "subgoals": ["Model the diagram as a planar graph with degree at least 3", "Apply Euler's formula with one face per site", "Bound the vertices by 2n minus 5 and the edges by 3n minus 6"]},
+  {"label": "Unbounded cells and the hull", "section": "Unbounded cells and the hull", "subgoals": ["Compute the convex hull of the sites", "Mark each hull site as having an unbounded cell", "Count the unbounded cells as the hull sites"]},
+  {"label": "Exact counts and metrics", "section": "Exact counts and metrics", "subgoals": ["Use the vertex count 2n minus 2 minus h in general position", "Use the edge count 3n minus 3 minus h", "Note how L1 or L-infinity metrics change the bisectors"]}
+]

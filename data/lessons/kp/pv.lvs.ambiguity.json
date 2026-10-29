@@ -1,0 +1,5 @@
+[
+  {"label": "Classes refinement cannot split", "section": "Classes refinement cannot split", "subgoals": ["Find vertices that an automorphism exchanges", "Run refinement to its stable partition", "Count the classes with more than one vertex"]},
+  {"label": "Breaking ties", "section": "Breaking ties", "subgoals": ["Pick one vertex from each netlist in an ambiguous class", "Give the pair a unique colour and refine again", "Backtrack if the choice leads to unequal classes"]},
+  {"label": "Names, permutations and regular arrays", "section": "Names, permutations and regular arrays", "subgoals": ["Seed the partition with names that both netlists share", "Decide whether swapped inputs are declared permutable", "Use names or hierarchy to break array symmetry"]}
+]

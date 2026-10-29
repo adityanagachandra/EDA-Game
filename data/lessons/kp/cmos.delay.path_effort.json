@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Path logical, electrical and branching effort",
+    "section": "Path logical, electrical and branching effort",
+    "subgoals": [
+      "Multiply the stage logical efforts into G",
+      "Divide the final load by the first input to get H",
+      "Multiply in branching efforts and form F as G times B times H"
+    ]
+  },
+  {
+    "label": "Equal stage effort minimizes delay",
+    "section": "Equal stage effort minimizes delay",
+    "subgoals": [
+      "Note that the stage efforts multiply to the path effort",
+      "Equalize stage efforts at F to the power one over N",
+      "Add the parasitic delays to get the minimum path delay"
+    ]
+  },
+  {
+    "label": "What the optimum assumes",
+    "section": "What the optimum assumes",
+    "subgoals": [
+      "List the assumptions of fixed topology, load and continuous sizes",
+      "Snap the continuous optimum to discrete library drive strengths",
+      "Flag stages whose effort is far from the path's average"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Four jobs of a package", "section": "Four jobs of a package", "subgoals": ["List the electrical, thermal, mechanical and environmental jobs", "Name the material mismatch that strains the joints", "Trace how a change for one job moves another"]},
+  {"label": "The interconnect hierarchy", "section": "The interconnect hierarchy", "subgoals": ["Order the pitches from on-chip wires to board balls", "Explain why each level stops at its pitch", "Locate where advanced packaging inserts finer levels"]},
+  {"label": "What the package feeds back into design", "section": "What the package feeds back into design", "subgoals": ["Link the bump map to floorplan and power grid", "Name the package parasitics that enter timing", "Explain why late package changes ripple into signoff"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Weights and range", "section": "Weights and range", "subgoals": ["Assign weight minus two to the n minus one to the top bit", "Sum the weights of the set bits", "Bound the range from minus two to the n minus one up to two to the n minus one, minus one"]},
+  {"label": "Decoding a pattern", "section": "Decoding a pattern", "subgoals": ["Read the pattern as an unsigned integer", "Subtract two to the n when the top bit is set", "Confirm the result with the signed bit weights"]},
+  {"label": "Negation and the asymmetric corner", "section": "Negation and the asymmetric corner", "subgoals": ["Invert every bit of the pattern", "Add one modulo two to the n", "Flag the most negative value as its own negation"]}
+]

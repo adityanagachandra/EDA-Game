@@ -1,0 +1,5 @@
+[
+  {"label": "Traces between adjacent balls", "section": "Traces between adjacent balls", "subgoals": ["Compute the gap between adjacent lands", "Solve the width and clearance inequality for N", "Recognize when finer pitch forces via-in-pad or microvias"]},
+  {"label": "Rows escaped per layer", "section": "Rows escaped per layer", "subgoals": ["Count the concentric rows of the array", "Escape N plus 1 rows per signal layer", "Exclude power and ground balls that go straight to planes"]},
+  {"label": "Counting balls in the outer rows", "section": "Counting balls in the outer rows", "subgoals": ["Subtract the inner block from the full array", "Count balls ring by ring from the outside in", "Assign fast signals to outer rows and power to the center"]}
+]

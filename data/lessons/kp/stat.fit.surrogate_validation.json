@@ -1,0 +1,5 @@
+[
+  {"label": "Hold-out error", "section": "Hold-out error", "subgoals": ["Hold out simulated points from the fit", "Compute the root-mean-square prediction error on them", "Compare the error with the margin of the decisions the surrogate drives"]},
+  {"label": "Leave-one-out without refitting", "section": "Leave-one-out without refitting", "subgoals": ["Compute the ordinary residual of the point", "Divide it by one minus the leverage", "Sum the squared leave-one-out residuals for PRESS"]},
+  {"label": "Model size against data", "section": "Model size against data", "subgoals": ["Count polynomial coefficients as k plus d choose d", "Keep several simulations per coefficient or regularize", "Restrict trust to the region the training data covers"]}
+]

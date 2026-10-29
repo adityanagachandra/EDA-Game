@@ -1,0 +1,29 @@
+[
+  {
+    "label": "What the fast engine trades away",
+    "section": "What the fast engine trades away",
+    "subgoals": [
+      "Predict most grid points from a model and a few simulations",
+      "Report a calibrated uncertainty with every prediction",
+      "Keep surrogate numbers out of signoff libraries"
+    ]
+  },
+  {
+    "label": "Recursing to the accurate engine",
+    "section": "Recursing to the accurate engine",
+    "subgoals": [
+      "Accept predictions whose uncertainty is below the threshold",
+      "Send the remaining points to SPICE and refit",
+      "Measure savings as total simulations to a verified table"
+    ]
+  },
+  {
+    "label": "Where surrogates fail",
+    "section": "Where surrogates fail",
+    "subgoals": [
+      "Flag predictions outside the training range as extrapolation",
+      "Recalibrate after process or corner shifts with new SPICE data",
+      "Spot-check corners and curved regions to catch miscalibration"
+    ]
+  }
+]

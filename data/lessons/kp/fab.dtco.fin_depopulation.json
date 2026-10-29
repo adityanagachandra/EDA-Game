@@ -1,0 +1,5 @@
+[
+  {"label": "Drive scales with fin count", "section": "Drive scales with fin count", "subgoals": ["Scale drive current with the number of fins", "Scale input capacitance the same way", "Explain why light loads lose less speed than heavy ones"]},
+  {"label": "Cell height on the fin grid", "section": "Cell height on the fin grid", "subgoals": ["Count the fin pitches in a cell height", "Remove two pitches per fin depopulated", "Match the new height to a track count"]},
+  {"label": "Drive density and its limits", "section": "Drive density and its limits", "subgoals": ["Compute drive per unit area before and after depopulation", "Weigh density against performance for different blocks", "Explain how nanosheets change the width quantization"]}
+]

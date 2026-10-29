@@ -1,0 +1,5 @@
+[
+  {"label": "Tier 1: configuration", "section": "Tier 1: configuration", "subgoals": ["Recognize a request that only changes a value the engine reads", "Apply it without recompiling", "Validate that the configured library is still complete"]},
+  {"label": "Tier 2: plug-ins at existing seams", "section": "Tier 2: plug-ins at existing seams", "subgoals": ["Identify the existing interface the request can implement", "Write the plug-in without touching the core", "Reject seam abuse such as costs used as prohibitions"]},
+  {"label": "Tier 3: core edits and seam design", "section": "Tier 3: core edits and seam design", "subgoals": ["Classify edits to enumeration, matching, covering or legality as core", "Steer agents to the smallest tier that can serve the request", "Add a seam when one kind of core edit keeps recurring"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Charge balance", "section": "Charge balance", "subgoals": ["Compute the charge the decap must supply", "Divide by the droop budget", "Track the units from pC and mV to nF"]},
+  {"label": "Charge from a current pulse", "section": "Charge from a current pulse", "subgoals": ["Integrate the current pulse to get its charge", "Divide by the droop budget", "Name where per-cell current waveforms come from"]},
+  {"label": "Intrinsic and explicit decap", "section": "Intrinsic and explicit decap", "subgoals": ["Subtract the intrinsic decap from the requirement", "Convert the shortfall to area with the cap density", "List the leakage, area and resonance costs"]}
+]

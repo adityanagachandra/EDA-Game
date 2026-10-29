@@ -1,0 +1,5 @@
+[
+  {"label": "Bump density from pitch", "section": "Bump density from pitch", "subgoals": ["Divide one millimetre by the pitch", "Square the result for bumps per square millimetre", "Compare densities across pitches"]},
+  {"label": "Power bumps from current limits", "section": "Power bumps from current limits", "subgoals": ["Divide the die current by the per-bump limit", "Round up to whole bumps", "Double for the ground return and add sharing margin"]},
+  {"label": "Bump resistance", "section": "Bump resistance", "subgoals": ["Compute the joint cross-section from its diameter", "Convert solder resistivity to ohm micrometres", "Divide resistivity times height by area"]}
+]

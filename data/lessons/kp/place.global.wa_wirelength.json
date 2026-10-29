@@ -1,0 +1,5 @@
+[
+  {"label": "The weighted-average maximum", "section": "The weighted-average maximum", "subgoals": ["Weight each coordinate by its softmax weight", "Divide the weighted sum by the sum of weights", "Note that the estimate never exceeds the true maximum"]},
+  {"label": "The WA wirelength", "section": "The WA wirelength", "subgoals": ["Subtract the weighted-average minimum from the weighted-average maximum", "Compare the estimate with the exact span", "Reuse the per-net exponential sums for the gradient"]},
+  {"label": "WA versus LSE in practice", "section": "WA versus LSE in practice", "subgoals": ["Contrast the overestimate of LSE with the underestimate of WA", "Weigh WA's accuracy against its loss of convexity", "Hide both behind one value-and-gradient interface"]}
+]

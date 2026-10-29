@@ -1,0 +1,5 @@
+[
+  {"label": "XOR of two outputs", "section": "XOR of two outputs", "subgoals": ["Compute the areas of the golden and new outputs", "Compute their intersection area", "Subtract twice the intersection from the sum to get the XOR"]},
+  {"label": "Comparing whole layers", "section": "Comparing whole layers", "subgoals": ["Merge each output into its union", "Compare the unions region by region", "Report the area covered by exactly one of them"]},
+  {"label": "Reading the signature of a change", "section": "Reading the signature of a change", "subgoals": ["Relate the XOR to the change that would produce it", "Compute 2 delta h per shape for a uniform shift", "Block promotion unless the XOR matches the intended change"]}
+]

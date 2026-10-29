@@ -1,0 +1,5 @@
+[
+  {"label": "Characterizing a cell", "section": "Characterizing a cell", "subgoals": ["Extract candidate opens and shorts from the cell layout", "Simulate each defect at transistor level over all input patterns", "Record the detecting patterns as a per-cell fault table"]},
+  {"label": "Finding the detecting pattern", "section": "Finding the detecting pattern", "subgoals": ["Write the fault-free output column of the cell", "Compare it row by row with the defective column", "Pick an input pattern on a differing row"]},
+  {"label": "Sequential and delay behaviour", "section": "Sequential and delay behaviour", "subgoals": ["Recognize a stuck-open as a defect that makes the cell sequential", "Apply an initializing pattern before the exposing pattern", "Classify defects whose exposing pattern cannot occur as untestable"]}
+]

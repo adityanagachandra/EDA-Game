@@ -1,0 +1,5 @@
+[
+  {"label": "Neyman allocation", "section": "Neyman allocation", "subgoals": ["Multiply each stratum weight by its sigma", "Divide each product by their sum", "Scale by the total sample budget"]},
+  {"label": "Unequal simulation costs", "section": "Unequal simulation costs", "subgoals": ["Divide each weight-sigma product by the square root of its cost", "Normalize by the sum of weight times sigma times square root of cost", "Multiply by the total budget"]},
+  {"label": "Sequential stopping", "section": "Sequential stopping", "subgoals": ["Estimate p from the pilot", "Solve p times one minus p over SE squared for the total", "Subtract the pilot count for the additional samples"]}
+]

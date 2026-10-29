@@ -1,0 +1,5 @@
+[
+  {"label": "Notches", "section": "Notches", "subgoals": ["Merge the shapes into one polygon", "Find facing edge pairs that belong to the same polygon", "Compare each gap with the notch rule"]},
+  {"label": "End-of-line spacing", "section": "End-of-line spacing", "subgoals": ["Classify each wire end by its width against the threshold", "Apply the end-of-line spacing to narrow ends", "Apply the normal spacing to every end"]},
+  {"label": "Parallel-run-length tables", "section": "Parallel-run-length tables", "subgoals": ["Compute the parallel run length from the projections' overlap", "Look up the required spacing from width and run length", "Count pairs whose spacing is below their required value"]}
+]

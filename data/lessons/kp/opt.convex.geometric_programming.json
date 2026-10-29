@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Balancing a size against its load",
+    "section": "Balancing a size against its load",
+    "subgoals": [
+      "Write the delay as a term growing with x plus a term falling with x",
+      "Set the derivative to zero",
+      "Solve for the size as the square root of the ratio"
+    ]
+  },
+  {
+    "label": "Equal terms at the optimum",
+    "section": "Equal terms at the optimum",
+    "subgoals": [
+      "Set the two terms equal at the optimum",
+      "Multiply them and take the square root for the common value",
+      "Double the common value for the minimum delay"
+    ]
+  },
+  {
+    "label": "Log transform and multivariable posynomials",
+    "section": "Log transform and multivariable posynomials",
+    "subgoals": [
+      "Substitute exponentials for the size variables",
+      "Set all terms equal using the stationarity conditions",
+      "Multiply the terms to solve for their common value"
+    ]
+  }
+]

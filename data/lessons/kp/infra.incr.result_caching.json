@@ -1,0 +1,5 @@
+[
+  {"label": "Expected time with a cache", "section": "Expected time with a cache", "subgoals": ["Charge the lookup to every invocation", "Charge the computation to the miss fraction", "Add the two terms to get the expected time"]},
+  {"label": "The break-even hit rate", "section": "The break-even hit rate", "subgoals": ["Write the cached and uncached costs as equal", "Solve for the hit rate as lookup over compute", "Compare the actual hit rate against the threshold"]},
+  {"label": "Keys must hash every input", "section": "Keys must hash every input", "subgoals": ["List every input that determines the output", "Treat a run as a hit only if all inputs match an earlier run", "Count the hits across the run sequence"]}
+]

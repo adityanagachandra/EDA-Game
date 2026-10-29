@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The stages and their files",
+  "section": "The stages and their files",
+  "subgoals": [
+   "Synthesize to device primitives and export the netlist",
+   "Pack, place and route against the device database",
+   "Translate the routed features into the bitstream"
+  ]
+ },
+ {
+  "label": "Real devices versus architecture models",
+  "section": "Real devices versus architecture models",
+  "subgoals": [
+   "Use nextpnr when the target is a documented real device",
+   "Use VPR when the architecture itself is the variable",
+   "Recognize the shared placement and routing algorithms"
+  ]
+ },
+ {
+  "label": "Running fair experiments",
+  "section": "Running fair experiments",
+  "subgoals": [
+   "Run several seeds and report the spread",
+   "Hold every stage fixed except the one under test",
+   "Report delay and run time alongside routability"
+  ]
+ }
+]

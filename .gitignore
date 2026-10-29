@@ -152,3 +152,10 @@ figures/fonts/
 # scripts/copy-mathlive-fonts.mjs regenerates them on predev/prebuild out of
 # node_modules, so they are build output rather than source.
 web/next-app/public/fonts/
+
+# Local EDA-Game databases
+sqlite:*
+*.db
+*.db-shm
+*.db-wal
+.claude/

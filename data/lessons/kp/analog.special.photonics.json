@@ -1,0 +1,5 @@
+[
+  {"label": "Link loss budgets", "section": "Link loss budgets", "subgoals": ["List every loss element along the optical path", "Subtract the losses in dB from the launched power", "Compare the received power with the receiver sensitivity plus margin"]},
+  {"label": "Ring resonators", "section": "Ring resonators", "subgoals": ["Compute the free spectral range from wavelength, group index and length", "Compute Q as the resonance wavelength over its linewidth", "Relate high Q to sensitivity to fabrication and temperature"]},
+  {"label": "What electronic-photonic design automation must do", "section": "What electronic-photonic design automation must do", "subgoals": ["Generate curvilinear waveguide layout from parameterized components", "Abstract components into wavelength-dependent S-parameter models", "Co-simulate drivers, receivers and tuning loops with the photonics"]}
+]

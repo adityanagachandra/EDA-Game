@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Level shifters",
+    "section": "Level shifters",
+    "subgoals": [
+      "Show that a low-voltage high fails to turn off a high-supply pMOS",
+      "Use a cross-coupled pair on the high supply to restore full swing",
+      "Mark the cell and its per-pin supplies in Liberty"
+    ]
+  },
+  {
+    "label": "Isolation and always-on cells",
+    "section": "Isolation and always-on cells",
+    "subgoals": [
+      "Clamp a powered-down domain's outputs with an isolation enable",
+      "Power the isolation cell from a supply that stays on",
+      "Route surviving signals through always-on buffers with secondary supply pins"
+    ]
+  },
+  {
+    "label": "Retention flops and power-intent checking",
+    "section": "Retention flops and power-intent checking",
+    "subgoals": [
+      "Save state into an always-on shadow latch before power-down",
+      "Restore it after power-up and retain only state worth keeping",
+      "Check crossings and supply connections against the power-intent file"
+    ]
+  }
+]

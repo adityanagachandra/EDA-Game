@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The digital implementation chain",
+    "section": "The digital implementation chain",
+    "subgoals": [
+      "Trace RTL through Yosys, ABC and OpenROAD to DEF",
+      "List the OpenROAD engines from floorplan to detailed routing",
+      "Name the inputs OpenSTA reads"
+    ]
+  },
+  {
+    "label": "Layout, verification and simulation",
+    "section": "Layout, verification and simulation",
+    "subgoals": [
+      "Match KLayout, Magic and Netgen to layout and LVS tasks",
+      "Match ngspice, Xyce, Verilator and Icarus to simulation styles",
+      "Match SymbiYosys, nextpnr and VPR to their roles"
+    ]
+  },
+  {
+    "label": "What open tools are good for",
+    "section": "What open tools are good for",
+    "subgoals": [
+      "Name where open tools trail commercial ones",
+      "Explain why licence-free runs suit experiments",
+      "Name the open PDKs that enable fabrication"
+    ]
+  }
+]

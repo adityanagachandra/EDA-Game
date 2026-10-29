@@ -1,0 +1,5 @@
+[
+  {"label": "Events and evaluations", "section": "Events and evaluations", "subgoals": ["Define an event as a net value change at a time", "Evaluate every fanout gate of a net that changed", "Schedule an output event only when the new value differs"]},
+  {"label": "Counting events after an input toggle", "section": "Counting events after an input toggle", "subgoals": ["Settle the initial values of every gate", "Propagate the toggle one time step at a time through the fanout lists", "Count net changes and gate evaluations separately"]},
+  {"label": "Activity and why event-driven wins", "section": "Activity and why event-driven wins", "subgoals": ["Compute the activity as evaluated gates over total gates", "Compare per-event overhead with the cost of evaluating everything", "Recognize glitches as extra events from unequal path delays"]}
+]

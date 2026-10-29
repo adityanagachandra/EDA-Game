@@ -1,0 +1,5 @@
+[
+  {"label": "Record headers and the XY record", "section": "Record headers and the XY record", "subgoals": ["Read the 2-byte length and the record type from the header", "Count the stored points, adding the repeated first point for a boundary", "Multiply points by 8 bytes and add the 4-byte header"]},
+  {"label": "Bytes in a layout element", "section": "Bytes in a layout element", "subgoals": ["List the records that make up each element", "Add header and payload bytes per record", "Sum the elements of the structure"]},
+  {"label": "Database units to microns", "section": "Database units to microns", "subgoals": ["Read the database unit in meters from the UNITS record", "Multiply the stored integer by that size", "Convert the result from meters to microns"]}
+]

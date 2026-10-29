@@ -1,0 +1,5 @@
+[
+  {"label": "On-track access points", "section": "On-track access points", "subgoals": ["Shrink the pin span by the enclosure on each side", "List the track positions inside the shrunk span", "Count them as on-track access points"]},
+  {"label": "Compatible choices for neighbours", "section": "Compatible choices for neighbours", "subgoals": ["List the access points of each neighbouring pin", "Check every pair against the via spacing rule", "Count or choose the compatible combinations"]},
+  {"label": "Off-track access", "section": "Off-track access", "subgoals": ["Add half-track positions to the candidate set", "Keep only those inside the shrunk pin span", "Validate the connecting jog against the rules"]}
+]

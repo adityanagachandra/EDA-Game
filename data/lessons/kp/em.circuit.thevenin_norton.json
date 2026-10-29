@@ -1,0 +1,5 @@
+[
+  {"label": "Open-circuit voltage", "section": "Open-circuit voltage", "subgoals": ["Open the output terminals so no load current flows", "Drop any resistor that carries no current", "Solve the remaining network for the terminal voltage"]},
+  {"label": "Thevenin resistance", "section": "Thevenin resistance", "subgoals": ["Replace voltage sources by shorts and current sources by opens", "Combine the remaining resistors as seen from the terminals", "Report the combination as the Thevenin resistance"]},
+  {"label": "Norton current and maximum power transfer", "section": "Norton current and maximum power transfer", "subgoals": ["Divide the Thevenin voltage by the Thevenin resistance", "Set the load resistance equal to the Thevenin resistance", "Compute the peak power as voltage squared over four times resistance"]}
+]

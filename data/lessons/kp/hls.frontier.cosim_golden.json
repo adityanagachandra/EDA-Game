@@ -1,0 +1,29 @@
+[
+ {
+  "label": "What co-simulation checks",
+  "section": "What co-simulation checks",
+  "subgoals": [
+   "Drive the RTL with the same testbench as the C model",
+   "Compare outputs and measure actual latency and interval",
+   "Separate functional confidence from physical timing"
+  ]
+ },
+ {
+  "label": "Golden and differential tests for engine changes",
+  "section": "Golden and differential tests for engine changes",
+  "subgoals": [
+   "Choose kernels that cover distinct HLS features",
+   "Require co-simulation passes and an explained QoR diff",
+   "Reserve byte-identical comparison for behavior-preserving refactors"
+  ]
+ },
+ {
+  "label": "Where the golden test is weak",
+  "section": "Where the golden test is weak",
+  "subgoals": [
+   "Randomize back-pressure on every streaming interface",
+   "Generate randomized and corner-case vectors labelled by the C model",
+   "Gate any learned reward on a co-simulation pass"
+  ]
+ }
+]

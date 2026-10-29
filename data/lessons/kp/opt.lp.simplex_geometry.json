@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Vertices from tight constraints",
+    "section": "Vertices from tight constraints",
+    "subgoals": [
+      "Write each tight constraint as an equation",
+      "Solve the pair of equations for the vertex coordinates",
+      "Evaluate the objective at the vertex"
+    ]
+  },
+  {
+    "label": "The optimum is at a vertex",
+    "section": "The optimum is at a vertex",
+    "subgoals": [
+      "List the feasible vertices, including those on the axes",
+      "Evaluate the objective at each vertex",
+      "Pick the best vertex as the optimum"
+    ]
+  },
+  {
+    "label": "Counting corners, redundancy and degeneracy",
+    "section": "Counting corners, redundancy and degeneracy",
+    "subgoals": [
+      "Intersect every pair of boundary lines including the axes",
+      "Discard intersections that violate any constraint",
+      "Merge coincident points before counting the corners"
+    ]
+  }
+]

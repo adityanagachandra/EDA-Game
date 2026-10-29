@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Options are Tier 1",
+    "section": "Options are Tier 1",
+    "subgoals": [
+      "Search the existing options for the requested behavior",
+      "Express the request as an options or deck change",
+      "Verify the change by rerunning against golden values"
+    ]
+  },
+  {
+    "label": "Plug-ins at the device and integrator seams",
+    "section": "Plug-ins at the device and integrator seams",
+    "subgoals": [
+      "Identify the seam whose interface covers the requested behavior",
+      "Implement the behavior as a plug-in behind that seam",
+      "Batch plug-in calls to keep the hot loop efficient"
+    ]
+  },
+  {
+    "label": "Core edits to the solver",
+    "section": "Core edits to the solver",
+    "subgoals": [
+      "Reserve core edits for changes to ordering, factorization, Newton or the time loop",
+      "Require full golden regression for every core edit",
+      "Redirect core proposals to an existing lower-tier seam when one fits"
+    ]
+  }
+]

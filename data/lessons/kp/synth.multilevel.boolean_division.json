@@ -1,0 +1,5 @@
+[
+  {"label": "What algebraic methods miss", "section": "What algebraic methods miss", "subgoals": ["Classify an identity as polynomial or as needing Boolean rules", "Name idempotence, complements and absorption as the missing rules", "Treat algebraic factorizations as a subset of Boolean ones"]},
+  {"label": "Boolean division with don't cares", "section": "Boolean division with don't cares", "subgoals": ["Introduce a variable y for the divisor g", "Add the satisfiability don't care y XOR g", "Minimize f over its inputs and y with that don't care"]},
+  {"label": "When to pay for Boolean methods", "section": "When to pay for Boolean methods", "subgoals": ["Use algebraic division for global, fast restructuring", "Apply Boolean division locally inside windows around nodes", "Recognize XOR and MUX structure as needing Boolean reasoning"]}
+]

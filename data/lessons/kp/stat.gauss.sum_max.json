@@ -1,0 +1,5 @@
+[
+  {"label": "Tightness probability", "section": "Tightness probability", "subgoals": ["Compute theta as the sigma of the difference A minus B", "Divide the mean difference by theta to get alpha", "Evaluate Phi of alpha as the tightness probability"]},
+  {"label": "Clark's mean of the maximum", "section": "Clark's mean of the maximum", "subgoals": ["Weight each mean by its tightness probability", "Add theta times the normal density at alpha", "Note the shift is largest when the inputs are evenly matched"]},
+  {"label": "The variance, and why max is not Gaussian", "section": "The variance, and why max is not Gaussian", "subgoals": ["Subtract the squared mean from the second moment for the variance", "Match a Gaussian to the first two moments of the max", "Name the right-skew of the true max as the source of tail error"]}
+]

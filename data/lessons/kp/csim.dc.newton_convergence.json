@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The voltage tolerance band",
+    "section": "The voltage tolerance band",
+    "subgoals": [
+      "Take the larger magnitude of the two iterates",
+      "Multiply it by RELTOL and add VNTOL",
+      "Compare the change between iterates with the band"
+    ]
+  },
+  {
+    "label": "Quadratic convergence in iterations",
+    "section": "Quadratic convergence in iterations",
+    "subgoals": [
+      "Square the current error and multiply by the constant",
+      "Repeat until the error falls below the tolerance",
+      "Count the iterations taken"
+    ]
+  },
+  {
+    "label": "The current tolerance",
+    "section": "The current tolerance",
+    "subgoals": [
+      "Take the larger magnitude of the two current iterates",
+      "Multiply it by RELTOL and add ABSTOL",
+      "Express the band in the unit of the current"
+    ]
+  }
+]

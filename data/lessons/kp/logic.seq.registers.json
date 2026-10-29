@@ -1,0 +1,5 @@
+[
+  {"label": "Shift registers", "section": "Shift registers", "subgoals": ["Double the register value and add the serial input bit", "Reduce modulo two to the register width", "Repeat once per clock edge"]},
+  {"label": "Simultaneous update", "section": "Simultaneous update", "subgoals": ["Compute every next value from the values before the edge", "Update all registers together at the edge", "Repeat the update for each clock cycle"]},
+  {"label": "Enables and synchronous clear", "section": "Enables and synchronous clear", "subgoals": ["Apply the clear first when it is asserted", "Load the new value only when the enable is asserted", "Hold the old value otherwise"]}
+]

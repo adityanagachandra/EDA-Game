@@ -1,0 +1,5 @@
+[
+  {"label": "Kinds of shift", "section": "Kinds of shift", "subgoals": ["List the design, node, tool and constraint inputs behind the label", "Ask which of them differ in deployment", "Plan a measurement for each difference"]},
+  {"label": "Measuring generalization by design", "section": "Measuring generalization by design", "subgoals": ["Hold out each design in turn and train on the rest", "Average the held-out errors for the estimate", "Report the spread and the worst fold with the mean"]},
+  {"label": "Living with shift", "section": "Living with shift", "subgoals": ["Monitor feature distance or ensemble disagreement at run time", "Fall back to the accurate engine when shift is detected", "Keep adaptation data separate from evaluation data"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What VerilogEval and RTLLM measure", "section": "What VerilogEval and RTLLM measure", "subgoals": ["Identify the task each benchmark poses", "Identify how each judges a sample", "List the real tasks the benchmark does not test"]},
+  {"label": "Reading a score", "section": "Reading a score", "subgoals": ["Match decoding settings before comparing two scores", "Interpret pass@k as requiring a selector", "Attach a confidence interval to the estimate"]},
+  {"label": "Building an honest evaluation", "section": "Building an honest evaluation", "subgoals": ["Write fresh problems with hidden references", "Score edits for regressions and PPA as well as function", "Evaluate on internal representative tasks before deployment"]}
+]

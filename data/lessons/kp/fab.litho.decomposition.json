@@ -1,0 +1,5 @@
+[
+  {"label": "Building the conflict graph", "section": "Building the conflict graph", "subgoals": ["Choose the separation measure for each shape type", "Test every nearby pair against the same-mask spacing", "Count the conflict edges"]},
+  {"label": "Masks as colours", "section": "Masks as colours", "subgoals": ["Relate the number of masks to the chromatic number", "Test two-colourability by searching for odd cycles", "Explain why three-colouring needs heuristics or solvers"]},
+  {"label": "Native conflicts and stitches", "section": "Native conflicts and stitches", "subgoals": ["Find the two-colouring with the fewest same-mask conflicts", "Break an odd cycle with a stitch", "Prefer prevention in colour-aware routing"]}
+]

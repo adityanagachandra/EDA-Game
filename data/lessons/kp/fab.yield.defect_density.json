@@ -1,0 +1,5 @@
+[
+  {"label": "Expected defects per die", "section": "Expected defects per die", "subgoals": ["Convert die area into square centimetres", "Multiply area by defect density", "Interpret lambda as the mean killer defects per die"]},
+  {"label": "The Poisson yield model", "section": "The Poisson yield model", "subgoals": ["Treat the defect count per die as Poisson", "Compute yield as the probability of zero defects", "Show that doubling area squares the yield"]},
+  {"label": "Inverting yield to learn defect density", "section": "Inverting yield to learn defect density", "subgoals": ["Rearrange the Poisson model for defect density", "Compute D0 from a measured yield", "State the assumptions behind the inferred density"]}
+]

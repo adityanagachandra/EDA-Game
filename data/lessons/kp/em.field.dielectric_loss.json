@@ -1,0 +1,5 @@
+[
+  {"label": "Complex permittivity and the loss tangent", "section": "Complex permittivity and the loss tangent", "subgoals": ["Write the complex permittivity with the loss tangent", "Split the capacitor admittance into real and imaginary parts", "Compute the conductance as omega C times tan delta"]},
+  {"label": "Dielectric attenuation on a line", "section": "Dielectric attenuation on a line", "subgoals": ["Compute the attenuation constant in nepers per metre", "Multiply by 8.686 to convert to dB per metre", "Multiply by the line length in metres"]},
+  {"label": "Conductor versus dielectric loss", "section": "Conductor versus dielectric loss", "subgoals": ["Write the conductor loss as scaling with the square root of f", "Write the dielectric loss as scaling linearly with f", "Solve for the frequency where the two are equal"]}
+]

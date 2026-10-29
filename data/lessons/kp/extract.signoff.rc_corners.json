@@ -1,0 +1,5 @@
+[
+  {"label": "Counting scenarios", "section": "Counting scenarios", "subgoals": ["List the modes, PVT corners and RC corners per check", "Multiply within each check type", "Add the setup and hold scenario counts"]},
+  {"label": "Corner geometry", "section": "Corner geometry", "subgoals": ["Apply the corner's width and thickness changes", "Scale resistance by one over the product of the factors", "Note how the same change moves capacitance the other way"]},
+  {"label": "Which corner is worst", "section": "Which corner is worst", "subgoals": ["Evaluate the delay at the Cworst corner", "Evaluate it at the RCworst corner", "Report the larger and identify which term dominates"]}
+]

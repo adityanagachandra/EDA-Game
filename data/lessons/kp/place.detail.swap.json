@@ -1,0 +1,5 @@
+[
+  {"label": "Evaluating a swap", "section": "Evaluating a swap", "subgoals": ["List the nets touching either swapped cell", "Recompute their HPWL with the positions exchanged", "Accept the swap only if the total change is negative"]},
+  {"label": "Shared nets and double counting", "section": "Shared nets and double counting", "subgoals": ["Collect the union of nets of both cells", "Evaluate shared nets with both cells moved at once", "Deduplicate nets that appear more than once"]},
+  {"label": "Global swap and search strategy", "section": "Global swap and search strategy", "subgoals": ["Target each cell's optimal region for swap candidates", "Try vertical swaps with the rows above and below", "Repeat passes until the gain per pass is small"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Escape probability", "section": "Escape probability", "subgoals": ["Compute the probability that one vector misses the bug", "Raise it to the number of vectors", "Compare with an equivalence check that cannot miss"]},
+  {"label": "Vectors for a target escape rate", "section": "Vectors for a target escape rate", "subgoals": ["Take the log of the target escape probability", "Divide by the log of one minus the bug's hit rate", "Round up to the next whole vector"]},
+  {"label": "Inflated pass rates", "section": "Inflated pass rates", "subgoals": ["Multiply the incorrect share by the false-pass probability", "Add the truly correct share", "Subtract the true rate to get the inflation"]}
+]

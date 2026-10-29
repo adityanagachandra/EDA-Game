@@ -1,0 +1,5 @@
+[
+  {"label": "The Touchstone format", "section": "The Touchstone format", "subgoals": ["Read the port count from the file extension", "Decode the option line's unit, format and reference impedance", "Count the numbers stored per frequency point"]},
+  {"label": "Insertion loss in decibels", "section": "Insertion loss in decibels", "subgoals": ["Convert an S21 magnitude into insertion loss in dB", "Convert a dB loss back into a magnitude", "Budget channel loss at the Nyquist frequency"]},
+  {"label": "Return loss and mismatch", "section": "Return loss and mismatch", "subgoals": ["Equate a one-port S11 with the load's reflection coefficient", "Convert S11 into return loss in dB", "Check S-parameter data for passivity and causality before use"]}
+]

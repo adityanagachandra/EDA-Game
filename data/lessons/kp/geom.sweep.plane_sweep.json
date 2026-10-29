@@ -1,0 +1,5 @@
+[
+  {"label": "Events and stops", "section": "Events and stops", "subgoals": ["List the left and right edges as events", "Sort the events by x-coordinate", "Merge events at equal x into one stop"]},
+  {"label": "The status structure", "section": "The status structure", "subgoals": ["Insert an object at its left event", "Delete it at its right event", "Track the largest number of active objects"]},
+  {"label": "Why the sweep is fast", "section": "Why the sweep is fast", "subgoals": ["Identify which pairs share the status at some x", "Count the pairs whose x-ranges overlap", "Compare that count with all n choose 2 pairs"]}
+]

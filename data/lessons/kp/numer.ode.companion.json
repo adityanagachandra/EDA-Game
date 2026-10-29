@@ -1,0 +1,29 @@
+[
+ {
+  "label": "A capacitor becomes a conductance and a current source",
+  "section": "A capacitor becomes a conductance and a current source",
+  "subgoals": [
+   "Replace the derivative by the backward difference",
+   "Read C over h as the companion conductance",
+   "Read C over h times the previous voltage as the history current"
+  ]
+ },
+ {
+  "label": "Trapezoidal companion with the history current",
+  "section": "Trapezoidal companion with the history current",
+  "subgoals": [
+   "Average the capacitor currents at both ends of the step",
+   "Double C over h for the companion conductance",
+   "Add the stored previous current to form the history source"
+  ]
+ },
+ {
+  "label": "Inductor companions and the solve per step",
+  "section": "Inductor companions and the solve per step",
+  "subgoals": [
+   "Write the inductor companion as h over L with source i_n",
+   "Stamp all companions into the resistive network",
+   "Solve the network for the new node voltages and update histories"
+  ]
+ }
+]

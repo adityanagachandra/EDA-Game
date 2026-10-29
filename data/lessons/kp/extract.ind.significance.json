@@ -1,0 +1,5 @@
+[
+  {"label": "The knee frequency", "section": "The knee frequency", "subgoals": ["Take the 10 to 90 percent rise time of the edge", "Divide 0.35 by it to get the knee frequency", "Convert picoseconds to gigahertz consistently"]},
+  {"label": "Inductive versus resistive impedance", "section": "Inductive versus resistive impedance", "subgoals": ["Compute the angular frequency at the knee", "Multiply by the loop inductance of the wire", "Divide by the wire resistance and compare with one"]},
+  {"label": "Time of flight and damping", "section": "Time of flight and damping", "subgoals": ["Multiply the length by the square root of L'C'", "Compare the rise time with twice the time of flight", "Compare total resistance with twice the characteristic impedance"]}
+]

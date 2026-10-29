@@ -1,0 +1,5 @@
+[
+  {"label": "The manifest and the typed interface", "section": "The manifest and the typed interface", "subgoals": ["List the fault models, inputs, outputs and knobs in the manifest", "Return patterns, coverage by class and pattern count as typed outputs", "Match the engine's advertised strengths to the situation"]},
+  {"label": "Core, policy and parameters", "section": "Core, policy and parameters", "subgoals": ["Keep detection correctness in the immutable core", "Place fault ordering and fault models in the plug-in policy layer", "Route each change request to the smallest safe tier"]},
+  {"label": "Safety and reward", "section": "Safety and reward", "subgoals": ["Sandbox the skill with no network access to the netlist", "Make runs deterministic and seedable for comparison", "Check proofs of untestability before rewarding coverage"]}
+]

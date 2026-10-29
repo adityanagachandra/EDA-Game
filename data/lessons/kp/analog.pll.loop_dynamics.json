@@ -1,0 +1,5 @@
+[
+  {"label": "Natural frequency", "section": "Natural frequency", "subgoals": ["Write the charge-pump current per radian of phase error", "Multiply the detector, filter, VCO and divider gains", "Compute the natural frequency with the two pi factors cancelled"]},
+  {"label": "Damping and the stabilizing zero", "section": "Damping and the stabilizing zero", "subgoals": ["Add the resistor's zero to the double integrator", "Compute zeta as RC over two times omega n", "Solve for R from a target damping factor"]},
+  {"label": "What the loop bandwidth trades", "section": "What the loop bandwidth trades", "subgoals": ["Assign in-band noise to the reference path and out-of-band noise to the VCO", "Trade lock speed and VCO suppression against passed reference noise", "Keep the bandwidth well below the reference for the continuous model to hold"]}
+]

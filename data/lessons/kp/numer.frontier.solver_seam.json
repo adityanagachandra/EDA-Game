@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The linear solver and preconditioner seams",
+  "section": "The linear solver and preconditioner seams",
+  "subgoals": [
+   "Split the solver interface into analyze, factor and solve",
+   "Define the preconditioner interface as setup and apply",
+   "Pass plain data and forbid hidden state in plug-ins"
+  ]
+ },
+ {
+  "label": "What context the seam must expose",
+  "section": "What context the seam must expose",
+  "subgoals": [
+   "List the structural flags the solver needs",
+   "Report pattern and value changes since the last call",
+   "Pass tolerances and domain metadata as plain data"
+  ]
+ },
+ {
+  "label": "Classifying solver change requests by tier",
+  "section": "Classifying solver change requests by tier",
+  "subgoals": [
+   "Match the request to a configuration value, a plug-in or a core edit",
+   "Prefer the lowest tier that achieves it",
+   "Move recurring Tier 3 variability behind a new seam"
+  ]
+ }
+]

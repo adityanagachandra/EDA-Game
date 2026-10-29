@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Worst-case relative error",
+    "section": "Worst-case relative error",
+    "subgoals": [
+      "Compute the relative error of each golden pair",
+      "Take the maximum over the set",
+      "Check that the golden set covers the region the agent will query"
+    ]
+  },
+  {
+    "label": "Counting tolerance failures",
+    "section": "Counting tolerance failures",
+    "subgoals": [
+      "Compute each pair's relative error",
+      "Compare each error with the acceptance tolerance",
+      "Count and locate the failing points"
+    ]
+  },
+  {
+    "label": "RMS error over the golden set",
+    "section": "RMS error over the golden set",
+    "subgoals": [
+      "Square each difference between surrogate and golden values",
+      "Average the squares and take the square root",
+      "Combine RMS with worst-case and per-point checks in the gate"
+    ]
+  }
+]

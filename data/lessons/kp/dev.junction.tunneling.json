@@ -1,0 +1,5 @@
+[
+  {"label": "The decay constant inside a barrier", "section": "The decay constant inside a barrier", "subgoals": ["Form the barrier height above the carrier energy", "Scale by the effective mass ratio and divide by 0.0381 eV nm squared", "Take the square root to get kappa in inverse nanometres"]},
+  {"label": "Transmission through a barrier", "section": "Transmission through a barrier", "subgoals": ["Multiply two times kappa by the barrier thickness", "Exponentiate the negative result for the transmission", "Convert to log base ten when the value is very small"]},
+  {"label": "Sensitivity to thickness", "section": "Sensitivity to thickness", "subgoals": ["Cancel the prefactor by taking a ratio", "Exponentiate two kappa times the thickness change", "Relate the result to leakage variation and high-k scaling"]}
+]

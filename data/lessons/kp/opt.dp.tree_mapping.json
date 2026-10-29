@@ -1,0 +1,29 @@
+[
+  {
+    "label": "One DP step at a node",
+    "section": "One DP step at a node",
+    "subgoals": [
+      "List the patterns that match with their root at the node",
+      "Add each pattern's area to the best cover of what it leaves exposed",
+      "Keep the cheapest option as the node's best cover"
+    ]
+  },
+  {
+    "label": "Covering a chain",
+    "section": "Covering a chain",
+    "subgoals": [
+      "Process the nodes in order from the inputs",
+      "Apply the node step using the stored best values below",
+      "Read the minimum area at the output and trace the patterns"
+    ]
+  },
+  {
+    "label": "Trees, subtrees and the DAG problem",
+    "section": "Trees, subtrees and the DAG problem",
+    "subgoals": [
+      "Solve each input subtree independently",
+      "Combine subtree costs with each pattern matching at the root",
+      "Split a DAG at multi-fanout nodes before tree covering"
+    ]
+  }
+]

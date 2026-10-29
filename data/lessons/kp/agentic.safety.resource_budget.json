@@ -1,0 +1,5 @@
+[
+  {"label": "How many sandboxes fit on a host", "section": "How many sandboxes fit on a host", "subgoals": ["Divide host cores by cores per sandbox", "Divide host memory by memory per sandbox", "Take the smaller quotient"]},
+  {"label": "Setting a timeout from golden runtimes", "section": "Setting a timeout from golden runtimes", "subgoals": ["Add k standard deviations to the mean runtime", "Look up the false-kill probability for k", "Prefer a high measured percentile for skewed runtimes"]},
+  {"label": "Wasted compute from hangs", "section": "Wasted compute from hangs", "subgoals": ["Multiply candidates, hang fraction and timeout", "Multiply by cores per sandbox and convert to hours", "Compare with the waste after a shorter timeout"]}
+]

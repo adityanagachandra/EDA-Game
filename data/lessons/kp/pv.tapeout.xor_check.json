@@ -1,0 +1,5 @@
+[
+  {"label": "XOR of two shapes", "section": "XOR of two shapes", "subgoals": ["Compute each shape's area", "Compute the area of their intersection", "Subtract twice the intersection from the sum"]},
+  {"label": "XOR of two versions of a layer", "section": "XOR of two versions of a layer", "subgoals": ["Merge the shapes within each version", "Find regions covered by exactly one of the unions", "Sum the area of those regions"]},
+  {"label": "The signature of a shift", "section": "The signature of a shift", "subgoals": ["Compute the overlap box of the two copies", "Subtract its area from the shape's area", "Double the difference"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "SPICE netlists",
+    "section": "SPICE netlists",
+    "subgoals": [
+      "Read a MOSFET line's nodes, model and dimensions",
+      "Name DC, transient and AC analyses",
+      "List the three places SPICE appears in a digital flow"
+    ]
+  },
+  {
+    "label": "What a PDK contains",
+    "section": "What a PDK contains",
+    "subgoals": [
+      "List models, rule decks, extraction files and layer maps in a PDK",
+      "Match each PDK component to the tool that reads it",
+      "Name open PDKs that open-source flows run on"
+    ]
+  },
+  {
+    "label": "The PDK as the root of every abstraction",
+    "section": "The PDK as the root of every abstraction",
+    "subgoals": [
+      "Trace Liberty tables back to SPICE runs on PDK models",
+      "Trace LEF rules back to the design-rule manual",
+      "Predict what a PDK update invalidates"
+    ]
+  }
+]

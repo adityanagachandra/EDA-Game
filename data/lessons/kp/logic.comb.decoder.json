@@ -1,0 +1,5 @@
+[
+  {"label": "One output per code", "section": "One output per code", "subgoals": ["Read the input bits as a binary index", "Assert the output line with that index", "Write that output as a minterm of the inputs"]},
+  {"label": "Building large decoders from small ones", "section": "Building large decoders from small ones", "subgoals": ["Split the address into groups decoded by small decoders", "Use each level's outputs to enable the next level", "Sum the decoders per level"]},
+  {"label": "Address decoding and partial decoding", "section": "Address decoding and partial decoding", "subgoals": ["Count the address bits the decoder compares", "Raise two to the number of uncompared bits", "Count the aliases created by ignored address bits"]}
+]

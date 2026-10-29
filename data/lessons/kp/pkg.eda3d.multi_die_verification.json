@@ -1,0 +1,5 @@
+[
+  {"label": "The assembly description", "section": "The assembly description", "subgoals": ["List the dies with their placement, rotation and flip", "Map bumps across interfaces through the system netlist", "Transform coordinates for mirrored face-to-face dies"]},
+  {"label": "Interface DRC", "section": "Interface DRC", "subgoals": ["Merge the bump layers into a shared frame", "Check alignment, size and pitch across the interface", "Check keep-outs across the dies"]},
+  {"label": "Assembly LVS", "section": "Assembly LVS", "subgoals": ["Extract connectivity through bumps and interposer wiring", "Match the extracted graph against the system netlist", "Use bump-level abstracts to keep die IP private"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Monotone means order-preserving", "section": "Monotone means order-preserving", "subgoals": ["Generate the up-set of the minimal true points", "Note that raising any input never lowers the output", "Count the ON rows of the up-set"]},
+  {"label": "Minimal true points are the primes", "section": "Minimal true points are the primes", "subgoals": ["Find the ON rows with no ON row strictly below them", "Write each as a product of its 1 positions", "Count the prime implicants"]},
+  {"label": "Maximal false points give the clauses", "section": "Maximal false points give the clauses", "subgoals": ["Find the OFF rows with no OFF row strictly above them", "Write each as a sum of its 0 positions", "Count the clauses of the minimal CNF"]}
+]

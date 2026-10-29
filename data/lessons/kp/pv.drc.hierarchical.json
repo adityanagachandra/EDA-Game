@@ -1,0 +1,5 @@
+[
+  {"label": "Reporting errors once per cell", "section": "Reporting errors once per cell", "subgoals": ["Multiply each cell's internal errors by its placements for the flat count", "Count each cell's internal errors once for the hierarchical count", "Add the top-level errors to both"]},
+  {"label": "Interaction regions between instances", "section": "Interaction regions between instances", "subgoals": ["Compute the gaps between neighbouring instances", "Decide which neighbour directions interact under the rule", "Count the neighbour pairs in each interacting direction"]},
+  {"label": "The context problem", "section": "The context problem", "subgoals": ["Identify shapes outside the cell that reach its boundary region", "Separate placements by their surroundings", "Check each distinct context once"]}
+]

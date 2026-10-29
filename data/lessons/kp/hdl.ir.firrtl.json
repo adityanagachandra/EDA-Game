@@ -1,0 +1,5 @@
+[
+  {"label": "Circuits, connections and widths", "section": "Circuits, connections and widths", "subgoals": ["Model the design as modules, ports, wires, registers and connections", "Turn each when block into multiplexers", "Infer each width from the operation's width rule"]},
+  {"label": "The lowering passes", "section": "The lowering passes", "subgoals": ["Fix widths and reset kinds before expanding conditionals", "Resolve last-connect semantics into one driver per sink", "Split aggregates into ground-type signals"]},
+  {"label": "Initialization, invalidation and annotations", "section": "Initialization, invalidation and annotations", "subgoals": ["Report sinks that are not driven on every path", "Use invalidation as an explicit don't-care", "Attach annotations to steer passes without changing the circuit"]}
+]

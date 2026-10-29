@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Computing a tool-grounded reward",
+    "section": "Computing a tool-grounded reward",
+    "subgoals": [
+      "Measure each term with the real tools",
+      "Combine the terms with the documented weights",
+      "Rank the candidates and test how weight changes flip the ranking"
+    ]
+  },
+  {
+    "label": "Reward hacking",
+    "section": "Reward hacking",
+    "subgoals": [
+      "Identify every requirement the reward does not price",
+      "Anchor improvements to baselines the agent cannot modify",
+      "Make unscorable outputs receive the worst reward"
+    ]
+  },
+  {
+    "label": "Proxy reward versus signoff",
+    "section": "Proxy reward versus signoff",
+    "subgoals": [
+      "Score a sample of episodes with the accurate engine",
+      "Track the gap between proxy reward and signoff QoR",
+      "Report results in signoff terms with proxy gains as diagnostics"
+    ]
+  }
+]

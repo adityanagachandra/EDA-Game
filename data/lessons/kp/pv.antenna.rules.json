@@ -1,0 +1,5 @@
+[
+  {"label": "The area antenna ratio", "section": "The area antenna ratio", "subgoals": ["Sum the area of metal connected to the gates", "Sum W times L over the gates on the net", "Divide the metal area by the gate area"]},
+  {"label": "The longest safe wire", "section": "The longest safe wire", "subgoals": ["Sum the gate area on the net", "Multiply the limit by the gate area and divide by the width", "Round down to a whole length"]},
+  {"label": "Side-wall ratios", "section": "Side-wall ratios", "subgoals": ["Compute the connected metal's perimeter", "Multiply by the metal thickness", "Divide by the gate area"]}
+]

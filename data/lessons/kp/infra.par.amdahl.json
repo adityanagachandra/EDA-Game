@@ -1,0 +1,5 @@
+[
+  {"label": "Speedup with a serial fraction", "section": "Speedup with a serial fraction", "subgoals": ["Split the run into serial and parallel fractions", "Divide only the parallel fraction by the thread count", "Invert the summed time fraction to get the speedup"]},
+  {"label": "The ceiling of one over s", "section": "The ceiling of one over s", "subgoals": ["Compute the serial fraction from the measured times", "Let the parallel term vanish as threads grow", "Take one over the serial fraction as the ceiling"]},
+  {"label": "Serial fraction from a target speedup", "section": "Serial fraction from a target speedup", "subgoals": ["Write the target speedup and thread count into the law", "Solve for the serial fraction as (p/S - 1)/(p - 1)", "Convert the fraction to a percentage budget"]}
+]

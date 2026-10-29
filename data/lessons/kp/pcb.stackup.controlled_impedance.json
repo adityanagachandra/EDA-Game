@@ -1,0 +1,5 @@
+[
+  {"label": "Microstrip impedance", "section": "Microstrip impedance", "subgoals": ["Identify h, w, t and the dielectric constant from the stackup", "Evaluate the IPC-2141 microstrip approximation", "Check that w over h lies in the formula's valid range"]},
+  {"label": "Stripline impedance", "section": "Stripline impedance", "subgoals": ["Read the plane-to-plane spacing b from the stackup", "Evaluate the centered-stripline approximation", "Explain why stripline needs a narrower trace than microstrip"]},
+  {"label": "Sensitivities and fabrication tolerance", "section": "Sensitivities and fabrication tolerance", "subgoals": ["Predict the direction of change for height, width and dielectric constant", "Compare sensitivity on thin and thick dielectrics", "Store impedance targets so widths are recomputed after stackup changes"]}
+]

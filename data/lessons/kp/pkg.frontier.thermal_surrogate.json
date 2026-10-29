@@ -1,0 +1,5 @@
+[
+  {"label": "What a fast thermal engine trades away", "section": "What a fast thermal engine trades away", "subgoals": ["List the resolution and generality a fast model drops", "Name nonlinear effects that it linearizes", "Separate ranking use from signoff use"]},
+  {"label": "When to recurse to the accurate solver", "section": "When to recurse to the accurate solver", "subgoals": ["Recurse near the junction limit or outside the validated range", "Recurse when candidates differ by less than the error", "Feed accurate results back as calibration data"]},
+  {"label": "Measuring surrogate error honestly", "section": "Measuring surrogate error honestly", "subgoals": ["Evaluate on held-out designs from the search distribution", "Report the error at the peak, not the mean", "Verify final candidates with the accurate solver"]}
+]

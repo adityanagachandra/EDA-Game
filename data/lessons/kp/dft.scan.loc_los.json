@@ -1,0 +1,5 @@
+[
+  {"label": "Launch-on-shift", "section": "Launch-on-shift", "subgoals": ["Shift once more after loading the first vector", "Load the scan-in bit into the first flop and shift the rest along", "Switch scan enable to capture within one at-speed cycle"]},
+  {"label": "Launch-on-capture", "section": "Launch-on-capture", "subgoals": ["Drop scan enable after loading the first vector", "Evaluate each flop's next-state function of the first vector", "Capture the launch state with the first at-speed clock"]},
+  {"label": "Choosing between them", "section": "Choosing between them", "subgoals": ["Prefer launch-on-shift for coverage when scan enable can be timed", "Prefer launch-on-capture when scan enable must stay slow", "Generate the launch and capture pulses with an on-chip clock controller"]}
+]

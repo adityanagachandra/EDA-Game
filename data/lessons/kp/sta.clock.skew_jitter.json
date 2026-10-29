@@ -1,0 +1,5 @@
+[
+  {"label": "Signed skew", "section": "Signed skew", "subgoals": ["Take the capture flop's clock arrival", "Subtract the launch flop's clock arrival", "Read the sign as helping setup when positive and hurting hold"]},
+  {"label": "Setup slack with skew and jitter", "section": "Setup slack with skew and jitter", "subgoals": ["Compute the signed skew", "Subtract the jitter from the period", "Combine period, jitter, skew, setup and path delay into the setup slack"]},
+  {"label": "Hold slack with skew", "section": "Hold slack with skew", "subgoals": ["Add clock-to-Q and the shortest logic delay", "Subtract the hold time and the signed skew", "Explain why cycle-to-cycle jitter does not enter the hold check"]}
+]

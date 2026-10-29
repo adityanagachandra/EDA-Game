@@ -1,0 +1,5 @@
+[
+  {"label": "Moving the setup edge", "section": "Moving the setup edge", "subgoals": ["Multiply the period by N to get the setup capture edge", "Subtract setup and the launch-side delays", "Confirm the logic samples the data only every N cycles"]},
+  {"label": "The default hold check moves too", "section": "The default hold check moves too", "subgoals": ["Place the default hold check one capture edge before the new setup edge", "Compute the hold slack against that edge", "Recognize the large negative result as an artifact of the missing hold adjustment"]},
+  {"label": "Pulling the hold check back", "section": "Pulling the hold check back", "subgoals": ["Subtract M cycles from the default hold edge", "Use M equal to N minus 1 to restore the same-edge hold check", "Compute the hold slack against the adjusted edge"]}
+]

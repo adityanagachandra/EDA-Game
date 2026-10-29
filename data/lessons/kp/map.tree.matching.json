@@ -1,0 +1,5 @@
+[
+  {"label": "Matching a pattern at a node", "section": "Matching a pattern at a node", "subgoals": ["Pair pattern node types with subject node types", "Bind each pattern leaf to the subject node beneath it", "Try both child orders at every NAND"]},
+  {"label": "Counting matches", "section": "Counting matches", "subgoals": ["Test every cell's pattern at the node", "Count the trivial INV or NAND2 match at each node", "Sum the per-node counts over the tree"]},
+  {"label": "One match, several bindings", "section": "One match, several bindings", "subgoals": ["Enumerate every binding of a pattern at a node", "List the subject nodes each binding exposes as inputs", "Keep all bindings for the cost comparison"]}
+]

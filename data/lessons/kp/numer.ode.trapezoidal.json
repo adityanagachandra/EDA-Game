@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Averaging the slopes at both ends",
+  "section": "Averaging the slopes at both ends",
+  "subgoals": [
+   "Evaluate the slope at both ends of the step",
+   "Average the two slopes",
+   "Solve the implicit equation for the new value"
+  ]
+ },
+ {
+  "label": "One trapezoidal step for an RC circuit",
+  "section": "One trapezoidal step for an RC circuit",
+  "subgoals": [
+   "Compute h over tau for the circuit",
+   "Apply the trapezoidal update with the input held constant",
+   "Compare the result with the exact exponential"
+  ]
+ },
+ {
+  "label": "Trapezoidal ringing on stiff modes",
+  "section": "Trapezoidal ringing on stiff modes",
+  "subgoals": [
+   "Compute z as h times the mode eigenvalue",
+   "Evaluate the trapezoidal factor near minus one",
+   "Insert backward Euler steps after breakpoints to damp the mode"
+  ]
+ }
+]

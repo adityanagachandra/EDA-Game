@@ -1,0 +1,5 @@
+[
+  {"label": "What belongs in the geometry core", "section": "What belongs in the geometry core", "subgoals": ["List the operations every rule depends on", "State the invariants their outputs must satisfy", "Move anything customers could disagree on out of the core"]},
+  {"label": "Policies, parameters and hooks around it", "section": "Policies, parameters and hooks around it", "subgoals": ["Classify a change as policy, parameter or hook", "Express new behaviour as calls to core operations", "Contain each change's failure to its own layer"]},
+  {"label": "Keeping the hot loop inside the core", "section": "Keeping the hot loop inside the core", "subgoals": ["Place extension points per batch or per tile, not per pair", "Pass plain arrays across the seam", "Require identical results from any second implementation"]}
+]

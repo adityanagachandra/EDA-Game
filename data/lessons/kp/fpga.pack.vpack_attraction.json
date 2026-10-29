@@ -1,0 +1,29 @@
+[
+ {
+  "label": "VPack attraction",
+  "section": "VPack attraction",
+  "subgoals": [
+   "List the nets the candidate touches",
+   "Intersect them with the cluster's nets",
+   "Score the candidate by the size of the intersection"
+  ]
+ },
+ {
+  "label": "T-VPack attraction",
+  "section": "T-VPack attraction",
+  "subgoals": [
+   "Read the candidate's criticality and shared-net count",
+   "Weight criticality by lambda and normalized sharing by 1 minus lambda",
+   "Sum the two terms"
+  ]
+ },
+ {
+  "label": "What the weighting changes",
+  "section": "What the weighting changes",
+  "subgoals": [
+   "Score every candidate with the stated lambda",
+   "Pick the highest score as the next BLE",
+   "Compare the choice with the share-only VPack choice"
+  ]
+ }
+]

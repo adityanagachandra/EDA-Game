@@ -1,0 +1,5 @@
+[
+  {"label": "Area plus edges", "section": "Area plus edges", "subgoals": ["Compute the area term from width and length", "Compute the fringe term from length and both edges", "Add the two terms and convert attofarads to femtofarads"]},
+  {"label": "The fringe share", "section": "The fringe share", "subgoals": ["Compute area and fringe capacitance per unit length", "Divide the fringe part by the sum", "Predict how a width change moves each term"]},
+  {"label": "The crossover width", "section": "The crossover width", "subgoals": ["Set the area term equal to the fringe term", "Solve for the crossover width", "Explain why narrow, densely packed wires break the constant-fringe model"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "From wafer cost to die cost", "section": "From wafer cost to die cost", "subgoals": ["Identify what wafer cost includes", "Divide wafer cost by dies per wafer", "Separate silicon cost from test and package cost"]},
+  {"label": "Dividing by good dies", "section": "Dividing by good dies", "subgoals": ["Multiply dies per wafer by yield to get good dies", "Divide wafer cost by good dies", "Show how area enters through both count and yield"]},
+  {"label": "Shrinks and node transitions", "section": "Shrinks and node transitions", "subgoals": ["Recompute dies and yield for the shrunk die", "Scale the wafer cost for the new node", "Compare the new and old cost per good die"]}
+]

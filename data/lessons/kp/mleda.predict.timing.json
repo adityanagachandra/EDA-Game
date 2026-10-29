@@ -1,0 +1,5 @@
+[
+  {"label": "Mean absolute error", "section": "Mean absolute error", "subgoals": ["Subtract prediction from actual at each endpoint", "Take absolute values and sum them", "Divide by the number of endpoints"]},
+  {"label": "The coefficient of determination", "section": "The coefficient of determination", "subgoals": ["Compute the mean of the actual slacks", "Sum squared residuals and squared deviations from the mean", "Subtract their ratio from one"]},
+  {"label": "Getting the violation status right", "section": "Getting the violation status right", "subgoals": ["Classify each endpoint as passing or failing under both values", "Count endpoints where the two classes differ", "Separate false passes from false failures"]}
+]

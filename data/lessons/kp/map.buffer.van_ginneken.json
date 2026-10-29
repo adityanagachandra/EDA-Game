@@ -1,0 +1,5 @@
+[
+  {"label": "The dynamic program", "section": "The dynamic program", "subgoals": ["Seed each sink with its load and required time", "Apply the wire, buffer and merge operations toward the driver", "Prune after every step and maximize q minus driver resistance times load at the source"]},
+  {"label": "A two-pin net by hand", "section": "A two-pin net by hand", "subgoals": ["Propagate the sink candidate through the downstream segment", "Branch into buffered and unbuffered candidates at the site", "Propagate both upstream and compare at the driver"]},
+  {"label": "Optimality and its limits", "section": "Optimality and its limits", "subgoals": ["State what the algorithm optimizes exactly", "List the model's gaps: slew, cost and fixed sites", "Connect it to placement-time buffering in OpenROAD"]}
+]

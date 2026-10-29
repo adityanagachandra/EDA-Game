@@ -1,0 +1,5 @@
+[
+  {"label": "Where CTS sits", "section": "Where CTS sits", "subgoals": ["Place CTS between placement and routing", "Model clocks as ideal with uncertainty before CTS", "Give CTS the sink locations and the allowed buffers"]},
+  {"label": "Inside the CTS step", "section": "Inside the CTS step", "subgoals": ["Cluster sinks by location", "Build and buffer a balanced topology over the clusters", "Legalise the inserted buffers"]},
+  {"label": "After CTS", "section": "After CTS", "subgoals": ["Switch the timer to propagated clocks", "Repair hold against the real skew", "Report latency, skew, buffers and wirelength together"]}
+]

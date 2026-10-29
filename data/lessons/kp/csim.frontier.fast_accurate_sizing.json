@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Budgeting a two-level loop",
+    "section": "Budgeting a two-level loop",
+    "subgoals": [
+      "Multiply the screened candidates by the fast run time",
+      "Multiply verified candidates, corners and accurate run time",
+      "Add the two stages and compare their shares"
+    ]
+  },
+  {
+    "label": "Speedup over all-accurate",
+    "section": "Speedup over all-accurate",
+    "subgoals": [
+      "Compute the cost of verifying every candidate at every corner",
+      "Divide it by the two-level cost",
+      "Check that the fast ranking is validated over the searched region"
+    ]
+  },
+  {
+    "label": "Which candidates must be re-verified",
+    "section": "Which candidates must be re-verified",
+    "subgoals": [
+      "Form the band of the specification plus and minus the error bound",
+      "Accept values above the band and reject values below it",
+      "Count the values inside the band for accurate re-simulation"
+    ]
+  }
+]

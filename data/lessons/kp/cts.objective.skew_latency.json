@@ -1,0 +1,5 @@
+[
+  {"label": "Latency and insertion delay", "section": "Latency and insertion delay", "subgoals": ["Separate source latency from network latency", "Sum the buffer and wire delays along the sink's tree path", "Explain why long latency costs power and variation exposure"]},
+  {"label": "Global skew", "section": "Global skew", "subgoals": ["Compute each sink's latency", "Subtract the smallest latency from the largest", "Relate skew's sign to the setup and hold budgets"]},
+  {"label": "Local skew and why it matters more", "section": "Local skew and why it matters more", "subgoals": ["List the flop pairs joined by timing paths", "Take the largest absolute latency difference over those pairs only", "Contrast the result with the global skew"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Activation and propagation", "section": "Activation and propagation", "subgoals": ["Simulate the fault-free circuit for the vector", "Force the faulty line to its stuck value and resimulate its fan-out", "Compare the primary outputs of the two simulations"]},
+  {"label": "Counting detected faults", "section": "Counting detected faults", "subgoals": ["Keep only the fault opposite each line's fault-free value as a candidate", "Check propagation of each candidate to an output", "Count the candidates whose difference reaches an output"]},
+  {"label": "Counting detecting vectors", "section": "Counting detecting vectors", "subgoals": ["Simulate every input vector against the fault", "Count the vectors whose outputs differ", "Classify a fault with no detecting vector as undetectable"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Neighbourhoods and local minima",
+    "section": "Neighbourhoods and local minima",
+    "subgoals": [
+      "Define the neighbours of each configuration under the move set",
+      "Mark configurations that are cheaper than every neighbour",
+      "Count the local minima and identify the global one"
+    ]
+  },
+  {
+    "label": "Steepest descent and where it stops",
+    "section": "Steepest descent and where it stops",
+    "subgoals": [
+      "Scan the neighbours of the current configuration",
+      "Move to the best neighbour while it improves the cost",
+      "Stop at the first configuration with no improving neighbour"
+    ]
+  },
+  {
+    "label": "Tabu search",
+    "section": "Tabu search",
+    "subgoals": [
+      "Move to the cheapest neighbour that is not on the tabu list",
+      "Add the new configuration to the list and drop the oldest",
+      "Track the best cost seen across the whole walk"
+    ]
+  }
+]

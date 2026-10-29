@@ -1,0 +1,5 @@
+[
+  {"label": "Layout fixes that buy yield", "section": "Layout fixes that buy yield", "subgoals": ["Name via doubling, wire spreading and wire widening", "Map each fix to the failure mode it targets", "Treat each fix as a soft cost against timing and area"]},
+  {"label": "Redundant vias by the numbers", "section": "Redundant vias by the numbers", "subgoals": ["Compute via-limited yield as an exponential in N times p", "Replace p by p squared for doubled locations", "Explain why the linear approximation fails"]},
+  {"label": "Systematic versus random yield", "section": "Systematic versus random yield", "subgoals": ["Distinguish systematic from random yield loss", "Multiply the two yields under independence", "Choose hotspot fixing or critical-area fixing by process maturity"]}
+]

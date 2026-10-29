@@ -1,0 +1,5 @@
+[
+  {"label": "The defect size distribution", "section": "The defect size distribution", "subgoals": ["Write the 1 over x cubed size density", "Check that it integrates to one", "Compute the fraction of defects above a size"]},
+  {"label": "Averaging the short critical area", "section": "Averaging the short critical area", "subgoals": ["Set up the integral of critical area times size density", "Evaluate the improper integral to L x0 squared over s", "Show that average critical area falls as one over spacing"]},
+  {"label": "From average critical area to yield", "section": "From average critical area to yield", "subgoals": ["Multiply defect density by average critical area", "Convert square micrometres to square centimetres", "Combine per-layer yields into the random-defect yield"]}
+]

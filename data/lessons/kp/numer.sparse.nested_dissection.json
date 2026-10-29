@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Separators split the elimination",
+  "section": "Separators split the elimination",
+  "subgoals": [
+   "Find a small vertex separator of the graph",
+   "Number both parts before the separator",
+   "Recurse on each part"
+  ]
+ },
+ {
+  "label": "Ordering a grid by dissection",
+  "section": "Ordering a grid by dissection",
+  "subgoals": [
+   "Treat the last separator as a dense block",
+   "Count its entries as s(s + 1)/2",
+   "Sum separator costs over the levels of the dissection"
+  ]
+ },
+ {
+  "label": "Asymptotic fill for grids and why it matters",
+  "section": "Asymptotic fill for grids and why it matters",
+  "subgoals": [
+   "Map separators to independent subtrees of the elimination tree",
+   "Compute separators with a multilevel partitioner such as METIS",
+   "Pick nested dissection for meshes and minimum degree for irregular netlists"
+  ]
+ }
+]

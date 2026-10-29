@@ -1,0 +1,5 @@
+[
+  {"label": "Dead area of a pair", "section": "Dead area of a pair", "subgoals": ["Compute the bounding rectangle of the two entries", "Subtract both entries' areas from its area", "Interpret a large value as a poor pairing"]},
+  {"label": "Picking seeds", "section": "Picking seeds", "subgoals": ["Score every pair of entries by dead area", "Choose the pair with the largest dead area as seeds", "Assign the remaining entries by least enlargement"]},
+  {"label": "Overlap and margin in the R*-tree", "section": "Overlap and margin in the R*-tree", "subgoals": ["Form the two group bounding rectangles of a candidate split", "Sum their perimeters to get the margin", "Compute the overlap area of the two groups"]}
+]

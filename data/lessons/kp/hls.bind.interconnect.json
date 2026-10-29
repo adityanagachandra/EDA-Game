@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Sources at a port",
+  "section": "Sources at a port",
+  "subgoals": [
+   "List the operands each port reads across all its operations",
+   "Count the distinct sources per port",
+   "Size the port's multiplexer by that count"
+  ]
+ },
+ {
+  "label": "Counting two-input multiplexer equivalents",
+  "section": "Counting two-input multiplexer equivalents",
+  "subgoals": [
+   "Subtract one from each port's source count",
+   "Sum over all ports of the unit",
+   "Multiply by the bit width to estimate real area"
+  ]
+ },
+ {
+  "label": "Using commutativity",
+  "section": "Using commutativity",
+  "subgoals": [
+   "List the source sets of both ports as written",
+   "Swap operands of commutative operations to align repeated sources on one port",
+   "Recount the two-input multiplexers after the swaps"
+  ]
+ }
+]

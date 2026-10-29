@@ -1,0 +1,5 @@
+[
+  {"label": "Typed spatial queries", "section": "Typed spatial queries", "subgoals": ["Define each query's inputs with layer, coordinates and units", "Return structured records with the numbers a fix needs", "Map each tool onto a window or distance query in the index"]},
+  {"label": "Bounded, deterministic results", "section": "Bounded, deterministic results", "subgoals": ["Cap the response size and report the total count", "Sort results by a stable key", "Invalidate cached results when edits touch their region"]},
+  {"label": "Cost and safety at the tool boundary", "section": "Cost and safety at the tool boundary", "subgoals": ["Scope expensive operations to the edited region and its halo", "Keep the engine and the data inside the site boundary", "Commit edits only after checks and a differential diff"]}
+]

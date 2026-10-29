@@ -1,0 +1,5 @@
+[
+  {"label": "Counting paths", "section": "Counting paths", "subgoals": ["Count one path into each primary input", "Sum path counts over each gate's inputs in topological order", "Double the output path total for rising and falling faults"]},
+  {"label": "Exponential growth", "section": "Exponential growth", "subgoals": ["Count paths into the node from the inputs", "Count paths from the node to the outputs", "Multiply the two counts for the paths through the node"]},
+  {"label": "Robust and non-robust tests", "section": "Robust and non-robust tests", "subgoals": ["Hold side inputs stable at non-controlling values for a robust test", "Allow side inputs to settle by the second vector for a non-robust test", "Select critical paths from static timing instead of enumerating all"]}
+]

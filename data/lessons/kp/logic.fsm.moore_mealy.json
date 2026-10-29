@@ -1,0 +1,5 @@
+[
+  {"label": "The Moore machine", "section": "The Moore machine", "subgoals": ["Start in the reset state", "Apply the next-state function once per input symbol", "Read the output from each state visited"]},
+  {"label": "The Mealy machine", "section": "The Mealy machine", "subgoals": ["Attach each output to a state and input pair", "Emit the output on the transition taken", "Note the combinational input-to-output path"]},
+  {"label": "Pattern detectors with overlap", "section": "Pattern detectors with overlap", "subgoals": ["Slide a window of the pattern length along the input stream", "Count every window equal to the pattern, including overlaps", "Track the longest matched prefix as the machine's state"]}
+]

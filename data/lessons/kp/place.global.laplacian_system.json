@@ -1,0 +1,5 @@
+[
+  {"label": "Diagonal entries", "section": "Diagonal entries", "subgoals": ["Sum every connection weight at the cell", "Include connections to fixed pins on the diagonal", "Remove or anchor cells with no connections"]},
+  {"label": "Off-diagonal entries and the right-hand side", "section": "Off-diagonal entries and the right-hand side", "subgoals": ["Set each off-diagonal entry to minus the connection weight", "Sum weight times fixed coordinate for the right-hand side", "Identify the Laplacian plus the fixed-connection diagonal"]},
+  {"label": "Positive definiteness and what breaks it", "section": "Positive definiteness and what breaks it", "subgoals": ["Name the all-ones null space of the Laplacian", "Require a fixed connection in every connected component", "Link weak anchoring to small eigenvalues and slow convergence"]}
+]

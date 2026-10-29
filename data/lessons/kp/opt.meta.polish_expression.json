@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Evaluating a Polish expression",
+    "section": "Evaluating a Polish expression",
+    "subgoals": [
+      "Push operands onto a stack as rectangles",
+      "Combine the top two at each operator by the V or H rule",
+      "Read the final rectangle's area"
+    ]
+  },
+  {
+    "label": "Annealing moves on the expression",
+    "section": "Annealing moves on the expression",
+    "subgoals": [
+      "Apply the chosen move to the operand or operator sequence",
+      "Confirm the result is still a valid expression",
+      "Re-evaluate the stack to get the new area"
+    ]
+  },
+  {
+    "label": "Accepting a move and the representation's limits",
+    "section": "Accepting a move and the representation's limits",
+    "subgoals": [
+      "Subtract the old area from the new area",
+      "Compute the acceptance probability from the temperature",
+      "Recognize which floorplans the representation cannot express"
+    ]
+  }
+]

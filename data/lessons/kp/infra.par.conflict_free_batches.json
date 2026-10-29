@@ -1,0 +1,5 @@
+[
+  {"label": "Coloring tiles so batches never conflict", "section": "Coloring tiles so batches never conflict", "subgoals": ["Join tiles that share an edge or a corner", "Color each tile by its row and column parity", "Count the tiles in one color class"]},
+  {"label": "Rounds with a fixed worker count", "section": "Rounds with a fixed worker count", "subgoals": ["Divide each batch size by the worker count, rounding up", "Sum the rounds over the four batches", "Insert a barrier between batches"]},
+  {"label": "Speedup of a batched schedule", "section": "Speedup of a batched schedule", "subgoals": ["Multiply tile count by tile time for the serial run", "Multiply rounds by tile time for the batched run", "Divide the two to get the speedup"]}
+]

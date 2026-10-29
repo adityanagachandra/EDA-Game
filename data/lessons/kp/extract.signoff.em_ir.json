@@ -1,0 +1,5 @@
+[
+  {"label": "Current density", "section": "Current density", "subgoals": ["Compute the conducting cross-section of the wire", "Divide the current by the cross-section", "Compare the density with the layer's limit"]},
+  {"label": "IR drop along a strap", "section": "IR drop along a strap", "subgoals": ["Count squares and compute the strap resistance", "Multiply by the current to get the drop", "Express the drop as a percentage of the supply"]},
+  {"label": "Lifetime scaling", "section": "Lifetime scaling", "subgoals": ["Write the lifetime ratio from Black's equation", "Cancel the temperature term at constant temperature", "Raise the current-density ratio to the minus n power"]}
+]

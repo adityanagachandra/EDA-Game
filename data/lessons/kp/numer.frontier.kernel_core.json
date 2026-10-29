@@ -1,0 +1,29 @@
+[
+ {
+  "label": "What belongs in the solver core",
+  "section": "What belongs in the solver core",
+  "subgoals": [
+   "List the kernels whose results define correctness",
+   "Keep hot loops inside the core behind coarse seams",
+   "Route any change to the core through human review and full regression"
+  ]
+ },
+ {
+  "label": "Policies, parameters and hooks around a solver",
+  "section": "Policies, parameters and hooks around a solver",
+  "subgoals": [
+   "Classify the request as policy, parameter or hook",
+   "Map it to an existing choice or setting where possible",
+   "Expose live solver state through hooks rather than core edits"
+  ]
+ },
+ {
+  "label": "The determinism contract of a kernel",
+  "section": "The determinism contract of a kernel",
+  "subgoals": [
+   "Fix reduction orders and seeds in the core",
+   "Declare separate deterministic and fast modes",
+   "Validate reordering changes by tolerance agreement and in-version determinism"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Worst negative slack", "section": "Worst negative slack", "subgoals": ["List the endpoint slacks", "Pick the most negative one", "Report it as the worst negative slack"]},
+  {"label": "Total negative slack", "section": "Total negative slack", "subgoals": ["Keep only the negative endpoint slacks", "Add them together", "Report the sum as total negative slack"]},
+  {"label": "How a fix changes TNS", "section": "How a fix changes TNS", "subgoals": ["Add the improvement to each affected endpoint", "Clip endpoints that become positive to zero contribution", "Sum the remaining negative slacks as the new total negative slack"]}
+]

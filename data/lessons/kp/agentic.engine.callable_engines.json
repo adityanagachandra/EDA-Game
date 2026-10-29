@@ -1,0 +1,5 @@
+[
+  {"label": "From sessions to calls", "section": "From sessions to calls", "subgoals": ["Replace session state with explicit call arguments", "Make each operation a function of design handle, parameters and seed", "Keep the GUI as a viewer of the shared database"]},
+  {"label": "What a call must return", "section": "What a call must return", "subgoals": ["Return metrics as named numbers with a status", "Attach provenance: engine version, parameters and seed", "Report failures as structured records of check, object and values"]},
+  {"label": "Where the compute stays", "section": "Where the compute stays", "subgoals": ["Leave exact computation to the compiled engine", "Limit the model to choosing engines, skills and parameters", "Trace every number the agent uses back to an engine call"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Physical thickness at a given EOT", "section": "Physical thickness at a given EOT", "subgoals": ["Multiply the target EOT by k over 3.9", "Subtract any interfacial-layer contribution from the EOT budget", "Report the physical high-k thickness"]},
+  {"label": "How much leakage high-k saves", "section": "How much leakage high-k saves", "subgoals": ["Compute the high-k physical thickness at the same EOT", "Evaluate two kappa times thickness for each dielectric", "Convert the exponent difference to decades by dividing by ln 10"]},
+  {"label": "Gate leakage of a whole chip", "section": "Gate leakage of a whole chip", "subgoals": ["Sum the gate area over all biased transistors", "Convert square microns to square centimetres", "Multiply by the gate current density"]}
+]

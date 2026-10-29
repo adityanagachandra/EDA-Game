@@ -1,0 +1,5 @@
+[
+  {"label": "Ports and connections", "section": "Ports and connections", "subgoals": ["Bind named connections by port name", "Bind positional connections by declaration order", "Flag width mismatches between ports and connected signals"]},
+  {"label": "The instance tree", "section": "The instance tree", "subgoals": ["Build the instance tree from the top module down", "Multiply instance counts along each root-to-leaf path", "Name each object by its hierarchical path"]},
+  {"label": "What tools do with boundaries", "section": "What tools do with boundaries", "subgoals": ["Weigh separate compilation against cross-boundary optimization", "Treat a black box as ports without contents", "Uniquify instances before optimizing them differently"]}
+]

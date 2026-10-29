@@ -1,0 +1,5 @@
+[
+  {"label": "Conflict graphs and greedy coloring", "section": "Conflict graphs and greedy coloring", "subgoals": ["Join every pair of conflicting items with an edge", "Visit vertices in the chosen order", "Give each vertex the smallest color unused by its colored neighbours"]},
+  {"label": "Counting colors and the effect of order", "section": "Counting colors and the effect of order", "subgoals": ["Bound greedy's color count by the maximum degree plus one", "Choose an ordering such as smallest-last", "Spill an item when no vertex of degree below k remains"]},
+  {"label": "Chromatic number and hardness", "section": "Chromatic number and hardness", "subgoals": ["Search colorings exhaustively for small graphs", "Use the largest clique as a lower bound", "Exploit graph classes where the clique bound is tight"]}
+]

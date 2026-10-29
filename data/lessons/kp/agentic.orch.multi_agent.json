@@ -1,0 +1,5 @@
+[
+  {"label": "Specialized agents and a planner", "section": "Specialized agents and a planner", "subgoals": ["Give each specialist a narrow tool set", "Decompose the goal into tasks with dependencies", "Assign tasks and collect results in the planner"]},
+  {"label": "Shared state in the design database", "section": "Shared state in the design database", "subgoals": ["Store versioned states in the design database", "Pass handles and summaries in messages", "Lock or merge concurrent edits"]},
+  {"label": "Coordination failures", "section": "Coordination failures", "subgoals": ["Check state versions before writing", "Assign each object an owning agent per phase", "Verify claims against engine output"]}
+]

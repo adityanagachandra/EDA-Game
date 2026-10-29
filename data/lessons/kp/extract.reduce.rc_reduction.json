@@ -1,0 +1,5 @@
+[
+  {"label": "Why reduce", "section": "Why reduce", "subgoals": ["Identify the ports whose behaviour must be kept", "Preserve total capacitance as the driver's load", "Preserve the Elmore delay to every sink"]},
+  {"label": "Choosing the reduced model", "section": "Choosing the reduced model", "subgoals": ["Compute the original Elmore delay at the sink", "Split the eliminated capacitance by conductance share", "Check that the reduced network gives the same total and delay"]},
+  {"label": "Accuracy, passivity and locality", "section": "Accuracy, passivity and locality", "subgoals": ["Decide how many moments the analysis needs", "Choose local elimination or global projection", "Redistribute coupling capacitors while keeping their aggressor terminals"]}
+]

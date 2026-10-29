@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Counting structural nonzeros",
+    "section": "Counting structural nonzeros",
+    "subgoals": [
+      "Mark one diagonal position per node",
+      "Add two positions for each distinct connected pair of nodes",
+      "Merge positions shared by parallel elements"
+    ]
+  },
+  {
+    "label": "Nonzeros of the augmented matrix",
+    "section": "Nonzeros of the augmented matrix",
+    "subgoals": [
+      "Count the node-block nonzeros first",
+      "Add two entries per grounded source and four per floating source",
+      "Leave each branch diagonal empty"
+    ]
+  },
+  {
+    "label": "Zero diagonals and pivoting",
+    "section": "Zero diagonals and pivoting",
+    "subgoals": [
+      "Identify branch rows that constrain voltages",
+      "Count their structurally zero diagonals",
+      "Choose a pivot order that avoids zero pivots and limits fill-in"
+    ]
+  }
+]

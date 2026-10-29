@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Aggregating QoR across golden designs",
+    "section": "Aggregating QoR across golden designs",
+    "subgoals": [
+      "Compute each design's ratio of new over baseline",
+      "Multiply the ratios and take the n-th root",
+      "Show per-design results beside the aggregate"
+    ]
+  },
+  {
+    "label": "Certificates and invariants",
+    "section": "Certificates and invariants",
+    "subgoals": [
+      "Check certificates such as equal primal and dual objectives or small KKT residuals",
+      "Check legality and determinism invariants before QoR",
+      "Require unchanged optima for changes meant to affect only effort"
+    ]
+  },
+  {
+    "label": "Promotion decisions",
+    "section": "Promotion decisions",
+    "subgoals": [
+      "Explain and bound any regression before promotion",
+      "Scale review effort with the change tier",
+      "Read differential results as proof of intent on references only"
+    ]
+  }
+]

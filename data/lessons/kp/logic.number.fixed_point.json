@@ -1,0 +1,5 @@
+[
+  {"label": "An integer with an implied binary point", "section": "An integer with an implied binary point", "subgoals": ["Decode the pattern as a two's-complement integer", "Divide the integer by two to the f", "Cross-check with fractional bit weights"]},
+  {"label": "Range and resolution", "section": "Range and resolution", "subgoals": ["Compute the step as two to the minus f", "Scale the integer range by the step", "Bound the rounding error by half a step"]},
+  {"label": "Formats grow through multiplication and addition", "section": "Formats grow through multiplication and addition", "subgoals": ["Add the word widths and the fractional widths of a product", "Align binary points before adding", "Add guard bits for the logarithm of the number of accumulated terms"]}
+]

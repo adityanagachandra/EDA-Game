@@ -1,0 +1,5 @@
+[
+  {"label": "Wavefront expansion", "section": "Wavefront expansion", "subgoals": ["Label the source 0 and give each unlabelled free neighbour of label k the label k + 1", "Leave blocked cells unlabelled so the wave flows around them", "Stop when the target is labelled and read its label as the route length"]},
+  {"label": "How many cells the wave touches", "section": "How many cells the wave touches", "subgoals": ["Count the reachable cells with labels below the target's label", "Compare the expanded area with the route length", "Explain why goal-directed search expands fewer cells"]},
+  {"label": "Label memory", "section": "Label memory", "subgoals": ["Count the codes a cell must hold, including empty and blocked", "Take the ceiling of log base 2 of the code count", "Multiply bits per cell by the number of cells"]}
+]

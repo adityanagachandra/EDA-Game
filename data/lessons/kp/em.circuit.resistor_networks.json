@@ -1,0 +1,5 @@
+[
+  {"label": "Series and parallel reduction", "section": "Series and parallel reduction", "subgoals": ["Add resistances that carry the same current", "Add conductances of resistors that share the same voltage", "Reduce the network from the innermost group outward"]},
+  {"label": "Voltage and current dividers", "section": "Voltage and current dividers", "subgoals": ["Write the divider ratio as the bottom resistance over the total", "Send the larger current share through the smaller parallel resistor", "Multiply the ratio by the source voltage or current"]},
+  {"label": "Loading a divider", "section": "Loading a divider", "subgoals": ["Combine the load in parallel with the bottom resistor", "Recompute the divider ratio with the combined bottom resistance", "Compare the loaded output with the unloaded value"]}
+]

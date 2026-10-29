@@ -1,0 +1,5 @@
+[
+  {"label": "Which nets moved", "section": "Which nets moved", "subgoals": ["Extract before and after with identical settings", "Compute each net's change in parasitics", "Count nets whose change exceeds the tolerance"]},
+  {"label": "Unexpected movers", "section": "Unexpected movers", "subgoals": ["Form the expected set from the claimed nets and their neighbours", "Find moved nets outside that set", "Report each unexpected mover with its change"]},
+  {"label": "The pass rule", "section": "The pass rule", "subgoals": ["Count the unexpected movers", "Count the claimed nets that did not move", "Accept the ECO only when the total is zero"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Natural frequency and damping ratio", "section": "Natural frequency and damping ratio", "subgoals": ["Write the characteristic equation of the series RLC", "Compute the natural frequency from L and C", "Divide R by twice the characteristic resistance to get zeta"]},
+  {"label": "Critical damping", "section": "Critical damping", "subgoals": ["Classify the roots by whether zeta is above or below one", "Set zeta to one and solve for the resistance", "Compare the actual resistance with twice the characteristic resistance"]},
+  {"label": "Overshoot of an underdamped step", "section": "Overshoot of an underdamped step", "subgoals": ["Check that zeta is below one so the response rings", "Evaluate the exponential overshoot formula from zeta", "Convert the fraction to percent of the final value"]}
+]

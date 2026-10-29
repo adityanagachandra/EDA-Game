@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The four layers of a placer and a router",
+  "section": "The four layers of a placer and a router",
+  "subgoals": [
+   "Put legality and the search kernel in the core",
+   "Put cost functions and move sets in the strategy layer",
+   "Put weights and schedules in parameters and live state in hooks"
+  ]
+ },
+ {
+  "label": "Placing a request in a change tier",
+  "section": "Placing a request in a change tier",
+  "subgoals": [
+   "Use Tier 1 when the change is a value in an existing table",
+   "Use Tier 2 when new logic fits an existing seam",
+   "Keep preferences out of the legality core"
+  ]
+ },
+ {
+  "label": "Seams in hot loops",
+  "section": "Seams in hot loops",
+  "subgoals": [
+   "Keep hot-loop plug-ins cheap and deterministic",
+   "Prove a plug-in with a differential test on reference designs",
+   "Add a seam where requests keep forcing core edits"
+  ]
+ }
+]

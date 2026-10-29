@@ -1,0 +1,5 @@
+[
+  {"label": "Clique, star and bipartite encodings", "section": "Clique, star and bipartite encodings", "subgoals": ["Count pin pairs for the clique model", "Count one edge per pin for the star model", "Add a node per net for the bipartite encoding"]},
+  {"label": "Counting edges in a netlist", "section": "Counting edges in a netlist", "subgoals": ["Compute p(p-1)/2 for each net", "Sum over nets for the clique total", "Sum pin counts for the bipartite total"]},
+  {"label": "Choosing an encoding", "section": "Choosing an encoding", "subgoals": ["Divide clique edges by bipartite edges", "Identify high-fanout nets that dominate the clique count", "Keep driver-to-sink direction for timing tasks"]}
+]

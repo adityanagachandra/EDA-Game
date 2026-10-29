@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The VCVS branch row",
+    "section": "The VCVS branch row",
+    "subgoals": [
+      "Write the VCVS constraint as a linear equation in node voltages",
+      "Place plus and minus one at the output nodes and minus and plus mu at the controls",
+      "Mirror the output entries into the branch-current column"
+    ]
+  },
+  {
+    "label": "Counting unknowns with controlled sources",
+    "section": "Counting unknowns with controlled sources",
+    "subgoals": [
+      "Count the non-ground nodes",
+      "Add a branch for each voltage source, VCVS and inductor",
+      "Exclude current sources, VCCS and passive R and C"
+    ]
+  },
+  {
+    "label": "Solving an ideal amplifier stage",
+    "section": "Solving an ideal amplifier stage",
+    "subgoals": [
+      "Use the branch row to fix the output voltage",
+      "Compute the current delivered into the load",
+      "Apply the SPICE sign to report the branch current"
+    ]
+  }
+]

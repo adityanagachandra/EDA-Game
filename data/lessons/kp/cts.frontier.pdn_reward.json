@@ -1,0 +1,5 @@
+[
+  {"label": "What a good reward measures", "section": "What a good reward measures", "subgoals": ["List the metrics the engines can compute", "Make the signoff limits hard constraints", "Penalise the resources the design consumes"]},
+  {"label": "How rewards get gamed", "section": "How rewards get gamed", "subgoals": ["Identify the metrics the reward cannot see", "Predict where the agent will move to exploit them", "Add the missing constraint or corner to the reward"]},
+  {"label": "Keeping the reward honest", "section": "Keeping the reward honest", "subgoals": ["Score samples with the signoff solver to detect proxy gaps", "Read limits from the specification, not from the agent", "Judge progress on held-out designs"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Silicon area saved", "section": "Silicon area saved", "subgoals": ["Compute the area of the full interposer", "Sum the bridge areas", "Divide to get the silicon saving"]},
+  {"label": "Wires per bridge", "section": "Wires per bridge", "subgoals": ["Divide the bridge edge length by the pitch", "Multiply by layers and by the bridge count", "Check the bump capacity above the bridge"]},
+  {"label": "Bandwidth through bridges", "section": "Bandwidth through bridges", "subgoals": ["Multiply wires per bridge by data rate", "Multiply by the number of bridges", "Convert gigabits to terabits per second"]}
+]

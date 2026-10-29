@@ -1,0 +1,5 @@
+[
+  {"label": "Reflection at a port", "section": "Reflection at a port", "subgoals": ["Terminate every other port in the reference impedance", "Compute the reflection coefficient against that reference", "Express the magnitude in decibels with twenty log ten"]},
+  {"label": "Insertion loss in decibels", "section": "Insertion loss in decibels", "subgoals": ["Read S21 as the transmitted wave over the incident wave", "Convert the magnitude to decibels with twenty log ten", "Convert a power ratio to the same decibels with ten log ten"]},
+  {"label": "Power balance, passivity and reciprocity", "section": "Power balance, passivity and reciprocity", "subgoals": ["Subtract the reflected and transmitted power fractions from one", "Require the remainder to be non-negative for a passive network", "Check that S21 equals S12 for a reciprocal network"]}
+]

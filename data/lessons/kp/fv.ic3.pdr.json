@@ -1,0 +1,5 @@
+[
+  {"label": "Frames and their invariants", "section": "Frames and their invariants", "subgoals": ["Set F_0 to the initial states", "Maintain F_i inside F_(i+1) and F_i with T implying F_(i+1) in the next state", "Ask whether the frontier frame can step to a not-P state"]},
+  {"label": "Blocking proof obligations", "section": "Blocking proof obligations", "subgoals": ["Turn a frontier state with a bad successor into a proof obligation", "Block it with a relatively inductive clause or recurse on its predecessor", "Report a counterexample when an obligation chain reaches the initial states"]},
+  {"label": "Propagation and convergence", "section": "Propagation and convergence", "subgoals": ["Push each clause forward when the next frame still satisfies it", "Detect two consecutive frames with identical clauses", "Return the converged frame as an inductive invariant that implies P"]}
+]

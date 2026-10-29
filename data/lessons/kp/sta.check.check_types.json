@@ -1,0 +1,5 @@
+[
+  {"label": "Data and asynchronous checks", "section": "Data and asynchronous checks", "subgoals": ["Apply setup and hold at flip-flop and latch data pins", "Apply recovery and removal to the deasserting edge of asynchronous controls", "Check latch setup against the closing edge with borrowing"]},
+  {"label": "Clock-pin and gating checks", "section": "Clock-pin and gating checks", "subgoals": ["Check enables of clock-gating logic against the clock's controlling phase", "Check propagated clock pulses against the minimum pulse width", "Use a data-to-data check when two data signals must stay aligned"]},
+  {"label": "Matching checks to failures", "section": "Matching checks to failures", "subgoals": ["Identify the check type and capture edge of a reported violation", "Choose the fix that the check type calls for", "Exclude crossings that have no defined edge relationship"]}
+]

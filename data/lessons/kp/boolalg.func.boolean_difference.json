@@ -1,0 +1,5 @@
+[
+  {"label": "The XOR of the two cofactors", "section": "The XOR of the two cofactors", "subgoals": ["Compute the positive and negative cofactors", "XOR them bit by bit", "Count the ON rows of the difference"]},
+  {"label": "Inputs where a variable matters", "section": "Inputs where a variable matters", "subgoals": ["Read each ON row of the difference as an assignment of the other variables", "Pair it with both values of the variable", "Double the difference count to count sensitive input vectors"]},
+  {"label": "Sensitization in test generation", "section": "Sensitization in test generation", "subgoals": ["Require the fault site value opposite to the stuck value", "Require the Boolean difference to be 1 so the fault propagates", "Count the vectors meeting both conditions"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Elaboration and generic logic",
+    "section": "Elaboration and generic logic",
+    "subgoals": [
+      "Name what elaboration infers from clocked and conditional code",
+      "Describe the technology-independent network after elaboration",
+      "Predict a latch from an incompletely specified assignment"
+    ]
+  },
+  {
+    "label": "Optimization and technology mapping",
+    "section": "Optimization and technology mapping",
+    "subgoals": [
+      "Describe restructuring that reduces network size and depth",
+      "Cover the network with library cells at least cost",
+      "Name the sizing and buffering steps after mapping"
+    ]
+  },
+  {
+    "label": "Correctness and what synthesis cannot see",
+    "section": "Correctness and what synthesis cannot see",
+    "subgoals": [
+      "Explain how equivalence checking matches registers",
+      "Explain why a wire-load model misestimates wire delay",
+      "Diagnose a netlist that meets timing only before placement"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "From crystal to wafer", "section": "From crystal to wafer", "subgoals": ["Name the Czochralski growth and wafering steps", "Compute wafer area from its diameter", "Scale the area to a lot of wafers"]},
+  {"label": "Edge exclusion and usable area", "section": "Edge exclusion and usable area", "subgoals": ["Shrink the radius by the edge exclusion", "Compute the lost fraction as one minus the squared radius ratio", "Compare the loss on two wafer sizes"]},
+  {"label": "Substrate choices and wafer size", "section": "Substrate choices and wafer size", "subgoals": ["Contrast bulk, epitaxial and SOI substrates", "Compute the usable-area ratio of two wafer sizes", "Relate wafer size to cost per die"]}
+]

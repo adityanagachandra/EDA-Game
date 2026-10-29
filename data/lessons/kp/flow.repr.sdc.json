@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Clocks",
+    "section": "Clocks",
+    "subgoals": [
+      "Convert a clock period in ns to a frequency in MHz",
+      "Name generated clocks, uncertainty and latency commands",
+      "Declare unrelated clocks as asynchronous"
+    ]
+  },
+  {
+    "label": "Input and output delays",
+    "section": "Input and output delays",
+    "subgoals": [
+      "Read the input delay as time used outside the block",
+      "Subtract input delay, setup and uncertainty from the period",
+      "Mirror the reasoning for output delays"
+    ]
+  },
+  {
+    "label": "Exceptions",
+    "section": "Exceptions",
+    "subgoals": [
+      "Remove an unsensitizable path with a false path",
+      "Move the setup check to a later edge with a multicycle path",
+      "Explain why an over-broad exception hides real failures"
+    ]
+  }
+]

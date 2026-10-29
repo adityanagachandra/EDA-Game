@@ -1,0 +1,5 @@
+[
+  {"label": "Functions from n bits to one bit", "section": "Functions from n bits to one bit", "subgoals": ["Index each input row by its binary minterm number", "Evaluate the expression on every row", "Count the rows in the ON-set"]},
+  {"label": "Counting Boolean functions", "section": "Counting Boolean functions", "subgoals": ["Count the 2 to the n rows of the table", "Count the free output bits that remain", "Raise 2 to the number of free bits"]},
+  {"label": "Comparing two functions row by row", "section": "Comparing two functions row by row", "subgoals": ["Tabulate both functions over the same row order", "Mark every row where the outputs differ", "Count the differing rows as the distance between the functions"]}
+]

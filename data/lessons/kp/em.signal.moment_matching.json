@@ -1,0 +1,5 @@
+[
+  {"label": "Moments of a transfer function", "section": "Moments of a transfer function", "subgoals": ["Expand the transfer function in powers of s", "Sum shared resistance times capacitance for the first moment", "Read minus m1 as the mean of the impulse response"]},
+  {"label": "The second moment", "section": "The second moment", "subgoals": ["Compute the first moment at every node", "Weight each capacitor by its own first moment", "Sum shared resistance times weighted capacitance for m2"]},
+  {"label": "Spread of the impulse response", "section": "Spread of the impulse response", "subgoals": ["Write the second raw moment as twice m2", "Subtract the squared first moment to get the variance", "Take the square root to get the spread in picoseconds"]}
+]

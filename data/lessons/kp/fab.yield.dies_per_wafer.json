@@ -1,0 +1,5 @@
+[
+  {"label": "Area ratio as an upper bound", "section": "Area ratio as an upper bound", "subgoals": ["Compute the wafer area from its diameter", "Divide by the die area", "Explain why the ratio overestimates the count"]},
+  {"label": "The edge-loss formula", "section": "The edge-loss formula", "subgoals": ["Write the dies-per-wafer formula with its edge term", "Evaluate both terms for a given die", "Compare the edge-loss share for small and large dies"]},
+  {"label": "Edge exclusion, scribe lanes and exact counts", "section": "Edge exclusion, scribe lanes and exact counts", "subgoals": ["Shrink the diameter by twice the edge exclusion", "Add the scribe width to each die dimension", "Recompute the count and explain grid-offset optimization"]}
+]

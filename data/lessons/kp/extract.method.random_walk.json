@@ -1,0 +1,5 @@
+[
+  {"label": "Walks and scores", "section": "Walks and scores", "subgoals": ["Start each walk on a surface enclosing the source conductor", "Record the walk's score when it lands on the target conductor", "Average the scores to estimate the capacitance"]},
+  {"label": "The standard error", "section": "The standard error", "subgoals": ["Estimate the per-walk standard deviation from the samples", "Divide it by the square root of the walk count", "Express the standard error as a fraction of the mean"]},
+  {"label": "Walks needed for a target", "section": "Walks needed for a target", "subgoals": ["Set the allowed standard error from the relative target", "Solve for the walk count from the standard-error formula", "Round the walk count up to an integer"]}
+]

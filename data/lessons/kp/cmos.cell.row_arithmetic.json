@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Rows in a core",
+    "section": "Rows in a core",
+    "subgoals": [
+      "Divide the core height by the row height",
+      "Take the floor to count complete rows",
+      "Flip alternate rows so neighbours share rails"
+    ]
+  },
+  {
+    "label": "Sites, capacity and rails",
+    "section": "Sites, capacity and rails",
+    "subgoals": [
+      "Divide the row width by the site width for sites per row",
+      "Multiply rows by sites per row for total capacity",
+      "Count N plus one shared rails for N flipped rows"
+    ]
+  },
+  {
+    "label": "Utilization and why it is not 100%",
+    "section": "Utilization and why it is not 100%",
+    "subgoals": [
+      "Divide occupied sites by available sites",
+      "Leave headroom for routing, buffering and physical cells",
+      "Check local bin density, not only the global utilization"
+    ]
+  }
+]

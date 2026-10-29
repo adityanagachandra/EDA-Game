@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Thermal noise of a resistor",
+    "section": "Thermal noise of a resistor",
+    "subgoals": [
+      "Multiply four times Boltzmann's constant by temperature and resistance",
+      "Take the square root for the voltage density",
+      "Express it in nanovolts per root hertz"
+    ]
+  },
+  {
+    "label": "Summing independent noise at the output",
+    "section": "Summing independent noise at the output",
+    "subgoals": [
+      "Multiply each source density by its gain to the output",
+      "Square and sum the contributions",
+      "Take the square root of the total"
+    ]
+  },
+  {
+    "label": "Integrated kT/C noise",
+    "section": "Integrated kT/C noise",
+    "subgoals": [
+      "Divide kT by the capacitance",
+      "Take the square root for the rms voltage",
+      "Express the result in microvolts"
+    ]
+  }
+]

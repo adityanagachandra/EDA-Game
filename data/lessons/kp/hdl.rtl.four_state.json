@@ -1,0 +1,5 @@
+[
+  {"label": "Bitwise operators on x and z", "section": "Bitwise operators on x and z", "subgoals": ["Treat z as x at every logic-operator input", "Apply the controlling value: 0 for AND, 1 for OR", "Evaluate the vector one lane at a time"]},
+  {"label": "XOR, XNOR and inversion", "section": "XOR, XNOR and inversion", "subgoals": ["Return x from any XOR or XNOR lane with an unknown input", "Map x and z to x under inversion", "Evaluate compound expressions operator by operator"]},
+  {"label": "Reductions and the two equalities", "section": "Reductions and the two equalities", "subgoals": ["Fold a vector with the reduction rules", "Decide == from known mismatching lanes before unknowns", "Compare literally for === and return only 0 or 1"]}
+]

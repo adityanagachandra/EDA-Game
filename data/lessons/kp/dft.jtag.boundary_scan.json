@@ -1,0 +1,5 @@
+[
+  {"label": "The architecture", "section": "The architecture", "subgoals": ["Select each device's register with its current instruction", "Count the boundary register length for devices in EXTEST", "Count one bit for each device in BYPASS and sum along the chain"]},
+  {"label": "Interconnect testing", "section": "Interconnect testing", "subgoals": ["Give each net one bit per parallel test vector", "Exclude the all-0 and all-1 codes", "Take the ceiling of log base 2 of N plus 2 for the vector count"]},
+  {"label": "Test time", "section": "Test time", "subgoals": ["Charge L plus 5 cycles for each DR scan from Run-Test/Idle", "Charge I plus 6 cycles for each IR scan", "Divide the total cycles by the TCK frequency"]}
+]

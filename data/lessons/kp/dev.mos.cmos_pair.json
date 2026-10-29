@@ -1,0 +1,5 @@
+[
+  {"label": "Complementary networks", "section": "Complementary networks", "subgoals": ["Build the pull-down network from NMOS for the function's complement", "Form the pull-up as its series-parallel dual with PMOS", "Confirm no input state turns both networks on"]},
+  {"label": "Sizing the pair", "section": "Sizing the pair", "subgoals": ["Equate the n and p saturation currents", "Solve for the width ratio", "Include both the mobility ratio and the overdrive ratio squared"]},
+  {"label": "Energy, short-circuit current and latch-up", "section": "Energy, short-circuit current and latch-up", "subgoals": ["Account for C V_DD squared drawn per charge-discharge cycle", "Relate short-circuit current to input slew", "Name the parasitic thyristor and the taps that suppress it"]}
+]

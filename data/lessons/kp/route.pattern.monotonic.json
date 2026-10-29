@@ -1,0 +1,5 @@
+[
+  {"label": "The dynamic program", "section": "The dynamic program", "subgoals": ["Set the source entry to zero", "Take the cheaper of the west and south predecessors plus the joining edge", "Fill the table in row order and read the target entry"]},
+  {"label": "Scaling to larger boxes", "section": "Scaling to larger boxes", "subgoals": ["Count table entries as the area of the bounding box", "Reflect the coordinates so the recurrence runs north-east", "Recognise that a fully blocked box needs maze routing"]},
+  {"label": "Monotone versus patterns", "section": "Monotone versus patterns", "subgoals": ["Show that the best monotone cost never exceeds the best pattern cost", "Compute the saving as pattern cost minus monotone cost", "Add direction to the state to price bends"]}
+]

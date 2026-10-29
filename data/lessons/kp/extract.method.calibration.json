@@ -1,0 +1,5 @@
+[
+  {"label": "Measuring the error", "section": "Measuring the error", "subgoals": ["Compute each net's relative error against the golden value", "Take the largest as the worst-case error", "Check whether the errors share a sign, indicating bias"]},
+  {"label": "Least-squares scale factor", "section": "Least-squares scale factor", "subgoals": ["Accumulate the sum of fast times golden values", "Accumulate the sum of squared fast values", "Divide the two sums to get the scale factor"]},
+  {"label": "Residual error after calibration", "section": "Residual error after calibration", "subgoals": ["Scale each fast value by the fitted factor", "Recompute the relative errors against golden", "Separate remaining scatter from bias and decide on new patterns"]}
+]

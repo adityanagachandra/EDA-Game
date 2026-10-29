@@ -1,0 +1,5 @@
+[
+  {"label": "The cost of the naive approach", "section": "The cost of the naive approach", "subgoals": ["Estimate the naive sample count as z squared over p epsilon squared", "Explain that the cost comes from samples that never fail", "Compare methods by simulations needed for a given relative error"]},
+  {"label": "The main methods", "section": "The main methods", "subgoals": ["Describe importance sampling as shift and reweight", "Describe statistical blockade as classifier plus tail fit", "Describe scaled-sigma and subset simulation by what they extrapolate or chain"]},
+  {"label": "How the estimates fail", "section": "How the estimates fail", "subgoals": ["Name the missed-region failure of single-shift importance sampling", "Compute the effective sample size to detect weight degeneracy", "Validate against known-answer limit states and moderate-sigma brute force"]}
+]

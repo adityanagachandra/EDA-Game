@@ -1,0 +1,5 @@
+[
+  {"label": "The subthreshold swing", "section": "The subthreshold swing", "subgoals": ["Multiply the slope factor by kT/q", "Multiply by ln 10 to get millivolts per decade", "Compare with the 60 mV per decade room-temperature limit"]},
+  {"label": "Current below threshold", "section": "Current below threshold", "subgoals": ["Compute the voltage below threshold", "Divide by the swing to get decades", "Scale the threshold current down by ten to that power"]},
+  {"label": "Swing from the capacitive divider", "section": "Swing from the capacitive divider", "subgoals": ["Add depletion and trap capacitance", "Divide by the oxide capacitance and add one", "Multiply n by 59.6 mV per decade at 300 K"]}
+]

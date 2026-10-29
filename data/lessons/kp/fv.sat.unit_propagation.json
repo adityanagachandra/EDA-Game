@@ -1,0 +1,5 @@
+[
+  {"label": "Unit clauses", "section": "Unit clauses", "subgoals": ["Mark a clause satisfied as soon as one literal is true", "Count the unassigned literals of each unsatisfied clause", "Call the clause unit when exactly one literal is unassigned"]},
+  {"label": "Propagating to a fixpoint", "section": "Propagating to a fixpoint", "subgoals": ["Set the literal forced by each unit clause", "Rescan for clauses that have just become unit", "Stop at the fixpoint and count the assigned variables"]},
+  {"label": "Propagation after a decision", "section": "Propagation after a decision", "subgoals": ["Assign the decision literal", "Follow each clause that the decision makes unit, then the clauses those implications make unit", "Count the implied variables, excluding the decision"]}
+]

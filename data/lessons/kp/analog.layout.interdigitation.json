@@ -1,0 +1,5 @@
+[
+  {"label": "Finger positions and centroids in one row", "section": "Finger positions and centroids in one row", "subgoals": ["Assign each finger its offset from the row centre", "Average the offsets of each device's fingers", "Compare the separations of side-by-side, interleaved and mirrored orders"]},
+  {"label": "Linear gradients", "section": "Linear gradients", "subgoals": ["Shift each finger by the gradient times its position", "Multiply the gradient by the centroid separation", "Compare the systematic error with the random mismatch"]},
+  {"label": "Higher-order gradients", "section": "Higher-order gradients", "subgoals": ["Shift each finger by the quadratic coefficient times its squared position", "Average squared positions per device and take the difference", "Choose patterns by the moments of position they equalize"]}
+]

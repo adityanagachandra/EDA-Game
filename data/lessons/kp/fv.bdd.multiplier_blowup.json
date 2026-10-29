@@ -1,0 +1,5 @@
+[
+  {"label": "Bryant's lower bound for multiplication", "section": "Bryant's lower bound for multiplication", "subgoals": ["State the bound: exponential size for the middle bit under every order", "Explain it as information that must cross some level of any order", "Conclude that reordering cannot rescue a multiplier's middle bits"]},
+  {"label": "Adders versus multipliers", "section": "Adders versus multipliers", "subgoals": ["Show that an interleaved order lets an adder carry only one bit of state", "Contrast with the global partial-product interactions of a multiplier", "Classify a datapath operator as order-sensitive or order-proof"]},
+  {"label": "What verification tools do instead", "section": "What verification tools do instead", "subgoals": ["Use SAT sweeping when the two multipliers share internal structure", "Use algebraic rewriting when the architectures differ", "Abstract the multiplier when the property is about control"]}
+]

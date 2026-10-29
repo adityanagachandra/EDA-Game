@@ -1,0 +1,5 @@
+[
+  {"label": "Clearance as edge-to-edge distance", "section": "Clearance as edge-to-edge distance", "subgoals": ["Compute the x and y gaps between two rectangles", "Take the nonzero gap when the shapes overlap in one axis", "Flag overlapping shapes on different nets as shorts"]},
+  {"label": "Corner-to-corner distance", "section": "Corner-to-corner distance", "subgoals": ["Detect when both axis gaps are positive", "Compute the Euclidean distance between the nearest corners", "Look up the clearance rule for the pair's net classes"]},
+  {"label": "Scaling the check", "section": "Scaling the check", "subgoals": ["Index shapes in an R-tree for candidate queries", "Skip same-net pairs and test candidates exactly", "Re-check only the neighborhood of an edited shape"]}
+]

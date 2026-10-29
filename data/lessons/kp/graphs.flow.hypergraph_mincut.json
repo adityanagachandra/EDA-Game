@@ -1,0 +1,5 @@
+[
+  {"label": "Lawler's network", "section": "Lawler's network", "subgoals": ["Make two vertices per net joined by a bridge of the net's weight", "Join each pin's cell to the net with infinite arcs both ways", "Count n + 2m vertices and m + 2P arcs"]},
+  {"label": "Why the minimum cut removes whole nets", "section": "Why the minimum cut removes whole nets", "subgoals": ["Note that finite cuts contain only bridge arcs", "Charge each cut bridge its net weight once", "Check small instances by enumerating the free cells' sides"]},
+  {"label": "Balanced flow-based partitioning", "section": "Balanced flow-based partitioning", "subgoals": ["Merge vertices into the smaller side and rerun max-flow", "Grow the cut until the balance window is met", "Refine block boundaries by min cuts inside a bounded region"]}
+]

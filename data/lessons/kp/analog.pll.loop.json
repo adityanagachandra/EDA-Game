@@ -1,0 +1,5 @@
+[
+  {"label": "Integer-N synthesis", "section": "Integer-N synthesis", "subgoals": ["Set the output frequency to N times the reference at lock", "Solve for N from the target and reference frequencies", "Relate channel spacing to the reference and the loop bandwidth"]},
+  {"label": "Fractional-N division", "section": "Fractional-N division", "subgoals": ["Average the division ratio over the modulus", "Multiply the reference by the fractional ratio", "Shape the division sequence with a delta-sigma modulator against spurs"]},
+  {"label": "Lock and the loop as a control system", "section": "Lock and the loop as a control system", "subgoals": ["Solve for the control voltage at lock", "Check the control voltage against the charge pump's range", "Linearize each block in phase and multiply into the open-loop gain"]}
+]

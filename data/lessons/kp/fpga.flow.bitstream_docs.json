@@ -1,0 +1,29 @@
+[
+ {
+  "label": "What a database records",
+  "section": "What a database records",
+  "subgoals": [
+   "List the configurable features of each tile type",
+   "Record each feature's bit offsets relative to the tile base",
+   "Map tile instances to their base addresses"
+  ]
+ },
+ {
+  "label": "Fuzzing",
+  "section": "Fuzzing",
+  "subgoals": [
+   "Build designs that differ in one controlled feature",
+   "Diff the bitstreams across many such designs",
+   "Keep the bits that track the feature consistently"
+  ]
+ },
+ {
+  "label": "Limits and uses",
+  "section": "Limits and uses",
+  "subgoals": [
+   "Validate the database against known-good bitstreams",
+   "Decode bitstreams back into netlists for checking",
+   "Build synthesis first for undocumented families"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Variables: one per candidate tree", "section": "Variables: one per candidate tree", "subgoals": ["Generate a set of candidate trees for each net", "Introduce one binary variable per candidate", "Count the variables as the total number of candidates"]},
+  {"label": "Constraints and objective", "section": "Constraints and objective", "subgoals": ["Write one selection constraint per net", "Write one capacity constraint per edge", "Minimise the total cost of the chosen trees"]},
+  {"label": "Solving a tiny instance", "section": "Solving a tiny instance", "subgoals": ["Enumerate the combinations of candidate trees", "Discard combinations that violate a capacity", "Take the cheapest feasible combination"]}
+]

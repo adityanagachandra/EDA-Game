@@ -1,0 +1,5 @@
+[
+  {"label": "Where learning pays", "section": "Where learning pays", "subgoals": ["Name the exact evaluation the model would stand in for", "Check that similar instances recur so learning can amortize", "Confirm that an exact step runs after the approximate answer"]},
+  {"label": "What learning cannot replace", "section": "What learning cannot replace", "subgoals": ["Classify the claim as a guarantee or an estimate", "Name the exact engine that establishes the guarantee", "Refuse to let a prediction stand in for that engine"]},
+  {"label": "Propose with a model, decide with an engine", "section": "Propose with a model, decide with an engine", "subgoals": ["Place the learned component in the strategy layer", "Gate each proposal with an exact engine before acceptance", "Count training cost against the runtime the model saves"]}
+]

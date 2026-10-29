@@ -1,0 +1,5 @@
+[
+  {"label": "Unconstrained left edge", "section": "Unconstrained left edge", "subgoals": ["Sort the spans by left end", "Place each span on the current track if it starts after the last one ends", "Open a new track for the spans left over"]},
+  {"label": "Constrained left edge", "section": "Constrained left edge", "subgoals": ["Admit only nets whose VCG predecessors are on earlier tracks", "Pack admitted nets by left end onto the current track", "Repeat track by track until every net is placed"]},
+  {"label": "The top track and its limits", "section": "The top track and its limits", "subgoals": ["Find the nets with no VCG predecessor", "Pack them by left end onto the top track", "Recognise that a cyclic VCG blocks the algorithm"]}
+]

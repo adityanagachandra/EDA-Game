@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Basins of attraction",
+    "section": "Basins of attraction",
+    "subgoals": [
+      "Find the stationary points as the roots of the derivative",
+      "Classify them by the sign change of the derivative",
+      "Follow the descent direction from the start to the nearest minimum in its basin"
+    ]
+  },
+  {
+    "label": "What breaks convexity",
+    "section": "What breaks convexity",
+    "subgoals": [
+      "Test a feasible set by checking segments between feasible points",
+      "Check every quadratic constraint matrix for semidefiniteness",
+      "Flag either-or rules, discrete sets and nonlinear equalities as nonconvex"
+    ]
+  },
+  {
+    "label": "Strategies for nonconvex problems",
+    "section": "Strategies for nonconvex problems",
+    "subgoals": [
+      "Choose continuation, multi-start, relaxation or annealing for the problem",
+      "Escape a saddle along a negative-curvature direction",
+      "Judge a local optimum against baselines and bounds"
+    ]
+  }
+]

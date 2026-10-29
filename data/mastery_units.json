@@ -3,10 +3,10 @@
   "generated_by": "go run ./cmd/masteryunits",
   "rule": "unit = (domain, floor(conceptDepth / bandWidth)); conceptDepth = the concept's level in the concept DAG's own topological order",
   "band_width": 3,
-  "note": "DRAFT — ADR-046 D3. Band width is the open decision (how often a learner is assessed), not product policy. Unit prerequisite order is DERIVED from the concept DAG and deliberately not stored: authoring it would be a second hierarchy. Do not hand-edit concept_ids; regenerate with `go run ./cmd/masteryunits -band N`.",
+  "note": "DRAFT, ADR-046 D3. Band width is the open decision (how often a learner is assessed), not product policy. Unit prerequisite order is DERIVED from the concept DAG and deliberately not stored: authoring it would be a second hierarchy. Do not hand-edit concept_ids; regenerate with `go run ./cmd/masteryunits -band N`.",
   "source": "data/concepts",
-  "concept_count": 1250,
-  "unit_count": 124,
+  "concept_count": 2857,
+  "unit_count": 439,
   "units": [
     {
       "id": "abstract_algebra.b6",
@@ -130,6 +130,171 @@
         "abstract.group.free"
       ],
       "concept_count": 2
+    },
+    {
+      "id": "agent_first_eda.b26",
+      "title": "Agent First Eda · Stage 27",
+      "domain": "agent_first_eda",
+      "band": 26,
+      "depth_min": 79,
+      "depth_max": 79,
+      "subdomains": [
+        "agent_first_eda.architecture"
+      ],
+      "concept_ids": [
+        "agentic.engine.callable_engines"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "agent_first_eda.b27",
+      "title": "Agent First Eda · Stage 28",
+      "domain": "agent_first_eda",
+      "band": 27,
+      "depth_min": 81,
+      "depth_max": 83,
+      "subdomains": [
+        "agent_first_eda.architecture",
+        "agent_first_eda.harness"
+      ],
+      "concept_ids": [
+        "agentic.engine.core_vs_surface",
+        "agentic.engine.four_layer",
+        "agentic.harness.loop",
+        "agentic.skill.manifest",
+        "agentic.skill.selection"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "agent_first_eda.b28",
+      "title": "Agent First Eda · Stage 29",
+      "domain": "agent_first_eda",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "agent_first_eda.architecture",
+        "agent_first_eda.harness",
+        "agent_first_eda.models",
+        "agent_first_eda.orchestration",
+        "agent_first_eda.safety",
+        "agent_first_eda.tiers",
+        "agent_first_eda.verification"
+      ],
+      "concept_ids": [
+        "agentic.engine.observation_hooks",
+        "agentic.eval.pass_at_k",
+        "agentic.harness.build_budget",
+        "agentic.harness.check_ordering",
+        "agentic.harness.feedback",
+        "agentic.harness.retry_expectation",
+        "agentic.mcp.tool_interface",
+        "agentic.orch.multi_agent",
+        "agentic.safety.resource_budget",
+        "agentic.safety.sandbox_ip",
+        "agentic.safety.untrusted_inputs",
+        "agentic.seam.abi_versioning",
+        "agentic.seam.extension_point",
+        "agentic.skill.selection_cost",
+        "agentic.tiers.change",
+        "agentic.tiers.turnaround",
+        "agentic.verify.golden_differential"
+      ],
+      "concept_count": 17
+    },
+    {
+      "id": "agent_first_eda.b29",
+      "title": "Agent First Eda · Stage 30",
+      "domain": "agent_first_eda",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 89,
+      "subdomains": [
+        "agent_first_eda.learning",
+        "agent_first_eda.loops",
+        "agent_first_eda.models",
+        "agent_first_eda.safety",
+        "agent_first_eda.tiers",
+        "agent_first_eda.verification"
+      ],
+      "concept_ids": [
+        "agentic.brain.domain_model",
+        "agentic.eval.edit_correctness",
+        "agentic.flywheel.amortization",
+        "agentic.flywheel.skill_promotion",
+        "agentic.rl.reward_design",
+        "agentic.rl.tool_grounded",
+        "agentic.safety.determinism",
+        "agentic.safety.onsite_offline",
+        "agentic.seam.context_design",
+        "agentic.seam.granularity",
+        "agentic.verify.missing_golden",
+        "agentic.verify.promotion_gate",
+        "agentic.verify.qor_baseline",
+        "agentic.verify.seed_noise"
+      ],
+      "concept_count": 14
+    },
+    {
+      "id": "agent_first_eda.b30",
+      "title": "Agent First Eda · Stage 31",
+      "domain": "agent_first_eda",
+      "band": 30,
+      "depth_min": 90,
+      "depth_max": 91,
+      "subdomains": [
+        "agent_first_eda.orchestration"
+      ],
+      "concept_ids": [
+        "agentic.signoff.eco_convergence",
+        "agentic.signoff.eco_loop"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "agent_first_eda.b31",
+      "title": "Agent First Eda · Stage 32",
+      "domain": "agent_first_eda",
+      "band": 31,
+      "depth_min": 94,
+      "depth_max": 95,
+      "subdomains": [
+        "agent_first_eda.learning",
+        "agent_first_eda.loops",
+        "agent_first_eda.models",
+        "agent_first_eda.orchestration"
+      ],
+      "concept_ids": [
+        "agentic.dse.exploration_agent",
+        "agentic.loop.fast_accurate",
+        "agentic.loop.fast_mode_calibration",
+        "agentic.model.three_roles",
+        "agentic.rl.reward_hacking"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "agent_first_eda.b32",
+      "title": "Agent First Eda · Stage 33",
+      "domain": "agent_first_eda",
+      "band": 32,
+      "depth_min": 96,
+      "depth_max": 98,
+      "subdomains": [
+        "agent_first_eda.learning",
+        "agent_first_eda.loops",
+        "agent_first_eda.models",
+        "agent_first_eda.orchestration"
+      ],
+      "concept_ids": [
+        "agentic.eval.skill_benchmarks",
+        "agentic.landscape.industry",
+        "agentic.loop.recursion_decision",
+        "agentic.model.abstraction_layer",
+        "agentic.rl.proxy_signoff_gap"
+      ],
+      "concept_count": 5
     },
     {
       "id": "algebra.b3",
@@ -380,6 +545,198 @@
       "concept_count": 7
     },
     {
+      "id": "analog_mixed_signal_rf.b14",
+      "title": "Analog Mixed Signal Rf · Stage 15",
+      "domain": "analog_mixed_signal_rf",
+      "band": 14,
+      "depth_min": 43,
+      "depth_max": 44,
+      "subdomains": [
+        "analog_mixed_signal_rf.rf",
+        "analog_mixed_signal_rf.ss"
+      ],
+      "concept_ids": [
+        "analog.rf.s_parameters",
+        "analog.ss.db_conversions"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "analog_mixed_signal_rf.b15",
+      "title": "Analog Mixed Signal Rf · Stage 16",
+      "domain": "analog_mixed_signal_rf",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 46,
+      "subdomains": [
+        "analog_mixed_signal_rf.rf",
+        "analog_mixed_signal_rf.special"
+      ],
+      "concept_ids": [
+        "analog.rf.friis",
+        "analog.rf.iip3",
+        "analog.rf.noise_figure",
+        "analog.special.photonics"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "analog_mixed_signal_rf.b18",
+      "title": "Analog Mixed Signal Rf · Stage 19",
+      "domain": "analog_mixed_signal_rf",
+      "band": 18,
+      "depth_min": 54,
+      "depth_max": 56,
+      "subdomains": [
+        "analog_mixed_signal_rf.pll",
+        "analog_mixed_signal_rf.special",
+        "analog_mixed_signal_rf.ss"
+      ],
+      "concept_ids": [
+        "analog.pll.loop",
+        "analog.pll.loop_dynamics",
+        "analog.pll.phase_noise",
+        "analog.pll.vco",
+        "analog.special.power",
+        "analog.ss.automation_gap",
+        "analog.ss.small_signal_model"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "analog_mixed_signal_rf.b19",
+      "title": "Analog Mixed Signal Rf · Stage 20",
+      "domain": "analog_mixed_signal_rf",
+      "band": 19,
+      "depth_min": 57,
+      "depth_max": 59,
+      "subdomains": [
+        "analog_mixed_signal_rf.amp",
+        "analog_mixed_signal_rf.layout",
+        "analog_mixed_signal_rf.special",
+        "analog_mixed_signal_rf.ss"
+      ],
+      "concept_ids": [
+        "analog.amp.common_source",
+        "analog.amp.current_mirror",
+        "analog.amp.diff_pair",
+        "analog.layout.common_centroid",
+        "analog.layout.interdigitation",
+        "analog.match.pelgrom",
+        "analog.special.neuromorphic",
+        "analog.ss.gm_id",
+        "analog.ss.intrinsic_gain",
+        "analog.ss.lookup_tables"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "analog_mixed_signal_rf.b20",
+      "title": "Analog Mixed Signal Rf · Stage 21",
+      "domain": "analog_mixed_signal_rf",
+      "band": 20,
+      "depth_min": 60,
+      "depth_max": 62,
+      "subdomains": [
+        "analog_mixed_signal_rf.amp",
+        "analog_mixed_signal_rf.conv",
+        "analog_mixed_signal_rf.layout",
+        "analog_mixed_signal_rf.ms",
+        "analog_mixed_signal_rf.size"
+      ],
+      "concept_ids": [
+        "analog.amp.comparator",
+        "analog.amp.miller_compensation",
+        "analog.amp.opamp_two_stage",
+        "analog.amp.stability_phase_margin",
+        "analog.conv.adc",
+        "analog.conv.dac",
+        "analog.conv.quantization_snr",
+        "analog.conv.sar",
+        "analog.layout.automation",
+        "analog.match.offset_budget",
+        "analog.ms.simulation",
+        "analog.size.optimization",
+        "analog.size.simulation_loop"
+      ],
+      "concept_count": 13
+    },
+    {
+      "id": "analog_mixed_signal_rf.b21",
+      "title": "Analog Mixed Signal Rf · Stage 22",
+      "domain": "analog_mixed_signal_rf",
+      "band": 21,
+      "depth_min": 63,
+      "depth_max": 64,
+      "subdomains": [
+        "analog_mixed_signal_rf.conv",
+        "analog_mixed_signal_rf.layout",
+        "analog_mixed_signal_rf.ms",
+        "analog_mixed_signal_rf.size",
+        "analog_mixed_signal_rf.special"
+      ],
+      "concept_ids": [
+        "analog.conv.enob_fom",
+        "analog.conv.sampling",
+        "analog.layout.parasitics",
+        "analog.ms.open_flow",
+        "analog.ms.real_number",
+        "analog.ms.verilog_a",
+        "analog.size.bayesian_opt",
+        "analog.size.equation_based",
+        "analog.size.pvt_robustness",
+        "analog.special.mems"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "analog_mixed_signal_rf.b28",
+      "title": "Analog Mixed Signal Rf · Stage 29",
+      "domain": "analog_mixed_signal_rf",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "analog_mixed_signal_rf.frontier"
+      ],
+      "concept_ids": [
+        "analog.frontier.layout_agent",
+        "analog.frontier.migration_agent"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "analog_mixed_signal_rf.b29",
+      "title": "Analog Mixed Signal Rf · Stage 30",
+      "domain": "analog_mixed_signal_rf",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "analog_mixed_signal_rf.frontier"
+      ],
+      "concept_ids": [
+        "analog.frontier.reward",
+        "analog.frontier.sizing_agent"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "analog_mixed_signal_rf.b31",
+      "title": "Analog Mixed Signal Rf · Stage 32",
+      "domain": "analog_mixed_signal_rf",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "analog_mixed_signal_rf.frontier"
+      ],
+      "concept_ids": [
+        "analog.frontier.surrogate_spice"
+      ],
+      "concept_count": 1
+    },
+    {
       "id": "arithmetic.b0",
       "title": "Arithmetic · Stage 1",
       "domain": "arithmetic",
@@ -515,6 +872,186 @@
         "arith.word.multi_step"
       ],
       "concept_count": 20
+    },
+    {
+      "id": "boolean_reasoning.b5",
+      "title": "Boolean Reasoning · Stage 6",
+      "domain": "boolean_reasoning",
+      "band": 5,
+      "depth_min": 17,
+      "depth_max": 17,
+      "subdomains": [
+        "boolean_reasoning.func"
+      ],
+      "concept_ids": [
+        "boolalg.func.truth_table"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "boolean_reasoning.b6",
+      "title": "Boolean Reasoning · Stage 7",
+      "domain": "boolean_reasoning",
+      "band": 6,
+      "depth_min": 19,
+      "depth_max": 20,
+      "subdomains": [
+        "boolean_reasoning.cover",
+        "boolean_reasoning.func",
+        "boolean_reasoning.order",
+        "boolean_reasoning.repr"
+      ],
+      "concept_ids": [
+        "boolalg.cover.cubes",
+        "boolalg.func.boolean_difference",
+        "boolalg.func.cofactor",
+        "boolalg.func.quantification",
+        "boolalg.func.symmetry",
+        "boolalg.func.unateness",
+        "boolalg.order.boolean_lattice",
+        "boolalg.repr.bitparallel",
+        "boolalg.repr.hash_consing"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "boolean_reasoning.b7",
+      "title": "Boolean Reasoning · Stage 8",
+      "domain": "boolean_reasoning",
+      "band": 7,
+      "depth_min": 21,
+      "depth_max": 23,
+      "subdomains": [
+        "boolean_reasoning.cnf",
+        "boolean_reasoning.cover",
+        "boolean_reasoning.decomp",
+        "boolean_reasoning.order"
+      ],
+      "concept_ids": [
+        "boolalg.cnf.clauses",
+        "boolalg.cnf.csp",
+        "boolalg.cnf.model_count",
+        "boolalg.cnf.resolution",
+        "boolalg.cnf.tseitin",
+        "boolalg.cover.essential_primes",
+        "boolalg.cover.implicants",
+        "boolalg.cover.sop_pos",
+        "boolalg.cover.tautology",
+        "boolalg.decomp.disjoint",
+        "boolalg.decomp.support",
+        "boolalg.order.monotone"
+      ],
+      "concept_count": 12
+    },
+    {
+      "id": "boolean_reasoning.b8",
+      "title": "Boolean Reasoning · Stage 9",
+      "domain": "boolean_reasoning",
+      "band": 8,
+      "depth_min": 24,
+      "depth_max": 25,
+      "subdomains": [
+        "boolean_reasoning.cnf",
+        "boolean_reasoning.cover"
+      ],
+      "concept_ids": [
+        "boolalg.cnf.tractable",
+        "boolalg.cover.dont_cares",
+        "boolalg.cover.min_cover"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "boolean_reasoning.b9",
+      "title": "Boolean Reasoning · Stage 10",
+      "domain": "boolean_reasoning",
+      "band": 9,
+      "depth_min": 28,
+      "depth_max": 29,
+      "subdomains": [
+        "boolean_reasoning.algo",
+        "boolean_reasoning.complexity",
+        "boolean_reasoning.func",
+        "boolean_reasoning.order",
+        "boolean_reasoning.repr"
+      ],
+      "concept_ids": [
+        "boolalg.algo.amortized",
+        "boolalg.algo.analysis",
+        "boolalg.algo.randomized",
+        "boolalg.complexity.p_np",
+        "boolalg.func.shannon",
+        "boolalg.order.fixpoint",
+        "boolalg.repr.decision_diagram"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "boolean_reasoning.b10",
+      "title": "Boolean Reasoning · Stage 11",
+      "domain": "boolean_reasoning",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 32,
+      "subdomains": [
+        "boolean_reasoning.complexity"
+      ],
+      "concept_ids": [
+        "boolalg.complexity.approximation",
+        "boolalg.complexity.graph_reductions",
+        "boolalg.complexity.np_complete",
+        "boolalg.complexity.parameterized",
+        "boolalg.complexity.reduction",
+        "boolalg.complexity.sat_to_3sat"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "boolean_reasoning.b28",
+      "title": "Boolean Reasoning · Stage 29",
+      "domain": "boolean_reasoning",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "boolean_reasoning.frontier"
+      ],
+      "concept_ids": [
+        "boolalg.frontier.change_tiers",
+        "boolalg.frontier.reasoning_tools"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "boolean_reasoning.b29",
+      "title": "Boolean Reasoning · Stage 30",
+      "domain": "boolean_reasoning",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "boolean_reasoning.frontier"
+      ],
+      "concept_ids": [
+        "boolalg.frontier.equivalence_golden",
+        "boolalg.frontier.tool_grounded_reward"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "boolean_reasoning.b31",
+      "title": "Boolean Reasoning · Stage 32",
+      "domain": "boolean_reasoning",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "boolean_reasoning.frontier"
+      ],
+      "concept_ids": [
+        "boolalg.frontier.fast_exact_modes"
+      ],
+      "concept_count": 1
     },
     {
       "id": "calculus.b8",
@@ -812,6 +1349,753 @@
       "concept_count": 61
     },
     {
+      "id": "circuit_simulation.b13",
+      "title": "Circuit Simulation · Stage 14",
+      "domain": "circuit_simulation",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "circuit_simulation.mna",
+        "circuit_simulation.tool"
+      ],
+      "concept_ids": [
+        "csim.mna.current_sources",
+        "csim.mna.stamps",
+        "csim.tool.scale_suffixes",
+        "csim.tool.spice_netlist"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "circuit_simulation.b14",
+      "title": "Circuit Simulation · Stage 15",
+      "domain": "circuit_simulation",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "circuit_simulation.dc",
+        "circuit_simulation.mna",
+        "circuit_simulation.mor",
+        "circuit_simulation.var"
+      ],
+      "concept_ids": [
+        "csim.dc.op_reduction",
+        "csim.mna.solve_small",
+        "csim.mna.structure",
+        "csim.mna.vccs",
+        "csim.mna.vcvs",
+        "csim.mna.voltage_sources",
+        "csim.mor.moments",
+        "csim.var.sensitivity"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "circuit_simulation.b15",
+      "title": "Circuit Simulation · Stage 16",
+      "domain": "circuit_simulation",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 47,
+      "subdomains": [
+        "circuit_simulation.ac",
+        "circuit_simulation.mor",
+        "circuit_simulation.tran",
+        "circuit_simulation.var"
+      ],
+      "concept_ids": [
+        "csim.ac.complex_mna",
+        "csim.mor.awe",
+        "csim.mor.prima",
+        "csim.tran.be_step",
+        "csim.tran.companion_c",
+        "csim.tran.companion_l",
+        "csim.tran.dae",
+        "csim.var.adjoint"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "circuit_simulation.b16",
+      "title": "Circuit Simulation · Stage 17",
+      "domain": "circuit_simulation",
+      "band": 16,
+      "depth_min": 48,
+      "depth_max": 50,
+      "subdomains": [
+        "circuit_simulation.dc",
+        "circuit_simulation.pss",
+        "circuit_simulation.tran"
+      ],
+      "concept_ids": [
+        "csim.dc.damping",
+        "csim.dc.diode_companion",
+        "csim.dc.gmin_stepping",
+        "csim.dc.junction_limiting",
+        "csim.dc.newton_companion",
+        "csim.dc.newton_convergence",
+        "csim.pss.harmonic_balance",
+        "csim.pss.shooting",
+        "csim.tran.gear_bdf",
+        "csim.tran.lte_estimate",
+        "csim.tran.timestep_control",
+        "csim.tran.trap_ringing",
+        "csim.tran.trap_step"
+      ],
+      "concept_count": 13
+    },
+    {
+      "id": "circuit_simulation.b17",
+      "title": "Circuit Simulation · Stage 18",
+      "domain": "circuit_simulation",
+      "band": 17,
+      "depth_min": 51,
+      "depth_max": 53,
+      "subdomains": [
+        "circuit_simulation.dc",
+        "circuit_simulation.fast",
+        "circuit_simulation.tool",
+        "circuit_simulation.tran",
+        "circuit_simulation.var"
+      ],
+      "concept_ids": [
+        "csim.dc.convergence_aids",
+        "csim.dc.mosfet_linearization",
+        "csim.fast.mixed_signal",
+        "csim.fast.multirate",
+        "csim.tool.ngspice_xyce",
+        "csim.tran.breakpoints",
+        "csim.var.mismatch",
+        "csim.var.monte_carlo_corners"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "circuit_simulation.b18",
+      "title": "Circuit Simulation · Stage 19",
+      "domain": "circuit_simulation",
+      "band": 18,
+      "depth_min": 54,
+      "depth_max": 56,
+      "subdomains": [
+        "circuit_simulation.ac",
+        "circuit_simulation.mor",
+        "circuit_simulation.var"
+      ],
+      "concept_ids": [
+        "csim.ac.linearize_op",
+        "csim.ac.noise",
+        "csim.ac.small_signal",
+        "csim.mor.macromodel",
+        "csim.var.process_corners"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "circuit_simulation.b19",
+      "title": "Circuit Simulation · Stage 20",
+      "domain": "circuit_simulation",
+      "band": 19,
+      "depth_min": 57,
+      "depth_max": 58,
+      "subdomains": [
+        "circuit_simulation.fast",
+        "circuit_simulation.pss",
+        "circuit_simulation.tool"
+      ],
+      "concept_ids": [
+        "csim.fast.table_models",
+        "csim.pss.rf_methods",
+        "csim.tool.model_cards"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "circuit_simulation.b28",
+      "title": "Circuit Simulation · Stage 29",
+      "domain": "circuit_simulation",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 85,
+      "subdomains": [
+        "circuit_simulation.frontier"
+      ],
+      "concept_ids": [
+        "csim.frontier.convergence_agent",
+        "csim.frontier.option_tiers"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "circuit_simulation.b29",
+      "title": "Circuit Simulation · Stage 30",
+      "domain": "circuit_simulation",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "circuit_simulation.frontier"
+      ],
+      "concept_ids": [
+        "csim.frontier.device_seam",
+        "csim.frontier.surrogate_check"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "circuit_simulation.b31",
+      "title": "Circuit Simulation · Stage 32",
+      "domain": "circuit_simulation",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "circuit_simulation.frontier"
+      ],
+      "concept_ids": [
+        "csim.frontier.fast_accurate_sizing"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "circuits_and_electromagnetics.b11",
+      "title": "Circuits And Electromagnetics · Stage 12",
+      "domain": "circuits_and_electromagnetics",
+      "band": 11,
+      "depth_min": 35,
+      "depth_max": 35,
+      "subdomains": [
+        "circuits_and_electromagnetics.circuit"
+      ],
+      "concept_ids": [
+        "em.circuit.charge_current_voltage"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "circuits_and_electromagnetics.b12",
+      "title": "Circuits And Electromagnetics · Stage 13",
+      "domain": "circuits_and_electromagnetics",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "circuits_and_electromagnetics.ac",
+        "circuits_and_electromagnetics.circuit",
+        "circuits_and_electromagnetics.field"
+      ],
+      "concept_ids": [
+        "em.ac.impedance",
+        "em.ac.phasors",
+        "em.circuit.capacitor_inductor",
+        "em.circuit.kcl_kvl",
+        "em.circuit.mesh_analysis",
+        "em.circuit.nodal_analysis",
+        "em.circuit.resistor_networks",
+        "em.field.wire_resistance"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "circuits_and_electromagnetics.b13",
+      "title": "Circuits And Electromagnetics · Stage 14",
+      "domain": "circuits_and_electromagnetics",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "circuits_and_electromagnetics.circuit",
+        "circuits_and_electromagnetics.emc",
+        "circuits_and_electromagnetics.field",
+        "circuits_and_electromagnetics.solver",
+        "circuits_and_electromagnetics.tline"
+      ],
+      "concept_ids": [
+        "em.circuit.mna_stamps",
+        "em.circuit.rc_time_constant",
+        "em.circuit.rise_time",
+        "em.circuit.rlc",
+        "em.circuit.thevenin_norton",
+        "em.emc.return_path",
+        "em.field.dielectric_loss",
+        "em.field.electrostatics_capacitance",
+        "em.field.fringe_capacitance",
+        "em.field.inductance",
+        "em.field.maxwell_equations",
+        "em.field.skin_effect",
+        "em.solver.finite_difference",
+        "em.tline.telegrapher"
+      ],
+      "concept_count": 14
+    },
+    {
+      "id": "circuits_and_electromagnetics.b14",
+      "title": "Circuits And Electromagnetics · Stage 15",
+      "domain": "circuits_and_electromagnetics",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "circuits_and_electromagnetics.ac",
+        "circuits_and_electromagnetics.circuit",
+        "circuits_and_electromagnetics.emc",
+        "circuits_and_electromagnetics.field",
+        "circuits_and_electromagnetics.signal",
+        "circuits_and_electromagnetics.solver",
+        "circuits_and_electromagnetics.tline"
+      ],
+      "concept_ids": [
+        "em.ac.resonance",
+        "em.circuit.distributed_rc",
+        "em.emc.ground_bounce",
+        "em.emc.shielding_grounding",
+        "em.field.coupling_capacitance",
+        "em.field.quasi_static",
+        "em.signal.bode",
+        "em.signal.fourier_spectrum",
+        "em.signal.laplace_transfer",
+        "em.signal.lti_convolution",
+        "em.signal.moment_matching",
+        "em.signal.poles_zeros",
+        "em.signal.z_transform",
+        "em.solver.method_of_moments",
+        "em.tline.bounce_diagram",
+        "em.tline.input_impedance",
+        "em.tline.lossy_line",
+        "em.tline.propagation_delay",
+        "em.tline.reflection",
+        "em.tline.s_parameters",
+        "em.tline.termination"
+      ],
+      "concept_count": 21
+    },
+    {
+      "id": "circuits_and_electromagnetics.b15",
+      "title": "Circuits And Electromagnetics · Stage 16",
+      "domain": "circuits_and_electromagnetics",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 46,
+      "subdomains": [
+        "circuits_and_electromagnetics.signal",
+        "circuits_and_electromagnetics.solver"
+      ],
+      "concept_ids": [
+        "em.signal.feedback_stability",
+        "em.solver.capacitance_matrix",
+        "em.solver.fdtd",
+        "em.solver.method_selection"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "circuits_and_electromagnetics.b28",
+      "title": "Circuits And Electromagnetics · Stage 29",
+      "domain": "circuits_and_electromagnetics",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "circuits_and_electromagnetics.frontier"
+      ],
+      "concept_ids": [
+        "em.frontier.calibration_tier",
+        "em.frontier.solver_as_tool"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "circuits_and_electromagnetics.b29",
+      "title": "Circuits And Electromagnetics · Stage 30",
+      "domain": "circuits_and_electromagnetics",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "circuits_and_electromagnetics.frontier"
+      ],
+      "concept_ids": [
+        "em.frontier.differential_check",
+        "em.frontier.tool_grounded_reward"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "circuits_and_electromagnetics.b31",
+      "title": "Circuits And Electromagnetics · Stage 32",
+      "domain": "circuits_and_electromagnetics",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "circuits_and_electromagnetics.frontier"
+      ],
+      "concept_ids": [
+        "em.frontier.fast_accurate_modes"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "clock_and_power.b18",
+      "title": "Clock And Power · Stage 19",
+      "domain": "clock_and_power",
+      "band": 18,
+      "depth_min": 54,
+      "depth_max": 55,
+      "subdomains": [
+        "clock_and_power.analysis"
+      ],
+      "concept_ids": [
+        "cts.analysis.activity_propagation",
+        "cts.analysis.transition_density"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "clock_and_power.b23",
+      "title": "Clock And Power · Stage 24",
+      "domain": "clock_and_power",
+      "band": 23,
+      "depth_min": 70,
+      "depth_max": 71,
+      "subdomains": [
+        "clock_and_power.objective",
+        "clock_and_power.skew",
+        "clock_and_power.topology"
+      ],
+      "concept_ids": [
+        "cts.objective.clock_power",
+        "cts.objective.clock_slew",
+        "cts.objective.skew_latency",
+        "cts.skew.useful_skew",
+        "cts.topology.h_tree",
+        "cts.topology.tree_skew"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "clock_and_power.b24",
+      "title": "Clock And Power · Stage 25",
+      "domain": "clock_and_power",
+      "band": 24,
+      "depth_min": 72,
+      "depth_max": 74,
+      "subdomains": [
+        "clock_and_power.buffered",
+        "clock_and_power.gating",
+        "clock_and_power.skew",
+        "clock_and_power.topology",
+        "clock_and_power.zeroskew"
+      ],
+      "concept_ids": [
+        "cts.buffered.buffer_levels",
+        "cts.buffered.duty_cycle",
+        "cts.buffered.slew_wire_length",
+        "cts.gating.enable_timing",
+        "cts.gating.icg",
+        "cts.gating.power_savings",
+        "cts.skew.difference_constraints",
+        "cts.skew.scheduling_lp",
+        "cts.topology.mesh",
+        "cts.topology.spine_hybrid",
+        "cts.zeroskew.dme",
+        "cts.zeroskew.linear_merge",
+        "cts.zeroskew.merging_segment",
+        "cts.zeroskew.topology_generation",
+        "cts.zeroskew.tsay_merge"
+      ],
+      "concept_count": 15
+    },
+    {
+      "id": "clock_and_power.b25",
+      "title": "Clock And Power · Stage 26",
+      "domain": "clock_and_power",
+      "band": 25,
+      "depth_min": 75,
+      "depth_max": 77,
+      "subdomains": [
+        "clock_and_power.pdn",
+        "clock_and_power.zeroskew"
+      ],
+      "concept_ids": [
+        "cts.pdn.grid",
+        "cts.zeroskew.bounded_skew"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "clock_and_power.b26",
+      "title": "Clock And Power · Stage 27",
+      "domain": "clock_and_power",
+      "band": 26,
+      "depth_min": 78,
+      "depth_max": 80,
+      "subdomains": [
+        "clock_and_power.buffered",
+        "clock_and_power.lowpower",
+        "clock_and_power.pdn"
+      ],
+      "concept_ids": [
+        "cts.buffered.cts_flow",
+        "cts.buffered.latency_balancing",
+        "cts.lowpower.multi_voltage",
+        "cts.lowpower.power_gating",
+        "cts.lowpower.upf",
+        "cts.pdn.conductance_matrix",
+        "cts.pdn.ir_drop",
+        "cts.pdn.rail_ladder",
+        "cts.pdn.strap_pitch"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "clock_and_power.b27",
+      "title": "Clock And Power · Stage 28",
+      "domain": "clock_and_power",
+      "band": 27,
+      "depth_min": 81,
+      "depth_max": 83,
+      "subdomains": [
+        "clock_and_power.analysis",
+        "clock_and_power.lowpower",
+        "clock_and_power.pdn"
+      ],
+      "concept_ids": [
+        "cts.analysis.vector_vs_vectorless",
+        "cts.lowpower.isolation_level_shift",
+        "cts.lowpower.rush_current",
+        "cts.lowpower.switch_sizing",
+        "cts.pdn.black_equation",
+        "cts.pdn.decap",
+        "cts.pdn.dynamic_ir",
+        "cts.pdn.electromigration",
+        "cts.pdn.iterative_solve",
+        "cts.pdn.ldi_dt"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "clock_and_power.b28",
+      "title": "Clock And Power · Stage 29",
+      "domain": "clock_and_power",
+      "band": 28,
+      "depth_min": 86,
+      "depth_max": 86,
+      "subdomains": [
+        "clock_and_power.frontier"
+      ],
+      "concept_ids": [
+        "cts.frontier.cts_policy_plugin"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "clock_and_power.b29",
+      "title": "Clock And Power · Stage 30",
+      "domain": "clock_and_power",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "clock_and_power.frontier"
+      ],
+      "concept_ids": [
+        "cts.frontier.golden_ir",
+        "cts.frontier.pdn_reward"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "clock_and_power.b30",
+      "title": "Clock And Power · Stage 31",
+      "domain": "clock_and_power",
+      "band": 30,
+      "depth_min": 91,
+      "depth_max": 91,
+      "subdomains": [
+        "clock_and_power.frontier"
+      ],
+      "concept_ids": [
+        "cts.frontier.ir_eco_loop"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "clock_and_power.b31",
+      "title": "Clock And Power · Stage 32",
+      "domain": "clock_and_power",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "clock_and_power.frontier"
+      ],
+      "concept_ids": [
+        "cts.frontier.fast_accurate_pdn"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "cmos_circuits_and_cells.b17",
+      "title": "Cmos Circuits And Cells · Stage 18",
+      "domain": "cmos_circuits_and_cells",
+      "band": 17,
+      "depth_min": 51,
+      "depth_max": 53,
+      "subdomains": [
+        "cmos_circuits_and_cells.delay",
+        "cmos_circuits_and_cells.gate",
+        "cmos_circuits_and_cells.power",
+        "cmos_circuits_and_cells.seq"
+      ],
+      "concept_ids": [
+        "cmos.delay.rc_model",
+        "cmos.gate.inverter_vtc",
+        "cmos.gate.static_cmos",
+        "cmos.gate.switch_model",
+        "cmos.gate.transistor_count",
+        "cmos.gate.transmission_gate",
+        "cmos.power.dynamic",
+        "cmos.seq.latch_circuits"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "cmos_circuits_and_cells.b18",
+      "title": "Cmos Circuits And Cells · Stage 19",
+      "domain": "cmos_circuits_and_cells",
+      "band": 18,
+      "depth_min": 54,
+      "depth_max": 56,
+      "subdomains": [
+        "cmos_circuits_and_cells.delay",
+        "cmos_circuits_and_cells.gate",
+        "cmos_circuits_and_cells.power",
+        "cmos_circuits_and_cells.seq",
+        "cmos_circuits_and_cells.special"
+      ],
+      "concept_ids": [
+        "cmos.delay.equal_rise_fall",
+        "cmos.delay.logical_effort",
+        "cmos.delay.parasitic_delay",
+        "cmos.delay.stack_elmore",
+        "cmos.gate.aoi_oai",
+        "cmos.gate.dynamic_logic",
+        "cmos.gate.noise_margins",
+        "cmos.power.activity_factor",
+        "cmos.power.energy_per_op",
+        "cmos.power.leakage",
+        "cmos.seq.clock_gating_cell",
+        "cmos.seq.metastability",
+        "cmos.seq.setup_hold_characterization",
+        "cmos.special.lowpower_cells",
+        "cmos.special.power_gating"
+      ],
+      "concept_count": 15
+    },
+    {
+      "id": "cmos_circuits_and_cells.b19",
+      "title": "Cmos Circuits And Cells · Stage 20",
+      "domain": "cmos_circuits_and_cells",
+      "band": 19,
+      "depth_min": 57,
+      "depth_max": 59,
+      "subdomains": [
+        "cmos_circuits_and_cells.cell",
+        "cmos_circuits_and_cells.delay",
+        "cmos_circuits_and_cells.lib",
+        "cmos_circuits_and_cells.power",
+        "cmos_circuits_and_cells.special"
+      ],
+      "concept_ids": [
+        "cmos.cell.drive_strength",
+        "cmos.cell.library_views",
+        "cmos.cell.row_arithmetic",
+        "cmos.cell.standard_cell_layout",
+        "cmos.delay.fo4",
+        "cmos.delay.optimal_stages",
+        "cmos.delay.path_effort",
+        "cmos.delay.path_sizing",
+        "cmos.delay.slew_dependence",
+        "cmos.delay.stage_delay",
+        "cmos.lib.liberty_structure",
+        "cmos.power.multi_vt",
+        "cmos.power.short_circuit",
+        "cmos.special.physical_cells"
+      ],
+      "concept_count": 14
+    },
+    {
+      "id": "cmos_circuits_and_cells.b20",
+      "title": "Cmos Circuits And Cells · Stage 21",
+      "domain": "cmos_circuits_and_cells",
+      "band": 20,
+      "depth_min": 60,
+      "depth_max": 62,
+      "subdomains": [
+        "cmos_circuits_and_cells.lib"
+      ],
+      "concept_ids": [
+        "cmos.lib.characterization",
+        "cmos.lib.corners",
+        "cmos.lib.liberty_ccs_lvf",
+        "cmos.lib.liberty_nldm",
+        "cmos.lib.nldm_abstraction",
+        "cmos.lib.power_noise_views",
+        "cmos.lib.sequential_arcs"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "cmos_circuits_and_cells.b28",
+      "title": "Cmos Circuits And Cells · Stage 29",
+      "domain": "cmos_circuits_and_cells",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 85,
+      "subdomains": [
+        "cmos_circuits_and_cells.frontier"
+      ],
+      "concept_ids": [
+        "cmos.frontier.characterization_skill",
+        "cmos.frontier.dtco_cell_agent"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "cmos_circuits_and_cells.b29",
+      "title": "Cmos Circuits And Cells · Stage 30",
+      "domain": "cmos_circuits_and_cells",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "cmos_circuits_and_cells.frontier"
+      ],
+      "concept_ids": [
+        "cmos.frontier.golden_spice_check",
+        "cmos.frontier.library_reward"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "cmos_circuits_and_cells.b31",
+      "title": "Cmos Circuits And Cells · Stage 32",
+      "domain": "cmos_circuits_and_cells",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "cmos_circuits_and_cells.frontier"
+      ],
+      "concept_ids": [
+        "cmos.frontier.fast_char_surrogate"
+      ],
+      "concept_count": 1
+    },
+    {
       "id": "complex_numbers.b3",
       "title": "Complex Numbers · Stage 4",
       "domain": "complex_numbers",
@@ -958,6 +2242,181 @@
       "concept_count": 4
     },
     {
+      "id": "computational_geometry.b8",
+      "title": "Computational Geometry · Stage 9",
+      "domain": "computational_geometry",
+      "band": 8,
+      "depth_min": 24,
+      "depth_max": 26,
+      "subdomains": [
+        "computational_geometry.index",
+        "computational_geometry.poly",
+        "computational_geometry.rect"
+      ],
+      "concept_ids": [
+        "geom.index.kd_tree",
+        "geom.poly.boolean_ops",
+        "geom.rect.bbox",
+        "geom.rect.exact_arithmetic",
+        "geom.rect.manhattan",
+        "geom.rect.orientation",
+        "geom.rect.spacing"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "computational_geometry.b9",
+      "title": "Computational Geometry · Stage 10",
+      "domain": "computational_geometry",
+      "band": 9,
+      "depth_min": 27,
+      "depth_max": 29,
+      "subdomains": [
+        "computational_geometry.index",
+        "computational_geometry.layout",
+        "computational_geometry.poly",
+        "computational_geometry.sweep"
+      ],
+      "concept_ids": [
+        "geom.index.interval_tree",
+        "geom.index.quadtree",
+        "geom.layout.parallel_run",
+        "geom.layout.width_check",
+        "geom.poly.minkowski",
+        "geom.poly.sizing",
+        "geom.sweep.overlap_pairs",
+        "geom.sweep.plane_sweep",
+        "geom.sweep.point_location",
+        "geom.sweep.segment_intersection",
+        "geom.sweep.union_area"
+      ],
+      "concept_count": 11
+    },
+    {
+      "id": "computational_geometry.b10",
+      "title": "Computational Geometry · Stage 11",
+      "domain": "computational_geometry",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 32,
+      "subdomains": [
+        "computational_geometry.index",
+        "computational_geometry.layout"
+      ],
+      "concept_ids": [
+        "geom.index.rtree",
+        "geom.index.rtree_split",
+        "geom.index.segment_tree",
+        "geom.index.selection",
+        "geom.index.uniform_grid",
+        "geom.layout.connectivity",
+        "geom.layout.density",
+        "geom.layout.hierarchy",
+        "geom.layout.spacing_check"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "computational_geometry.b11",
+      "title": "Computational Geometry · Stage 12",
+      "domain": "computational_geometry",
+      "band": 11,
+      "depth_min": 35,
+      "depth_max": 35,
+      "subdomains": [
+        "computational_geometry.poly"
+      ],
+      "concept_ids": [
+        "geom.poly.shoelace"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "computational_geometry.b12",
+      "title": "Computational Geometry · Stage 13",
+      "domain": "computational_geometry",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "computational_geometry.decomp",
+        "computational_geometry.poly",
+        "computational_geometry.prox"
+      ],
+      "concept_ids": [
+        "geom.decomp.rectangles",
+        "geom.decomp.slab",
+        "geom.poly.offset_area",
+        "geom.poly.point_in_polygon",
+        "geom.poly.representation",
+        "geom.prox.convex_hull",
+        "geom.prox.delaunay",
+        "geom.prox.voronoi"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "computational_geometry.b27",
+      "title": "Computational Geometry · Stage 28",
+      "domain": "computational_geometry",
+      "band": 27,
+      "depth_min": 83,
+      "depth_max": 83,
+      "subdomains": [
+        "computational_geometry.frontier"
+      ],
+      "concept_ids": [
+        "geom.frontier.kernel_core"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "computational_geometry.b28",
+      "title": "Computational Geometry · Stage 29",
+      "domain": "computational_geometry",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "computational_geometry.frontier"
+      ],
+      "concept_ids": [
+        "geom.frontier.change_tiers",
+        "geom.frontier.spatial_query_tool"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "computational_geometry.b29",
+      "title": "Computational Geometry · Stage 30",
+      "domain": "computational_geometry",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "computational_geometry.frontier"
+      ],
+      "concept_ids": [
+        "geom.frontier.differential_check"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "computational_geometry.b31",
+      "title": "Computational Geometry · Stage 32",
+      "domain": "computational_geometry",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "computational_geometry.frontier"
+      ],
+      "concept_ids": [
+        "geom.frontier.parallel_tiling"
+      ],
+      "concept_count": 1
+    },
+    {
       "id": "differential_equations.b11",
       "title": "Differential Equations · Stage 12",
       "domain": "differential_equations",
@@ -1065,6 +2524,226 @@
         "ode.transforms.fourier"
       ],
       "concept_count": 8
+    },
+    {
+      "id": "digital_logic_design.b3",
+      "title": "Digital Logic Design · Stage 4",
+      "domain": "digital_logic_design",
+      "band": 3,
+      "depth_min": 10,
+      "depth_max": 11,
+      "subdomains": [
+        "digital_logic_design.number"
+      ],
+      "concept_ids": [
+        "logic.number.fixed_point",
+        "logic.number.overflow",
+        "logic.number.twos_complement"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "digital_logic_design.b4",
+      "title": "Digital Logic Design · Stage 5",
+      "domain": "digital_logic_design",
+      "band": 4,
+      "depth_min": 12,
+      "depth_max": 12,
+      "subdomains": [
+        "digital_logic_design.number"
+      ],
+      "concept_ids": [
+        "logic.number.floating_point"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "digital_logic_design.b5",
+      "title": "Digital Logic Design · Stage 6",
+      "domain": "digital_logic_design",
+      "band": 5,
+      "depth_min": 16,
+      "depth_max": 16,
+      "subdomains": [
+        "digital_logic_design.number"
+      ],
+      "concept_ids": [
+        "logic.number.gray_code"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "digital_logic_design.b6",
+      "title": "Digital Logic Design · Stage 7",
+      "domain": "digital_logic_design",
+      "band": 6,
+      "depth_min": 18,
+      "depth_max": 20,
+      "subdomains": [
+        "digital_logic_design.arith",
+        "digital_logic_design.comb"
+      ],
+      "concept_ids": [
+        "logic.arith.full_adder",
+        "logic.comb.decoder",
+        "logic.comb.encoder",
+        "logic.comb.gates_mux"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "digital_logic_design.b8",
+      "title": "Digital Logic Design · Stage 9",
+      "domain": "digital_logic_design",
+      "band": 8,
+      "depth_min": 24,
+      "depth_max": 26,
+      "subdomains": [
+        "digital_logic_design.arith",
+        "digital_logic_design.comb"
+      ],
+      "concept_ids": [
+        "logic.arith.carry_lookahead",
+        "logic.arith.multiplier",
+        "logic.arith.ripple_carry",
+        "logic.arith.subtract_compare",
+        "logic.comb.gate_delay",
+        "logic.comb.hazards"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "digital_logic_design.b9",
+      "title": "Digital Logic Design · Stage 10",
+      "domain": "digital_logic_design",
+      "band": 9,
+      "depth_min": 27,
+      "depth_max": 29,
+      "subdomains": [
+        "digital_logic_design.arch",
+        "digital_logic_design.arith",
+        "digital_logic_design.comb",
+        "digital_logic_design.fsm",
+        "digital_logic_design.mem",
+        "digital_logic_design.seq"
+      ],
+      "concept_ids": [
+        "logic.arch.cache_organization",
+        "logic.arith.booth",
+        "logic.arith.kogge_brent",
+        "logic.arith.prefix_adder",
+        "logic.arith.wallace_dadda",
+        "logic.comb.mux_shannon",
+        "logic.fsm.moore_mealy",
+        "logic.mem.cam",
+        "logic.mem.dram",
+        "logic.mem.register_file",
+        "logic.mem.sram",
+        "logic.seq.flip_flop_timing",
+        "logic.seq.latch_ff",
+        "logic.seq.max_frequency",
+        "logic.seq.metastability",
+        "logic.seq.registers",
+        "logic.seq.synchronous_design"
+      ],
+      "concept_count": 17
+    },
+    {
+      "id": "digital_logic_design.b10",
+      "title": "Digital Logic Design · Stage 11",
+      "domain": "digital_logic_design",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 32,
+      "subdomains": [
+        "digital_logic_design.arch",
+        "digital_logic_design.arith",
+        "digital_logic_design.comb",
+        "digital_logic_design.fsm",
+        "digital_logic_design.mem",
+        "digital_logic_design.seq"
+      ],
+      "concept_ids": [
+        "logic.arch.cache_performance",
+        "logic.arch.datapath_control",
+        "logic.arch.performance_equation",
+        "logic.arch.pipelining",
+        "logic.arith.carry_select",
+        "logic.comb.shifter",
+        "logic.fsm.encoding",
+        "logic.fsm.minimization",
+        "logic.fsm.next_state_logic",
+        "logic.fsm.reset_states",
+        "logic.fsm.state_diagram",
+        "logic.mem.macros_nvm",
+        "logic.seq.cdc",
+        "logic.seq.counters",
+        "logic.seq.synchronizer_mtbf"
+      ],
+      "concept_count": 15
+    },
+    {
+      "id": "digital_logic_design.b11",
+      "title": "Digital Logic Design · Stage 12",
+      "domain": "digital_logic_design",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 34,
+      "subdomains": [
+        "digital_logic_design.arch"
+      ],
+      "concept_ids": [
+        "logic.arch.branch_prediction",
+        "logic.arch.hazards"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "digital_logic_design.b28",
+      "title": "Digital Logic Design · Stage 29",
+      "domain": "digital_logic_design",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "digital_logic_design.frontier"
+      ],
+      "concept_ids": [
+        "logic.frontier.generator_tiers",
+        "logic.frontier.spec_to_rtl"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "digital_logic_design.b29",
+      "title": "Digital Logic Design · Stage 30",
+      "domain": "digital_logic_design",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "digital_logic_design.frontier"
+      ],
+      "concept_ids": [
+        "logic.frontier.golden_checks",
+        "logic.frontier.rtl_reward"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "digital_logic_design.b31",
+      "title": "Digital Logic Design · Stage 32",
+      "domain": "digital_logic_design",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "digital_logic_design.frontier"
+      ],
+      "concept_ids": [
+        "logic.frontier.arith_dse"
+      ],
+      "concept_count": 1
     },
     {
       "id": "discrete_math.b1",
@@ -1245,6 +2924,1710 @@
       "concept_count": 7
     },
     {
+      "id": "eda_graph_algorithms.b5",
+      "title": "Eda Graph Algorithms · Stage 6",
+      "domain": "eda_graph_algorithms",
+      "band": 5,
+      "depth_min": 17,
+      "depth_max": 17,
+      "subdomains": [
+        "eda_graph_algorithms.path"
+      ],
+      "concept_ids": [
+        "graphs.path.grid_graph"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_graph_algorithms.b6",
+      "title": "Eda Graph Algorithms · Stage 7",
+      "domain": "eda_graph_algorithms",
+      "band": 6,
+      "depth_min": 19,
+      "depth_max": 20,
+      "subdomains": [
+        "eda_graph_algorithms.model",
+        "eda_graph_algorithms.partition",
+        "eda_graph_algorithms.path"
+      ],
+      "concept_ids": [
+        "graphs.model.csr",
+        "graphs.model.hypergraph",
+        "graphs.model.net_models",
+        "graphs.model.pin_graph",
+        "graphs.partition.cut_size",
+        "graphs.path.bfs_maze",
+        "graphs.path.dijkstra"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "eda_graph_algorithms.b7",
+      "title": "Eda Graph Algorithms · Stage 8",
+      "domain": "eda_graph_algorithms",
+      "band": 7,
+      "depth_min": 21,
+      "depth_max": 23,
+      "subdomains": [
+        "eda_graph_algorithms.dag",
+        "eda_graph_algorithms.flow",
+        "eda_graph_algorithms.partition",
+        "eda_graph_algorithms.path",
+        "eda_graph_algorithms.spectral",
+        "eda_graph_algorithms.steiner"
+      ],
+      "concept_ids": [
+        "graphs.dag.topo_sort",
+        "graphs.flow.max_flow_min_cut",
+        "graphs.partition.balance",
+        "graphs.partition.clique_distortion",
+        "graphs.partition.coarsen_matching",
+        "graphs.partition.fm_gain",
+        "graphs.partition.kl_gain",
+        "graphs.path.astar",
+        "graphs.path.bellman_ford",
+        "graphs.spectral.laplacian",
+        "graphs.steiner.hanan",
+        "graphs.steiner.mst",
+        "graphs.steiner.rsmt",
+        "graphs.steiner.scan_tsp"
+      ],
+      "concept_count": 14
+    },
+    {
+      "id": "eda_graph_algorithms.b8",
+      "title": "Eda Graph Algorithms · Stage 9",
+      "domain": "eda_graph_algorithms",
+      "band": 8,
+      "depth_min": 24,
+      "depth_max": 26,
+      "subdomains": [
+        "eda_graph_algorithms.coloring",
+        "eda_graph_algorithms.dag",
+        "eda_graph_algorithms.flow",
+        "eda_graph_algorithms.partition",
+        "eda_graph_algorithms.steiner"
+      ],
+      "concept_ids": [
+        "graphs.color.coloring",
+        "graphs.color.double_patterning",
+        "graphs.color.interval",
+        "graphs.dag.levelize",
+        "graphs.dag.path_count",
+        "graphs.dag.scc",
+        "graphs.embed.planarity",
+        "graphs.flow.hypergraph_mincut",
+        "graphs.flow.min_cost",
+        "graphs.flow.residual",
+        "graphs.match.assignment",
+        "graphs.match.bipartite",
+        "graphs.partition.fm",
+        "graphs.partition.fm_bucket",
+        "graphs.steiner.one_steiner",
+        "graphs.steiner.ratio"
+      ],
+      "concept_count": 16
+    },
+    {
+      "id": "eda_graph_algorithms.b9",
+      "title": "Eda Graph Algorithms · Stage 10",
+      "domain": "eda_graph_algorithms",
+      "band": 9,
+      "depth_min": 27,
+      "depth_max": 29,
+      "subdomains": [
+        "eda_graph_algorithms.dag",
+        "eda_graph_algorithms.partition",
+        "eda_graph_algorithms.path",
+        "eda_graph_algorithms.spectral"
+      ],
+      "concept_ids": [
+        "graphs.dag.incremental",
+        "graphs.dag.longest_path",
+        "graphs.partition.multilevel",
+        "graphs.path.difference_constraints",
+        "graphs.spectral.cut_quadratic"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "eda_graph_algorithms.b10",
+      "title": "Eda Graph Algorithms · Stage 11",
+      "domain": "eda_graph_algorithms",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 31,
+      "subdomains": [
+        "eda_graph_algorithms.dag",
+        "eda_graph_algorithms.spectral"
+      ],
+      "concept_ids": [
+        "graphs.dag.reverse_pass",
+        "graphs.spectral.fiedler",
+        "graphs.spectral.ratio_cut",
+        "graphs.tree.rooted_traversal"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "eda_graph_algorithms.b28",
+      "title": "Eda Graph Algorithms · Stage 29",
+      "domain": "eda_graph_algorithms",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "eda_graph_algorithms.frontier"
+      ],
+      "concept_ids": [
+        "graphs.frontier.engine_layers",
+        "graphs.frontier.net_weight_seam"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "eda_graph_algorithms.b29",
+      "title": "Eda Graph Algorithms · Stage 30",
+      "domain": "eda_graph_algorithms",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "eda_graph_algorithms.frontier"
+      ],
+      "concept_ids": [
+        "graphs.frontier.diff_cut_tests",
+        "graphs.frontier.graph_rewards"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "eda_graph_algorithms.b31",
+      "title": "Eda Graph Algorithms · Stage 32",
+      "domain": "eda_graph_algorithms",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "eda_graph_algorithms.frontier"
+      ],
+      "concept_ids": [
+        "graphs.frontier.fast_multilevel"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_landscape.b6",
+      "title": "Eda Landscape · Stage 7",
+      "domain": "eda_landscape",
+      "band": 6,
+      "depth_min": 19,
+      "depth_max": 20,
+      "subdomains": [
+        "eda_landscape.overview"
+      ],
+      "concept_ids": [
+        "flow.overview.abstraction_levels",
+        "flow.overview.what_is_eda"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "eda_landscape.b7",
+      "title": "Eda Landscape · Stage 8",
+      "domain": "eda_landscape",
+      "band": 7,
+      "depth_min": 21,
+      "depth_max": 21,
+      "subdomains": [
+        "eda_landscape.overview"
+      ],
+      "concept_ids": [
+        "flow.overview.hierarchy"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_landscape.b9",
+      "title": "Eda Landscape · Stage 10",
+      "domain": "eda_landscape",
+      "band": 9,
+      "depth_min": 28,
+      "depth_max": 29,
+      "subdomains": [
+        "eda_landscape.overview"
+      ],
+      "concept_ids": [
+        "flow.overview.asic_fpga_soc",
+        "flow.overview.scale_vlsi"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "eda_landscape.b10",
+      "title": "Eda Landscape · Stage 11",
+      "domain": "eda_landscape",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 32,
+      "subdomains": [
+        "eda_landscape.branches",
+        "eda_landscape.metrics",
+        "eda_landscape.overview",
+        "eda_landscape.repr",
+        "eda_landscape.stages"
+      ],
+      "concept_ids": [
+        "flow.branches.fpga_flow",
+        "flow.metrics.pareto",
+        "flow.metrics.ppa",
+        "flow.overview.codesign",
+        "flow.overview.ip_libraries",
+        "flow.repr.format_map",
+        "flow.stages.functional_verification",
+        "flow.stages.logic_synthesis",
+        "flow.stages.rtl_to_gds",
+        "flow.stages.spec_to_rtl"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "eda_landscape.b11",
+      "title": "Eda Landscape · Stage 12",
+      "domain": "eda_landscape",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "eda_landscape.metrics",
+        "eda_landscape.repr",
+        "eda_landscape.stages"
+      ],
+      "concept_ids": [
+        "flow.metrics.die_per_wafer",
+        "flow.metrics.yield_cost",
+        "flow.repr.boolean_networks",
+        "flow.repr.lef_def",
+        "flow.repr.liberty",
+        "flow.repr.netlist",
+        "flow.repr.sdc",
+        "flow.stages.cts",
+        "flow.stages.dft",
+        "flow.stages.floorplan",
+        "flow.stages.placement"
+      ],
+      "concept_count": 11
+    },
+    {
+      "id": "eda_landscape.b12",
+      "title": "Eda Landscape · Stage 13",
+      "domain": "eda_landscape",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "eda_landscape.repr",
+        "eda_landscape.stages"
+      ],
+      "concept_ids": [
+        "flow.repr.spef",
+        "flow.stages.extraction_signoff",
+        "flow.stages.iteration_closure",
+        "flow.stages.routing",
+        "flow.stages.tapeout_to_test"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "eda_landscape.b13",
+      "title": "Eda Landscape · Stage 14",
+      "domain": "eda_landscape",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "eda_landscape.branches",
+        "eda_landscape.history",
+        "eda_landscape.industry",
+        "eda_landscape.metrics",
+        "eda_landscape.repr",
+        "eda_landscape.stages"
+      ],
+      "concept_ids": [
+        "flow.branches.analog_ams",
+        "flow.branches.manufacturing",
+        "flow.branches.pcb_package",
+        "flow.history.landmarks",
+        "flow.industry.foundry_fabless",
+        "flow.industry.standards",
+        "flow.industry.tool_landscape",
+        "flow.industry.vendors",
+        "flow.metrics.respin_cost",
+        "flow.repr.gdsii_oasis",
+        "flow.repr.spice_pdk",
+        "flow.stages.error_propagation"
+      ],
+      "concept_count": 12
+    },
+    {
+      "id": "eda_landscape.b14",
+      "title": "Eda Landscape · Stage 15",
+      "domain": "eda_landscape",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 42,
+      "subdomains": [
+        "eda_landscape.history",
+        "eda_landscape.industry"
+      ],
+      "concept_ids": [
+        "flow.history.communities",
+        "flow.industry.open_source"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "eda_landscape.b27",
+      "title": "Eda Landscape · Stage 28",
+      "domain": "eda_landscape",
+      "band": 27,
+      "depth_min": 82,
+      "depth_max": 82,
+      "subdomains": [
+        "eda_landscape.frontier"
+      ],
+      "concept_ids": [
+        "flow.frontier.engine_layers"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_landscape.b28",
+      "title": "Eda Landscape · Stage 29",
+      "domain": "eda_landscape",
+      "band": 28,
+      "depth_min": 86,
+      "depth_max": 86,
+      "subdomains": [
+        "eda_landscape.frontier"
+      ],
+      "concept_ids": [
+        "flow.frontier.change_tiers"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_landscape.b29",
+      "title": "Eda Landscape · Stage 30",
+      "domain": "eda_landscape",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "eda_landscape.frontier"
+      ],
+      "concept_ids": [
+        "flow.frontier.differential_qor"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_landscape.b31",
+      "title": "Eda Landscape · Stage 32",
+      "domain": "eda_landscape",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "eda_landscape.frontier"
+      ],
+      "concept_ids": [
+        "flow.frontier.fast_accurate"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_landscape.b32",
+      "title": "Eda Landscape · Stage 33",
+      "domain": "eda_landscape",
+      "band": 32,
+      "depth_min": 96,
+      "depth_max": 96,
+      "subdomains": [
+        "eda_landscape.frontier"
+      ],
+      "concept_ids": [
+        "flow.frontier.agentic_flow"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_software_infrastructure.b10",
+      "title": "Eda Software Infrastructure · Stage 11",
+      "domain": "eda_software_infrastructure",
+      "band": 10,
+      "depth_min": 32,
+      "depth_max": 32,
+      "subdomains": [
+        "eda_software_infrastructure.par"
+      ],
+      "concept_ids": [
+        "infra.par.amdahl"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_software_infrastructure.b11",
+      "title": "Eda Software Infrastructure · Stage 12",
+      "domain": "eda_software_infrastructure",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "eda_software_infrastructure.db",
+        "eda_software_infrastructure.par",
+        "eda_software_infrastructure.qa"
+      ],
+      "concept_ids": [
+        "infra.db.design_database",
+        "infra.db.object_model",
+        "infra.par.conflict_free_batches",
+        "infra.par.containers_cloud",
+        "infra.par.deterministic_parallel",
+        "infra.par.thread_pool_scheduling",
+        "infra.qa.regression_qor"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "eda_software_infrastructure.b12",
+      "title": "Eda Software Infrastructure · Stage 13",
+      "domain": "eda_software_infrastructure",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 37,
+      "subdomains": [
+        "eda_software_infrastructure.api",
+        "eda_software_infrastructure.db",
+        "eda_software_infrastructure.par",
+        "eda_software_infrastructure.parse",
+        "eda_software_infrastructure.qa"
+      ],
+      "concept_ids": [
+        "infra.api.tcl_evaluation",
+        "infra.db.data_oriented_layout",
+        "infra.db.hierarchy_instancing",
+        "infra.db.memory_footprint",
+        "infra.par.license_management",
+        "infra.parse.verilog_netlist",
+        "infra.qa.bisection",
+        "infra.qa.qor_significance"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "eda_software_infrastructure.b13",
+      "title": "Eda Software Infrastructure · Stage 14",
+      "domain": "eda_software_infrastructure",
+      "band": 13,
+      "depth_min": 40,
+      "depth_max": 40,
+      "subdomains": [
+        "eda_software_infrastructure.flow"
+      ],
+      "concept_ids": [
+        "infra.flow.simulation_tools"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_software_infrastructure.b20",
+      "title": "Eda Software Infrastructure · Stage 21",
+      "domain": "eda_software_infrastructure",
+      "band": 20,
+      "depth_min": 62,
+      "depth_max": 62,
+      "subdomains": [
+        "eda_software_infrastructure.parse"
+      ],
+      "concept_ids": [
+        "infra.parse.liberty_parser"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_software_infrastructure.b21",
+      "title": "Eda Software Infrastructure · Stage 22",
+      "domain": "eda_software_infrastructure",
+      "band": 21,
+      "depth_min": 63,
+      "depth_max": 63,
+      "subdomains": [
+        "eda_software_infrastructure.flow",
+        "eda_software_infrastructure.parse"
+      ],
+      "concept_ids": [
+        "infra.flow.yosys_abc",
+        "infra.parse.liberty_units"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "eda_software_infrastructure.b22",
+      "title": "Eda Software Infrastructure · Stage 23",
+      "domain": "eda_software_infrastructure",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 67,
+      "subdomains": [
+        "eda_software_infrastructure.pdk"
+      ],
+      "concept_ids": [
+        "infra.pdk.gf180_ihp",
+        "infra.pdk.sky130"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "eda_software_infrastructure.b24",
+      "title": "Eda Software Infrastructure · Stage 25",
+      "domain": "eda_software_infrastructure",
+      "band": 24,
+      "depth_min": 72,
+      "depth_max": 72,
+      "subdomains": [
+        "eda_software_infrastructure.parse"
+      ],
+      "concept_ids": [
+        "infra.parse.sdc_tcl"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_software_infrastructure.b25",
+      "title": "Eda Software Infrastructure · Stage 26",
+      "domain": "eda_software_infrastructure",
+      "band": 25,
+      "depth_min": 77,
+      "depth_max": 77,
+      "subdomains": [
+        "eda_software_infrastructure.db"
+      ],
+      "concept_ids": [
+        "infra.db.opendb"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "eda_software_infrastructure.b26",
+      "title": "Eda Software Infrastructure · Stage 27",
+      "domain": "eda_software_infrastructure",
+      "band": 26,
+      "depth_min": 78,
+      "depth_max": 80,
+      "subdomains": [
+        "eda_software_infrastructure.api",
+        "eda_software_infrastructure.arch",
+        "eda_software_infrastructure.db",
+        "eda_software_infrastructure.parse"
+      ],
+      "concept_ids": [
+        "infra.api.dsl_design",
+        "infra.api.tcl_python",
+        "infra.arch.callbacks",
+        "infra.arch.plugin",
+        "infra.arch.shared_database_tools",
+        "infra.db.memory_management",
+        "infra.db.serialization",
+        "infra.parse.def_parser",
+        "infra.parse.def_units",
+        "infra.parse.gds_records"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "eda_software_infrastructure.b27",
+      "title": "Eda Software Infrastructure · Stage 28",
+      "domain": "eda_software_infrastructure",
+      "band": 27,
+      "depth_min": 81,
+      "depth_max": 83,
+      "subdomains": [
+        "eda_software_infrastructure.frontier",
+        "eda_software_infrastructure.incr",
+        "eda_software_infrastructure.parse",
+        "eda_software_infrastructure.qa"
+      ],
+      "concept_ids": [
+        "infra.frontier.four_layers_in_code",
+        "infra.incr.dependency_graph",
+        "infra.incr.dirty_flags",
+        "infra.incr.incremental_legalization",
+        "infra.incr.incremental_sta",
+        "infra.incr.result_caching",
+        "infra.parse.interchange_formats",
+        "infra.qa.build_systems",
+        "infra.qa.ci_pipelines",
+        "infra.qa.cpp_rust"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "eda_software_infrastructure.b28",
+      "title": "Eda Software Infrastructure · Stage 29",
+      "domain": "eda_software_infrastructure",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "eda_software_infrastructure.flow",
+        "eda_software_infrastructure.frontier"
+      ],
+      "concept_ids": [
+        "infra.flow.layout_tools",
+        "infra.frontier.extension_abi",
+        "infra.frontier.sandboxed_builds"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "eda_software_infrastructure.b29",
+      "title": "Eda Software Infrastructure · Stage 30",
+      "domain": "eda_software_infrastructure",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 89,
+      "subdomains": [
+        "eda_software_infrastructure.flow",
+        "eda_software_infrastructure.frontier",
+        "eda_software_infrastructure.parse",
+        "eda_software_infrastructure.pdk"
+      ],
+      "concept_ids": [
+        "infra.flow.openroad_tools",
+        "infra.frontier.deterministic_engines",
+        "infra.frontier.golden_harness",
+        "infra.parse.spef_parser",
+        "infra.pdk.open_access_limits"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "eda_software_infrastructure.b30",
+      "title": "Eda Software Infrastructure · Stage 31",
+      "domain": "eda_software_infrastructure",
+      "band": 30,
+      "depth_min": 90,
+      "depth_max": 91,
+      "subdomains": [
+        "eda_software_infrastructure.flow",
+        "eda_software_infrastructure.frontier"
+      ],
+      "concept_ids": [
+        "infra.flow.gcd_first_run",
+        "infra.flow.openlane",
+        "infra.flow.orfs",
+        "infra.frontier.mcp_openroad"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "extraction_and_signoff.b21",
+      "title": "Extraction And Signoff · Stage 22",
+      "domain": "extraction_and_signoff",
+      "band": 21,
+      "depth_min": 65,
+      "depth_max": 65,
+      "subdomains": [
+        "extraction_and_signoff.capacitance",
+        "extraction_and_signoff.resistance"
+      ],
+      "concept_ids": [
+        "extract.cap.parallel_plate",
+        "extract.res.sheet_resistance"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "extraction_and_signoff.b22",
+      "title": "Extraction And Signoff · Stage 23",
+      "domain": "extraction_and_signoff",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 68,
+      "subdomains": [
+        "extraction_and_signoff.capacitance",
+        "extraction_and_signoff.si"
+      ],
+      "concept_ids": [
+        "extract.cap.cap_matrix",
+        "extract.cap.coupling",
+        "extract.cap.fringe",
+        "extract.si.miller_factor"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "extraction_and_signoff.b23",
+      "title": "Extraction And Signoff · Stage 24",
+      "domain": "extraction_and_signoff",
+      "band": 23,
+      "depth_min": 69,
+      "depth_max": 71,
+      "subdomains": [
+        "extraction_and_signoff.capacitance",
+        "extraction_and_signoff.methods",
+        "extraction_and_signoff.si"
+      ],
+      "concept_ids": [
+        "extract.cap.field_solver",
+        "extract.cap.total_net",
+        "extract.method.bem_fem",
+        "extract.method.calibration",
+        "extract.method.pattern_matching",
+        "extract.method.random_walk",
+        "extract.si.crosstalk_delay",
+        "extract.si.effective_cap",
+        "extract.si.glitch",
+        "extract.si.noise_immunity"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "extraction_and_signoff.b24",
+      "title": "Extraction And Signoff · Stage 25",
+      "domain": "extraction_and_signoff",
+      "band": 24,
+      "depth_min": 72,
+      "depth_max": 72,
+      "subdomains": [
+        "extraction_and_signoff.si"
+      ],
+      "concept_ids": [
+        "extract.si.timing_windows"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "extraction_and_signoff.b27",
+      "title": "Extraction And Signoff · Stage 28",
+      "domain": "extraction_and_signoff",
+      "band": 27,
+      "depth_min": 83,
+      "depth_max": 83,
+      "subdomains": [
+        "extraction_and_signoff.frontier"
+      ],
+      "concept_ids": [
+        "extract.frontier.core_vs_surface"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "extraction_and_signoff.b28",
+      "title": "Extraction And Signoff · Stage 29",
+      "domain": "extraction_and_signoff",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "extraction_and_signoff.frontier",
+        "extraction_and_signoff.resistance"
+      ],
+      "concept_ids": [
+        "extract.frontier.calibration_tier1",
+        "extract.res.wire_resistance"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "extraction_and_signoff.b29",
+      "title": "Extraction And Signoff · Stage 30",
+      "domain": "extraction_and_signoff",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 89,
+      "subdomains": [
+        "extraction_and_signoff.format",
+        "extraction_and_signoff.inductance",
+        "extraction_and_signoff.reduction",
+        "extraction_and_signoff.resistance",
+        "extraction_and_signoff.signoff"
+      ],
+      "concept_ids": [
+        "extract.format.name_map",
+        "extract.format.spef",
+        "extract.format.spef_counts",
+        "extract.ind.partial_inductance",
+        "extract.ind.significance",
+        "extract.reduce.moments",
+        "extract.reduce.node_elimination",
+        "extract.reduce.rc_reduction",
+        "extract.res.barrier_scattering",
+        "extract.res.temperature",
+        "extract.signoff.checklist",
+        "extract.signoff.eco",
+        "extract.signoff.em_ir",
+        "extract.signoff.rc_corners"
+      ],
+      "concept_count": 14
+    },
+    {
+      "id": "extraction_and_signoff.b30",
+      "title": "Extraction And Signoff · Stage 31",
+      "domain": "extraction_and_signoff",
+      "band": 30,
+      "depth_min": 90,
+      "depth_max": 91,
+      "subdomains": [
+        "extraction_and_signoff.frontier",
+        "extraction_and_signoff.reduction",
+        "extraction_and_signoff.signoff"
+      ],
+      "concept_ids": [
+        "extract.frontier.agentic_signoff",
+        "extract.frontier.differential_eco_check",
+        "extract.reduce.elmore_preserving",
+        "extract.reduce.pi_model",
+        "extract.signoff.ppa_closure",
+        "extract.signoff.spare_cells"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "extraction_and_signoff.b31",
+      "title": "Extraction And Signoff · Stage 32",
+      "domain": "extraction_and_signoff",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "extraction_and_signoff.frontier"
+      ],
+      "concept_ids": [
+        "extract.frontier.fast_accurate"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "fabrication_and_dtco.b19",
+      "title": "Fabrication And Dtco · Stage 20",
+      "domain": "fabrication_and_dtco",
+      "band": 19,
+      "depth_min": 57,
+      "depth_max": 59,
+      "subdomains": [
+        "fabrication_and_dtco.litho",
+        "fabrication_and_dtco.process",
+        "fabrication_and_dtco.yield"
+      ],
+      "concept_ids": [
+        "fab.litho.photomask",
+        "fab.litho.resolution",
+        "fab.process.diffusion",
+        "fab.process.epitaxy",
+        "fab.process.flow_overview",
+        "fab.process.implant",
+        "fab.process.oxidation",
+        "fab.process.wafers",
+        "fab.yield.dies_per_wafer"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "fabrication_and_dtco.b20",
+      "title": "Fabrication And Dtco · Stage 21",
+      "domain": "fabrication_and_dtco",
+      "band": 20,
+      "depth_min": 60,
+      "depth_max": 62,
+      "subdomains": [
+        "fabrication_and_dtco.litho",
+        "fabrication_and_dtco.process",
+        "fabrication_and_dtco.yield"
+      ],
+      "concept_ids": [
+        "fab.litho.decomposition",
+        "fab.litho.multiple_patterning",
+        "fab.litho.sadp",
+        "fab.process.cmp",
+        "fab.process.deposition",
+        "fab.process.etch",
+        "fab.yield.cost_per_die",
+        "fab.yield.defect_density",
+        "fab.yield.negative_binomial"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "fabrication_and_dtco.b21",
+      "title": "Fabrication And Dtco · Stage 22",
+      "domain": "fabrication_and_dtco",
+      "band": 21,
+      "depth_min": 63,
+      "depth_max": 65,
+      "subdomains": [
+        "fabrication_and_dtco.beol",
+        "fabrication_and_dtco.litho",
+        "fabrication_and_dtco.pdk"
+      ],
+      "concept_ids": [
+        "fab.beol.damascene",
+        "fab.beol.feol_mol_beol",
+        "fab.beol.interconnect_stack",
+        "fab.litho.depth_of_focus",
+        "fab.litho.euv",
+        "fab.litho.opc",
+        "fab.litho.ret",
+        "fab.pdk.contents"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "fabrication_and_dtco.b22",
+      "title": "Fabrication And Dtco · Stage 23",
+      "domain": "fabrication_and_dtco",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 68,
+      "subdomains": [
+        "fabrication_and_dtco.beol",
+        "fabrication_and_dtco.dtco",
+        "fabrication_and_dtco.litho",
+        "fabrication_and_dtco.pdk",
+        "fabrication_and_dtco.yield"
+      ],
+      "concept_ids": [
+        "fab.beol.low_k",
+        "fab.beol.vias_contact",
+        "fab.beol.wire_rc",
+        "fab.dtco.buried_power_rail",
+        "fab.dtco.cell_architecture",
+        "fab.dtco.cpp_cell_width",
+        "fab.dtco.fin_depopulation",
+        "fab.litho.mask_data_prep",
+        "fab.litho.model_based_opc",
+        "fab.pdk.design_rules",
+        "fab.pdk.device_models",
+        "fab.pdk.drm",
+        "fab.yield.average_critical_area",
+        "fab.yield.critical_area",
+        "fab.yield.dfm"
+      ],
+      "concept_count": 15
+    },
+    {
+      "id": "fabrication_and_dtco.b23",
+      "title": "Fabrication And Dtco · Stage 24",
+      "domain": "fabrication_and_dtco",
+      "band": 23,
+      "depth_min": 69,
+      "depth_max": 70,
+      "subdomains": [
+        "fabrication_and_dtco.dtco"
+      ],
+      "concept_ids": [
+        "fab.dtco.backside_power",
+        "fab.dtco.dtco_loop",
+        "fab.dtco.stco"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "fabrication_and_dtco.b28",
+      "title": "Fabrication And Dtco · Stage 29",
+      "domain": "fabrication_and_dtco",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 85,
+      "subdomains": [
+        "fabrication_and_dtco.frontier"
+      ],
+      "concept_ids": [
+        "fab.frontier.pdk_aware_agent",
+        "fab.frontier.process_ip_boundary"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "fabrication_and_dtco.b29",
+      "title": "Fabrication And Dtco · Stage 30",
+      "domain": "fabrication_and_dtco",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "fabrication_and_dtco.frontier"
+      ],
+      "concept_ids": [
+        "fab.frontier.agentic_dtco_loop",
+        "fab.frontier.rule_deck_golden"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "fabrication_and_dtco.b31",
+      "title": "Fabrication And Dtco · Stage 32",
+      "domain": "fabrication_and_dtco",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "fabrication_and_dtco.frontier"
+      ],
+      "concept_ids": [
+        "fab.frontier.fast_accurate_litho"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "floorplanning_and_placement.b8",
+      "title": "Floorplanning And Placement · Stage 9",
+      "domain": "floorplanning_and_placement",
+      "band": 8,
+      "depth_min": 26,
+      "depth_max": 26,
+      "subdomains": [
+        "floorplanning_and_placement.wl"
+      ],
+      "concept_ids": [
+        "place.wl.hpwl"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "floorplanning_and_placement.b9",
+      "title": "Floorplanning And Placement · Stage 10",
+      "domain": "floorplanning_and_placement",
+      "band": 9,
+      "depth_min": 27,
+      "depth_max": 28,
+      "subdomains": [
+        "floorplanning_and_placement.wl"
+      ],
+      "concept_ids": [
+        "place.wl.b2b",
+        "place.wl.clique_star",
+        "place.wl.incremental",
+        "place.wl.steiner"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "floorplanning_and_placement.b12",
+      "title": "Floorplanning And Placement · Stage 13",
+      "domain": "floorplanning_and_placement",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 37,
+      "subdomains": [
+        "floorplanning_and_placement.global"
+      ],
+      "concept_ids": [
+        "place.global.lse_gradient",
+        "place.global.smooth_wirelength",
+        "place.global.wa_wirelength"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "floorplanning_and_placement.b14",
+      "title": "Floorplanning And Placement · Stage 15",
+      "domain": "floorplanning_and_placement",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 42,
+      "subdomains": [
+        "floorplanning_and_placement.driven"
+      ],
+      "concept_ids": [
+        "place.driven.net_delay"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "floorplanning_and_placement.b22",
+      "title": "Floorplanning And Placement · Stage 23",
+      "domain": "floorplanning_and_placement",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 66,
+      "subdomains": [
+        "floorplanning_and_placement.driven"
+      ],
+      "concept_ids": [
+        "place.driven.buffering"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "floorplanning_and_placement.b24",
+      "title": "Floorplanning And Placement · Stage 25",
+      "domain": "floorplanning_and_placement",
+      "band": 24,
+      "depth_min": 74,
+      "depth_max": 74,
+      "subdomains": [
+        "floorplanning_and_placement.overview"
+      ],
+      "concept_ids": [
+        "place.overview.flow"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "floorplanning_and_placement.b25",
+      "title": "Floorplanning And Placement · Stage 26",
+      "domain": "floorplanning_and_placement",
+      "band": 25,
+      "depth_min": 75,
+      "depth_max": 77,
+      "subdomains": [
+        "floorplanning_and_placement.floorplan",
+        "floorplanning_and_placement.format",
+        "floorplanning_and_placement.global",
+        "floorplanning_and_placement.overview"
+      ],
+      "concept_ids": [
+        "place.floorplan.whitespace",
+        "place.format.lef_def",
+        "place.format.orientation",
+        "place.global.formulation",
+        "place.overview.rows_sites",
+        "place.overview.utilization"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "floorplanning_and_placement.b26",
+      "title": "Floorplanning And Placement · Stage 27",
+      "domain": "floorplanning_and_placement",
+      "band": 26,
+      "depth_min": 78,
+      "depth_max": 80,
+      "subdomains": [
+        "floorplanning_and_placement.detail",
+        "floorplanning_and_placement.driven",
+        "floorplanning_and_placement.floorplan",
+        "floorplanning_and_placement.global",
+        "floorplanning_and_placement.legal",
+        "floorplanning_and_placement.macro"
+      ],
+      "concept_ids": [
+        "place.detail.ism",
+        "place.detail.optimal_region",
+        "place.detail.sliding_window",
+        "place.detail.swap",
+        "place.driven.inflation",
+        "place.driven.routability",
+        "place.driven.timing",
+        "place.floorplan.bstar",
+        "place.floorplan.polish",
+        "place.floorplan.polish_moves",
+        "place.floorplan.sequence_pair",
+        "place.floorplan.shape_curves",
+        "place.floorplan.slicing",
+        "place.global.cg_solve",
+        "place.global.density",
+        "place.global.electrostatic",
+        "place.global.force_directed",
+        "place.global.laplacian_system",
+        "place.global.mincut",
+        "place.global.nonlinear",
+        "place.global.quadratic",
+        "place.global.spreading",
+        "place.legal.abacus",
+        "place.legal.displacement",
+        "place.legal.rules",
+        "place.legal.tetris",
+        "place.macro.pin_assignment",
+        "place.macro.placement",
+        "place.macro.power_planning"
+      ],
+      "concept_count": 29
+    },
+    {
+      "id": "floorplanning_and_placement.b27",
+      "title": "Floorplanning And Placement · Stage 28",
+      "domain": "floorplanning_and_placement",
+      "band": 27,
+      "depth_min": 81,
+      "depth_max": 82,
+      "subdomains": [
+        "floorplanning_and_placement.floorplan",
+        "floorplanning_and_placement.frontier",
+        "floorplanning_and_placement.global"
+      ],
+      "concept_ids": [
+        "place.floorplan.annealing",
+        "place.frontier.core_vs_surface",
+        "place.global.dreamplace",
+        "place.global.nesterov",
+        "place.global.poisson_fft"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "floorplanning_and_placement.b28",
+      "title": "Floorplanning And Placement · Stage 29",
+      "domain": "floorplanning_and_placement",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "floorplanning_and_placement.frontier"
+      ],
+      "concept_ids": [
+        "place.frontier.objective_weights",
+        "place.frontier.rule_plugin"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "floorplanning_and_placement.b29",
+      "title": "Floorplanning And Placement · Stage 30",
+      "domain": "floorplanning_and_placement",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "floorplanning_and_placement.frontier"
+      ],
+      "concept_ids": [
+        "place.frontier.qor_differential"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "floorplanning_and_placement.b31",
+      "title": "Floorplanning And Placement · Stage 32",
+      "domain": "floorplanning_and_placement",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "floorplanning_and_placement.frontier"
+      ],
+      "concept_ids": [
+        "place.frontier.fast_loop"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "formal_verification.b7",
+      "title": "Formal Verification · Stage 8",
+      "domain": "formal_verification",
+      "band": 7,
+      "depth_min": 23,
+      "depth_max": 23,
+      "subdomains": [
+        "formal_verification.sat"
+      ],
+      "concept_ids": [
+        "fv.sat.cnf_tseitin",
+        "fv.sat.unit_propagation"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "formal_verification.b8",
+      "title": "Formal Verification · Stage 9",
+      "domain": "formal_verification",
+      "band": 8,
+      "depth_min": 24,
+      "depth_max": 26,
+      "subdomains": [
+        "formal_verification.equiv",
+        "formal_verification.smt"
+      ],
+      "concept_ids": [
+        "fv.equiv.miter",
+        "fv.equiv.structural_hashing",
+        "fv.smt.bitvectors"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "formal_verification.b10",
+      "title": "Formal Verification · Stage 11",
+      "domain": "formal_verification",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 32,
+      "subdomains": [
+        "formal_verification.bdd",
+        "formal_verification.bmc",
+        "formal_verification.induction",
+        "formal_verification.mc",
+        "formal_verification.sat"
+      ],
+      "concept_ids": [
+        "fv.bdd.reduction_rules",
+        "fv.bdd.robdd",
+        "fv.bmc.unrolling",
+        "fv.induction.inductive_invariant",
+        "fv.mc.ctl",
+        "fv.mc.kripke",
+        "fv.mc.ltl",
+        "fv.mc.safety_liveness",
+        "fv.mc.state_explosion",
+        "fv.sat.dpll"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "formal_verification.b11",
+      "title": "Formal Verification · Stage 12",
+      "domain": "formal_verification",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "formal_verification.bdd",
+        "formal_verification.bmc",
+        "formal_verification.equiv",
+        "formal_verification.ic3",
+        "formal_verification.induction",
+        "formal_verification.mc",
+        "formal_verification.sat"
+      ],
+      "concept_ids": [
+        "fv.bdd.ite_apply",
+        "fv.bdd.multiplier_blowup",
+        "fv.bdd.sat_count",
+        "fv.bdd.variable_order",
+        "fv.bmc.incremental",
+        "fv.bmc.shortest_counterexample",
+        "fv.equiv.cec",
+        "fv.ic3.relative_induction",
+        "fv.induction.k_induction",
+        "fv.induction.strengthening",
+        "fv.mc.ctl_fixpoint",
+        "fv.mc.reachability",
+        "fv.sat.cdcl",
+        "fv.sat.first_uip",
+        "fv.sat.implication_graph",
+        "fv.sat.watched_literals"
+      ],
+      "concept_count": 16
+    },
+    {
+      "id": "formal_verification.b12",
+      "title": "Formal Verification · Stage 13",
+      "domain": "formal_verification",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "formal_verification.bmc",
+        "formal_verification.equiv",
+        "formal_verification.ic3",
+        "formal_verification.sat",
+        "formal_verification.smt",
+        "formal_verification.sva"
+      ],
+      "concept_ids": [
+        "fv.bmc.completeness_threshold",
+        "fv.equiv.cut_points",
+        "fv.equiv.sat_sweeping",
+        "fv.equiv.sequential",
+        "fv.ic3.cegar",
+        "fv.ic3.generalization",
+        "fv.ic3.pdr",
+        "fv.sat.backjump",
+        "fv.sat.preprocessing",
+        "fv.sat.restarts",
+        "fv.sat.vsids",
+        "fv.smt.arrays",
+        "fv.smt.dpll_t",
+        "fv.smt.euf",
+        "fv.smt.theorem_proving",
+        "fv.sva.assertions"
+      ],
+      "concept_count": 16
+    },
+    {
+      "id": "formal_verification.b13",
+      "title": "Formal Verification · Stage 14",
+      "domain": "formal_verification",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "formal_verification.smt",
+        "formal_verification.sva"
+      ],
+      "concept_ids": [
+        "fv.smt.abstract_interpretation",
+        "fv.smt.symbolic_execution",
+        "fv.sva.assume_assert_cover",
+        "fv.sva.formal_apps",
+        "fv.sva.sequences",
+        "fv.sva.symbiyosys"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "formal_verification.b28",
+      "title": "Formal Verification · Stage 29",
+      "domain": "formal_verification",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 85,
+      "subdomains": [
+        "formal_verification.frontier"
+      ],
+      "concept_ids": [
+        "fv.frontier.agent_invariants",
+        "fv.frontier.engine_seams"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "formal_verification.b29",
+      "title": "Formal Verification · Stage 30",
+      "domain": "formal_verification",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "formal_verification.frontier"
+      ],
+      "concept_ids": [
+        "fv.frontier.formal_reward",
+        "fv.frontier.llm_sva_checking"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "formal_verification.b30",
+      "title": "Formal Verification · Stage 31",
+      "domain": "formal_verification",
+      "band": 30,
+      "depth_min": 91,
+      "depth_max": 91,
+      "subdomains": [
+        "formal_verification.frontier"
+      ],
+      "concept_ids": [
+        "fv.frontier.proof_guided_repair"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "fpga_eda.b9",
+      "title": "Fpga Eda · Stage 10",
+      "domain": "fpga_eda",
+      "band": 9,
+      "depth_min": 29,
+      "depth_max": 29,
+      "subdomains": [
+        "fpga_eda.arch"
+      ],
+      "concept_ids": [
+        "fpga.arch.lut"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "fpga_eda.b10",
+      "title": "Fpga Eda · Stage 11",
+      "domain": "fpga_eda",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 31,
+      "subdomains": [
+        "fpga_eda.arch"
+      ],
+      "concept_ids": [
+        "fpga.arch.ble_clb",
+        "fpga.arch.carry_chain",
+        "fpga.arch.hard_blocks",
+        "fpga.arch.routing_architecture"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "fpga_eda.b14",
+      "title": "Fpga Eda · Stage 15",
+      "domain": "fpga_eda",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "fpga_eda.arch",
+        "fpga_eda.route"
+      ],
+      "concept_ids": [
+        "fpga.arch.segments",
+        "fpga.route.maze_expansion",
+        "fpga.route.rr_graph"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "fpga_eda.b15",
+      "title": "Fpga Eda · Stage 16",
+      "domain": "fpga_eda",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 47,
+      "subdomains": [
+        "fpga_eda.impl",
+        "fpga_eda.route"
+      ],
+      "concept_ids": [
+        "fpga.impl.bitstream",
+        "fpga.impl.partial_reconfig",
+        "fpga.route.history",
+        "fpga.route.min_channel_width",
+        "fpga.route.pathfinder"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "fpga_eda.b18",
+      "title": "Fpga Eda · Stage 19",
+      "domain": "fpga_eda",
+      "band": 18,
+      "depth_min": 55,
+      "depth_max": 56,
+      "subdomains": [
+        "fpga_eda.map"
+      ],
+      "concept_ids": [
+        "fpga.map.flow",
+        "fpga.map.inference",
+        "fpga.map.wide_functions"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "fpga_eda.b20",
+      "title": "Fpga Eda · Stage 21",
+      "domain": "fpga_eda",
+      "band": 20,
+      "depth_min": 62,
+      "depth_max": 62,
+      "subdomains": [
+        "fpga_eda.map"
+      ],
+      "concept_ids": [
+        "fpga.map.lut_cuts"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "fpga_eda.b21",
+      "title": "Fpga Eda · Stage 22",
+      "domain": "fpga_eda",
+      "band": 21,
+      "depth_min": 63,
+      "depth_max": 65,
+      "subdomains": [
+        "fpga_eda.map",
+        "fpga_eda.pack",
+        "fpga_eda.place"
+      ],
+      "concept_ids": [
+        "fpga.map.area_flow",
+        "fpga.pack.ble_formation",
+        "fpga.pack.clustering",
+        "fpga.place.bbox_cost"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "fpga_eda.b22",
+      "title": "Fpga Eda · Stage 23",
+      "domain": "fpga_eda",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 68,
+      "subdomains": [
+        "fpga_eda.flow",
+        "fpga_eda.impl",
+        "fpga_eda.pack",
+        "fpga_eda.place",
+        "fpga_eda.route"
+      ],
+      "concept_ids": [
+        "fpga.flow.bitstream_docs",
+        "fpga.flow.open_toolchain",
+        "fpga.impl.delay_model",
+        "fpga.pack.vpack_attraction",
+        "fpga.place.analytical",
+        "fpga.place.range_limit",
+        "fpga.place.temperature_schedule",
+        "fpga.place.timing_cost",
+        "fpga.place.vpr_annealing",
+        "fpga.route.timing_driven"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "fpga_eda.b24",
+      "title": "Fpga Eda · Stage 25",
+      "domain": "fpga_eda",
+      "band": 24,
+      "depth_min": 72,
+      "depth_max": 72,
+      "subdomains": [
+        "fpga_eda.flow"
+      ],
+      "concept_ids": [
+        "fpga.flow.vendor_flows"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "fpga_eda.b28",
+      "title": "Fpga Eda · Stage 29",
+      "domain": "fpga_eda",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 85,
+      "subdomains": [
+        "fpga_eda.frontier"
+      ],
+      "concept_ids": [
+        "fpga.frontier.option_tuning",
+        "fpga.frontier.seams"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "fpga_eda.b29",
+      "title": "Fpga Eda · Stage 30",
+      "domain": "fpga_eda",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "fpga_eda.frontier"
+      ],
+      "concept_ids": [
+        "fpga.frontier.ai_placement",
+        "fpga.frontier.bitstream_golden"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "fpga_eda.b31",
+      "title": "Fpga Eda · Stage 32",
+      "domain": "fpga_eda",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "fpga_eda.frontier"
+      ],
+      "concept_ids": [
+        "fpga.frontier.fast_timing"
+      ],
+      "concept_count": 1
+    },
+    {
       "id": "fractions.b2",
       "title": "Fractions · Stage 3",
       "domain": "fractions",
@@ -1360,6 +4743,149 @@
         "frac.mixed.word"
       ],
       "concept_count": 1
+    },
+    {
+      "id": "functional_verification.b10",
+      "title": "Functional Verification · Stage 11",
+      "domain": "functional_verification",
+      "band": 10,
+      "depth_min": 31,
+      "depth_max": 32,
+      "subdomains": [
+        "functional_verification.cycle",
+        "functional_verification.event",
+        "functional_verification.tb"
+      ],
+      "concept_ids": [
+        "sim.cycle.levelization",
+        "sim.event.event_driven",
+        "sim.event.event_wheel",
+        "sim.event.four_state",
+        "sim.tb.verification_gap"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "functional_verification.b11",
+      "title": "Functional Verification · Stage 12",
+      "domain": "functional_verification",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "functional_verification.event"
+      ],
+      "concept_ids": [
+        "sim.event.delay_models",
+        "sim.event.delta_cycles",
+        "sim.event.scheduling_regions"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "functional_verification.b12",
+      "title": "Functional Verification · Stage 13",
+      "domain": "functional_verification",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "functional_verification.assert",
+        "functional_verification.cdc",
+        "functional_verification.cov",
+        "functional_verification.cycle",
+        "functional_verification.event",
+        "functional_verification.random",
+        "functional_verification.tb",
+        "functional_verification.uvm"
+      ],
+      "concept_ids": [
+        "sim.assert.implication",
+        "sim.assert.in_simulation",
+        "sim.cdc.synchronizers",
+        "sim.cov.code_coverage",
+        "sim.cov.condition",
+        "sim.cov.functional_coverage",
+        "sim.cycle.compiled",
+        "sim.event.x_pessimism",
+        "sim.random.constrained",
+        "sim.random.constraint_solving",
+        "sim.random.corner_probability",
+        "sim.random.dist_solve_before",
+        "sim.random.seeds",
+        "sim.tb.scoreboard",
+        "sim.tb.testbench",
+        "sim.uvm.architecture"
+      ],
+      "concept_count": 16
+    },
+    {
+      "id": "functional_verification.b13",
+      "title": "Functional Verification · Stage 14",
+      "domain": "functional_verification",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 40,
+      "subdomains": [
+        "functional_verification.accel",
+        "functional_verification.cdc",
+        "functional_verification.cov",
+        "functional_verification.cycle",
+        "functional_verification.tb",
+        "functional_verification.uvm"
+      ],
+      "concept_ids": [
+        "sim.accel.emulation",
+        "sim.accel.partitioning",
+        "sim.accel.throughput",
+        "sim.cdc.mtbf",
+        "sim.cdc.multibit",
+        "sim.cdc.reset_domain",
+        "sim.cov.closure",
+        "sim.cov.coupon_collector",
+        "sim.cov.cross_coverage",
+        "sim.cycle.parallel",
+        "sim.cycle.verilator",
+        "sim.tb.cocotb",
+        "sim.uvm.factory_config",
+        "sim.uvm.phasing",
+        "sim.uvm.sequences",
+        "sim.uvm.tlm"
+      ],
+      "concept_count": 16
+    },
+    {
+      "id": "functional_verification.b28",
+      "title": "Functional Verification · Stage 29",
+      "domain": "functional_verification",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "functional_verification.frontier"
+      ],
+      "concept_ids": [
+        "sim.frontier.debug_agent",
+        "sim.frontier.simulator_seams"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "functional_verification.b29",
+      "title": "Functional Verification · Stage 30",
+      "domain": "functional_verification",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "functional_verification.frontier"
+      ],
+      "concept_ids": [
+        "sim.frontier.coverage_agent",
+        "sim.frontier.differential_sim",
+        "sim.frontier.llm_testbench"
+      ],
+      "concept_count": 3
     },
     {
       "id": "geometry.b0",
@@ -1670,6 +5196,329 @@
       "concept_count": 4
     },
     {
+      "id": "hdl_and_compilers.b10",
+      "title": "Hdl And Compilers · Stage 11",
+      "domain": "hdl_and_compilers",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 32,
+      "subdomains": [
+        "hdl_and_compilers.rtl",
+        "hdl_and_compilers.sv",
+        "hdl_and_compilers.verilog"
+      ],
+      "concept_ids": [
+        "hdl.rtl.behavioral_structural",
+        "hdl.rtl.four_state",
+        "hdl.rtl.modules_hierarchy",
+        "hdl.rtl.register_transfer",
+        "hdl.sv.logic_types",
+        "hdl.verilog.event_scheduling",
+        "hdl.verilog.expression_sizing",
+        "hdl.verilog.signedness"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "hdl_and_compilers.b11",
+      "title": "Hdl And Compilers · Stage 12",
+      "domain": "hdl_and_compilers",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "hdl_and_compilers.compile",
+        "hdl_and_compilers.lang",
+        "hdl_and_compilers.sv",
+        "hdl_and_compilers.verilog"
+      ],
+      "concept_ids": [
+        "hdl.compile.ast",
+        "hdl.compile.lexing",
+        "hdl.compile.parsing",
+        "hdl.lang.ams",
+        "hdl.lang.systemc",
+        "hdl.lang.vhdl_resolution",
+        "hdl.lang.vhdl_signals_variables",
+        "hdl.sv.interfaces_packages",
+        "hdl.verilog.blocking_nonblocking",
+        "hdl.verilog.case_semantics",
+        "hdl.verilog.flop_inference",
+        "hdl.verilog.latch_inference"
+      ],
+      "concept_count": 12
+    },
+    {
+      "id": "hdl_and_compilers.b12",
+      "title": "Hdl And Compilers · Stage 13",
+      "domain": "hdl_and_compilers",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "hdl_and_compilers.compile",
+        "hdl_and_compilers.elab",
+        "hdl_and_compilers.ir",
+        "hdl_and_compilers.sv",
+        "hdl_and_compilers.verilog"
+      ],
+      "concept_ids": [
+        "hdl.compile.cfg",
+        "hdl.compile.elaboration",
+        "hdl.compile.ir",
+        "hdl.elab.generate",
+        "hdl.elab.parameters",
+        "hdl.ir.frontends",
+        "hdl.ir.rtlil",
+        "hdl.sv.always_ff_comb",
+        "hdl.sv.unique_priority",
+        "hdl.verilog.synthesizable_subset"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "hdl_and_compilers.b13",
+      "title": "Hdl And Compilers · Stage 14",
+      "domain": "hdl_and_compilers",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "hdl_and_compilers.compile",
+        "hdl_and_compilers.elab",
+        "hdl_and_compilers.ir",
+        "hdl_and_compilers.lang",
+        "hdl_and_compilers.opt"
+      ],
+      "concept_ids": [
+        "hdl.compile.dataflow",
+        "hdl.compile.dominators",
+        "hdl.compile.phi_placement",
+        "hdl.compile.ssa",
+        "hdl.elab.flatten",
+        "hdl.ir.mlir_circt",
+        "hdl.ir.verilator",
+        "hdl.ir.yosys_proc",
+        "hdl.lang.chisel_dsl",
+        "hdl.opt.constant_propagation",
+        "hdl.opt.cse",
+        "hdl.opt.dce"
+      ],
+      "concept_count": 12
+    },
+    {
+      "id": "hdl_and_compilers.b14",
+      "title": "Hdl And Compilers · Stage 15",
+      "domain": "hdl_and_compilers",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 43,
+      "subdomains": [
+        "hdl_and_compilers.ir"
+      ],
+      "concept_ids": [
+        "hdl.ir.circt_dialects",
+        "hdl.ir.firrtl",
+        "hdl.ir.yosys_opt"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "hdl_and_compilers.b28",
+      "title": "Hdl And Compilers · Stage 29",
+      "domain": "hdl_and_compilers",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "hdl_and_compilers.frontier"
+      ],
+      "concept_ids": [
+        "hdl.frontier.agent_editable_compiler",
+        "hdl.frontier.llm_friendly_ir",
+        "hdl.frontier.rtl_harness_loop"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "hdl_and_compilers.b29",
+      "title": "Hdl And Compilers · Stage 30",
+      "domain": "hdl_and_compilers",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "hdl_and_compilers.frontier"
+      ],
+      "concept_ids": [
+        "hdl.frontier.refactor_equivalence",
+        "hdl.frontier.rtl_reward"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "high_level_synthesis.b12",
+      "title": "High Level Synthesis · Stage 13",
+      "domain": "high_level_synthesis",
+      "band": 12,
+      "depth_min": 38,
+      "depth_max": 38,
+      "subdomains": [
+        "high_level_synthesis.ir"
+      ],
+      "concept_ids": [
+        "hls.ir.flow_overview"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "high_level_synthesis.b13",
+      "title": "High Level Synthesis · Stage 14",
+      "domain": "high_level_synthesis",
+      "band": 13,
+      "depth_min": 40,
+      "depth_max": 41,
+      "subdomains": [
+        "high_level_synthesis.ir"
+      ],
+      "concept_ids": [
+        "hls.ir.cdfg",
+        "hls.ir.dfg",
+        "hls.ir.op_latency"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "high_level_synthesis.b14",
+      "title": "High Level Synthesis · Stage 15",
+      "domain": "high_level_synthesis",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "high_level_synthesis.bind",
+        "high_level_synthesis.ir",
+        "high_level_synthesis.sched"
+      ],
+      "concept_ids": [
+        "hls.bind.left_edge",
+        "hls.bind.lifetimes",
+        "hls.ir.ssa_lowering",
+        "hls.sched.asap_alap",
+        "hls.sched.chaining",
+        "hls.sched.ilp",
+        "hls.sched.list",
+        "hls.sched.min_resources",
+        "hls.sched.mobility",
+        "hls.sched.multicycle_fu",
+        "hls.sched.resource_bound"
+      ],
+      "concept_count": 11
+    },
+    {
+      "id": "high_level_synthesis.b15",
+      "title": "High Level Synthesis · Stage 16",
+      "domain": "high_level_synthesis",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 47,
+      "subdomains": [
+        "high_level_synthesis.bind",
+        "high_level_synthesis.mem",
+        "high_level_synthesis.pipe",
+        "high_level_synthesis.sched",
+        "high_level_synthesis.sys"
+      ],
+      "concept_ids": [
+        "hls.bind.allocation",
+        "hls.bind.clique_partition",
+        "hls.bind.interconnect",
+        "hls.bind.interval_coloring",
+        "hls.mem.dataflow",
+        "hls.mem.interfaces",
+        "hls.mem.partitioning",
+        "hls.pipe.initiation_interval",
+        "hls.pipe.loop_pipelining",
+        "hls.pipe.modulo_scheduling",
+        "hls.pipe.rec_mii",
+        "hls.pipe.recurrence_breaking",
+        "hls.pipe.res_mii",
+        "hls.pipe.unrolling",
+        "hls.sched.force_directed",
+        "hls.sched.sdc_solve",
+        "hls.sys.dse"
+      ],
+      "concept_count": 17
+    },
+    {
+      "id": "high_level_synthesis.b16",
+      "title": "High Level Synthesis · Stage 17",
+      "domain": "high_level_synthesis",
+      "band": 16,
+      "depth_min": 48,
+      "depth_max": 49,
+      "subdomains": [
+        "high_level_synthesis.bind",
+        "high_level_synthesis.mem",
+        "high_level_synthesis.sys"
+      ],
+      "concept_ids": [
+        "hls.bind.datapath_fsm",
+        "hls.mem.bank_conflicts",
+        "hls.mem.line_buffers",
+        "hls.sys.codesign",
+        "hls.sys.tools"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "high_level_synthesis.b28",
+      "title": "High Level Synthesis · Stage 29",
+      "domain": "high_level_synthesis",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "high_level_synthesis.frontier"
+      ],
+      "concept_ids": [
+        "hls.frontier.llm_to_hlsc",
+        "hls.frontier.pragma_agent",
+        "hls.frontier.seams"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "high_level_synthesis.b29",
+      "title": "High Level Synthesis · Stage 30",
+      "domain": "high_level_synthesis",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "high_level_synthesis.frontier"
+      ],
+      "concept_ids": [
+        "hls.frontier.cosim_golden"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "high_level_synthesis.b31",
+      "title": "High Level Synthesis · Stage 32",
+      "domain": "high_level_synthesis",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "high_level_synthesis.frontier"
+      ],
+      "concept_ids": [
+        "hls.frontier.qor_surrogate"
+      ],
+      "concept_count": 1
+    },
+    {
       "id": "linear_algebra.b0",
       "title": "Linear Algebra · Stage 1",
       "domain": "linear_algebra",
@@ -1835,6 +5684,247 @@
         "linalg.symmetric.spectral"
       ],
       "concept_count": 6
+    },
+    {
+      "id": "logic_synthesis.b9",
+      "title": "Logic Synthesis · Stage 10",
+      "domain": "logic_synthesis",
+      "band": 9,
+      "depth_min": 27,
+      "depth_max": 27,
+      "subdomains": [
+        "logic_synthesis.datapath"
+      ],
+      "concept_ids": [
+        "synth.arith.carry_save"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "logic_synthesis.b12",
+      "title": "Logic Synthesis · Stage 13",
+      "domain": "logic_synthesis",
+      "band": 12,
+      "depth_min": 37,
+      "depth_max": 38,
+      "subdomains": [
+        "logic_synthesis.fsm",
+        "logic_synthesis.overview",
+        "logic_synthesis.seq"
+      ],
+      "concept_ids": [
+        "synth.fsm.state_minimization",
+        "synth.overview.cost_metrics",
+        "synth.overview.flow",
+        "synth.seq.retiming"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "logic_synthesis.b13",
+      "title": "Logic Synthesis · Stage 14",
+      "domain": "logic_synthesis",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "logic_synthesis.datapath",
+        "logic_synthesis.fsm",
+        "logic_synthesis.multilevel",
+        "logic_synthesis.seq",
+        "logic_synthesis.twolevel"
+      ],
+      "concept_ids": [
+        "synth.arith.csd",
+        "synth.fsm.encoding",
+        "synth.fsm.equivalence",
+        "synth.multilevel.boolean_network",
+        "synth.seq.min_area",
+        "synth.seq.min_period",
+        "synth.seq.pipelining",
+        "synth.seq.wd_matrices",
+        "synth.twolevel.cube_notation",
+        "synth.twolevel.kmap",
+        "synth.twolevel.quine_mccluskey",
+        "synth.twolevel.tautology"
+      ],
+      "concept_count": 12
+    },
+    {
+      "id": "logic_synthesis.b14",
+      "title": "Logic Synthesis · Stage 15",
+      "domain": "logic_synthesis",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "logic_synthesis.aig",
+        "logic_synthesis.dc",
+        "logic_synthesis.multilevel",
+        "logic_synthesis.twolevel"
+      ],
+      "concept_ids": [
+        "synth.aig.balancing",
+        "synth.aig.cuts",
+        "synth.aig.fraig",
+        "synth.aig.mffc",
+        "synth.aig.strash",
+        "synth.aig.structure",
+        "synth.dc.dont_cares",
+        "synth.dc.odc",
+        "synth.dc.resubstitution",
+        "synth.dc.sdc",
+        "synth.multilevel.algebraic_division",
+        "synth.multilevel.boolean_division",
+        "synth.multilevel.cube_extraction",
+        "synth.multilevel.factoring",
+        "synth.multilevel.kernels",
+        "synth.twolevel.expand",
+        "synth.twolevel.irredundant",
+        "synth.twolevel.petrick",
+        "synth.twolevel.prime_table",
+        "synth.twolevel.table_reduction",
+        "synth.twolevel.unate_covering"
+      ],
+      "concept_count": 21
+    },
+    {
+      "id": "logic_synthesis.b15",
+      "title": "Logic Synthesis · Stage 16",
+      "domain": "logic_synthesis",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 47,
+      "subdomains": [
+        "logic_synthesis.aig",
+        "logic_synthesis.datapath",
+        "logic_synthesis.dc",
+        "logic_synthesis.multilevel",
+        "logic_synthesis.tool",
+        "logic_synthesis.twolevel"
+      ],
+      "concept_ids": [
+        "synth.aig.refactoring",
+        "synth.aig.rewriting",
+        "synth.dc.compatibility",
+        "synth.egraph.congruence",
+        "synth.egraph.equality_saturation",
+        "synth.egraph.extraction",
+        "synth.multilevel.elimination",
+        "synth.multilevel.extraction",
+        "synth.tool.cec",
+        "synth.twolevel.espresso"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "logic_synthesis.b17",
+      "title": "Logic Synthesis · Stage 18",
+      "domain": "logic_synthesis",
+      "band": 17,
+      "depth_min": 53,
+      "depth_max": 53,
+      "subdomains": [
+        "logic_synthesis.aig"
+      ],
+      "concept_ids": [
+        "synth.aig.tech_mapping"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "logic_synthesis.b18",
+      "title": "Logic Synthesis · Stage 19",
+      "domain": "logic_synthesis",
+      "band": 18,
+      "depth_min": 54,
+      "depth_max": 55,
+      "subdomains": [
+        "logic_synthesis.aig",
+        "logic_synthesis.tool"
+      ],
+      "concept_ids": [
+        "synth.aig.lut_mapping",
+        "synth.tool.abc_scripts",
+        "synth.tool.yosys_abc"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "logic_synthesis.b20",
+      "title": "Logic Synthesis · Stage 21",
+      "domain": "logic_synthesis",
+      "band": 20,
+      "depth_min": 61,
+      "depth_max": 61,
+      "subdomains": [
+        "logic_synthesis.overview"
+      ],
+      "concept_ids": [
+        "synth.overview.netlist_abstraction"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "logic_synthesis.b27",
+      "title": "Logic Synthesis · Stage 28",
+      "domain": "logic_synthesis",
+      "band": 27,
+      "depth_min": 83,
+      "depth_max": 83,
+      "subdomains": [
+        "logic_synthesis.frontier"
+      ],
+      "concept_ids": [
+        "synth.frontier.egraph_skill"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "logic_synthesis.b28",
+      "title": "Logic Synthesis · Stage 29",
+      "domain": "logic_synthesis",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 85,
+      "subdomains": [
+        "logic_synthesis.frontier"
+      ],
+      "concept_ids": [
+        "synth.frontier.change_tiers"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "logic_synthesis.b29",
+      "title": "Logic Synthesis · Stage 30",
+      "domain": "logic_synthesis",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "logic_synthesis.frontier"
+      ],
+      "concept_ids": [
+        "synth.frontier.cec_golden",
+        "synth.frontier.recipe_rl"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "logic_synthesis.b31",
+      "title": "Logic Synthesis · Stage 32",
+      "domain": "logic_synthesis",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "logic_synthesis.frontier"
+      ],
+      "concept_ids": [
+        "synth.frontier.qor_estimation"
+      ],
+      "concept_count": 1
     },
     {
       "id": "machine_learning.b3",
@@ -2006,6 +6096,214 @@
         "ml.tree.ensemble"
       ],
       "concept_count": 11
+    },
+    {
+      "id": "ml_for_eda.b7",
+      "title": "Ml For Eda · Stage 8",
+      "domain": "ml_for_eda",
+      "band": 7,
+      "depth_min": 21,
+      "depth_max": 23,
+      "subdomains": [
+        "ml_for_eda.gnn"
+      ],
+      "concept_ids": [
+        "mleda.gnn.message_passing",
+        "mleda.gnn.netlist_graph"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "ml_for_eda.b20",
+      "title": "Ml For Eda · Stage 21",
+      "domain": "ml_for_eda",
+      "band": 20,
+      "depth_min": 62,
+      "depth_max": 62,
+      "subdomains": [
+        "ml_for_eda.gnn"
+      ],
+      "concept_ids": [
+        "mleda.gnn.netlist_gnn"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "ml_for_eda.b21",
+      "title": "Ml For Eda · Stage 22",
+      "domain": "ml_for_eda",
+      "band": 21,
+      "depth_min": 63,
+      "depth_max": 63,
+      "subdomains": [
+        "ml_for_eda.gnn"
+      ],
+      "concept_ids": [
+        "mleda.gnn.fanout_scale",
+        "mleda.gnn.hetero_graphs"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "ml_for_eda.b22",
+      "title": "Ml For Eda · Stage 23",
+      "domain": "ml_for_eda",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 68,
+      "subdomains": [
+        "ml_for_eda.eval",
+        "ml_for_eda.found",
+        "ml_for_eda.llm",
+        "ml_for_eda.predict",
+        "ml_for_eda.rl"
+      ],
+      "concept_ids": [
+        "mleda.eval.pass_at_k",
+        "mleda.found.where_ml_helps",
+        "mleda.llm.assertion_generation",
+        "mleda.llm.repair_loops",
+        "mleda.llm.rtl_generation",
+        "mleda.predict.timing",
+        "mleda.rl.mdp_formulation",
+        "mleda.rl.synthesis_recipes"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "ml_for_eda.b23",
+      "title": "Ml For Eda · Stage 24",
+      "domain": "ml_for_eda",
+      "band": 23,
+      "depth_min": 69,
+      "depth_max": 71,
+      "subdomains": [
+        "ml_for_eda.eval"
+      ],
+      "concept_ids": [
+        "mleda.eval.benchmarks",
+        "mleda.eval.contamination",
+        "mleda.eval.functional_correctness"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "ml_for_eda.b26",
+      "title": "Ml For Eda · Stage 27",
+      "domain": "ml_for_eda",
+      "band": 26,
+      "depth_min": 79,
+      "depth_max": 80,
+      "subdomains": [
+        "ml_for_eda.rl"
+      ],
+      "concept_ids": [
+        "mleda.rl.placement",
+        "mleda.rl.placement_debate"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "ml_for_eda.b27",
+      "title": "Ml For Eda · Stage 28",
+      "domain": "ml_for_eda",
+      "band": 27,
+      "depth_min": 81,
+      "depth_max": 83,
+      "subdomains": [
+        "ml_for_eda.diff"
+      ],
+      "concept_ids": [
+        "mleda.diff.differentiable_placement",
+        "mleda.diff.differentiable_timing",
+        "mleda.diff.relaxation_limits",
+        "mleda.diff.smooth_max"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "ml_for_eda.b29",
+      "title": "Ml For Eda · Stage 30",
+      "domain": "ml_for_eda",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "ml_for_eda.frontier"
+      ],
+      "concept_ids": [
+        "mleda.frontier.tool_feedback_training",
+        "mleda.frontier.verification_gate"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "ml_for_eda.b30",
+      "title": "Ml For Eda · Stage 31",
+      "domain": "ml_for_eda",
+      "band": 30,
+      "depth_min": 91,
+      "depth_max": 92,
+      "subdomains": [
+        "ml_for_eda.found",
+        "ml_for_eda.llm",
+        "ml_for_eda.predict",
+        "ml_for_eda.surrogate"
+      ],
+      "concept_ids": [
+        "mleda.found.labels_from_tools",
+        "mleda.llm.script_generation",
+        "mleda.predict.congestion",
+        "mleda.surrogate.speedup_accounting"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "ml_for_eda.b31",
+      "title": "Ml For Eda · Stage 32",
+      "domain": "ml_for_eda",
+      "band": 31,
+      "depth_min": 93,
+      "depth_max": 95,
+      "subdomains": [
+        "ml_for_eda.eval",
+        "ml_for_eda.frontier",
+        "ml_for_eda.gen",
+        "ml_for_eda.predict",
+        "ml_for_eda.surrogate"
+      ],
+      "concept_ids": [
+        "mleda.eval.distribution_shift",
+        "mleda.frontier.learned_fast_mode",
+        "mleda.frontier.on_site_learning",
+        "mleda.gen.generative_design",
+        "mleda.gen.learned_routing",
+        "mleda.predict.datasets",
+        "mleda.predict.drc_hotspot",
+        "mleda.predict.ir_drop",
+        "mleda.surrogate.acquisition",
+        "mleda.surrogate.active_learning",
+        "mleda.surrogate.gp_posterior"
+      ],
+      "concept_count": 11
+    },
+    {
+      "id": "ml_for_eda.b32",
+      "title": "Ml For Eda · Stage 33",
+      "domain": "ml_for_eda",
+      "band": 32,
+      "depth_min": 96,
+      "depth_max": 97,
+      "subdomains": [
+        "ml_for_eda.eval",
+        "ml_for_eda.surrogate"
+      ],
+      "concept_ids": [
+        "mleda.eval.ranking_metrics",
+        "mleda.surrogate.analog_sizing",
+        "mleda.surrogate.flow_tuning"
+      ],
+      "concept_count": 3
     },
     {
       "id": "number_theory.b2",
@@ -2277,6 +6575,909 @@
         "numa.integration.simpson"
       ],
       "concept_count": 8
+    },
+    {
+      "id": "numerical_methods_for_eda.b2",
+      "title": "Numerical Methods For Eda · Stage 3",
+      "domain": "numerical_methods_for_eda",
+      "band": 2,
+      "depth_min": 7,
+      "depth_max": 8,
+      "subdomains": [
+        "numerical_methods_for_eda.sparse"
+      ],
+      "concept_ids": [
+        "numer.sparse.mna_pattern",
+        "numer.sparse.storage"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "numerical_methods_for_eda.b3",
+      "title": "Numerical Methods For Eda · Stage 4",
+      "domain": "numerical_methods_for_eda",
+      "band": 3,
+      "depth_min": 10,
+      "depth_max": 10,
+      "subdomains": [
+        "numerical_methods_for_eda.sparse"
+      ],
+      "concept_ids": [
+        "numer.sparse.csr_matvec"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "numerical_methods_for_eda.b8",
+      "title": "Numerical Methods For Eda · Stage 9",
+      "domain": "numerical_methods_for_eda",
+      "band": 8,
+      "depth_min": 24,
+      "depth_max": 26,
+      "subdomains": [
+        "numerical_methods_for_eda.direct",
+        "numerical_methods_for_eda.iter",
+        "numerical_methods_for_eda.sparse"
+      ],
+      "concept_ids": [
+        "numer.direct.lu",
+        "numer.direct.small_pivot",
+        "numer.iter.jacobi_gs",
+        "numer.sparse.fill_in",
+        "numer.sparse.markowitz",
+        "numer.sparse.minimum_degree"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "numerical_methods_for_eda.b9",
+      "title": "Numerical Methods For Eda · Stage 10",
+      "domain": "numerical_methods_for_eda",
+      "band": 9,
+      "depth_min": 27,
+      "depth_max": 29,
+      "subdomains": [
+        "numerical_methods_for_eda.direct",
+        "numerical_methods_for_eda.sparse"
+      ],
+      "concept_ids": [
+        "numer.direct.cholesky",
+        "numer.direct.condition",
+        "numer.direct.threshold_pivoting",
+        "numer.sparse.nested_dissection"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "numerical_methods_for_eda.b10",
+      "title": "Numerical Methods For Eda · Stage 11",
+      "domain": "numerical_methods_for_eda",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 32,
+      "subdomains": [
+        "numerical_methods_for_eda.hpc",
+        "numerical_methods_for_eda.iter"
+      ],
+      "concept_ids": [
+        "numer.hpc.gpu",
+        "numer.hpc.parallel_scaling",
+        "numer.iter.cg_convergence",
+        "numer.iter.conjugate_gradient",
+        "numer.iter.gmres",
+        "numer.iter.multigrid",
+        "numer.iter.preconditioning"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "numerical_methods_for_eda.b11",
+      "title": "Numerical Methods For Eda · Stage 12",
+      "domain": "numerical_methods_for_eda",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "numerical_methods_for_eda.hpc",
+        "numerical_methods_for_eda.iter",
+        "numerical_methods_for_eda.nonlinear"
+      ],
+      "concept_ids": [
+        "numer.hpc.autodiff_forward",
+        "numer.hpc.reduction_order",
+        "numer.iter.ilu",
+        "numer.nonlinear.convergence_test",
+        "numer.nonlinear.exponential",
+        "numer.nonlinear.newton_systems"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "numerical_methods_for_eda.b12",
+      "title": "Numerical Methods For Eda · Stage 13",
+      "domain": "numerical_methods_for_eda",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "numerical_methods_for_eda.hpc",
+        "numerical_methods_for_eda.nonlinear",
+        "numerical_methods_for_eda.ode"
+      ],
+      "concept_ids": [
+        "numer.hpc.adjoint",
+        "numer.nonlinear.continuation",
+        "numer.nonlinear.damping",
+        "numer.ode.backward_euler"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "numerical_methods_for_eda.b13",
+      "title": "Numerical Methods For Eda · Stage 14",
+      "domain": "numerical_methods_for_eda",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "numerical_methods_for_eda.mor",
+        "numerical_methods_for_eda.ode"
+      ],
+      "concept_ids": [
+        "numer.mor.moments",
+        "numer.ode.bdf2",
+        "numer.ode.companion",
+        "numer.ode.dae",
+        "numer.ode.lte",
+        "numer.ode.step_control",
+        "numer.ode.trapezoidal"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "numerical_methods_for_eda.b14",
+      "title": "Numerical Methods For Eda · Stage 15",
+      "domain": "numerical_methods_for_eda",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "numerical_methods_for_eda.mor",
+        "numerical_methods_for_eda.ode",
+        "numerical_methods_for_eda.pde"
+      ],
+      "concept_ids": [
+        "numer.mor.krylov_projection",
+        "numer.mor.svd_truncation",
+        "numer.ode.stability_regions",
+        "numer.ode.stiffness",
+        "numer.pde.boundary_conditions",
+        "numer.pde.explicit_heat",
+        "numer.pde.fem",
+        "numer.pde.finite_difference"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "numerical_methods_for_eda.b15",
+      "title": "Numerical Methods For Eda · Stage 16",
+      "domain": "numerical_methods_for_eda",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 45,
+      "subdomains": [
+        "numerical_methods_for_eda.pde"
+      ],
+      "concept_ids": [
+        "numer.pde.bem",
+        "numer.pde.fvm"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "numerical_methods_for_eda.b27",
+      "title": "Numerical Methods For Eda · Stage 28",
+      "domain": "numerical_methods_for_eda",
+      "band": 27,
+      "depth_min": 82,
+      "depth_max": 82,
+      "subdomains": [
+        "numerical_methods_for_eda.frontier"
+      ],
+      "concept_ids": [
+        "numer.frontier.kernel_core"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "numerical_methods_for_eda.b28",
+      "title": "Numerical Methods For Eda · Stage 29",
+      "domain": "numerical_methods_for_eda",
+      "band": 28,
+      "depth_min": 86,
+      "depth_max": 86,
+      "subdomains": [
+        "numerical_methods_for_eda.frontier"
+      ],
+      "concept_ids": [
+        "numer.frontier.solver_seam"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "numerical_methods_for_eda.b29",
+      "title": "Numerical Methods For Eda · Stage 30",
+      "domain": "numerical_methods_for_eda",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "numerical_methods_for_eda.frontier"
+      ],
+      "concept_ids": [
+        "numer.frontier.differential_tests"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "numerical_methods_for_eda.b31",
+      "title": "Numerical Methods For Eda · Stage 32",
+      "domain": "numerical_methods_for_eda",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "numerical_methods_for_eda.frontier"
+      ],
+      "concept_ids": [
+        "numer.frontier.fast_accurate",
+        "numer.frontier.gpu_agent_loop"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "optimization_for_eda.b11",
+      "title": "Optimization For Eda · Stage 12",
+      "domain": "optimization_for_eda",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "optimization_for_eda.convex",
+        "optimization_for_eda.dp",
+        "optimization_for_eda.formulate",
+        "optimization_for_eda.gradient",
+        "optimization_for_eda.lp",
+        "optimization_for_eda.multi"
+      ],
+      "concept_ids": [
+        "opt.convex.convexity_test",
+        "opt.convex.quadratic_placement",
+        "opt.dp.constraint_propagation",
+        "opt.formulate.problem_classes",
+        "opt.formulate.variables_objective",
+        "opt.gradient.conjugate_gradient",
+        "opt.gradient.coordinate_descent",
+        "opt.gradient.descent",
+        "opt.gradient.newton",
+        "opt.gradient.smooth_wirelength",
+        "opt.gradient.step_size",
+        "opt.lp.simplex_geometry",
+        "opt.multi.pareto"
+      ],
+      "concept_count": 13
+    },
+    {
+      "id": "optimization_for_eda.b12",
+      "title": "Optimization For Eda · Stage 13",
+      "domain": "optimization_for_eda",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "optimization_for_eda.bayes",
+        "optimization_for_eda.convex",
+        "optimization_for_eda.dp",
+        "optimization_for_eda.formulate",
+        "optimization_for_eda.gradient",
+        "optimization_for_eda.ip",
+        "optimization_for_eda.lp",
+        "optimization_for_eda.meta",
+        "optimization_for_eda.multi"
+      ],
+      "concept_ids": [
+        "opt.bayes.gaussian_process",
+        "opt.convex.geometric_programming",
+        "opt.convex.kkt",
+        "opt.dp.buffer_insertion",
+        "opt.dp.principle",
+        "opt.dp.tree_mapping",
+        "opt.formulate.hardness",
+        "opt.formulate.strategy",
+        "opt.gradient.nesterov",
+        "opt.gradient.quasi_newton",
+        "opt.ip.benders",
+        "opt.ip.big_m",
+        "opt.ip.branch_and_bound",
+        "opt.ip.cutting_planes",
+        "opt.ip.global_routing",
+        "opt.ip.ilp_scheduling",
+        "opt.ip.lp_relaxation",
+        "opt.lp.difference_constraints",
+        "opt.lp.duality",
+        "opt.lp.shadow_prices",
+        "opt.lp.simplex_pivot",
+        "opt.meta.genetic",
+        "opt.meta.local_search",
+        "opt.meta.simulated_annealing",
+        "opt.multi.robust_stochastic",
+        "opt.multi.scalarization"
+      ],
+      "concept_count": 26
+    },
+    {
+      "id": "optimization_for_eda.b13",
+      "title": "Optimization For Eda · Stage 14",
+      "domain": "optimization_for_eda",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "optimization_for_eda.bayes",
+        "optimization_for_eda.convex",
+        "optimization_for_eda.lagrange",
+        "optimization_for_eda.meta"
+      ],
+      "concept_ids": [
+        "opt.bayes.bayesian_optimization",
+        "opt.bayes.eda_practice",
+        "opt.convex.nonconvex",
+        "opt.lagrange.admm",
+        "opt.lagrange.augmented",
+        "opt.lagrange.dual_function",
+        "opt.lagrange.penalty",
+        "opt.lagrange.relaxation",
+        "opt.lagrange.subgradient",
+        "opt.meta.cooling_schedule",
+        "opt.meta.polish_expression"
+      ],
+      "concept_count": 11
+    },
+    {
+      "id": "optimization_for_eda.b28",
+      "title": "Optimization For Eda · Stage 29",
+      "domain": "optimization_for_eda",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "optimization_for_eda.frontier"
+      ],
+      "concept_ids": [
+        "opt.frontier.move_set_policy",
+        "opt.frontier.objective_weights"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "optimization_for_eda.b29",
+      "title": "Optimization For Eda · Stage 30",
+      "domain": "optimization_for_eda",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "optimization_for_eda.frontier"
+      ],
+      "concept_ids": [
+        "opt.frontier.optimizer_verification",
+        "opt.frontier.reward_design"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "optimization_for_eda.b31",
+      "title": "Optimization For Eda · Stage 32",
+      "domain": "optimization_for_eda",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "optimization_for_eda.frontier"
+      ],
+      "concept_ids": [
+        "opt.frontier.dse_agent"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "packaging_and_integration.b21",
+      "title": "Packaging And Integration · Stage 22",
+      "domain": "packaging_and_integration",
+      "band": 21,
+      "depth_min": 65,
+      "depth_max": 65,
+      "subdomains": [
+        "packaging_and_integration.basic"
+      ],
+      "concept_ids": [
+        "pkg.basic.package_roles"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "packaging_and_integration.b22",
+      "title": "Packaging And Integration · Stage 23",
+      "domain": "packaging_and_integration",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 68,
+      "subdomains": [
+        "packaging_and_integration.adv",
+        "packaging_and_integration.basic",
+        "packaging_and_integration.thermal"
+      ],
+      "concept_ids": [
+        "pkg.adv.sip_mcm",
+        "pkg.basic.flip_chip_bga",
+        "pkg.basic.wire_bonding",
+        "pkg.thermal.conduction",
+        "pkg.thermal.joule_heating",
+        "pkg.thermal.junction_temperature",
+        "pkg.thermal.resistance_network",
+        "pkg.thermal.simulation",
+        "pkg.thermal.transient"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "packaging_and_integration.b23",
+      "title": "Packaging And Integration · Stage 24",
+      "domain": "packaging_and_integration",
+      "band": 23,
+      "depth_min": 69,
+      "depth_max": 69,
+      "subdomains": [
+        "packaging_and_integration.chiplet",
+        "packaging_and_integration.thermal"
+      ],
+      "concept_ids": [
+        "pkg.chiplet.disaggregation",
+        "pkg.thermal.management",
+        "pkg.thermal.power_density"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "packaging_and_integration.b27",
+      "title": "Packaging And Integration · Stage 28",
+      "domain": "packaging_and_integration",
+      "band": 27,
+      "depth_min": 82,
+      "depth_max": 83,
+      "subdomains": [
+        "packaging_and_integration.rel"
+      ],
+      "concept_ids": [
+        "pkg.rel.dielectric_breakdown",
+        "pkg.rel.electromigration",
+        "pkg.rel.em_temperature"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "packaging_and_integration.b28",
+      "title": "Packaging And Integration · Stage 29",
+      "domain": "packaging_and_integration",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 84,
+      "subdomains": [
+        "packaging_and_integration.rel"
+      ],
+      "concept_ids": [
+        "pkg.rel.aging",
+        "pkg.rel.multiphysics"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "packaging_and_integration.b29",
+      "title": "Packaging And Integration · Stage 30",
+      "domain": "packaging_and_integration",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 89,
+      "subdomains": [
+        "packaging_and_integration.basic",
+        "packaging_and_integration.chiplet",
+        "packaging_and_integration.frontier",
+        "packaging_and_integration.mech",
+        "packaging_and_integration.rel",
+        "packaging_and_integration.wlp"
+      ],
+      "concept_ids": [
+        "pkg.basic.escape_routing",
+        "pkg.basic.substrates",
+        "pkg.chiplet.package_board_codesign",
+        "pkg.frontier.golden_multiphysics",
+        "pkg.mech.cte_warpage",
+        "pkg.mech.solder_fatigue",
+        "pkg.mech.thermal_stress",
+        "pkg.rel.stress_migration",
+        "pkg.wlp.rdl",
+        "pkg.wlp.wafer_level"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "packaging_and_integration.b30",
+      "title": "Packaging And Integration · Stage 31",
+      "domain": "packaging_and_integration",
+      "band": 30,
+      "depth_min": 90,
+      "depth_max": 92,
+      "subdomains": [
+        "packaging_and_integration.adv",
+        "packaging_and_integration.chiplet",
+        "packaging_and_integration.frontier",
+        "packaging_and_integration.mech"
+      ],
+      "concept_ids": [
+        "pkg.adv.3dic_tsv",
+        "pkg.adv.bridges",
+        "pkg.adv.interposer_25d",
+        "pkg.adv.microbumps",
+        "pkg.adv.tsv_capacitance",
+        "pkg.adv.tsv_keep_out",
+        "pkg.chiplet.d2d_interfaces",
+        "pkg.frontier.multiphysics_engine_layers",
+        "pkg.mech.fea"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "packaging_and_integration.b31",
+      "title": "Packaging And Integration · Stage 32",
+      "domain": "packaging_and_integration",
+      "band": 31,
+      "depth_min": 93,
+      "depth_max": 95,
+      "subdomains": [
+        "packaging_and_integration.adv",
+        "packaging_and_integration.chiplet",
+        "packaging_and_integration.eda3d",
+        "packaging_and_integration.frontier"
+      ],
+      "concept_ids": [
+        "pkg.adv.hybrid_bonding",
+        "pkg.chiplet.energy_per_bit",
+        "pkg.chiplet.ucie",
+        "pkg.eda3d.inter_die_timing",
+        "pkg.eda3d.multi_die_verification",
+        "pkg.eda3d.partitioning",
+        "pkg.eda3d.thermal_floorplan",
+        "pkg.frontier.chiplet_partition_agent",
+        "pkg.frontier.codesign_loop",
+        "pkg.frontier.thermal_surrogate"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "pcb_design.b11",
+      "title": "Pcb Design · Stage 12",
+      "domain": "pcb_design",
+      "band": 11,
+      "depth_min": 34,
+      "depth_max": 35,
+      "subdomains": [
+        "pcb_design.flow"
+      ],
+      "concept_ids": [
+        "pcb.flow.schematic_to_layout",
+        "pcb.flow.symbols_footprints"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "pcb_design.b12",
+      "title": "Pcb Design · Stage 13",
+      "domain": "pcb_design",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "pcb_design.flow",
+        "pcb_design.layout",
+        "pcb_design.verify"
+      ],
+      "concept_ids": [
+        "pcb.flow.bom",
+        "pcb.flow.erc",
+        "pcb.flow.netlist_handoff",
+        "pcb.layout.placement",
+        "pcb.verify.dft"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "pcb_design.b13",
+      "title": "Pcb Design · Stage 14",
+      "domain": "pcb_design",
+      "band": 13,
+      "depth_min": 41,
+      "depth_max": 41,
+      "subdomains": [
+        "pcb_design.stackup"
+      ],
+      "concept_ids": [
+        "pcb.stackup.layers"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "pcb_design.b14",
+      "title": "Pcb Design · Stage 15",
+      "domain": "pcb_design",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "pcb_design.diff",
+        "pcb_design.flow",
+        "pcb_design.si",
+        "pcb_design.stackup",
+        "pcb_design.verify"
+      ],
+      "concept_ids": [
+        "pcb.diff.odd_even",
+        "pcb.diff.pairs",
+        "pcb.flow.tools",
+        "pcb.si.ibis",
+        "pcb.si.pdn_target",
+        "pcb.si.reflection",
+        "pcb.si.touchstone",
+        "pcb.stackup.controlled_impedance",
+        "pcb.stackup.copper_resistance",
+        "pcb.stackup.current_capacity",
+        "pcb.stackup.flex_rigid_flex",
+        "pcb.stackup.prop_delay",
+        "pcb.verify.bringup"
+      ],
+      "concept_count": 13
+    },
+    {
+      "id": "pcb_design.b15",
+      "title": "Pcb Design · Stage 16",
+      "domain": "pcb_design",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 45,
+      "subdomains": [
+        "pcb_design.diff",
+        "pcb_design.si"
+      ],
+      "concept_ids": [
+        "pcb.diff.length_matching",
+        "pcb.si.ibis_ami"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "pcb_design.b28",
+      "title": "Pcb Design · Stage 29",
+      "domain": "pcb_design",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "pcb_design.frontier",
+        "pcb_design.via"
+      ],
+      "concept_ids": [
+        "pcb.frontier.constraint_agent",
+        "pcb.frontier.schematic_review",
+        "pcb.via.types"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "pcb_design.b29",
+      "title": "Pcb Design · Stage 30",
+      "domain": "pcb_design",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 89,
+      "subdomains": [
+        "pcb_design.assembly",
+        "pcb_design.layout",
+        "pcb_design.via"
+      ],
+      "concept_ids": [
+        "pcb.assembly.dfa",
+        "pcb.assembly.pick_place",
+        "pcb.assembly.reflow",
+        "pcb.assembly.tht_smt",
+        "pcb.layout.autorouter",
+        "pcb.via.aspect_ratio",
+        "pcb.via.hdi"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "pcb_design.b30",
+      "title": "Pcb Design · Stage 31",
+      "domain": "pcb_design",
+      "band": 30,
+      "depth_min": 90,
+      "depth_max": 92,
+      "subdomains": [
+        "pcb_design.frontier",
+        "pcb_design.layout",
+        "pcb_design.output",
+        "pcb_design.verify"
+      ],
+      "concept_ids": [
+        "pcb.frontier.autorouter_golden",
+        "pcb.frontier.package_codesign",
+        "pcb.frontier.routing_reward",
+        "pcb.layout.bga_escape",
+        "pcb.output.gerber_odb",
+        "pcb.output.ipc_standards",
+        "pcb.verify.drc"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "physical_verification_dfm.b25",
+      "title": "Physical Verification Dfm · Stage 26",
+      "domain": "physical_verification_dfm",
+      "band": 25,
+      "depth_min": 77,
+      "depth_max": 77,
+      "subdomains": [
+        "physical_verification_dfm.format"
+      ],
+      "concept_ids": [
+        "pv.format.gds_records"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "physical_verification_dfm.b26",
+      "title": "Physical Verification Dfm · Stage 27",
+      "domain": "physical_verification_dfm",
+      "band": 26,
+      "depth_min": 78,
+      "depth_max": 80,
+      "subdomains": [
+        "physical_verification_dfm.drc",
+        "physical_verification_dfm.fill",
+        "physical_verification_dfm.format"
+      ],
+      "concept_ids": [
+        "pv.drc.rule_types",
+        "pv.drc.width_spacing",
+        "pv.fill.density",
+        "pv.format.gds_oasis",
+        "pv.format.hierarchy",
+        "pv.format.units_grid"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "physical_verification_dfm.b27",
+      "title": "Physical Verification Dfm · Stage 28",
+      "domain": "physical_verification_dfm",
+      "band": 27,
+      "depth_min": 81,
+      "depth_max": 83,
+      "subdomains": [
+        "physical_verification_dfm.dfm",
+        "physical_verification_dfm.drc",
+        "physical_verification_dfm.fill",
+        "physical_verification_dfm.lvs"
+      ],
+      "concept_ids": [
+        "pv.dfm.critical_area",
+        "pv.dfm.dp_coloring",
+        "pv.dfm.hotspots",
+        "pv.dfm.pattern_matching",
+        "pv.dfm.recommended_rules",
+        "pv.drc.enclosure_extension",
+        "pv.drc.engine",
+        "pv.drc.hierarchical",
+        "pv.drc.notch_eol",
+        "pv.drc.plane_sweep",
+        "pv.drc.rule_deck",
+        "pv.fill.insertion",
+        "pv.fill.side_effects",
+        "pv.fill.windows",
+        "pv.lvs.device_recognition"
+      ],
+      "concept_count": 15
+    },
+    {
+      "id": "physical_verification_dfm.b28",
+      "title": "Physical Verification Dfm · Stage 29",
+      "domain": "physical_verification_dfm",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "physical_verification_dfm.antenna",
+        "physical_verification_dfm.drc",
+        "physical_verification_dfm.frontier",
+        "physical_verification_dfm.lvs"
+      ],
+      "concept_ids": [
+        "pv.antenna.cumulative",
+        "pv.antenna.diode",
+        "pv.antenna.rules",
+        "pv.drc.area_via",
+        "pv.frontier.change_tiers",
+        "pv.frontier.ip_boundary",
+        "pv.lvs.erc",
+        "pv.lvs.extraction",
+        "pv.lvs.graph_matching",
+        "pv.lvs.partition_refinement",
+        "pv.lvs.reduction"
+      ],
+      "concept_count": 11
+    },
+    {
+      "id": "physical_verification_dfm.b29",
+      "title": "Physical Verification Dfm · Stage 30",
+      "domain": "physical_verification_dfm",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 89,
+      "subdomains": [
+        "physical_verification_dfm.antenna",
+        "physical_verification_dfm.lvs",
+        "physical_verification_dfm.tapeout"
+      ],
+      "concept_ids": [
+        "pv.antenna.jumper",
+        "pv.lvs.ambiguity",
+        "pv.lvs.errors",
+        "pv.tapeout.handoff",
+        "pv.tapeout.mask_prep",
+        "pv.tapeout.open_tools",
+        "pv.tapeout.xor_check"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "physical_verification_dfm.b30",
+      "title": "Physical Verification Dfm · Stage 31",
+      "domain": "physical_verification_dfm",
+      "band": 30,
+      "depth_min": 90,
+      "depth_max": 91,
+      "subdomains": [
+        "physical_verification_dfm.frontier"
+      ],
+      "concept_ids": [
+        "pv.frontier.agentic_fix_loop",
+        "pv.frontier.golden_clean"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "physical_verification_dfm.b31",
+      "title": "Physical Verification Dfm · Stage 32",
+      "domain": "physical_verification_dfm",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "physical_verification_dfm.frontier"
+      ],
+      "concept_ids": [
+        "pv.frontier.fast_hotspot"
+      ],
+      "concept_count": 1
     },
     {
       "id": "prealgebra.b0",
@@ -2817,6 +8018,375 @@
       "concept_count": 4
     },
     {
+      "id": "routing.b25",
+      "title": "Routing · Stage 26",
+      "domain": "routing",
+      "band": 25,
+      "depth_min": 77,
+      "depth_max": 77,
+      "subdomains": [
+        "routing.grid"
+      ],
+      "concept_ids": [
+        "route.grid.problem_formulation"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "routing.b26",
+      "title": "Routing · Stage 27",
+      "domain": "routing",
+      "band": 26,
+      "depth_min": 80,
+      "depth_max": 80,
+      "subdomains": [
+        "routing.grid"
+      ],
+      "concept_ids": [
+        "route.grid.global_vs_detailed"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "routing.b27",
+      "title": "Routing · Stage 28",
+      "domain": "routing",
+      "band": 27,
+      "depth_min": 81,
+      "depth_max": 83,
+      "subdomains": [
+        "routing.channel",
+        "routing.detail",
+        "routing.driven",
+        "routing.grid"
+      ],
+      "concept_ids": [
+        "route.channel.cyclic_vcg",
+        "route.channel.density",
+        "route.channel.hcg_vcg",
+        "route.channel.left_edge",
+        "route.detail.pin_access",
+        "route.detail.track_assignment",
+        "route.driven.crosstalk",
+        "route.grid.gcells_tracks",
+        "route.grid.grid_graph",
+        "route.grid.preferred_direction"
+      ],
+      "concept_count": 10
+    },
+    {
+      "id": "routing.b28",
+      "title": "Routing · Stage 29",
+      "domain": "routing",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "routing.channel",
+        "routing.driven",
+        "routing.global",
+        "routing.layer",
+        "routing.maze",
+        "routing.pattern"
+      ],
+      "concept_ids": [
+        "route.channel.dogleg",
+        "route.channel.switchbox",
+        "route.driven.antenna",
+        "route.driven.timing_driven",
+        "route.global.congestion",
+        "route.global.ilp_formulation",
+        "route.global.probabilistic_estimate",
+        "route.layer.assignment_dp",
+        "route.layer.redundant_vias",
+        "route.layer.via_minimization",
+        "route.maze.astar_routing",
+        "route.maze.backtrace",
+        "route.maze.hadlock",
+        "route.maze.lee",
+        "route.maze.line_probing",
+        "route.maze.soukup",
+        "route.pattern.cost_eval",
+        "route.pattern.flute",
+        "route.pattern.l_z",
+        "route.pattern.monotonic",
+        "route.pattern.net_decomposition"
+      ],
+      "concept_count": 21
+    },
+    {
+      "id": "routing.b29",
+      "title": "Routing · Stage 30",
+      "domain": "routing",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 89,
+      "subdomains": [
+        "routing.detail",
+        "routing.driven",
+        "routing.frontier",
+        "routing.global",
+        "routing.layer",
+        "routing.maze"
+      ],
+      "concept_ids": [
+        "route.detail.drc_aware",
+        "route.detail.drc_repair",
+        "route.detail.min_area_eol",
+        "route.detail.multiple_patterning",
+        "route.driven.prim_dijkstra",
+        "route.frontier.core_vs_surface",
+        "route.global.history_cost",
+        "route.global.multicommodity_flow",
+        "route.global.negotiation",
+        "route.global.open_global_routers",
+        "route.global.rip_up_reroute",
+        "route.layer.timing_aware",
+        "route.maze.bend_via_cost"
+      ],
+      "concept_count": 13
+    },
+    {
+      "id": "routing.b30",
+      "title": "Routing · Stage 31",
+      "domain": "routing",
+      "band": 30,
+      "depth_min": 90,
+      "depth_max": 91,
+      "subdomains": [
+        "routing.frontier"
+      ],
+      "concept_ids": [
+        "route.frontier.agentic_drc_repair",
+        "route.frontier.cost_plugin",
+        "route.frontier.drc_golden",
+        "route.frontier.layer_directives"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "routing.b31",
+      "title": "Routing · Stage 32",
+      "domain": "routing",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "routing.frontier"
+      ],
+      "concept_ids": [
+        "route.frontier.fast_congestion"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "semiconductor_devices.b13",
+      "title": "Semiconductor Devices · Stage 14",
+      "domain": "semiconductor_devices",
+      "band": 13,
+      "depth_min": 41,
+      "depth_max": 41,
+      "subdomains": [
+        "semiconductor_devices.physics"
+      ],
+      "concept_ids": [
+        "dev.physics.bands_fermi"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "semiconductor_devices.b14",
+      "title": "Semiconductor Devices · Stage 15",
+      "domain": "semiconductor_devices",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "semiconductor_devices.junction",
+        "semiconductor_devices.physics"
+      ],
+      "concept_ids": [
+        "dev.junction.tunneling",
+        "dev.physics.drift_mobility",
+        "dev.physics.fermi_position",
+        "dev.physics.intrinsic",
+        "dev.physics.mass_action"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "semiconductor_devices.b15",
+      "title": "Semiconductor Devices · Stage 16",
+      "domain": "semiconductor_devices",
+      "band": 15,
+      "depth_min": 45,
+      "depth_max": 47,
+      "subdomains": [
+        "semiconductor_devices.junction",
+        "semiconductor_devices.model",
+        "semiconductor_devices.physics"
+      ],
+      "concept_ids": [
+        "dev.junction.pn",
+        "dev.model.tcad",
+        "dev.physics.diffusion_einstein",
+        "dev.physics.drift_diffusion"
+      ],
+      "concept_count": 4
+    },
+    {
+      "id": "semiconductor_devices.b16",
+      "title": "Semiconductor Devices · Stage 17",
+      "domain": "semiconductor_devices",
+      "band": 16,
+      "depth_min": 48,
+      "depth_max": 50,
+      "subdomains": [
+        "semiconductor_devices.junction",
+        "semiconductor_devices.mos"
+      ],
+      "concept_ids": [
+        "dev.junction.bjt",
+        "dev.junction.depletion",
+        "dev.junction.diode",
+        "dev.mos.capacitor",
+        "dev.mos.threshold"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "semiconductor_devices.b17",
+      "title": "Semiconductor Devices · Stage 18",
+      "domain": "semiconductor_devices",
+      "band": 17,
+      "depth_min": 51,
+      "depth_max": 53,
+      "subdomains": [
+        "semiconductor_devices.mos",
+        "semiconductor_devices.sce"
+      ],
+      "concept_ids": [
+        "dev.mos.body_effect",
+        "dev.mos.clm",
+        "dev.mos.cmos_pair",
+        "dev.mos.gate_capacitance",
+        "dev.mos.leakage",
+        "dev.mos.linear_region",
+        "dev.mos.square_law",
+        "dev.mos.subthreshold",
+        "dev.mos.velocity_saturation",
+        "dev.sce.gate_leakage",
+        "dev.sce.vt_flavors"
+      ],
+      "concept_count": 11
+    },
+    {
+      "id": "semiconductor_devices.b18",
+      "title": "Semiconductor Devices · Stage 19",
+      "domain": "semiconductor_devices",
+      "band": 18,
+      "depth_min": 54,
+      "depth_max": 56,
+      "subdomains": [
+        "semiconductor_devices.advanced",
+        "semiconductor_devices.model",
+        "semiconductor_devices.mos",
+        "semiconductor_devices.rel",
+        "semiconductor_devices.scaling",
+        "semiconductor_devices.sce",
+        "semiconductor_devices.var"
+      ],
+      "concept_ids": [
+        "dev.advanced.finfet",
+        "dev.advanced.soi",
+        "dev.model.compact",
+        "dev.model.unified_iv",
+        "dev.mos.short_channel",
+        "dev.rel.acceleration",
+        "dev.rel.bti_hci",
+        "dev.rel.tddb",
+        "dev.scaling.dennard",
+        "dev.scaling.power_wall",
+        "dev.scaling.vt_floor",
+        "dev.sce.dibl",
+        "dev.sce.vt_rolloff",
+        "dev.var.pelgrom",
+        "dev.var.sources"
+      ],
+      "concept_count": 15
+    },
+    {
+      "id": "semiconductor_devices.b19",
+      "title": "Semiconductor Devices · Stage 20",
+      "domain": "semiconductor_devices",
+      "band": 19,
+      "depth_min": 57,
+      "depth_max": 58,
+      "subdomains": [
+        "semiconductor_devices.advanced",
+        "semiconductor_devices.model",
+        "semiconductor_devices.rel",
+        "semiconductor_devices.var"
+      ],
+      "concept_ids": [
+        "dev.advanced.cfet",
+        "dev.advanced.confinement",
+        "dev.advanced.gaa",
+        "dev.model.bsim",
+        "dev.model.extraction",
+        "dev.rel.aging_models",
+        "dev.var.corners"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "semiconductor_devices.b28",
+      "title": "Semiconductor Devices · Stage 29",
+      "domain": "semiconductor_devices",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "semiconductor_devices.frontier"
+      ],
+      "concept_ids": [
+        "dev.frontier.extraction_skill",
+        "dev.frontier.model_seam"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "semiconductor_devices.b29",
+      "title": "Semiconductor Devices · Stage 30",
+      "domain": "semiconductor_devices",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 88,
+      "subdomains": [
+        "semiconductor_devices.frontier"
+      ],
+      "concept_ids": [
+        "dev.frontier.fit_reward",
+        "dev.frontier.golden_iv"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "semiconductor_devices.b31",
+      "title": "Semiconductor Devices · Stage 32",
+      "domain": "semiconductor_devices",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "semiconductor_devices.frontier"
+      ],
+      "concept_ids": [
+        "dev.frontier.tcad_surrogate"
+      ],
+      "concept_count": 1
+    },
+    {
       "id": "statistics.b0",
       "title": "Statistics · Stage 1",
       "domain": "statistics",
@@ -2987,6 +8557,655 @@
       ],
       "concept_ids": [
         "stat.func.gaussian"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "technology_mapping.b17",
+      "title": "Technology Mapping · Stage 18",
+      "domain": "technology_mapping",
+      "band": 17,
+      "depth_min": 53,
+      "depth_max": 53,
+      "subdomains": [
+        "technology_mapping.subject"
+      ],
+      "concept_ids": [
+        "map.subject.covering_problem"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "technology_mapping.b18",
+      "title": "Technology Mapping · Stage 19",
+      "domain": "technology_mapping",
+      "band": 18,
+      "depth_min": 54,
+      "depth_max": 56,
+      "subdomains": [
+        "technology_mapping.match",
+        "technology_mapping.subject",
+        "technology_mapping.tree"
+      ],
+      "concept_ids": [
+        "map.match.npn",
+        "map.subject.decomposition",
+        "map.subject.pattern_graphs",
+        "map.tree.matching",
+        "map.tree.partition"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "technology_mapping.b19",
+      "title": "Technology Mapping · Stage 20",
+      "domain": "technology_mapping",
+      "band": 19,
+      "depth_min": 57,
+      "depth_max": 59,
+      "subdomains": [
+        "technology_mapping.match",
+        "technology_mapping.tree"
+      ],
+      "concept_ids": [
+        "map.match.canonical",
+        "map.match.equivalence_check",
+        "map.tree.dag_covering",
+        "map.tree.delay_covering",
+        "map.tree.dp_covering"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "technology_mapping.b20",
+      "title": "Technology Mapping · Stage 21",
+      "domain": "technology_mapping",
+      "band": 20,
+      "depth_min": 60,
+      "depth_max": 62,
+      "subdomains": [
+        "technology_mapping.cut",
+        "technology_mapping.load",
+        "technology_mapping.lut",
+        "technology_mapping.match",
+        "technology_mapping.size",
+        "technology_mapping.tree"
+      ],
+      "concept_ids": [
+        "map.cut.enumeration",
+        "map.cut.k_feasible",
+        "map.cut.priority_cuts",
+        "map.load.crossover",
+        "map.load.liberty_delay",
+        "map.lut.cover_selection",
+        "map.lut.flowmap",
+        "map.lut.wide_functions",
+        "map.match.supergates",
+        "map.size.gate_sizing",
+        "map.size.pin_swap",
+        "map.tree.limits"
+      ],
+      "concept_count": 12
+    },
+    {
+      "id": "technology_mapping.b21",
+      "title": "Technology Mapping · Stage 22",
+      "domain": "technology_mapping",
+      "band": 21,
+      "depth_min": 63,
+      "depth_max": 65,
+      "subdomains": [
+        "technology_mapping.buffer",
+        "technology_mapping.cut",
+        "technology_mapping.load",
+        "technology_mapping.lut",
+        "technology_mapping.size"
+      ],
+      "concept_ids": [
+        "map.buffer.candidates",
+        "map.buffer.pruning",
+        "map.buffer.van_ginneken",
+        "map.cut.area_flow",
+        "map.cut.exact_area",
+        "map.load.gain_based",
+        "map.lut.area_recovery",
+        "map.size.lagrangian",
+        "map.size.vt_swap"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "technology_mapping.b22",
+      "title": "Technology Mapping · Stage 23",
+      "domain": "technology_mapping",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 67,
+      "subdomains": [
+        "technology_mapping.tools"
+      ],
+      "concept_ids": [
+        "map.tools.abc",
+        "map.tools.yosys"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "technology_mapping.b28",
+      "title": "Technology Mapping · Stage 29",
+      "domain": "technology_mapping",
+      "band": 28,
+      "depth_min": 84,
+      "depth_max": 86,
+      "subdomains": [
+        "technology_mapping.frontier"
+      ],
+      "concept_ids": [
+        "map.frontier.cost_seam",
+        "map.frontier.recipe_selection"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "technology_mapping.b29",
+      "title": "Technology Mapping · Stage 30",
+      "domain": "technology_mapping",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "technology_mapping.frontier"
+      ],
+      "concept_ids": [
+        "map.frontier.change_tiers",
+        "map.frontier.golden_qor"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "test_and_dft.b6",
+      "title": "Test And Dft · Stage 7",
+      "domain": "test_and_dft",
+      "band": 6,
+      "depth_min": 20,
+      "depth_max": 20,
+      "subdomains": [
+        "test_and_dft.fault"
+      ],
+      "concept_ids": [
+        "dft.fault.defects_vs_faults"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "test_and_dft.b7",
+      "title": "Test And Dft · Stage 8",
+      "domain": "test_and_dft",
+      "band": 7,
+      "depth_min": 21,
+      "depth_max": 22,
+      "subdomains": [
+        "test_and_dft.fault"
+      ],
+      "concept_ids": [
+        "dft.fault.bridging",
+        "dft.fault.collapsing",
+        "dft.fault.stuck_at"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "test_and_dft.b8",
+      "title": "Test And Dft · Stage 9",
+      "domain": "test_and_dft",
+      "band": 8,
+      "depth_min": 24,
+      "depth_max": 24,
+      "subdomains": [
+        "test_and_dft.atpg"
+      ],
+      "concept_ids": [
+        "dft.atpg.scoap"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "test_and_dft.b9",
+      "title": "Test And Dft · Stage 10",
+      "domain": "test_and_dft",
+      "band": 9,
+      "depth_min": 29,
+      "depth_max": 29,
+      "subdomains": [
+        "test_and_dft.fault",
+        "test_and_dft.mbist"
+      ],
+      "concept_ids": [
+        "dft.fault.transition",
+        "dft.mbist.memory_faults"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "test_and_dft.b10",
+      "title": "Test And Dft · Stage 11",
+      "domain": "test_and_dft",
+      "band": 10,
+      "depth_min": 30,
+      "depth_max": 32,
+      "subdomains": [
+        "test_and_dft.fault",
+        "test_and_dft.fsim",
+        "test_and_dft.mbist"
+      ],
+      "concept_ids": [
+        "dft.fault.cell_aware",
+        "dft.fault.path_delay",
+        "dft.fsim.fault_detection",
+        "dft.mbist.ecc",
+        "dft.mbist.march",
+        "dft.mbist.march_simulation",
+        "dft.mbist.repair"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "test_and_dft.b11",
+      "title": "Test And Dft · Stage 12",
+      "domain": "test_and_dft",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "test_and_dft.atpg",
+        "test_and_dft.fsim",
+        "test_and_dft.scan"
+      ],
+      "concept_ids": [
+        "dft.atpg.d_algorithm",
+        "dft.atpg.d_calculus",
+        "dft.atpg.sat_based",
+        "dft.atpg.scoap_observability",
+        "dft.atpg.sensitization",
+        "dft.fsim.concurrent",
+        "dft.fsim.deductive",
+        "dft.scan.chain"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "test_and_dft.b12",
+      "title": "Test And Dft · Stage 13",
+      "domain": "test_and_dft",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "test_and_dft.ate",
+        "test_and_dft.atpg",
+        "test_and_dft.jtag",
+        "test_and_dft.scan"
+      ],
+      "concept_ids": [
+        "dft.ate.test_flow",
+        "dft.atpg.fan",
+        "dft.atpg.podem",
+        "dft.jtag.boundary_scan",
+        "dft.jtag.instructions",
+        "dft.jtag.tap_fsm",
+        "dft.scan.insertion",
+        "dft.scan.loc_los",
+        "dft.scan.ordering"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "test_and_dft.b13",
+      "title": "Test And Dft · Stage 14",
+      "domain": "test_and_dft",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 41,
+      "subdomains": [
+        "test_and_dft.ate",
+        "test_and_dft.atpg",
+        "test_and_dft.fsim",
+        "test_and_dft.jtag",
+        "test_and_dft.scan"
+      ],
+      "concept_ids": [
+        "dft.ate.defect_level",
+        "dft.ate.stil",
+        "dft.atpg.compaction",
+        "dft.atpg.random_pattern",
+        "dft.fsim.coverage",
+        "dft.fsim.parallel",
+        "dft.fsim.serial",
+        "dft.jtag.ieee1500_1687",
+        "dft.scan.compression"
+      ],
+      "concept_count": 9
+    },
+    {
+      "id": "test_and_dft.b14",
+      "title": "Test And Dft · Stage 15",
+      "domain": "test_and_dft",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 44,
+      "subdomains": [
+        "test_and_dft.ate",
+        "test_and_dft.bist",
+        "test_and_dft.compress"
+      ],
+      "concept_ids": [
+        "dft.ate.diagnosis",
+        "dft.ate.silicon_debug",
+        "dft.bist.aliasing",
+        "dft.bist.lbist",
+        "dft.bist.lfsr_misr",
+        "dft.bist.lfsr_period",
+        "dft.compress.compactor",
+        "dft.compress.decompressor"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "test_and_dft.b28",
+      "title": "Test And Dft · Stage 29",
+      "domain": "test_and_dft",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 86,
+      "subdomains": [
+        "test_and_dft.frontier"
+      ],
+      "concept_ids": [
+        "dft.frontier.atpg_skill",
+        "dft.frontier.dft_insertion_agent"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "test_and_dft.b29",
+      "title": "Test And Dft · Stage 30",
+      "domain": "test_and_dft",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "test_and_dft.frontier"
+      ],
+      "concept_ids": [
+        "dft.frontier.golden_coverage_tests"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "test_and_dft.b30",
+      "title": "Test And Dft · Stage 31",
+      "domain": "test_and_dft",
+      "band": 30,
+      "depth_min": 91,
+      "depth_max": 91,
+      "subdomains": [
+        "test_and_dft.frontier"
+      ],
+      "concept_ids": [
+        "dft.frontier.diagnosis_agent"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "test_and_dft.b31",
+      "title": "Test And Dft · Stage 32",
+      "domain": "test_and_dft",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "test_and_dft.frontier"
+      ],
+      "concept_ids": [
+        "dft.frontier.fast_coverage_estimate"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "timing_analysis.b13",
+      "title": "Timing Analysis · Stage 14",
+      "domain": "timing_analysis",
+      "band": 13,
+      "depth_min": 41,
+      "depth_max": 41,
+      "subdomains": [
+        "timing_analysis.delay"
+      ],
+      "concept_ids": [
+        "sta.delay.elmore"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "timing_analysis.b14",
+      "title": "Timing Analysis · Stage 15",
+      "domain": "timing_analysis",
+      "band": 14,
+      "depth_min": 42,
+      "depth_max": 42,
+      "subdomains": [
+        "timing_analysis.delay"
+      ],
+      "concept_ids": [
+        "sta.delay.wire_rc"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "timing_analysis.b20",
+      "title": "Timing Analysis · Stage 21",
+      "domain": "timing_analysis",
+      "band": 20,
+      "depth_min": 61,
+      "depth_max": 62,
+      "subdomains": [
+        "timing_analysis.delay",
+        "timing_analysis.graph"
+      ],
+      "concept_ids": [
+        "sta.delay.effective_capacitance",
+        "sta.delay.nldm_interpolation",
+        "sta.graph.levelization",
+        "sta.graph.timing_graph",
+        "sta.graph.unateness"
+      ],
+      "concept_count": 5
+    },
+    {
+      "id": "timing_analysis.b21",
+      "title": "Timing Analysis · Stage 22",
+      "domain": "timing_analysis",
+      "band": 21,
+      "depth_min": 63,
+      "depth_max": 65,
+      "subdomains": [
+        "timing_analysis.delay",
+        "timing_analysis.graph",
+        "timing_analysis.path"
+      ],
+      "concept_ids": [
+        "sta.delay.slew_propagation",
+        "sta.delay.stage_delay",
+        "sta.graph.arrival_required",
+        "sta.graph.arrival_time",
+        "sta.graph.slack_meaning",
+        "sta.path.path_count"
+      ],
+      "concept_count": 6
+    },
+    {
+      "id": "timing_analysis.b22",
+      "title": "Timing Analysis · Stage 23",
+      "domain": "timing_analysis",
+      "band": 22,
+      "depth_min": 66,
+      "depth_max": 68,
+      "subdomains": [
+        "timing_analysis.check",
+        "timing_analysis.clock",
+        "timing_analysis.graph",
+        "timing_analysis.incremental",
+        "timing_analysis.path",
+        "timing_analysis.var"
+      ],
+      "concept_ids": [
+        "sta.check.half_cycle",
+        "sta.check.latch_borrowing",
+        "sta.check.max_frequency",
+        "sta.check.recovery_removal",
+        "sta.check.setup_hold",
+        "sta.clock.latency",
+        "sta.clock.launch_capture_edges",
+        "sta.clock.waveform",
+        "sta.graph.node_slack",
+        "sta.graph.wns_tns",
+        "sta.incremental.early_termination",
+        "sta.incremental.update",
+        "sta.path.gba_vs_pba",
+        "sta.path.k_worst",
+        "sta.var.corners"
+      ],
+      "concept_count": 15
+    },
+    {
+      "id": "timing_analysis.b23",
+      "title": "Timing Analysis · Stage 24",
+      "domain": "timing_analysis",
+      "band": 23,
+      "depth_min": 69,
+      "depth_max": 71,
+      "subdomains": [
+        "timing_analysis.check",
+        "timing_analysis.clock",
+        "timing_analysis.constraint",
+        "timing_analysis.path",
+        "timing_analysis.var"
+      ],
+      "concept_ids": [
+        "sta.check.check_types",
+        "sta.clock.cppr",
+        "sta.clock.generated_clocks",
+        "sta.clock.skew_jitter",
+        "sta.clock.uncertainty",
+        "sta.constraint.sdc",
+        "sta.path.path_report",
+        "sta.var.ocv_derate"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "timing_analysis.b24",
+      "title": "Timing Analysis · Stage 25",
+      "domain": "timing_analysis",
+      "band": 24,
+      "depth_min": 72,
+      "depth_max": 74,
+      "subdomains": [
+        "timing_analysis.closure",
+        "timing_analysis.constraint",
+        "timing_analysis.var"
+      ],
+      "concept_ids": [
+        "sta.closure.gate_sizing_eco",
+        "sta.closure.hold_fixing",
+        "sta.closure.opensta_flow",
+        "sta.closure.timing_closure",
+        "sta.closure.useful_skew",
+        "sta.constraint.exceptions",
+        "sta.constraint.io_delay",
+        "sta.constraint.multicycle_edges",
+        "sta.var.aocv",
+        "sta.var.mcmm",
+        "sta.var.pocv",
+        "sta.var.ssta"
+      ],
+      "concept_count": 12
+    },
+    {
+      "id": "timing_analysis.b25",
+      "title": "Timing Analysis · Stage 26",
+      "domain": "timing_analysis",
+      "band": 25,
+      "depth_min": 75,
+      "depth_max": 75,
+      "subdomains": [
+        "timing_analysis.var"
+      ],
+      "concept_ids": [
+        "sta.var.clark_max",
+        "sta.var.timing_yield"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "timing_analysis.b28",
+      "title": "Timing Analysis · Stage 29",
+      "domain": "timing_analysis",
+      "band": 28,
+      "depth_min": 86,
+      "depth_max": 86,
+      "subdomains": [
+        "timing_analysis.frontier"
+      ],
+      "concept_ids": [
+        "sta.frontier.derate_provider"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "timing_analysis.b29",
+      "title": "Timing Analysis · Stage 30",
+      "domain": "timing_analysis",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "timing_analysis.frontier"
+      ],
+      "concept_ids": [
+        "sta.frontier.change_tiers",
+        "sta.frontier.differential_timing"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "timing_analysis.b30",
+      "title": "Timing Analysis · Stage 31",
+      "domain": "timing_analysis",
+      "band": 30,
+      "depth_min": 91,
+      "depth_max": 92,
+      "subdomains": [
+        "timing_analysis.frontier"
+      ],
+      "concept_ids": [
+        "sta.frontier.agentic_eco_loop",
+        "sta.frontier.slack_reward"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "timing_analysis.b31",
+      "title": "Timing Analysis · Stage 32",
+      "domain": "timing_analysis",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "timing_analysis.frontier"
+      ],
+      "concept_ids": [
+        "sta.frontier.surrogate_timer"
       ],
       "concept_count": 1
     },
@@ -3253,6 +9472,225 @@
         "trig.ident.sum_to_product"
       ],
       "concept_count": 15
+    },
+    {
+      "id": "variability_statistics.b4",
+      "title": "Variability Statistics · Stage 5",
+      "domain": "variability_statistics",
+      "band": 4,
+      "depth_min": 13,
+      "depth_max": 14,
+      "subdomains": [
+        "variability_statistics.fit"
+      ],
+      "concept_ids": [
+        "stat.fit.doe_runs",
+        "stat.fit.regression"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "variability_statistics.b5",
+      "title": "Variability Statistics · Stage 6",
+      "domain": "variability_statistics",
+      "band": 5,
+      "depth_min": 15,
+      "depth_max": 17,
+      "subdomains": [
+        "variability_statistics.fit",
+        "variability_statistics.mc",
+        "variability_statistics.var"
+      ],
+      "concept_ids": [
+        "stat.fit.factorial_effects",
+        "stat.mc.monte_carlo",
+        "stat.var.process_variation"
+      ],
+      "concept_count": 3
+    },
+    {
+      "id": "variability_statistics.b6",
+      "title": "Variability Statistics · Stage 7",
+      "domain": "variability_statistics",
+      "band": 6,
+      "depth_min": 18,
+      "depth_max": 20,
+      "subdomains": [
+        "variability_statistics.gauss",
+        "variability_statistics.mc",
+        "variability_statistics.var",
+        "variability_statistics.yield"
+      ],
+      "concept_ids": [
+        "stat.gauss.linear_combo",
+        "stat.gauss.sigma_to_prob",
+        "stat.gauss.sum_max",
+        "stat.gauss.timing_yield",
+        "stat.mc.importance_sampling",
+        "stat.mc.sample_size",
+        "stat.var.pelgrom",
+        "stat.var.spatial_correlation",
+        "stat.var.spc",
+        "stat.yield.poisson",
+        "stat.yield.yield_model"
+      ],
+      "concept_count": 11
+    },
+    {
+      "id": "variability_statistics.b7",
+      "title": "Variability Statistics · Stage 8",
+      "domain": "variability_statistics",
+      "band": 7,
+      "depth_min": 21,
+      "depth_max": 21,
+      "subdomains": [
+        "variability_statistics.yield"
+      ],
+      "concept_ids": [
+        "stat.yield.clustered",
+        "stat.yield.redundancy"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "variability_statistics.b9",
+      "title": "Variability Statistics · Stage 10",
+      "domain": "variability_statistics",
+      "band": 9,
+      "depth_min": 28,
+      "depth_max": 29,
+      "subdomains": [
+        "variability_statistics.gauss",
+        "variability_statistics.var"
+      ],
+      "concept_ids": [
+        "stat.gauss.canonical_form",
+        "stat.var.pca"
+      ],
+      "concept_count": 2
+    },
+    {
+      "id": "variability_statistics.b11",
+      "title": "Variability Statistics · Stage 12",
+      "domain": "variability_statistics",
+      "band": 11,
+      "depth_min": 33,
+      "depth_max": 35,
+      "subdomains": [
+        "variability_statistics.fit",
+        "variability_statistics.mc",
+        "variability_statistics.sens",
+        "variability_statistics.yield"
+      ],
+      "concept_ids": [
+        "stat.fit.response_surface",
+        "stat.fit.surrogate_validation",
+        "stat.mc.mpfp",
+        "stat.sens.corners",
+        "stat.sens.sensitivity",
+        "stat.sens.sobol",
+        "stat.sens.worst_case",
+        "stat.yield.design_centering"
+      ],
+      "concept_count": 8
+    },
+    {
+      "id": "variability_statistics.b12",
+      "title": "Variability Statistics · Stage 13",
+      "domain": "variability_statistics",
+      "band": 12,
+      "depth_min": 36,
+      "depth_max": 38,
+      "subdomains": [
+        "variability_statistics.mc",
+        "variability_statistics.rel"
+      ],
+      "concept_ids": [
+        "stat.mc.extreme_value",
+        "stat.mc.quasi_mc",
+        "stat.mc.rare_event",
+        "stat.rel.hazard_fit",
+        "stat.rel.system",
+        "stat.rel.weibull",
+        "stat.rel.weibull_fit"
+      ],
+      "concept_count": 7
+    },
+    {
+      "id": "variability_statistics.b13",
+      "title": "Variability Statistics · Stage 14",
+      "domain": "variability_statistics",
+      "band": 13,
+      "depth_min": 39,
+      "depth_max": 39,
+      "subdomains": [
+        "variability_statistics.rel"
+      ],
+      "concept_ids": [
+        "stat.rel.acceleration"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "variability_statistics.b28",
+      "title": "Variability Statistics · Stage 29",
+      "domain": "variability_statistics",
+      "band": 28,
+      "depth_min": 85,
+      "depth_max": 85,
+      "subdomains": [
+        "variability_statistics.frontier"
+      ],
+      "concept_ids": [
+        "stat.frontier.rare_event_skill"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "variability_statistics.b29",
+      "title": "Variability Statistics · Stage 30",
+      "domain": "variability_statistics",
+      "band": 29,
+      "depth_min": 87,
+      "depth_max": 87,
+      "subdomains": [
+        "variability_statistics.frontier"
+      ],
+      "concept_ids": [
+        "stat.frontier.golden_statistical_tests"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "variability_statistics.b30",
+      "title": "Variability Statistics · Stage 31",
+      "domain": "variability_statistics",
+      "band": 30,
+      "depth_min": 91,
+      "depth_max": 91,
+      "subdomains": [
+        "variability_statistics.frontier"
+      ],
+      "concept_ids": [
+        "stat.frontier.yield_agent_loop"
+      ],
+      "concept_count": 1
+    },
+    {
+      "id": "variability_statistics.b31",
+      "title": "Variability Statistics · Stage 32",
+      "domain": "variability_statistics",
+      "band": 31,
+      "depth_min": 95,
+      "depth_max": 95,
+      "subdomains": [
+        "variability_statistics.frontier"
+      ],
+      "concept_ids": [
+        "stat.frontier.mc_budget",
+        "stat.frontier.variance_aware_surrogate"
+      ],
+      "concept_count": 2
     }
   ]
 }

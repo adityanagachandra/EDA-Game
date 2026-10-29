@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Elements, nodes and the ground node",
+    "section": "Elements, nodes and the ground node",
+    "subgoals": [
+      "Read the element type from the first letter of each card",
+      "Collect every name in the node fields of all cards",
+      "Drop node 0 and count the distinct names left"
+    ]
+  },
+  {
+    "label": "Which elements add branch currents",
+    "section": "Which elements add branch currents",
+    "subgoals": [
+      "List the node voltages as the first unknowns",
+      "Add one branch current for every voltage source and inductor",
+      "Leave resistors, capacitors and current sources out of the count"
+    ]
+  },
+  {
+    "label": "From netlist lines to unknowns",
+    "section": "From netlist lines to unknowns",
+    "subgoals": [
+      "Count every node created by controlled-source outputs",
+      "Add a branch current for each VCVS but none for a VCCS",
+      "Sum node voltages and all branch currents for the system size"
+    ]
+  }
+]

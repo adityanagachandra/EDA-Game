@@ -1,0 +1,5 @@
+[
+  {"label": "Effective coupling", "section": "Effective coupling", "subgoals": ["Identify the aggressor's switching relative to the victim", "Assign Miller factor 0, 1 or 2", "Multiply the coupling by the factor to get its effective load"]},
+  {"label": "Charge through the coupling", "section": "Charge through the coupling", "subgoals": ["Write the voltage change across the coupling capacitor", "Multiply it by the coupling capacitance to get the charge", "Compare with the charge a grounded capacitor would draw"]},
+  {"label": "Bounding with unknown aggressors", "section": "Bounding with unknown aggressors", "subgoals": ["Use factor 2 on every coupling for max-delay analysis", "Use factor 0 on every coupling for min-delay analysis", "Take the difference as the cost of unknown aggressor timing"]}
+]

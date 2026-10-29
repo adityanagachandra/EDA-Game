@@ -1,0 +1,5 @@
+[
+  {"label": "Validation versus manufacturing test", "section": "Validation versus manufacturing test", "subgoals": ["Separate design bugs found in validation from defects found in test", "Map pass and fail over voltage and frequency with a shmoo plot", "Treat failures on every die as design bugs"]},
+  {"label": "Seeing inside: traces and triggers", "section": "Seeing inside: traces and triggers", "subgoals": ["Trigger trace capture on a programmable condition", "Divide the entries by the entries per sample for the cycle window", "Select traced signals that let untraced state be reconstructed"]},
+  {"label": "Scan dumps and reproduction", "section": "Scan dumps and reproduction", "subgoals": ["Stop the clocks at a trigger and shift out the scan chains", "Reproduce the localized window in simulation or emulation", "Fix with spare cells, metal-only ECOs or patches where available"]}
+]

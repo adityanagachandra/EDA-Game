@@ -1,0 +1,5 @@
+[
+  {"label": "Parasitics move poles", "section": "Parasitics move poles", "subgoals": ["Add extracted capacitance to the node's schematic capacitance", "Recompute the pole as gm over two pi times the total", "Identify high-impedance nodes as the most sensitive"]},
+  {"label": "Phase margin after layout", "section": "Phase margin after layout", "subgoals": ["Recompute the non-dominant pole with the parasitic capacitance", "Evaluate the phase margin before and after layout", "Attribute the lost margin to specific extracted elements"]},
+  {"label": "From sensitivity to routing constraints", "section": "From sensitivity to routing constraints", "subgoals": ["Solve the phase-margin condition for the maximum output capacitance", "Subtract the device load to get the wiring budget", "Convert the wiring budget into a route-length constraint"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "KLayout for viewing, DRC and GDS merging", "section": "KLayout for viewing, DRC and GDS merging", "subgoals": ["Load a layer-properties map to name GDS layers", "Run scripted DRC decks on the layout", "Merge cell GDS into the routed design for the final stream"]},
+  {"label": "Magic for layout, DRC and extraction", "section": "Magic for layout, DRC and extraction", "subgoals": ["Edit layout and run interactive DRC in Magic", "Extract devices and parasitics to a SPICE netlist", "Resolve a Magic and KLayout DRC disagreement from geometry and rule text"]},
+  {"label": "Netgen for LVS", "section": "Netgen for LVS", "subgoals": ["Extract a layout netlist before comparison", "Match devices and nets against the source netlist", "Read shorts, opens and pin mismatches from the report"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Totally symmetric functions", "section": "Totally symmetric functions", "subgoals": ["Note that the output depends only on the number of ones", "List the weights that give output 1", "Sum the binomial coefficients of those weights"]},
+  {"label": "Symmetry in a pair of variables", "section": "Symmetry in a pair of variables", "subgoals": ["Compute the cofactor with the first variable 1 and the second 0", "Compute the cofactor with the roles swapped", "Declare the pair symmetric when the two cofactors are equal"]},
+  {"label": "Counting symmetric functions", "section": "Counting symmetric functions", "subgoals": ["Note that a totally symmetric function is a choice per weight", "Count the n plus 1 possible weights", "Raise 2 to that count"]}
+]

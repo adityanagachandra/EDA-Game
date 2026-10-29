@@ -1,0 +1,5 @@
+[
+  {"label": "What each check proves", "section": "What each check proves", "subgoals": ["Bound what simulation proves by the vectors run", "Use combinational equivalence when the registers correspond", "Use sequential equivalence when registers or encodings changed"]},
+  {"label": "Differential checks for an edit", "section": "Differential checks for an edit", "subgoals": ["Require full equivalence for a refactoring edit", "Constrain equivalence to unchanged modes for a functional edit", "Compare synthesis QoR before and after"]},
+  {"label": "Pitfalls", "section": "Pitfalls", "subgoals": ["Check behavior from illegal states when recovery is required", "Keep the golden reference independent of both versions", "State X semantics and reset assumptions with every pass"]}
+]

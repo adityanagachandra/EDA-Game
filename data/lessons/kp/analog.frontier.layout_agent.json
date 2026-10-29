@@ -1,0 +1,5 @@
+[
+  {"label": "Layers and change tiers of a layout engine", "section": "Layers and change tiers of a layout engine", "subgoals": ["Place legality and connectivity in the immutable core", "Map constraint values to Tier 1 and new pattern rules to Tier 2", "Reserve core edits to legalization for Tier 3 with human approval"]},
+  {"label": "The constraint-provider seam", "section": "The constraint-provider seam", "subgoals": ["Define a constraint provider from netlist and annotations to constraints", "Expose topology, sizes and net roles to the plug-in", "Keep the provider deterministic for reproducible tests"]},
+  {"label": "Verification, fast estimates and the flywheel", "section": "Verification, fast estimates and the flywheel", "subgoals": ["Run DRC, LVS and post-layout simulation on golden blocks for each change", "Recurse from fast parasitic estimates to full extraction near the margin", "Promote validated patterns into the library with descriptive manifests"]}
+]

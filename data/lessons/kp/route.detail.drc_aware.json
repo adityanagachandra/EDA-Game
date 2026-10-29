@@ -1,0 +1,5 @@
+[
+  {"label": "Pricing violations", "section": "Pricing violations", "subgoals": ["Count the route's steps and vias", "Count the violations it would create", "Add length, via cost and violation penalty"]},
+  {"label": "Choosing among candidates", "section": "Choosing among candidates", "subgoals": ["Price each candidate with the same cost function", "Compare the totals", "Keep the cheapest, usually a slightly longer clean route"]},
+  {"label": "Rules as blocked tracks", "section": "Rules as blocked tracks", "subgoals": ["Compute the edge gap to each neighbouring track", "Compare each gap with the spacing the rule table requires", "Block the tracks whose gap is too small"]}
+]

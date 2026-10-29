@@ -1,0 +1,5 @@
+[
+  {"label": "Sizing one rectangle", "section": "Sizing one rectangle", "subgoals": ["Add or subtract 2d from each dimension", "Detect a dimension that collapses to zero or less", "Multiply the new dimensions to get the area"]},
+  {"label": "Sizing merges shapes", "section": "Sizing merges shapes", "subgoals": ["Grow each shape by d", "Compute the overlap of the grown shapes", "Merge the grown shapes by inclusion-exclusion"]},
+  {"label": "Closing and opening", "section": "Closing and opening", "subgoals": ["Grow and then shrink by the same distance for a closing", "Compare the gap with 2d to decide whether it fills", "Report the area of the closed result"]}
+]

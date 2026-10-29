@@ -1,0 +1,5 @@
+[
+  {"label": "Resistance per unit length", "section": "Resistance per unit length", "subgoals": ["Write resistance per length as resistivity over cross-section", "Convert micro-ohm cm to ohm nm", "Explain why effective resistivity exceeds bulk"]},
+  {"label": "Distributed RC delay", "section": "Distributed RC delay", "subgoals": ["Integrate shared resistance times capacitance along the line", "Compute r c L squared over two", "Convert ohm femtofarads to picoseconds"]},
+  {"label": "What scaling does to wires", "section": "What scaling does to wires", "subgoals": ["Scale resistance per length by one over s squared", "Hold capacitance per length roughly fixed", "Compute the new delay of a fixed-length route"]}
+]

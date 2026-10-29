@@ -1,0 +1,5 @@
+[
+  {"label": "Candidate pairs and spatial filtering", "section": "Candidate pairs and spatial filtering", "subgoals": ["Compute each pair's x and y gaps", "Keep pairs with both gaps below the rule", "Run the exact distance test on the survivors"]},
+  {"label": "Polygon-based checks by sizing", "section": "Polygon-based checks by sizing", "subgoals": ["Grow each shape by half the rule distance", "Intersect the grown shapes of different polygons", "Compute the marker's dimensions from the gap and the overlap"]},
+  {"label": "Edge-based and polygon-based engines", "section": "Edge-based and polygon-based engines", "subgoals": ["Describe the rule as an edge relation or as a Boolean expression", "Name the spatial structure that limits comparisons", "Give the halo a tiled engine must read"]}
+]

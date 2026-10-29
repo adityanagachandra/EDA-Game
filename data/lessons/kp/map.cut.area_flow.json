@@ -1,0 +1,5 @@
+[
+  {"label": "The definition", "section": "The definition", "subgoals": ["Add the cut's own area to the leaves' area flows", "Divide by the node's estimated fanout", "Set primary inputs to area flow zero"]},
+  {"label": "Choosing the cut with the least flow", "section": "Choosing the cut with the least flow", "subgoals": ["Evaluate the area flow of every candidate cut", "Discard candidates that violate the required time", "Keep the candidate with the smallest area flow"]},
+  {"label": "Propagation and its blind spot", "section": "Propagation and its blind spot", "subgoals": ["Propagate area flows forward along cut leaves", "Divide a shared leaf's flow among its users", "Explain why estimated fanouts can mislead"]}
+]

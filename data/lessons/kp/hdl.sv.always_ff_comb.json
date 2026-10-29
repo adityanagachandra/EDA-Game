@@ -1,0 +1,5 @@
+[
+  {"label": "Intent that tools check", "section": "Intent that tools check", "subgoals": ["Match each block keyword to the hardware it promises", "Report a latch found inside always_comb", "Reject a second writer of a variable owned by one of these blocks"]},
+  {"label": "always_comb semantics", "section": "always_comb semantics", "subgoals": ["Extend the sensitivity list into called functions", "Run the block once at time zero", "Exclude the block's own outputs from its sensitivity"]},
+  {"label": "Clocks, types and what remains unchecked", "section": "Clocks, types and what remains unchecked", "subgoals": ["Separate the clock edge from asynchronous controls in always_ff", "Use logic for variables written by procedural blocks", "Check for combinational loops across blocks separately"]}
+]

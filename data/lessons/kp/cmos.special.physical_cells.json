@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Tie cells, fillers and spares",
+    "section": "Tie cells, fillers and spares",
+    "subgoals": [
+      "Drive constant inputs from tie-high and tie-low cells",
+      "Fill empty sites with filler cells to keep wells and rails continuous",
+      "Pre-place spare cells for metal-only engineering changes"
+    ]
+  },
+  {
+    "label": "Decoupling capacitance",
+    "section": "Decoupling capacitance",
+    "subgoals": [
+      "Compute the charge a switching burst needs as current times duration",
+      "Divide by the allowed droop to get the decap capacitance",
+      "Place decap close to the switching cells and weigh its leakage"
+    ]
+  },
+  {
+    "label": "Taps, endcaps and flow placement",
+    "section": "Taps, endcaps and flow placement",
+    "subgoals": [
+      "Insert well taps at the latch-up spacing before placement",
+      "Terminate rows and blockages with endcap cells",
+      "Exclude physical-only cells from logic checks while keeping tie cells"
+    ]
+  }
+]

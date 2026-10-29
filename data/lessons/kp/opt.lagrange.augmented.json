@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Minimizing the augmented Lagrangian",
+    "section": "Minimizing the augmented Lagrangian",
+    "subgoals": [
+      "Add the multiplier term and the half-rho penalty to the objective",
+      "Set the derivative of the augmented Lagrangian to zero",
+      "Solve for the minimizer at the current multiplier"
+    ]
+  },
+  {
+    "label": "The multiplier update",
+    "section": "The multiplier update",
+    "subgoals": [
+      "Evaluate the constraint residual at the new minimizer",
+      "Add rho times the residual to the multiplier",
+      "Compare with the exact multiplier from stationarity"
+    ]
+  },
+  {
+    "label": "Convergence without a huge penalty",
+    "section": "Convergence without a huge penalty",
+    "subgoals": [
+      "Alternate minimization and multiplier updates from a zero multiplier",
+      "Track how the residual shrinks per iteration",
+      "Keep the penalty weight moderate and raise it only when progress stalls"
+    ]
+  }
+]

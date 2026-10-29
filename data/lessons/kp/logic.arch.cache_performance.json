@@ -1,0 +1,5 @@
+[
+  {"label": "Average memory access time", "section": "Average memory access time", "subgoals": ["Multiply the miss rate by the miss penalty", "Add the hit time", "Nest the formula for each lower cache level"]},
+  {"label": "Tracing a direct-mapped cache", "section": "Tracing a direct-mapped cache", "subgoals": ["Divide each address by the block size for its block", "Reduce the block number modulo the set count for its set", "Hit only when the set already holds that block"]},
+  {"label": "Associativity and LRU", "section": "Associativity and LRU", "subgoals": ["Map each block to its set in the associative cache", "Keep the most recently used blocks of each set", "Evict the least recently used block on a miss"]}
+]

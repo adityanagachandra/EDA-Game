@@ -1,0 +1,5 @@
+[
+  {"label": "The inflation rule", "section": "The inflation rule", "subgoals": ["Look up the congestion ratio of the cell's bin", "Leave cells in uncongested bins unchanged", "Multiply the area by the capped power of the ratio"]},
+  {"label": "Total area after inflation", "section": "Total area after inflation", "subgoals": ["Sum the inflated areas of all cells", "Compute the utilization after inflation", "Scale the factors down when the whitespace budget is exceeded"]},
+  {"label": "When inflation helps and when it does not", "section": "When inflation helps and when it does not", "subgoals": ["Use inflation for local cell-density hot spots", "Recognise through-net and macro pin-access congestion that inflation cannot fix", "Validate inflation settings with a real global route"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Cells, nets and pins", "section": "Cells, nets and pins", "subgoals": ["Name cells as vertices and nets as hyperedges", "Count a pin for every cell-net incidence", "Sum net sizes to get the pin count P"]},
+  {"label": "Degrees and neighbourhoods", "section": "Degrees and neighbourhoods", "subgoals": ["Count the nets incident to a cell to get its degree", "Take the union of a cell's nets to find its neighbours", "Count each neighbour once even when it shares several nets"]},
+  {"label": "What the hypergraph abstracts away", "section": "What the hypergraph abstracts away", "subgoals": ["List what the hypergraph keeps: connectivity and vertex weights", "List what it drops: pin identity, direction and geometry", "Match the representation to the quantity the algorithm computes"]}
+]

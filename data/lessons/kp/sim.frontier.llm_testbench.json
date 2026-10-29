@@ -1,0 +1,5 @@
+[
+  {"label": "Compile, run and actually check", "section": "Compile, run and actually check", "subgoals": ["Compile the generated testbench and feed errors back to the model", "Run it cleanly on the unmodified RTL", "Expose self-referential checks and vacuous assertions"]},
+  {"label": "Mutation score", "section": "Mutation score", "subgoals": ["Inject mutants and count those that make some test fail", "Exclude equivalent mutants from the denominator", "Divide killed by killable mutants"]},
+  {"label": "Failure modes and safe use", "section": "Failure modes and safe use", "subgoals": ["Diagnose a surviving mutant as a stimulus gap or a checking gap", "Validate a generated reference model against an independent source", "Gate acceptance on compile, coverage and mutation score together"]}
+]

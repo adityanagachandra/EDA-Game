@@ -1,0 +1,5 @@
+[
+  {"label": "Flows and their value", "section": "Flows and their value", "subgoals": ["Respect capacities on arcs and conservation at inner vertices", "Augment along s-t paths with spare residual capacity", "Stop when no augmenting path remains"]},
+  {"label": "Cuts and their capacity", "section": "Cuts and their capacity", "subgoals": ["Choose a source side containing s but not t", "Sum the capacities of arcs from the source side to the sink side", "Read each cut's capacity as an upper bound on the flow"]},
+  {"label": "Reading the minimum cut", "section": "Reading the minimum cut", "subgoals": ["Collect the vertices reachable from s in the final residual graph", "Check that arcs leaving that set are saturated", "Widen only arcs that cross every minimum cut"]}
+]

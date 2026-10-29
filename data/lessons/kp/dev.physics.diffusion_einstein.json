@@ -1,0 +1,5 @@
+[
+  {"label": "The Einstein relation", "section": "The Einstein relation", "subgoals": ["Recall that drift and diffusion cancel in equilibrium", "Multiply mobility by the thermal voltage kT/q", "Evaluate the thermal voltage at the stated temperature"]},
+  {"label": "Diffusion current density", "section": "Diffusion current density", "subgoals": ["Convert the density change and distance into a gradient in cm to the minus four", "Multiply by q and the diffusion coefficient", "Assign the direction from the carrier charge"]},
+  {"label": "Diffusion length", "section": "Diffusion length", "subgoals": ["Multiply the diffusion coefficient by the lifetime", "Take the square root to get the length in cm", "Compare the length with the region width to classify the diode"]}
+]

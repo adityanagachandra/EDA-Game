@@ -1,0 +1,5 @@
+[
+  {"label": "Pins, slots and costs", "section": "Pins, slots and costs", "subgoals": ["Enumerate legal slots on the block boundary", "Cost each pin-slot pair by Manhattan distance to the connected logic", "Sum the costs of an assignment"]},
+  {"label": "Optimal assignment as matching", "section": "Optimal assignment as matching", "subgoals": ["Model pins and slots as a bipartite graph with edge costs", "Solve the minimum-cost perfect matching", "Measure the saving against the naive assignment"]},
+  {"label": "Pin assignment in the flow", "section": "Pin assignment in the flow", "subgoals": ["Iterate placement and pin reassignment", "Respect package order and pin group constraints", "Coordinate pins on both sides of a hierarchical boundary"]}
+]

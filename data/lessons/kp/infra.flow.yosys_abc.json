@@ -1,0 +1,5 @@
+[
+  {"label": "The shape of a Yosys synthesis script", "section": "The shape of a Yosys synthesis script", "subgoals": ["Elaborate from the top module with hierarchy", "Lower processes and optimize with proc and opt", "Map flip-flops with dfflibmap and clean up before writing"]},
+  {"label": "What ABC receives and returns", "section": "What ABC receives and returns", "subgoals": ["Hand ABC only the combinational logic between registers", "Use Liberty functions, areas and delays for mapping", "Steer mapping with a delay target when one is given"]},
+  {"label": "Diagnosing open synthesis failures", "section": "Diagnosing open synthesis failures", "subgoals": ["Declare hard macros as blackboxes or library models", "Trace vanished logic to unobservable outputs", "Attribute area swings to the library's cell set"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The stages in order",
+    "section": "The stages in order",
+    "subgoals": [
+      "List the stages from specification to production test",
+      "Separate the front end from the back end",
+      "Place verification alongside RTL design rather than in one box"
+    ]
+  },
+  {
+    "label": "What each stage hands the next",
+    "section": "What each stage hands the next",
+    "subgoals": [
+      "Name the input and output representation of each stage",
+      "Trace the netlist from synthesis to placement",
+      "Name the file that extraction hands to signoff"
+    ]
+  },
+  {
+    "label": "What becomes known at each stage",
+    "section": "What becomes known at each stage",
+    "subgoals": [
+      "Identify the first stage at which a quantity is known exactly",
+      "Distinguish an estimate from a computed value",
+      "Explain why a wrong early estimate sends the flow back"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Greedy elimination of the lowest-degree vertex",
+  "section": "Greedy elimination of the lowest-degree vertex",
+  "subgoals": [
+   "Compute the current degree of every vertex",
+   "Pick the least degree, breaking ties by lowest label",
+   "Eliminate it and repeat on the updated graph"
+  ]
+ },
+ {
+  "label": "Tracing the ordering and its fill",
+  "section": "Tracing the ordering and its fill",
+  "subgoals": [
+   "Record each chosen vertex and its fill",
+   "Recompute degrees including earlier fill",
+   "Total the fill over the whole order"
+  ]
+ },
+ {
+  "label": "Degree updates and approximate degrees",
+  "section": "Degree updates and approximate degrees",
+  "subgoals": [
+   "Take the union of the two neighbourhoods",
+   "Remove the vertex itself and the eliminated vertex",
+   "Count the remaining vertices as the new degree"
+  ]
+ }
+]

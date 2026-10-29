@@ -1,0 +1,5 @@
+[
+  {"label": "Simulation as the fast mode", "section": "Simulation as the fast mode", "subgoals": ["Run random vectors on both functions", "Treat a mismatch as a definite counterexample", "Bound what a clean run proves"]},
+  {"label": "Exact engines as the accurate mode", "section": "Exact engines as the accurate mode", "subgoals": ["Send the surviving candidates to SAT or BDDs", "Accept only a proof as equivalence", "Budget the exact calls"]},
+  {"label": "When the agent must recurse", "section": "When the agent must recurse", "subgoals": ["Escalate when a decision depends on equivalence", "Stay fast when only ranking candidates", "Record which mode produced each verdict"]}
+]

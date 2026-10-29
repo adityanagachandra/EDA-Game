@@ -1,0 +1,5 @@
+[
+  {"label": "Delay on a low layer", "section": "Delay on a low layer", "subgoals": ["Charge the wire and load capacitance through the driver resistance", "Add the wire resistance times half its capacitance plus the load", "Convert ohm-femtofarads to picoseconds"]},
+  {"label": "Delay on an upper layer", "section": "Delay on an upper layer", "subgoals": ["Add the start via stack to the driver resistance", "Use the upper-layer resistance in the distributed term", "Add the end via stack charging the load"]},
+  {"label": "Break-even length", "section": "Break-even length", "subgoals": ["Write the saving from lower wire resistance", "Write the penalty from the two via stacks", "Find the shortest length at which the saving exceeds the penalty"]}
+]

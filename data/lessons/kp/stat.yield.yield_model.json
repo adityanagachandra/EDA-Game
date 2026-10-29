@@ -1,0 +1,5 @@
+[
+  {"label": "Parametric yield", "section": "Parametric yield", "subgoals": ["Standardize the two spec limits against the mean and sigma", "Subtract the lower Phi from the upper Phi", "Identify which tail dominates the loss"]},
+  {"label": "Combining independent requirements", "section": "Combining independent requirements", "subgoals": ["Multiply the yields of independent requirements", "Note that positively correlated specs make the product pessimistic", "Attribute the loss to each factor of the product"]},
+  {"label": "Good dies per wafer", "section": "Good dies per wafer", "subgoals": ["Divide wafer area by die area and subtract the edge correction", "Multiply gross dies by die yield", "Explain why large dies lose both count and yield"]}
+]

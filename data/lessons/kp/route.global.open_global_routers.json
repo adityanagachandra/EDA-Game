@@ -1,0 +1,5 @@
+[
+  {"label": "The FastRoute pipeline", "section": "The FastRoute pipeline", "subgoals": ["Start each net from a FLUTE tree", "Route two-pin connections by patterns and escalate to maze search", "Write route guides for the detailed router"]},
+  {"label": "Negotiation in practice", "section": "Negotiation in practice", "subgoals": ["Reroute only nets on overflowed edges each iteration", "Bound each maze search to a box around the net", "Schedule non-overlapping nets in parallel"]},
+  {"label": "Using a global router in a flow", "section": "Using a global router in a flow", "subgoals": ["Route on the 2D projection and assign layers afterwards", "Run a truncated global route as a congestion estimate", "Fix residual hot spots with local placement or capacity changes"]}
+]

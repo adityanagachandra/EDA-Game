@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Slack at the optimum",
+    "section": "Slack at the optimum",
+    "subgoals": [
+      "Evaluate each constraint's left side at the optimum",
+      "Subtract it from the right-hand side to get the slack",
+      "Mark the zero-slack constraints as binding"
+    ]
+  },
+  {
+    "label": "Complementary slackness",
+    "section": "Complementary slackness",
+    "subgoals": [
+      "Set the dual value of every slack constraint to zero",
+      "Solve for the remaining duals from the tight constraints",
+      "Confirm that the primal and dual objectives agree"
+    ]
+  },
+  {
+    "label": "Shadow prices and their range",
+    "section": "Shadow prices and their range",
+    "subgoals": [
+      "Read the shadow price as the dual value of the constraint",
+      "Multiply it by the change in the right-hand side",
+      "Re-solve when the change is large enough to switch the binding set"
+    ]
+  }
+]

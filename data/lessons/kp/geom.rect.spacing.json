@@ -1,0 +1,5 @@
+[
+  {"label": "Facing edges", "section": "Facing edges", "subgoals": ["Compute the horizontal gap between the rectangles", "Compute the vertical gap between the rectangles", "Take the nonzero gap as the spacing when projections overlap"]},
+  {"label": "Corner to corner", "section": "Corner to corner", "subgoals": ["Confirm both gaps are positive", "Combine the gaps with the Pythagorean formula", "Compare the Euclidean, square and projection readings"]},
+  {"label": "Checking a rule without square roots", "section": "Checking a rule without square roots", "subgoals": ["Square the gaps and the rule distance", "Flag separated pairs whose squared distance is below the squared rule", "Skip touching or overlapping pairs that merge"]}
+]

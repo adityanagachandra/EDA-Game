@@ -1,0 +1,5 @@
+[
+  {"label": "Iterating a monotone operator", "section": "Iterating a monotone operator", "subgoals": ["Start from the initial set", "Add the image of the current set at every step", "Stop when a step adds nothing"]},
+  {"label": "The least fixpoint is the reachable set", "section": "The least fixpoint is the reachable set", "subgoals": ["Compute the image of each frontier", "Union it into the reached set", "Count the states in the final set"]},
+  {"label": "Greatest fixpoints", "section": "Greatest fixpoints", "subgoals": ["Start from the whole candidate set", "Remove states with no successor inside the set", "Count the states that survive"]}
+]

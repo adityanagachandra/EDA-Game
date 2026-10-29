@@ -1,0 +1,5 @@
+[
+  {"label": "The sequence, sequencer and driver handshake", "section": "The sequence, sequencer and driver handshake", "subgoals": ["Call start_item, randomize, then finish_item in the sequence", "Call get_next_item, drive, then item_done in the driver", "Randomize late, after the sequencer grants access"]},
+  {"label": "Arbitration, responses and virtual sequences", "section": "Arbitration, responses and virtual sequences", "subgoals": ["Arbitrate among concurrent sequences by the sequencer's mode", "Return read data from the driver as a response item", "Coordinate several sequencers from a virtual sequence"]},
+  {"label": "Layering and reuse", "section": "Layering and reuse", "subgoals": ["Select or override sequences per test without editing the environment", "Layer high-level sequences over protocol-level ones", "Mix sequences randomly to exercise their interactions"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Necessary conditions first", "section": "Necessary conditions first", "subgoals": ["Compare ones counts, allowing the complement", "Compare cofactor counts per variable up to polarity", "Reject any candidate that fails an invariant"]},
+  {"label": "Constructing the transformation", "section": "Constructing the transformation", "subgoals": ["Fix the output polarity from the ones counts", "Pair variables with matching cofactor counts and fix their polarities", "Confirm by comparing canonical forms"]},
+  {"label": "Why same counts are not enough", "section": "Why same counts are not enough", "subgoals": ["Find two classes with the same ones count", "Show that cofactor signatures can also coincide", "Finish every candidate match with an exact comparison"]}
+]

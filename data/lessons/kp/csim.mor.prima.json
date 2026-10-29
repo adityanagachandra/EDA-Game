@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Moments matched by a block Krylov basis",
+    "section": "Moments matched by a block Krylov basis",
+    "subgoals": [
+      "Form the starting block from the port selector",
+      "Extend the basis with block Arnoldi iterations",
+      "Divide the column count by the port count for matched moments"
+    ]
+  },
+  {
+    "label": "Congruence projection",
+    "section": "Congruence projection",
+    "subgoals": [
+      "Multiply the matrix by the basis on the right",
+      "Multiply by the transposed basis on the left",
+      "Check that the reduced matrix remains positive"
+    ]
+  },
+  {
+    "label": "The reduced pole",
+    "section": "The reduced pole",
+    "subgoals": [
+      "Project the capacitance matrix with the same basis",
+      "Divide the projected conductance by the projected capacitance",
+      "Negate the ratio for the reduced pole"
+    ]
+  }
+]

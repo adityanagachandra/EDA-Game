@@ -1,0 +1,5 @@
+[
+  {"label": "Greedy heavy-edge matching", "section": "Greedy heavy-edge matching", "subgoals": ["Visit vertices in the chosen order", "Match each unmatched vertex to its unmatched neighbour with the heaviest edge", "Leave a vertex single when no unmatched neighbour remains"]},
+  {"label": "Contracting matched pairs", "section": "Contracting matched pairs", "subgoals": ["Merge each matched pair into one vertex with summed weight", "Merge parallel edges by adding weights", "Count n minus the number of pairs for the coarse size"]},
+  {"label": "Why heavy edges", "section": "Why heavy edges", "subgoals": ["Subtract the matched weight from the total edge weight", "Read the remainder as the weight a coarse cut can reach", "Rate hypergraph pairs by shared nets weighted by 1/(size - 1)"]}
+]

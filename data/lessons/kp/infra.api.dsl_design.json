@@ -1,0 +1,5 @@
+[
+  {"label": "Embedded and external DSLs", "section": "Embedded and external DSLs", "subgoals": ["Classify a language as embedded in a host or external", "Name what the host language provides an embedded DSL", "Name what a declarative format lets a tool analyze"]},
+  {"label": "Validation and semantic checks", "section": "Validation and semantic checks", "subgoals": ["Report semantic errors at the command with file and line", "Declare a schema of known keys, types and ranges", "Reject unknown keys instead of falling back to defaults"]},
+  {"label": "Analyzing and trusting DSL programs", "section": "Analyzing and trusting DSL programs", "subgoals": ["Execute embedded DSL code to recover generated commands", "Restrict the interpreter for untrusted input", "Version the schema and record it with each run"]}
+]

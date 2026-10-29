@@ -1,0 +1,5 @@
+[
+  {"label": "Syntax and elaboration gates", "section": "Syntax and elaboration gates", "subgoals": ["Parse and elaborate each generated property against the RTL", "Treat errors and tool warnings as failures fed back to the model", "Keep generated properties in a bind file outside the RTL"]},
+  {"label": "Vacuity and covers", "section": "Vacuity and covers", "subgoals": ["Cover the antecedent of every generated implication", "Re-check the reference covers under any generated assumption", "Reject properties that pass only vacuously"]},
+  {"label": "Does the assertion have teeth", "section": "Does the assertion have teeth", "subgoals": ["Mutate the RTL and re-run the prover on each mutant", "Count the mutants each property kills", "Prove a generated property equivalent to a reference with a miter of monitors"]}
+]

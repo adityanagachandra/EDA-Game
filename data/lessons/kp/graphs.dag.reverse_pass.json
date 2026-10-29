@@ -1,0 +1,5 @@
+[
+  {"label": "Required times flow backward", "section": "Required times flow backward", "subgoals": ["Set each endpoint's required time", "Take the minimum over outgoing arcs of required time minus delay", "Process vertices in reverse topological order"]},
+  {"label": "Slack at a vertex", "section": "Slack at a vertex", "subgoals": ["Subtract arrival from required time at each vertex", "Read negative slack as a violating path through the vertex", "Compute arc slack to find the critical fanin"]},
+  {"label": "The critical subgraph", "section": "The critical subgraph", "subgoals": ["Set the required time to the latest endpoint arrival", "Collect the vertices with zero slack", "Read the size of the critical subgraph as how concentrated the problem is"]}
+]

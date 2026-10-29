@@ -1,0 +1,5 @@
+[
+  {"label": "Partial self and mutual terms", "section": "Partial self and mutual terms", "subgoals": ["Collect the partial self inductances of signal and return", "Collect their partial mutual inductance", "Subtract twice the mutual for opposing currents"]},
+  {"label": "Where the return current flows", "section": "Where the return current flows", "subgoals": ["Compute loop inductance for each candidate return", "Pick the path with the smallest loop inductance", "Relate a closer return to a larger mutual term"]},
+  {"label": "Non-additivity and dense matrices", "section": "Non-additivity and dense matrices", "subgoals": ["Add the self inductances of the segments", "Add twice the mutual between same-direction segments", "Explain why the full partial matrix is dense"]}
+]

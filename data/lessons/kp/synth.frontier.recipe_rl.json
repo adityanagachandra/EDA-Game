@@ -1,0 +1,5 @@
+[
+  {"label": "A tool-grounded reward", "section": "A tool-grounded reward", "subgoals": ["Compute the relative area and depth improvements against the baseline", "Combine them with the stated weights", "Pick the recipe with the highest reward"]},
+  {"label": "State, actions and policy", "section": "State, actions and policy", "subgoals": ["Summarize the AIG and command history as the state", "Use ABC commands as the actions", "Evaluate the trained policy on held-out designs"]},
+  {"label": "Where it fits and how it fails", "section": "Where it fits and how it fails", "subgoals": ["Place the learned policy at the strategy layer", "Detect reward hacking against a node-count proxy", "Require mapped QoR, run time and equivalence before adoption"]}
+]

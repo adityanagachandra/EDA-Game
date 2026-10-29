@@ -1,0 +1,5 @@
+[
+  {"label": "Designing the reward", "section": "Designing the reward", "subgoals": ["Score errors in log current and relative current across regions", "Add derivative errors and physical-constraint penalties", "Hold out geometries to measure generalization"]},
+  {"label": "Root-mean-square log error", "section": "Root-mean-square log error", "subgoals": ["Take the base-ten log of each model-to-measurement ratio", "Square, average and take the square root", "Interpret the result as typical error in decades"]},
+  {"label": "How the reward gets gamed", "section": "How the reward gets gamed", "subgoals": ["Flag parameters pinned at bounds as compensating errors", "Score physical sanity over the whole qualified range", "Make reference data immutable and add circuit benchmarks"]}
+]

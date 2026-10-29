@@ -1,0 +1,5 @@
+[
+  {"label": "Flattening a module hierarchy", "section": "Flattening a module hierarchy", "subgoals": ["Flatten each module bottom up into its leaf count", "Multiply child counts by their instance multiplicities", "Sum the own leaves and the child contributions at the top"]},
+  {"label": "Definitions versus occurrences in memory", "section": "Definitions versus occurrences in memory", "subgoals": ["Count the objects inside each definition once", "Sum the definitions and subtract from the flat count", "Keep occurrence data in tables keyed by hierarchical path"]},
+  {"label": "Occurrences and uniquification", "section": "Occurrences and uniquification", "subgoals": ["Multiply multiplicities along the path to count occurrences", "Copy the definition before editing a single occurrence", "Weigh the memory cost of uniquifying against independence"]}
+]

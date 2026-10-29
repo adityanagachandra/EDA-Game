@@ -1,0 +1,5 @@
+[
+  {"label": "The Weibull plot", "section": "The Weibull plot", "subgoals": ["Take the log of minus the log of the survival fraction", "Plot it against the log of time", "Read the slope as beta and the zero crossing as eta"]},
+  {"label": "The shape from two points", "section": "The shape from two points", "subgoals": ["Compute the plotted ordinate at both failure fractions", "Divide the ordinate difference by the log-time difference", "Prefer maximum likelihood when units are censored"]},
+  {"label": "Plotting positions", "section": "Plotting positions", "subgoals": ["Sort the failure times and number them", "Compute i minus 0.3 over n plus 0.4 for each", "Avoid plotting positions that put the last failure at one"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Dominance",
+    "section": "Dominance",
+    "subgoals": [
+      "Write every metric so that lower is better",
+      "Check no-worse-on-all and better-on-one for dominance",
+      "Recognize two incomparable points"
+    ]
+  },
+  {
+    "label": "The Pareto front",
+    "section": "The Pareto front",
+    "subgoals": [
+      "Compare every pair of design points",
+      "Keep the points that no other point dominates",
+      "Discard dominated points regardless of product needs"
+    ]
+  },
+  {
+    "label": "Weighted costs and their limits",
+    "section": "Weighted costs and their limits",
+    "subgoals": [
+      "Compute a weighted PPA cost for each point",
+      "Pick the minimum-cost point under given weights",
+      "Explain why weights depend on units and miss concave regions"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The one-sided Gaussian tail", "section": "The one-sided Gaussian tail", "subgoals": ["Write the failure probability as the upper tail Q of k", "Evaluate Q with erfc to avoid cancellation", "Distinguish one-sided from two-sided tails"]},
+  {"label": "Expected failures in an array", "section": "Expected failures in an array", "subgoals": ["Count the cells as M times 2 to the 20", "Multiply the cell count by the per-cell tail probability", "Treat the failing-cell count as Poisson with mean Np"]},
+  {"label": "From array yield back to a cell sigma", "section": "From array yield back to a cell sigma", "subgoals": ["Require every cell to pass so the per-cell rate is one minus Y to the 1 over N", "Invert the Gaussian tail to get the sigma target", "Compute the per-cell rate with expm1 to keep precision"]}
+]

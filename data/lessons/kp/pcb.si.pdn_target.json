@@ -1,0 +1,5 @@
+[
+  {"label": "Target impedance", "section": "Target impedance", "subgoals": ["Multiply the rail voltage by the allowed ripple fraction", "Divide by the current step to get the target impedance", "Compare the PDN impedance profile against the target"]},
+  {"label": "Capacitors and their resonance", "section": "Capacitors and their resonance", "subgoals": ["Model a mounted capacitor as series R, L and C", "Compute its series resonant frequency", "Recognize the inductive region where only mounting inductance matters"]},
+  {"label": "Counting capacitors for an inductive limit", "section": "Counting capacitors for an inductive limit", "subgoals": ["Divide one capacitor's inductance by the parallel count", "Solve for the smallest count that meets the target", "Hand high frequencies to package and on-die capacitance"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Evaluating once per cycle in levelized order", "section": "Evaluating once per cycle in levelized order", "subgoals": ["Update registers at the clock edge", "Evaluate every combinational gate once in level order", "Accept the loss of delays, glitches and intra-cycle timing"]},
+  {"label": "Cost model and break-even activity", "section": "Cost model and break-even activity", "subgoals": ["Write the event-driven cost per cycle as a N c_e", "Write the cycle-based cost per cycle as N c_c", "Solve a* = c_c / c_e for the break-even activity"]},
+  {"label": "What compilation adds and what it loses", "section": "What compilation adds and what it loses", "subgoals": ["Generate straight-line code from the levelized netlist", "Trade compile time against faster evaluation", "Choose compiled simulation for long runs on stable RTL"]}
+]

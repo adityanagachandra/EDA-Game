@@ -1,0 +1,5 @@
+[
+  {"label": "The propagation rule", "section": "The propagation rule", "subgoals": ["Compute the Boolean difference for each input", "Take its probability under independence", "Weight each input density by that probability and sum"]},
+  {"label": "Wider gates", "section": "Wider gates", "subgoals": ["Write the Boolean difference of a wide gate", "Multiply the probabilities of the non-controlling values", "Sum the weighted input densities"]},
+  {"label": "Through a network", "section": "Through a network", "subgoals": ["Propagate probability and density together in topological order", "Use the intermediate node's values at the next gate", "Convert density into power with one half C V squared"]}
+]

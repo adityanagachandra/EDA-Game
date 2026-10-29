@@ -1,0 +1,5 @@
+[
+  {"label": "The categories", "section": "The categories", "subgoals": ["List timing, power, reliability, physical and functional checks", "Name the tool input each check needs", "Require every check to be clean at its worst conditions"]},
+  {"label": "Matching checks to conditions", "section": "Matching checks to conditions", "subgoals": ["Assign each check to the corner where it is hardest", "Confirm the parasitics carry what the check needs", "Re-extract after fill and other late geometry changes"]},
+  {"label": "The checklist after changes", "section": "The checklist after changes", "subgoals": ["Identify every check an ECO or fill step can affect", "Re-run those checks on the changed design", "Record the input versions each check used"]}
+]

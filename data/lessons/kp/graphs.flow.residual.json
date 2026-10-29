@@ -1,0 +1,5 @@
+[
+  {"label": "Forward and backward residual arcs", "section": "Forward and backward residual arcs", "subgoals": ["Set the forward residual to capacity minus flow", "Set the backward residual to the current flow", "Add residuals when the network has arcs in both directions"]},
+  {"label": "Pushing along an augmenting path", "section": "Pushing along an augmenting path", "subgoals": ["Find an s-t path of positive residual capacities", "Take the smallest residual capacity on it as the bottleneck", "Add the bottleneck on forward steps and subtract it on backward steps"]},
+  {"label": "Why backward arcs are needed", "section": "Why backward arcs are needed", "subgoals": ["Show how a greedy path can block the optimum without backward arcs", "Use backward arcs to cancel and reroute earlier flow", "Read the minimum cut from residual reachability at termination"]}
+]

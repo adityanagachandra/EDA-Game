@@ -1,0 +1,5 @@
+[
+  {"label": "The design configuration", "section": "The design configuration", "subgoals": ["Locate config.mk under designs for the chosen platform", "Name the design, RTL and SDC with DESIGN_NAME, VERILOG_FILES and SDC_FILE", "Set floorplan and placement targets with CORE_UTILIZATION and PLACE_DENSITY"]},
+  {"label": "Sizing the core from utilization", "section": "Sizing the core from utilization", "subgoals": ["Divide cell area by utilization to get core area", "Take the square root for a square core's side", "Divide the side by the row height and round down for the row count"]},
+  {"label": "Reading the first results", "section": "Reading the first results", "subgoals": ["Find final metrics in the reports and logs directories", "Trace negative slack to the SDC clock period", "Relieve routing overflow by lowering utilization"]}
+]

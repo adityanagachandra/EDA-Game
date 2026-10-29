@@ -1,0 +1,5 @@
+[
+  {"label": "Boxes from points", "section": "Boxes from points", "subgoals": ["Take the minimum and maximum x over the points", "Take the minimum and maximum y over the points", "Combine the two extents into a half-perimeter or an area"]},
+  {"label": "Intersecting two rectangles", "section": "Intersecting two rectangles", "subgoals": ["Take the larger of the left edges and the smaller of the right edges", "Do the same for bottom and top edges", "Multiply the two overlaps when both are positive"]},
+  {"label": "Edge cases and many rectangles", "section": "Edge cases and many rectangles", "subgoals": ["Classify zero overlaps as touching, not overlapping", "Intersect several boxes by taking the extreme edges", "Report zero area whenever an extent is not positive"]}
+]

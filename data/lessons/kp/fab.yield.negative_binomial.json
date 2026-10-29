@@ -1,0 +1,5 @@
+[
+  {"label": "A gamma-mixed Poisson", "section": "A gamma-mixed Poisson", "subgoals": ["Model the per-die mean as gamma distributed", "Average the zero-defect probability to get the negative binomial form", "Recover Poisson as alpha grows"]},
+  {"label": "Comparing with Poisson", "section": "Comparing with Poisson", "subgoals": ["Evaluate Poisson and negative binomial yields at the same mean", "Compute the difference in percentage points", "Explain why clustering helps more for large dies"]},
+  {"label": "Inferring defect density with clustering", "section": "Inferring defect density with clustering", "subgoals": ["Rearrange the negative binomial model for defect density", "Compare the result with the Poisson estimate", "Keep one model fixed when comparing design options"]}
+]

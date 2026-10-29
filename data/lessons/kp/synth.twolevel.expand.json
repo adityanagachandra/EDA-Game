@@ -1,0 +1,5 @@
+[
+  {"label": "The legality test for raising a literal", "section": "The legality test for raising a literal", "subgoals": ["Form the cube obtained by raising one literal", "Check whether the new minterms meet the OFF-set", "Accept the raise only when no OFF minterm is added"]},
+  {"label": "Greedy expansion to a prime", "section": "Greedy expansion to a prime", "subgoals": ["Visit the literals in a fixed order", "Keep every raise that stays off the OFF-set", "Stop when no remaining literal can be raised, giving a prime"]},
+  {"label": "Steering expansion to shrink the cover", "section": "Steering expansion to shrink the cover", "subgoals": ["Prefer raises that make the cube absorb other cubes of the cover", "Delete every cube contained in an expanded cube", "Process the cubes from the smallest to the largest"]}
+]

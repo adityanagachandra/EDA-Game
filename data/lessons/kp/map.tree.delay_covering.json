@@ -1,0 +1,5 @@
+[
+  {"label": "The arrival-time recurrence", "section": "The arrival-time recurrence", "subgoals": ["Assign fixed delays to cells and arrival times to inputs", "Add a match's delay to the latest arrival among its inputs", "Take the minimum over all matches at the node"]},
+  {"label": "Late inputs change the answer", "section": "Late inputs change the answer", "subgoals": ["Read the arrival time of each primary input", "Compare matches that place a late input near or far from the output", "Pick the match that minimizes the latest input plus its delay"]},
+  {"label": "Area among delay-optimal covers", "section": "Area among delay-optimal covers", "subgoals": ["Break arrival ties by the smaller subtree area", "Compare the delay-optimal cover's area with the area optimum", "Note that non-critical nodes need required times to trade delay for area"]}
+]

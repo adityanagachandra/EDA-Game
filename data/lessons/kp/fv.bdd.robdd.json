@@ -1,0 +1,5 @@
+[
+  {"label": "Counting nodes from a formula", "section": "Counting nodes from a formula", "subgoals": ["Cofactor f along the variable order", "Keep the distinct non-constant subfunctions, merging equal ones", "Count one node per subfunction at the first variable it depends on"]},
+  {"label": "Counting nodes from a truth table", "section": "Counting nodes from a truth table", "subgoals": ["Split the on-set by the first variable of the order", "Compare the resulting sub-tables and merge equal ones", "Recurse on the next variable and count the distinct non-constant pieces"]},
+  {"label": "Shared BDDs and canonicity", "section": "Shared BDDs and canonicity", "subgoals": ["Build both functions through one unique table", "Identify subgraphs that represent the same subfunction", "Count each shared node once"]}
+]

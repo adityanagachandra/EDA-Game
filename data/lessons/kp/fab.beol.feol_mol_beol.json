@@ -1,0 +1,5 @@
+[
+  {"label": "Three segments of the flow", "section": "Three segments of the flow", "subgoals": ["Assign isolation, gates and source-drain to the FEOL", "Assign trench contacts, gate contact and V0 to the MOL", "Assign the metal and via stack to the BEOL"]},
+  {"label": "Why the middle of line became its own segment", "section": "Why the middle of line became its own segment", "subgoals": ["Explain why contact resistance grew with scaling", "Describe self-aligned contacts and COAG", "Name the tools that need accurate MOL parasitics"]},
+  {"label": "Consequences for design tools", "section": "Consequences for design tools", "subgoals": ["Map each segment to the engine that draws its shapes", "Explain why self-aligned vias change via rules", "Trace a process change to the models it invalidates"]}
+]

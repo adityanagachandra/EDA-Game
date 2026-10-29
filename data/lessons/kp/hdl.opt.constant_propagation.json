@@ -1,0 +1,5 @@
+[
+  {"label": "Folding forward through SSA", "section": "Folding forward through SSA", "subgoals": ["Mark each operand as a known constant or unknown", "Evaluate operations whose operands are all constants", "Substitute the folded constant into later uses"]},
+  {"label": "Algebraic identities", "section": "Algebraic identities", "subgoals": ["Apply annihilator identities such as v times 0 equals 0", "Fold the remaining all-constant operations", "Count the temporaries that end up constant"]},
+  {"label": "Branches and sparse conditional propagation", "section": "Branches and sparse conditional propagation", "subgoals": ["Fold the branch condition when its operands are constant", "Mark only the edges that can execute", "Meet phi inputs from executable predecessors only"]}
+]

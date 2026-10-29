@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Usable time in one cycle",
+  "section": "Usable time in one cycle",
+  "subgoals": [
+   "Subtract register overhead from the clock period",
+   "Add the delays of consecutive operations",
+   "Stop when the next delay would exceed the usable time"
+  ]
+ },
+ {
+  "label": "Packing a chain into cycles",
+  "section": "Packing a chain into cycles",
+  "subgoals": [
+   "Fill the current cycle with the next operations that fit",
+   "Open a new cycle when the next operation does not fit",
+   "Compare the chained cycle count with one cycle per operation"
+  ]
+ },
+ {
+  "label": "When chaining hurts",
+  "section": "When chaining hurts",
+  "subgoals": [
+   "Reserve a clock-uncertainty margin in the usable time",
+   "Account for multiplexer delay on shared units",
+   "Chain only short operations when delay estimates are uncertain"
+  ]
+ }
+]

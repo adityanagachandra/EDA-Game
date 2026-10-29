@@ -1,0 +1,5 @@
+[
+  {"label": "Tracks from pitch and offset", "section": "Tracks from pitch and offset", "subgoals": ["Write track positions as offset plus a multiple of the pitch", "Count the tracks whose position falls in the gcell range", "Relate the pitch to minimum width plus spacing"]},
+  {"label": "Blockages remove tracks", "section": "Blockages remove tracks", "subgoals": ["Expand the blockage by half the wire width plus the spacing", "Count tracks whose centerline falls in the expanded window", "Subtract the lost tracks from the gcell capacity"]},
+  {"label": "Capacity with reserved slack", "section": "Capacity with reserved slack", "subgoals": ["Sum usable tracks over the layers that cross the boundary", "Scale each layer's tracks by one minus its adjustment and round down", "Balance adjustment against false congestion"]}
+]

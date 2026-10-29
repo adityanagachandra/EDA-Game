@@ -1,0 +1,5 @@
+[
+  {"label": "Critical area at one defect size", "section": "Critical area at one defect size", "subgoals": ["Compare the defect diameter with the gap", "Compute the band width x - s", "Multiply by the run length"]},
+  {"label": "Averaging over defect sizes", "section": "Averaging over defect sizes", "subgoals": ["Write the critical area at size x for one gap", "Integrate against the defect size distribution", "Multiply by the number of gaps"]},
+  {"label": "From critical area to yield", "section": "From critical area to yield", "subgoals": ["Convert the critical area to the units of the defect density", "Multiply density by critical area", "Exponentiate the negative product"]}
+]

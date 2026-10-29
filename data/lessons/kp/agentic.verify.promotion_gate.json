@@ -1,0 +1,5 @@
+[
+  {"label": "What the gate checks", "section": "What the gate checks", "subgoals": ["Apply build, golden and differential conditions as a conjunction", "Discard candidates failing any hard condition", "Count the candidates that remain"]},
+  {"label": "QoR and runtime thresholds", "section": "QoR and runtime thresholds", "subgoals": ["Check each metric delta per design against its threshold", "Check runtime and memory against the budget", "Count the candidates that pass every threshold"]},
+  {"label": "Determinism and review", "section": "Determinism and review", "subgoals": ["Rerun with the same seed and compare outputs", "Reject edits outside their declared tier", "Send survivors to a human with their evidence"]}
+]

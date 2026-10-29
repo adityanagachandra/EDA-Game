@@ -1,0 +1,5 @@
+[
+  {"label": "The 50 percent delay", "section": "The 50 percent delay", "subgoals": ["Set the normalized step response to one half", "Solve to get tau times the natural log of two", "Multiply 0.693 by the stage time constant"]},
+  {"label": "The 10 to 90 percent rise time", "section": "The 10 to 90 percent rise time", "subgoals": ["Locate the 10 percent and 90 percent crossing times", "Subtract them to get tau times the natural log of nine", "Convert between slew thresholds with the ratio of logarithms"]},
+  {"label": "Rise time and bandwidth", "section": "Rise time and bandwidth", "subgoals": ["Write the 3 dB bandwidth of a single pole", "Multiply rise time and bandwidth to get about 0.35", "Divide 350 by the rise time in picoseconds to get gigahertz"]}
+]

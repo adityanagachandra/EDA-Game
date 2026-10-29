@@ -1,0 +1,5 @@
+[
+  {"label": "Halving the suspect range", "section": "Halving the suspect range", "subgoals": ["Count the suspect commits including the bad endpoint", "Test the middle suspect and keep the half that holds the culprit", "Take the ceiling of log base two of the suspect count"]},
+  {"label": "Time to find the culprit", "section": "Time to find the culprit", "subgoals": ["Add the build time and the test time per step", "Multiply by the number of bisection steps", "Identify which term a cache or smaller design would shrink"]},
+  {"label": "Bisection against a linear scan", "section": "Bisection against a linear scan", "subgoals": ["Count the worst-case linear tests as n - 1", "Subtract the bisection steps", "Relate the gap to catching regressions per commit"]}
+]

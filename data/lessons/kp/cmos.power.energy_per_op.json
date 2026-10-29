@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Dynamic energy per operation",
+    "section": "Dynamic energy per operation",
+    "subgoals": [
+      "Multiply alpha, capacitance and the supply squared",
+      "Read pF times volts squared as picojoules",
+      "Note that frequency does not change dynamic energy per operation"
+    ]
+  },
+  {
+    "label": "Adding leakage energy",
+    "section": "Adding leakage energy",
+    "subgoals": [
+      "Divide leakage power by the clock frequency to get leakage energy per cycle",
+      "Add it to the dynamic energy per operation",
+      "Track how the leakage share grows as the clock slows"
+    ]
+  },
+  {
+    "label": "The minimum-energy trade-off",
+    "section": "The minimum-energy trade-off",
+    "subgoals": [
+      "Equate dynamic and leakage energy to find the crossover frequency",
+      "Explain why lowering VDD eventually raises leakage energy per operation",
+      "Choose voltage, frequency and Vt together for minimum energy"
+    ]
+  }
+]

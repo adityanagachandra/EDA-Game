@@ -1,0 +1,5 @@
+[
+  {"label": "Worst-slew merging at a pin", "section": "Worst-slew merging at a pin", "subgoals": ["Compute each input arc's output slew", "Take the largest as the stored slew", "Note that it may come from a different input than the latest arrival"]},
+  {"label": "Downstream arrival under graph-based analysis", "section": "Downstream arrival under graph-based analysis", "subgoals": ["Take the latest arrival at the merging pin", "Evaluate the next arc's delay at the merged worst slew", "Add that delay to the arrival"]},
+  {"label": "Path-based re-timing removes the pessimism", "section": "Path-based re-timing removes the pessimism", "subgoals": ["Identify the input that carries the critical path", "Re-evaluate downstream delays with that input's own slew", "Subtract to find the pessimism the merge added"]}
+]

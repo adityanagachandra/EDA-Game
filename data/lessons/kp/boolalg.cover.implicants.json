@@ -1,0 +1,5 @@
+[
+  {"label": "Implicants: cubes inside the ON-set", "section": "Implicants: cubes inside the ON-set", "subgoals": ["List the minterms of the cube", "Check every one against the ON-set", "Reject the cube if any minterm is OFF"]},
+  {"label": "Prime implicants: maximal implicants", "section": "Prime implicants: maximal implicants", "subgoals": ["Remove one literal at a time from the implicant", "Test whether the enlarged cube is still an implicant", "Declare the cube prime when no enlargement survives"]},
+  {"label": "Recognizing primes in a cover", "section": "Recognizing primes in a cover", "subgoals": ["Expand each candidate cube as far as it goes", "Compare the candidate with the expanded cube", "Pick the candidate that is already maximal"]}
+]

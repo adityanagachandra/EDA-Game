@@ -1,0 +1,5 @@
+[
+  {"label": "Ring oscillators", "section": "Ring oscillators", "subgoals": ["Count two traversals of the ring per period", "Compute the period as two N times the stage delay", "Tune by changing the stage delay"]},
+  {"label": "LC oscillators", "section": "LC oscillators", "subgoals": ["Compute the resonance as one over two pi root LC", "Sustain oscillation with negative resistance from a cross-coupled pair", "Tune with varactors and switched capacitor banks"]},
+  {"label": "Tuning gain", "section": "Tuning gain", "subgoals": ["Fit a line through two measured frequency points", "Convert the tuning gain to radians per second per volt", "Model the VCO as an integrator from control voltage to phase"]}
+]

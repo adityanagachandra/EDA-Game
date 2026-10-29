@@ -1,0 +1,5 @@
+[
+  {"label": "Smoothing the maximum", "section": "Smoothing the maximum", "subgoals": ["Write the smooth maximum as gamma times the log of a sum of exponentials", "Factor out the largest coordinate before exponentiating", "Bound the error between zero and gamma times ln n"]},
+  {"label": "Log-sum-exp wirelength", "section": "Log-sum-exp wirelength", "subgoals": ["Write the smooth minimum as minus the smooth maximum of negated coordinates", "Add the smooth maximum and the smooth negated minimum", "Sum the x and y parts and weight by the net"]},
+  {"label": "Choosing gamma", "section": "Choosing gamma", "subgoals": ["Bound the total overestimate by 2 gamma ln n", "Trade smoothness against accuracy when choosing gamma", "Shrink gamma as the overflow falls"]}
+]

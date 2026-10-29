@@ -1,0 +1,5 @@
+[
+  {"label": "Typed inputs and outputs for a solver tool", "section": "Typed inputs and outputs for a solver tool", "subgoals": ["Define each input field with a type and an explicit unit", "Key every output by stable net or node names", "Expose existing modes as parameters rather than code"]},
+  {"label": "What the tool must report besides the answer", "section": "What the tool must report besides the answer", "subgoals": ["Return an error estimate and the discretization used", "Flag inputs outside the calibrated validity range", "Report convergence failures as structured errors"]},
+  {"label": "Batching and determinism", "section": "Batching and determinism", "subgoals": ["Accept many nets per call to amortize setup", "Take and record a seed for any randomized step", "Run the tool sandboxed with no network access"]}
+]

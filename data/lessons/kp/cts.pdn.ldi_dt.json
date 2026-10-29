@@ -1,0 +1,5 @@
+[
+  {"label": "Inductive noise", "section": "Inductive noise", "subgoals": ["Identify the current change and its duration", "Multiply the inductance by the rate of change", "Express the result in millivolts"]},
+  {"label": "Parallel bumps", "section": "Parallel bumps", "subgoals": ["Write the effective inductance of N parallel bumps", "Set the noise equal to the budget", "Round the bump count up"]},
+  {"label": "Package and die resonance", "section": "Package and die resonance", "subgoals": ["Combine package inductance and on-die decap into an LC pair", "Compute the resonance frequency", "Relate the impedance peak to the target impedance"]}
+]

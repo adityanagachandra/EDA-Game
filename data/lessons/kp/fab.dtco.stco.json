@@ -1,0 +1,5 @@
+[
+  {"label": "The monolithic baseline", "section": "The monolithic baseline", "subgoals": ["Compute dies per wafer for the large die", "Compute its Poisson yield", "Divide wafer cost by good dies"]},
+  {"label": "Splitting into chiplets", "section": "Splitting into chiplets", "subgoals": ["Size each chiplet including interface overhead", "Compute cost per good chiplet", "Combine chiplets and assembly yield into system cost"]},
+  {"label": "When splitting pays", "section": "When splitting pays", "subgoals": ["Identify the factors that favour or penalize splitting", "Recompute the trade at a lower defect density", "Name the tool problems chiplets introduce"]}
+]

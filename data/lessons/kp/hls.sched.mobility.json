@@ -1,0 +1,29 @@
+[
+ {
+  "label": "ALAP minus ASAP",
+  "section": "ALAP minus ASAP",
+  "subgoals": [
+   "Compute ASAP starts and ALAP starts under the bound",
+   "Subtract ASAP from ALAP for each operation",
+   "Count mobility plus one legal start steps in each frame"
+  ]
+ },
+ {
+  "label": "Zero mobility marks the critical path",
+  "section": "Zero mobility marks the critical path",
+  "subgoals": [
+   "Set the bound equal to the critical-path length",
+   "Mark the operations with equal ASAP and ALAP starts",
+   "Read the marked operations as the critical path"
+  ]
+ },
+ {
+  "label": "Relaxing the latency bound",
+  "section": "Relaxing the latency bound",
+  "subgoals": [
+   "Keep the ASAP starts fixed",
+   "Shift every ALAP start later by the added slack",
+   "Add the slack to every mobility"
+  ]
+ }
+]

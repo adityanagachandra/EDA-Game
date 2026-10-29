@@ -1,0 +1,5 @@
+[
+  {"label": "Jacobi sweeps", "section": "Jacobi sweeps", "subgoals": ["Solve each row for its own unknown", "Update every node from the previous sweep", "Repeat for the requested number of sweeps"]},
+  {"label": "Gauss-Seidel sweeps", "section": "Gauss-Seidel sweeps", "subgoals": ["Update the first node from the current values", "Use each new value immediately in the next row", "Finish the sweep in the given node order"]},
+  {"label": "Scale and the solvers that handle it", "section": "Scale and the solvers that handle it", "subgoals": ["Count the non-zeros of a five-point grid matrix", "Explain why conjugate gradient applies", "Name the preconditioners and direct alternatives"]}
+]

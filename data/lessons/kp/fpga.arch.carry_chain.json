@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Why soft carries are slow",
+  "section": "Why soft carries are slow",
+  "subgoals": [
+   "Model a soft ripple bit as one LUT plus one routing hop",
+   "Model the chain as entry delay plus n times the per-bit delay",
+   "Compare the two delays for the stated width"
+  ]
+ },
+ {
+  "label": "Chains occupy columns",
+  "section": "Chains occupy columns",
+  "subgoals": [
+   "Divide the width by the bits per block and round up",
+   "Stack the blocks in one column as a macro",
+   "Treat a chain break as a slow general-routing hop"
+  ]
+ },
+ {
+  "label": "When soft prefix adders win",
+  "section": "When soft prefix adders win",
+  "subgoals": [
+   "Write the chain delay as linear in n",
+   "Write the prefix delay as levels of LUT plus routing",
+   "Search for the smallest n where the prefix delay is lower"
+  ]
+ }
+]

@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Widely separated time constants",
+  "section": "Widely separated time constants",
+  "subgoals": [
+   "Compute the eigenvalues of the circuit matrix",
+   "Take the largest and smallest magnitudes",
+   "Divide them to get the stiffness ratio"
+  ]
+ },
+ {
+  "label": "The explicit step limit on a stiff circuit",
+  "section": "The explicit step limit on a stiff circuit",
+  "subgoals": [
+   "Find the largest eigenvalue magnitude",
+   "Divide two by it to get the forward Euler limit",
+   "Compare the limit with the time scale of the slow mode"
+  ]
+ },
+ {
+  "label": "Why implicit methods win despite the solve",
+  "section": "Why implicit methods win despite the solve",
+  "subgoals": [
+   "Count explicit steps at the stability limit",
+   "Estimate the accuracy-limited implicit step count",
+   "Compare total cost including the solve per implicit step"
+  ]
+ }
+]

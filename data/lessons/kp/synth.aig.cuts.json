@@ -1,0 +1,5 @@
+[
+  {"label": "Definition", "section": "Definition", "subgoals": ["Check that every input-to-node path crosses the set", "Bound the set size by k", "Include the trivial cut containing the node itself"]},
+  {"label": "Bottom-up enumeration", "section": "Bottom-up enumeration", "subgoals": ["Give each primary input its trivial cut", "Merge every pair of fanin cuts and keep unions of size at most k", "Add the node's trivial cut and remove duplicate sets"]},
+  {"label": "Dominance and priority cuts", "section": "Dominance and priority cuts", "subgoals": ["Find cuts that strictly contain another cut of the same node", "Drop the dominated cuts", "Keep only a few best cuts per node in large designs"]}
+]

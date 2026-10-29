@@ -1,0 +1,5 @@
+[
+  {"label": "Threshold by linear extrapolation", "section": "Threshold by linear extrapolation", "subgoals": ["Find the bias of maximum transconductance in the linear sweep", "Extrapolate the tangent there to zero current", "Subtract half the drain voltage"]},
+  {"label": "Threshold from saturation data", "section": "Threshold from saturation data", "subgoals": ["Take square roots of the two saturation currents", "Find where the line through them crosses zero current", "Report that intercept as the saturation threshold"]},
+  {"label": "The transconductance factor and staged fitting", "section": "The transconductance factor and staged fitting", "subgoals": ["Compute the slope of the square root of current against gate voltage", "Square it and double it to get K", "Fit parameters stage by stage before a bounded global polish"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Through a wire segment", "section": "Through a wire segment", "subgoals": ["Add the wire capacitance to the downstream load", "Subtract the wire resistance times half its capacitance plus the load", "Carry the new pair upstream"]},
+  {"label": "Through a buffer", "section": "Through a buffer", "subgoals": ["Replace the load with the buffer's input capacitance", "Subtract the buffer's intrinsic delay and its resistance times the load", "Keep both the buffered and the unbuffered candidate"]},
+  {"label": "Across a branch", "section": "Across a branch", "subgoals": ["Add the two branch loads", "Take the smaller of the two required times", "Merge the sorted lists linearly to keep only non-dominated pairs"]}
+]

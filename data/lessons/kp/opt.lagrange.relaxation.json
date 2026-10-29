@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Flow conservation of multipliers",
+    "section": "Flow conservation of multipliers",
+    "subgoals": [
+      "Write the Lagrangian derivative with respect to a node's arrival time",
+      "Equate the incoming and outgoing multiplier sums",
+      "Solve for the missing multiplier at the node"
+    ]
+  },
+  {
+    "label": "The per-gate subproblem",
+    "section": "The per-gate subproblem",
+    "subgoals": [
+      "Sum the multipliers on the arcs through the gate",
+      "Write the gate's area plus weighted delay as a x plus b over x",
+      "Minimize it with the square-root rule"
+    ]
+  },
+  {
+    "label": "Upstream load and the lower bound",
+    "section": "Upstream load and the lower bound",
+    "subgoals": [
+      "Add the upstream delay sensitivity to the linear coefficient",
+      "Recompute the optimal size with the larger coefficient",
+      "Use the relaxed optimum as a lower bound in the outer loop"
+    ]
+  }
+]

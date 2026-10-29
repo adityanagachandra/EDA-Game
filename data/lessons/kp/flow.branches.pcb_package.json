@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The board flow",
+    "section": "The board flow",
+    "subgoals": [
+      "Compile a schematic into a netlist with footprints",
+      "Name the fabrication rules and electrical rules a PCB router obeys",
+      "Name the fabrication output formats of a board"
+    ]
+  },
+  {
+    "label": "Packages and advanced packaging",
+    "section": "Packages and advanced packaging",
+    "subgoals": [
+      "Contrast wire-bond with flip-chip packages",
+      "Distinguish 2.5D interposers from 3D stacking",
+      "Explain how bump positions constrain the die floorplan"
+    ]
+  },
+  {
+    "label": "Signal, power and thermal integrity",
+    "section": "Signal, power and thermal integrity",
+    "subgoals": [
+      "Treat board wires as transmission lines",
+      "Place decoupling on board, package and die",
+      "Explain why die, package and board analyses are coupled"
+    ]
+  }
+]

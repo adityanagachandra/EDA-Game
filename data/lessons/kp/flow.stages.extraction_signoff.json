@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Parasitic extraction",
+    "section": "Parasitic extraction",
+    "subgoals": [
+      "Compute wire resistance and capacitance from geometry",
+      "Name coupling capacitance as the new information",
+      "Name SPEF as the extraction output"
+    ]
+  },
+  {
+    "label": "Corners, modes and scenarios",
+    "section": "Corners, modes and scenarios",
+    "subgoals": [
+      "List process, voltage, temperature and RC corners",
+      "Multiply modes by PVT corners by RC corners",
+      "Explain why scenario pruning and incremental timing matter"
+    ]
+  },
+  {
+    "label": "Signoff slack with real parasitics",
+    "section": "Signoff slack with real parasitics",
+    "subgoals": [
+      "Subtract clock-to-q, logic, wire delay and setup from the period",
+      "Scale the estimated wire delay to its extracted value",
+      "Describe an ECO as a local fix followed by incremental re-extraction"
+    ]
+  }
+]

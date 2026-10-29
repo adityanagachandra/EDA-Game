@@ -1,0 +1,5 @@
+[
+  {"label": "Copying current through equal gate voltage", "section": "Copying current through equal gate voltage", "subgoals": ["Bias the diode-connected device with the reference current", "Scale the output current by the width ratio at equal gate voltage", "Build ratios from identical unit fingers"]},
+  {"label": "Channel-length modulation and copy error", "section": "Channel-length modulation and copy error", "subgoals": ["Write each current with its one plus lambda Vds factor", "Take the ratio for the output and diode drain voltages", "Relate the copy error to the mirror's finite output resistance"]},
+  {"label": "The cascode multiplies output resistance", "section": "The cascode multiplies output resistance", "subgoals": ["Stack a common-gate device above the current source", "Multiply ro1 by the cascode's intrinsic gain gm2 ro2", "Account for the extra saturation voltage in the headroom budget"]}
+]

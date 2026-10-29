@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The next step for trapezoidal",
+    "section": "The next step for trapezoidal",
+    "subgoals": [
+      "Identify the method order and its error exponent",
+      "Take the tolerance-to-error ratio to the power one over order plus one",
+      "Multiply the current step by that factor"
+    ]
+  },
+  {
+    "label": "The next step for backward Euler",
+    "section": "The next step for backward Euler",
+    "subgoals": [
+      "Use exponent one half for a first-order method",
+      "Compute the tolerance-to-error ratio",
+      "Scale the step by the square root of the ratio"
+    ]
+  },
+  {
+    "label": "Rejecting a step",
+    "section": "Rejecting a step",
+    "subgoals": [
+      "Compare the error estimate with the tolerance",
+      "Discard the step and compute a smaller step with a safety factor",
+      "Retry the step from the last accepted time point"
+    ]
+  }
+]

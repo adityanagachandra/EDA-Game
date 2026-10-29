@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Clipping the step",
+    "section": "Clipping the step",
+    "subgoals": [
+      "Compare the proposed update with the clip limit",
+      "Apply the update with its magnitude capped at the limit",
+      "Keep the sign of the proposed update"
+    ]
+  },
+  {
+    "label": "Uniform damping of a vector update",
+    "section": "Uniform damping of a vector update",
+    "subgoals": [
+      "Find the largest magnitude in the update vector",
+      "Set alpha to the limit over that magnitude, capped at one",
+      "Scale every component of the update by alpha"
+    ]
+  },
+  {
+    "label": "Backtracking on the residual",
+    "section": "Backtracking on the residual",
+    "subgoals": [
+      "Evaluate the residual at the full Newton step",
+      "Halve alpha until the sufficient-decrease test passes",
+      "Accept the first alpha that passes"
+    ]
+  }
+]

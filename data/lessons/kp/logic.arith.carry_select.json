@@ -1,0 +1,5 @@
+[
+  {"label": "Speculate both carries, then select", "section": "Speculate both carries, then select", "subgoals": ["Ripple within each block for both carry-in values in parallel", "Select each block's result with the carry from the block below", "Add the block ripple time to one mux delay per remaining block"]},
+  {"label": "Choosing the block size", "section": "Choosing the block size", "subgoals": ["Write the delay as block ripple time plus mux chain time", "Evaluate it for each candidate block size", "Pick the block size with the smallest delay"]},
+  {"label": "Carry-skip", "section": "Carry-skip", "subgoals": ["Ripple through the first block", "Skip each middle block in one skip delay", "Ripple through the last block and sum the three parts"]}
+]

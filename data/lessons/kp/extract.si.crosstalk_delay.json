@@ -1,0 +1,5 @@
+[
+  {"label": "Delay with a quiet aggressor", "section": "Delay with a quiet aggressor", "subgoals": ["Add ground and coupling capacitance at Miller factor 1", "Multiply by the driver resistance and 0.69", "Read the result in picoseconds"]},
+  {"label": "The delta delay", "section": "The delta delay", "subgoals": ["Compute the change in effective load from the factor change", "Multiply by the driver resistance and 0.69", "Apply the change as a slow-down or a speed-up"]},
+  {"label": "Effect on setup and hold", "section": "Effect on setup and hold", "subgoals": ["Choose slow-down for setup and speed-up for hold", "Subtract the delta from the quiet-case slack", "Flag paths whose slack turns negative"]}
+]

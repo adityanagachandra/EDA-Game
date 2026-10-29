@@ -1,0 +1,5 @@
+[
+  {"label": "W: the fewest registers between two nodes", "section": "W: the fewest registers between two nodes", "subgoals": ["List the paths from u to v", "Count the registers on each path", "Take the minimum as W(u, v)"]},
+  {"label": "D: the critical delay at that register count", "section": "D: the critical delay at that register count", "subgoals": ["Restrict to the paths from u to v that carry W(u, v) registers", "Sum the node delays along each, endpoints included", "Take the maximum as D(u, v)"]},
+  {"label": "Period constraints", "section": "Period constraints", "subgoals": ["Write r(u) - r(v) at most w(e) for each edge", "Write r(u) - r(v) at most W(u, v) - 1 for each pair with D(u, v) above c", "Solve the difference constraints with Bellman-Ford"]}
+]

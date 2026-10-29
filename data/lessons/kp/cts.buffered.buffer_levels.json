@@ -1,0 +1,5 @@
+[
+  {"label": "Levels from fanout", "section": "Levels from fanout", "subgoals": ["Bound the sinks reachable by L levels by F to the power L", "Take the ceiling of the logarithm of the sink count", "Check the bound with the neighbouring powers"]},
+  {"label": "Counting buffers", "section": "Counting buffers", "subgoals": ["Divide the sink count by the fanout and round up", "Repeat on each level's count until one buffer remains", "Sum the counts over all levels"]},
+  {"label": "The fanout that minimises latency", "section": "The fanout that minimises latency", "subgoals": ["Write latency as levels times stage delay", "Evaluate it for each candidate fanout", "Pick the fanout with the smallest latency"]}
+]

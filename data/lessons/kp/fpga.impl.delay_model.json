@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Path arrival from a delay model",
+  "section": "Path arrival from a delay model",
+  "subgoals": [
+   "Look up each connection's delay from its absolute offsets",
+   "Add clock-to-q and every LUT delay on the path",
+   "Sum to get the arrival at the capture flip-flop"
+  ]
+ },
+ {
+  "label": "Setup slack",
+  "section": "Setup slack",
+  "subgoals": [
+   "Subtract setup time from the clock period",
+   "Subtract the data arrival time",
+   "Read a negative result as a failing path"
+  ]
+ },
+ {
+  "label": "Maximum frequency",
+  "section": "Maximum frequency",
+  "subgoals": [
+   "Add setup time to the critical path's arrival",
+   "Invert the period in ps to get MHz",
+   "Expect the post-route value to be lower than the estimate"
+  ]
+ }
+]

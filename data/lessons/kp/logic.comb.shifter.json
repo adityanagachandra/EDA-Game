@@ -1,0 +1,5 @@
+[
+  {"label": "Shift and rotate semantics", "section": "Shift and rotate semantics", "subgoals": ["Move every bit by the shift amount", "Fill the vacated positions with zeros or with the bits that fell off", "Read the result as an unsigned integer"]},
+  {"label": "A logarithmic shifter", "section": "A logarithmic shifter", "subgoals": ["Decompose the shift amount into powers of two", "Allocate one row of n muxes per bit of the shift amount", "Multiply n by the number of stages"]},
+  {"label": "Which stages act", "section": "Which stages act", "subgoals": ["Write the shift amount in binary", "Count the stages whose select bit is one", "Order stages by the arrival of their select bits"]}
+]

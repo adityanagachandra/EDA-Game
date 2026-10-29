@@ -1,0 +1,5 @@
+[
+  {"label": "What the sandbox enforces", "section": "What the sandbox enforces", "subgoals": ["Block network access at the operating-system level", "Confine file access to the workspace and read-only inputs", "Enforce CPU, memory and wall-time limits"]},
+  {"label": "The IP boundary as architecture", "section": "The IP boundary as architecture", "subgoals": ["Classify each data flow by the side of the boundary it crosses", "Run the model and the reward tools on-site", "Ship sensitive engines as compiled libraries"]},
+  {"label": "What flows back and what never does", "section": "What flows back and what never does", "subgoals": ["Export skills, manifests and know-how only", "Keep designs, constraints and process data on-site", "Rebuild goldens on designs the vendor may hold"]}
+]

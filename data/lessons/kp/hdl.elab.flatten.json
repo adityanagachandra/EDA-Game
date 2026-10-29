@@ -1,0 +1,5 @@
+[
+  {"label": "Counting copies after flattening", "section": "Counting copies after flattening", "subgoals": ["Multiply instance counts along each path from the top", "Sum the products over every path that reaches the module", "Keep hierarchical names inside the flattened names"]},
+  {"label": "Counting cells in the flat module", "section": "Counting cells in the flat module", "subgoals": ["Compute each module's total cells in post-order", "Add children's totals times their instance counts", "Compare the flat size with the hierarchical source size"]},
+  {"label": "Uniquification by parameter set", "section": "Uniquification by parameter set", "subgoals": ["Group instances by module name and full parameter assignment", "Count one definition per distinct group plus the top", "Uniquify instances that later optimization will treat differently"]}
+]

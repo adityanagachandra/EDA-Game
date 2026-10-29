@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Switch on-resistance and IR drop",
+    "section": "Switch on-resistance and IR drop",
+    "subgoals": [
+      "Treat N parallel switches as one resistance of R over N",
+      "Multiply the block current by that resistance for the drop",
+      "Include the virtual-rail drop in the block's timing"
+    ]
+  },
+  {
+    "label": "Sizing the switch network",
+    "section": "Sizing the switch network",
+    "subgoals": [
+      "Divide the current times on-resistance by the drop budget",
+      "Round up to a whole number of switches",
+      "Trade switch count against area and off-state switch leakage"
+    ]
+  },
+  {
+    "label": "Rush current and wake-up time",
+    "section": "Rush current and wake-up time",
+    "subgoals": [
+      "Limit rush current by enabling switches in a daisy chain",
+      "Divide the stored charge by the current limit for wake-up time",
+      "Compare leakage saved while off with the energy of waking up"
+    ]
+  }
+]

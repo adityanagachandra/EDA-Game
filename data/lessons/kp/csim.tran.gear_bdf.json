@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The BDF2 derivative formula",
+    "section": "The BDF2 derivative formula",
+    "subgoals": [
+      "Write the BDF2 difference for the derivative",
+      "Multiply by C to get the capacitor current",
+      "Read the conductance as three C over two h"
+    ]
+  },
+  {
+    "label": "The BDF2 history current",
+    "section": "The BDF2 history current",
+    "subgoals": [
+      "Form four times the last voltage minus the one before",
+      "Multiply by C over two h",
+      "Start the method with a backward-Euler step"
+    ]
+  },
+  {
+    "label": "One BDF2 step on an RC node",
+    "section": "One BDF2 step on an RC node",
+    "subgoals": [
+      "Stamp the BDF2 companion with the resistor",
+      "Compute the history current from the two past voltages",
+      "Solve the node equation for the new voltage"
+    ]
+  }
+]

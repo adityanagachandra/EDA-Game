@@ -1,0 +1,5 @@
+[
+  {"label": "From nets to driver-to-sink arcs", "section": "From nets to driver-to-sink arcs", "subgoals": ["Identify the single driver of each net", "Draw one arc from the driver to every sink", "Count k - 1 arcs for a k-pin net"]},
+  {"label": "Fan-in, fanout and cones", "section": "Fan-in, fanout and cones", "subgoals": ["Read fanout as out-degree and fan-in as in-degree", "Search forward from a vertex to collect its fanout cone", "Use the cone to bound which values a change can affect"]},
+  {"label": "Direction as a source of structure", "section": "Direction as a source of structure", "subgoals": ["Cut the graph at sequential elements to make it acyclic", "Process vertices in topological order once the graph is a DAG", "Flag nets with several drivers as outside the simple model"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Main effects", "section": "Main effects", "subgoals": ["Code the factor levels as minus one and plus one", "Average the responses at the high level and at the low level", "Subtract the low average from the high average"]},
+  {"label": "Interactions", "section": "Interactions", "subgoals": ["Classify each run by the sign of the product of its coded levels", "Average the plus-product runs and the minus-product runs", "Read the interaction as half the change in one effect across the other factor"]},
+  {"label": "The fitted regression model", "section": "The fitted regression model", "subgoals": ["Set the intercept to the grand mean", "Halve each effect to get its coefficient", "Evaluate the coded model at the query point"]}
+]

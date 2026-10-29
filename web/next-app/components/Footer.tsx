@@ -207,7 +207,7 @@ export default function Footer({ className = '' }: FooterProps) {
               </div>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-[var(--footer-ink-muted)]">
-              Open-source adaptive math learning engine.
+              Open-source adaptive engine for learning EDA.
             </p>
           </div>
 

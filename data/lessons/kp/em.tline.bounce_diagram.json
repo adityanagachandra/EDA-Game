@@ -1,0 +1,5 @@
+[
+  {"label": "Launching the first wave", "section": "Launching the first wave", "subgoals": ["Divide the source voltage between its resistance and Z0", "Compute the load and source reflection coefficients", "Hold the source end at the launched value until two delays pass"]},
+  {"label": "Tracking successive reflections", "section": "Tracking successive reflections", "subgoals": ["List the arrival times at the load as odd multiples of the delay", "Add one plus gamma L times each incident wave", "Shrink each incident wave by the round-trip product of gammas"]},
+  {"label": "The voltage at the source end", "section": "The voltage at the source end", "subgoals": ["Mark the source-end events at even multiples of the delay", "Add the returning load reflection to the launched wave", "Add its re-reflection from the source with gamma S"]}
+]

@@ -1,0 +1,1094 @@
+[
+  {
+    "id": "flow.overview.what_is_eda",
+    "label": "What electronic design automation is",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.overview",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "discrete.logic.propositions",
+      "discrete.graphs.basics",
+      "discrete.sets.relations"
+    ],
+    "key_prerequisites": [
+      "discrete.graphs.basics"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 40
+    }
+  },
+  {
+    "id": "flow.overview.scale_vlsi",
+    "label": "Integrated circuits and VLSI scale",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.overview",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.overview.what_is_eda",
+      "discrete.sequences.growth_rates",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "discrete.sequences.growth_rates"
+    ],
+    "encompasses": [
+      "discrete.combinatorics.counting_principle"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "flow.overview.abstraction_levels",
+    "label": "Abstraction levels from system to layout",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.overview",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.overview.what_is_eda",
+      "discrete.sets.relations",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "flow.overview.what_is_eda"
+    ],
+    "encompasses": [
+      "flow.overview.what_is_eda"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.overview.hierarchy",
+    "label": "Hierarchy, top-down and bottom-up design",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.overview",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.overview.abstraction_levels",
+      "discrete.graphs.trees",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "flow.overview.abstraction_levels",
+      "discrete.graphs.trees"
+    ],
+    "encompasses": [
+      "flow.overview.abstraction_levels",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "flow.overview.asic_fpga_soc",
+    "label": "ASICs, FPGAs and systems on chip",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.overview",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.overview.abstraction_levels",
+      "flow.overview.scale_vlsi"
+    ],
+    "key_prerequisites": [
+      "flow.overview.abstraction_levels"
+    ],
+    "encompasses": [
+      "flow.overview.abstraction_levels"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "flow.overview.ip_libraries",
+    "label": "IP cores and standard-cell libraries as products",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.overview",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.overview.asic_fpga_soc",
+      "flow.overview.hierarchy"
+    ],
+    "key_prerequisites": [
+      "flow.overview.asic_fpga_soc"
+    ],
+    "encompasses": [
+      "flow.overview.hierarchy"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.overview.codesign",
+    "label": "Hardware-software co-design",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.overview",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.overview.asic_fpga_soc",
+      "flow.overview.abstraction_levels"
+    ],
+    "key_prerequisites": [
+      "flow.overview.asic_fpga_soc"
+    ],
+    "encompasses": [
+      "flow.overview.abstraction_levels"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.stages.rtl_to_gds",
+    "label": "The RTL-to-GDSII flow end to end",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.overview.abstraction_levels",
+      "flow.overview.asic_fpga_soc",
+      "discrete.sets.partial_order"
+    ],
+    "key_prerequisites": [
+      "flow.overview.abstraction_levels"
+    ],
+    "encompasses": [
+      "flow.overview.abstraction_levels"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.stages.spec_to_rtl",
+    "label": "Specification, architecture and RTL",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.stages.rtl_to_gds",
+      "flow.overview.codesign",
+      "flow.overview.hierarchy"
+    ],
+    "key_prerequisites": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds",
+      "flow.overview.codesign"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.stages.functional_verification",
+    "label": "Functional verification in the flow",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.spec_to_rtl",
+      "discrete.combinatorics.counting_principle",
+      "discrete.logic.equivalence"
+    ],
+    "key_prerequisites": [
+      "flow.stages.spec_to_rtl"
+    ],
+    "encompasses": [
+      "flow.overview.scale_vlsi"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 90
+    }
+  },
+  {
+    "id": "flow.stages.logic_synthesis",
+    "label": "Logic synthesis",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.stages.spec_to_rtl",
+      "discrete.logic.equivalence",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "flow.stages.spec_to_rtl",
+      "discrete.logic.equivalence"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.stages.dft",
+    "label": "Design for test and scan insertion",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.logic_synthesis",
+      "discrete.combinatorics.counting_principle"
+    ],
+    "key_prerequisites": [
+      "flow.stages.logic_synthesis"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.stages.floorplan",
+    "label": "Floorplanning and power planning",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.logic_synthesis",
+      "flow.overview.hierarchy"
+    ],
+    "key_prerequisites": [
+      "flow.stages.logic_synthesis"
+    ],
+    "encompasses": [
+      "flow.overview.hierarchy"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.stages.placement",
+    "label": "Placement",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.floorplan",
+      "discrete.graphs.basics"
+    ],
+    "key_prerequisites": [
+      "flow.stages.floorplan"
+    ],
+    "encompasses": [
+      "flow.stages.floorplan"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.stages.cts",
+    "label": "Clock tree synthesis",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.placement",
+      "discrete.graphs.trees"
+    ],
+    "key_prerequisites": [
+      "flow.stages.placement",
+      "discrete.graphs.trees"
+    ],
+    "encompasses": [
+      "flow.stages.floorplan"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.stages.routing",
+    "label": "Global and detailed routing",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.cts",
+      "discrete.graphs.paths"
+    ],
+    "key_prerequisites": [
+      "flow.stages.cts"
+    ],
+    "encompasses": [
+      "flow.stages.placement"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 110
+    }
+  },
+  {
+    "id": "flow.stages.extraction_signoff",
+    "label": "Extraction, timing and signoff",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.routing",
+      "discrete.combinatorics.counting_principle",
+      "discrete.graphs.paths"
+    ],
+    "key_prerequisites": [
+      "flow.stages.routing"
+    ],
+    "encompasses": [
+      "flow.stages.routing",
+      "flow.stages.cts"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.stages.tapeout_to_test",
+    "label": "Tape-out, fabrication, packaging and test",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.stages.extraction_signoff",
+      "flow.stages.dft"
+    ],
+    "key_prerequisites": [
+      "flow.stages.extraction_signoff"
+    ],
+    "encompasses": [
+      "flow.stages.dft"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.stages.iteration_closure",
+    "label": "Why design flows iterate",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.stages.extraction_signoff",
+      "flow.stages.functional_verification",
+      "discrete.graphs.paths"
+    ],
+    "key_prerequisites": [
+      "flow.stages.extraction_signoff"
+    ],
+    "encompasses": [
+      "flow.stages.routing",
+      "flow.stages.functional_verification"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 50
+    }
+  },
+  {
+    "id": "flow.stages.error_propagation",
+    "label": "How poor decisions propagate downstream",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.stages",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.iteration_closure",
+      "flow.stages.tapeout_to_test",
+      "graph.topological_sort",
+      "stat.dist.geometric"
+    ],
+    "key_prerequisites": [
+      "flow.stages.iteration_closure"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds",
+      "flow.stages.iteration_closure"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 110
+    }
+  },
+  {
+    "id": "flow.repr.format_map",
+    "label": "The map of design representations and formats",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.stages.rtl_to_gds",
+      "discrete.sets.relations",
+      "flow.overview.abstraction_levels"
+    ],
+    "key_prerequisites": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds",
+      "flow.overview.abstraction_levels"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.repr.netlist",
+    "label": "Netlists as the shared currency of the flow",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.repr.format_map",
+      "discrete.graphs.basics",
+      "flow.stages.logic_synthesis"
+    ],
+    "key_prerequisites": [
+      "flow.repr.format_map",
+      "discrete.graphs.basics"
+    ],
+    "encompasses": [
+      "flow.repr.format_map"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.repr.boolean_networks",
+    "label": "Boolean networks, BDDs and AIGs",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.repr.netlist",
+      "discrete.logic.connectives",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "flow.repr.netlist",
+      "discrete.logic.connectives"
+    ],
+    "encompasses": [
+      "flow.repr.format_map"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.repr.liberty",
+    "label": "Liberty cell libraries",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.repr.netlist",
+      "flow.overview.ip_libraries",
+      "numa.interp.lagrange"
+    ],
+    "key_prerequisites": [
+      "flow.overview.ip_libraries"
+    ],
+    "encompasses": [
+      "flow.repr.format_map"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 110
+    }
+  },
+  {
+    "id": "flow.repr.sdc",
+    "label": "SDC timing constraints",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.repr.format_map",
+      "flow.stages.logic_synthesis",
+      "flow.repr.liberty"
+    ],
+    "key_prerequisites": [
+      "flow.repr.format_map"
+    ],
+    "encompasses": [
+      "flow.repr.netlist"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.repr.lef_def",
+    "label": "LEF and DEF physical exchange",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.repr.netlist",
+      "flow.stages.placement",
+      "flow.repr.liberty"
+    ],
+    "key_prerequisites": [
+      "flow.repr.netlist",
+      "flow.stages.placement"
+    ],
+    "encompasses": [
+      "flow.repr.format_map",
+      "flow.stages.floorplan"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 110
+    }
+  },
+  {
+    "id": "flow.repr.spef",
+    "label": "SPEF parasitic exchange",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.repr.lef_def",
+      "flow.stages.extraction_signoff"
+    ],
+    "key_prerequisites": [
+      "flow.stages.extraction_signoff"
+    ],
+    "encompasses": [
+      "flow.repr.netlist"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.repr.gdsii_oasis",
+    "label": "GDSII and OASIS mask layout",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.repr.lef_def",
+      "flow.stages.tapeout_to_test"
+    ],
+    "key_prerequisites": [
+      "flow.repr.lef_def"
+    ],
+    "encompasses": [
+      "flow.repr.format_map"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.repr.spice_pdk",
+    "label": "SPICE netlists and PDK decks",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.repr",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.repr.gdsii_oasis",
+      "flow.repr.spef"
+    ],
+    "key_prerequisites": [
+      "flow.repr.gdsii_oasis"
+    ],
+    "encompasses": [
+      "flow.repr.format_map",
+      "flow.repr.netlist"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.metrics.ppa",
+    "label": "Power, performance and area",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.metrics",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.rtl_to_gds",
+      "flow.overview.asic_fpga_soc"
+    ],
+    "key_prerequisites": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.metrics.pareto",
+    "label": "PPA trade-offs and Pareto fronts",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.metrics",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.metrics.ppa",
+      "discrete.sets.partial_order"
+    ],
+    "key_prerequisites": [
+      "flow.metrics.ppa",
+      "discrete.sets.partial_order"
+    ],
+    "encompasses": [
+      "flow.metrics.ppa"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 70
+    }
+  },
+  {
+    "id": "flow.metrics.die_per_wafer",
+    "label": "Dies per wafer",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.metrics",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.metrics.ppa",
+      "flow.stages.floorplan"
+    ],
+    "key_prerequisites": [
+      "flow.stages.floorplan"
+    ],
+    "encompasses": [
+      "flow.metrics.ppa"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "flow.metrics.yield_cost",
+    "label": "Yield and cost per good die",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.metrics",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.metrics.die_per_wafer",
+      "stat.dist.poisson"
+    ],
+    "key_prerequisites": [
+      "flow.metrics.die_per_wafer",
+      "stat.dist.poisson"
+    ],
+    "encompasses": [
+      "flow.metrics.die_per_wafer"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 120
+    }
+  },
+  {
+    "id": "flow.metrics.respin_cost",
+    "label": "The cost of a respin",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.metrics",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.metrics.yield_cost",
+      "flow.stages.tapeout_to_test",
+      "stat.prob.expected_value"
+    ],
+    "key_prerequisites": [
+      "flow.stages.tapeout_to_test"
+    ],
+    "encompasses": [
+      "flow.stages.tapeout_to_test"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 100
+    }
+  },
+  {
+    "id": "flow.branches.analog_ams",
+    "label": "Analog and mixed-signal design flows",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.branches",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.stages.rtl_to_gds",
+      "flow.repr.spice_pdk"
+    ],
+    "key_prerequisites": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.branches.fpga_flow",
+    "label": "The FPGA implementation flow",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.branches",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.overview.asic_fpga_soc",
+      "flow.stages.rtl_to_gds",
+      "discrete.logic.truth_tables"
+    ],
+    "key_prerequisites": [
+      "flow.overview.asic_fpga_soc"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 55
+    }
+  },
+  {
+    "id": "flow.branches.pcb_package",
+    "label": "PCB and package design",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.branches",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.stages.rtl_to_gds",
+      "flow.stages.tapeout_to_test"
+    ],
+    "key_prerequisites": [
+      "flow.stages.tapeout_to_test"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.branches.manufacturing",
+    "label": "Manufacturing, lithography and DFM",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.branches",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.repr.gdsii_oasis",
+      "flow.metrics.yield_cost"
+    ],
+    "key_prerequisites": [
+      "flow.repr.gdsii_oasis"
+    ],
+    "encompasses": [
+      "flow.stages.tapeout_to_test"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.industry.foundry_fabless",
+    "label": "The foundry and fabless model",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.industry",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.stages.tapeout_to_test",
+      "flow.overview.ip_libraries"
+    ],
+    "key_prerequisites": [
+      "flow.stages.tapeout_to_test"
+    ],
+    "encompasses": [
+      "flow.overview.ip_libraries"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.industry.vendors",
+    "label": "EDA vendors and industry structure",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.industry",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.industry.foundry_fabless",
+      "flow.overview.what_is_eda"
+    ],
+    "key_prerequisites": [
+      "flow.industry.foundry_fabless"
+    ],
+    "encompasses": [
+      "flow.overview.what_is_eda"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.industry.tool_landscape",
+    "label": "The commercial and open-source tool landscape",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.industry",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.industry.vendors",
+      "flow.stages.rtl_to_gds",
+      "flow.repr.format_map"
+    ],
+    "key_prerequisites": [
+      "flow.industry.vendors",
+      "flow.stages.rtl_to_gds"
+    ],
+    "encompasses": [
+      "flow.stages.rtl_to_gds"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 40
+    }
+  },
+  {
+    "id": "flow.industry.open_source",
+    "label": "Open-source EDA tools",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.industry",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.industry.tool_landscape",
+      "flow.repr.format_map"
+    ],
+    "key_prerequisites": [
+      "flow.industry.tool_landscape"
+    ],
+    "encompasses": [
+      "flow.repr.format_map"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 40
+    }
+  },
+  {
+    "id": "flow.industry.standards",
+    "label": "Standards bodies and open formats",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.industry",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.repr.format_map",
+      "flow.industry.vendors"
+    ],
+    "key_prerequisites": [
+      "flow.repr.format_map"
+    ],
+    "encompasses": [
+      "flow.industry.vendors"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.history.landmarks",
+    "label": "Mead-Conway, SPICE and the Berkeley CAD tools",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.history",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.overview.what_is_eda",
+      "flow.overview.abstraction_levels",
+      "flow.industry.vendors"
+    ],
+    "key_prerequisites": [
+      "flow.overview.abstraction_levels"
+    ],
+    "encompasses": [
+      "flow.overview.what_is_eda"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 45
+    }
+  },
+  {
+    "id": "flow.history.communities",
+    "label": "EDA research conferences and communities",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.history",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.history.landmarks",
+      "flow.stages.rtl_to_gds"
+    ],
+    "key_prerequisites": [
+      "flow.history.landmarks"
+    ],
+    "encompasses": [
+      "flow.overview.what_is_eda"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 40
+    }
+  },
+  {
+    "id": "flow.frontier.engine_layers",
+    "label": "The four-layer model across flow engines",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.industry.tool_landscape",
+      "flow.stages.iteration_closure",
+      "agentic.engine.four_layer"
+    ],
+    "key_prerequisites": [
+      "agentic.engine.four_layer"
+    ],
+    "encompasses": [
+      "flow.industry.tool_landscape"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 55
+    }
+  },
+  {
+    "id": "flow.frontier.change_tiers",
+    "label": "Routing a flow change request to a tier",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.frontier.engine_layers",
+      "agentic.tiers.change",
+      "agentic.seam.extension_point"
+    ],
+    "key_prerequisites": [
+      "agentic.tiers.change"
+    ],
+    "encompasses": [
+      "flow.frontier.engine_layers"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  },
+  {
+    "id": "flow.frontier.fast_accurate",
+    "label": "Fast and accurate engines across the flow",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.stages.error_propagation",
+      "flow.frontier.engine_layers",
+      "agentic.loop.fast_accurate"
+    ],
+    "key_prerequisites": [
+      "agentic.loop.fast_accurate"
+    ],
+    "encompasses": [
+      "flow.stages.error_propagation"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 110
+    }
+  },
+  {
+    "id": "flow.frontier.differential_qor",
+    "label": "Differential QoR checks on a flow change",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.frontier",
+    "grading_type": "numeric",
+    "prerequisites": [
+      "flow.frontier.change_tiers",
+      "flow.metrics.ppa",
+      "agentic.verify.golden_differential"
+    ],
+    "key_prerequisites": [
+      "agentic.verify.golden_differential"
+    ],
+    "encompasses": [
+      "flow.metrics.ppa"
+    ],
+    "mastery_threshold": {
+      "streak": 5,
+      "avg_time_seconds": 110
+    }
+  },
+  {
+    "id": "flow.frontier.agentic_flow",
+    "label": "Agentic closure loops across the flow",
+    "domain": "eda_landscape",
+    "subdomain": "eda_landscape.frontier",
+    "grading_type": "multiple_choice",
+    "prerequisites": [
+      "flow.frontier.fast_accurate",
+      "agentic.signoff.eco_loop",
+      "agentic.rl.tool_grounded"
+    ],
+    "key_prerequisites": [
+      "agentic.signoff.eco_loop"
+    ],
+    "encompasses": [
+      "flow.frontier.fast_accurate",
+      "flow.stages.iteration_closure"
+    ],
+    "mastery_threshold": {
+      "streak": 6,
+      "avg_time_seconds": 60
+    }
+  }
+]

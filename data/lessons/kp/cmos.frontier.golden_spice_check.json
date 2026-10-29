@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Relative error at a grid point",
+    "section": "Relative error at a grid point",
+    "subgoals": [
+      "Divide the absolute difference by the golden value",
+      "Express the result as a percentage",
+      "Apply the check to every table type, not only delay"
+    ]
+  },
+  {
+    "label": "Maximum error over a table",
+    "section": "Maximum error over a table",
+    "subgoals": [
+      "Compute the relative error at every grid point of the table",
+      "Take the maximum, not the mean, as the table's score",
+      "Report where the worst entry sits to localize the cause"
+    ]
+  },
+  {
+    "label": "Tolerances with an absolute floor",
+    "section": "Tolerances with an absolute floor",
+    "subgoals": [
+      "Allow each entry the larger of a relative and an absolute tolerance",
+      "Count the entries that exceed their own tolerance",
+      "Version the tolerance so loosening it is itself a reviewed change"
+    ]
+  }
+]

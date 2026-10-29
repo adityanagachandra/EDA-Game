@@ -1,0 +1,5 @@
+[
+  {"label": "The posterior mean", "section": "The posterior mean", "subgoals": ["Evaluate the kernel between the query and the observation", "Divide by the prior variance plus noise", "Scale the observation's deviation from the prior mean by that ratio"]},
+  {"label": "The posterior variance", "section": "The posterior variance", "subgoals": ["Square the kernel between query and observation", "Divide by the prior variance plus noise", "Subtract from the prior variance at the query"]},
+  {"label": "Two observations", "section": "Two observations", "subgoals": ["Build the kernel matrix of the observed points plus noise", "Solve for the weight vector against the centered observations", "Take the dot product with the query's kernel vector"]}
+]

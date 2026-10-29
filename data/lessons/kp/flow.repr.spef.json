@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Header and units",
+    "section": "Header and units",
+    "subgoals": [
+      "Read the time, capacitance and resistance units from the header",
+      "Convert a value written in pF units to fF",
+      "Explain the name map and why units bugs scale values a thousandfold"
+    ]
+  },
+  {
+    "label": "A detailed net",
+    "section": "A detailed net",
+    "subgoals": [
+      "Separate ground capacitance from coupling capacitance entries",
+      "Sum ground and coupling capacitances to the net total",
+      "Match the total to the D_NET line"
+    ]
+  },
+  {
+    "label": "Resistance paths and use in timing",
+    "section": "Resistance paths and use in timing",
+    "subgoals": [
+      "Sum resistances along the tree path from driver to sink",
+      "Name Elmore delay as the first use of the RC tree",
+      "Explain what a lumped reduced SPEF loses"
+    ]
+  }
+]

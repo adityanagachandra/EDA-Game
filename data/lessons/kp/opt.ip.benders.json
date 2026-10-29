@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Master and subproblem",
+    "section": "Master and subproblem",
+    "subgoals": [
+      "Place the complicating integer variables in the master",
+      "Solve the continuous remainder as an LP for the master's choice",
+      "Return a feasibility or optimality cut from the subproblem's dual"
+    ]
+  },
+  {
+    "label": "Evaluating an optimality cut",
+    "section": "Evaluating an optimality cut",
+    "subgoals": [
+      "Take the dual vector returned by the subproblem",
+      "Form the residual h minus G times y at the master's point",
+      "Take the inner product as the lower bound on theta"
+    ]
+  },
+  {
+    "label": "Bounds, convergence and fit",
+    "section": "Bounds, convergence and fit",
+    "subgoals": [
+      "Take the master optimum as the lower bound",
+      "Evaluate the master's choice exactly for the upper bound",
+      "Stop when the relative gap meets the tolerance"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The ripple counter", "section": "The ripple counter", "subgoals": ["Clock each stage from the previous stage's output", "Chain one clock-to-q per toggling bit in the worst case", "Multiply the bit count by clock-to-q"]},
+  {"label": "Reading a ripple counter safely", "section": "Reading a ripple counter safely", "subgoals": ["Add the full ripple settle time to the sampler's setup time", "Invert the period to get the frequency", "Compare with a synchronous counter's clock-to-q plus incrementer plus setup"]},
+  {"label": "Modulus and state count", "section": "Modulus and state count", "subgoals": ["Compute the flip-flop count as the ceiling of log base two of N", "Subtract N from two to that count for the unused codes", "Declare divided outputs as generated clocks"]}
+]

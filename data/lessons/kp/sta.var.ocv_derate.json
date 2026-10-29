@@ -1,0 +1,5 @@
+[
+  {"label": "Derating the launch side", "section": "Derating the launch side", "subgoals": ["Sum the launch clock path and the data path", "Multiply by the late derate factor", "Leave library setup and hold times without derating"]},
+  {"label": "Derated setup slack", "section": "Derated setup slack", "subgoals": ["Scale the capture clock path by the early derate", "Scale the launch clock and data paths by the late derate", "Subtract the derated arrival from the derated required time"]},
+  {"label": "Removing pessimism on the common clock path", "section": "Removing pessimism on the common clock path", "subgoals": ["Find the delay of the shared clock segment", "Multiply it by the sum of the late and early derate offsets", "Add the credit to the derated slack"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The spring-mass model", "section": "The spring-mass model", "subgoals": ["Write the damped spring-mass equation", "Compute the resonance from stiffness and mass", "Trade displacement sensitivity against bandwidth through k over m"]},
+  {"label": "Capacitive transduction", "section": "Capacitive transduction", "subgoals": ["Compute the parallel-plate capacitance from area and gap", "Relate displacement to the change in capacitance", "Budget parasitics and readout noise against the tiny signal"]},
+  {"label": "Pull-in and multi-physics modelling", "section": "Pull-in and multi-physics modelling", "subgoals": ["Compare the electrostatic and spring forces as the gap closes", "Compute the pull-in voltage from stiffness, gap and area", "Reduce finite-element models to Verilog-A for co-simulation"]}
+]

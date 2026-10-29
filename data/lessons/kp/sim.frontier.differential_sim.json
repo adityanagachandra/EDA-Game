@@ -1,0 +1,5 @@
+[
+  {"label": "Golden and differential runs", "section": "Golden and differential runs", "subgoals": ["Fix the stimulus, seeds, tool version and command line", "Compare outputs of the old and new versions cycle by cycle", "Remove races before trusting a differential result"]},
+  {"label": "What the diff must prove", "section": "What the diff must prove", "subgoals": ["Show that only the intended signals or transactions changed", "Compare at transaction level when timing is meant to change", "Check coverage of the changed logic before trusting the diff"]},
+  {"label": "Differential testing across simulators", "section": "Differential testing across simulators", "subgoals": ["Run one design on two simulators and compare outputs", "Attribute differences to races, X semantics or tool bugs", "Stress ordering and X behavior when validating a simulator change"]}
+]

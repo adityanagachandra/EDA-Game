@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Rational fits of measured data",
+    "section": "Rational fits of measured data",
+    "subgoals": [
+      "Fit poles and residues to the frequency samples",
+      "Constrain every pole to the left half plane",
+      "Stamp the fitted state-space model as a dense block"
+    ]
+  },
+  {
+    "label": "Passivity and causality",
+    "section": "Passivity and causality",
+    "subgoals": [
+      "Test the real part of the fitted admittance for negative eigenvalues",
+      "Perturb the residues minimally to remove violations",
+      "Check that the impulse response is zero before time zero"
+    ]
+  },
+  {
+    "label": "Behavioral models in a netlist",
+    "section": "Behavioral models in a netlist",
+    "subgoals": [
+      "Encode only the behaviors the system test needs",
+      "Use smooth functions instead of abrupt switches",
+      "Document the conditions over which the model was fitted"
+    ]
+  }
+]

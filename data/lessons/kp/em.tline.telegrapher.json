@@ -1,0 +1,5 @@
+[
+  {"label": "The distributed RLGC model", "section": "The distributed RLGC model", "subgoals": ["Write series and shunt elements per unit length for a short section", "Combine KVL and KCL into the wave equation for a lossless line", "Compute the delay as the square root of total L times total C"]},
+  {"label": "Characteristic impedance and wave velocity", "section": "Characteristic impedance and wave velocity", "subgoals": ["Take the square root of L prime over C prime for Z0", "Take one over the square root of their product for the velocity", "Convert the velocity into millimetres per nanosecond"]},
+  {"label": "Effective dielectric constant", "section": "Effective dielectric constant", "subgoals": ["Multiply c squared by L prime and C prime", "Compare the result with the substrate's relative permittivity", "Flag any value below one as unphysical"]}
+]

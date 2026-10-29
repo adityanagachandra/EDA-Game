@@ -1,0 +1,5 @@
+[
+  {"label": "What crosses the package boundary", "section": "What crosses the package boundary", "subgoals": ["Identify the ball map as the shared decision variable", "Keep bump, ball and pad mappings consistent across databases", "Assemble the end-to-end channel from per-domain S-parameters"]},
+  {"label": "Agent actions and tiers", "section": "Agent actions and tiers", "subgoals": ["Check pin swaps against the device vendor's rules", "Classify optimizer reruns as parameter changes", "Use fast models in the loop and full-wave models for finalists"]},
+  {"label": "Verifying a co-design change", "section": "Verifying a co-design change", "subgoals": ["Run cross-domain connectivity checks after a ball-map change", "Re-simulate affected channels and rails against baselines", "Present the diff with SI and PI evidence for approval"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "One Jacobi update", "section": "One Jacobi update", "subgoals": ["Write the energy balance at one node", "Solve it for the node temperature", "Substitute the neighbours' old values and the source"]},
+  {"label": "A chain with distributed heating", "section": "A chain with distributed heating", "subgoals": ["Find the heat carried by each link", "Sum the link drops from the sink", "Add the total rise to the sink temperature"]},
+  {"label": "Grid size and sparsity", "section": "Grid size and sparsity", "subgoals": ["Multiply the grid dimensions for the unknowns", "Count neighbour links along each axis", "Add twice the links to the diagonal count"]}
+]

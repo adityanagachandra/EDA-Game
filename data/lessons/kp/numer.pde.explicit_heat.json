@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Method of lines: the grid becomes an ODE system",
+  "section": "Method of lines: the grid becomes an ODE system",
+  "subgoals": [
+   "Discretize only the spatial derivative",
+   "Write one ODE per grid node",
+   "Evaluate the right-hand side from neighbouring temperatures"
+  ]
+ },
+ {
+  "label": "The explicit stability limit",
+  "section": "The explicit stability limit",
+  "subgoals": [
+   "Find the most negative eigenvalue of the discrete operator",
+   "Apply the forward Euler stability condition",
+   "Solve for the largest time step in the given dimension"
+  ]
+ },
+ {
+  "label": "One explicit step and why implicit is preferred",
+  "section": "One explicit step and why implicit is preferred",
+  "subgoals": [
+   "Apply the FTCS update with the mesh ratio",
+   "Check that r keeps every weight non-negative",
+   "Switch to backward Euler or Crank-Nicolson for large steps"
+  ]
+ }
+]

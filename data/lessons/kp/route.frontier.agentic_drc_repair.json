@@ -1,0 +1,5 @@
+[
+  {"label": "Read, propose, verify", "section": "Read, propose, verify", "subgoals": ["Parse violation types, locations and nets from the report", "Propose a local fix within the allowed change surface", "Verify the region and the whole design after the fix"]},
+  {"label": "Rewards that cannot be gamed", "section": "Rewards that cannot be gamed", "subgoals": ["Use signoff DRC, connectivity and timing as the reward", "Keep the rule deck and netlist outside the agent's surface", "Run fixes in a sandbox with reversible versions"]},
+  {"label": "From repeated fixes to skills", "section": "From repeated fixes to skills", "subgoals": ["Restrict each fix to a window around the violations", "Promote repeatedly successful fixes after validation", "Hand the final diff and evidence to a human for approval"]}
+]

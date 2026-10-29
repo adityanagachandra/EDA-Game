@@ -1,0 +1,5 @@
+[
+  {"label": "The first satisfiable depth", "section": "The first satisfiable depth", "subgoals": ["Run breadth-first search from the initial states", "Find the distance of the nearest bad state", "Report that distance as the first satisfiable BMC depth"]},
+  {"label": "Counters and modular arithmetic", "section": "Counters and modular arithmetic", "subgoals": ["Write the register value after k cycles modulo 2^n", "Solve s + ck = t modulo 2^n for the smallest k", "Use the modular inverse of the odd step to find k"]},
+  {"label": "Stepping the bound", "section": "Stepping the bound", "subgoals": ["Locate the first checked depth at or beyond the true depth", "Count the checks from depth 0 up to it", "Compute the count as the ceiling of D over d, plus 1"]}
+]

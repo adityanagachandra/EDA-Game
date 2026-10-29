@@ -1,0 +1,5 @@
+[
+  {"label": "The inversion condition", "section": "The inversion condition", "subgoals": ["Compute the Fermi potential from the body doping", "Double it for the strong-inversion surface potential", "Note that measured thresholds depend on an extraction convention"]},
+  {"label": "The depletion-charge term", "section": "The depletion-charge term", "subgoals": ["Write the depletion charge at the inversion surface potential", "Divide by the oxide capacitance", "Explain how doping and oxide thickness move this term"]},
+  {"label": "The full threshold expression", "section": "The full threshold expression", "subgoals": ["Add the flat-band voltage, 2 phi_F and the depletion term", "Evaluate each term with the stated constants", "Identify which term a work-function metal or implant changes"]}
+]

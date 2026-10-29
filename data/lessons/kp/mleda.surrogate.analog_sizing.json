@@ -1,0 +1,5 @@
+[
+  {"label": "Modeling a constraint", "section": "Modeling a constraint", "subgoals": ["Fit a separate model to the constrained quantity", "Standardize the gap between its posterior mean and the specification", "Read the feasibility probability from the normal distribution"]},
+  {"label": "Constrained expected improvement", "section": "Constrained expected improvement", "subgoals": ["Compute EI of the objective against the best feasible value", "Compute the probability that every constraint holds", "Multiply the two for the constrained acquisition"]},
+  {"label": "The feasible incumbent", "section": "The feasible incumbent", "subgoals": ["Discard runs that violate any specification", "Take the best objective among the remaining runs", "Search for feasibility first when no run qualifies"]}
+]

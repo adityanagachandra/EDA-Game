@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Criticality",
+  "section": "Criticality",
+  "subgoals": [
+   "Divide slack by the critical-path delay",
+   "Subtract from MaxCrit",
+   "Floor the result at zero"
+  ]
+ },
+ {
+  "label": "The node cost",
+  "section": "The node cost",
+  "subgoals": [
+   "Compute the delay term weighted by Crit",
+   "Compute the congestion term weighted by 1 minus Crit",
+   "Add them to price the node"
+  ]
+ },
+ {
+  "label": "Choosing between fast and free paths",
+  "section": "Choosing between fast and free paths",
+  "subgoals": [
+   "Compute Crit from the connection's slack",
+   "Cost each path as the Crit-weighted blend",
+   "Pick the cheaper path"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Measuring proxy agreement", "section": "Measuring proxy agreement", "subgoals": ["List every pair of candidates", "Count the pairs the proxy and the accurate metric order oppositely", "Judge the proxy by its agreement among the top candidates"]},
+  {"label": "Pruning with fast engines", "section": "Pruning with fast engines", "subgoals": ["Score all candidates with fast proxies", "Run accurate mapping and timing on the shortlist", "Check learned surrogates against accurate runs periodically"]},
+  {"label": "When to recurse to accuracy", "section": "When to recurse to accuracy", "subgoals": ["Escalate when candidates are within the proxy's error", "Identify what the fast model omits for this design", "Ignore differences below the metric's noise floor"]}
+]

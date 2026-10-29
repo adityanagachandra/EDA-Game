@@ -1,0 +1,5 @@
+[
+  {"label": "Kahn's algorithm", "section": "Kahn's algorithm", "subgoals": ["Compute every vertex's in-degree", "Remove a ready vertex and decrement its successors' in-degrees", "Report a cycle if vertices remain with none ready"]},
+  {"label": "Depth-first search order", "section": "Depth-first search order", "subgoals": ["Run depth-first search and record finishing times", "Reverse the finishing order to obtain a topological order", "Detect a cycle from an arc to a vertex on the stack"]},
+  {"label": "How free the order is", "section": "How free the order is", "subgoals": ["Count a vertex's ancestors to find its earliest position", "Count its descendants to find its latest position", "Check that results depend only on the order being topological"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Emulators and prototypes", "section": "Emulators and prototypes", "subgoals": ["Compile synthesizable RTL onto emulator hardware", "Contrast emulator visibility and turnaround with prototype speed", "Remove constructs that have no hardware meaning before mapping"]},
+  {"label": "Testbenches and transactors", "section": "Testbenches and transactors", "subgoals": ["Move pin-level drivers and monitors into synthesizable transactors", "Exchange batched transactions between emulator and host", "Bridge full-speed external devices to the emulated design"]},
+  {"label": "Choosing the platform", "section": "Choosing the platform", "subgoals": ["Use simulation while RTL changes and needs full visibility", "Use emulation for full-SoC software bring-up and long regressions", "Use prototypes for replicated near-real-speed software development"]}
+]

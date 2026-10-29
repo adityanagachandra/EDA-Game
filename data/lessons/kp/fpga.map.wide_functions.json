@@ -1,0 +1,29 @@
+[
+ {
+  "label": "LUT count for associative functions",
+  "section": "LUT count for associative functions",
+  "subgoals": [
+   "Note that each LUT removes at most k minus 1 signals",
+   "Compute ceil of n minus 1 over k minus 1",
+   "Build the tree to reach the bound for associative functions"
+  ]
+ },
+ {
+  "label": "Depth of a LUT tree",
+  "section": "Depth of a LUT tree",
+  "subgoals": [
+   "Note that d levels reach at most k to the d inputs",
+   "Find the least d with k to the d at least n",
+   "Compare the result for different LUT sizes"
+  ]
+ },
+ {
+  "label": "Shannon decomposition of arbitrary functions",
+  "section": "Shannon decomposition of arbitrary functions",
+  "subgoals": [
+   "Count 2 to the n minus k cofactor LUTs",
+   "Size each mux LUT so selects plus data inputs fit in k",
+   "Add the mux-tree LUTs level by level"
+  ]
+ }
+]

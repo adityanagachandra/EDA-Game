@@ -1,0 +1,5 @@
+[
+  {"label": "The input impedance formula", "section": "The input impedance formula", "subgoals": ["Compute the tangent of the electrical length", "Substitute the load and Z0 into the transformation formula", "Divide the complex numerator by the denominator and take the magnitude"]},
+  {"label": "The quarter-wave transformer", "section": "The quarter-wave transformer", "subgoals": ["Set the electrical length to ninety degrees", "Compute Z0 squared over the load impedance", "Choose the geometric mean impedance for a matching section"]},
+  {"label": "Shorted and open stubs", "section": "Shorted and open stubs", "subgoals": ["Reduce the input impedance formula for a short or open load", "Evaluate Z0 times the tangent or minus Z0 times the cotangent", "Read the sign of the reactance as inductive or capacitive"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Regions of a time step", "section": "Regions of a time step", "subgoals": ["Order the active, inactive, NBA and monitor regions", "Evaluate nonblocking right-hand sides before any update lands", "Place each kind of event into its region"]},
+  {"label": "Processes and sensitivity", "section": "Processes and sensitivity", "subgoals": ["Treat each always block and continuous assignment as a waiting process", "Advance time to the next scheduled event when the queue empties", "Detect a missing signal in a sensitivity list"]},
+  {"label": "Races", "section": "Races", "subgoals": ["Identify two processes that read and write the same variable on one event", "Replace race-prone blocking writes with nonblocking writes", "Explain why two legal simulators may differ on racy code"]}
+]

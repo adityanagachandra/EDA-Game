@@ -1,0 +1,5 @@
+[
+  {"label": "Series impedance magnitude", "section": "Series impedance magnitude", "subgoals": ["Compute the inductive and capacitive reactances at the frequency", "Subtract them to get the net reactance", "Combine the net reactance with R by the Pythagorean sum"]},
+  {"label": "Admittance and parallel combinations", "section": "Admittance and parallel combinations", "subgoals": ["Convert each parallel element to its admittance", "Add the admittances as complex numbers", "Invert the total admittance to get the impedance"]},
+  {"label": "Phase angle of an impedance", "section": "Phase angle of an impedance", "subgoals": ["Compute the net reactance of the impedance", "Take the arctangent of reactance over resistance", "Read the sign as inductive or capacitive behavior"]}
+]

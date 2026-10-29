@@ -1,0 +1,5 @@
+[
+  {"label": "Sign, biased exponent and fraction", "section": "Sign, biased exponent and fraction", "subgoals": ["Subtract the bias from the exponent field", "Prepend the implicit leading one to the fraction", "Multiply the significand by the power of two and apply the sign"]},
+  {"label": "Encoding a value", "section": "Encoding a value", "subgoals": ["Normalize the value to a significand between one and two", "Add the bias to the power of two", "Scale the fractional part of the significand by two to the fraction width"]},
+  {"label": "Spacing, subnormals and special values", "section": "Spacing, subnormals and special values", "subgoals": ["Compute the ulp as two to the unbiased exponent minus the fraction width", "Decode exponent field zero as subnormal without the implicit one", "Decode the all-ones exponent as infinity or NaN"]}
+]

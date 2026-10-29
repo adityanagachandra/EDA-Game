@@ -1,0 +1,5 @@
+[
+  {"label": "Step length from a local Lipschitz estimate", "section": "Step length from a local Lipschitz estimate", "subgoals": ["Take the norm of the change in position", "Take the norm of the change in gradient", "Divide them for the step length and backtrack if it shrinks sharply"]},
+  {"label": "The momentum sequence", "section": "The momentum sequence", "subgoals": ["Advance the scalar a with the square-root recursion", "Compute the momentum coefficient as a minus one over the next a", "Restart the sequence if the objective rises"]},
+  {"label": "One full Nesterov update", "section": "One full Nesterov update", "subgoals": ["Take a gradient step from the look-ahead point", "Extrapolate with the momentum coefficient", "Evaluate the next gradient at the extrapolated point"]}
+]

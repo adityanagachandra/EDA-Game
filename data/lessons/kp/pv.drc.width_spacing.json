@@ -1,0 +1,5 @@
+[
+  {"label": "Width violations", "section": "Width violations", "subgoals": ["Merge the layer into polygons", "Take each shape's distance between opposite edges", "Count shapes whose width is below the rule"]},
+  {"label": "Euclidean spacing", "section": "Euclidean spacing", "subgoals": ["Compute the x and y gaps of each pair", "Square and add the gaps", "Compare with the square of the rule"]},
+  {"label": "Width-dependent spacing", "section": "Width-dependent spacing", "subgoals": ["Classify each wire as narrow or wide by the width threshold", "Look up the required spacing for each neighbouring pair", "Compare each gap with its required value"]}
+]

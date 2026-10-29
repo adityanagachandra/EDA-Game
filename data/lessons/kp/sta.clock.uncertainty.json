@@ -1,0 +1,5 @@
+[
+  {"label": "Building a pre-CTS uncertainty", "section": "Building a pre-CTS uncertainty", "subgoals": ["Sum jitter, the skew estimate and the margin", "Apply the sum with set_clock_uncertainty -setup", "Remove the skew term once clocks are propagated"]},
+  {"label": "Setup slack with uncertainty", "section": "Setup slack with uncertainty", "subgoals": ["Start from the period at the capture flop", "Subtract the setup uncertainty and the setup time", "Subtract the arrival to get the setup slack"]},
+  {"label": "Hold slack with uncertainty", "section": "Hold slack with uncertainty", "subgoals": ["Add the hold uncertainty to the hold time", "Subtract the sum from the earliest arrival", "Explain why hold uncertainty is smaller than setup uncertainty"]}
+]

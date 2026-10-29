@@ -1,0 +1,5 @@
+[
+  {"label": "Skew from a length mismatch", "section": "Skew from a length mismatch", "subgoals": ["Convert mils to inches before multiplying", "Multiply the length difference by the delay per inch", "Correct mismatch close to where it arises"]},
+  {"label": "Length tolerance from a budget", "section": "Length tolerance from a budget", "subgoals": ["Compute the layer's delay per inch from its Dk", "Divide the skew budget by the delay per inch", "Round the tolerance down so the budget holds"]},
+  {"label": "Matching a group to a strobe", "section": "Matching a group to a strobe", "subgoals": ["Compute each member's delay relative to the strobe", "Count members outside the matching window", "Add serpentines with enough spacing to avoid self-coupling"]}
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Strong and weak levels",
+    "section": "Strong and weak levels",
+    "subgoals": [
+      "Compute the nMOS-passed high level as VDD minus Vtn",
+      "Compute the pMOS-passed low level as the threshold magnitude",
+      "Combine both devices so each rail passes fully"
+    ]
+  },
+  {
+    "label": "Pass networks in library cells",
+    "section": "Pass networks in library cells",
+    "subgoals": [
+      "Build a 2:1 mux from two complementary-controlled transmission gates",
+      "Note that a pass network has no gain and inherits its driver's strength",
+      "Buffer cell boundaries so pins present fixed capacitance and drive"
+    ]
+  },
+  {
+    "label": "Costs that tools must see",
+    "section": "Costs that tools must see",
+    "subgoals": [
+      "Estimate a transmission-gate chain as an RC ladder with quadratic delay",
+      "Flag weak levels that leave a receiver's pMOS partly on",
+      "Keep pass gates internal so cell pins keep a fixed capacitance"
+    ]
+  }
+]

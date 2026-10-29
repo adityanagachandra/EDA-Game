@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Smoothers kill high-frequency error",
+  "section": "Smoothers kill high-frequency error",
+  "subgoals": [
+   "Write the error as a sum of Fourier modes",
+   "Apply the damped Jacobi factor to each mode",
+   "Separate the quickly damped high modes from the slow low modes"
+  ]
+ },
+ {
+  "label": "Coarse-grid correction and the V-cycle",
+  "section": "Coarse-grid correction and the V-cycle",
+  "subgoals": [
+   "Smooth and restrict the residual to a coarser grid",
+   "Solve the coarse problem, recursively in a V-cycle",
+   "Prolong the correction back and smooth again"
+  ]
+ },
+ {
+  "label": "Grid-independent convergence on large power grids",
+  "section": "Grid-independent convergence on large power grids",
+  "subgoals": [
+   "Take the cycles needed from the per-cycle convergence factor",
+   "Multiply by sweeps per level and the four-thirds factor",
+   "Use algebraic multigrid when the grid is irregular"
+  ]
+ }
+]

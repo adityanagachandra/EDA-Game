@@ -1,0 +1,5 @@
+[
+  {"label": "One movable cell", "section": "One movable cell", "subgoals": ["Write the cost as a weighted sum of squared distances", "Set the derivative to zero", "Solve for the weighted mean of the connected pins"]},
+  {"label": "Two or three movable cells", "section": "Two or three movable cells", "subgoals": ["Write one optimality equation per movable cell", "Assemble the equations into a linear system", "Solve the system by elimination for small cases"]},
+  {"label": "Why quadratic placement needs help", "section": "Why quadratic placement needs help", "subgoals": ["Explain the mismatch between squared length and HPWL", "Identify clustering as the result of ignoring density", "Alternate the linear solve with a spreading step"]}
+]

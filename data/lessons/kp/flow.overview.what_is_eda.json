@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Design, analysis and verification tools",
+    "section": "Design, analysis and verification tools",
+    "subgoals": [
+      "Classify a tool as transforming, analyzing or verifying a design",
+      "Name what a synthesis tool changes in the design",
+      "Explain why an optimizer calls an analyzer inside its loop"
+    ]
+  },
+  {
+    "label": "Every tool is an algorithm on a model",
+    "section": "Every tool is an algorithm on a model",
+    "subgoals": [
+      "Name the mathematical model a tool operates on",
+      "Match netlists, timing and layout to graphs, DAGs and polygons",
+      "Translate a tool's task into the classical problem it solves"
+    ]
+  },
+  {
+    "label": "Why automation is unavoidable",
+    "section": "Why automation is unavoidable",
+    "subgoals": [
+      "Estimate why manual design fails at billions of transistors",
+      "Explain how determinism lets engineers measure one change",
+      "Relate tool quality to chip power, area and frequency"
+    ]
+  }
+]

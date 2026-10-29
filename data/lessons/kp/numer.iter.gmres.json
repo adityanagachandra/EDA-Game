@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Minimal residual over the Krylov subspace",
+  "section": "Minimal residual over the Krylov subspace",
+  "subgoals": [
+   "Build the Krylov space from the initial residual",
+   "Orthonormalize it with Arnoldi",
+   "Solve the small least-squares problem for the coefficients"
+  ]
+ },
+ {
+  "label": "The first GMRES step by hand",
+  "section": "The first GMRES step by hand",
+  "subgoals": [
+   "Multiply A by b",
+   "Compute alpha as b transpose A b over the squared norm of A b",
+   "Evaluate the residual norm of the one-term iterate"
+  ]
+ },
+ {
+  "label": "Restarts and memory",
+  "section": "Restarts and memory",
+  "subgoals": [
+   "Count m plus one basis vectors of length n",
+   "Multiply by eight bytes per double",
+   "Choose the restart length against stagnation risk"
+  ]
+ }
+]

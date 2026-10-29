@@ -1,0 +1,8 @@
+[
+  {"label": "Required minus arrival", "section": "Required minus arrival",
+   "subgoals": ["Define arrival time as the latest time the signal settles", "Define required time as the latest time the capture flop can accept it", "Subtract arrival from required to get setup slack"]},
+  {"label": "The sign of slack", "section": "The sign of slack",
+   "subgoals": ["Read positive slack as margin to spare", "Read negative slack as a violated constraint", "Rank endpoints by worst negative slack and total negative slack"]},
+  {"label": "Hold slack runs the other way", "section": "Hold slack runs the other way",
+   "subgoals": ["Compare the earliest arrival with the hold requirement", "Subtract the hold requirement from the earliest arrival", "Explain why speeding a path can break hold"]}
+]

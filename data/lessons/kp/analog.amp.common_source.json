@@ -1,0 +1,5 @@
+[
+  {"label": "Gain is transconductance times output resistance", "section": "Gain is transconductance times output resistance", "subgoals": ["Write KCL at the drain with gm times vin into the load", "Combine the load and ro in parallel", "Multiply gm by the parallel resistance and attach the inverting sign"]},
+  {"label": "Source degeneration", "section": "Source degeneration", "subgoals": ["Write the gate-source voltage reduced by the source drop", "Solve for the effective transconductance gm over one plus gm RS", "Show the gain approaching the resistor ratio for large gm RS"]},
+  {"label": "The output pole", "section": "The output pole", "subgoals": ["Find the resistance and capacitance at the output node", "Compute the pole as one over two pi R C", "Show that gain times bandwidth is gm over two pi CL"]}
+]

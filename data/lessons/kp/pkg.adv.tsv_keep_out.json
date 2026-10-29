@@ -1,0 +1,5 @@
+[
+  {"label": "Blocked area per TSV", "section": "Blocked area per TSV", "subgoals": ["Add twice the keep-out distance to the diameter", "Square it for the blocked area", "Compare the blocked area with the via itself"]},
+  {"label": "Fraction of a block lost", "section": "Fraction of a block lost", "subgoals": ["Multiply the blocked area by the TSV count", "Divide by the block area", "Explain how clustering lets keep-out zones overlap"]},
+  {"label": "Sizing the keep-out from stress decay", "section": "Sizing the keep-out from stress decay", "subgoals": ["Write the stress as edge stress times R over r squared", "Solve for the radius where stress meets the threshold", "Subtract the TSV radius to get the keep-out distance"]}
+]

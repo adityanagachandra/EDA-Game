@@ -1,0 +1,5 @@
+[
+  {"label": "Density of one window", "section": "Density of one window", "subgoals": ["Clip every shape to the window", "Merge the clipped shapes and take the union area", "Divide by the window area"]},
+  {"label": "Checking a tiling of windows", "section": "Checking a tiling of windows", "subgoals": ["Clip the shapes separately to each window", "Compute each window's density", "Count the windows below the minimum"]},
+  {"label": "Density from routing pitch", "section": "Density from routing pitch", "subgoals": ["Compute the area available for routing", "Multiply it by the line density w over p", "Divide by the window area"]}
+]

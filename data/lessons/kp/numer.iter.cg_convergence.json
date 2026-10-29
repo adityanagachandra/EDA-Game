@@ -1,0 +1,29 @@
+[
+ {
+  "label": "The square-root-of-kappa bound",
+  "section": "The square-root-of-kappa bound",
+  "subgoals": [
+   "Take the square root of the condition number",
+   "Form the ratio of root kappa minus one to root kappa plus one",
+   "Raise it to the iteration count and double it"
+  ]
+ },
+ {
+  "label": "Iterations needed for a tolerance",
+  "section": "Iterations needed for a tolerance",
+  "subgoals": [
+   "Set two rho to the k equal to the tolerance",
+   "Take logarithms and divide",
+   "Round up to the next whole iteration"
+  ]
+ },
+ {
+  "label": "Why power grids are ill-conditioned",
+  "section": "Why power grids are ill-conditioned",
+  "subgoals": [
+   "Relate the condition number to the inverse square of the mesh spacing",
+   "Scale iterations with the square root of kappa",
+   "Multiply by the refinement factor to estimate the new count"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "What the brain learns", "section": "What the brain learns", "subgoals": ["Encode the situation as design traits, objective and loop metrics", "Record the action taken", "Score the outcome with engine-measured QoR"]},
+  {"label": "Learning inside the boundary", "section": "Learning inside the boundary", "subgoals": ["Train the shared base only on exportable records", "Fine-tune per-customer models on-site", "Require weights the deployment controls"]},
+  {"label": "Failure modes of a learned selector", "section": "Failure modes of a learned selector", "subgoals": ["Evaluate on held-out designs unlike the training set", "Use uncertainty to trigger exploration or recursion", "Reserve a fraction of choices for exploration"]}
+]

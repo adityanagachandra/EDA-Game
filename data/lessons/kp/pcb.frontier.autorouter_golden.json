@@ -1,0 +1,5 @@
+[
+  {"label": "Acceptance gates", "section": "Acceptance gates", "subgoals": ["List the conjunctive gates a candidate must pass", "Reject a candidate that fails any single gate", "Compute the gates with independent tools rather than the router's estimate"]},
+  {"label": "Signal-integrity gates", "section": "Signal-integrity gates", "subgoals": ["Extract critical nets for SI simulation", "Compare simulated impedance and loss against tolerance bands", "Use fast solvers in the loop and full-wave models for finalists"]},
+  {"label": "Differential tests on reference designs", "section": "Differential tests on reference designs", "subgoals": ["Route the reference design with the baseline and the change", "Diff per-net delay, length and via count", "Flag nets outside the intended group that moved beyond tolerance"]}
+]

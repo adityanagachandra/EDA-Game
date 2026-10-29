@@ -1,0 +1,5 @@
+[
+  {"label": "What a router can learn", "section": "What a router can learn", "subgoals": ["Identify a heuristic choice inside the router", "Let the model rank or price the options", "Keep path search and rule checks in the router"]},
+  {"label": "Heuristics and optimality in A*", "section": "Heuristics and optimality in A*", "subgoals": ["Check whether the heuristic can overestimate", "Multiply the optimal cost by the weight for weighted A*", "Add the overestimate bound for an epsilon-admissible heuristic"]},
+  {"label": "Evaluating a learned router policy", "section": "Evaluating a learned router policy", "subgoals": ["Test on held-out design types for distribution shift", "Compare with the tuned standard heuristic at equal runtime", "Run a differential legality and QoR check before promotion"]}
+]

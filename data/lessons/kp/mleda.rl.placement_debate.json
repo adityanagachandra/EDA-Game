@@ -1,0 +1,5 @@
+[
+  {"label": "The original claim", "section": "The original claim", "subgoals": ["State what the method optimizes and how it was evaluated", "Separate the original experiment from later reruns on other designs", "Note which metric each reported comparison uses"]},
+  {"label": "What the critiques measured", "section": "What the critiques measured", "subgoals": ["List the baselines the assessment compared against", "Name the proxy-to-routed correlation as a measured quantity", "Identify the inputs and compute each side said were missing"]},
+  {"label": "Lessons for evaluation", "section": "Lessons for evaluation", "subgoals": ["Require open inputs and compute-matched baselines", "Report several seeds and designs with downstream metrics", "Ablate inputs that may carry another tool's work"]}
+]

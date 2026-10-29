@@ -1,0 +1,5 @@
+[
+  {"label": "Writing a mesh equation", "section": "Writing a mesh equation", "subgoals": ["Assign a clockwise current to each mesh", "Sum the resistor drops around the mesh in the current direction", "Equate the drops to the net source rise and solve"]},
+  {"label": "Solving two meshes", "section": "Solving two meshes", "subgoals": ["Put each mesh's total resistance on the diagonal", "Put minus the shared resistance off the diagonal", "Solve the two-by-two system for both mesh currents"]},
+  {"label": "Branch currents from mesh currents", "section": "Branch currents from mesh currents", "subgoals": ["Identify which meshes border the branch", "Subtract the neighbouring mesh current from the reference mesh current", "Read the sign as the direction of the branch current"]}
+]

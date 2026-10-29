@@ -1,0 +1,5 @@
+[
+  {"label": "From GBW to the input pair", "section": "From GBW to the input pair", "subgoals": ["Choose the compensation capacitor relative to the load", "Solve the GBW equation for gm1", "Sweep the free choices before simulating"]},
+  {"label": "From transconductance to current and size", "section": "From transconductance to current and size", "subgoals": ["Pick gm over Id for the input pair from efficiency and range", "Divide gm1 by gm over Id and double it for the tail current", "Read the width from the current density in the table"]},
+  {"label": "Stability as a sizing equation", "section": "Stability as a sizing equation", "subgoals": ["Write the non-dominant pole condition as gm6 over CL at least k times GBW", "Solve for the minimum gm6", "Verify the model optimum in SPICE"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "The pieces of a PDK", "section": "The pieces of a PDK", "subgoals": ["List the model, rule, extraction and technology files of a PDK", "Explain what a PCell generates", "Separate the PDK from the IP built on it"]},
+  {"label": "Which tool reads which file", "section": "Which tool reads which file", "subgoals": ["Assign each PDK file to the engine that reads it", "Explain the role of device recognition rules in LVS", "Diagnose a layer-map mismatch between tools"]},
+  {"label": "Versions and maturity", "section": "Versions and maturity", "subgoals": ["Track the PDK version used for each result", "Re-run signoff after a rule change", "Keep process facts in files rather than engine code"]}
+]

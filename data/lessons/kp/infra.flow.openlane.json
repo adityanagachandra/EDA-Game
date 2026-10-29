@@ -1,0 +1,5 @@
+[
+  {"label": "Flows built from steps", "section": "Flows built from steps", "subgoals": ["Wrap each tool action as a step with declared inputs and outputs", "Pass design views between steps as state", "Compose or extend a flow by adding steps"]},
+  {"label": "How OpenLane 2 relates to OpenROAD, Yosys and PDKs", "section": "How OpenLane 2 relates to OpenROAD, Yosys and PDKs", "subgoals": ["Map synthesis steps to Yosys and ABC", "Map floorplan through routing steps to OpenROAD tools", "Map signoff checks to Magic, KLayout and Netgen"]},
+  {"label": "Choosing between OpenLane 2 and ORFS", "section": "Choosing between OpenLane 2 and ORFS", "subgoals": ["Pick ORFS for a direct script-level view of OpenROAD's stages", "Pick OpenLane 2 for a Python step and flow API", "Expect QoR differences from different default recipes"]}
+]

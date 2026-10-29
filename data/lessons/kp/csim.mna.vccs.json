@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Four entries off the controlling nodes",
+    "section": "Four entries off the controlling nodes",
+    "subgoals": [
+      "Locate the rows of the output nodes and the columns of the controlling nodes",
+      "Assign plus and minus gm by direction of current and control polarity",
+      "Drop the entries that fall on ground"
+    ]
+  },
+  {
+    "label": "Adding a VCCS to a resistive matrix",
+    "section": "Adding a VCCS to a resistive matrix",
+    "subgoals": [
+      "Stamp all resistors first",
+      "Add the VCCS entries at their four positions",
+      "Sum the contributions that share a position"
+    ]
+  },
+  {
+    "label": "Controlled sources break symmetry",
+    "section": "Controlled sources break symmetry",
+    "subgoals": [
+      "Cancel the symmetric resistor stamps in the difference",
+      "Read the VCCS entry at each of the two mirrored positions",
+      "Subtract to isolate the unsymmetric part"
+    ]
+  }
+]

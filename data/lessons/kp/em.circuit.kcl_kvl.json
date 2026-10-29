@@ -1,0 +1,5 @@
+[
+  {"label": "Kirchhoff's current law at a node", "section": "Kirchhoff's current law at a node", "subgoals": ["Assign a reference direction to every branch current", "Sum the currents leaving the node and set the sum to zero", "Read a negative result as current flowing against its reference"]},
+  {"label": "Kirchhoff's voltage law around a loop", "section": "Kirchhoff's voltage law around a loop", "subgoals": ["Walk the loop in one direction recording rises and drops", "Set the sum of drops equal to the sum of rises", "Solve for the unknown element voltage with its sign"]},
+  {"label": "Counting independent equations", "section": "Counting independent equations", "subgoals": ["Count n minus one independent node equations", "Build a spanning tree and count the remaining branches as loops", "Compare the nodal and mesh unknown counts for the network"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Operations, regions and block arguments", "section": "Operations, regions and block arguments", "subgoals": ["Describe a construct as an operation with operands, results, attributes and regions", "Group operations into a dialect for one abstraction level", "Express joins with block arguments instead of phis"]},
+  {"label": "Passes, patterns and progressive lowering", "section": "Passes, patterns and progressive lowering", "subgoals": ["Write local rewrites as patterns", "Lower between dialects with a conversion target and patterns", "Verify the IR after each pass and test semantics separately"]},
+  {"label": "CIRCT for hardware", "section": "CIRCT for hardware", "subgoals": ["Use graph regions where hardware feedback needs them", "Map each CIRCT tool to the flow it serves", "Reuse one pass across several hardware flows"]}
+]

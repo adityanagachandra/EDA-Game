@@ -1,0 +1,5 @@
+[
+  {"label": "Candidates in, survivors out", "section": "Candidates in, survivors out", "subgoals": ["Intersect all surviving candidates", "Remove candidates that exclude an initial state or a successor of the intersection", "Count the candidates that survive the round"]},
+  {"label": "Iterating to the fixpoint", "section": "Iterating to the fixpoint", "subgoals": ["Recompute the intersection after each round's removals", "Remove the candidates that the larger intersection now breaks", "Stop when a round removes nothing and count the survivors"]},
+  {"label": "Rounds, cost and trust", "section": "Rounds, cost and trust", "subgoals": ["Count one query per surviving candidate per round", "Count the rounds, including the final round that removes nothing", "Feed counterexamples to induction back to the proposer"]}
+]

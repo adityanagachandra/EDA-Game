@@ -1,0 +1,757 @@
+id	domain	label
+abstract.group.def	abstract_algebra	Definition of a group
+abstract.group.examples	abstract_algebra	Examples of groups
+abstract.group.symmetric	abstract_algebra	Symmetric groups S_n
+abstract.group.dihedral	abstract_algebra	Dihedral groups
+abstract.group.subgroup	abstract_algebra	Subgroups and cosets
+abstract.rings.def	abstract_algebra	Rings and fields
+abstract.group.homomorphism	abstract_algebra	Group homomorphisms
+abstract.structures.field	abstract_algebra	Fields: definition, examples, and properties
+abstract.structures.module	abstract_algebra	Modules: definition, examples, and properties
+abstract.group.cyclic	abstract_algebra	Cyclic groups
+abstract.group.order	abstract_algebra	Order of a group and its elements
+abstract.rings.ideal	abstract_algebra	Ideals in rings
+abstract.rings.quotient	abstract_algebra	Quotient rings
+abstract.group.normal	abstract_algebra	Normal subgroups and conjugacy
+abstract.group.lagrange	abstract_algebra	Lagrange's theorem
+abstract.group.quotient_group	abstract_algebra	Quotient groups and isomorphism theorems
+abstract.rings.polynomial	abstract_algebra	Polynomial rings and field extensions
+abstract.group.action	abstract_algebra	Group actions and orbit-stabilizer
+abstract.group.sylow	abstract_algebra	Sylow theorems
+abstract.rings.ufd	abstract_algebra	Unique factorization domains
+abstract.field.extension	abstract_algebra	Field extensions and splitting fields
+abstract.structures.galois	abstract_algebra	Galois correspondence
+abstract.rings.localization	abstract_algebra	Localization of rings
+abstract.field.finite	abstract_algebra	Finite fields
+abstract.group.nilpotent	abstract_algebra	Nilpotent and solvable groups
+abstract.structures.tensor	abstract_algebra	Tensor products of modules
+abstract.group.solvable	abstract_algebra	Solvable groups and composition series
+abstract.group.free	abstract_algebra	Free groups and presentations
+abstract.rings.noetherian	abstract_algebra	Noetherian rings and Hilbert basis theorem
+abstract.field.galois_group	abstract_algebra	Galois groups of polynomials
+abstract.structures.exact_sequence	abstract_algebra	Exact sequences
+abstract.group.commutator	abstract_algebra	Commutator subgroup and abelianization
+abstract.group.center	abstract_algebra	Center of a group
+abstract.group.automorphism	abstract_algebra	Group automorphisms
+abstract.group.simple	abstract_algebra	Simple groups
+abstract.group.p_group	abstract_algebra	p-groups
+abstract.group.composition_series	abstract_algebra	Composition series
+abstract.rings.zero_divisor	abstract_algebra	Zero divisors and cancellation
+abstract.rings.integral_domain	abstract_algebra	Integral domains
+abstract.rings.prime_ideal	abstract_algebra	Prime and maximal ideals
+abstract.rings.euclidean	abstract_algebra	Euclidean domains
+abstract.field.characteristic	abstract_algebra	Characteristic of a field
+abstract.field.algebraic	abstract_algebra	Algebraic and transcendental elements
+abstract.structures.submodule	abstract_algebra	Submodules and quotient modules
+abstract.structures.module_hom	abstract_algebra	Module homomorphisms
+calc.limit.concept	calculus	Concept of a limit
+calc.limit.numeric	calculus	Estimate limits numerically
+calc.limit.properties	calculus	Limit laws and properties
+calc.limit.infinity	calculus	Limits at infinity
+calc.limit.continuity	calculus	Continuity and types of discontinuity
+calc.deriv.concept	calculus	Derivative as slope of tangent line
+calc.deriv.power_rule	calculus	Power rule for differentiation
+calc.deriv.sum_rule	calculus	Sum and difference rules
+calc.deriv.product_rule	calculus	Product rule
+calc.deriv.quotient_rule	calculus	Quotient rule
+calc.deriv.chain_rule	calculus	Chain rule
+calc.deriv.trig	calculus	Derivatives of sine and cosine
+calc.deriv.exp_log	calculus	Derivatives of e^x and ln(x)
+calc.deriv.applications	calculus	Applications: velocity and acceleration
+calc.deriv.optimization	calculus	Optimization problems
+calc.integral.indefinite	calculus	Indefinite integrals and antiderivatives
+calc.integral.power_rule	calculus	Power rule for integration
+calc.integral.substitution	calculus	U-substitution
+calc.integral.definite	calculus	Definite integrals and area
+calc.integral.ftc	calculus	Fundamental Theorem of Calculus
+calc.integral.area_between	calculus	Area between two curves
+calc.integral.volume	calculus	Volume of solids of revolution
+calc.integral.disc	calculus	Disc method for volumes of revolution
+calc.integral.washer	calculus	Washer method for volumes of revolution
+calc.integral.shell	calculus	Shell method for volumes of revolution
+calc.deriv.implicit	calculus	Implicit differentiation
+calc.deriv.related_rates	calculus	Related rates
+calc.integral.parts	calculus	Integration by parts
+calc.integral.partial_fractions	calculus	Integration by partial fractions
+calc.limit.algebra	calculus	Algebra of limits
+calc.limit.squeeze	calculus	Squeeze theorem
+calc.limit.asymptotes	calculus	Asymptotes of functions
+calc.limit.indeterminate	calculus	Indeterminate forms of limits
+calc.limit.little_o	calculus	Little-o notation
+calc.limit.big_o	calculus	Big O notation
+calc.limit.supremum	calculus	Supremum and infimum
+calc.limit.lhopital	calculus	L'Hopital's rule
+calc.limit.weierstrass	calculus	Weierstrass extreme value theorem
+calc.limit.discontinuity	calculus	Types of discontinuities
+calc.limit.uniform_continuity	calculus	Uniform continuity
+calc.deriv.difference_quotient	calculus	Difference quotient
+calc.deriv.differential	calculus	Differential of a function
+calc.deriv.partial	calculus	Partial derivatives
+calc.deriv.non_differentiability	calculus	Points of non-differentiability
+calc.deriv.rolle	calculus	Rolle's theorem
+calc.deriv.mvt	calculus	Mean value theorem (Lagrange)
+calc.deriv.cauchy_mvt	calculus	Cauchy's mean value theorem
+calc.deriv.fermat	calculus	Fermat's theorem on stationary points
+calc.deriv.convexity	calculus	Convexity and concavity of functions
+calc.integral.improper	calculus	Improper integrals
+calc.integral.trig_integrals	calculus	Integrals of trigonometric functions
+calc.integral.trig_substitution	calculus	Trigonometric substitution for integrals
+calc.integral.weierstrass_sub	calculus	Weierstrass substitution (tangent half-angle)
+calc.integral.numerical	calculus	Numerical integration
+calc.integral.arc_length	calculus	Arc length of a curve
+calc.integral.exp_integral	calculus	Integral of exponential functions
+calc.integral.riemann_criteria	calculus	Riemann integrability criteria
+calc.seq.concept	calculus	Sequences: definition and notation
+calc.seq.convergence	calculus	Convergent and divergent sequences
+calc.seq.monotone	calculus	Monotone sequences
+calc.seq.cauchy	calculus	Cauchy sequences
+calc.seq.euler	calculus	Euler's number as a limit of a sequence
+calc.seq.function_sequences	calculus	Sequences of functions
+calc.series.concept	calculus	Series: definition and convergence
+calc.series.harmonic	calculus	Harmonic series
+calc.series.positive_terms	calculus	Series with positive terms
+calc.series.cauchy_criterion	calculus	Cauchy's convergence criterion for series
+calc.series.integral_test	calculus	Integral test for series convergence
+calc.series.root_test	calculus	Root test for series convergence
+calc.series.alternating	calculus	Alternating series and Leibniz criterion
+calc.series.function_series	calculus	Series of functions
+calc.series.power	calculus	Power series
+calc.series.taylor	calculus	Taylor series
+calc.series.fourier	calculus	Fourier series
+calc.deriv.trig_other	calculus	Derivatives of tangent, secant, cosecant, cotangent
+calc.deriv.inverse_trig	calculus	Derivatives of inverse trigonometric functions
+calc.deriv.general_exp	calculus	Derivatives of exponential functions with general base
+calc.deriv.log_diff	calculus	Logarithmic differentiation
+calc.deriv.higher_order	calculus	Higher-order derivatives
+calc.deriv.inverse_func	calculus	Derivatives of inverse functions
+calc.deriv.critical_points	calculus	Critical points and the first derivative test
+calc.deriv.second_test	calculus	Second derivative test for local extrema
+calc.deriv.inflection	calculus	Inflection points of functions
+calc.deriv.global_extrema	calculus	Global maxima and minima on closed intervals
+calc.deriv.curve_sketch	calculus	Curve sketching with derivatives and asymptotes
+calc.deriv.tangent_line	calculus	Equation of the tangent line
+calc.deriv.linear_approx	calculus	Linear approximation of functions
+calc.deriv.newton	calculus	Newton's method for approximating roots
+calc.deriv.error_prop	calculus	Error propagation with differentials
+calc.deriv.implicit_second	calculus	Second derivatives of implicit functions
+calc.deriv.chain_power	calculus	Derivatives of composite power functions f(x)^g(x)
+calc.deriv.chain_multi	calculus	Chain rule in multivariable calculus
+calc.deriv.gradient	calculus	Gradient of a multivariable function
+calc.deriv.directional	calculus	Directional derivatives
+calc.deriv.partial_higher	calculus	Higher-order partial derivatives
+calc.deriv.clairaut	calculus	Clairaut-Schwarz theorem on mixed partials
+calc.deriv.total_diff	calculus	Differentiability and the total differential
+calc.deriv.diff_continuity	calculus	Differentiability implies continuity
+calc.deriv.jacobian	calculus	Jacobian matrix of a vector function
+calc.integral.net_change	calculus	Net change theorem
+calc.integral.variable_limits	calculus	Differentiation of integrals with variable limits
+calc.integral.mvt	calculus	Mean value theorem for integrals
+calc.integral.work	calculus	Work computed by integration
+calc.integral.center_mass	calculus	Center of mass by integration
+calc.integral.surface_area	calculus	Surface area of solids of revolution
+calc.integral.trapezoid	calculus	Trapezoidal rule for numerical integration
+calc.integral.simpson	calculus	Simpson's rule for numerical integration
+calc.integral.improper_compare	calculus	Comparison test for improper integrals
+calc.integral.p_test	calculus	p-integral test for improper integrals
+calc.series.ratio_test	calculus	Ratio test for series convergence
+calc.series.geometric	calculus	Geometric series and its sum
+calc.series.nth_term	calculus	nth-term divergence test
+calc.series.telescoping	calculus	Telescoping series
+calc.series.direct_compare	calculus	Direct comparison test for series
+calc.series.limit_compare	calculus	Limit comparison test for series
+calc.series.absolute	calculus	Absolute and conditional convergence
+calc.series.remainder	calculus	Alternating series remainder estimate
+calc.series.radius	calculus	Radius and interval of convergence
+calc.limit.epsilon_delta	calculus	Epsilon-delta definition of a limit
+calc.limit.one_sided	calculus	One-sided limits
+calc.limit.infinite	calculus	Infinite limits and vertical asymptotes
+calc.limit.sine_limit	calculus	Fundamental trigonometric limit sin(x)/x
+calc.limit.exp_limit	calculus	Fundamental exponential limit
+calc.seq.bounded	calculus	Bounded sequences
+calc.integral.convergence	calculus	Convergence tests for improper integrals
+calc.integral.irrational	calculus	Integrals of irrational functions
+calc.integral.strategy	calculus	Integration strategies (method selection)
+calc.integral.reduction	calculus	Reduction formulas for integrals
+calc.vec.parametric_derivative	calculus	The derivative of a parametrised curve
+calc.vec.arc_length	calculus	Arc length of a parametrised curve
+calc.vec.curvature	calculus	Curvature
+calc.vec.line_integral	calculus	Line integrals
+calc.vec.jacobian_value	calculus	The Jacobian as a change of measure
+calc.multi.double_integral_rect	calculus	Double integrals over a rectangle
+calc.multi.triple_integral_box	calculus	Triple integrals over a box
+calc.vec.curl	calculus	The curl of a planar field
+calc.vec.divergence	calculus	Divergence
+calc.vec.conservative_test	calculus	Testing a field for a potential
+calc.vec.greens_theorem	calculus	Green's theorem
+calc.multi.transform_jacobian	calculus	The Jacobian of a linear change of variables
+calc.multi.double_integral_region	calculus	Double integrals over a general region
+calc.multi.saddle_test	calculus	The second-derivative test in two variables
+calc.multi.lagrange	calculus	Lagrange multipliers
+calc.vec.divergence_theorem	calculus	The divergence theorem
+calc.vec.flux_uniform	calculus	Flux through a surface
+calc.vec.potential_value	calculus	Evaluating a potential
+calc.multi.coordinates_jacobian	calculus	Volume elements in cylindrical and spherical coordinates
+calc.vec.surface_area	calculus	Surface area of a graph
+calc.vec.curl_3d	calculus	The curl in three dimensions
+calc.vec.stokes	calculus	Stokes' theorem
+calc.vec.work	calculus	Work as a line integral
+calc.integral.average_value	calculus	The average value of a function
+calc.integral.cross_section_volume	calculus	Volumes from known cross-sections
+calc.multi.change_order	calculus	Changing the order of integration
+calc.multi.tangent_plane	calculus	The tangent plane and linear approximation
+calc.multi.closed_extrema	calculus	Extrema on a closed region
+calc.polar.area	calculus	Area in polar coordinates
+calc.polar.slope	calculus	The slope of a polar curve
+calc.seq.limit_value	calculus	The limit of a rational sequence
+calc.seq.recursive_value	calculus	Recursive sequences
+calc.seq.arithmetic_sum	calculus	The sum of an arithmetic sequence
+calc.multi.mass_lamina	calculus	The mass of a lamina
+calc.integral.substitution_value	calculus	A definite integral by substitution
+calc.integral.mass_density	calculus	Mass from a variable density
+calc.deriv.higher_order_value	calculus	Evaluating a higher-order derivative
+calc.deriv.hyperbolic	calculus	Derivatives of hyperbolic functions
+calc.deriv.parametric_second	calculus	The second derivative of a parametric curve
+calc.deriv.finite_difference	calculus	Finite differences
+calc.polar.arc_length	calculus	Arc length in polar coordinates
+calc.vec.torsion	calculus	Torsion of a space curve
+calc.vec.frenet	calculus	The Frenet frame
+calc.multi.taylor2	calculus	Second-order Taylor approximation
+calc.integral.hydrostatic	calculus	Hydrostatic force
+calc.integral.pappus	calculus	Pappus's centroid theorem
+calc.integral.moment_inertia	calculus	Moment of inertia
+calc.limit.intermediate_value	calculus	Intermediate value theorem applications
+calc.limit.limsup	calculus	Limit superior and inferior
+calc.limit.oscillation	calculus	Oscillation of a function
+calc.deriv.inverse_hyperbolic	calculus	Derivatives of inverse hyperbolic functions
+calc.deriv.mvt_applications	calculus	Mean value theorem applications
+calc.deriv.newton_convergence	calculus	Convergence of Newton's method
+calc.deriv.convex_jensen	calculus	Convexity and Jensen's inequality
+calc.deriv.marginal_analysis	calculus	Marginal analysis
+calc.deriv.epsilon_delta_deriv	calculus	Epsilon-delta definition of the derivative
+calc.series.operations	calculus	Operations on series
+calc.series.binomial	calculus	The binomial series
+calc.series.cauchy_product	calculus	The Cauchy product
+calc.series.p_series	calculus	The p-series
+calc.series.dirichlet_test	calculus	Dirichlet's test
+calc.series.gamma	calculus	The gamma function
+calc.integral.numerical_error	calculus	Error bounds for numerical integration
+calc.integral.double_polar	calculus	Double integrals in polar coordinates
+calc.integral.surface_scalar	calculus	Scalar surface integrals
+calc.integral.beta	calculus	The beta function
+calc.integral.consumer_surplus	calculus	Consumer surplus
+calc.integral.fourier_coefficients	calculus	Fourier coefficients
+calc.multi.lagrange_two	calculus	Lagrange multipliers with two constraints
+calc.multi.implicit_function	calculus	The implicit function theorem
+calc.multi.inverse_function	calculus	The inverse function theorem
+calc.multi.iterated_limits	calculus	Iterated limits
+calc.multi.euler_homogeneous	calculus	Euler's homogeneous function theorem
+calc.vec.line_scalar	calculus	Scalar line integrals
+calc.vec.parametric_surface	calculus	Parametric surface area
+calc.vec.flux_general	calculus	General flux integrals
+calc.vec.identities	calculus	Vector identities
+complex.basics.concept	complex_numbers	Imaginary unit i and complex numbers
+complex.ops.add_sub	complex_numbers	Add and subtract complex numbers
+complex.ops.mult	complex_numbers	Multiply complex numbers
+complex.ops.conjugate	complex_numbers	Complex conjugate
+complex.ops.divide	complex_numbers	Divide complex numbers
+complex.adv.polar	complex_numbers	Polar form of complex numbers
+complex.adv.de_moivre	complex_numbers	De Moivre's theorem
+complex.adv.roots	complex_numbers	Roots of complex numbers
+complex.adv.exponential	complex_numbers	Exponential form of complex numbers (Euler's formula)
+complex.adv.logarithm	complex_numbers	Complex logarithm and branches
+complex.adv.inequalities	complex_numbers	Fundamental inequalities for complex numbers
+complex.ops.modulus	complex_numbers	Modulus of a complex number
+complex.ops.argument	complex_numbers	Argument of a complex number
+complex.adv.euler_identity	complex_numbers	Euler's identity
+complex.adv.cauchy_riemann	complex_numbers	Cauchy-Riemann equations
+complex.adv.residue	complex_numbers	Residues and the residue theorem
+complex.adv.analytic	complex_numbers	Analytic functions
+complex.series.laurent	complex_numbers	Laurent series
+complex.integral.contour	complex_numbers	Contour integration
+complex.adv.harmonic	complex_numbers	Harmonic functions and mean value
+complex.topology.riemann_sphere	complex_numbers	Riemann sphere and stereographic projection
+complex.adv.conformal	complex_numbers	Conformal mappings
+complex.integral.cauchy_goursat	complex_numbers	Cauchy-Goursat theorem
+complex.series.power	complex_numbers	Power series and radius of convergence
+complex.adv.mobius	complex_numbers	Möbius transformations
+complex.adv.schwarz_lemma	complex_numbers	Schwarz lemma
+complex.basics.parts	complex_numbers	Real and imaginary parts
+complex.basics.powers	complex_numbers	Powers of complex numbers
+complex.basics.reciprocal	complex_numbers	The reciprocal of a complex number
+complex.basics.geometry	complex_numbers	Distance in the complex plane
+complex.basics.loci	complex_numbers	Loci in the complex plane
+complex.basics.arg_arithmetic	complex_numbers	Arguments under multiplication
+complex.basics.equations	complex_numbers	Linear equations over the complex numbers
+complex.adv.conjugate_roots	complex_numbers	Conjugate roots of real polynomials
+complex.adv.trig_exponential	complex_numbers	Trigonometric functions from exponentials
+complex.adv.hyperbolic	complex_numbers	Hyperbolic functions on imaginary arguments
+complex.adv.geometric_series	complex_numbers	Complex geometric series
+complex.adv.mobius_fixed	complex_numbers	Fixed points of Moebius transformations
+complex.adv.residue_simple	complex_numbers	Residues at simple poles
+complex.adv.cross_ratio	complex_numbers	The cross-ratio
+complex.topology.open_sets	complex_numbers	Open and closed sets in the plane
+complex.topology.domain	complex_numbers	Domains in the complex plane
+ode.basics.concept	differential_equations	What is a differential equation
+ode.first_order.separable	differential_equations	Separable differential equations
+ode.first_order.linear	differential_equations	First-order linear ODEs
+ode.first_order.exact	differential_equations	Exact equations
+ode.second_order.homogeneous	differential_equations	Homogeneous second-order ODEs
+ode.second_order.nonhomogeneous	differential_equations	Non-homogeneous second-order ODEs
+ode.transforms.laplace	differential_equations	Laplace transforms
+ode.adv.systems	differential_equations	Systems of differential equations
+ode.second_order.variation_params	differential_equations	Variation of parameters
+ode.transforms.convolution	differential_equations	Convolution and Laplace transforms
+ode.systems.linear_phase	differential_equations	Linear systems and phase portraits
+ode.numerical.euler	differential_equations	Euler's method
+ode.numerical.rk4	differential_equations	Runge-Kutta 4th order method
+ode.stability	differential_equations	Stability of equilibria
+ode.pde.characteristics	differential_equations	First-order PDEs and characteristics
+ode.transforms.fourier	differential_equations	Fourier transforms and ODEs
+ode.nonlinear.bifurcation	differential_equations	Bifurcations in nonlinear ODEs
+ode.pde.wave	differential_equations	Wave equation and d'Alembert solution
+ode.pde.heat	differential_equations	Heat equation and separation of variables
+ode.green.function	differential_equations	Green's functions
+ode.sturm_liouville	differential_equations	Sturm-Liouville theory
+ode.boundary_value	differential_equations	Boundary value problems
+ode.nonlinear.lyapunov	differential_equations	Lyapunov functions
+ode.pde.laplace_eq	differential_equations	Laplace equation
+ode.integral.volterra	differential_equations	Volterra integral equations
+ode.ivp.evaluate	differential_equations	Solving an initial value problem
+ode.characteristic.sum	differential_equations	The roots of the characteristic equation
+ode.equilibrium.nonzero	differential_equations	Equilibrium points
+ode.wronskian	differential_equations	The Wronskian
+ode.numerical.steps	differential_equations	Stepping through an interval
+ode.laplace.value	differential_equations	Evaluating a Laplace transform
+ode.pde.discriminant	differential_equations	Classifying a second-order PDE
+ode.first_order.bernoulli	differential_equations	Bernoulli equations
+ode.second_order.cauchy_euler	differential_equations	Cauchy-Euler equations
+ode.second_order.reduction	differential_equations	Reduction of order
+ode.second_order.power_series	differential_equations	Power-series solutions
+ode.systems.matrix_exp	differential_equations	The matrix exponential
+ode.transforms.step	differential_equations	Heaviside steps and impulses
+ode.second_order.spring	differential_equations	The spring-mass system
+ode.first_order.mixing	differential_equations	Mixing problems
+ode.systems.predator_prey	differential_equations	Predator-prey systems
+ode.numerical.heun	differential_equations	Heun's method
+discrete.logic.propositions	discrete_math	Propositional logic: statements and truth values
+discrete.logic.connectives	discrete_math	Logical connectives: AND, OR, NOT, IMPLIES
+discrete.logic.truth_tables	discrete_math	Truth tables
+discrete.logic.quantifiers	discrete_math	Quantifiers: universal and existential
+discrete.sets.operations	discrete_math	Set operations: union, intersection, complement
+discrete.sets.venn	discrete_math	Venn diagrams
+discrete.combinatorics.permutations	discrete_math	Permutations
+discrete.combinatorics.combinations	discrete_math	Combinations
+discrete.combinatorics.pascal	discrete_math	Pascal's triangle and binomial theorem
+discrete.graphs.basics	discrete_math	Graphs: vertices, edges, and degrees
+discrete.graphs.paths	discrete_math	Paths, cycles, and connectivity
+discrete.graphs.trees	discrete_math	Trees and spanning trees
+discrete.sequences.recurrence	discrete_math	Recurrence relations
+discrete.proof.induction	discrete_math	Mathematical induction
+discrete.combinatorics.binomial_theorem	discrete_math	Binomial theorem
+discrete.logic.equivalence	discrete_math	Logical equivalence, De Morgan and normal forms
+discrete.sets.relations	discrete_math	Relations, functions and partitions
+discrete.combinatorics.pigeonhole	discrete_math	Pigeonhole principle
+discrete.graphs.eulerian	discrete_math	Eulerian trails, Hamiltonian and coloring
+discrete.proof.strong_induction	discrete_math	Strong induction and well-ordering
+discrete.combinatorics.stars_bars	discrete_math	Stars and bars
+discrete.graphs.coloring	discrete_math	Graph coloring and chromatic number
+discrete.proof.contradiction	discrete_math	Proof by contradiction
+discrete.sets.inclusion_exclusion	discrete_math	Inclusion-exclusion principle
+discrete.sequences.generating_functions	discrete_math	Generating functions
+discrete.combinatorics.counting_principle	discrete_math	The product and sum rules for counting
+discrete.combinatorics.factorial	discrete_math	Factorials
+discrete.combinatorics.multinomial	discrete_math	Arrangements of a multiset
+discrete.combinatorics.circular	discrete_math	Circular arrangements
+discrete.combinatorics.derangement	discrete_math	Derangements
+discrete.combinatorics.catalan	discrete_math	Catalan numbers
+discrete.combinatorics.vandermonde	discrete_math	Vandermonde's identity
+discrete.combinatorics.double_counting	discrete_math	Counting the same set two ways
+discrete.combinatorics.surjections	discrete_math	Counting onto functions
+discrete.combinatorics.stirling_second	discrete_math	Stirling numbers of the second kind
+discrete.combinatorics.bell	discrete_math	Bell numbers
+discrete.combinatorics.compositions	discrete_math	Compositions of an integer
+discrete.combinatorics.integer_partitions	discrete_math	Integer partitions
+discrete.combinatorics.lattice_paths	discrete_math	Lattice paths
+discrete.logic.inference	discrete_math	Valid argument forms and fallacies
+discrete.logic.predicates	discrete_math	Nested quantifiers and their negations
+discrete.logic.satisfiability	discrete_math	Tautologies, contradictions and contingencies
+discrete.proof.contrapositive	discrete_math	Proof by contrapositive
+discrete.proof.counterexample	discrete_math	Disproof by counterexample
+discrete.proof.structural	discrete_math	Structural induction
+discrete.sets.powerset	discrete_math	Power sets and counting subsets
+discrete.sets.partial_order	discrete_math	Partial orders and comparability
+discrete.sets.countable	discrete_math	Countable and uncountable sets
+discrete.combinatorics.complement	discrete_math	Counting by complement
+discrete.graphs.bipartite	discrete_math	Bipartite graphs and matchings
+discrete.graphs.planar	discrete_math	Planar graphs and Euler's formula
+discrete.graphs.cayley	discrete_math	Labelled trees
+discrete.graphs.degree_sequence	discrete_math	Degree sequences
+discrete.sequences.linear_recurrence	discrete_math	Solving linear recurrences
+discrete.sequences.growth_rates	discrete_math	Comparing growth rates
+graph.isomorphism	graph_theory	Graph isomorphism
+graph.complement	graph_theory	The complement of a graph
+graph.subgraph	graph_theory	Subgraphs and induced subgraphs
+graph.homomorphism	graph_theory	Graph homomorphisms
+graph.product	graph_theory	Graph products
+graph.distance	graph_theory	Distance and diameter
+graph.cut_vertex	graph_theory	Cut vertices
+graph.bridge	graph_theory	Bridges
+graph.connectivity	graph_theory	Vertex and edge connectivity
+graph.menger	graph_theory	Menger's theorem
+graph.matching	graph_theory	Matchings
+graph.perfect_matching	graph_theory	Perfect matchings
+graph.tutte	graph_theory	Tutte's theorem
+graph.vertex_cover	graph_theory	Vertex covers
+graph.independent_set	graph_theory	Independent sets
+graph.chromatic_polynomial	graph_theory	The chromatic polynomial
+graph.brooks	graph_theory	Brooks' theorem
+graph.edge_coloring	graph_theory	Edge coloring
+graph.perfect_graph	graph_theory	Perfect graphs
+graph.list_coloring	graph_theory	List coloring
+graph.kuratowski	graph_theory	Kuratowski's theorem
+graph.minor	graph_theory	Graph minors
+graph.treewidth	graph_theory	Treewidth
+graph.genus	graph_theory	Graph genus
+graph.outerplanar	graph_theory	Outerplanar graphs
+graph.adjacency	graph_theory	Adjacency matrix
+graph.laplacian	graph_theory	Laplacian matrix
+graph.matrix_tree	graph_theory	Matrix-tree theorem
+graph.spectral_radius	graph_theory	Spectral radius
+graph.spectral_gap	graph_theory	Algebraic connectivity
+graph.mantel	graph_theory	Mantel's theorem
+graph.turan	graph_theory	Turán's theorem
+graph.ramsey	graph_theory	Ramsey numbers
+graph.random_threshold	graph_theory	Random graph thresholds
+graph.moore_bound	graph_theory	Moore bound
+graph.max_flow	graph_theory	Max-flow min-cut
+graph.tournament	graph_theory	Tournaments
+graph.strong_connectivity	graph_theory	Strong connectivity
+graph.topological_sort	graph_theory	Topological sort
+graph.dag_paths	graph_theory	Counting paths in a DAG
+linalg.vector.concept	linear_algebra	Vectors: magnitude and direction
+linalg.vector.add	linear_algebra	Vector addition and scalar multiplication
+linalg.vector.dot	linear_algebra	Dot product of two vectors
+linalg.matrix.concept	linear_algebra	Matrices: rows, columns, and entries
+linalg.matrix.add	linear_algebra	Matrix addition and scalar multiplication
+linalg.matrix.mult	linear_algebra	Matrix multiplication
+linalg.matrix.identity	linear_algebra	Identity matrix and matrix inverses
+linalg.det.2x2	linear_algebra	Determinant of a 2x2 matrix
+linalg.det.3x3	linear_algebra	Determinant of a 3x3 matrix
+linalg.systems.matrix	linear_algebra	Solving systems with matrices
+linalg.sys.cramer	linear_algebra	Cramer's rule
+linalg.eigen.concept	linear_algebra	Eigenvalues and eigenvectors concept
+linalg.eigen.compute	linear_algebra	Compute eigenvalues of a 2x2 matrix
+linalg.lintrans.concept	linear_algebra	Linear transformations
+linalg.vec.span	linear_algebra	Span and linear independence
+linalg.subspace	linear_algebra	Subspaces
+linalg.vec.basis	linear_algebra	Basis and dimension
+linalg.matrix.rank	linear_algebra	Rank of a matrix
+linalg.eigen.diagonalization	linear_algebra	Matrix diagonalization
+linalg.vector.parametric	linear_algebra	Vector and parametric equations of a line
+linalg.vector.cosine_similarity	linear_algebra	Cosine similarity between vectors
+linalg.inner_product	linear_algebra	Inner products and orthogonality
+linalg.decomp.lu	linear_algebra	LU decomposition
+linalg.decomp.qr	linear_algebra	QR decomposition
+linalg.decomp.svd	linear_algebra	Singular value decomposition
+linalg.decomp.jordan	linear_algebra	Jordan normal form
+linalg.independence.count	linear_algebra	Linear independence
+linalg.rank.nullity	linear_algebra	The rank-nullity theorem
+linalg.matrix.inverse_2x2	linear_algebra	The inverse of a two-by-two matrix
+linalg.eigen.trace	linear_algebra	The trace as a sum of eigenvalues
+linalg.eigen.det_product	linear_algebra	The determinant as a product of eigenvalues
+linalg.orth.projection_coeff	linear_algebra	Projection onto a vector
+linalg.vec.norm_squared	linear_algebra	The norm of a vector
+linalg.transform.det_scale	linear_algebra	Rotation-scaling matrices
+linalg.space.axioms	linear_algebra	Vector spaces and their axioms
+linalg.transform.kernel	linear_algebra	Kernel and image of a linear map
+linalg.transform.invertible	linear_algebra	Injective, surjective and invertible maps
+linalg.basis.change	linear_algebra	Coordinates and change of basis
+linalg.orth.complement	linear_algebra	Orthogonal complements
+linalg.orth.projection_matrix	linear_algebra	Projection onto a subspace
+linalg.symmetric.spectral	linear_algebra	The spectral theorem for symmetric matrices
+linalg.quadratic.definite	linear_algebra	Quadratic forms and definiteness
+linalg.vector.cross	linear_algebra	The cross product
+linalg.matrix.condition	linear_algebra	The condition number
+linalg.eigen.cayley_hamilton	linear_algebra	The Cayley-Hamilton theorem
+ml.perceptron	machine_learning	Perceptron
+ml.loss.mse	machine_learning	Mean squared error loss
+ml.forward_pass	machine_learning	Forward pass
+ml.gradient_descent	machine_learning	Gradient descent
+ml.backpropagation	machine_learning	Backpropagation in neural networks
+ml.loss.cross_entropy	machine_learning	Cross-entropy loss
+ml.regularization	machine_learning	Regularization (L2 weight decay)
+ml.overfitting	machine_learning	Overfitting and generalization
+ml.validation	machine_learning	Train/validation split and cross-validation
+ml.optim.momentum	machine_learning	Momentum and Adam optimization
+ml.regularization.dropout	machine_learning	Dropout regularization
+ml.arch.cnn	machine_learning	Convolutional neural networks
+ml.arch.rnn	machine_learning	Recurrent neural networks
+ml.optim.batchnorm	machine_learning	Batch normalization
+ml.eval.roc	machine_learning	ROC curves and evaluation metrics
+ml.arch.transformer	machine_learning	Transformers and attention
+ml.arch.gan	machine_learning	Generative adversarial networks
+ml.optim.adam	machine_learning	Adam optimizer details
+ml.eval.calibration	machine_learning	Calibration and reliability diagrams
+ml.data.augmentation	machine_learning	Data augmentation
+ml.nlp.transformer	machine_learning	Transformers for NLP
+ml.reinforcement.qlearning	machine_learning	Q-learning
+ml.reinforcement.policy_gradient	machine_learning	Policy gradients
+ml.nlp.bert	machine_learning	BERT and pretraining
+ml.reinforcement.actor_critic	machine_learning	Actor-critic methods
+ml.linreg.least_squares	machine_learning	The least-squares line
+ml.linreg.predict	machine_learning	Prediction from a fitted model
+ml.reg.ridge_penalty	machine_learning	The ridge penalty
+ml.eval.accuracy	machine_learning	Accuracy
+ml.eval.precision	machine_learning	Precision
+ml.eval.recall	machine_learning	Recall
+ml.pca.variance_percent	machine_learning	Variance explained by a component
+ml.knn.nearest_distance	machine_learning	Nearest-neighbour distance
+ml.activation.sigmoid	machine_learning	Sigmoid activation
+ml.logistic.regression	machine_learning	Logistic regression
+ml.grad.vanishing	machine_learning	Vanishing and exploding gradients
+ml.loss.mae	machine_learning	Mean absolute error
+ml.eval.confusion	machine_learning	The confusion matrix
+ml.eval.f1	machine_learning	The F1 score
+ml.cluster.kmeans	machine_learning	k-means clustering
+ml.data.scaling	machine_learning	Feature scaling
+ml.data.onehot	machine_learning	One-hot encoding
+ml.data.imbalance	machine_learning	Class imbalance
+ml.tree.gini	machine_learning	Gini impurity
+ml.tree.ensemble	machine_learning	Bagging and random forests
+nt.basics.divisibility	number_theory	Divisibility rules
+nt.basics.gcd_euclidean	number_theory	Euclidean algorithm for GCD
+nt.basics.modular	number_theory	Modular arithmetic
+nt.basics.congruence	number_theory	Congruence relations
+nt.adv.fermat_little	number_theory	Fermat's little theorem
+nt.adv.euler_phi	number_theory	Euler's totient function
+nt.adv.diophantine	number_theory	Linear Diophantine equations
+nt.app.crypto	number_theory	Introduction to RSA cryptography
+nt.basics.bezout	number_theory	Bézout's identity
+nt.basics.crt	number_theory	Chinese remainder theorem
+nt.adv.wilson	number_theory	Wilson's theorem
+nt.basics.prime_inf	number_theory	Infinitude of primes
+nt.adv.legendre	number_theory	Legendre symbol
+nt.adv.quadratic_reciprocity	number_theory	Quadratic reciprocity
+nt.basics.order_mod	number_theory	Order modulo n
+nt.adv.primitive_root	number_theory	Primitive roots
+nt.adv.mobius	number_theory	Möbius function and inversion
+nt.analytic.prime_number_theorem	number_theory	Prime number theorem
+nt.adv.dirichlet	number_theory	Dirichlet's theorem on arithmetic progressions
+nt.adv.sieve	number_theory	Sieve of Eratosthenes and Brun's sieve
+nt.analytic.zeta	number_theory	Riemann zeta function
+nt.adv.chebyshev	number_theory	Chebyshev functions
+nt.adv.elliptic_curve	number_theory	Elliptic curves and BSD
+nt.adv.continued_fractions	number_theory	Continued fractions
+nt.adv.class_number	number_theory	Class numbers
+nt.divisor.count	number_theory	Counting divisors
+nt.divisor.sum	number_theory	The sum of the divisors
+nt.prime.exponent	number_theory	The exponent of a prime in a factorial
+nt.congruence.linear	number_theory	Linear congruences
+nt.pythagorean.hypotenuse	number_theory	Primitive Pythagorean triples
+nt.residue.count	number_theory	Quadratic residues
+nt.base.convert	number_theory	Writing a number in another base
+nt.adv.jacobi	number_theory	The Jacobi symbol
+nt.adv.discrete_log	number_theory	Discrete logarithms
+nt.adv.modular_sqrt	number_theory	Square roots modulo a prime
+nt.adv.two_squares	number_theory	Sums of two squares
+nt.adv.pell	number_theory	Pell's equation
+nt.adv.pisano	number_theory	Pisano periods
+nt.adv.carmichael_function	number_theory	The Carmichael function
+nt.adv.miller_rabin	number_theory	The Miller-Rabin test
+nt.adv.prime_gap	number_theory	Prime gaps and the next prime
+nt.adv.bertrand	number_theory	Bertrand's postulate
+numa.errors.absolute	numerical_analysis	Absolute and relative error
+numa.errors.roundoff	numerical_analysis	Floating-point roundoff and machine epsilon
+numa.errors.cancellation	numerical_analysis	Catastrophic cancellation
+numa.errors.conditioning	numerical_analysis	The condition number of a problem
+numa.errors.stability	numerical_analysis	Stability of an algorithm
+numa.errors.taylor	numerical_analysis	Taylor truncation error
+numa.roots.bisection	numerical_analysis	The bisection method
+numa.roots.fixed_point	numerical_analysis	Fixed-point iteration
+numa.roots.newton	numerical_analysis	Newton's method
+numa.roots.secant	numerical_analysis	The secant method
+numa.roots.false_position	numerical_analysis	The method of false position
+numa.roots.order	numerical_analysis	Order of convergence
+numa.roots.multiple	numerical_analysis	Multiple roots and modified Newton
+numa.roots.bracketing	numerical_analysis	Bracketing versus open methods
+numa.roots.horner	numerical_analysis	Horner's method and polynomial roots
+numa.interp.lagrange	numerical_analysis	Lagrange interpolation
+numa.interp.divided_differences	numerical_analysis	Newton's divided differences
+numa.interp.error	numerical_analysis	The interpolation error
+numa.interp.chebyshev	numerical_analysis	Chebyshev nodes
+numa.interp.splines	numerical_analysis	Cubic splines
+numa.interp.least_squares	numerical_analysis	Least squares
+numa.interp.normal_equations	numerical_analysis	The normal equations
+numa.interp.orthogonal	numerical_analysis	Orthogonal polynomials
+numa.interp.extrapolation	numerical_analysis	Extrapolation and its dangers
+numa.integration.trapezoid	numerical_analysis	The trapezoid rule
+numa.integration.midpoint	numerical_analysis	The midpoint rule
+numa.integration.simpson	numerical_analysis	Simpson's rule
+numa.integration.composite	numerical_analysis	Composite rules
+numa.integration.error	numerical_analysis	Error bounds for quadrature
+numa.integration.romberg	numerical_analysis	Romberg integration
+numa.integration.gauss	numerical_analysis	Gaussian quadrature
+numa.integration.adaptive	numerical_analysis	Adaptive quadrature
+numa.integration.improper	numerical_analysis	Integrating to infinity
+numa.linear.elimination	numerical_analysis	Gaussian elimination
+numa.linear.pivoting	numerical_analysis	Partial pivoting
+numa.linear.lu	numerical_analysis	LU factorization
+numa.linear.jacobi	numerical_analysis	The Jacobi method
+numa.linear.gauss_seidel	numerical_analysis	The Gauss-Seidel method
+numa.linear.power	numerical_analysis	The power method
+numa.linear.least_squares_qr	numerical_analysis	Least squares by QR
+prob.space.axioms	probability_theory	Probability axioms
+prob.space.sigma_algebra	probability_theory	Sigma-algebras and events
+prob.space.inclusion_exclusion	probability_theory	Inclusion-exclusion
+prob.space.continuity	probability_theory	Continuity of probability
+prob.cond.multiplication	probability_theory	The multiplication rule
+prob.cond.total_probability	probability_theory	The law of total probability
+prob.bayes.prior	probability_theory	Bayes' theorem with priors
+prob.independence.pairwise	probability_theory	Pairwise and mutual independence
+prob.rv.definition	probability_theory	Random variables
+prob.rv.cdf	probability_theory	The distribution function
+prob.rv.pmf	probability_theory	The probability mass function
+prob.rv.pdf	probability_theory	The probability density function
+prob.rv.joint	probability_theory	Joint probability mass functions
+prob.rv.expectation	probability_theory	Expectation of a function of a random variable
+prob.rv.variance	probability_theory	Variance by the second moment
+prob.rv.mgf	probability_theory	Moment generating functions
+prob.rv.transform	probability_theory	Transformations of random variables
+prob.dist.order_stats	probability_theory	Order statistics
+prob.dist.memoryless	probability_theory	The memoryless property
+prob.dist.poisson_process	probability_theory	The Poisson process
+prob.dist.exponential_family	probability_theory	The exponential family
+prob.limit.markov	probability_theory	Markov's inequality
+prob.limit.chebyshev	probability_theory	Chebyshev's inequality
+prob.limit.weak_law	probability_theory	The weak law of large numbers
+prob.limit.clt	probability_theory	The central limit theorem
+prob.joint.marginal	probability_theory	Marginal distributions
+prob.joint.continuous	probability_theory	Joint densities
+prob.joint.rv_independence	probability_theory	Independent random variables
+prob.expect.conditional	probability_theory	Conditional expectation
+prob.expect.total	probability_theory	The law of total expectation
+prob.expect.total_variance	probability_theory	The law of total variance
+prob.cov.covariance	probability_theory	Covariance
+prob.cov.correlation	probability_theory	Correlation
+prob.conv.in_probability	probability_theory	Convergence in probability
+prob.conv.in_distribution	probability_theory	Convergence in distribution
+prob.conv.almost_sure	probability_theory	Almost-sure convergence
+prob.conv.strong_law	probability_theory	The strong law of large numbers
+prob.conv.borel_cantelli	probability_theory	The Borel-Cantelli lemmas
+prob.conv.slutsky	probability_theory	Slutsky's theorem
+prob.conv.delta	probability_theory	The delta method
+prob.chf.definition	probability_theory	Characteristic functions
+prob.chf.moments	probability_theory	Moments from the characteristic function
+prob.chf.independence	probability_theory	Characteristic functions of sums
+prob.chf.continuity	probability_theory	The continuity theorem
+prob.chf.clt	probability_theory	The central limit theorem by characteristic functions
+prob.process.markov_chain	probability_theory	Markov chains
+prob.process.transition_matrix	probability_theory	Transition matrices
+prob.process.stationary	probability_theory	Stationary distributions
+prob.process.random_walk	probability_theory	Random walks
+prob.process.martingale	probability_theory	Martingales
+ra.order.supremum	real_analysis	Supremum and infimum
+ra.order.completeness	real_analysis	The completeness axiom
+ra.order.archimedean	real_analysis	The Archimedean property
+ra.order.nested_intervals	real_analysis	Nested intervals
+ra.order.density	real_analysis	Density of the rationals
+ra.order.countable	real_analysis	Countable sets
+ra.order.uncountable	real_analysis	The uncountability of the reals
+ra.order.extended	real_analysis	The extended real line
+ra.seq.convergence	real_analysis	Convergence of sequences
+ra.seq.monotone	real_analysis	Monotone convergence
+ra.seq.subsequence	real_analysis	Subsequences
+ra.seq.bolzano_weierstrass	real_analysis	The Bolzano-Weierstrass theorem
+ra.seq.cauchy	real_analysis	Cauchy sequences
+ra.seq.series	real_analysis	Series and partial sums
+ra.seq.tests	real_analysis	Comparison and ratio tests
+ra.seq.absolute	real_analysis	Absolute and conditional convergence
+ra.seq.rearrangement	real_analysis	Rearrangement of series
+ra.seq.cauchy_criterion	real_analysis	The Cauchy criterion for series
+ra.limit.function	real_analysis	The limit of a function
+ra.limit.sequential	real_analysis	The sequential criterion
+ra.limit.continuity	real_analysis	Continuity and its algebra
+ra.limit.ivt	real_analysis	The intermediate value theorem
+ra.limit.evt	real_analysis	The extreme value theorem
+ra.limit.uniform	real_analysis	Uniform continuity
+ra.limit.compact	real_analysis	Compactness and Heine-Borel
+ra.limit.connected	real_analysis	Connected sets
+ra.limit.discontinuity	real_analysis	Classification of discontinuities
+ra.limit.monotone_fn	real_analysis	Monotone functions
+ra.deriv.mvt	real_analysis	The mean value theorem
+ra.deriv.chain	real_analysis	The chain rule
+ra.deriv.taylor	real_analysis	Taylor's theorem
+ra.deriv.lhopital	real_analysis	L'Hopital's rule
+ra.deriv.riemann	real_analysis	The Riemann integral
+ra.deriv.darboux	real_analysis	Darboux's theorem
+ra.deriv.ftc	real_analysis	The fundamental theorem of calculus
+ra.deriv.parts	real_analysis	Integration by parts
+ra.deriv.improper	real_analysis	Improper integrals
+ra.deriv.uniform_conv	real_analysis	Uniform convergence
+ra.deriv.power_series	real_analysis	Power series
+ra.deriv.interchange	real_analysis	Interchange of limits
+ra.metric.spaces	real_analysis	Metric spaces
+ra.metric.open_closed	real_analysis	Open and closed sets
+ra.metric.closure	real_analysis	Closure and interior
+ra.metric.convergence	real_analysis	Convergence in metric spaces
+ra.metric.complete	real_analysis	Completeness
+ra.metric.compact	real_analysis	Compactness
+ra.metric.continuity	real_analysis	Continuity in metric spaces
+ra.metric.contraction	real_analysis	The contraction mapping principle
+ra.metric.baire	real_analysis	Baire's category theorem
+ra.metric.equivalent	real_analysis	Equivalent metrics
+stat.data.read_table	statistics	Read data from tables and charts
+stat.data.bar_graph	statistics	Read and create bar graphs
+stat.data.line_plot	statistics	Read and create line plots
+stat.data.mean	statistics	Calculate the mean
+stat.data.median	statistics	Find the median
+stat.data.mode	statistics	Find the mode
+stat.data.range	statistics	Find the range of a data set
+stat.prob.sample_space	statistics	Sample space: list all possible outcomes
+stat.prob.basic	statistics	Basic probability: P(event) = favourable / total
+stat.prob.complement	statistics	Complement of an event
+stat.prob.compound	statistics	Compound events: and / or
+stat.prob.counting	statistics	Fundamental counting principle
+stat.adv.geometric_mean	statistics	Geometric mean
+stat.adv.harmonic_mean	statistics	Harmonic mean
+stat.adv.rms	statistics	Root mean square
+stat.adv.variance	statistics	Variance
+stat.adv.covariance	statistics	Variance and covariance of random variables
+stat.prob.discrete_rv	statistics	Discrete random variables
+stat.prob.continuous_rv	statistics	Continuous random variables
+stat.prob.expected_value	statistics	Expected value of a random variable
+stat.prob.bayes	statistics	Bayes' theorem
+stat.dist.bernoulli	statistics	Bernoulli distribution
+stat.dist.binomial	statistics	Binomial distribution
+stat.dist.geometric	statistics	Geometric distribution
+stat.dist.hypergeometric	statistics	Hypergeometric distribution
+stat.dist.poisson	statistics	Poisson distribution
+stat.dist.uniform	statistics	Uniform distribution
+stat.dist.normal	statistics	Normal (Gaussian) distribution
+stat.dist.z_table	statistics	Standard normal distribution and Z-table
+stat.dist.exponential	statistics	Exponential distribution
+stat.dist.gamma	statistics	Gamma distribution
+stat.dist.beta	statistics	Beta distribution
+stat.dist.chi_square	statistics	Chi-square distribution
+stat.dist.student_t	statistics	Student's t-distribution
+stat.infer.sampling	statistics	Sampling distributions
+stat.infer.confidence	statistics	Confidence intervals
+stat.func.gaussian	statistics	Gaussian function: moments, FWHM, convolution
+stat.spread.mad	statistics	The mean absolute deviation
+stat.spread.iqr	statistics	The interquartile range
+stat.quartile.value	statistics	Quartiles
+stat.zscore.value	statistics	The z-score
+stat.sampling.se	statistics	The standard error
+stat.infer.margin	statistics	The margin of error
+stat.prob.conditional	statistics	Conditional probability
+stat.infer.hypothesis	statistics	Null and alternative hypotheses
+stat.infer.ztest	statistics	The one-sample z statistic
+stat.infer.ttest	statistics	The one-sample t statistic
+stat.infer.pvalue	statistics	p-values and significance
+stat.infer.type_error	statistics	Type I and II errors and power
+stat.infer.proportion	statistics	Standard error of a proportion
+stat.test.chi_square	statistics	The chi-square goodness-of-fit test
+stat.test.anova	statistics	One-way ANOVA
+stat.reg.r2	statistics	The coefficient of determination
+stat.data.histogram	statistics	Histograms
+stat.infer.nonparametric	statistics	Nonparametric tests

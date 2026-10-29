@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The adjoint solve",
+    "section": "The adjoint solve",
+    "subgoals": [
+      "Build the selector vector for the output",
+      "Solve the transposed system with the existing factors",
+      "Read the adjoint voltages as transfer resistances to the output"
+    ]
+  },
+  {
+    "label": "Sensitivity from two solutions",
+    "section": "Sensitivity from two solutions",
+    "subgoals": [
+      "Take the adjoint voltage difference across the element",
+      "Take the nominal voltage difference across the element",
+      "Multiply them and negate"
+    ]
+  },
+  {
+    "label": "Counting solves: direct versus adjoint",
+    "section": "Counting solves: direct versus adjoint",
+    "subgoals": [
+      "Count the parameters and the outputs",
+      "Assign one solve per parameter to direct and one per output to adjoint",
+      "Pick the method with fewer solves"
+    ]
+  }
+]

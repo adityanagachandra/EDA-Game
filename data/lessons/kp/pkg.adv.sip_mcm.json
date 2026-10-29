@@ -1,0 +1,5 @@
+[
+  {"label": "Compound module yield", "section": "Compound module yield", "subgoals": ["Raise the attach yield to the number of dies", "Multiply by every die yield", "Express the product as a percentage"]},
+  {"label": "Known-good die", "section": "Known-good die", "subgoals": ["Convert the escape rate into a good-die probability", "Multiply over dies and attach steps", "Compare escape loss with raw defect loss"]},
+  {"label": "Cost per good module", "section": "Cost per good module", "subgoals": ["Sum the die and assembly costs", "Divide the sum by the module yield", "Name the levers that lower the cost"]}
+]

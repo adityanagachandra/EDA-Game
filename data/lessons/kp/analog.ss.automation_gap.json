@@ -1,0 +1,5 @@
+[
+  {"label": "No abstraction that hides the devices", "section": "No abstraction that hides the devices", "subgoals": ["Name the abstractions digital flows rely on: Boolean logic, cells, timing tables", "Explain how signal regeneration isolates digital stages from each other's errors", "Identify the continuous dependence of analog specs on sizes, bias and parasitics"]},
+  {"label": "Many specs, expensive evaluation", "section": "Many specs, expensive evaluation", "subgoals": ["List the interacting specs that define analog quality", "Multiply corners, samples and iterations to estimate simulation cost", "Explain why nonconvex, kinked performance defeats naive local search"]},
+  {"label": "Where automation works today", "section": "Where automation works today", "subgoals": ["Separate mature verification engines from partially automated synthesis tasks", "Name the sizing and layout aids that exist today", "Pick the fixed-topology problems such as migration where automation pays first"]}
+]

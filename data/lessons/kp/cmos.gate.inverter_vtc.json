@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Five regions of the curve",
+    "section": "Five regions of the curve",
+    "subgoals": [
+      "Identify where each device is off, linear or saturated along the sweep",
+      "Locate the steep high-gain region where both devices saturate",
+      "Explain level restoration from the flat rails and steep transition"
+    ]
+  },
+  {
+    "label": "Computing the switching threshold",
+    "section": "Computing the switching threshold",
+    "subgoals": [
+      "Equate the saturation currents of both devices at the switching threshold",
+      "Solve for VM using the square root of the strength ratio",
+      "Express the strength ratio through mobility and width ratios"
+    ]
+  },
+  {
+    "label": "Sizing to place the threshold",
+    "section": "Sizing to place the threshold",
+    "subgoals": [
+      "Solve the threshold equation for the required strength ratio",
+      "Convert the strength ratio into a pMOS-to-nMOS width ratio",
+      "Note that short-channel devices need smaller ratios than the square law predicts"
+    ]
+  }
+]

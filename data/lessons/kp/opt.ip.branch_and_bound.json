@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Pruning by bound",
+    "section": "Pruning by bound",
+    "subgoals": [
+      "Compare each open node's bound with the incumbent",
+      "Apply the correct direction for maximization or minimization",
+      "Count the nodes whose bound cannot strictly improve on the incumbent"
+    ]
+  },
+  {
+    "label": "Branching on a fractional variable",
+    "section": "Branching on a fractional variable",
+    "subgoals": [
+      "Pick a fractional variable in the node's relaxation",
+      "Fix it to each integer side and re-solve each child's relaxation",
+      "Compare each child's bound with the incumbent"
+    ]
+  },
+  {
+    "label": "Reading the optimality gap",
+    "section": "Reading the optimality gap",
+    "subgoals": [
+      "Take the best bound over all open nodes",
+      "Compute the relative gap against the incumbent",
+      "Decide whether the gap meets the stopping tolerance"
+    ]
+  }
+]

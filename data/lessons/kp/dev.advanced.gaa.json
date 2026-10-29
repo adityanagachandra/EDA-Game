@@ -1,0 +1,5 @@
+[
+  {"label": "Effective width of a nanosheet stack", "section": "Effective width of a nanosheet stack", "subgoals": ["Compute the perimeter of one sheet as twice width plus thickness", "Multiply by the number of stacked sheets", "Relate sheet thickness to all-around gate control"]},
+  {"label": "Nanosheet versus FinFET in one footprint", "section": "Nanosheet versus FinFET in one footprint", "subgoals": ["Compute effective width for each architecture in the same footprint", "Take their ratio", "Weigh electrostatic control and parasitics alongside raw width"]},
+  {"label": "Continuous width as a design knob", "section": "Continuous width as a design knob", "subgoals": ["Divide the target effective width by twice the sheet count", "Subtract the sheet thickness", "Check the result against minimum and maximum drawable widths"]}
+]

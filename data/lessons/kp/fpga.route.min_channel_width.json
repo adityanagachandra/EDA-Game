@@ -1,0 +1,29 @@
+[
+ {
+  "label": "Lower bounds from channel density",
+  "section": "Lower bounds from channel density",
+  "subgoals": [
+   "Find the densest column of each channel",
+   "Take the number of nets crossing it as the channel's need",
+   "Take the maximum over all channels as the lower bound"
+  ]
+ },
+ {
+  "label": "Searching for the minimum",
+  "section": "Searching for the minimum",
+  "subgoals": [
+   "Double W after every failed routing",
+   "Binary-search between the last failure and first success",
+   "Count every routing attempt in both phases"
+  ]
+ },
+ {
+  "label": "Low-stress routing",
+  "section": "Low-stress routing",
+  "subgoals": [
+   "Multiply W_min by 1.3 and round up",
+   "Round up again to an even width for paired wires",
+   "Report delay at that width together with W_min"
+  ]
+ }
+]

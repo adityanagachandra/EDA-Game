@@ -1,0 +1,5 @@
+[
+  {"label": "Wiring capacity per layer", "section": "Wiring capacity per layer", "subgoals": ["Add the line width and space to get the pitch", "Divide one millimetre by the pitch and floor it", "Multiply by edge length and signal layers"]},
+  {"label": "Layers needed for a signal count", "section": "Layers needed for a signal count", "subgoals": ["Compute traces per layer across the edge", "Divide the signal count by it and round up", "Weigh layer count against line and space"]},
+  {"label": "CTE and dimensional stability", "section": "CTE and dimensional stability", "subgoals": ["Subtract the two CTEs", "Multiply by distance from the neutral point and temperature swing", "Compare the displacement with the joint pitch"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"label": "Simulation signatures", "section": "Simulation signatures", "subgoals": ["Simulate random vectors and record each node's signature", "Group nodes with identical signatures into classes", "Count the classes that have at least two members"]},
+  {"label": "Proving candidates with SAT", "section": "Proving candidates with SAT", "subgoals": ["Pick a representative for each class", "Charge one SAT call per non-representative member", "Feed failing calls' counterexamples back into simulation"]},
+  {"label": "Equivalence up to complement", "section": "Equivalence up to complement", "subgoals": ["Normalize each signature up to complement", "Group the normalized signatures", "Count the classes with at least two members, mixing phases"]}
+]

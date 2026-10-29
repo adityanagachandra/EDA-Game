@@ -1,0 +1,5 @@
+[
+  {"label": "Abstract base plus factory", "section": "Abstract base plus factory", "subgoals": ["Declare the few operations the core needs in a base", "Register implementations by name in a factory", "Select the implementation through configuration"]},
+  {"label": "The derate provider: a seam in a timer", "section": "The derate provider: a seam in a timer", "subgoals": ["Identify the derate as the core's one question", "List the context the provider receives", "Distinguish factor results from mean and sigma results"]},
+  {"label": "Rules for building a seam", "section": "Rules for building a seam", "subgoals": ["Keep the interface narrow and the ABI frozen", "Cross the boundary per batch rather than per element", "Pass plain data with no hidden global state"]}
+]

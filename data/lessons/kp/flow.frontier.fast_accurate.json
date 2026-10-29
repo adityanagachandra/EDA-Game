@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The cost of a modeling loop",
+    "section": "The cost of a modeling loop",
+    "subgoals": [
+      "Multiply fast iterations by fast run time",
+      "Add the accurate runs every k-th iteration",
+      "Divide the all-accurate time by the mixed time for the speedup"
+    ]
+  },
+  {
+    "label": "When to recurse to the accurate engine",
+    "section": "When to recurse to the accurate engine",
+    "subgoals": [
+      "Use the calibrated error bound as a decision threshold",
+      "Count endpoints whose fast slack lies within the error band",
+      "Decide the rest from the fast run"
+    ]
+  },
+  {
+    "label": "What the fast mode gives up",
+    "section": "What the fast mode gives up",
+    "subgoals": [
+      "Name what each fast engine skips",
+      "Explain why calibration holds only within a regime",
+      "Recurse more often when the design leaves the calibrated regime"
+    ]
+  }
+]

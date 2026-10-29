@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The resistor stamp",
+    "section": "The resistor stamp",
+    "subgoals": [
+      "Convert each resistance to a conductance",
+      "Add every conductance touching the node to its diagonal",
+      "Include resistors that run to ground"
+    ]
+  },
+  {
+    "label": "Off-diagonal entries and the ground row",
+    "section": "Off-diagonal entries and the ground row",
+    "subgoals": [
+      "Sum the conductances joining the two nodes directly",
+      "Negate that sum for the off-diagonal entry",
+      "Delete the ground row and column from every stamp"
+    ]
+  },
+  {
+    "label": "Assembling the whole matrix",
+    "section": "Assembling the whole matrix",
+    "subgoals": [
+      "Stamp every element into a zeroed matrix",
+      "Cancel the four entries of each floating resistor in the sum",
+      "Sum the conductances to ground to predict the entry total"
+    ]
+  }
+]

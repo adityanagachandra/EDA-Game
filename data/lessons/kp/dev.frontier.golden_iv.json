@@ -1,0 +1,5 @@
+[
+  {"label": "What a golden suite contains", "section": "What a golden suite contains", "subgoals": ["Cover every region, output, temperature and geometry", "Take reference values from the prior validated model", "Add benchmark circuits that integrate current and charge"]},
+  {"label": "Checking points against a tolerance", "section": "Checking points against a tolerance", "subgoals": ["Compute the relative error of each candidate point", "Compare it with the tolerance", "Report the points that exceed it"]},
+  {"label": "Differential checks", "section": "Differential checks", "subgoals": ["Predict the region where the edit should change results", "Confirm no change outside that region", "Extend the comparison to charge, temperature and cell tables"]}
+]

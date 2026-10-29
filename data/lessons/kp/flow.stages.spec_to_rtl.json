@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The specification",
+    "section": "The specification",
+    "subgoals": [
+      "List the function, interface and target parts of a specification",
+      "Explain why an executable reference model helps verification",
+      "Trace an ambiguous requirement to a later bug"
+    ]
+  },
+  {
+    "label": "Architecture: blocks, pipelines and budgets",
+    "section": "Architecture: blocks, pipelines and budgets",
+    "subgoals": [
+      "Relate a pipeline stage to clock frequency and latency",
+      "Name the budgets an architect hands each block",
+      "Identify which downstream stage honours each budget"
+    ]
+  },
+  {
+    "label": "RTL as the hand-off",
+    "section": "RTL as the hand-off",
+    "subgoals": [
+      "Describe RTL as per-cycle register behaviour",
+      "Predict which hardware a coding style makes synthesis infer",
+      "Name the checks that run on RTL before synthesis"
+    ]
+  }
+]

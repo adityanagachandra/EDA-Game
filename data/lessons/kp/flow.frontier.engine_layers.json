@@ -1,0 +1,29 @@
+[
+  {
+    "label": "The same four layers in every engine",
+    "section": "The same four layers in every engine",
+    "subgoals": [
+      "Name the core, strategy, parameters and hooks of a placer",
+      "Name the same four layers for a router and a timer",
+      "Name the same four layers for a synthesizer"
+    ]
+  },
+  {
+    "label": "Classifying a request",
+    "section": "Classifying a request",
+    "subgoals": [
+      "Ask whether a request changes correctness, search, a value or observation",
+      "Assign a net-weight change to the parameter layer",
+      "Escalate a request that breaks legality"
+    ]
+  },
+  {
+    "label": "Why the core must stay small",
+    "section": "Why the core must stay small",
+    "subgoals": [
+      "Order the layers by cost of change",
+      "Match each layer to the checks it needs",
+      "Explain how tangled heuristics force core edits"
+    ]
+  }
+]

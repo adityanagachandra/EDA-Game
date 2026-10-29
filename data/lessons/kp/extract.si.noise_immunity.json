@@ -1,0 +1,5 @@
+[
+  {"label": "The holding-resistance model", "section": "The holding-resistance model", "subgoals": ["Compute the victim's time constant", "Evaluate the injected-current term R Cc VDD over tr", "Multiply by one minus the exponential of minus tr over tau"]},
+  {"label": "Noise margin", "section": "Noise margin", "subgoals": ["Set the threshold from the receiver's noise immunity", "Subtract the glitch peak from the threshold", "Treat a negative margin as a glitch violation"]},
+  {"label": "Rise time versus the bound", "section": "Rise time versus the bound", "subgoals": ["Compute the floating-victim bound", "Compute the holding-driver peak", "Express the peak as a fraction of the bound in terms of tr over tau"]}
+]

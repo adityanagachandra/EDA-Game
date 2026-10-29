@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Why Newton fails on circuits",
+    "section": "Why Newton fails on circuits",
+    "subgoals": [
+      "Read the failure type from the simulator log",
+      "Match each failure type to its usual cause",
+      "Separate topology problems from nonlinear convergence problems"
+    ]
+  },
+  {
+    "label": "Choosing an aid",
+    "section": "Choosing an aid",
+    "subgoals": [
+      "Pick gmin stepping for poorly conditioned starts",
+      "Pick source stepping or pseudo-transient for strongly nonlinear circuits",
+      "Pick a nodeset to choose among several valid solutions"
+    ]
+  },
+  {
+    "label": "What each aid costs and hides",
+    "section": "What each aid costs and hides",
+    "subgoals": [
+      "Discard intermediate continuation solutions",
+      "Detect turning points where parameter stepping stalls",
+      "Prefer fixes that change the starting path over fixes that change the circuit"
+    ]
+  }
+]

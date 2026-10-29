@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Integration levels and exponential growth",
+    "section": "Integration levels and exponential growth",
+    "subgoals": [
+      "Order SSI through ULSI by device count",
+      "Write the doubling law as N0 times 2 to the power y over T",
+      "Compute a transistor count after a given number of doubling periods"
+    ]
+  },
+  {
+    "label": "Why exhaustive methods fail",
+    "section": "Why exhaustive methods fail",
+    "subgoals": [
+      "Count the input combinations of an n-input block",
+      "Divide the vector count by the simulation rate",
+      "Name the structural methods that replace enumeration"
+    ]
+  },
+  {
+    "label": "The design productivity gap",
+    "section": "The design productivity gap",
+    "subgoals": [
+      "Divide the transistor count by drawing rate and working days",
+      "Compare the resulting engineer-years with a project schedule",
+      "Name abstraction and reuse as the two ways to close the gap"
+    ]
+  }
+]

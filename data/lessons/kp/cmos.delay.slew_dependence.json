@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Why input slew changes delay",
+    "section": "Why input slew changes delay",
+    "subgoals": [
+      "Describe how a ramped input turns the device on gradually",
+      "Relate slower inputs to later and slower output transitions",
+      "Identify input slew and output load as the two axes of delay"
+    ]
+  },
+  {
+    "label": "Slew propagates along a path",
+    "section": "Slew propagates along a path",
+    "subgoals": [
+      "Compute an output slew for every timing arc",
+      "Use each output slew as the next arc's input slew",
+      "Propagate upstream changes downstream through slew"
+    ]
+  },
+  {
+    "label": "Edge cases and slew limits",
+    "section": "Edge cases and slew limits",
+    "subgoals": [
+      "Accept negative delays for slow inputs into light loads",
+      "Link slow edges to short-circuit power and noise sensitivity",
+      "Enforce maximum transition limits before trusting timing"
+    ]
+  }
+]

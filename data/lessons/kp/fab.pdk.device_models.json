@@ -1,0 +1,5 @@
+[
+  {"label": "Corners for global variation", "section": "Corners for global variation", "subgoals": ["Read corner names as NMOS then PMOS speed", "Explain why skewed corners exist", "Match corners to the checks they bound"]},
+  {"label": "Statistical models and mismatch", "section": "Statistical models and mismatch", "subgoals": ["Separate global variation from local mismatch", "Apply Pelgrom's area scaling to mismatch sigma", "Connect statistical models to variation-aware timing data"]},
+  {"label": "Layout dependence, aging and model maturity", "section": "Layout dependence, aging and model maturity", "subgoals": ["List layout-dependent effects that models parameterize", "Add aging shifts to timing margins", "Combine device corners with separate RC corners"]}
+]

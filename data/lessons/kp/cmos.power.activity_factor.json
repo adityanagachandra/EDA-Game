@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Signal probabilities through gates",
+    "section": "Signal probabilities through gates",
+    "subgoals": [
+      "Write each gate's output probability from its truth table",
+      "Multiply probabilities only for independent inputs",
+      "Propagate probabilities through the netlist in topological order"
+    ]
+  },
+  {
+    "label": "From probability to transition probability",
+    "section": "From probability to transition probability",
+    "subgoals": [
+      "Assume successive cycles are independent",
+      "Compute alpha as the product of the zero and one probabilities",
+      "Multiply alpha by C V squared f for the node's power"
+    ]
+  },
+  {
+    "label": "Where the estimate goes wrong",
+    "section": "Where the estimate goes wrong",
+    "subgoals": [
+      "Identify reconvergent fanout as a source of input correlation",
+      "Identify temporal correlation and glitches as missed activity",
+      "Prefer simulation-annotated activity when accuracy matters"
+    ]
+  }
+]

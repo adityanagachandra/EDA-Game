@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Mixed-flavour leakage totals",
+    "section": "Mixed-flavour leakage totals",
+    "subgoals": [
+      "Multiply each flavour's cell count by its per-cell leakage",
+      "Divide the low-Vt leakage by the ratio for high-Vt cells",
+      "Sum the flavours and find which dominates"
+    ]
+  },
+  {
+    "label": "Leakage recovery",
+    "section": "Leakage recovery",
+    "subgoals": [
+      "Count the cells swapped as a fraction of the total",
+      "Multiply by one minus one over the leakage ratio",
+      "Rely on identical footprints so swaps need no re-routing"
+    ]
+  },
+  {
+    "label": "Spending slack on a path",
+    "section": "Spending slack on a path",
+    "subgoals": [
+      "Divide the slack by the per-swap delay penalty",
+      "Cap the number of swaps at the gates on the path",
+      "Order swaps by leakage saved per unit of slack across shared paths"
+    ]
+  }
+]
