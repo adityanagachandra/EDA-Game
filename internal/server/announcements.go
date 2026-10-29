@@ -108,6 +108,26 @@ func (s *Server) handleAnnouncementsRead(w http.ResponseWriter, r *http.Request)
 	writeJSON(w, map[string]interface{}{"ok": true, "read_at": now.Format(time.RFC3339)})
 }
 
+// POST /api/announcements/clear hides the caller's current announcement feed.
+// The global announcement rows and their read state stay intact.
+func (s *Server) handleAnnouncementsClear(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		writeError(w, "method not allowed", 405)
+		return
+	}
+	studentID, _ := r.Context().Value(authStudentKey{}).(string)
+	store, ok := announcementStore(w, s.repo)
+	if !ok {
+		return
+	}
+	now := time.Now().UTC()
+	if err := store.ClearAnnouncements(studentID, now); err != nil {
+		writeError(w, "failed to clear announcements", 500)
+		return
+	}
+	writeJSON(w, map[string]interface{}{"ok": true, "cleared_at": now.Format(time.RFC3339)})
+}
+
 // GET /api/admin/announcements lists drafts and published announcements.
 // POST creates one. The route floor is ContentRead; writes re-check
 // ContentManage so a moderator can inspect but not publish.

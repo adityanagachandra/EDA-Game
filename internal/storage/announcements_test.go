@@ -133,6 +133,55 @@ func TestAnnouncementsSurviveResetAndAccountDeletion(t *testing.T) {
 	}
 }
 
+func TestAnnouncementsClearHidesCurrentFeed(t *testing.T) {
+	store := newTestStore(t)
+	ann := announcementStore(t, store)
+	learner := seedStudent(t, store)
+	other := seedStudent(t, store)
+	now := time.Now().UTC()
+
+	first, err := ann.CreateAnnouncement(Announcement{
+		Title:       "First update",
+		Body:        "This should be cleared.",
+		Published:   true,
+		CreatedAt:   now,
+		PublishedAt: now,
+	})
+	if err != nil {
+		t.Fatalf("create first: %v", err)
+	}
+	if items, _ := ann.ListPublishedAnnouncements(learner.ID); len(items) != 1 {
+		t.Fatalf("first feed = %+v, want one item", items)
+	}
+	if err := ann.ClearAnnouncements(learner.ID, now.Add(time.Second)); err != nil {
+		t.Fatalf("clear announcements: %v", err)
+	}
+	if items, _ := ann.ListPublishedAnnouncements(learner.ID); len(items) != 0 {
+		t.Fatalf("cleared feed = %+v, want empty", items)
+	}
+	if items, _ := ann.ListPublishedAnnouncements(other.ID); len(items) != 1 || items[0].ID != first.ID {
+		t.Fatalf("another learner lost the announcement: %+v", items)
+	}
+
+	second, err := ann.CreateAnnouncement(Announcement{
+		Title:       "Second update",
+		Body:        "This arrives after the clear.",
+		Published:   true,
+		CreatedAt:   now.Add(2 * time.Second),
+		PublishedAt: now.Add(2 * time.Second),
+	})
+	if err != nil {
+		t.Fatalf("create second: %v", err)
+	}
+	items, err := ann.ListPublishedAnnouncements(learner.ID)
+	if err != nil {
+		t.Fatalf("list after second: %v", err)
+	}
+	if len(items) != 1 || items[0].ID != second.ID {
+		t.Fatalf("new announcement after clear = %+v, want only second", items)
+	}
+}
+
 func TestAnnouncementUpdateMissingRow(t *testing.T) {
 	store := newTestStore(t)
 	ann := announcementStore(t, store)

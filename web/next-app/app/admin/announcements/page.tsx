@@ -84,6 +84,7 @@ export default function AdminAnnouncementsPage() {
       }
       resetForm()
       await load()
+      window.dispatchEvent(new Event('announcements-changed'))
     } catch (e) {
       setError(getErrorMessage(e))
     } finally {
@@ -97,6 +98,7 @@ export default function AdminAnnouncementsPage() {
     try {
       await updateAdminAnnouncement(announcement.id, { published: !announcement.published })
       await load()
+      window.dispatchEvent(new Event('announcements-changed'))
     } catch (e) {
       setError(getErrorMessage(e))
     } finally {

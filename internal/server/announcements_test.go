@@ -124,6 +124,27 @@ func TestAnnouncementsLifecycleAndReadState(t *testing.T) {
 	}
 }
 
+func TestAnnouncementsClearHidesTheLearnerFeed(t *testing.T) {
+	e := newAdminEnv(t)
+	rec := e.do(t, "POST", "/api/admin/announcements", e.adminTok,
+		`{"title":"Clear me","body":"This leaves the feed.","published":true}`)
+	if rec.Code != 200 {
+		t.Fatalf("create: %d %s", rec.Code, rec.Body.String())
+	}
+	rec = e.do(t, "GET", "/api/announcements", e.studentTok, "")
+	if got := decodeAnnouncementEnvelope(t, rec.Body.Bytes()); len(got.Announcements) != 1 || got.Unread != 1 {
+		t.Fatalf("before clear = %+v", got)
+	}
+	rec = e.do(t, "POST", "/api/announcements/clear", e.studentTok, "")
+	if rec.Code != 200 {
+		t.Fatalf("clear: %d %s", rec.Code, rec.Body.String())
+	}
+	rec = e.do(t, "GET", "/api/announcements", e.studentTok, "")
+	if got := decodeAnnouncementEnvelope(t, rec.Body.Bytes()); len(got.Announcements) != 0 || got.Unread != 0 {
+		t.Fatalf("after clear = %+v, want empty", got)
+	}
+}
+
 func TestAnnouncementsRequireAuthentication(t *testing.T) {
 	e := newAdminEnv(t)
 	rec := e.do(t, "GET", "/api/announcements", "", "")
@@ -133,6 +154,10 @@ func TestAnnouncementsRequireAuthentication(t *testing.T) {
 	rec = e.do(t, "POST", "/api/announcements/read", "", "")
 	if rec.Code != 401 {
 		t.Errorf("POST read without a token: got %d, want 401", rec.Code)
+	}
+	rec = e.do(t, "POST", "/api/announcements/clear", "", "")
+	if rec.Code != 401 {
+		t.Errorf("POST clear without a token: got %d, want 401", rec.Code)
 	}
 }
 

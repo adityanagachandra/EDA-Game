@@ -2225,6 +2225,11 @@ export async function markAnnouncementsRead(): Promise<void> {
 	if (!res.ok) await throwWithResponse(res, 'Could not mark announcements as read')
 }
 
+export async function clearAnnouncements(): Promise<void> {
+	const res = await authedFetch(`${API_BASE}/api/announcements/clear`, { method: 'POST' })
+	if (!res.ok) await throwWithResponse(res, 'Could not clear announcements')
+}
+
 export async function listAdminAnnouncements(): Promise<{ announcements: Announcement[] }> {
 	const res = await authedFetch(`${API_BASE}/api/admin/announcements`, { cache: 'no-store' })
 	if (!res.ok) await throwWithResponse(res, 'Could not load announcements')

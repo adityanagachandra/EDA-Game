@@ -447,6 +447,13 @@ CREATE TABLE IF NOT EXISTS announcement_reads (
 
 CREATE INDEX IF NOT EXISTS idx_announcement_reads_announcement ON announcement_reads(announcement_id);
 
+-- Announcement clears hide the current feed from one learner without deleting
+-- the global announcement or another learner's feed.
+CREATE TABLE IF NOT EXISTS announcement_views (
+    student_id TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
+    cleared_at INTEGER NOT NULL
+);
+
 -- Administration. The role column itself is added by the migration list below rather than
 -- here: this DDL runs on every boot, and ALTER TABLE ADD COLUMN is not idempotent. The
 -- default is 'student', so every existing row is a learner until an operator promotes it.

@@ -499,6 +499,13 @@ CREATE TABLE IF NOT EXISTS announcement_reads (
 
 CREATE INDEX IF NOT EXISTS idx_announcement_reads_announcement ON announcement_reads(announcement_id);
 
+-- Announcement clears hide the current feed from one learner without deleting
+-- the global announcement or another learner's feed.
+CREATE TABLE IF NOT EXISTS announcement_views (
+    student_id TEXT PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
+    cleared_at BIGINT NOT NULL
+);
+
 -- Administration. actor_id is deliberately not a foreign key to students(id): a trail that is
 -- deleted along with the account it records is not a trail. before_json/after_json carry the
 -- non-sensitive AdminUser projection only, so a credential cannot reach them.
@@ -1856,6 +1863,7 @@ func (s *PostgresStore) DeleteAccount(studentID string) error {
 		{"DELETE FROM server_sessions WHERE kind IN ('study_expected','study_plan','study_plan_prefs') AND (key = $1 OR key LIKE $1 || '|%')", []interface{}{studentID}},
 		{"DELETE FROM question_reports WHERE reporter_id = $1", []interface{}{studentID}},
 		{"DELETE FROM announcement_reads WHERE student_id = $1", []interface{}{studentID}},
+		{"DELETE FROM announcement_views WHERE student_id = $1", []interface{}{studentID}},
 		{"DELETE FROM ai_usage WHERE usage_key = $1", []interface{}{studentID}},
 		{"DELETE FROM students WHERE id = $1", []interface{}{studentID}},
 	}

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import AppShell from '@/components/app-shell'
 import Footer from '@/components/Footer'
 import KatexContent from '@/components/KatexContent'
-import { clearMyReports, listAnnouncements, listMyReports, markAnnouncementsRead, markMyReportsRead, type Announcement, type QuestionReport } from '@/lib/api'
+import { clearAnnouncements, clearMyReports, listAnnouncements, listMyReports, markAnnouncementsRead, markMyReportsRead, type Announcement, type QuestionReport } from '@/lib/api'
 import { useAuthState } from '@/hooks/useAuthState'
 
 function statusLabel(status: string): string {
@@ -105,17 +105,31 @@ export default function MyReportsPage() {
   async function handleClear() {
     setClearing(true)
     setClearError('')
-    try {
-      await clearMyReports()
+    const [reportsResult, announcementsResult] = await Promise.allSettled([
+      clearMyReports(),
+      clearAnnouncements(),
+    ])
+    let failed = false
+    if (reportsResult.status === 'fulfilled') {
       setReports([])
       setUnread(0)
-      setConfirmClear(false)
       window.dispatchEvent(new Event('report-updates-changed'))
-    } catch (e) {
-      setClearError(e instanceof Error ? e.message : 'Your history could not be cleared.')
-    } finally {
-      setClearing(false)
+    } else {
+      failed = true
     }
+    if (announcementsResult.status === 'fulfilled') {
+      setAnnouncements([])
+      setAnnouncementUnread(0)
+      window.dispatchEvent(new Event('announcements-changed'))
+    } else {
+      failed = true
+    }
+    if (failed) {
+      setClearError('Some notifications could not be cleared. Try again.')
+    } else {
+      setConfirmClear(false)
+    }
+    setClearing(false)
   }
 
   return (
@@ -130,13 +144,13 @@ export default function MyReportsPage() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            {reports.length > 0 && (
+            {(reports.length > 0 || announcements.length > 0) && (
               <button
                 type="button"
                 onClick={() => { setConfirmClear(true); setClearError('') }}
                 className="font-mono text-[11px] text-mathua-muted underline underline-offset-2 hover:text-mathua-red"
               >
-                Clear history
+                Clear notifications
               </button>
             )}
             <Link
@@ -151,7 +165,8 @@ export default function MyReportsPage() {
         {confirmClear && (
           <div className="mt-6 border border-mathua-border bg-mathua-surface p-4">
             <p className="text-sm text-mathua-secondary">
-              Clear this list? The reports stay with moderation, but they leave your history.
+              Clear your notifications? Your report history will be cleared and announcements will leave
+              your feed. The reports themselves stay with moderation.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               <button
@@ -160,7 +175,7 @@ export default function MyReportsPage() {
                 disabled={clearing}
                 className="border border-mathua-red px-3 h-9 font-mono text-xs text-mathua-red disabled:opacity-50"
               >
-                {clearing ? 'Clearing…' : 'Yes, clear history'}
+                {clearing ? 'Clearing…' : 'Yes, clear notifications'}
               </button>
               <button
                 type="button"
