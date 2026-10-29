@@ -399,6 +399,7 @@ mark.ann.has-note { background: var(--hl-note); box-shadow: inset 0 -1.5px 0 rgb
 mark.ann.flash { outline: 2px solid var(--accent); outline-offset: 2px; }
 .ann-bar { position: fixed; z-index: 60; display: flex; gap: 2px; padding: 4px; background: var(--ink); border-radius: 10px; box-shadow: var(--shadow); }
 .ann-bar button { font: 500 13px/1 var(--sans); color: var(--bg); background: transparent; border: 0; padding: 8px 10px; border-radius: 7px; cursor: pointer; white-space: nowrap; }
+.ann-bar kbd { font: 600 11px/1 var(--mono); padding: 2px 4px; margin-left: 4px; border-radius: 4px; background: rgba(127, 127, 127, 0.3); color: inherit; }
 .ann-bar button:hover, .ann-bar button:focus-visible { background: rgba(127, 127, 127, 0.28); outline: none; }
 body:not(.can-ask) .ask-only { display: none; }
 .ann-pop { position: fixed; z-index: 61; width: min(360px, calc(100vw - 16px)); background: var(--bg); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px; display: grid; gap: 10px; }

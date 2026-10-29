@@ -151,10 +151,11 @@
   bar.setAttribute("aria-label", "Selection");
   bar.hidden = true;
   bar.innerHTML = `
-    <button data-act="hl" title="Highlight (H)">Highlight</button>
-    <button data-act="note" title="Add a note (N)">Note</button>
-    <button data-act="ask" class="ask-only" title="Start a new question about this passage (A)">Ask Claude</button>
-    <button data-act="follow" class="ask-only" title="Quote this into the open conversation (F)">Follow up</button>`;
+    <button data-act="hl" title="Highlight">Highlight <kbd>H</kbd></button>
+    <button data-act="note" title="Add a note">Note <kbd>N</kbd></button>
+    <button data-act="ask" class="ask-only" title="Start a new question about this passage">Ask Claude <kbd>A</kbd></button>
+    <button data-act="follow" class="ask-only" title="Quote this into the open conversation">Follow up <kbd>F</kbd></button>`;
+  bar.tabIndex = -1;
   let pending = null; // {quote, prefix} for the current selection
 
   function selectionInLesson() {
@@ -179,6 +180,10 @@
     const above = s.rect.top - h - 10;
     bar.style.left = x + "px";
     bar.style.top = (above > 60 ? above : s.rect.bottom + 10) + "px";
+    // Inside claude.ai the page only hears keys while it has focus. A selection made with the
+    // mouse usually gives it focus, but not always (for example right after using the chat), so
+    // ask for it. Focusing a non-editable element leaves the text selection in place.
+    try { window.focus(); } catch {}
   }
   let selTimer = 0;
   document.addEventListener("selectionchange", () => { clearTimeout(selTimer); selTimer = setTimeout(showBar, 180); });
@@ -188,7 +193,7 @@
     const act = e.target.closest("button")?.dataset.act;
     if (act && pending) act === "hl" ? highlight(pending) : act === "note" ? noteFor(pending) : act === "ask" ? ask(pending) : followUp(pending);
   });
-  document.addEventListener("keydown", (e) => {
+  window.addEventListener("keydown", (e) => {
     if (bar.hidden || !pending || e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.target.closest?.("input, textarea")) return;
     const k = e.key.toLowerCase();
