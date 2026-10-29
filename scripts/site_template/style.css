@@ -75,3 +75,9 @@ input.ans { font: inherit; padding: 9px 12px; border-radius: 8px; border: 1px so
   .track ol { columns: 1; }
   .top { padding: 12px 16px; gap: 14px; }
 }
+.toc { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13.5px; margin: 10px 0 8px; }
+.gdom h2 { margin-top: 40px; display: flex; gap: 10px; align-items: center; }
+.gsub h3 { font-size: 15px; margin: 22px 0 8px; color: var(--muted); }
+.gc { padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.gc .meta { margin-top: 4px; }
+details { margin: 4px 0 8px; }

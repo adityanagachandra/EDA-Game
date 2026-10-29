@@ -104,8 +104,33 @@ def main():
         "concepts": sum(d["count"] for d in index_domains),
     }
     (SITE / "data" / "index.json").write_text(json.dumps(index, indent=1))
+    write_glossary()
     print(f"site/: {len(index_domains)} domains, {index['concepts']} concepts, "
           f"{sum(len(v) for v in problems.values())} problems")
+
+
+def write_glossary():
+    """Slim docs/eda/site_glossary.json (from scripts/build_glossary.py) for the Glossary page.
+
+    Sample problems are dropped, since each concept page already carries its practice set, and
+    index terms without a letter ("0", "10n") are dropped as noise.
+    """
+    src = ROOT / "docs/eda/site_glossary.json"
+    if not src.exists():
+        return
+    g = json.loads(src.read_text())
+    domains = [{
+        "id": d["id"], "name": d["name"], "layer": d["layer"], "covers": d.get("covers", []),
+        "subdomains": [{
+            "title": s["title"],
+            "concepts": [{"id": c["id"], "label": c["label"], "definition": c.get("definition", ""),
+                          "ideas": c.get("key_ideas", []), "terms": c.get("terms", [])}
+                         for c in s["concepts"]],
+        } for s in d["subdomains"]],
+    } for d in g["domains"]]
+    terms = [t for t in g["index"] if any(ch.isalpha() for ch in t["term"]) and len(t["term"]) > 2]
+    (SITE / "data" / "glossary.json").write_text(
+        json.dumps({"domains": domains, "index": terms}, separators=(",", ":")))
 
 
 if __name__ == "__main__":

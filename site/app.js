@@ -165,10 +165,48 @@ function practice(domainId, c) {
   if (form) form.onsubmit = (ev) => { ev.preventDefault(); const v = form.querySelector("input").value; if (v.trim()) grade(numericMatch(prob.a, v), v); };
 }
 
+// Every domain, subdomain and concept with its definition and key ideas, filtered as you type.
+async function glossary() {
+  const g = await load("data/glossary.json");
+  const total = g.domains.reduce((n, d) => n + d.subdomains.reduce((m, s) => m + s.concepts.length, 0), 0);
+  app.innerHTML = `<h1>Glossary</h1>
+    <p class="muted">${g.domains.length} domains, ${g.domains.reduce((n, d) => n + d.subdomains.length, 0)} subtopics and
+    ${total} concepts in layer order, each with its definition and the ideas its lesson covers.</p>
+    <input class="ans" id="gq" placeholder="Filter: slack, Elmore, BDD, Steiner…" style="width:100%;margin:8px 0 4px">
+    <p class="meta" id="gn"></p>
+    <nav class="toc">${g.domains.map((d) => `<a href="#/glossary" data-jump="g-${d.id}">${esc(d.name)}</a>`).join("")}</nav>
+    <div id="gl">${g.domains.map((d) => `<section class="gdom" id="g-${d.id}">
+      <h2>${esc(d.name)} <span class="pill">Layer ${d.layer}</span></h2>
+      ${d.covers.length ? `<details><summary class="meta">Topics covered</summary><ul class="meta">${d.covers.map((c) => `<li>${esc(c)}</li>`).join("")}</ul></details>` : ""}
+      ${d.subdomains.map((s) => `<div class="gsub"><h3>${esc(s.title)}</h3>
+        ${s.concepts.map((c) => `<div class="gc" data-text="${esc([c.label, c.definition, ...c.ideas, ...c.terms].join(" ").toLowerCase())}">
+          <a href="#/d/${d.id}/${c.id}"><b>${esc(c.label)}</b></a>
+          <div>${render(c.definition).replace(/^<p>|<\/p>\s*$/g, "")}</div>
+          ${c.ideas.length ? `<div class="meta">${c.ideas.map(esc).join(" · ")}</div>` : ""}
+        </div>`).join("")}</div>`).join("")}
+    </section>`).join("")}</div>`;
+  const q = document.getElementById("gq"), count = document.getElementById("gn");
+  const filter = () => {
+    const v = q.value.trim().toLowerCase();
+    let shown = 0;
+    document.querySelectorAll(".gc").forEach((el) => {
+      const on = !v || el.dataset.text.includes(v);
+      el.hidden = !on; shown += on;
+    });
+    document.querySelectorAll(".gsub, .gdom").forEach((el) => { el.hidden = !el.querySelector(".gc:not([hidden])"); });
+    count.textContent = v ? `${shown} matching concepts` : "";
+  };
+  q.oninput = filter;
+  document.querySelectorAll("[data-jump]").forEach((a) => a.onclick = (ev) => {
+    ev.preventDefault(); document.getElementById(a.dataset.jump).scrollIntoView();
+  });
+}
+
 async function route() {
   index ||= await load("data/index.json");
   const [, page, a, b] = location.hash.split("/");
   if (page === "d") return domain(a, b);
+  if (page === "glossary") return glossary();
   if (page === "tracks") return tracks();
   if (page === "about") return about();
   home();
