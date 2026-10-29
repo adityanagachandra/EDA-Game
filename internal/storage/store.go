@@ -519,6 +519,7 @@ type AnnouncementRead struct {
 type AnnouncementStore interface {
 	ListPublishedAnnouncements(studentID string) ([]Announcement, error)
 	MarkAnnouncementsRead(studentID string, now time.Time) error
+	ClearAnnouncements(studentID string, clearedAt time.Time) error
 	ListAnnouncements() ([]Announcement, error)
 	GetAnnouncement(id string) (*Announcement, error)
 	CreateAnnouncement(a Announcement) (*Announcement, error)

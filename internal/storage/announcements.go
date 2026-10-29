@@ -33,6 +33,12 @@ func (s *SQLiteStore) MarkAnnouncementsRead(studentID string, now time.Time) err
 func (s *PostgresStore) MarkAnnouncementsRead(studentID string, now time.Time) error {
 	return s.announcement().markRead(studentID, now)
 }
+func (s *SQLiteStore) ClearAnnouncements(studentID string, clearedAt time.Time) error {
+	return s.announcement().clear(studentID, clearedAt)
+}
+func (s *PostgresStore) ClearAnnouncements(studentID string, clearedAt time.Time) error {
+	return s.announcement().clear(studentID, clearedAt)
+}
 func (s *SQLiteStore) ListAnnouncements() ([]Announcement, error) {
 	return s.announcement().listAll()
 }
@@ -65,9 +71,12 @@ func (a *announcementAccess) listPublished(studentID string) ([]Announcement, er
 		FROM announcements a
 		LEFT JOIN announcement_reads r
 		  ON r.announcement_id = a.id AND r.student_id = ?
+		LEFT JOIN announcement_views v
+		  ON v.student_id = ?
 		WHERE a.published = 1
+		  AND a.published_at > COALESCE(v.cleared_at, 0)
 		ORDER BY a.published_at DESC, a.created_at DESC`)
-	rows, err := a.db.Query(q, studentID)
+	rows, err := a.db.Query(q, studentID, studentID)
 	if err != nil {
 		return nil, fmt.Errorf("list announcements: %w", err)
 	}
@@ -99,6 +108,16 @@ func (a *announcementAccess) markRead(studentID string, now time.Time) error {
 		ON CONFLICT (student_id, announcement_id) DO NOTHING`)
 	if _, err := a.db.Exec(q, studentID, now.UTC().UnixNano()); err != nil {
 		return fmt.Errorf("mark announcements read: %w", err)
+	}
+	return nil
+}
+
+func (a *announcementAccess) clear(studentID string, clearedAt time.Time) error {
+	q := a.rebind(`
+		INSERT INTO announcement_views (student_id, cleared_at) VALUES (?, ?)
+		ON CONFLICT (student_id) DO UPDATE SET cleared_at = excluded.cleared_at`)
+	if _, err := a.db.Exec(q, studentID, clearedAt.UTC().UnixNano()); err != nil {
+		return fmt.Errorf("clear announcements: %w", err)
 	}
 	return nil
 }
