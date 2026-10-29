@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import MyReportsPage from '../app/my-reports/page'
-import { clearMyReports, listMyReports, markMyReportsRead } from '../lib/api'
+import { clearMyReports, listAnnouncements, listMyReports, markAnnouncementsRead, markMyReportsRead } from '../lib/api'
 import type { QuestionReport } from '../lib/api'
 
 vi.mock('../lib/api', async (importOriginal) => ({
@@ -9,6 +9,8 @@ vi.mock('../lib/api', async (importOriginal) => ({
   listMyReports: vi.fn(),
   markMyReportsRead: vi.fn(),
   clearMyReports: vi.fn(),
+  listAnnouncements: vi.fn(),
+  markAnnouncementsRead: vi.fn(),
 }))
 
 vi.mock('../hooks/useAuthState', () => ({
@@ -53,6 +55,8 @@ beforeEach(() => {
   vi.clearAllMocks()
   vi.mocked(markMyReportsRead).mockResolvedValue(undefined)
   vi.mocked(clearMyReports).mockResolvedValue(undefined)
+  vi.mocked(listAnnouncements).mockResolvedValue({ unread: 0, announcements: [] })
+  vi.mocked(markAnnouncementsRead).mockResolvedValue(undefined)
 })
 
 describe('the learner report history', () => {
@@ -88,6 +92,32 @@ describe('the learner report history', () => {
 
     await waitFor(() => expect(markMyReportsRead).toHaveBeenCalledTimes(1))
     expect(screen.getByText(/2 reports have new verdicts/)).toBeTruthy()
+  })
+
+  it('shows announcements above the report history', async () => {
+    vi.mocked(listMyReports).mockResolvedValue({ unread: 0, reports: [] })
+    vi.mocked(listAnnouncements).mockResolvedValue({
+      unread: 1,
+      announcements: [
+        {
+          id: 'ann-1',
+          title: 'Timed quizzes are live',
+          body: 'Try the new **timed quiz**.',
+          published: true,
+          created_at: '2026-10-28T12:00:00Z',
+          published_at: '2026-10-28T12:00:00Z',
+          read: false,
+        },
+      ],
+    })
+
+    render(<MyReportsPage />)
+
+    expect(await screen.findByRole('heading', { name: 'Announcements' })).toBeTruthy()
+    expect(screen.getByText('Timed quizzes are live')).toBeTruthy()
+    expect(screen.getByText(/Try the new/)).toBeTruthy()
+    expect(screen.getByText(/1 new announcement/)).toBeTruthy()
+    expect(markAnnouncementsRead).toHaveBeenCalledTimes(1)
   })
 
   it('still shows the history when the read marker fails', async () => {
